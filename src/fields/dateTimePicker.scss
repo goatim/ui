@@ -1,0 +1,73 @@
+@use '~@cezembre/fronts/dist/layouts';
+@use '../styles/colors';
+@use '../styles/fonts';
+
+.fleuraison-ui-date-time-picker {
+  position: relative;
+
+  > .label {
+    background: none;
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    cursor: pointer;
+
+    > span {
+      @include fonts.Poppins(1.1em);
+
+      &:first-letter {
+        text-transform: uppercase;
+      }
+
+    }
+
+    > .edit {
+      margin-left: 10px;
+    }
+
+    &.placeholder {
+
+      > span {
+        color: colors.$dark-beige;
+      }
+
+    }
+
+  }
+
+  > .picker {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    > .time {
+      border-left: solid rgba(colors.$blue, .1) 1px;
+    }
+
+    &.expandable {
+      @include layouts.popup();
+      border: solid rgba(colors.$blue, .1) 1px;
+      box-shadow: 0 0 10px rgba(colors.$blue, .2);
+      position: absolute;
+      background: colors.$beige;
+      top: calc(100% + 5px);
+      left: 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity linear 100ms;
+
+    }
+
+    &.expanded {
+      visibility: visible;
+      opacity: 1;
+    }
+
+  }
+
+
+}

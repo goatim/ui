@@ -1,0 +1,119 @@
+@use '~@cezembre/fronts/dist/screens';
+@use '~@cezembre/fronts/dist/layouts';
+@use '../styles/colors';
+@use '../styles/fonts';
+
+.fleuraison-ui-select {
+  width: 100%;
+
+  > label {
+    @include fonts.Poppins(.9em, colors.$blue, bold);
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    padding-bottom: 10px;
+    display: inline-block;
+
+    @include screens.tablet() {
+      padding-bottom: 8px;
+      font-size: .8em;
+    }
+
+  }
+
+  > .container {
+    position: relative;
+
+    > .options {
+      visibility: hidden;
+      width: 100%;
+      position: absolute;
+      top: 100%;
+      background: colors.$beige;
+      border: solid colors.$blue 1px;
+      border-top: none;
+      opacity: 0;
+      transition: opacity linear 100ms;
+      @include layouts.modal();
+
+      > .option {
+        width: 100%;
+        border-top: solid colors.$blue 1px;
+
+        &:first-child {
+          border: none;
+        }
+
+        > span {
+          @include fonts.Poppins()
+
+        }
+
+      }
+
+    }
+
+  }
+
+  > .instructions {
+    @include fonts.Poppins(1em, colors.$dark-beige);
+    margin-top: 10px;
+  }
+
+  &.active {
+    > .container {
+      > .options {
+        visibility: visible;
+        opacity: 1;
+      }
+    }
+  }
+
+  &.flat {
+    > .container {
+      > .button {
+        display: none;
+        visibility: hidden;
+      }
+
+      > .options {
+        visibility: visible;
+        position: relative;
+        opacity: 1;
+        border-top: solid colors.$blue 1px;
+        @include layouts.page();
+
+      }
+    }
+  }
+
+  > .error, > .warning {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 15px;
+
+    @include screens.tablet() {
+      margin-top: 10px;
+    }
+
+    > span {
+      @include fonts.Poppins(.9em, colors.$red);
+      margin-left: 10px;
+
+      @include screens.tablet() {
+        font-size: .9em;
+      }
+
+    }
+
+  }
+
+  > .warning {
+
+    > span {
+      color: colors.$blue;
+    }
+
+  }
+
+}

@@ -1,0 +1,93 @@
+@use '~@cezembre/fronts/dist/screens';
+@use '../styles/colors';
+@use '../styles/fonts';
+
+.fleuraison-ui-credit-card {
+  width: 100%;
+
+  > label {
+    @include fonts.Poppins(.9em, colors.$blue, bold);
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    padding-bottom: 10px;
+    display: inline-block;
+
+    @include screens.tablet() {
+      padding-bottom: 8px;
+      font-size: .8em;
+    }
+
+  }
+
+  > .card {
+    width: 100%;
+    padding: 15px;
+    background: white;
+    position: relative;
+
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: colors.$blue;
+      transition: all 400ms cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+
+  }
+
+  &:hover, &:active {
+
+    > .card {
+
+      &:after {
+        width: 100%;
+      }
+
+    }
+
+  }
+
+  > .instructions {
+    @include fonts.Poppins(1em, colors.$dark-beige);
+    margin-top: 10px;
+
+    @include screens.tablet() {
+      font-size: .9em;
+    }
+  }
+
+  > .error, > .warning {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 15px;
+
+    @include screens.tablet() {
+      margin-top: 10px;
+    }
+
+    > span {
+      @include fonts.Poppins(.9em, colors.$red);
+      margin-left: 10px;
+
+      @include screens.tablet() {
+        font-size: .9em;
+      }
+
+    }
+
+  }
+
+  > .warning {
+
+    > span {
+      color: colors.$blue;
+    }
+
+  }
+
+}

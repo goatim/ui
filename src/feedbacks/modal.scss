@@ -1,0 +1,65 @@
+@use '~@cezembre/fronts/dist/containers';
+@use '~@cezembre/fronts/dist/layouts';
+@use '../styles/colors';
+@use '../styles/fonts';
+
+.fleuraison-ui-modal {
+  @include layouts.popup();
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity linear 100ms, visibility linear 100ms;
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  > .container {
+    @include containers.small();
+    padding: 30px;
+    background: colors.$beige;
+
+    > .body {
+      > h1 {
+        @include fonts.KronaOne(1.1em);
+      }
+
+      > p {
+        @include fonts.Poppins(.9em);
+        margin-top: 15px;
+        white-space: break-spaces;
+      }
+    }
+
+    > .actions {
+      margin-top: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      > .action {
+        margin-left: 20px;
+
+        &:first-child {
+          margin: 0;
+        }
+      }
+    }
+
+  }
+
+  &.full-dark {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: rgba(colors.$blue, .6);
+
+  }
+
+}

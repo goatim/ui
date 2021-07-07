@@ -1,0 +1,25 @@
+@use "colors";
+
+$poppins: 'Poppins';
+
+@mixin Poppins($size: 1em, $color: colors.$blue, $weight: normal) {
+  font-family: $poppins, sans-serif;
+  font-size: $size;
+  font-weight: $weight;
+  color: $color;
+  margin: 0;
+  padding: 0;
+  transition: color ease-out 100ms, font-size ease-out 100ms;
+}
+
+$kronaOne: 'Krona One';
+
+@mixin KronaOne($size: 1em, $color: colors.$blue, $weight: normal) {
+  font-family: $kronaOne, sans-serif;
+  font-size: $size;
+  font-weight: $weight;
+  color: $color;
+  margin: 0;
+  padding: 0;
+  transition: color ease-out 100ms, font-size ease-out 100ms;
+}

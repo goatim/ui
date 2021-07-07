@@ -1,0 +1,34 @@
+@use 'colors';
+@use 'fonts';
+
+@mixin field {
+  margin-top: 20px;
+
+  &:first-child {
+    margin: 0;
+  }
+}
+
+@mixin error {
+  @include fonts.Poppins(.9em, colors.$red);
+  text-align: center;
+  margin-top: 20px;
+}
+
+@mixin submit {
+  margin-top: 30px;
+}
+
+@mixin form {
+  > .field {
+    @include field;
+  }
+
+  > .error {
+    @include error;
+  }
+
+  > .submit {
+    @include submit;
+  }
+}

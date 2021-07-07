@@ -1,0 +1,19 @@
+$blue: #0F175A;
+$night-blue: #0F1746;
+$red: #FF434F;
+$green: #74B99B;
+$night-green: #0E1E1E;
+$beige: #f2ebe3;
+$dark-beige: #a9a29e;
+$light-grey: #f5f5f5;
+
+:export {
+  BLUE: $blue;
+  NIGHT_BLUE: $night-blue;
+  RED: $red;
+  GREEN: $green;
+  NIGHT_GREEN: $night-green;
+  BEIGE: $beige;
+  DARK_BEIGE: $dark-beige;
+  LIGHT_GREY: $light-grey;
+}

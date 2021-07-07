@@ -1,0 +1,50 @@
+@use '../styles/colors';
+@use '../styles/fonts';
+
+.fleuraison-ui-check {
+  width: 30px;
+  height: 30px;
+  background: rgba(colors.$dark-beige, .1);
+  border: solid rgba(colors.$dark-beige, .4) 1px;
+  cursor: pointer;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all cubic-bezier(0.215, 0.61, 0.355, 1) 400ms;
+  border-radius: 2px;
+
+  &.tag {
+    width: auto;
+    padding: 0 10px;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(colors.$blue, .3);
+  }
+
+  > svg {
+    stroke-dashoffset: 100;
+    transition: stroke-dashoffset cubic-bezier(0.215, 0.61, 0.355, 1) 400ms;
+  }
+
+  > span {
+    @include fonts.Poppins(1em, colors.$dark-beige);
+  }
+
+  &[aria-pressed=true] {
+    border: solid colors.$blue 1px;
+    background: white;
+
+    > svg {
+      stroke-dashoffset: 0;
+    }
+
+    > span {
+      color: colors.$blue;
+    }
+  }
+
+}

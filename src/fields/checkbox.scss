@@ -1,0 +1,27 @@
+@use '~@cezembre/fronts/dist/screens';
+@use '../styles/colors';
+@use '../styles/fonts';
+
+.fleuraison-ui-checkbox {
+
+  > .container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    >label {
+      @include fonts.Poppins(.9em, colors.$blue, bold);
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      display: inline-block;
+      margin-left: 20px;
+
+      @include screens.tablet() {
+        font-size: .8em;
+        margin-left: 15px;
+      }
+
+    }
+  }
+
+}
