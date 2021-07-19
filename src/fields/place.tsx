@@ -1,6 +1,6 @@
 import { ReactElement, ReactNode, useCallback } from 'react';
 import { FieldComponentProps } from '@cezembre/forms';
-import Input, { Adapter, AutoComplete, Resolver, StyleType } from './input';
+import InputField, { Adapter, AutoComplete, Resolver } from './input';
 import Place, { newPlace } from '../utils/place';
 import poweredByGoogle from '../assets/poweredByGoogle.png';
 import { PredictionType, usePlaceDetailsGetter, usePlacePredictions } from '../utils/googleMaps';
@@ -33,7 +33,7 @@ export interface PredictionProps {
 
 function Prediction({ suggestion }: PredictionProps): ReactElement {
   return (
-    <p className="fleuraison-ui-place-prediction">
+    <p className="friday-ui-place-prediction">
       {suggestion.structured_formatting.main_text}
       <span className="secondary-text">, {suggestion.structured_formatting.secondary_text}</span>
     </p>
@@ -42,7 +42,7 @@ function Prediction({ suggestion }: PredictionProps): ReactElement {
 
 function PredictionsFooter(): ReactElement {
   return (
-    <div className="fleuraison-ui-place-predictions-footer">
+    <div className="friday-ui-place-predictions-footer">
       <img src={poweredByGoogle} alt="Powered by Google" />
     </div>
   );
@@ -50,7 +50,6 @@ function PredictionsFooter(): ReactElement {
 
 export interface Props extends FieldComponentProps<Place | null | undefined> {
   predictionTypes?: PredictionType[];
-  styleType?: StyleType | string | null;
   label?: string | null;
   placeholder?: string | null;
   instructions?: string | null;
@@ -74,7 +73,6 @@ export default function PlaceField({
   onBlur,
   form,
   predictionTypes = [PredictionType.GEOCODE],
-  styleType = StyleType.DEFAULT,
   label = null,
   placeholder = null,
   instructions = null,
@@ -130,8 +128,8 @@ export default function PlaceField({
   );
 
   return (
-    <div className="fleuraison-ui-place">
-      <Input<Place | null | undefined>
+    <div className="friday-ui-place">
+      <InputField<Place | null | undefined>
         name={name}
         value={value}
         onFocus={onFocus}
@@ -149,7 +147,6 @@ export default function PlaceField({
         suggestionsFooter={<PredictionsFooter />}
         onSelectSuggestion={selectPrediction}
         leftIcon={leftIcon}
-        styleType={styleType}
         instructions={instructions}
         error={error}
         warning={warning}

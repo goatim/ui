@@ -1,19 +1,32 @@
-$blue: #0F175A;
-$night-blue: #0F1746;
-$red: #FF434F;
-$green: #74B99B;
-$night-green: #0E1E1E;
-$beige: #f2ebe3;
-$dark-beige: #a9a29e;
-$light-grey: #f5f5f5;
+$blue: #4292C1;
+$dark-blue: #0A1733;
+$violet: #4B538F;
+$pink: #E8376E;
+$orange: #CA6633;
+$yellow: #FFED6B;
+$green: #99CC99;
+
+$grey: #A5ADB2;
+$border-grey: #d6dfe5;
+$background-grey: #F7F5F9;
+$placeholder-grey: #EDEDF3;
+
+$red: #ea7070;
 
 :export {
   BLUE: $blue;
-  NIGHT_BLUE: $night-blue;
-  RED: $red;
+  DARK_BLUE: $dark-blue;
+  VIOLET: $violet;
+  PINK: $pink;
+  ORANGE: $orange;
+  YELLOW: $yellow;
   GREEN: $green;
-  NIGHT_GREEN: $night-green;
-  BEIGE: $beige;
-  DARK_BEIGE: $dark-beige;
-  LIGHT_GREY: $light-grey;
+  GREY: $grey;
+  BORDER_GREY: $border-grey;
+  BACKGROUND_GREY: $background-grey;
+  PLACEHOLDER_GREY: $placeholder-grey;
+  RED: $red;
 }
+
+$violet-pink-gradient: linear-gradient(90deg, $violet 0%, $pink 100%);
+$orange-yellow-gradient: linear-gradient(90deg, $orange 0%, $orange 40%, $yellow 100%);

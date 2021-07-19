@@ -10,7 +10,7 @@ import {
 } from 'react';
 import { AspectRatio, Mode } from '@cezembre/fronts';
 import Loader from '../feedbacks/loader';
-import Icon, { IconName } from '../general/icon';
+import Icon from '../general/icon';
 import Image, { Props as ImageProps } from '../display/image';
 
 const reader = new FileReader();
@@ -79,10 +79,10 @@ export default function ImageUpload({
     }
   }, []);
 
-  const [classNames, setClassNames] = useState<string[]>(['fleuraison-ui-image-upload']);
+  const [classNames, setClassNames] = useState<string[]>(['friday-ui-image-upload']);
 
   useEffect(() => {
-    const nextClassNames = ['fleuraison-ui-image-upload'];
+    const nextClassNames = ['friday-ui-image-upload'];
 
     if (pending || error) {
       nextClassNames.push('active');
@@ -121,7 +121,7 @@ export default function ImageUpload({
       <div className="overlay">
         {error ? <p className="error">{error.message}</p> : null}
         {pending ? <Loader size={40} /> : null}
-        {!error && !pending ? <Icon name={IconName.CAMERA} color="white" size={40} /> : null}
+        {!error && !pending ? <Icon name="camera" color="white" size={40} /> : null}
       </div>
     </div>
   );

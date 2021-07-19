@@ -3,7 +3,7 @@
 @use '../styles/colors';
 @use '../styles/fonts';
 
-.fleuraison-ui-modal {
+.friday-ui-modal {
   @include layouts.popup();
   opacity: 0;
   visibility: hidden;
@@ -17,15 +17,15 @@
   > .container {
     @include containers.small();
     padding: 30px;
-    background: colors.$beige;
+    background: colors.$grey;
 
     > .body {
       > h1 {
-        @include fonts.KronaOne(1.1em);
+        @include fonts.AvantGardeGothicStd(1.1em);
       }
 
       > p {
-        @include fonts.Poppins(.9em);
+        @include fonts.AvantGardeGothicStd(.9em);
         margin-top: 15px;
         white-space: break-spaces;
       }

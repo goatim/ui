@@ -6,9 +6,9 @@ import Modal, { ModalContext, useModal } from './feedbacks/modal';
 import Overlay from './feedbacks/overlay';
 import Placeholder from './feedbacks/placeholder';
 import Selection from './feedbacks/selection';
-import Button, { ButtonType } from './general/button';
+import Button from './general/button';
 import Check from './general/check';
-import Icon, { IconName } from './general/icon';
+import Icon from './general/icon';
 import Logo from './general/logo';
 import ImageUpload from './uploads/image';
 import CheckBoxField from './fields/checkbox';
@@ -16,7 +16,7 @@ import CreditCardField from './fields/creditCard';
 import DatePickerField from './fields/datePicker';
 import DateTimePickerField from './fields/dateTimePicker';
 import DayField, { TimeSlot, StandardTimeSlotObject } from './fields/day';
-import InputField, { StyleType, InputType, AutoComplete, Adapter, Resolver } from './fields/input';
+import InputField, { InputType, AutoComplete, Adapter, Resolver } from './fields/input';
 import PhoneField from './fields/phone';
 import PlaceField from './fields/place';
 import SelectField, { SelectType } from './fields/select';
@@ -52,7 +52,7 @@ export { Loader, Modal, ModalContext, useModal, Overlay, Placeholder, Selection 
  * General
  */
 
-export { Button, ButtonType, Check, Icon, IconName, Logo };
+export { Button, Check, Icon, Logo };
 
 /**
  * Uploads
@@ -71,7 +71,6 @@ export {
   DateTimePickerField,
   DayField,
   InputField,
-  StyleType,
   InputType,
   AutoComplete,
   PhoneField,

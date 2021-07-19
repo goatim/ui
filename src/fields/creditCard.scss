@@ -2,11 +2,11 @@
 @use '../styles/colors';
 @use '../styles/fonts';
 
-.fleuraison-ui-credit-card {
+.friday-ui-credit-card {
   width: 100%;
 
   > label {
-    @include fonts.Poppins(.9em, colors.$blue, bold);
+    @include fonts.AvantGardeGothicStd(.9em, colors.$blue, bold);
     letter-spacing: .05em;
     text-transform: uppercase;
     padding-bottom: 10px;
@@ -52,7 +52,7 @@
   }
 
   > .instructions {
-    @include fonts.Poppins(1em, colors.$dark-beige);
+    @include fonts.AvantGardeGothicStd(1em, colors.$grey);
     margin-top: 10px;
 
     @include screens.tablet() {
@@ -71,7 +71,7 @@
     }
 
     > span {
-      @include fonts.Poppins(.9em, colors.$red);
+      @include fonts.AvantGardeGothicStd(.9em, colors.$red);
       margin-left: 10px;
 
       @include screens.tablet() {

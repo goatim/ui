@@ -2,7 +2,7 @@
 @use '../styles/colors';
 @use '../styles/fonts';
 
-.fleuraison-ui-date-time-picker {
+.friday-ui-date-time-picker {
   position: relative;
 
   > .label {
@@ -17,7 +17,7 @@
     cursor: pointer;
 
     > span {
-      @include fonts.Poppins(1.1em);
+      @include fonts.AvantGardeGothicStd(1.1em);
 
       &:first-letter {
         text-transform: uppercase;
@@ -32,7 +32,7 @@
     &.placeholder {
 
       > span {
-        color: colors.$dark-beige;
+        color: colors.$grey;
       }
 
     }
@@ -53,7 +53,7 @@
       border: solid rgba(colors.$blue, .1) 1px;
       box-shadow: 0 0 10px rgba(colors.$blue, .2);
       position: absolute;
-      background: colors.$beige;
+      background: colors.$grey;
       top: calc(100% + 5px);
       left: 0;
       opacity: 0;

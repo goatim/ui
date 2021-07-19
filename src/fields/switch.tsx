@@ -1,6 +1,6 @@
 import { ReactElement, useCallback, useEffect, useState } from 'react';
 import { FieldComponentProps } from '@cezembre/forms';
-import Icon, { IconName } from '../general/icon';
+import Icon from '../general/icon';
 import colors from '../styles/_colors.scss';
 
 export interface Props extends FieldComponentProps {
@@ -20,10 +20,10 @@ export default function SwitchField({
   label = null,
   instructions = null,
 }: Props): ReactElement {
-  const [classNames, setClassNames] = useState<string[]>(['fleuraison-ui-switch']);
+  const [classNames, setClassNames] = useState<string[]>(['friday-ui-switch']);
 
   useEffect(() => {
-    const nextClassNames = ['fleuraison-ui-switch'];
+    const nextClassNames = ['friday-ui-switch'];
 
     if (isActive) {
       nextClassNames.push('active');
@@ -76,14 +76,14 @@ export default function SwitchField({
 
       {error ? (
         <div className="error">
-          <Icon name={IconName.ALERT} size={15} color={colors.RED} />
+          <Icon name="alert" size={15} color={colors.RED} />
           <span>{error}</span>
         </div>
       ) : null}
 
       {warning ? (
         <div className="warning">
-          <Icon name={IconName.ALERT} size={15} color={colors.RED} />
+          <Icon name="alert" size={15} color={colors.RED} />
           <span>{warning}</span>
         </div>
       ) : null}

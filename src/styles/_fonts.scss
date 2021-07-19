@@ -1,9 +1,15 @@
 @use "colors";
+@import url('https://fonts.cdnfonts.com/css/itc-avant-garde-gothic-std?styles=52528,52530,52540,52542,52536,52538');
 
-$poppins: 'Poppins';
+/*
+ * Font weights :
+ * 300
+ * 500
+ * 600
+ */
 
-@mixin Poppins($size: 1em, $color: colors.$blue, $weight: normal) {
-  font-family: $poppins, sans-serif;
+@mixin font($fontFamily: sans-serif, $size: 1em, $color: colors.$violet, $weight: normal) {
+  font-family: $fontFamily;
   font-size: $size;
   font-weight: $weight;
   color: $color;
@@ -12,14 +18,9 @@ $poppins: 'Poppins';
   transition: color ease-out 100ms, font-size ease-out 100ms;
 }
 
-$kronaOne: 'Krona One';
+$AvantGardeGothicStd: 'ITC Avant Garde Gothic Std';
 
-@mixin KronaOne($size: 1em, $color: colors.$blue, $weight: normal) {
-  font-family: $kronaOne, sans-serif;
-  font-size: $size;
-  font-weight: $weight;
-  color: $color;
-  margin: 0;
-  padding: 0;
-  transition: color ease-out 100ms, font-size ease-out 100ms;
+@mixin AvantGardeGothicStd($size: 1em, $color: colors.$violet, $weight: normal) {
+  @include font($AvantGardeGothicStd, $size, $color, $weight);
+  padding-top: .22em; // Magic value, compensate font bottom padding
 }

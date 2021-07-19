@@ -3,14 +3,13 @@ import { DateTime } from 'luxon';
 import { FieldComponentProps } from '@cezembre/forms';
 import { formatRelativeDate, useClickOutside } from '@cezembre/fronts';
 import Icon, { IconName } from '../general/icon';
-import Index, { ButtonType } from '../general/button';
-import CheckboxField from './checkbox';
+import Index from '../general/button';
 
 export interface Props extends FieldComponentProps<DateTime | null> {
   placeholder?: string;
   format?: string | ((value: DateTime | null | undefined) => string);
   expanded?: boolean;
-  buttonType?: ButtonType;
+  buttonType?: 'button' | 'submit' | 'reset';
   buttonStyle?: CSSProperties;
   buttonIcon?: IconName;
   disableBefore?: DateTime;
@@ -24,9 +23,9 @@ export default function DatePickerField({
   value,
   onChange,
   expanded = false,
-  buttonType = ButtonType.BOX,
+  buttonType = 'button',
   buttonStyle = {},
-  buttonIcon = IconName.CALENDAR,
+  buttonIcon = 'calendar',
   disableBefore = DateTime.now(),
   disableAfter,
   placeholder,
@@ -106,7 +105,7 @@ export default function DatePickerField({
   }, [format, placeholder, value]);
 
   return (
-    <div ref={picker} className="fleuraison-ui-date-picker">
+    <div ref={picker} className="friday-ui-date-picker">
       {!expanded ? (
         <Index
           type={buttonType}
@@ -120,13 +119,13 @@ export default function DatePickerField({
       <div className={`picker${!expanded ? ' expandable' : ''}${isExpanded ? ' expanded' : ''}`}>
         <div className="month">
           <button onClick={previousMonth}>
-            <Icon name={IconName.CHEVRON} rotate={90} size={12} />
+            <Icon name="chevron" size={12} />
           </button>
 
           <span>{month.toFormat('LLLL yyyy')}</span>
 
           <button onClick={nextMonth}>
-            <Icon name={IconName.CHEVRON} rotate={-90} size={12} />
+            <Icon name="chevron" size={12} />
           </button>
         </div>
 

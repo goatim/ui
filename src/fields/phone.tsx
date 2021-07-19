@@ -1,7 +1,6 @@
 import { ReactElement } from 'react';
 import { FieldComponentProps } from '@cezembre/forms';
-import Input, { Adapter, AutoComplete, Resolver, StyleType } from './input';
-import InputField from './input';
+import InputField, { Adapter, AutoComplete, Resolver } from './input';
 
 export interface PhoneValue {
   region_code: string;
@@ -20,7 +19,6 @@ const resolver: Resolver = (phone: PhoneValue) => {
 };
 
 export interface Props extends FieldComponentProps<PhoneValue> {
-  styleType?: StyleType | string | null;
   label?: string | null;
   placeholder?: string | null;
   instructions?: string | null;
@@ -41,14 +39,13 @@ export default function PhoneField({
   onChange,
   onBlur,
   form,
-  styleType = StyleType.DEFAULT,
   label = null,
   placeholder = null,
   instructions = null,
 }: Props): ReactElement {
   return (
-    <div className="fleuraison-ui-phone">
-      <Input
+    <div className="friday-ui-phone">
+      <InputField
         name={name}
         value={value}
         onFocus={onFocus}
@@ -58,7 +55,6 @@ export default function PhoneField({
         autoComplete={AutoComplete.TEL}
         adapter={adapter}
         resolver={resolver}
-        styleType={styleType}
         label={label}
         placeholder={placeholder}
         instructions={instructions}

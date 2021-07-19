@@ -11,12 +11,10 @@ export default function Overlay({
   visible = false,
   closed = false,
 }: Props): ReactElement {
-  const [classNames, setClassNames] = useState<string[]>([
-    'fleuraison-ui-overlay',
-  ]);
+  const [classNames, setClassNames] = useState<string[]>(['friday-ui-overlay']);
 
   useEffect(() => {
-    const nextClassNames = ['fleuraison-ui-overlay'];
+    const nextClassNames = ['friday-ui-overlay'];
 
     if (visible) {
       nextClassNames.push('visible');

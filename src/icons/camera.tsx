@@ -1,14 +1,11 @@
 import { ReactElement } from 'react';
-
-export interface Props {
-  size?: number;
-  color?: string;
-}
+import colors from '../styles/_colors.scss';
+import { IconProps } from './icon';
 
 export default function Camera({
-  size = 20,
-  color = '#333',
-}: Props): ReactElement<SVGElement> {
+  size = 15,
+  color = colors.VIOLET,
+}: IconProps): ReactElement<SVGElement> {
   return (
     <svg viewBox="0 0 420.8 420.8" height={size} fill={color}>
       <title>Camera</title>

@@ -131,10 +131,7 @@ export default function Image({
   }, [aspectRatio, containerMeasure, height, imageDimensions, mode, width]);
 
   return (
-    <div
-      className="fleuraison-ui-image"
-      ref={imageContainer}
-      style={{ borderRadius, width, height }}>
+    <div className="friday-ui-image" ref={imageContainer} style={{ borderRadius, width, height }}>
       {trueSrc && isOriginalRatio ? (
         <img src={trueSrc} alt={alt} style={style} />
       ) : (

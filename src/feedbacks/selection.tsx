@@ -1,10 +1,4 @@
-import {
-  ReactElement,
-  ReactNode,
-  useCallback,
-  useEffect,
-  useState,
-} from 'react';
+import { ReactElement, ReactNode, useCallback, useEffect, useState } from 'react';
 
 export interface Props {
   children?: ReactNode;
@@ -57,10 +51,7 @@ export default function Selection({ children, filter }: Props): ReactElement {
   }, [positionModal]);
 
   return (
-    <div
-      className={`fleuraison-ui-selection${isActive ? ' active' : ''}`}
-      style={position}
-    >
+    <div className={`friday-ui-selection${isActive ? ' active' : ''}`} style={position}>
       {children}
     </div>
   );

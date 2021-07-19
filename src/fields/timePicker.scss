@@ -1,7 +1,7 @@
 @use "../styles/colors";
 @use "../styles/fonts";
 
-.fleuraison-ui-time-picker {
+.friday-ui-time-picker {
   height: 300px;
 
   > .container {
@@ -27,7 +27,7 @@
 
         > button {
           width: 100%;
-          @include fonts.Poppins(1em);
+          @include fonts.AvantGardeGothicStd(1em);
           margin: 0;
           background: none;
           border: none;
@@ -41,11 +41,11 @@
 
           &.selected {
             background: colors.$blue;
-            color: colors.$beige;
+            color: colors.$grey;
 
             &:hover {
               background: colors.$blue;
-              color: colors.$beige;
+              color: colors.$grey;
             }
 
           }

@@ -1,11 +1,11 @@
 @use '../styles/colors';
 @use '../styles/fonts';
 
-.fleuraison-ui-check {
+.friday-ui-check {
   width: 30px;
   height: 30px;
-  background: rgba(colors.$dark-beige, .1);
-  border: solid rgba(colors.$dark-beige, .4) 1px;
+  background: rgba(colors.$grey, .1);
+  border: solid rgba(colors.$grey, .4) 1px;
   cursor: pointer;
   outline: none;
   display: flex;
@@ -31,7 +31,7 @@
   }
 
   > span {
-    @include fonts.Poppins(1em, colors.$dark-beige);
+    @include fonts.AvantGardeGothicStd(1em, colors.$grey);
   }
 
   &[aria-pressed=true] {

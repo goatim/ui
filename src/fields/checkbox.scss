@@ -2,7 +2,7 @@
 @use '../styles/colors';
 @use '../styles/fonts';
 
-.fleuraison-ui-checkbox {
+.friday-ui-checkbox {
 
   > .container {
     display: flex;
@@ -10,7 +10,7 @@
     justify-content: flex-start;
 
     >label {
-      @include fonts.Poppins(.9em, colors.$blue, bold);
+      @include fonts.AvantGardeGothicStd(.9em, colors.$blue, bold);
       letter-spacing: .05em;
       text-transform: uppercase;
       display: inline-block;

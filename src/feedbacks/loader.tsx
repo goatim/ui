@@ -6,13 +6,9 @@ export interface Props {
   color?: string;
 }
 
-export default function Loader({
-  size = 20,
-  thickness = 3,
-  color = '#fff',
-}: Props): ReactElement {
+export default function Loader({ size = 20, thickness = 3, color = '#fff' }: Props): ReactElement {
   return (
-    <div className="fleuraison-ui-loader" style={{ width: size, height: size }}>
+    <div className="friday-ui-loader" style={{ width: size, height: size }}>
       <div
         style={{
           borderColor: `${color} transparent transparent transparent`,

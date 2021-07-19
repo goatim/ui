@@ -1,10 +1,9 @@
 import { ReactElement, useEffect, useState } from 'react';
 import { DateTime } from 'luxon';
 import { FieldComponentProps } from '@cezembre/forms';
-import Icon, { IconName } from '../general/icon';
+import Icon from '../general/icon';
 import colors from '../styles/_colors.scss';
 import Check from '../general/check';
-import CheckboxField from './checkbox';
 
 export type TimeSlot = string[];
 
@@ -118,10 +117,10 @@ export default function DayField({
   label,
   instructions,
 }: Props): ReactElement {
-  const [classNames, setClassNames] = useState<string[]>(['fleuraison-ui-day']);
+  const [classNames, setClassNames] = useState<string[]>(['friday-ui-day']);
 
   useEffect(() => {
-    const nextClassNames = ['fleuraison-ui-day'];
+    const nextClassNames = ['friday-ui-day'];
 
     if (isActive) {
       nextClassNames.push('active');
@@ -166,14 +165,14 @@ export default function DayField({
 
       {error ? (
         <div className="error">
-          <Icon name={IconName.ALERT} size={15} color={colors.RED} />
+          <Icon name="alert" size={15} color={colors.RED} />
           <span>{error}</span>
         </div>
       ) : null}
 
       {warning ? (
         <div className="warning">
-          <Icon name={IconName.ALERT} size={15} color={colors.RED} />
+          <Icon name="alert" size={15} color={colors.RED} />
           <span>{warning}</span>
         </div>
       ) : null}

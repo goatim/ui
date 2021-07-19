@@ -1,6 +1,6 @@
 import { ReactElement, useEffect, useState } from 'react';
 import { FieldComponentProps } from '@cezembre/forms';
-import Icon, { IconName } from '../general/icon';
+import Icon from '../general/icon';
 import colors from '../styles/_colors.scss';
 import Check from '../general/check';
 
@@ -21,10 +21,10 @@ export default function CheckboxField({
   label = null,
   instructions = null,
 }: Props): ReactElement {
-  const [classNames, setClassNames] = useState<string[]>(['fleuraison-ui-checkbox']);
+  const [classNames, setClassNames] = useState<string[]>(['friday-ui-checkbox']);
 
   useEffect(() => {
-    const nextClassNames = ['fleuraison-ui-checkbox'];
+    const nextClassNames = ['friday-ui-checkbox'];
 
     if (isActive) {
       nextClassNames.push('active');
@@ -51,14 +51,14 @@ export default function CheckboxField({
 
       {error ? (
         <div className="error">
-          <Icon name={IconName.ALERT} size={15} color={colors.RED} />
+          <Icon name="alert" size={15} color={colors.RED} />
           <span>{error}</span>
         </div>
       ) : null}
 
       {warning ? (
         <div className="warning">
-          <Icon name={IconName.ALERT} size={15} color={colors.RED} />
+          <Icon name="alert" size={15} color={colors.RED} />
           <span>{warning}</span>
         </div>
       ) : null}

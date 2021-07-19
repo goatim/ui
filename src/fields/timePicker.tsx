@@ -57,7 +57,7 @@ export default function TimePickerField({ value, onChange }: Props): ReactElemen
   );
 
   return (
-    <div className="fleuraison-ui-time-picker">
+    <div className="friday-ui-time-picker">
       <div className="container">
         <ul>
           {hours.map((_, hour: number) => {

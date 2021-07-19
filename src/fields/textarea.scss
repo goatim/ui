@@ -2,12 +2,12 @@
 @use "../styles/colors";
 @use "../styles/fonts";
 
-.fleuraison-ui-textarea {
+.friday-ui-textarea {
   width: 100%;
   transition: width linear 100ms;
 
   > label {
-    @include fonts.Poppins(.9em, colors.$blue, bold);
+    @include fonts.AvantGardeGothicStd(.9em, colors.$blue, bold);
     letter-spacing: .05em;
     text-transform: uppercase;
     padding-bottom: 10px;
@@ -52,7 +52,7 @@
     }
 
     >textarea {
-      @include fonts.Poppins(1em, colors.$blue, normal);
+      @include fonts.AvantGardeGothicStd(1em, colors.$blue, normal);
       flex: 1;
       padding: 10px 15px;
 
@@ -83,7 +83,7 @@
   }
 
   > .instructions {
-    @include fonts.Poppins(1em, colors.$dark-beige);
+    @include fonts.AvantGardeGothicStd(1em, colors.$grey);
     margin-top: 10px;
 
     @include screens.tablet() {
@@ -102,7 +102,7 @@
     }
 
     > span {
-      @include fonts.Poppins(.9em, colors.$red);
+      @include fonts.AvantGardeGothicStd(.9em, colors.$red);
       margin-left: 10px;
 
       @include screens.tablet() {

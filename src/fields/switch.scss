@@ -2,7 +2,7 @@
 @use "../styles/colors";
 @use "../styles/fonts";
 
-.fleuraison-ui-switch {
+.friday-ui-switch {
 
   > .container {
     display: flex;
@@ -13,8 +13,8 @@
       width: 50px;
       height: 30px;
       padding: 2px;
-      background: rgba(colors.$dark-beige, .1);
-      border: solid rgba(colors.$dark-beige, .4) 1px;
+      background: rgba(colors.$grey, .1);
+      border: solid rgba(colors.$grey, .4) 1px;
       cursor: pointer;
       outline: none;
       position: relative;
@@ -25,7 +25,7 @@
         width: 24px;
         height: 24px;
         border-radius: 50%;
-        background: colors.$dark-beige;
+        background: colors.$grey;
       }
 
       &:focus {
@@ -48,7 +48,7 @@
 
 
     >label {
-      @include fonts.Poppins(.9em, colors.$blue, bold);
+      @include fonts.AvantGardeGothicStd(.9em, colors.$blue, bold);
       letter-spacing: .05em;
       text-transform: uppercase;
       display: inline-block;

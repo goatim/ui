@@ -1,7 +1,7 @@
 @use '../styles/colors';
 @use '../styles/fonts';
 
-.fleuraison-ui-day {
+.friday-ui-day {
 
   > .container {
     display: flex;
@@ -9,7 +9,7 @@
     justify-content: space-between;
 
     > label {
-      @include fonts.Poppins(.9em, colors.$blue, bold);
+      @include fonts.AvantGardeGothicStd(.9em, colors.$blue, bold);
       letter-spacing: .05em;
       text-transform: uppercase;
       display: inline-block;

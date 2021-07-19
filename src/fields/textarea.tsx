@@ -1,6 +1,6 @@
 import { ReactElement, useEffect, useState } from 'react';
 import { FieldComponentProps } from '@cezembre/forms';
-import Icon, { IconName } from '../general/icon';
+import Icon from '../general/icon';
 import colors from '../styles/_colors.scss';
 import SwitchField from './switch';
 
@@ -27,10 +27,10 @@ export default function TextareaField({
   instructions = null,
   spellCheck = true,
 }: Props): ReactElement {
-  const [classNames, setClassNames] = useState<string[]>(['fleuraison-ui-textarea']);
+  const [classNames, setClassNames] = useState<string[]>(['friday-ui-textarea']);
 
   useEffect(() => {
-    const nextClassNames = ['fleuraison-ui-textarea'];
+    const nextClassNames = ['friday-ui-textarea'];
 
     if (visited) {
       nextClassNames.push('visited');
@@ -67,14 +67,14 @@ export default function TextareaField({
 
       {(visited || submitted) && !isActive && error ? (
         <div className="error">
-          <Icon name={IconName.ALERT} size={15} color={colors.RED} />
+          <Icon name="alert" size={15} color={colors.RED} />
           <span>{error}</span>
         </div>
       ) : null}
 
       {warning ? (
         <div className="warning">
-          <Icon name={IconName.ALERT} size={15} color={colors.RED} />
+          <Icon name="alert" size={15} color={colors.RED} />
           <span>{warning}</span>
         </div>
       ) : null}

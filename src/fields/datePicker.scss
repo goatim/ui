@@ -2,7 +2,7 @@
 @use '../styles/colors';
 @use '../styles/fonts';
 
-.fleuraison-ui-date-picker {
+.friday-ui-date-picker {
   position: relative;
 
   > .picker {
@@ -19,7 +19,7 @@
       border: solid rgba(colors.$blue, .1) 1px;
       box-shadow: 0 0 10px rgba(colors.$blue, .2);
       position: absolute;
-      background: colors.$beige;
+      background: colors.$grey;
       top: calc(100% + 5px);
       left: 0;
       opacity: 0;
@@ -49,7 +49,7 @@
       }
 
       > span {
-        @include fonts.Poppins(1em);
+        @include fonts.AvantGardeGothicStd(1em);
       }
 
     }
@@ -61,7 +61,7 @@
       justify-content: space-around;
 
       > span {
-        @include fonts.Poppins(.9em);
+        @include fonts.AvantGardeGothicStd(.9em);
         text-transform: uppercase;
       }
 
@@ -75,7 +75,7 @@
       align-items: center;
 
       > .day {
-        @include fonts.Poppins(1em);
+        @include fonts.AvantGardeGothicStd(1em);
         background: none;
         border: none;
         outline: none;
@@ -91,7 +91,7 @@
         }
 
         &:disabled {
-          color: colors.$dark-beige;
+          color: colors.$grey;
           cursor: default;
 
           &:hover {
@@ -102,7 +102,7 @@
 
         &.selected {
           background: colors.$blue;
-          color: colors.$beige;
+          color: colors.$grey;
         }
 
       }

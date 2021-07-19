@@ -5,13 +5,12 @@ import { formatRelativeDateTime, useClickOutside } from '@cezembre/fronts';
 import DatePicker from './datePicker';
 import TimePicker from './timePicker';
 import { IconName } from '../general/icon';
-import Index, { ButtonType } from '../general/button';
-import CheckboxField from './checkbox';
+import Index from '../general/button';
 
 export interface Props extends FieldComponentProps<DateTime | null> {
   placeholder?: string;
   format?: string | ((value: DateTime | null | undefined) => string);
-  buttonType?: ButtonType;
+  buttonType?: 'button' | 'submit' | 'reset';
   buttonStyle?: CSSProperties;
   buttonIcon?: IconName;
   expanded?: boolean;
@@ -35,9 +34,9 @@ export default function DateTimePickerField({
   placeholder,
   format,
   expanded = false,
-  buttonType = ButtonType.BOX,
+  buttonType = 'button',
   buttonStyle = {},
-  buttonIcon = IconName.CALENDAR,
+  buttonIcon = 'calendar',
 }: Props): ReactElement {
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
   const picker = useRef<HTMLDivElement>(null);
@@ -58,7 +57,7 @@ export default function DateTimePickerField({
   }, [format, placeholder, value]);
 
   return (
-    <div ref={picker} className="fleuraison-ui-date-time-picker">
+    <div ref={picker} className="friday-ui-date-time-picker">
       {!expanded ? (
         <Index
           type={buttonType}

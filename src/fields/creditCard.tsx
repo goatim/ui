@@ -1,7 +1,7 @@
 import { ReactElement, useEffect, useState } from 'react';
 import { CardElement } from '@stripe/react-stripe-js';
 import { FieldComponentProps } from '@cezembre/forms';
-import Icon, { IconName } from '../general/icon';
+import Icon from '../general/icon';
 import colors from '../styles/_colors.scss';
 import CheckboxField from './checkbox';
 
@@ -23,10 +23,10 @@ export default function CreditCardField({
   label = null,
   instructions = null,
 }: Props): ReactElement {
-  const [classNames, setClassNames] = useState<string[]>(['fleuraison-ui-credit-card']);
+  const [classNames, setClassNames] = useState<string[]>(['friday-ui-credit-card']);
 
   useEffect(() => {
-    const nextClassNames = ['fleuraison-ui-credit-card'];
+    const nextClassNames = ['friday-ui-credit-card'];
 
     if (visited) {
       nextClassNames.push('visited');
@@ -63,14 +63,14 @@ export default function CreditCardField({
 
       {(visited || submitted) && !isActive && error ? (
         <div className="error">
-          <Icon name={IconName.ALERT} size={15} color={colors.RED} />
+          <Icon name="alert" size={15} color={colors.RED} />
           <span>{error}</span>
         </div>
       ) : null}
 
       {warning ? (
         <div className="warning">
-          <Icon name={IconName.ALERT} size={15} color={colors.RED} />
+          <Icon name="alert" size={15} color={colors.RED} />
           <span>{warning}</span>
         </div>
       ) : null}

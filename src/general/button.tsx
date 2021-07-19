@@ -2,69 +2,75 @@ import {
   ReactElement,
   MouseEvent,
   FocusEvent,
-  CSSProperties,
   ReactNode,
   useCallback,
   useEffect,
   useState,
+  CSSProperties,
 } from 'react';
 import { NavLink } from 'react-router-dom';
-import Icon, { IconName } from './icon';
 import Loader from '../feedbacks/loader';
+import Icon, { IconName } from './icon';
 
-export enum ButtonType {
-  DEFAULT = 'default',
-  LINK = 'link',
-  LIGHT_LINK = 'light-link',
-  SUBMIT = 'submit',
-  CONFIRM = 'confirm',
-  DELETE = 'delete',
-  BOX = 'box',
-  LIGHT_BOX = 'light-box',
-  FRAMELESS = 'frameless',
-  LIGHT_FRAMELESS = 'light-frameless',
-  NAVIGATION = 'navigation',
-  NAVIGATION_LIGHT = 'navigation-light',
-}
+export type Type = 'submit' | 'reset' | 'button';
+export type Shape = 'fitted' | 'square';
+export type Size = 'small' | 'medium' | 'large';
+export type ButtonStyle = 'filled' | 'text' | 'outlined' | 'link';
+export type Theme = 'violet-pink' | 'orange-yellow' | 'white' | 'blue' | 'dark-blue' | 'violet';
 
-export interface WrapperProps {
-  children: ReactNode;
-  style?: CSSProperties | null;
-  href?: string | null;
+export interface Props {
+  children?: ReactNode;
+  href?: string;
+  to?: string;
   onClick?: (event: MouseEvent<HTMLButtonElement>) => Promise<void> | void;
   onFocus?: (event: FocusEvent<HTMLElement>) => void;
-  to?: string | null;
-  buttonType?: 'submit' | 'reset' | 'button';
-  type?: ButtonType;
+  type?: Type;
+  shape?: Shape;
+  size?: Size;
+  buttonStyle?: ButtonStyle;
+  theme?: Theme;
   disabled?: boolean;
   pending?: boolean;
   active?: boolean;
   success?: boolean;
   errored?: boolean;
+  leftIcon?: IconName;
+  leftIconSize?: number;
+  rightIcon?: IconName;
+  rightIconSize?: number;
+  style?: CSSProperties;
 }
 
 function Wrapper({
   children,
-  style = null,
-  href = null,
+  href = undefined,
+  to = undefined,
   onClick = undefined,
   onFocus = undefined,
-  to = null,
-  type = ButtonType.DEFAULT,
-  buttonType = 'button',
+  shape = 'fitted',
+  size = 'medium',
+  buttonStyle = 'filled',
+  theme = 'violet-pink',
+  type = 'button',
   disabled = false,
   pending = false,
   active = false,
   success = false,
   errored = false,
-}: WrapperProps): ReactElement {
-  const [hovered, setHovered] = useState<boolean>(false);
+  style = {},
+}: Props): ReactElement {
   const [autoPending, setAutoPending] = useState<boolean>(false);
   const [autoErrored, setAutoErrored] = useState<boolean>(false);
-  const [className, setClassName] = useState<string[]>(['fleuraison-ui-button', type]);
+  const [className, setClassName] = useState<string[]>([
+    'friday-ui-button',
+    shape,
+    size,
+    buttonStyle,
+    theme,
+  ]);
 
   useEffect(() => {
-    const nextClasses = ['fleuraison-ui-button', type];
+    const nextClasses = ['friday-ui-button', shape, size, buttonStyle, theme];
 
     if (active) {
       nextClasses.push('active');
@@ -86,12 +92,20 @@ function Wrapper({
       nextClasses.push('disabled');
     }
 
-    if (hovered) {
-      nextClasses.push('hovered');
-    }
-
     setClassName(nextClasses);
-  }, [active, success, errored, disabled, type, hovered, pending, autoPending, autoErrored]);
+  }, [
+    active,
+    success,
+    errored,
+    disabled,
+    shape,
+    size,
+    buttonStyle,
+    pending,
+    autoPending,
+    autoErrored,
+    theme,
+  ]);
 
   const onButtonClick = useCallback(
     async (event: MouseEvent<HTMLButtonElement>) => {
@@ -121,12 +135,7 @@ function Wrapper({
 
   if (!disabled && !pending && !autoPending && href && href.length) {
     return (
-      <a
-        className={className.join(' ')}
-        href={href}
-        style={style || {}}
-        onMouseOver={() => setHovered(true)}
-        onFocus={onFocus}>
+      <a className={className.join(' ')} href={href} onFocus={onFocus} style={style}>
         {children}
       </a>
     );
@@ -134,13 +143,7 @@ function Wrapper({
 
   if (!disabled && !pending && !autoPending && to && to.length) {
     return (
-      <NavLink
-        className={className.join(' ')}
-        to={to}
-        style={style || {}}
-        exact
-        onMouseOver={() => setHovered(true)}
-        onFocus={onFocus}>
+      <NavLink className={className.join(' ')} to={to} style={style || {}} exact onFocus={onFocus}>
         {children}
       </NavLink>
     );
@@ -150,102 +153,77 @@ function Wrapper({
     <button
       className={className.join(' ')}
       onClick={onButtonClick}
-      onMouseOver={() => setHovered(true)}
       onFocus={onFocus}
-      type={buttonType}
+      type={type}
       disabled={(disabled || pending || autoPending) as boolean}
-      style={style || {}}>
+      style={style}>
       {children}
     </button>
   );
 }
 
-export interface Props {
-  children?: ReactNode;
-  style?: CSSProperties | null;
-  href?: string | null;
-  onClick?: (event: MouseEvent<HTMLButtonElement>) => Promise<void> | void;
-  to?: string | null;
-  type?: ButtonType;
-  leftIcon?: ReactNode | IconName;
-  rightIcon?: ReactNode | IconName;
-  leftIconSize?: number;
-  rightIconSize?: number;
-  buttonType?: 'submit' | 'reset' | 'button';
-  active?: boolean;
-  pending?: boolean;
-  success?: boolean;
-  errored?: boolean;
-  disabled?: boolean;
-}
-
 export default function Button({
   children = null,
-  style = null,
-  href = null,
+  href = undefined,
+  to = undefined,
   onClick = undefined,
-  to = null,
-  type = ButtonType.DEFAULT,
-  leftIcon = undefined,
-  rightIcon = undefined,
-  leftIconSize = undefined,
-  rightIconSize = undefined,
-  buttonType = 'button',
+  shape = 'fitted',
+  size = 'medium',
+  buttonStyle = 'filled',
+  type = 'button',
+  theme = 'violet-pink',
   active = false,
   pending = false,
   success = false,
   errored = false,
   disabled = false,
+  leftIcon = undefined,
+  leftIconSize = 15,
+  rightIcon = undefined,
+  rightIconSize = 15,
+  style = {},
 }: Props): ReactElement {
   return (
     <Wrapper
       href={href}
-      onClick={onClick}
       to={to}
+      onClick={onClick}
       pending={pending}
       disabled={disabled}
-      buttonType={buttonType}
       type={type}
+      shape={shape}
+      size={size}
+      theme={theme}
+      buttonStyle={buttonStyle}
       active={active}
       success={success}
       errored={errored}
       style={style}>
-      <div className="background" />
-
       <div className="container">
         <div className="body">
           {leftIcon ? (
             <div className="left-icon">
-              {typeof leftIcon === 'string' ? (
-                <Icon name={leftIcon} size={leftIconSize} />
-              ) : (
-                leftIcon
-              )}
+              <Icon name={leftIcon} size={leftIconSize} />
             </div>
           ) : null}
-          {leftIcon && children ? <div className="left-separator" /> : null}
 
-          {children ? <span>{children}</span> : null}
+          {typeof children === 'string' ? (
+            <span className="label">{children}</span>
+          ) : (
+            <div className="component">{children}</div>
+          )}
         </div>
 
         {rightIcon ? (
           <div className="right-icon">
-            {typeof rightIcon === 'string' ? (
-              <Icon name={rightIcon} size={rightIconSize} />
-            ) : (
-              rightIcon
-            )}
+            <Icon name={rightIcon} size={rightIconSize} />
           </div>
         ) : null}
       </div>
 
       <div className="pending">
-        <Loader size={17} color="white" />
+        <Loader size={15} />
       </div>
-
-      {/* <div className="error"> */}
-      {/*  <Icon type={IconType.ALERT} color="white" size={20} /> */}
-      {/* </div> */}
     </Wrapper>
   );
 }

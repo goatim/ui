@@ -1,0 +1,14 @@
+@use 'global';
+@use '~@fridaygame/ui/dist/colors';
+@use '~@fridaygame/ui/dist/forms';
+
+.App {
+  font-size: 14px;
+  background: colors.$background-grey;
+
+  > .form {
+    @include forms.form();
+    padding: 100px;
+  }
+}
+

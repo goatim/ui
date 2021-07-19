@@ -3,14 +3,9 @@
 @use '../styles/colors';
 @use '../styles/fonts';
 
-.fleuraison-ui-input {
-  width: 100%;
-  transition: width linear 100ms;
-
+.friday-ui-input {
   > label {
-    @include fonts.Poppins(.9em, colors.$blue, bold);
-    letter-spacing: .05em;
-    text-transform: uppercase;
+    @include fonts.AvantGardeGothicStd(.9em);
     padding-bottom: 10px;
     display: inline-block;
 
@@ -18,7 +13,6 @@
       padding-bottom: 8px;
       font-size: .8em;
     }
-
   }
 
   input, input:active, input:focus {
@@ -26,40 +20,31 @@
     outline: none;
     text-decoration: none;
     background: transparent;
-
   }
 
   > .container {
-    transition: background linear 100ms;
-    background: white;
-    width: 100%;
     display: flex;
-    align-items: center;
+    align-items: stretch;
     justify-content: space-between;
     position: relative;
+    transition: background linear 100ms;
+    background: colors.$placeholder-grey;
+    border: solid colors.$border-grey 1px;
+    border-radius: 5px;
 
-    &:after {
-      content: "";
-      display: block;
-      position: absolute;
-      bottom: 0;
-      right: 0;
-      width: 0;
-      height: 3px;
-      background: colors.$blue;
-      animation-duration: 400ms;
-      animation-timing-function: cubic-bezier(.215,.61,.355,1);
-      animation-fill-mode: forwards;
-    }
-
-    > .left-icon {
-      padding-left: 15px;
+    > .left-component {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-top-left-radius: 5px;
+      border-bottom-left-radius: 5px;
+      padding: 5px 0 5px 5px;
     }
 
     > input {
-      @include fonts.Poppins(1em, colors.$blue, normal);
+      @include fonts.AvantGardeGothicStd(1em, colors.$violet, 300);
       flex: 1;
-      padding: 10px 15px;
+      padding: 1.12em 1.1em .8em; // Magic value, compensate font bottom padding
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;
@@ -73,10 +58,17 @@
       }
 
       &::placeholder {
-        color: rgba(colors.$blue, .3);
-        font-style: italic;
+        color: rgba(colors.$violet, .5);
       }
+    }
 
+    > .right-component {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+      padding: 5px 5px 5px 0;
     }
 
     > .suggestions {
@@ -102,7 +94,7 @@
         -ms-user-select: none;
         user-select: none;
         flex-shrink: 0;
-        border-top: solid colors.$beige 1px;
+        border-top: solid colors.$grey 1px;
         background: white;
         transition: background linear 100ms;
 
@@ -111,23 +103,15 @@
         }
 
         &:hover, &.selected {
-          background: colors.$light-grey;
+          background: colors.$grey;
         }
-
       }
-
     }
   }
 
-  &.visited > .container:after {
-    animation-name: width-out;
+  &.active > .container {
+    background: white;
   }
-
-  &.active > .container:after {
-    left: 0;
-    animation-name: width-in;
-  }
-
 
   &.suggestions-active {
     > .container > .suggestions {
@@ -136,82 +120,14 @@
     }
   }
 
-  &.big {
-    > .container {
-      > input {
-        padding: 30px 40px;
-        font-size: 1.2em;
-
-        @include screens.tablet() {
-          font-size: 1.1em;
-          padding: 25px 35px;
-        }
-
-        @include screens.mobile-L() {
-          font-size: 1em;
-          padding: 20px 30px;
-        }
-
-      }
+  &.search > .container {
+    > .left-icon {
+      background: colors.$dark-blue;
     }
-
-  }
-
-  &.menu {
-
-    > .container {
-      background: colors.$green;
-      border-radius: 8px;
-
-      > input {
-        padding: 10px 10px;
-        color: white;
-
-      }
-
-      > .suggestions {
-        top: 100%;
-        border-radius: 8px;
-
-      }
-    }
-
-    &.active {
-
-      > .container {
-        background: white;
-
-        &:after {
-          width: 0;
-        }
-
-        > input {
-          color: colors.$blue;
-        }
-      }
-
-    }
-
-  }
-
-  &.negative {
-
-    >label {
-      color: colors.$beige;
-    }
-
-    > .container {
-
-      &:after {
-        background: colors.$green;
-
-      }
-    }
-
   }
 
   > .instructions {
-    @include fonts.Poppins(1em, colors.$dark-beige);
+    @include fonts.AvantGardeGothicStd(1em, colors.$grey);
     margin-top: 10px;
 
     @include screens.tablet() {
@@ -230,23 +146,18 @@
     }
 
     > span {
-      @include fonts.Poppins(.9em, colors.$red);
+      @include fonts.AvantGardeGothicStd(.9em, colors.$red);
       margin-left: 10px;
 
       @include screens.tablet() {
         font-size: .9em;
       }
-
     }
-
   }
 
   > .warning {
-
     > span {
-      color: colors.$blue;
+      color: colors.$orange;
     }
-
   }
-
 }

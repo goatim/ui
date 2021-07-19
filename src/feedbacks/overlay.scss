@@ -1,6 +1,6 @@
 @use '~@cezembre/fronts/dist/layouts';
 
-.fleuraison-ui-overlay {
+.friday-ui-overlay {
   @include layouts.modal();
   position: fixed;
   top: 0;

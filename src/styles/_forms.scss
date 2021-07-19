@@ -10,7 +10,7 @@
 }
 
 @mixin error {
-  @include fonts.Poppins(.9em, colors.$red);
+  @include fonts.AvantGardeGothicStd(.9em, colors.$red);
   text-align: center;
   margin-top: 20px;
 }

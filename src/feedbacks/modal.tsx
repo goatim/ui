@@ -8,7 +8,7 @@ import {
   useRef,
 } from 'react';
 import { useClickOutside } from '@cezembre/fronts';
-import Index, { ButtonType } from '../general/button';
+import Index from '../general/button';
 
 export enum Type {
   FULL_DARK = 'full-dark',
@@ -103,25 +103,19 @@ export default function Modal({
 
             {onRefuse ? (
               <div className="action">
-                <Index onClick={onRefuse} type={ButtonType.DELETE}>
-                  {refuseLabel || 'Refuser'}
-                </Index>
+                <Index onClick={onRefuse}>{refuseLabel || 'Refuser'}</Index>
               </div>
             ) : null}
 
             {onAccept ? (
               <div className="action">
-                <Index onClick={onAccept} type={ButtonType.CONFIRM}>
-                  {acceptLabel || 'Accepter'}
-                </Index>
+                <Index onClick={onAccept}>{acceptLabel || 'Accepter'}</Index>
               </div>
             ) : null}
 
             {onContinue ? (
               <div className="action">
-                <Index onClick={onContinue} type={ButtonType.BOX}>
-                  {continueLabel || 'Continuer'}
-                </Index>
+                <Index onClick={onContinue}>{continueLabel || 'Continuer'}</Index>
               </div>
             ) : null}
           </div>

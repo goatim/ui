@@ -1,22 +1,22 @@
 @use '../styles/colors';
 @use '../styles/fonts';
 
-.fleuraison-ui-place {
+.friday-ui-place {
 
-  .fleuraison-ui-place-prediction {
-    @include fonts.Poppins();
+  .friday-ui-place-prediction {
+    @include fonts.AvantGardeGothicStd();
     padding: 10px 20px;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
 
     > .secondary-text {
-      color: colors.$dark-beige;
+      color: colors.$grey;
     }
 
   }
 
-  .fleuraison-ui-place-predictions-footer {
+  .friday-ui-place-predictions-footer {
     width: 100%;
     height: 30px;
     display: flex;

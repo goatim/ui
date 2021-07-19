@@ -13,13 +13,6 @@ import { FieldComponentProps } from '@cezembre/forms';
 import Icon, { IconName } from '../general/icon';
 import colors from '../styles/_colors.scss';
 
-export enum StyleType {
-  DEFAULT = 'default',
-  BIG = 'big',
-  MENU = 'menu',
-  NEGATIVE = 'negative',
-}
-
 export enum InputType {
   TEXT = 'text',
   PASSWORD = 'password',
@@ -86,6 +79,8 @@ export enum AutoComplete {
   PHOTO = 'photo',
 }
 
+export type InputStyle = 'field' | 'search';
+
 export type Adapter<Value = any> = (value: string | number) => Value;
 export type Resolver<Value = any> = (value: Value | undefined) => string | number;
 
@@ -95,7 +90,7 @@ export interface SuggestionProps {
 
 function Suggestion({ suggestion }: SuggestionProps): ReactElement {
   return (
-    <div className="fleuraison-ui-input-suggestion">
+    <div className="friday-ui-input-suggestion">
       <span>{suggestion}</span>
     </div>
   );
@@ -104,8 +99,8 @@ function Suggestion({ suggestion }: SuggestionProps): ReactElement {
 export interface Props<Value = string, Suggestion = any> extends FieldComponentProps<Value> {
   adapter?: Adapter<Value>;
   resolver?: Resolver<Value>;
-  type?: InputType | string | null;
-  styleType?: StyleType | string | null;
+  type?: InputType | string;
+  inputStyle?: InputStyle;
   label?: string | null;
   placeholder?: string | null;
   instructions?: string | null;
@@ -117,7 +112,8 @@ export interface Props<Value = string, Suggestion = any> extends FieldComponentP
   suggestionsHeader?: ReactNode | null;
   suggestionsFooter?: ReactNode | null;
   onSelectSuggestion?: ((suggestion: Suggestion) => void) | null;
-  leftIcon?: ReactNode;
+  leftComponent?: ReactNode | IconName;
+  rightComponent?: ReactNode | IconName;
   autoCorrect?: boolean;
   autoCapitalize?: string;
 }
@@ -135,9 +131,9 @@ export default function InputField<Value = string>({
   onChange,
   onBlur,
   type = InputType.TEXT,
+  inputStyle = 'field',
   adapter = undefined,
   resolver = undefined,
-  styleType = StyleType.DEFAULT,
   label = null,
   placeholder = null,
   instructions = null,
@@ -149,15 +145,13 @@ export default function InputField<Value = string>({
   suggestionsHeader = null,
   suggestionsFooter = null,
   onSelectSuggestion = null,
-  leftIcon = null,
+  leftComponent = undefined,
+  rightComponent = undefined,
   autoCorrect = true,
   autoCapitalize = 'off',
 }: Props<Value>): ReactElement {
   const inputRef = useRef<HTMLInputElement>(null);
-  const [classNames, setClassNames] = useState<string[]>([
-    'fleuraison-ui-input',
-    styleType as string,
-  ]);
+  const [classNames, setClassNames] = useState<string[]>(['friday-ui-input', inputStyle]);
   const [suggestionsActive, setSuggestionsActive] = useState<boolean>(false);
 
   useEffect(() => {
@@ -176,7 +170,7 @@ export default function InputField<Value = string>({
   }, [autoComplete]);
 
   useEffect(() => {
-    const nextClassNames = ['fleuraison-ui-input', styleType as string];
+    const nextClassNames = ['friday-ui-input', inputStyle];
 
     if (visited) {
       nextClassNames.push('visited');
@@ -200,7 +194,6 @@ export default function InputField<Value = string>({
 
     setClassNames(nextClassNames);
   }, [
-    styleType,
     isActive,
     hasChanged,
     error,
@@ -209,6 +202,7 @@ export default function InputField<Value = string>({
     submitted,
     suggestionsActive,
     suggestions.length,
+    inputStyle,
   ]);
 
   const [selectedSuggestion, setSelectedSuggestion] = useState<number | null>(null);
@@ -282,7 +276,7 @@ export default function InputField<Value = string>({
     // Blur event gets called before the click one so we have
     // to delay the hiding of the suggestions in order to still
     // register the click event. 200ms seems to be a good threshold.
-    // Suggestions should width-out with an outside click instead of blur
+    // Suggestions should disappear with an outside click instead of blur
     setTimeout(() => setSuggestionsActive(false), 200);
   }, [onBlur]);
 
@@ -291,7 +285,7 @@ export default function InputField<Value = string>({
       {label ? <label htmlFor={name}>{label}</label> : null}
 
       <div className="container">
-        {leftIcon ? <div className="left-icon">{leftIcon}</div> : null}
+        {leftComponent ? <div className="left-component">{leftComponent}</div> : null}
 
         <input
           ref={inputRef}
@@ -316,6 +310,8 @@ export default function InputField<Value = string>({
           autoCapitalize={autoCapitalize}
         />
 
+        {rightComponent ? <div className="right-component">{rightComponent}</div> : null}
+
         <div className="suggestions">
           {suggestionsHeader}
           {suggestions
@@ -337,14 +333,14 @@ export default function InputField<Value = string>({
 
       {(visited || submitted) && !isActive && error ? (
         <div className="error">
-          <Icon name={IconName.ALERT} size={15} color={colors.RED} />
+          <Icon name="alert" size={15} color={colors.RED} />
           <span>{error}</span>
         </div>
       ) : null}
 
       {warning ? (
         <div className="warning">
-          <Icon name={IconName.ALERT} size={15} color={colors.RED} />
+          <Icon name="alert" size={15} color={colors.RED} />
           <span>{warning}</span>
         </div>
       ) : null}

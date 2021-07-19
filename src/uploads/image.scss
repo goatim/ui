@@ -1,9 +1,9 @@
 @use '../styles/colors';
 @use '../styles/fonts';
 
-.fleuraison-ui-image-upload {
+.friday-ui-image-upload {
   position: relative;
-  background: colors.$dark-beige;
+  background: colors.$grey;
   cursor: pointer;
 
   &:focus {
@@ -18,7 +18,7 @@
   }
 
   > .image {
-    background: colors.$dark-beige;
+    background: colors.$grey;
   }
 
   > .overlay {
@@ -37,7 +37,7 @@
     transition: opacity linear 100ms;
 
     > .error {
-      @include fonts.Poppins(1em, white);
+      @include fonts.AvantGardeGothicStd(1em, white);
       background: colors.$red;
       padding: 5px 10px;
     }

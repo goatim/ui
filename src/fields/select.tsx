@@ -3,9 +3,8 @@ import _ from 'lodash';
 import { FieldComponentProps } from '@cezembre/forms';
 import { useClickOutside } from '@cezembre/fronts';
 import Icon, { IconName } from '../general/icon';
-import Index, { ButtonType } from '../general/button';
+import Index from '../general/button';
 import colors from '../styles/_colors.scss';
-import InputField from './input';
 
 export enum SelectType {
   DROPDOWN = 'dropdown',
@@ -15,7 +14,7 @@ export enum SelectType {
 export interface Option<Value = any> {
   value: Value;
   label: string;
-  icon?: ReactNode | IconName;
+  icon?: IconName;
 }
 
 export interface Props {
@@ -24,7 +23,7 @@ export interface Props {
   options?: Option[];
   placeholder?: string | null;
   instructions?: ReactNode | null;
-  icon?: ReactNode | IconName;
+  icon?: IconName;
   iconSize?: number;
 }
 
@@ -45,11 +44,11 @@ export default function SelectField({
   icon = undefined,
   iconSize = undefined,
 }: FieldComponentProps & Props): ReactElement {
-  const [classNames, setClassNames] = useState<string[]>(['fleuraison-ui-select', type]);
-  const [currentIcon, setCurrentIcon] = useState<ReactNode | IconName>(icon);
+  const [classNames, setClassNames] = useState<string[]>(['friday-ui-select', type]);
+  const [currentIcon, setCurrentIcon] = useState<IconName | undefined>(icon);
 
   useEffect(() => {
-    const nextClassNames = ['fleuraison-ui-select', type];
+    const nextClassNames = ['friday-ui-select', type];
 
     if (isActive) {
       nextClassNames.push('active');
@@ -118,8 +117,8 @@ export default function SelectField({
           <Index
             style={{ width: '100%' }}
             onClick={toggleFocus}
-            type={ButtonType.BOX}
-            rightIcon={<Icon name={IconName.CHEVRON} size={12} />}
+            type="button"
+            rightIcon="chevron"
             leftIcon={currentIcon}
             leftIconSize={iconSize}>
             {selectedOptionIndex !== -1
@@ -134,10 +133,8 @@ export default function SelectField({
               <Index
                 onClick={() => selectOption(index, option.value)}
                 style={{ width: '100%' }}
-                type={ButtonType.FRAMELESS}
-                rightIcon={
-                  index === selectedOptionIndex ? <Icon name={IconName.CHECK} size={12} /> : null
-                }>
+                type="button"
+                rightIcon={index === selectedOptionIndex ? 'check' : undefined}>
                 {option.label}
               </Index>
             </div>
@@ -149,14 +146,14 @@ export default function SelectField({
 
       {error ? (
         <div className="error">
-          <Icon name={IconName.ALERT} size={15} color={colors.RED} />
+          <Icon name="alert" size={15} color={colors.RED} />
           <span>{error}</span>
         </div>
       ) : null}
 
       {warning ? (
         <div className="warning">
-          <Icon name={IconName.ALERT} size={15} color={colors.RED} />
+          <Icon name="alert" size={15} color={colors.RED} />
           <span>{warning}</span>
         </div>
       ) : null}

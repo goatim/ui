@@ -1,19 +1,15 @@
 import { ReactElement } from 'react';
-
-export interface Props {
-  size?: number;
-  color?: string;
-}
+import colors from '../styles/_colors.scss';
+import { IconProps } from './icon';
 
 export default function Check({
-  color = '#333',
-  size = 20,
-}: Props): ReactElement<SVGElement> {
+  size = 15,
+  color = colors.VIOLET,
+}: IconProps): ReactElement<SVGElement> {
   return (
     <svg viewBox="0 0 512 512" height={size} fill={color}>
       <title>Check</title>
-      <path d="m450.585 68.552-252.065 252.065-137.105-137.104-61.415 61.415 198.52 198.52 313.48-313.48z" />
-      <path d="m450.585 68.552-252.065 252.065-137.105-137.104-61.415 61.415 198.52 198.52 313.48-313.48z" />
+      <path d="M504.502,75.496c-9.997-9.998-26.205-9.998-36.204,0L161.594,382.203L43.702,264.311c-9.997-9.998-26.205-9.997-36.204,0c-9.998,9.997-9.998,26.205,0,36.203l135.994,135.992c9.994,9.997,26.214,9.99,36.204,0L504.502,111.7C514.5,101.703,514.499,85.494,504.502,75.496z" />
     </svg>
   );
 }
