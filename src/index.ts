@@ -9,7 +9,6 @@ import Selection from './feedbacks/selection';
 import Button from './general/button';
 import Check from './general/check';
 import Icon from './general/icon';
-import Logo from './general/logo';
 import ImageUpload from './uploads/image';
 import CheckBoxField from './fields/checkbox';
 import CreditCardField from './fields/creditCard';
@@ -52,7 +51,7 @@ export { Loader, Modal, ModalContext, useModal, Overlay, Placeholder, Selection 
  * General
  */
 
-export { Button, Check, Icon, Logo };
+export { Button, Check, Icon };
 
 /**
  * Uploads
