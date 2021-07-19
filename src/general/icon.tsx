@@ -15,6 +15,7 @@ import User from '../icons/user';
 import Cart from '../icons/cart';
 import Bell from '../icons/bell';
 import Facebook from '../icons/facebook';
+import Friday from '../icons/friday';
 import Instagram from '../icons/instagram';
 import Linkedin from '../icons/linkedin';
 import Twitter from '../icons/twitter';
@@ -29,6 +30,7 @@ export type IconName =
   | 'check'
   | 'chevron'
   | 'facebook'
+  | 'friday'
   | 'instagram'
   | 'lightning'
   | 'linkedin'
@@ -75,6 +77,9 @@ export default function Icon({
 
     case 'facebook':
       return <Facebook size={size} color={color} />;
+
+    case 'friday':
+      return <Friday size={size} color={color} />;
 
     case 'instagram':
       return <Instagram size={size} color={color} />;
