@@ -33,7 +33,7 @@ export default [
       }),
       copy({
         targets: [
-          { src: 'src/**/*.d.ts', dest: path.resolve(__dirname, 'dist') },
+          { src: 'src/**/_*.scss.d.ts', dest: path.resolve(__dirname, 'dist') },
           { src: 'src/**/_*.scss', dest: path.resolve(__dirname, 'dist') },
         ],
       }),
