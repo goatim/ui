@@ -39,7 +39,7 @@
       }
 
       > .label {
-        @include fonts.AvantGardeGothicStd(1em, colors.$violet, 500);
+        @include fonts.AvantGardeGothicStd(1em, colors.$violet, 600);
         align-self: center;
         text-overflow: ellipsis;
         white-space: nowrap;
