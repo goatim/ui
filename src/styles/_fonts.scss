@@ -1,12 +1,4 @@
 @use "colors";
-@import url('https://fonts.cdnfonts.com/css/itc-avant-garde-gothic-std?styles=52528,52530,52540,52542,52536,52538');
-
-/*
- * Font weights :
- * 300
- * 500
- * 600
- */
 
 @mixin font($fontFamily: sans-serif, $size: 1em, $color: colors.$violet, $weight: normal) {
   font-family: $fontFamily;
@@ -18,9 +10,16 @@
   transition: color ease-out 100ms, font-size ease-out 100ms;
 }
 
-$AvantGardeGothicStd: 'ITC Avant Garde Gothic Std';
+$AvantGardeGothicStd: ITC Avant Garde Gothic Std;
 
 @mixin AvantGardeGothicStd($size: 1em, $color: colors.$violet, $weight: normal) {
   @include font($AvantGardeGothicStd, $size, $color, $weight);
+  padding-top: .22em; // Magic value, compensate font bottom padding
+}
+
+$AvantGardeGothicStdCondensed: ITC Avant Garde Gothic Std Condensed;
+
+@mixin AvantGardeGothicStdCondensed($size: 1em, $color: colors.$violet, $weight: normal) {
+  @include font($AvantGardeGothicStdCondensed, $size, $color, $weight);
   padding-top: .22em; // Magic value, compensate font bottom padding
 }

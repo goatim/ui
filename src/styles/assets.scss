@@ -1,0 +1,107 @@
+@use "fonts";
+
+/*
+* Avant Garde Gothic Std
+*/
+
+@font-face {
+  font-family: fonts.$AvantGardeGothicStd;
+  font-style: normal;
+  font-weight: 275;
+  src: local(fonts.$AvantGardeGothicStd), url('../assets/itc-avant-garde-gothic-std-extra-light.woff') format('woff');
+}
+
+@font-face {
+  font-family: fonts.$AvantGardeGothicStd;
+  font-style: italic;
+  font-weight: 275;
+  src: local(fonts.$AvantGardeGothicStd), url('../assets/itc-avant-garde-gothic-std-extra-light-oblique.woff') format('woff');
+}
+
+@font-face {
+  font-family: fonts.$AvantGardeGothicStd;
+  font-style: normal;
+  font-weight: 300;
+  src: local(fonts.$AvantGardeGothicStd), url('../assets/itc-avant-garde-gothic-std-book.woff') format('woff');
+}
+
+@font-face {
+  font-family: fonts.$AvantGardeGothicStd;
+  font-style: italic;
+  font-weight: 300;
+  src: local(fonts.$AvantGardeGothicStd), url('../assets/itc-avant-garde-gothic-std-book-oblique.woff') format('woff');
+}
+
+@font-face {
+  font-family: fonts.$AvantGardeGothicStd;
+  font-style: normal;
+  font-weight: 700;
+  src: local(fonts.$AvantGardeGothicStd), url('../assets/itc-avant-garde-gothic-std-bold.woff') format('woff');
+}
+
+@font-face {
+  font-family: fonts.$AvantGardeGothicStd;
+  font-style: italic;
+  font-weight: 700;
+  src: local(fonts.$AvantGardeGothicStd), url('../assets/itc-avant-garde-gothic-std-bold-oblique.woff') format('woff');
+}
+
+/*
+* Avant Garde Gothic Std Condensed
+*/
+
+@font-face {
+  font-family: fonts.$AvantGardeGothicStdCondensed;
+  font-style: normal;
+  font-weight: 275;
+  src: local(fonts.$AvantGardeGothicStdCondensed), url('../assets/itc-avant-garde-gothic-std-extra-light-condensed.woff') format('woff');
+}
+
+@font-face {
+  font-family: fonts.$AvantGardeGothicStdCondensed;
+  font-style: normal;
+  font-weight: 300;
+  src: local(fonts.$AvantGardeGothicStdCondensed), url('../assets/itc-avant-garde-gothic-std-book-condensed.woff') format('woff');
+}
+
+@font-face {
+  font-family: fonts.$AvantGardeGothicStdCondensed;
+  font-style: italic;
+  font-weight: 300;
+  src: local(fonts.$AvantGardeGothicStdCondensed), url('../assets/itc-avant-garde-gothic-std-book-condensed-oblique.woff') format('woff');
+}
+
+@font-face {
+  font-family: fonts.$AvantGardeGothicStdCondensed;
+  font-style: normal;
+  font-weight: 500;
+  src: local(fonts.$AvantGardeGothicStdCondensed), url('../assets/itc-avant-garde-gothic-std-medium-condensed.woff') format('woff');
+}
+
+@font-face {
+  font-family: fonts.$AvantGardeGothicStdCondensed;
+  font-style: normal;
+  font-weight: 600;
+  src: local(fonts.$AvantGardeGothicStdCondensed), url('../assets/itc-avant-garde-gothic-std-demi-condensed.woff') format('woff');
+}
+
+@font-face {
+  font-family: fonts.$AvantGardeGothicStdCondensed;
+  font-style: italic;
+  font-weight: 600;
+  src: local(fonts.$AvantGardeGothicStdCondensed), url('../assets/itc-avant-garde-gothic-std-demi-condensed-oblique.woff') format('woff');
+}
+
+@font-face {
+  font-family: fonts.$AvantGardeGothicStdCondensed;
+  font-style: normal;
+  font-weight: 700;
+  src: local(fonts.$AvantGardeGothicStdCondensed), url('../assets/itc-avant-garde-gothic-std-bold-condensed.woff') format('woff');
+}
+
+@font-face {
+  font-family: fonts.$AvantGardeGothicStdCondensed;
+  font-style: italic;
+  font-weight: 700;
+  src: local(fonts.$AvantGardeGothicStdCondensed), url('../assets/itc-avant-garde-gothic-std-bold-condensed-oblique.woff') format('woff');
+}
