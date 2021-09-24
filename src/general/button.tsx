@@ -6,17 +6,10 @@ import {
   useCallback,
   useEffect,
   useState,
-  CSSProperties,
 } from 'react';
 import { NavLink } from 'react-router-dom';
 import Loader from '../feedbacks/loader';
 import Icon, { IconName } from './icon';
-
-export type Type = 'submit' | 'reset' | 'button';
-export type Shape = 'fitted' | 'square';
-export type Size = 'small' | 'medium' | 'large';
-export type ButtonStyle = 'filled' | 'text' | 'outlined' | 'link';
-export type Theme = 'violet-pink' | 'orange-yellow' | 'white' | 'blue' | 'dark-blue' | 'violet';
 
 export interface Props {
   children?: ReactNode;
@@ -24,11 +17,11 @@ export interface Props {
   to?: string;
   onClick?: (event: MouseEvent<HTMLButtonElement>) => Promise<void> | void;
   onFocus?: (event: FocusEvent<HTMLElement>) => void;
-  type?: Type;
-  shape?: Shape;
-  size?: Size;
-  buttonStyle?: ButtonStyle;
-  theme?: Theme;
+  type?: 'button' | 'submit' | 'reset';
+  shape?: 'fitted' | 'square';
+  size?: 'small' | 'medium' | 'large';
+  buttonStyle?: 'filled' | 'text' | 'outlined' | 'link';
+  theme?: 'white' | 'blue' | 'dark-blue' | 'violet' | 'violet-pink' | 'orange-yellow';
   disabled?: boolean;
   pending?: boolean;
   active?: boolean;
@@ -38,7 +31,6 @@ export interface Props {
   leftIconSize?: number;
   rightIcon?: IconName;
   rightIconSize?: number;
-  style?: CSSProperties;
 }
 
 function Wrapper({
@@ -50,14 +42,13 @@ function Wrapper({
   shape = 'fitted',
   size = 'medium',
   buttonStyle = 'filled',
-  theme = 'violet-pink',
+  theme = 'white',
   type = 'button',
   disabled = false,
   pending = false,
   active = false,
   success = false,
   errored = false,
-  style = {},
 }: Props): ReactElement {
   const [autoPending, setAutoPending] = useState<boolean>(false);
   const [autoErrored, setAutoErrored] = useState<boolean>(false);
@@ -135,7 +126,7 @@ function Wrapper({
 
   if (!disabled && !pending && !autoPending && href && href.length) {
     return (
-      <a className={className.join(' ')} href={href} onFocus={onFocus} style={style}>
+      <a className={className.join(' ')} href={href} onFocus={onFocus}>
         {children}
       </a>
     );
@@ -143,7 +134,7 @@ function Wrapper({
 
   if (!disabled && !pending && !autoPending && to && to.length) {
     return (
-      <NavLink className={className.join(' ')} to={to} style={style || {}} exact onFocus={onFocus}>
+      <NavLink className={className.join(' ')} to={to} exact onFocus={onFocus}>
         {children}
       </NavLink>
     );
@@ -155,8 +146,7 @@ function Wrapper({
       onClick={onButtonClick}
       onFocus={onFocus}
       type={type}
-      disabled={(disabled || pending || autoPending) as boolean}
-      style={style}>
+      disabled={(disabled || pending || autoPending) as boolean}>
       {children}
     </button>
   );
@@ -171,7 +161,7 @@ export default function Button({
   size = 'medium',
   buttonStyle = 'filled',
   type = 'button',
-  theme = 'violet-pink',
+  theme = 'white',
   active = false,
   pending = false,
   success = false,
@@ -181,7 +171,6 @@ export default function Button({
   leftIconSize = 15,
   rightIcon = undefined,
   rightIconSize = 15,
-  style = {},
 }: Props): ReactElement {
   return (
     <Wrapper
@@ -194,11 +183,10 @@ export default function Button({
       shape={shape}
       size={size}
       theme={theme}
-      buttonStyle={buttonStyle}
       active={active}
       success={success}
       errored={errored}
-      style={style}>
+      buttonStyle={buttonStyle}>
       <div className="container">
         <div className="body">
           {leftIcon ? (

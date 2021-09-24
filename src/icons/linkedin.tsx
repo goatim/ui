@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import colors from '../styles/_colors.scss';
-import { IconProps } from './icon';
+import IconProps from './props';
 
 export default function Linkedin({
   size = 15,

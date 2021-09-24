@@ -3,7 +3,7 @@ import _ from 'lodash';
 import { FieldComponentProps } from '@cezembre/forms';
 import { useClickOutside } from '@cezembre/fronts';
 import Icon, { IconName } from '../general/icon';
-import Index from '../general/button';
+import Button from '../general/button';
 import colors from '../styles/_colors.scss';
 
 export enum SelectType {
@@ -114,8 +114,7 @@ export default function SelectField({
 
       <div className="container">
         <div className="button">
-          <Index
-            style={{ width: '100%' }}
+          <Button
             onClick={toggleFocus}
             type="button"
             rightIcon="chevron"
@@ -124,19 +123,18 @@ export default function SelectField({
             {selectedOptionIndex !== -1
               ? options[selectedOptionIndex].label
               : placeholder || 'Choisissez une option'}
-          </Index>
+          </Button>
         </div>
 
         <div className="options">
           {options.map((option, index) => (
             <div className="option" key={option.value}>
-              <Index
+              <Button
                 onClick={() => selectOption(index, option.value)}
-                style={{ width: '100%' }}
                 type="button"
                 rightIcon={index === selectedOptionIndex ? 'check' : undefined}>
                 {option.label}
-              </Index>
+              </Button>
             </div>
           ))}
         </div>

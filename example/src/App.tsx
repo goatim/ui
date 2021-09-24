@@ -6,6 +6,8 @@ import './App.scss';
 export default function App(): ReactElement {
   return (
     <div className="App">
+      <Button buttonStyle="text">Test</Button>
+
       <Form className="form">
         <div className="field">
           <Field

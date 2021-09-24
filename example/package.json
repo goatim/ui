@@ -6,13 +6,16 @@
   "description": "Friday UI example",
   "main": "index.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "craco start",
+    "clean": "rimraf build",
+    "build": "npm run clean && craco build",
+    "test": "craco test",
+    "eject": "react-scripts eject",
+    "format": "prettier --write .",
+    "lint": "tsc --noEmit && eslint --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
-    "@cezembre/forms": "^1.5.3",
+    "@cezembre/forms": "^1.6.2",
     "@fridaygame/ui": "file:../",
     "luxon": "file:../node_modules/luxon",
     "react": "file:../node_modules/react",
@@ -20,13 +23,14 @@
     "react-router-dom": "file:../node_modules/react-router-dom"
   },
   "devDependencies": {
-    "@types/luxon": "^1.26.4",
+    "@craco/craco": "^6.3.0",
+    "@types/luxon": "^2.0.4",
     "@types/react": "file:../node_modules/@types/react",
     "@types/react-dom": "file:../node_modules/@types/react-dom",
     "@types/react-router-dom": "file:../node_modules/@types/react-router-dom",
-    "sass": "^1.35.1",
-    "typescript": "^4.0.3",
-    "react-scripts": "^4.0.3"
+    "react-scripts": "^4.0.3",
+    "sass": "^1.42.1",
+    "typescript": "^4.4.3"
   },
   "browserslist": {
     "production": [

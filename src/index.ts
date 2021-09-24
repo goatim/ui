@@ -1,4 +1,3 @@
-import colors from './styles/_colors.scss';
 import './index.scss';
 import Image, { PlaceholderCategory } from './display/image';
 import Loader from './feedbacks/loader';
@@ -32,8 +31,6 @@ import {
   usePlaceDetailsGetter,
 } from './utils/googleMaps';
 import Place, { newPlace } from './utils/place';
-
-export { colors };
 
 /**
  * Display

@@ -13,20 +13,5 @@ $placeholder-grey: #EDEDF3;
 
 $red: #ea7070;
 
-:export {
-  BLUE: $blue;
-  DARK_BLUE: $dark-blue;
-  VIOLET: $violet;
-  PINK: $pink;
-  ORANGE: $orange;
-  YELLOW: $yellow;
-  GREEN: $green;
-  GREY: $grey;
-  BORDER_GREY: $border-grey;
-  BACKGROUND_GREY: $background-grey;
-  PLACEHOLDER_GREY: $placeholder-grey;
-  RED: $red;
-}
-
 $violet-pink-gradient: linear-gradient(90deg, $violet 0%, $pink 100%);
 $orange-yellow-gradient: linear-gradient(90deg, $orange 0%, $orange 40%, $yellow 100%);

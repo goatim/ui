@@ -1,17 +1,15 @@
-import { CSSProperties, ReactElement, useCallback, useRef, useState } from 'react';
+import { ReactElement, useCallback, useRef, useState } from 'react';
 import { DateTime } from 'luxon';
 import { FieldComponentProps } from '@cezembre/forms';
 import { formatRelativeDateTime, useClickOutside } from '@cezembre/fronts';
 import DatePicker from './datePicker';
 import TimePicker from './timePicker';
 import { IconName } from '../general/icon';
-import Index from '../general/button';
+import Button from '../general/button';
 
 export interface Props extends FieldComponentProps<DateTime | null> {
   placeholder?: string;
   format?: string | ((value: DateTime | null | undefined) => string);
-  buttonType?: 'button' | 'submit' | 'reset';
-  buttonStyle?: CSSProperties;
   buttonIcon?: IconName;
   expanded?: boolean;
 }
@@ -34,8 +32,6 @@ export default function DateTimePickerField({
   placeholder,
   format,
   expanded = false,
-  buttonType = 'button',
-  buttonStyle = {},
   buttonIcon = 'calendar',
 }: Props): ReactElement {
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
@@ -59,13 +55,9 @@ export default function DateTimePickerField({
   return (
     <div ref={picker} className="friday-ui-date-time-picker">
       {!expanded ? (
-        <Index
-          type={buttonType}
-          style={buttonStyle}
-          onClick={() => setIsExpanded(true)}
-          leftIcon={buttonIcon}>
+        <Button onClick={() => setIsExpanded(true)} leftIcon={buttonIcon}>
           {getLabel()}
-        </Index>
+        </Button>
       ) : null}
 
       <div className={`picker${!expanded ? ' expandable' : ''}${isExpanded ? ' expanded' : ''}`}>
