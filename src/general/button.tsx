@@ -20,8 +20,8 @@ export interface Props {
   type?: 'button' | 'submit' | 'reset';
   shape?: 'fitted' | 'square';
   size?: 'small' | 'medium' | 'large';
-  buttonStyle?: 'filled' | 'text' | 'outlined' | 'link';
-  theme?: 'white' | 'blue' | 'dark-blue' | 'violet' | 'violet-pink' | 'orange-yellow';
+  buttonStyle?: 'filled' | 'outlined' | 'text' | 'link';
+  theme?: 'blue' | 'dark-blue' | 'violet' | 'violet-pink' | 'orange-yellow' | 'white';
   disabled?: boolean;
   pending?: boolean;
   active?: boolean;
@@ -42,7 +42,7 @@ function Wrapper({
   shape = 'fitted',
   size = 'medium',
   buttonStyle = 'filled',
-  theme = 'white',
+  theme = 'blue',
   type = 'button',
   disabled = false,
   pending = false,
@@ -161,7 +161,7 @@ export default function Button({
   size = 'medium',
   buttonStyle = 'filled',
   type = 'button',
-  theme = 'white',
+  theme = 'blue',
   active = false,
   pending = false,
   success = false,

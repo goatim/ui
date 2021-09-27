@@ -4,7 +4,7 @@
 
 .App {
   font-size: 14px;
-  background: colors.$background-grey;
+  //background: colors.$background-grey;
 
   > .form {
     @include forms.form();
