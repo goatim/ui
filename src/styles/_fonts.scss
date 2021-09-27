@@ -1,6 +1,6 @@
 @use "colors";
 
-@mixin font($fontFamily: sans-serif, $size: 1em, $color: colors.$violet, $weight: normal) {
+@mixin font($fontFamily: sans-serif, $size: 1em, $color: colors.$dark-blue, $weight: normal) {
   font-family: $fontFamily;
   font-size: $size;
   font-weight: $weight;
@@ -12,14 +12,14 @@
 
 $AvantGardeGothicStd: ITC Avant Garde Gothic Std;
 
-@mixin AvantGardeGothicStd($size: 1em, $color: colors.$violet, $weight: normal) {
+@mixin AvantGardeGothicStd($size: 1em, $color: colors.$dark-blue, $weight: normal) {
   @include font($AvantGardeGothicStd, $size, $color, $weight);
   padding-top: .22em; // Magic value, compensate font bottom padding
 }
 
 $AvantGardeGothicStdCondensed: ITC Avant Garde Gothic Std Condensed;
 
-@mixin AvantGardeGothicStdCondensed($size: 1em, $color: colors.$violet, $weight: normal) {
+@mixin AvantGardeGothicStdCondensed($size: 1em, $color: colors.$dark-blue, $weight: normal) {
   @include font($AvantGardeGothicStdCondensed, $size, $color, $weight);
   padding-top: .22em; // Magic value, compensate font bottom padding
 }
