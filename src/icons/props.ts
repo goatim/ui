@@ -1,4 +1,4 @@
 export default interface IconProps {
   size?: number;
-  color?: string;
+  width?: number;
 }

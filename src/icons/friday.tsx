@@ -1,13 +1,9 @@
 import { ReactElement } from 'react';
-import colors from '../styles/_colors.scss';
 import IconProps from './props';
 
-export default function Friday({
-  size = 15,
-  color = colors.VIOLET,
-}: IconProps): ReactElement<SVGElement> {
+export default function Friday({ size = 15 }: IconProps): ReactElement<SVGElement> {
   return (
-    <svg viewBox="0 0 512 93.7" height={size} fill={color}>
+    <svg viewBox="0 0 512 93.7" height={size} fill="black">
       <title>Friday</title>
       <path d="M211,93.57H183.72V.13H211Z" />
       <polygon points="361.96 74.63 361.97 74.63 368.37 58.38 368.35 58.38 378.06 33.59 365.89 1.63 326.57 93.57 354.47 93.57 361.96 74.63" />

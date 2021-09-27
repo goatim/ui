@@ -117,7 +117,7 @@ export default function SelectField({
           <Button
             onClick={toggleFocus}
             type="button"
-            rightIcon="chevron"
+            rightIcon="chevron-right"
             leftIcon={currentIcon}
             leftIconSize={iconSize}>
             {selectedOptionIndex !== -1
@@ -144,14 +144,14 @@ export default function SelectField({
 
       {error ? (
         <div className="error">
-          <Icon name="alert" size={15} color={colors.RED} />
+          <Icon name="alert-triangle" size={15} />
           <span>{error}</span>
         </div>
       ) : null}
 
       {warning ? (
         <div className="warning">
-          <Icon name="alert" size={15} color={colors.RED} />
+          <Icon name="alert-triangle" size={15} />
           <span>{warning}</span>
         </div>
       ) : null}

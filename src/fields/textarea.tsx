@@ -67,14 +67,14 @@ export default function TextareaField({
 
       {(visited || submitted) && !isActive && error ? (
         <div className="error">
-          <Icon name="alert" size={15} color={colors.RED} />
+          <Icon name="alert-triangle" size={15} />
           <span>{error}</span>
         </div>
       ) : null}
 
       {warning ? (
         <div className="warning">
-          <Icon name="alert" size={15} color={colors.RED} />
+          <Icon name="alert-triangle" size={15} />
           <span>{warning}</span>
         </div>
       ) : null}

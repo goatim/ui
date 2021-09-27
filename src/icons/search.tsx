@@ -1,15 +1,20 @@
 import { ReactElement } from 'react';
-import colors from '../styles/_colors.scss';
 import IconProps from './props';
 
-export default function Search({
-  size = 15,
-  color = colors.VIOLET,
-}: IconProps): ReactElement<SVGElement> {
+export default function ({ size = 15, width = 2 }: IconProps): ReactElement<SVGElement> {
   return (
-    <svg viewBox="0 0 16 16" height={size} fill={color}>
-      <title>Search</title>
-      <path d="M15.7 14.3l-4.2-4.2c-0.2-0.2-0.5-0.3-0.8-0.3 0.8-1 1.3-2.4 1.3-3.8 0-3.3-2.7-6-6-6s-6 2.7-6 6 2.7 6 6 6c1.4 0 2.8-0.5 3.8-1.4 0 0.3 0 0.6 0.3 0.8l4.2 4.2c0.2 0.2 0.5 0.3 0.7 0.3s0.5-0.1 0.7-0.3c0.4-0.3 0.4-0.9 0-1.3zM6 10.5c-2.5 0-4.5-2-4.5-4.5s2-4.5 4.5-4.5 4.5 2 4.5 4.5-2 4.5-4.5 4.5z" />
+    <svg
+      viewBox="0 0 24 24"
+      width={size}
+      height={size}
+      stroke="black"
+      fill="none"
+      strokeWidth={width}
+      strokeLinecap="round"
+      strokeLinejoin="round">
+      <title>search</title>
+      <circle cx="11" cy="11" r="8" />
+      <line x1="21" y1="21" x2="16.65" y2="16.65" />
     </svg>
   );
 }

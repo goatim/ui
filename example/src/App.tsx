@@ -8,6 +8,8 @@ export default function App(): ReactElement {
     <div className="App">
       <Button>Test</Button>
 
+      <Icon name="chevron-down" />
+
       <Form className="form">
         <div className="field">
           <Field

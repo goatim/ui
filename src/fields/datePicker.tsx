@@ -38,11 +38,11 @@ export default function DatePickerField({
   useClickOutside(picker, () => setIsExpanded(false));
 
   const previousMonth = useCallback(() => {
-    setMonth((_month: DateTime) => _month.minus({ month: 1 }));
+    setMonth((_month: DateTime) => _month.minus({ months: 1 }));
   }, []);
 
   const nextMonth = useCallback(() => {
-    setMonth((_month: DateTime) => _month.plus({ month: 1 }));
+    setMonth((_month: DateTime) => _month.plus({ months: 1 }));
   }, []);
 
   useEffect(() => {
@@ -111,13 +111,13 @@ export default function DatePickerField({
       <div className={`picker${!expanded ? ' expandable' : ''}${isExpanded ? ' expanded' : ''}`}>
         <div className="month">
           <button onClick={previousMonth}>
-            <Icon name="chevron" size={12} />
+            <Icon name="chevron-left" size={12} />
           </button>
 
           <span>{month.toFormat('LLLL yyyy')}</span>
 
           <button onClick={nextMonth}>
-            <Icon name="chevron" size={12} />
+            <Icon name="chevron-right" size={12} />
           </button>
         </div>
 
