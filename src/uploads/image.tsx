@@ -67,7 +67,7 @@ export default function ImageUpload({
           await onUpload(event.target.files[0]);
           setPending(false);
         } catch (e) {
-          setError(e);
+          setError(e as Error);
         }
       }
     }
