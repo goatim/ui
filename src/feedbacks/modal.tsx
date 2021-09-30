@@ -6,120 +6,66 @@ import {
   useContext,
   useCallback,
   useRef,
+  FunctionComponent,
 } from 'react';
 import { useClickOutside } from '@cezembre/fronts';
-import Index from '../general/button';
 
-export enum Type {
-  FULL_DARK = 'full-dark',
+export type ModalComponent = FunctionComponent<{ id?: string; dismissModal: () => void }>;
+
+export type ModalType = 'full' | 'overlay';
+
+export interface Modal {
+  id?: string;
+  type?: ModalType;
+  component?: ModalComponent;
+  onDismiss?: () => void;
+  isActive?: boolean;
 }
 
-export interface ModalProps {
-  type?: Type;
-  title?: string;
-  description?: string;
-  component?: ReactElement;
-  onExit?: () => void;
-  onCancel?: () => void;
-  cancelLabel?: string;
-  onRefuse?: () => void;
-  refuseLabel?: string;
-  onAccept?: () => void;
-  acceptLabel?: string;
-  onContinue?: () => void;
-  continueLabel?: string;
+export interface ModalsState {
+  modals: Modal[];
+  popModal: (
+    component: ModalComponent,
+    type?: ModalType,
+    onDismiss?: () => void,
+  ) => string | undefined;
+  dismissModal: (id: string | undefined) => void;
 }
 
-export interface ModalState {
-  isActive: boolean;
-  popModal: (props: ModalProps | string) => void;
+const Context = createContext<ModalsState>({
+  modals: [],
+  popModal: () => undefined,
+  dismissModal: () => undefined,
+});
+
+export function useModal(): ModalsState {
+  return useContext<ModalsState>(Context);
+}
+
+export interface ModalContainerProps {
+  id?: string;
+  modal: Modal;
   dismissModal: () => void;
 }
 
-const Context = createContext<ModalState>({
-  popModal: () => undefined,
-  dismissModal: () => undefined,
-  isActive: false,
-});
-
-export function useModal(): ModalState {
-  return useContext<ModalState>(Context);
-}
-
-export interface ModalContainerProps extends ModalProps {
-  isActive?: boolean;
-  setIsActive?: (isActive: boolean) => void;
-}
-
-export default function Modal({
-  isActive,
-  setIsActive,
-  type = Type.FULL_DARK,
-  title,
-  description,
-  component,
-  onExit,
-  onCancel,
-  cancelLabel,
-  onRefuse,
-  refuseLabel,
-  onAccept,
-  acceptLabel,
-  onContinue,
-  continueLabel,
-}: ModalContainerProps): ReactElement {
-  const modal = useRef(null);
+function ModalContainer({ id, modal, dismissModal }: ModalContainerProps): ReactElement {
+  const modalContainer = useRef(null);
 
   const onClickOutside = useCallback(() => {
-    if (isActive && setIsActive) {
-      setIsActive(false);
+    if (modal.isActive) {
+      dismissModal();
+      if (modal.onDismiss) {
+        modal.onDismiss();
+      }
     }
-    if (onExit) {
-      onExit();
-    }
-  }, [isActive, onExit, setIsActive]);
+  }, [dismissModal, modal]);
 
-  useClickOutside(modal, onClickOutside);
+  useClickOutside(modalContainer, onClickOutside);
 
   return (
-    <div className={`ui-modal ${type}${isActive ? ' active' : ''}`}>
-      <div className="container" ref={modal}>
-        {title || description ? (
-          <div className="body">
-            <h1>{title}</h1>
-            <p>{description}</p>
-          </div>
-        ) : null}
-
-        {component ? <div className="component">{component}</div> : null}
-
-        {onCancel || onRefuse || onAccept || onContinue ? (
-          <div className="actions">
-            {onCancel ? (
-              <div className="action">
-                <Index onClick={onCancel}>{cancelLabel || 'Annuler'}</Index>
-              </div>
-            ) : null}
-
-            {onRefuse ? (
-              <div className="action">
-                <Index onClick={onRefuse}>{refuseLabel || 'Refuser'}</Index>
-              </div>
-            ) : null}
-
-            {onAccept ? (
-              <div className="action">
-                <Index onClick={onAccept}>{acceptLabel || 'Accepter'}</Index>
-              </div>
-            ) : null}
-
-            {onContinue ? (
-              <div className="action">
-                <Index onClick={onContinue}>{continueLabel || 'Continuer'}</Index>
-              </div>
-            ) : null}
-          </div>
-        ) : null}
+    <div className={`friday-ui-modal ${modal.type}`} id={id}>
+      <div className="container" ref={modalContainer}>
+        {modal.component ? <modal.component id={modal.id} dismissModal={dismissModal} /> : null}
       </div>
     </div>
   );
@@ -130,40 +76,60 @@ export interface ContextProps {
 }
 
 export function ModalContext({ children }: ContextProps): ReactElement {
-  const [modalProps, setModalProps] = useState<ModalProps>({});
-  const [isActive, setIsActive] = useState<boolean>(false);
+  const [modals, setModals] = useState<Modal[]>([]);
 
-  const popModal = useCallback((props: ModalProps | string) => {
-    if (typeof props === 'string') {
-      setModalProps({ title: props });
-    } else {
-      setModalProps(props);
-    }
-    setIsActive(true);
-  }, []);
+  const popModal = useCallback(
+    (
+      component: ModalComponent,
+      type: ModalType | undefined = 'full',
+      onDismiss: (() => void) | undefined = undefined,
+    ) => {
+      const modal: Modal = {
+        id: Math.random().toString(36).substring(5),
+        component,
+        type,
+        onDismiss,
+        isActive: true,
+      };
 
-  const dismissModal = useCallback(() => {
-    setIsActive(false);
-  }, []);
+      setModals((_modals: Modal[]) => [
+        ..._modals.map((_modal) => ({ ..._modal, isActive: false })),
+        modal,
+      ]);
+
+      return modal.id;
+    },
+    [setModals],
+  );
+
+  const dismissModal = useCallback(
+    (id: string | undefined = undefined) => {
+      setModals((_modals) => {
+        const nextModals = [..._modals];
+        const index = nextModals.findIndex((modal) => modal.id === id);
+        if (index !== -1) {
+          nextModals.splice(index, 1);
+          if (nextModals.length) {
+            nextModals[nextModals.length - 1].isActive = true;
+          }
+        }
+        return nextModals;
+      });
+    },
+    [setModals],
+  );
 
   return (
-    <Context.Provider value={{ popModal, dismissModal, isActive }}>
+    <Context.Provider value={{ modals, popModal, dismissModal }}>
       {children}
-      <Modal
-        isActive={isActive}
-        setIsActive={setIsActive}
-        title={modalProps.title}
-        description={modalProps.description}
-        component={modalProps.component}
-        onCancel={modalProps.onCancel}
-        cancelLabel={modalProps.cancelLabel}
-        onRefuse={modalProps.onRefuse}
-        refuseLabel={modalProps.refuseLabel}
-        onAccept={modalProps.onAccept}
-        acceptLabel={modalProps.acceptLabel}
-        onContinue={modalProps.onContinue}
-        continueLabel={modalProps.continueLabel}
-      />
+      {modals.map((modal: Modal) => (
+        <ModalContainer
+          key={modal.id}
+          id={modal.id}
+          modal={modal}
+          dismissModal={() => dismissModal(modal.id)}
+        />
+      ))}
     </Context.Provider>
   );
 }

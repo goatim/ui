@@ -1,7 +1,7 @@
 import './index.scss';
 import Image, { PlaceholderCategory } from './display/image';
 import Loader from './feedbacks/loader';
-import Modal, { ModalContext, useModal } from './feedbacks/modal';
+import { ModalContext, useModal, Modal } from './feedbacks/modal';
 import Overlay from './feedbacks/overlay';
 import Placeholder from './feedbacks/placeholder';
 import Selection from './feedbacks/selection';
@@ -42,7 +42,9 @@ export { Image, PlaceholderCategory };
  * Feedback
  */
 
-export { Loader, Modal, ModalContext, useModal, Overlay, Placeholder, Selection };
+export { Loader, ModalContext, useModal, Overlay, Placeholder, Selection };
+
+export type { Modal };
 
 /**
  * General

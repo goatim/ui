@@ -4,62 +4,24 @@
 @use '../styles/fonts';
 
 .friday-ui-modal {
-  @include layouts.popup();
-  opacity: 0;
-  visibility: hidden;
   transition: opacity linear 100ms, visibility linear 100ms;
 
-  &.active {
-    opacity: 1;
-    visibility: visible;
-  }
-
   > .container {
-    @include containers.small();
-    padding: 30px;
-    background: colors.$grey;
-
-    > .body {
-      > h1 {
-        @include fonts.AvantGardeGothicStd(1.1em);
-      }
-
-      > p {
-        @include fonts.AvantGardeGothicStd(.9em);
-        margin-top: 15px;
-        white-space: break-spaces;
-      }
-    }
-
-    > .actions {
-      margin-top: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      > .action {
-        margin-left: 20px;
-
-        &:first-child {
-          margin: 0;
-        }
-      }
-    }
-
+    background: white;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .2);
   }
 
-  &.full-dark {
+  &.full {
     position: fixed;
     width: 100vw;
     height: 100vh;
     top: 0;
     left: 0;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: rgba(colors.$blue, .6);
-
+    background: rgba(white, .5);
   }
-
 }

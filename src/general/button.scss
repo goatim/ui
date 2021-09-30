@@ -151,7 +151,7 @@
     &.violet-pink, &.orange-yellow, &.blue, &.dark-blue, &.violet {
       > .container {
         svg {
-          fill: colors.$background-grey;
+          stroke: colors.$background-grey;
         }
 
         > .body > .label {
@@ -212,7 +212,7 @@
 
       > .container {
         svg {
-          fill: colors.$violet;
+          stroke: colors.$violet;
         }
 
         > .body > .label {
@@ -225,7 +225,7 @@
   &.text, &.outlined {
     &.violet-pink:hover > .container, &.orange-yellow:hover > .container {
       svg {
-        fill: colors.$background-grey;
+        stroke: colors.$background-grey;
       }
 
       > .body > .label {
@@ -235,7 +235,7 @@
 
     &.violet-pink {
       > .container svg {
-        fill: colors.$violet;
+        stroke: colors.$violet;
       }
 
       &:hover, &.active {
@@ -246,7 +246,7 @@
     &.orange-yellow {
       > .container {
         svg {
-          fill: colors.$orange;
+          stroke: colors.$orange;
         }
 
         > .body > .label {
@@ -262,7 +262,7 @@
     &.white {
       > .container {
         svg {
-          fill: colors.$background-grey;
+          stroke: colors.$background-grey;
         }
 
         > .body > .label {
@@ -275,7 +275,7 @@
 
         > .container {
           svg {
-            fill: colors.$violet;
+            stroke: colors.$violet;
           }
 
           > .body > .label {
@@ -305,13 +305,13 @@
 
     &.violet-pink {
       > .container svg {
-        fill: colors.$violet;
+        stroke: colors.$violet;
       }
 
       &:hover, &.active {
         > .container {
           svg {
-            fill: colors.$dark-blue;
+            stroke: colors.$dark-blue;
           }
 
           > .body > .label {
@@ -324,7 +324,7 @@
     &.orange-yellow {
       > .container {
         svg {
-          fill: colors.$orange;
+          stroke: colors.$orange;
         }
 
         > .body > .label {
@@ -335,7 +335,7 @@
       &:hover, &.active {
         > .container {
           svg {
-            fill: colors.$dark-blue;
+            stroke: colors.$dark-blue;
           }
 
           > .body > .label {
@@ -348,7 +348,7 @@
     &.white {
       > .container {
         svg {
-          fill: colors.$background-grey;
+          stroke: colors.$background-grey;
         }
 
         > .body > .label {
@@ -359,7 +359,7 @@
       &:hover, &.active {
         > .container {
           svg {
-            fill: white;
+            stroke: white;
           }
 
           > .body > .label {
@@ -376,7 +376,7 @@
 
     > .container > .body {
       > .left-icon svg, > .right-icon svg {
-        fill: colors.$blue;
+        stroke: colors.$blue;
       }
 
       > .label {
