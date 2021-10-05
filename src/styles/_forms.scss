@@ -2,9 +2,10 @@
 @use 'fonts';
 
 @mixin label {
-  @include fonts.AvantGardeGothicStd(.9em);
-  padding-bottom: 8px;
-  padding-left: 12px;
+  @include fonts.AvantGardeGothicStd(.9em, colors.$grey, bold);
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  padding-bottom: 10px;
   display: inline-block;
 }
 

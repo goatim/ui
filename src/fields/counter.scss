@@ -5,8 +5,12 @@
 @use '../styles/forms';
 
 .friday-ui-fields-counter {
+  width: 200px;
+
   > label {
     @include forms.label();
+    text-align: center;
+    width: 100%;
   }
 
   input, input:active, input:focus {
@@ -16,9 +20,10 @@
   }
 
   > .container {
+    width: 100%;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
 
     > button {
       -webkit-touch-callout: none;
@@ -30,15 +35,19 @@
       border: none;
       outline: none;
       @include fonts.AvantGardeGothicStd(2em, black, bold);
-      padding: 20px;
+      padding: 5px;
       background: none;
       cursor: pointer;
+      width: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     > input {
       @include fonts.AvantGardeGothicStd(1em, black, bold);
+      flex: 1;
       padding: 1.12em 1.1em .8em; // Magic value, compensate font bottom padding
-      width: 100px;
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;

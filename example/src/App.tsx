@@ -75,6 +75,7 @@ export default function App(): ReactElement {
             name="qd"
             component={Counter}
             theme="black"
+            label="Quantité"
             placeholder={0}
             step={500}
             resolver={(value: number) => value / 1000}
