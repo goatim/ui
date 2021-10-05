@@ -6,13 +6,6 @@
 .friday-ui-modal {
   transition: opacity linear 100ms, visibility linear 100ms;
 
-  > .container {
-    background: white;
-    border-radius: 30px;
-    overflow: hidden;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, .2);
-  }
-
   &.full {
     position: fixed;
     width: 100vw;
@@ -23,5 +16,12 @@
     align-items: center;
     justify-content: center;
     background: rgba(white, .5);
+  }
+
+  > .container {
+    background: white;
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .2);
   }
 }

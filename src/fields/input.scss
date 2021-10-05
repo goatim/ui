@@ -2,17 +2,11 @@
 @use '~@cezembre/fronts/dist/layouts';
 @use '../styles/colors';
 @use '../styles/fonts';
+@use '../styles/forms';
 
-.friday-ui-input {
+.friday-ui-fields-input {
   > label {
-    @include fonts.AvantGardeGothicStd(.9em);
-    padding-bottom: 10px;
-    display: inline-block;
-
-    @include screens.tablet() {
-      padding-bottom: 8px;
-      font-size: .8em;
-    }
+    @include forms.label();
   }
 
   input, input:active, input:focus {
@@ -28,7 +22,7 @@
     justify-content: space-between;
     position: relative;
     transition: background linear 100ms;
-    background: colors.$placeholder-grey;
+    background: white;
     border: solid colors.$border-grey 1px;
     border-radius: 5px;
 
@@ -48,14 +42,6 @@
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;
-
-      @include screens.tablet() {
-        font-size: .9em;
-      }
-
-      @include screens.mobile-L() {
-        font-size: .8em;
-      }
 
       &::placeholder {
         color: rgba(colors.$violet, .5);
@@ -113,6 +99,25 @@
     background: white;
   }
 
+  &.black {
+    > .container {
+      background: black;
+      border-color: black;
+
+      > input {
+        color: white;
+
+        &::placeholder {
+          color: rgba(white, .6);
+        }
+      }
+    }
+
+    &.active > .container > input {
+      color: black;
+    }
+  }
+
   &.suggestions-active {
     > .container > .suggestions {
       visibility: visible;
@@ -120,19 +125,8 @@
     }
   }
 
-  &.search > .container {
-    > .left-icon {
-      background: colors.$dark-blue;
-    }
-  }
-
   > .instructions {
-    @include fonts.AvantGardeGothicStd(1em, colors.$grey);
-    margin-top: 10px;
-
-    @include screens.tablet() {
-      font-size: .9em;
-    }
+    @include forms.instructions();
   }
 
   > .error, > .warning {
@@ -141,17 +135,9 @@
     justify-content: flex-start;
     margin-top: 15px;
 
-    @include screens.tablet() {
-      margin-top: 10px;
-    }
-
     > span {
       @include fonts.AvantGardeGothicStd(.9em, colors.$red);
       margin-left: 10px;
-
-      @include screens.tablet() {
-        font-size: .9em;
-      }
     }
   }
 

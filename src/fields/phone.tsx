@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import { FieldComponentProps } from '@cezembre/forms';
-import InputField, { Adapter, AutoComplete, Resolver } from './input';
+import InputField, { Adapter, Resolver } from './input';
 
 export interface PhoneValue {
   region_code: string;
@@ -19,12 +19,12 @@ const resolver: Resolver = (phone: PhoneValue) => {
 };
 
 export interface Props extends FieldComponentProps<PhoneValue> {
-  label?: string | null;
-  placeholder?: string | null;
-  instructions?: string | null;
+  label?: string;
+  placeholder?: string;
+  instructions?: string;
 }
 
-export default function PhoneField({
+export default function Phone({
   value,
   initialValue,
   error,
@@ -39,9 +39,9 @@ export default function PhoneField({
   onChange,
   onBlur,
   form,
-  label = null,
-  placeholder = null,
-  instructions = null,
+  label = undefined,
+  placeholder = undefined,
+  instructions = undefined,
 }: Props): ReactElement {
   return (
     <div className="friday-ui-phone">
@@ -52,7 +52,7 @@ export default function PhoneField({
         onChange={onChange}
         onBlur={onBlur}
         form={form}
-        autoComplete={AutoComplete.TEL}
+        autoComplete="tel"
         adapter={adapter}
         resolver={resolver}
         label={label}

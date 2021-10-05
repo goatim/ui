@@ -1,0 +1,94 @@
+@use '~@cezembre/fronts/dist/screens';
+@use '~@cezembre/fronts/dist/layouts';
+@use '../styles/colors';
+@use '../styles/fonts';
+@use '../styles/forms';
+
+.friday-ui-fields-counter {
+  > label {
+    @include forms.label();
+  }
+
+  input, input:active, input:focus {
+    border: none;
+    outline: none;
+    text-decoration: none;
+  }
+
+  > .container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    > button {
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      box-sizing: border-box;
+      border: none;
+      outline: none;
+      @include fonts.AvantGardeGothicStd(2em, black, bold);
+      padding: 20px;
+      background: none;
+      cursor: pointer;
+    }
+
+    > input {
+      @include fonts.AvantGardeGothicStd(1em, colors.$dark-blue, bold);
+      padding: 1.12em 1.1em .8em; // Magic value, compensate font bottom padding
+      width: 100px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      border-radius: 5px;
+      -moz-appearance: textfield;
+
+      &::-webkit-outer-spin-button, &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      &::placeholder {
+        color: rgba(colors.$violet, .5);
+      }
+    }
+  }
+
+  &.black {
+    > .container {
+      > input {
+        background: black;
+        border-color: black;
+        color: white;
+
+        &::placeholder {
+          color: rgba(white, .6);
+        }
+      }
+    }
+  }
+
+  > .instructions {
+    @include forms.instructions();
+  }
+
+  > .error, > .warning {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 15px;
+
+    > span {
+      @include fonts.AvantGardeGothicStd(.9em, colors.$red);
+      margin-left: 10px;
+    }
+  }
+
+  > .warning {
+    > span {
+      color: colors.$orange;
+    }
+  }
+}

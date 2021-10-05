@@ -1,6 +1,6 @@
-import { ReactElement, useCallback, useState } from 'react';
+import { ReactElement, useCallback } from 'react';
 import { Form, Field } from '@cezembre/forms';
-import { InputField, Button, Icon, useModal } from '@fridaygame/ui';
+import { Input, Counter, Button, Icon, useModal, Radio } from '@fridaygame/ui';
 import './App.scss';
 
 export default function App(): ReactElement {
@@ -25,7 +25,7 @@ export default function App(): ReactElement {
 
   const openFirstModal = useCallback(() => {
     popModal(({ dismissModal }) => (
-      <div style={{ width: 300, height: 500, background: 'red' }}>
+      <div style={{ width: '80%', height: 500, background: 'red' }}>
         <Button onClick={openSecondModal}>Second modal !</Button>
         <Button onClick={dismissModal}>Dismiss !</Button>
       </div>
@@ -42,7 +42,7 @@ export default function App(): ReactElement {
         <div className="field">
           <Field
             name="title"
-            component={InputField}
+            component={Input}
             label="Titre de l'article"
             placeholder="Le temps en emporte le vent"
           />
@@ -50,16 +50,40 @@ export default function App(): ReactElement {
 
         <div className="field">
           <Field
-            name="search"
-            component={InputField}
-            placeholder="Chercher par ligue, club, joueur, ..."
-            inputStyle="search"
-            rightComponent={
-              <Button shape="square" theme="blue">
-                <Icon name="search" />
-              </Button>
-            }
+            name="leagues"
+            component={Radio}
+            options={[
+              { value: 'first', item: 'One' },
+              { value: 'two', item: 'Two' },
+              { value: 'three', item: 'Three' },
+              { value: 'four', item: 'Four' },
+            ]}
+            label="League"
           />
+        </div>
+
+        <div className="field">
+          <Field
+            name="search"
+            component={Input}
+            placeholder="Chercher par ligue, club, joueur, ..."
+          />
+        </div>
+
+        <div className="field">
+          <Field
+            name="qd"
+            component={Counter}
+            theme="black"
+            placeholder={0}
+            step={500}
+            resolver={(value: number) => value / 1000}
+            adapter={(value: number) => Math.round(value * 1000)}
+          />
+        </div>
+
+        <div className="field">
+          <Field name="qzd" component={Input} theme="violet" />
         </div>
       </Form>
     </div>

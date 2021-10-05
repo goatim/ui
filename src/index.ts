@@ -9,18 +9,18 @@ import Button from './general/button';
 import Check from './general/check';
 import Icon from './general/icon';
 import ImageUpload from './uploads/image';
-import CheckBoxField from './fields/checkbox';
-import CreditCardField from './fields/creditCard';
-import DatePickerField from './fields/datePicker';
-import DateTimePickerField from './fields/dateTimePicker';
-import DayField, { TimeSlot, StandardTimeSlotObject } from './fields/day';
-import InputField, { InputType, AutoComplete, Adapter, Resolver } from './fields/input';
-import PhoneField from './fields/phone';
-import PlaceField from './fields/place';
-import SelectField, { SelectType } from './fields/select';
-import SwitchField from './fields/switch';
-import TextareaField from './fields/textarea';
-import TimePickerField from './fields/timePicker';
+import CheckBox from './fields/checkbox';
+import Counter from './fields/counter';
+import CreditCard from './fields/creditCard';
+import DatePicker from './fields/datePicker';
+import DateTimePicker from './fields/dateTimePicker';
+import Input, { Adapter, Resolver } from './fields/input';
+import Phone from './fields/phone';
+import Radio from './fields/radio';
+import Select from './fields/select';
+import Switch from './fields/switch';
+import Textarea from './fields/textarea';
+import TimePicker from './fields/timePicker';
 import { GeoLocation, serializeGeoLocation, parseGeoLocation } from './utils/geoLocation';
 import {
   useGoogleMapsApi,
@@ -63,24 +63,21 @@ export { ImageUpload };
  */
 
 export {
-  CheckBoxField,
-  CreditCardField,
-  DatePickerField,
-  DateTimePickerField,
-  DayField,
-  InputField,
-  InputType,
-  AutoComplete,
-  PhoneField,
-  PlaceField,
-  SelectField,
-  SelectType,
-  SwitchField,
-  TextareaField,
-  TimePickerField,
+  CheckBox,
+  Counter,
+  CreditCard,
+  DatePicker,
+  DateTimePicker,
+  Input,
+  Phone,
+  Radio,
+  Select,
+  Switch,
+  Textarea,
+  TimePicker,
 };
 
-export type { TimeSlot, StandardTimeSlotObject, Adapter, Resolver };
+export type { Adapter, Resolver };
 
 /**
  * Utils

@@ -1,0 +1,87 @@
+@use "../styles/fonts";
+@use "../styles/colors";
+@use "../styles/forms";
+
+.friday-ui-fields-radio {
+  > label {
+    @include forms.label();
+  }
+
+  > .options {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    > button.option {
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      box-sizing: border-box;
+      border: none;
+      outline: none;
+      background: colors.$border-grey;
+      cursor: pointer;
+      text-align: center;
+      border-radius: 5px;
+      margin: 0 0 0 10px;
+      padding: 1px;
+      box-shadow: 0 2px 5px rgba(colors.$dark-blue, 0);
+      transition: background linear 100ms, box-shadow linear 100ms;
+
+      &:first-child {
+        margin: 0;
+      }
+
+      > .container {
+        padding: 10px 20px;
+        background: white;
+        border-radius: 3px;
+
+        > span {
+          @include fonts.AvantGardeGothicStd(1em, colors.$grey);
+          transition: background linear 100ms;
+          text-align: center;
+          display: inline-block;
+        }
+      }
+
+      &:hover {
+        > .container {
+          > span {
+            background: colors.$violet-pink-gradient;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+          }
+        }
+      }
+
+      &.selected {
+        background: colors.$violet-pink-gradient;
+        box-shadow: 0 2px 5px rgba(colors.$dark-blue, .15);
+
+        > .container {
+          > span {
+            background: colors.$violet-pink-gradient;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+          }
+        }
+      }
+    }
+  }
+
+  > .instructions {
+    @include fonts.AvantGardeGothicStd();
+    margin-top: 10px;
+  }
+
+  >.error {
+    @include forms.error();
+  }
+
+  > .warning {
+    @include forms.warning();
+  }
+}

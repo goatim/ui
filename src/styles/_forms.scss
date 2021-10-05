@@ -1,6 +1,36 @@
 @use 'colors';
 @use 'fonts';
 
+@mixin label {
+  @include fonts.AvantGardeGothicStd(.9em);
+  padding-bottom: 8px;
+  padding-left: 12px;
+  display: inline-block;
+}
+
+@mixin input {
+  transition: border linear 100ms, background linear 100ms, box-shadow linear 100ms;
+  border: solid colors.$border-grey 1px;
+  background: white;
+  box-shadow: 0 0 5px rgba(colors.$placeholder-grey, 0);
+  border-radius: 5px;
+  width: 100%;
+
+  &:hover {
+    box-shadow: 0 0 5px rgba(colors.$placeholder-grey, .15);
+    border-color: colors.$border-grey;
+  }
+
+  &:focus, &.active {
+    border-color: colors.$border-grey;
+  }
+}
+
+@mixin instructions {
+  @include fonts.AvantGardeGothicStd(1em, colors.$grey);
+  margin-top: 10px;
+}
+
 @mixin field {
   margin-top: 20px;
 
@@ -10,9 +40,35 @@
 }
 
 @mixin error {
-  @include fonts.AvantGardeGothicStd(.9em, colors.$red);
-  text-align: center;
-  margin-top: 20px;
+  @include fonts.AvantGardeGothicStd(1em, colors.$red);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 15px;
+
+  > svg {
+    stroke: colors.$red;
+  }
+
+  > span {
+    margin-left: 10px;
+  }
+}
+
+@mixin warning {
+  @include fonts.AvantGardeGothicStd(1em, colors.$orange);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 15px;
+
+  > svg {
+    stroke: colors.$orange;
+  }
+
+  > span {
+    margin-left: 10px;
+  }
 }
 
 @mixin submit {
@@ -25,6 +81,10 @@
   }
 
   > .error {
+    @include error;
+  }
+
+  > .warning {
     @include error;
   }
 

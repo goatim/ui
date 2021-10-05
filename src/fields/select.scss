@@ -1,119 +1,134 @@
-@use '~@cezembre/fronts/dist/screens';
 @use '~@cezembre/fronts/dist/layouts';
-@use '../styles/colors';
-@use '../styles/fonts';
+@use '~@cezembre/fronts/dist/screens';
+@use "../styles/fonts";
+@use "../styles/colors";
+@use "../styles/forms";
 
-.friday-ui-select {
+.friday-ui-fields-select {
   width: 100%;
 
   > label {
-    @include fonts.AvantGardeGothicStd(.9em, colors.$blue, bold);
-    letter-spacing: .05em;
-    text-transform: uppercase;
-    padding-bottom: 10px;
-    display: inline-block;
-
-    @include screens.tablet() {
-      padding-bottom: 8px;
-      font-size: .8em;
-    }
-
+    @include forms.label();
   }
 
   > .container {
+    min-width: 200px;
     position: relative;
 
+    > button {
+      padding: 0;
+      @include forms.input();
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      outline: none;
+      text-decoration: none;
+      flex-shrink: 0;
+      margin: 0;
+      position: relative;
+      transition: background linear 100ms, border linear 100ms;
+
+      > span {
+        @include fonts.AvantGardeGothicStd();
+        text-align: left;
+        flex: 1;
+        padding: 8px 12px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+
+        &.placeholder {
+          color: colors.$placeholder-grey;
+        }
+      }
+
+      svg {
+        stroke: colors.$dark-blue;
+        margin-right: 12px;
+      }
+    }
+
     > .options {
+      @include layouts.modal();
+      padding: 4px 0;
+      max-height: 300px;
+      overflow: auto;
+      box-shadow: 0 0 5px rgba(colors.$dark-blue, .15);
       visibility: hidden;
       width: 100%;
       position: absolute;
-      top: 100%;
-      background: colors.$grey;
-      border: solid colors.$blue 1px;
-      border-top: none;
+      top: calc(100% + 8px);
+      background: white;
       opacity: 0;
       transition: opacity linear 100ms;
-      @include layouts.modal();
 
-      > .option {
+      > button.option {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        box-sizing: border-box;
+        border: none;
+        outline: none;
+        background: transparent;
         width: 100%;
-        border-top: solid colors.$blue 1px;
+        text-align: left;
+        margin: 0;
+        padding: 0;
+        cursor: pointer;
 
-        &:first-child {
-          border: none;
+        &:hover, &.active {
+          background: colors.$background-grey;
         }
 
         > span {
-          @include fonts.AvantGardeGothicStd()
-
+          @include fonts.AvantGardeGothicStd();
+          display: block;
+          text-align: left;
+          padding: 8px 12px;
         }
-
       }
-
     }
-
   }
 
   > .instructions {
-    @include fonts.AvantGardeGothicStd(1em, colors.$grey);
+    @include fonts.AvantGardeGothicStd(1em, colors.$dark-blue);
     margin-top: 10px;
   }
 
-  &.active {
-    > .container {
-      > .options {
-        visibility: visible;
-        opacity: 1;
-      }
+  &.active > .container > .options {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &.flat > .container {
+    > .button {
+      display: none;
+      visibility: hidden;
+    }
+
+    > .options {
+      visibility: visible;
+      position: relative;
+      opacity: 1;
+      border-top: solid colors.$dark-blue 1px;
+      @include layouts.page();
     }
   }
 
-  &.flat {
-    > .container {
-      > .button {
-        display: none;
-        visibility: hidden;
-      }
-
-      > .options {
-        visibility: visible;
-        position: relative;
-        opacity: 1;
-        border-top: solid colors.$blue 1px;
-        @include layouts.page();
-
-      }
-    }
-  }
-
-  > .error, > .warning {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    margin-top: 15px;
-
-    @include screens.tablet() {
-      margin-top: 10px;
-    }
-
-    > span {
-      @include fonts.AvantGardeGothicStd(.9em, colors.$red);
-      margin-left: 10px;
-
-      @include screens.tablet() {
-        font-size: .9em;
-      }
-
-    }
-
+  >.error {
+    @include forms.error();
   }
 
   > .warning {
-
-    > span {
-      color: colors.$blue;
-    }
-
+    @include forms.warning();
   }
-
 }
