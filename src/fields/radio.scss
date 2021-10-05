@@ -37,7 +37,7 @@
       > .container {
         padding: 10px 20px;
         background: white;
-        border-radius: 3px;
+        border-radius: 4px;
 
         > span {
           @include fonts.AvantGardeGothicStd(1em, colors.$grey);

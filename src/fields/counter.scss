@@ -36,13 +36,14 @@
     }
 
     > input {
-      @include fonts.AvantGardeGothicStd(1em, colors.$dark-blue, bold);
+      @include fonts.AvantGardeGothicStd(1em, black, bold);
       padding: 1.12em 1.1em .8em; // Magic value, compensate font bottom padding
       width: 100px;
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;
       border-radius: 5px;
+      border: solid black 1px;
       -moz-appearance: textfield;
 
       &::-webkit-outer-spin-button, &::-webkit-inner-spin-button {
@@ -51,7 +52,7 @@
       }
 
       &::placeholder {
-        color: rgba(colors.$violet, .5);
+        color: rgba(black, .5);
       }
     }
   }
@@ -60,7 +61,21 @@
     > .container {
       > input {
         background: black;
-        border-color: black;
+        border: none;
+        color: white;
+
+        &::placeholder {
+          color: rgba(white, .6);
+        }
+      }
+    }
+  }
+
+  &.colored {
+    > .container {
+      > input {
+        background: colors.$violet-pink-gradient;
+        border: none;
         color: white;
 
         &::placeholder {

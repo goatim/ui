@@ -3,7 +3,7 @@ import { FieldComponentProps } from '@cezembre/forms';
 import { Adapter, Resolver } from './input';
 import Icon from '../general/icon';
 
-export type Theme = 'default' | 'black' | 'coloured';
+export type Theme = 'default' | 'black' | 'colored';
 
 export interface Props extends FieldComponentProps<number> {
   adapter?: Adapter<number>;
@@ -91,8 +91,6 @@ export default function Counter({
   return (
     <div className={classNames.join(' ')}>
       {label ? <label htmlFor={name}>{label}</label> : null}
-
-      {value}
 
       <div className="container">
         <button onClick={decrease} type="button">
