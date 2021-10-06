@@ -84,12 +84,8 @@ export default function Select({
   const [selectedOptionIndex, setSelectedOptionIndex] = useState<number | undefined>();
 
   useEffect(() => {
-    if (value !== undefined) {
-      const i = _.findIndex(options, (option) => option.value === value);
-      if (i !== -1) {
-        setSelectedOptionIndex(i);
-      }
-    }
+    const i = _.findIndex(options, (option) => option.value === value);
+    setSelectedOptionIndex(i !== -1 ? i : undefined);
   }, [value, options]);
 
   const toggleFocus = useCallback(() => {
