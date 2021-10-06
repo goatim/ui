@@ -7,6 +7,7 @@ import Icon from '../general/icon';
 export interface Option<Value = any> {
   value: Value;
   item?: ReactElement | string;
+  key?: string;
 }
 
 export interface OptionProps {
@@ -84,7 +85,7 @@ export default function Select({
   const [selectedOptionIndex, setSelectedOptionIndex] = useState<number | undefined>();
 
   useEffect(() => {
-    const i = _.findIndex(options, (option) => option.value === value);
+    const i = _.findIndex(options, (option) => _.isEqual(option.value, value));
     setSelectedOptionIndex(i !== -1 ? i : undefined);
   }, [value, options]);
 
@@ -131,7 +132,7 @@ export default function Select({
         <div className="options">
           {options?.map((option, index) => (
             <button
-              key={option.value}
+              key={option.key || option.value}
               type="button"
               className={`option${selectedOptionIndex === index ? ' active' : ''}`}
               onClick={() => selectOption(index, option.value)}>
