@@ -12,6 +12,7 @@
   text-decoration: none;
   flex-shrink: 0;
   margin: 0;
+  padding: 0;
   background: transparent;
   position: relative;
   transition: box-shadow linear 100ms, background linear 100ms;
@@ -22,12 +23,12 @@
     position: relative;
     z-index: 0;
     display: flex;
-    align-items: stretch;
+    align-items: center;
     justify-content: space-between;
 
     > .body {
       display: flex;
-      align-items: stretch;
+      align-items: center;
       justify-content: flex-start;
       flex-shrink: 2;
       min-width: 0;
@@ -35,24 +36,19 @@
       > .left-icon {
         align-self: center;
         flex-shrink: 0;
-        margin-right: 15px;
+        margin-right: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
       > .label {
-        @include fonts.AvantGardeGothicStd(1em, colors.$violet, 600);
+        @include fonts.AvantGardeGothicStd(1em, colors.$blue, 600);
         align-self: center;
         text-overflow: ellipsis;
         white-space: nowrap;
         overflow: hidden;
         flex-shrink: 2;
-
-        @include screens.laptop() {
-          font-size: .85em;
-        }
-
-        @include screens.tablet() {
-          font-size: .8em;
-        }
       }
 
       > .component {
@@ -65,7 +61,10 @@
     > .right-icon {
       align-self: center;
       flex-shrink: 0;
-      margin-left: 15px;
+      margin-left: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 
@@ -85,102 +84,187 @@
     visibility: hidden;
     opacity: 0;
     transition: visibility linear 100ms, opacity linear 100ms;
-
   }
 
-  &.small {
-    height: 30px;
-    border-radius: 4px;
-
-    &.fitted {
-      padding: 0 10px;
+  &.text {
+    &.small {
+      font-size: .9em;
     }
 
-    &.square {
-      width: 30px;
-
-      > .container {
-        justify-content: center;
-      }
-    }
-
-    > .container > .body > .label {
-      font-size: 0.9em;
-    }
-  }
-
-  &.medium {
-    height: 36px;
-    border-radius: 6px;
-
-    &.fitted {
-      padding: 0 20px;
-    }
-
-    &.square {
-      width: 36px;
-
-      > .container {
-        justify-content: center;
-      }
-    }
-  }
-
-  &.large {
-    height: 40px;
-    border-radius: 8px;
-
-    &.fitted {
-      padding: 0 30px;
-    }
-
-    &.square {
-      width: 40px;
-
-      > .container {
-        justify-content: center;
-      }
-    }
-
-    > .container > .body > .label {
+    &.large {
       font-size: 1.1em;
     }
-  }
 
-  &.filled {
-    &.violet-pink, &.orange-yellow, &.blue, &.dark-blue, &.violet {
+    &.blue {
       > .container {
         svg {
-          stroke: colors.$background-grey;
+          stroke: colors.$blue;
         }
 
         > .body > .label {
-          color: colors.$background-grey;
+          color: colors.$blue;
+        }
+      }
+
+      &:hover, &.active {
+        > .container {
+          svg {
+            stroke: colors.$violet;
+          }
+
+          > .body > .label {
+            color: colors.$violet;
+          }
+        }
+      }
+    }
+
+    &.medium-blue {
+      > .container {
+        svg {
+          stroke: colors.$medium-blue;
+        }
+
+        > .body > .label {
+          color: colors.$medium-blue;
+        }
+      }
+
+      &:hover, &.active {
+        > .container {
+          svg {
+            stroke: colors.$violet;
+          }
+
+          > .body > .label {
+            color: colors.$violet;
+          }
+        }
+      }
+    }
+
+    &.dark-blue {
+      > .container {
+        svg {
+          stroke: colors.$dark-blue;
+        }
+
+        > .body > .label {
+          color: colors.$dark-blue;
+        }
+      }
+
+      &:hover, &.active {
+        > .container {
+          svg {
+            stroke: colors.$violet;
+          }
+
+          > .body > .label {
+            color: colors.$violet;
+          }
         }
       }
     }
 
     &.violet-pink {
-      background: colors.$violet;
-      background: colors.$violet-pink-gradient;
+      > .container {
+        svg {
+          stroke: colors.$violet;
+        }
 
-      &:hover, &.active {
-        box-shadow: 0 2px 5px rgba(colors.$violet, .5);
+        > .body > .label {
+          color: colors.$violet;
+          background: colors.$violet-pink-gradient;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
       }
-
     }
 
     &.orange-yellow {
-      background: colors.$orange;
-      background: colors.$orange-yellow-gradient;
+      > .container {
+        svg {
+          stroke: colors.$orange;
+        }
+
+        > .body > .label {
+          color: colors.$orange;
+          background: colors.$orange-yellow-gradient;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+      }
+    }
+
+    &.white {
+      > .container {
+        svg {
+          stroke: white;
+        }
+
+        > .body > .label {
+          color: white;
+        }
+      }
 
       &:hover, &.active {
-        box-shadow: 0 2px 5px rgba(colors.$orange, .5);
+        > .container {
+          svg {
+            stroke: colors.$background-grey;
+          }
+
+          > .body > .label {
+            color: colors.$background-grey;
+          }
+        }
+      }
+    }
+  }
+
+  &.filled {
+    &.small {
+      height: 30px;
+      border-radius: 4px;
+      padding: 0 10px;
+    }
+
+    &.medium {
+      height: 36px;
+      border-radius: 6px;
+      padding: 0 20px;
+    }
+
+    &.large {
+      height: 40px;
+      border-radius: 8px;
+      padding: 0 30px;
+
+      > .container > .body > .label {
+        font-size: 1.1em;
+      }
+    }
+
+    > .container {
+      svg {
+        stroke: white;
+      }
+
+      > .body > .label {
+        color: white;
       }
     }
 
     &.blue {
       background: colors.$blue;
+
+      &:hover, &.active {
+        background: colors.$dark-blue;
+      }
+    }
+
+    &.medium-blue {
+      background: colors.$medium-blue;
 
       &:hover, &.active {
         background: colors.$dark-blue;
@@ -195,11 +279,21 @@
       }
     }
 
-    &.violet {
+    &.violet-pink {
       background: colors.$violet;
+      background: colors.$violet-pink-gradient;
 
       &:hover, &.active {
-        background: colors.$pink;
+        box-shadow: 0 2px 5px rgba(colors.$violet, .5);
+      }
+    }
+
+    &.orange-yellow {
+      background: colors.$orange;
+      background: colors.$orange-yellow-gradient;
+
+      &:hover, &.active {
+        box-shadow: 0 2px 5px rgba(colors.$orange, .5);
       }
     }
 
@@ -222,148 +316,173 @@
     }
   }
 
-  &.text, &.outlined {
-    &.violet-pink:hover > .container, &.orange-yellow:hover > .container {
-      svg {
-        stroke: colors.$background-grey;
-      }
-
-      > .body > .label {
-        color: colors.$background-grey;
-      }
-    }
-
-    &.violet-pink {
-      > .container svg {
-        stroke: colors.$violet;
-      }
-
-      &:hover, &.active {
-        background: colors.$violet;
-      }
-    }
-
-    &.orange-yellow {
-      > .container {
-        svg {
-          stroke: colors.$orange;
-        }
-
-        > .body > .label {
-          color: colors.$orange;
-        }
-      }
-
-      &:hover, &.active {
-        background: colors.$orange;
-      }
-    }
-
-    &.white {
-      > .container {
-        svg {
-          stroke: colors.$background-grey;
-        }
-
-        > .body > .label {
-          color: colors.$background-grey;
-        }
-      }
-
-      &:hover, &.active {
-        background: colors.$background-grey;
-
-        > .container {
-          svg {
-            stroke: colors.$violet;
-          }
-
-          > .body > .label {
-            color: colors.$violet;
-          }
-        }
-      }
-    }
-  }
-
   &.outlined {
-    &.violet-pink {
-      border: solid colors.$violet 1px;
+    border: solid colors.$blue 1px;
+
+    &.small {
+      height: 30px;
+      border-radius: 4px;
+      padding: 0 10px;
+      border-width: 1px;
+
+      > .container > .body > .label {
+        font-size: .9em;
+      }
     }
 
-    &.orange-yellow {
-      border: solid colors.$orange 1px;
+    &.medium {
+      height: 36px;
+      border-radius: 6px;
+      padding: 0 20px;
+      border-width: 1px;
     }
 
-    &.white {
-      border: solid colors.$background-grey 1px;
+    &.large {
+      height: 40px;
+      border-radius: 8px;
+      padding: 0 30px;
+      border-width: 2px;
+
+      > .container > .body > .label {
+        font-size: 1.1em;
+      }
     }
-  }
 
-  &.link {
-    padding: 0;
+    &:hover, &.active {
+      > .container {
+        svg {
+          stroke: white;
+        }
 
-    &.violet-pink {
+        > .body > .label {
+          color: white;
+        }
+      }
+    }
+
+    &.blue {
+      border-color: colors.$blue;
+
       > .container svg {
-        stroke: colors.$violet;
+        stroke: colors.$blue;
       }
 
       &:hover, &.active {
-        > .container {
-          svg {
-            stroke: colors.$dark-blue;
-          }
+        background: colors.$blue;
+      }
+    }
 
-          > .body > .label {
-            color: colors.$dark-blue;
-          }
+    &.medium-blue {
+      border-color: colors.$medium-blue;
+
+      > .container {
+        svg {
+          stroke: colors.$medium-blue;
+        }
+
+        > .body > span {
+          color: colors.$medium-blue;
+        }
+      }
+
+      &:hover, &.active {
+        background: colors.$medium-blue;
+      }
+    }
+
+    &.dark-blue {
+      border-color: colors.$dark-blue;
+
+      > .container {
+        svg {
+          stroke: colors.$dark-blue;
+        }
+
+        > .body > span {
+          color: colors.$dark-blue;
+        }
+      }
+
+      &:hover, &.active {
+        background: colors.$dark-blue;
+      }
+    }
+
+    &.violet-pink {
+      border-color: colors.$violet;
+
+      > .container {
+        svg {
+          stroke: colors.$violet;
+        }
+
+        > .body > .label {
+          background: colors.$violet-pink-gradient;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+      }
+
+      &:hover, &.active {
+        background: colors.$violet-pink-gradient;
+
+        .container > .body > .label {
+          background: none;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: white;
         }
       }
     }
 
     &.orange-yellow {
+      border-color: colors.$orange;
+
       > .container {
         svg {
           stroke: colors.$orange;
         }
 
         > .body > .label {
-          color: colors.$orange;
+          background: colors.$orange-yellow-gradient;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
         }
       }
 
       &:hover, &.active {
-        > .container {
-          svg {
-            stroke: colors.$dark-blue;
-          }
+        background: colors.$orange-yellow-gradient;
 
-          > .body > .label {
-            color: colors.$dark-blue;
-          }
+        .container > .body > .label {
+          background: none;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: white;
         }
       }
     }
 
     &.white {
+      border-color: white;
+
       > .container {
         svg {
-          stroke: colors.$background-grey;
+          stroke: white;
         }
 
         > .body > .label {
-          color: colors.$background-grey;
+          color: white;
         }
       }
 
       &:hover, &.active {
+        background: white;
+
         > .container {
           svg {
-            stroke: white;
+            stroke: colors.$medium-blue;
           }
 
           > .body > .label {
-            color: white;
+            color: colors.$medium-blue;
           }
         }
       }

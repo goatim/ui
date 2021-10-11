@@ -18,10 +18,9 @@ export interface Props {
   onClick?: (event: MouseEvent<HTMLButtonElement>) => Promise<void> | void;
   onFocus?: (event: FocusEvent<HTMLElement>) => void;
   type?: 'button' | 'submit' | 'reset';
-  shape?: 'fitted' | 'square';
   size?: 'small' | 'medium' | 'large';
-  buttonStyle?: 'filled' | 'outlined' | 'text' | 'link';
-  theme?: 'blue' | 'dark-blue' | 'violet' | 'violet-pink' | 'orange-yellow' | 'white';
+  buttonStyle?: 'text' | 'filled' | 'outlined';
+  theme?: 'blue' | 'medium-blue' | 'dark-blue' | 'violet-pink' | 'orange-yellow' | 'white';
   disabled?: boolean;
   pending?: boolean;
   active?: boolean;
@@ -39,9 +38,8 @@ function Wrapper({
   to = undefined,
   onClick = undefined,
   onFocus = undefined,
-  shape = 'fitted',
   size = 'medium',
-  buttonStyle = 'filled',
+  buttonStyle = 'text',
   theme = 'blue',
   type = 'button',
   disabled = false,
@@ -54,14 +52,13 @@ function Wrapper({
   const [autoErrored, setAutoErrored] = useState<boolean>(false);
   const [className, setClassName] = useState<string[]>([
     'friday-ui-button',
-    shape,
     size,
     buttonStyle,
     theme,
   ]);
 
   useEffect(() => {
-    const nextClasses = ['friday-ui-button', shape, size, buttonStyle, theme];
+    const nextClasses = ['friday-ui-button', size, buttonStyle, theme];
 
     if (active) {
       nextClasses.push('active');
@@ -89,7 +86,6 @@ function Wrapper({
     success,
     errored,
     disabled,
-    shape,
     size,
     buttonStyle,
     pending,
@@ -157,9 +153,8 @@ export default function Button({
   href = undefined,
   to = undefined,
   onClick = undefined,
-  shape = 'fitted',
   size = 'medium',
-  buttonStyle = 'filled',
+  buttonStyle = 'text',
   type = 'button',
   theme = 'blue',
   active = false,
@@ -180,7 +175,6 @@ export default function Button({
       pending={pending}
       disabled={disabled}
       type={type}
-      shape={shape}
       size={size}
       theme={theme}
       active={active}

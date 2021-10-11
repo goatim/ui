@@ -4,11 +4,19 @@
 
 .App {
   font-size: 14px;
-  //background: colors.$background-grey;
+  padding: 50px;
 
-  > .form {
-    @include forms.form();
-    padding: 100px;
+  > .row {
+    display: flex;
+    margin-top: 30px;
+
+    > .button {
+      margin-left: 30px;
+
+      &:first-child {
+        margin: 0;
+      }
+    }
   }
 }
 
