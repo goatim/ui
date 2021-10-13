@@ -1,11 +1,12 @@
 import { ReactElement } from 'react';
-import { Button, Input } from '@fridaygame/ui';
+import { Button, Input, Icon } from '@fridaygame/ui';
 import { Form, Field } from '@cezembre/forms';
 import './App.scss';
 
 export default function App(): ReactElement {
   return (
     <div className="App">
+      <Icon name="friday" />
       <div className="row">
         <div className="button">
           <Button size="medium" leftIcon="trophy">
