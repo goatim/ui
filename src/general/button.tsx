@@ -27,9 +27,7 @@ export interface Props {
   success?: boolean;
   errored?: boolean;
   leftIcon?: IconName;
-  leftIconSize?: number;
   rightIcon?: IconName;
-  rightIconSize?: number;
 }
 
 function Wrapper({
@@ -163,9 +161,7 @@ export default function Button({
   errored = false,
   disabled = false,
   leftIcon = undefined,
-  leftIconSize = 15,
   rightIcon = undefined,
-  rightIconSize = 15,
 }: Props): ReactElement {
   return (
     <Wrapper
@@ -185,7 +181,7 @@ export default function Button({
         <div className="body">
           {leftIcon ? (
             <div className="left-icon">
-              <Icon name={leftIcon} size={leftIconSize} />
+              <Icon name={leftIcon} />
             </div>
           ) : null}
 
@@ -198,7 +194,7 @@ export default function Button({
 
         {rightIcon ? (
           <div className="right-icon">
-            <Icon name={rightIcon} size={rightIconSize} />
+            <Icon name={rightIcon} />
           </div>
         ) : null}
       </div>

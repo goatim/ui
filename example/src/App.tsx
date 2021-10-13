@@ -8,7 +8,21 @@ export default function App(): ReactElement {
     <div className="App">
       <div className="row">
         <div className="button">
-          <Button>Mon effectif</Button>
+          <Button size="medium" leftIcon="trophy">
+            Mon effectif
+          </Button>
+        </div>
+
+        <div className="button">
+          <Button size="large" leftIcon="shirt">
+            Mon effectif
+          </Button>
+        </div>
+
+        <div className="button">
+          <Button size="large" leftIcon="instagram">
+            Mon effectif
+          </Button>
         </div>
 
         <div className="button">

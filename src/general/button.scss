@@ -93,12 +93,20 @@
 
     &.large {
       font-size: 1.1em;
+
+      > .container svg {
+        height: 20px;
+      }
     }
 
     &.blue {
       > .container {
-        svg {
+        svg[stroke] {
           stroke: colors.$blue;
+        }
+
+        svg:not([stroke]) {
+          fill: colors.$blue;
         }
 
         > .body > .label {
@@ -108,8 +116,12 @@
 
       &:hover, &.active {
         > .container {
-          svg {
+          svg[stroke] {
             stroke: colors.$violet;
+          }
+
+          svg:not([stroke]) {
+            fill: colors.$violet;
           }
 
           > .body > .label {
@@ -121,8 +133,12 @@
 
     &.medium-blue {
       > .container {
-        svg {
+        svg[stroke] {
           stroke: colors.$medium-blue;
+        }
+
+        svg:not([stroke]) {
+          fill: colors.$medium-blue;
         }
 
         > .body > .label {
@@ -145,8 +161,12 @@
 
     &.dark-blue {
       > .container {
-        svg {
+        svg[stroke] {
           stroke: colors.$dark-blue;
+        }
+
+        svg:not([stroke]) {
+          fill: colors.$dark-blue;
         }
 
         > .body > .label {
@@ -156,8 +176,12 @@
 
       &:hover, &.active {
         > .container {
-          svg {
+          svg[stroke] {
             stroke: colors.$violet;
+          }
+
+          svg:not([stroke]) {
+            fill: colors.$violet;
           }
 
           > .body > .label {
@@ -169,8 +193,12 @@
 
     &.violet-pink {
       > .container {
-        svg {
+        svg[stroke] {
           stroke: colors.$violet;
+        }
+
+        svg:not([stroke]) {
+          fill: colors.$violet;
         }
 
         > .body > .label {
@@ -184,8 +212,12 @@
 
     &.orange-yellow {
       > .container {
-        svg {
+        svg[stroke] {
           stroke: colors.$orange;
+        }
+
+        svg:not([stroke]) {
+          fill: colors.$orange;
         }
 
         > .body > .label {
@@ -199,8 +231,12 @@
 
     &.white {
       > .container {
-        svg {
+        svg[stroke] {
           stroke: white;
+        }
+
+        svg:not([stroke]) {
+          fill: white;
         }
 
         > .body > .label {
@@ -246,8 +282,12 @@
     }
 
     > .container {
-      svg {
+      svg[stroke] {
         stroke: white;
+      }
+
+      svg:not([stroke]) {
+        fill: white;
       }
 
       > .body > .label {
@@ -305,8 +345,12 @@
       }
 
       > .container {
-        svg {
+        svg[stroke] {
           stroke: colors.$violet;
+        }
+
+        svg:not([stroke]) {
+          fill: colors.$violet;
         }
 
         > .body > .label {
@@ -350,8 +394,12 @@
 
     &:hover, &.active {
       > .container {
-        svg {
+        svg[stroke] {
           stroke: white;
+        }
+
+        svg:not([stroke]) {
+          fill: white;
         }
 
         > .body > .label {
@@ -363,8 +411,14 @@
     &.blue {
       border-color: colors.$blue;
 
-      > .container svg {
-        stroke: colors.$blue;
+      > .container {
+        svg[stroke] {
+          stroke: colors.$blue;
+        }
+
+        svg:not([stroke]) {
+          fill: colors.$blue;
+        }
       }
 
       &:hover, &.active {
@@ -376,8 +430,12 @@
       border-color: colors.$medium-blue;
 
       > .container {
-        svg {
+        svg[stroke] {
           stroke: colors.$medium-blue;
+        }
+
+        svg:not([stroke]) {
+          fill: colors.$medium-blue;
         }
 
         > .body > span {
@@ -394,8 +452,12 @@
       border-color: colors.$dark-blue;
 
       > .container {
-        svg {
+        svg[stroke] {
           stroke: colors.$dark-blue;
+        }
+
+        svg:not([stroke]) {
+          fill: colors.$dark-blue;
         }
 
         > .body > span {
@@ -412,8 +474,12 @@
       border-color: colors.$violet;
 
       > .container {
-        svg {
+        svg[stroke] {
           stroke: colors.$violet;
+        }
+
+        svg:not([stroke]) {
+          fill: colors.$violet;
         }
 
         > .body > .label {
@@ -438,8 +504,12 @@
       border-color: colors.$orange;
 
       > .container {
-        svg {
+        svg[stroke] {
           stroke: colors.$orange;
+        }
+
+        svg:not([stroke]) {
+          fill: colors.$orange;
         }
 
         > .body > .label {
@@ -464,8 +534,12 @@
       border-color: white;
 
       > .container {
-        svg {
+        svg[stroke] {
           stroke: white;
+        }
+
+        svg:not([stroke]) {
+          fill: white;
         }
 
         > .body > .label {
@@ -477,8 +551,12 @@
         background: white;
 
         > .container {
-          svg {
+          svg[stroke] {
             stroke: colors.$medium-blue;
+          }
+
+          svg:not([stroke]) {
+            fill: colors.$medium-blue;
           }
 
           > .body > .label {
