@@ -133,11 +133,11 @@
       &:hover, &.active {
         > .container {
           svg {
-            stroke: colors.$violet;
+            stroke: colors.$blue;
           }
 
           > .body > .label {
-            color: colors.$violet;
+            color: colors.$blue;
           }
         }
       }

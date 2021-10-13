@@ -38,13 +38,13 @@
     > input {
       @include fonts.AvantGardeGothicStd(1em, colors.$violet, 300);
       flex: 1;
-      padding: 1.12em 1.1em .8em; // Magic value, compensate font bottom padding
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      overflow: hidden;
+      padding: 0.98em 0.9em 0.6em; // Magic value, compensate font bottom padding
 
       &::placeholder {
         color: rgba(colors.$violet, .5);
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
       }
     }
 
@@ -129,21 +129,11 @@
     @include forms.instructions();
   }
 
-  > .error, > .warning {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    margin-top: 15px;
-
-    > span {
-      @include fonts.AvantGardeGothicStd(.9em, colors.$red);
-      margin-left: 10px;
-    }
+  > .error {
+    @include forms.error();
   }
 
   > .warning {
-    > span {
-      color: colors.$orange;
-    }
+    @include forms.warning();
   }
 }

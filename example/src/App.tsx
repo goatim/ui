@@ -1,5 +1,6 @@
-import { ReactElement, useCallback } from 'react';
-import { Button } from '@fridaygame/ui';
+import { ReactElement } from 'react';
+import { Button, Input } from '@fridaygame/ui';
+import { Form, Field } from '@cezembre/forms';
 import './App.scss';
 
 export default function App(): ReactElement {
@@ -102,6 +103,10 @@ export default function App(): ReactElement {
           </Button>
         </div>
       </div>
+
+      <Form className="form">
+        <Field name="title" component={Input} label="Yes!" />
+      </Form>
     </div>
   );
 }
