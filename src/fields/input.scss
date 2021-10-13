@@ -38,7 +38,7 @@
     > input {
       @include fonts.AvantGardeGothicStd(1em, colors.$violet, 300);
       flex: 1;
-      padding: 0.98em 0.9em 0.6em; // Magic value, compensate font bottom padding
+      padding: 0.95em 0.9em 0.6em; // Magic value, compensate font bottom padding
 
       &::placeholder {
         color: rgba(colors.$violet, .5);
