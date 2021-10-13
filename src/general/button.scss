@@ -148,8 +148,12 @@
 
       &:hover, &.active {
         > .container {
-          svg {
+          svg[stroke] {
             stroke: colors.$blue;
+          }
+
+          svg:not([stroke]) {
+            fill: colors.$blue;
           }
 
           > .body > .label {
