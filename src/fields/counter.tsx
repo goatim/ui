@@ -94,7 +94,6 @@ export default function Counter({
     <div className={classNames.join(' ')}>
       {label ? <label htmlFor={name}>{label}</label> : null}
 
-      {value}
       <div className="container">
         <button onClick={decrease} type="button">
           -
