@@ -5,10 +5,10 @@ import Icon from '../general/icon';
 
 export type Theme = 'default' | 'black' | 'colored';
 
-export interface Props extends FieldComponentProps<number> {
-  adapter?: Adapter<number>;
-  resolver?: Resolver<number>;
-  format?: Resolver<number>;
+export interface Props extends FieldComponentProps<number | undefined> {
+  adapter?: Adapter<number | undefined>;
+  resolver?: Resolver<number | undefined>;
+  format?: Resolver<number | undefined>;
   theme?: Theme;
   label?: string;
   placeholder?: string;
@@ -70,7 +70,7 @@ export default function Counter({
       if (adapter) {
         onChange(adapter(event.target.value));
       } else {
-        onChange(Number(event.target.value));
+        onChange(event.target.value.length ? Number(event.target.value) : undefined);
       }
     },
     [adapter, onChange],
@@ -94,13 +94,16 @@ export default function Counter({
     <div className={classNames.join(' ')}>
       {label ? <label htmlFor={name}>{label}</label> : null}
 
+      {value}
       <div className="container">
         <button onClick={decrease} type="button">
           -
         </button>
         <input
           name={name}
-          value={!isActive && format ? format(value) : resolver ? resolver(value) : value}
+          value={
+            !isActive && format ? format(value) : resolver ? resolver(value) : value?.toString()
+          }
           type="number"
           placeholder={placeholder !== undefined ? placeholder : ''}
           autoComplete="off"

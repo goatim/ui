@@ -7,10 +7,10 @@ export interface PhoneValue {
   number: string;
 }
 
-const adapter: Adapter = (value: string | number): PhoneValue => {
+const adapter: Adapter = (value: string): PhoneValue => {
   return {
     region_code: 'FR',
-    number: typeof value === 'string' ? value : value.toString(),
+    number: value,
   };
 };
 

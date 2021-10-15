@@ -136,15 +136,21 @@ export default function App(): ReactElement {
       <Form className="form">
         <Field name="title" component={Input} label="Yes!" />
 
-        <Field
+        <Field<number | undefined>
           name="price_limit"
           label="Limite (FDY)"
           component={Counter}
           theme="black"
-          initialValue={10000}
-          resolver={(value: number) => value / fridayCoinsSmallestUnitFactor}
-          format={(value: number) => (value / fridayCoinsSmallestUnitFactor).toFixed(2)}
-          adapter={(value: number) => Math.round(value * fridayCoinsSmallestUnitFactor)}
+          initialValue={20}
+          resolver={(value: number | undefined) =>
+            value !== undefined ? value / fridayCoinsSmallestUnitFactor : undefined
+          }
+          format={(value: number | undefined) =>
+            value !== undefined ? (value / fridayCoinsSmallestUnitFactor).toFixed(2) : undefined
+          }
+          adapter={(value: string) =>
+            value.length ? Math.round(Number(value) * fridayCoinsSmallestUnitFactor) : undefined
+          }
           step={500}
         />
       </Form>

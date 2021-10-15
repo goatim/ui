@@ -8,10 +8,8 @@ import { PredictionType, usePlaceDetailsGetter, usePlacePredictions } from '../u
 type AutocompletePrediction = google.maps.places.AutocompletePrediction;
 type GeocoderAddressComponent = google.maps.GeocoderAddressComponent;
 
-const adapter: Adapter<Place | null | undefined> = (
-  value: string | number,
-): Place | null | undefined => {
-  if (typeof value !== 'string' || !value.length) {
+const adapter: Adapter<Place | null | undefined> = (value: string): Place | null | undefined => {
+  if (!value.length) {
     return null;
   }
   return {

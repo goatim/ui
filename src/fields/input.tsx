@@ -72,8 +72,8 @@ export type AutoComplete =
 
 export type Theme = 'default' | 'black';
 
-export type Adapter<Value = any> = (value: string | number) => Value;
-export type Resolver<Value = any> = (value: Value | undefined) => string | number;
+export type Adapter<Value = any> = (value: string) => Value;
+export type Resolver<Value = any> = (value?: Value) => string | number;
 
 export interface SuggestionProps {
   suggestion: ReactNode;
@@ -123,21 +123,21 @@ export default function Input<Value = string>({
   onBlur,
   type = 'text',
   theme = 'default',
-  adapter = undefined,
-  resolver = undefined,
-  label = undefined,
-  placeholder = undefined,
-  instructions = undefined,
+  adapter,
+  resolver,
+  label,
+  placeholder,
+  instructions,
   autoComplete = 'on',
   spellCheck = true,
   suggestions = [],
   SuggestionItem = Suggestion,
   suggestionsKeyExtractor = (suggestion: string) => suggestion,
-  suggestionsHeader = undefined,
-  suggestionsFooter = undefined,
-  onSelectSuggestion = undefined,
-  leftComponent = undefined,
-  rightComponent = undefined,
+  suggestionsHeader,
+  suggestionsFooter,
+  onSelectSuggestion,
+  leftComponent,
+  rightComponent,
   autoCorrect = true,
   autoCapitalize = 'off',
 }: Props<Value>): ReactElement {
@@ -282,7 +282,6 @@ export default function Input<Value = string>({
           ref={inputRef}
           name={name}
           value={
-            // eslint-disable-next-line no-nested-ternary
             resolver
               ? resolver(value)
               : typeof value === 'string' || typeof value === 'number'
