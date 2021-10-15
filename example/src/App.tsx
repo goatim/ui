@@ -1,7 +1,21 @@
 import { ReactElement } from 'react';
-import { Button, Input, Icon } from '@fridaygame/ui';
+import { Button, Input, Icon, Counter } from '@fridaygame/ui';
 import { Form, Field } from '@cezembre/forms';
 import './App.scss';
+
+export const fridayCoinsSmallestUnitFactor = 1000;
+
+export function resolveFridayCoins(amount: number): number {
+  return Math.round(amount * fridayCoinsSmallestUnitFactor);
+}
+
+export function adaptFridayCoins(amount: number): number {
+  return amount / fridayCoinsSmallestUnitFactor;
+}
+
+export function formatFridayCoins(amount?: number, decimalDigits = 2): string {
+  return `${adaptFridayCoins(amount || 0).toFixed(decimalDigits)} FDY`;
+}
 
 export default function App(): ReactElement {
   return (
@@ -121,6 +135,18 @@ export default function App(): ReactElement {
 
       <Form className="form">
         <Field name="title" component={Input} label="Yes!" />
+
+        <Field
+          name="price_limit"
+          label="Limite (FDY)"
+          component={Counter}
+          theme="black"
+          initialValue={10000}
+          resolver={(value: number) => value / fridayCoinsSmallestUnitFactor}
+          format={(value: number) => (value / fridayCoinsSmallestUnitFactor).toFixed(2)}
+          adapter={(value: number) => Math.round(value * fridayCoinsSmallestUnitFactor)}
+          step={500}
+        />
       </Form>
     </div>
   );

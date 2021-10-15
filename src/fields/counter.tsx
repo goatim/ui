@@ -8,6 +8,7 @@ export type Theme = 'default' | 'black' | 'colored';
 export interface Props extends FieldComponentProps<number> {
   adapter?: Adapter<number>;
   resolver?: Resolver<number>;
+  format?: Resolver<number>;
   theme?: Theme;
   label?: string;
   placeholder?: string;
@@ -30,13 +31,14 @@ export default function Counter({
   onChange,
   onBlur,
   theme = 'default',
-  adapter = undefined,
-  resolver = undefined,
-  label = undefined,
-  placeholder = undefined,
-  instructions = undefined,
+  adapter,
+  resolver,
+  format,
+  label,
+  placeholder,
+  instructions,
   min = 0,
-  max = undefined,
+  max,
   step = 1,
 }: Props): ReactElement {
   const [classNames, setClassNames] = useState<string[]>(['friday-ui-fields-counter', theme]);
@@ -98,7 +100,7 @@ export default function Counter({
         </button>
         <input
           name={name}
-          value={resolver ? resolver(value) : value}
+          value={!isActive && format ? format(value) : resolver ? resolver(value) : value}
           type="number"
           placeholder={placeholder !== undefined ? placeholder : ''}
           autoComplete="off"
