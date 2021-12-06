@@ -128,7 +128,7 @@ function Wrapper({
 
   if (!disabled && !pending && !autoPending && to && to.length) {
     return (
-      <NavLink className={className.join(' ')} to={to} exact onFocus={onFocus}>
+      <NavLink className={className.join(' ')} to={to} onFocus={onFocus}>
         {children}
       </NavLink>
     );

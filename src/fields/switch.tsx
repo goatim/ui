@@ -1,7 +1,6 @@
-import { ReactElement, useCallback, useEffect, useState } from 'react';
+import { ReactElement, useCallback, useEffect, useState, KeyboardEvent } from 'react';
 import { FieldComponentProps } from '@cezembre/forms';
 import Icon from '../general/icon';
-import colors from '../styles/_colors.scss';
 
 export interface Props extends FieldComponentProps {
   label?: string | null;
@@ -47,7 +46,7 @@ export default function SwitchField({
   }, [value, onChange]);
 
   const onKeyDown = useCallback(
-    (event: React.KeyboardEvent<HTMLDivElement>) => {
+    (event: KeyboardEvent<HTMLDivElement>) => {
       if (onChange && event.key === 'Enter') {
         onChange(!value);
       }
@@ -61,7 +60,7 @@ export default function SwitchField({
         <div
           className="box"
           role="button"
-          aria-pressed={value}
+          aria-pressed={!!value}
           onKeyDown={onKeyDown}
           onClick={onClick}
           onFocus={onFocus}

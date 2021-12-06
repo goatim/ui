@@ -1,42 +1,46 @@
-import {
-  FocusEvent,
-  ChangeEvent,
-  KeyboardEvent,
-  ReactElement,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
-import { AspectRatio, Mode } from '@cezembre/fronts';
-import Loader from '../feedbacks/loader';
+import { ChangeEvent, ReactElement, useEffect, useRef, useState } from 'react';
+import { AspectRatio, Orientation, Img } from '@cezembre/fronts';
+import { Property } from 'csstype';
 import Icon from '../general/icon';
-import Image, { Props as ImageProps } from '../display/image';
+import Loader from '../feedbacks/loader';
 
 const reader = new FileReader();
 
-export interface Props extends ImageProps {
-  onUpload?: ((file: File) => Promise<void>) | null;
-  onFocus?: (event: FocusEvent<HTMLDivElement>) => void;
-  onBlur?: (event: FocusEvent<HTMLDivElement>) => void;
+export interface Props {
+  src?: string;
+  alt?: string;
+  width?: string | number;
+  height?: string | number;
+  aspectRatio?: AspectRatio;
+  orientation?: Orientation;
+  objectFit?: Property.ObjectFit;
+  objectPosition?: Property.ObjectPosition;
+  backgroundColor?: Property.BackgroundColor;
+  placeholder?: boolean;
+  onUpload?: (file: File) => Promise<void>;
   tabIndex?: number;
+  label?: string;
+  instructions?: string;
 }
 
-export default function ImageUpload({
+export default function UploadImage({
   src,
-  alt = 'Missing description',
-  width = '100%',
-  height = undefined,
-  aspectRatio = AspectRatio.AR19x9,
-  mode = Mode.LANDSCAPE,
-  borderRadius = 0,
+  alt,
+  width,
+  height,
+  aspectRatio,
+  orientation,
+  objectFit,
+  objectPosition,
+  backgroundColor,
+  placeholder,
   onUpload,
-  onFocus,
-  onBlur,
   tabIndex = 0,
+  label,
+  instructions,
 }: Props): ReactElement {
   const input = useRef<HTMLInputElement>(null);
-  const [imageSrc, setImageSrc] = useState<string | null | undefined>(src);
+  const [imageSrc, setImageSrc] = useState<string | undefined>(src);
   const [pending, setPending] = useState<boolean>(false);
   const [error, setError] = useState<Error | null>(null);
 
@@ -62,27 +66,22 @@ export default function ImageUpload({
       reader.readAsDataURL(image);
 
       if (onUpload) {
+        setPending(true);
         try {
-          setPending(true);
           await onUpload(event.target.files[0]);
-          setPending(false);
         } catch (e) {
           setError(e as Error);
+        } finally {
+          setPending(false);
         }
       }
     }
   }
 
-  const onKeyDown = useCallback((event: KeyboardEvent<HTMLDivElement>) => {
-    if (input.current && event.key === 'Enter') {
-      input.current.click();
-    }
-  }, []);
-
-  const [classNames, setClassNames] = useState<string[]>(['friday-ui-image-upload']);
+  const [classNames, setClassNames] = useState<string[]>(['friday-ui-uploads-image']);
 
   useEffect(() => {
-    const nextClassNames = ['friday-ui-image-upload'];
+    const nextClassNames = ['friday-ui-uploads-image'];
 
     if (pending || error) {
       nextClassNames.push('active');
@@ -96,33 +95,38 @@ export default function ImageUpload({
   }, [error, imageSrc, pending]);
 
   return (
-    <div
-      className={classNames.join(' ')}
-      role="button"
-      onFocus={onFocus}
-      onBlur={onBlur}
-      onClick={() => (input.current ? input.current.click() : null)}
-      tabIndex={tabIndex}
-      onKeyDown={onKeyDown}>
-      <input type="file" onChange={onChange} ref={input} />
+    <div className={classNames.join(' ')} tabIndex={tabIndex}>
+      {label ? <p className="label">{label}</p> : null}
 
-      <div className="image">
-        <Image
-          src={imageSrc}
-          alt={alt}
-          width={width}
-          height={height}
-          aspectRatio={aspectRatio}
-          mode={mode}
-          borderRadius={borderRadius}
-        />
-      </div>
+      <button
+        type="button"
+        onClick={() => (input.current ? input.current.click() : null)}
+        style={{ width, height }}>
+        <input type="file" onChange={onChange} ref={input} />
 
-      <div className="overlay">
-        {error ? <p className="error">{error.message}</p> : null}
-        {pending ? <Loader size={40} /> : null}
-        {!error && !pending ? <Icon name="camera" size={40} /> : null}
-      </div>
+        <div className="image" style={{ width, height }}>
+          <Img
+            src={imageSrc}
+            alt={alt}
+            width={width}
+            height={height}
+            aspectRatio={aspectRatio}
+            orientation={orientation}
+            objectFit={objectFit}
+            objectPosition={objectPosition}
+            backgroundColor={backgroundColor}
+            placeholder={placeholder}
+          />
+        </div>
+
+        <div className="overlay">
+          {error ? <p className="error">{error.message}</p> : null}
+          {pending ? <Loader size={40} /> : null}
+          {!error && !pending ? <Icon name="image" size={30} /> : null}
+        </div>
+      </button>
+
+      {instructions ? <p className="instructions">{instructions}</p> : null}
     </div>
   );
 }

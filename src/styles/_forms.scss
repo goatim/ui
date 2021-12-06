@@ -2,7 +2,7 @@
 @use 'fonts';
 
 @mixin label {
-  @include fonts.AvantGardeGothicStd(.9em, colors.$grey, bold);
+  @include fonts.AvantGardeGothicStd(.8em, colors.$grey, bold);
   text-transform: uppercase;
   letter-spacing: .12em;
   padding-bottom: 10px;
@@ -28,7 +28,7 @@
 }
 
 @mixin instructions {
-  @include fonts.AvantGardeGothicStd(1em, colors.$grey);
+  @include fonts.AvantGardeGothicStd(.9em, colors.$grey);
   margin-top: 10px;
 }
 

@@ -3,7 +3,6 @@ import {
   useEffect,
   useRef,
   useState,
-  MouseEvent,
   KeyboardEvent,
   ReactElement,
   ChangeEvent,
@@ -72,14 +71,14 @@ export type AutoComplete =
 
 export type Theme = 'default' | 'black';
 
-export type Adapter<Value = any> = (value: string) => Value;
-export type Resolver<Value = any> = (value?: Value) => string | number;
+export type Adapter<Value = string> = (value: string) => Value;
+export type Resolver<Value = string> = (value?: Value) => string | number;
 
-export interface SuggestionProps {
-  suggestion: ReactNode;
+export interface SuggestionProps<Suggestion = string> {
+  suggestion: Suggestion;
 }
 
-function Suggestion({ suggestion }: SuggestionProps): ReactElement {
+function DefaultSuggestion({ suggestion }: SuggestionProps<ReactNode>): ReactElement {
   return (
     <div className="friday-ui-input-suggestion">
       <span>{suggestion}</span>
@@ -87,9 +86,10 @@ function Suggestion({ suggestion }: SuggestionProps): ReactElement {
   );
 }
 
-export interface Props<Value = string, Suggestion = any> extends FieldComponentProps<Value> {
+export interface Props<Value = string, Suggestion = Value> extends FieldComponentProps<Value> {
   adapter?: Adapter<Value>;
   resolver?: Resolver<Value>;
+  format?: Resolver<Value>;
   type?: InputType | string;
   theme?: Theme;
   label?: string;
@@ -98,7 +98,7 @@ export interface Props<Value = string, Suggestion = any> extends FieldComponentP
   autoComplete?: AutoComplete | string;
   spellCheck?: boolean;
   suggestions?: Suggestion[];
-  SuggestionItem?: FC<Suggestion>;
+  SuggestionItem?: FC<SuggestionProps<Suggestion>>;
   suggestionsKeyExtractor?: (suggestion: Suggestion) => string;
   suggestionsHeader?: ReactNode;
   suggestionsFooter?: ReactNode;
@@ -109,7 +109,7 @@ export interface Props<Value = string, Suggestion = any> extends FieldComponentP
   autoCapitalize?: string;
 }
 
-export default function Input<Value = string>({
+export default function Input<Value = string, Suggestion = Value>({
   value,
   error,
   warning,
@@ -125,14 +125,15 @@ export default function Input<Value = string>({
   theme = 'default',
   adapter,
   resolver,
+  format,
   label,
   placeholder,
   instructions,
   autoComplete = 'on',
   spellCheck = true,
   suggestions = [],
-  SuggestionItem = Suggestion,
-  suggestionsKeyExtractor = (suggestion: string) => suggestion,
+  SuggestionItem,
+  suggestionsKeyExtractor,
   suggestionsHeader,
   suggestionsFooter,
   onSelectSuggestion,
@@ -140,7 +141,7 @@ export default function Input<Value = string>({
   rightComponent,
   autoCorrect = true,
   autoCapitalize = 'off',
-}: Props<Value>): ReactElement {
+}: Props<Value, Suggestion>): ReactElement {
   const inputRef = useRef<HTMLInputElement>(null);
   const [classNames, setClassNames] = useState<string[]>(['friday-ui-fields-input', theme]);
   const [suggestionsActive, setSuggestionsActive] = useState<boolean>(false);
@@ -196,57 +197,22 @@ export default function Input<Value = string>({
     theme,
   ]);
 
-  const [selectedSuggestion, setSelectedSuggestion] = useState<number | null>(null);
+  const [selectedSuggestion, setSelectedSuggestion] = useState<number | undefined>(undefined);
 
   const change = useCallback(
     (event: ChangeEvent<{ value: string }>) => {
       if (adapter) {
         onChange(adapter(event.target.value));
       } else {
-        onChange(event.target.value as never as Value);
+        onChange(event.target.value as unknown as Value);
       }
-      setSelectedSuggestion(null);
+      setSelectedSuggestion(undefined);
     },
     [adapter, onChange],
   );
 
-  const onKeyDown = useCallback(
-    (event: KeyboardEvent<HTMLInputElement>) => {
-      if (event.key === 'ArrowDown') {
-        if (suggestions && suggestions.length) {
-          event.preventDefault();
-          setSelectedSuggestion((sPrediction: number | null) =>
-            sPrediction !== null && sPrediction < suggestions.length - 1 ? sPrediction + 1 : 0,
-          );
-        }
-      } else if (event.key === 'ArrowUp') {
-        if (suggestions && suggestions.length) {
-          event.preventDefault();
-          setSelectedSuggestion((sPrediction: number | null) =>
-            sPrediction !== null && sPrediction > 0 ? sPrediction - 1 : suggestions.length - 1,
-          );
-        }
-      } else if (event.key === 'Enter') {
-        if (suggestions && suggestions.length) {
-          event.preventDefault();
-          if (selectedSuggestion !== null && suggestions.length > selectedSuggestion) {
-            if (onSelectSuggestion) {
-              onSelectSuggestion(suggestions[selectedSuggestion]);
-            } else {
-              change(suggestions[selectedSuggestion]);
-            }
-            if (inputRef.current) {
-              inputRef.current.blur();
-            }
-          }
-        }
-      }
-    },
-    [change, onSelectSuggestion, selectedSuggestion, suggestions],
-  );
-
   const selectSuggestion = useCallback(
-    (event: MouseEvent<HTMLButtonElement>, suggestion) => {
+    (suggestion) => {
       if (onSelectSuggestion) {
         onSelectSuggestion(suggestion);
       } else {
@@ -254,6 +220,37 @@ export default function Input<Value = string>({
       }
     },
     [onChange, onSelectSuggestion],
+  );
+
+  const onKeyDown = useCallback(
+    (event: KeyboardEvent<HTMLInputElement>) => {
+      if (event.key === 'ArrowDown') {
+        if (suggestions && suggestions.length) {
+          event.preventDefault();
+          setSelectedSuggestion((sPrediction: number | undefined) =>
+            sPrediction !== undefined && sPrediction < suggestions.length - 1 ? sPrediction + 1 : 0,
+          );
+        }
+      } else if (event.key === 'ArrowUp') {
+        if (suggestions && suggestions.length) {
+          event.preventDefault();
+          setSelectedSuggestion((sPrediction: number | undefined) =>
+            sPrediction !== undefined && sPrediction > 0 ? sPrediction - 1 : suggestions.length - 1,
+          );
+        }
+      } else if (event.key === 'Enter') {
+        if (suggestions && suggestions.length) {
+          event.preventDefault();
+          if (selectedSuggestion !== undefined && suggestions.length > selectedSuggestion) {
+            selectSuggestion(suggestions[selectedSuggestion]);
+            if (inputRef.current) {
+              inputRef.current.blur();
+            }
+          }
+        }
+      }
+    },
+    [selectSuggestion, selectedSuggestion, suggestions],
   );
 
   const focus = useCallback(() => {
@@ -282,7 +279,9 @@ export default function Input<Value = string>({
           ref={inputRef}
           name={name}
           value={
-            resolver
+            !isActive && format
+              ? format(value)
+              : resolver
               ? resolver(value)
               : typeof value === 'string' || typeof value === 'number'
               ? value
@@ -308,10 +307,14 @@ export default function Input<Value = string>({
             ? suggestions.map((suggestion, index: number) => (
                 <button
                   type="button"
-                  key={suggestionsKeyExtractor(suggestion)}
+                  key={suggestionsKeyExtractor ? suggestionsKeyExtractor(suggestion) : index}
                   className={`suggestion${selectedSuggestion === index ? ' selected' : ''}`}
-                  onClick={(event) => selectSuggestion(event, suggestion)}>
-                  <SuggestionItem suggestion={suggestion} />
+                  onClick={() => selectSuggestion(suggestion)}>
+                  {SuggestionItem ? (
+                    <SuggestionItem suggestion={suggestion} />
+                  ) : (
+                    <DefaultSuggestion suggestion={suggestion} />
+                  )}
                 </button>
               ))
             : null}

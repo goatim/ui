@@ -3,22 +3,24 @@ import { FieldComponentProps } from '@cezembre/forms';
 import InputField, { Adapter, Resolver } from './input';
 
 export interface PhoneValue {
-  region_code: string;
-  number: string;
+  region_code?: string;
+  number?: string;
 }
 
-const adapter: Adapter = (value: string): PhoneValue => {
+export type Value = PhoneValue | null | undefined;
+
+const adapter: Adapter<Value> = (value: string | number): PhoneValue => {
   return {
     region_code: 'FR',
-    number: value,
+    number: typeof value === 'string' ? value : value.toString(),
   };
 };
 
-const resolver: Resolver = (phone: PhoneValue) => {
-  return phone ? phone.number : '';
+const resolver: Resolver<Value> = (value: Value) => {
+  return value?.number || '';
 };
 
-export interface Props extends FieldComponentProps<PhoneValue> {
+export interface Props extends FieldComponentProps<Value> {
   label?: string;
   placeholder?: string;
   instructions?: string;
@@ -39,9 +41,9 @@ export default function Phone({
   onChange,
   onBlur,
   form,
-  label = undefined,
-  placeholder = undefined,
-  instructions = undefined,
+  label,
+  placeholder,
+  instructions,
 }: Props): ReactElement {
   return (
     <div className="friday-ui-phone">

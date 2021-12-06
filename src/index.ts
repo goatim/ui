@@ -1,5 +1,4 @@
 import './index.scss';
-import Image, { PlaceholderCategory } from './display/image';
 import Loader from './feedbacks/loader';
 import { ModalContext, useModal, Modal } from './feedbacks/modal';
 import Overlay from './feedbacks/overlay';
@@ -21,22 +20,6 @@ import Select from './fields/select';
 import Switch from './fields/switch';
 import Textarea from './fields/textarea';
 import TimePicker from './fields/timePicker';
-import { GeoLocation, serializeGeoLocation, parseGeoLocation } from './utils/geoLocation';
-import {
-  useGoogleMapsApi,
-  useAutocompleteService,
-  PredictionType,
-  usePlacePredictions,
-  usePlaceDetails,
-  usePlaceDetailsGetter,
-} from './utils/googleMaps';
-import Place, { newPlace } from './utils/place';
-
-/**
- * Display
- */
-
-export { Image, PlaceholderCategory };
 
 /**
  * Feedback
@@ -78,21 +61,3 @@ export {
 };
 
 export type { Adapter, Resolver };
-
-/**
- * Utils
- */
-
-export {
-  serializeGeoLocation,
-  parseGeoLocation,
-  useGoogleMapsApi,
-  useAutocompleteService,
-  usePlacePredictions,
-  usePlaceDetails,
-  usePlaceDetailsGetter,
-  newPlace,
-  PredictionType,
-};
-
-export type { GeoLocation, Place };

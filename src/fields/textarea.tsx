@@ -1,13 +1,11 @@
 import { ReactElement, useEffect, useState } from 'react';
 import { FieldComponentProps } from '@cezembre/forms';
 import Icon from '../general/icon';
-import colors from '../styles/_colors.scss';
-import SwitchField from './switch';
 
-export interface Props extends FieldComponentProps {
-  label?: string | null;
-  placeholder?: string | null;
-  instructions?: string | null;
+export interface Props extends FieldComponentProps<string | number | null> {
+  label?: string;
+  placeholder?: string;
+  instructions?: string;
   spellCheck?: boolean;
 }
 
@@ -22,9 +20,9 @@ export default function TextareaField({
   name,
   onChange,
   onBlur,
-  label = null,
-  placeholder = null,
-  instructions = null,
+  label,
+  placeholder,
+  instructions,
   spellCheck = true,
 }: Props): ReactElement {
   const [classNames, setClassNames] = useState<string[]>(['friday-ui-textarea']);
@@ -55,7 +53,7 @@ export default function TextareaField({
         <textarea
           name={name}
           value={value || ''}
-          placeholder={placeholder || ''}
+          placeholder={placeholder}
           onFocus={onFocus}
           onChange={onChange}
           onBlur={onBlur}

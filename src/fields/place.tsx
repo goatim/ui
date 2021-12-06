@@ -1,24 +1,27 @@
 import { ReactElement, ReactNode, useCallback } from 'react';
 import { FieldComponentProps } from '@cezembre/forms';
-import Input, { Adapter, Resolver } from './input';
-import Place, { newPlace } from '../utils/place';
+import {
+  Place,
+  PlacePredictionType,
+  usePlaceDetailsGetter,
+  usePlacePredictions,
+} from '@cezembre/fronts';
+import Input, { Adapter, Resolver, Theme } from './input';
 import poweredByGoogle from '../assets/poweredByGoogle.png';
-import { PredictionType, usePlaceDetailsGetter, usePlacePredictions } from '../utils/googleMaps';
 
 type AutocompletePrediction = google.maps.places.AutocompletePrediction;
 type GeocoderAddressComponent = google.maps.GeocoderAddressComponent;
 
-const adapter: Adapter<Place | null | undefined> = (value: string): Place | null | undefined => {
-  if (!value.length) {
+type Value = Place | null | undefined;
+
+const adapter: Adapter<Value> = (value: string | number): Value => {
+  if (typeof value !== 'string' || !value.length) {
     return null;
   }
-  return {
-    ...newPlace(),
-    value,
-  };
+  return { value };
 };
 
-const resolver: Resolver<Place | null | undefined> = (value: Place | null | undefined): string => {
+const resolver: Resolver<Value> = (value: Value): string => {
   if (value && typeof value === 'object' && 'value' in value) {
     return value.value || '';
   }
@@ -41,13 +44,14 @@ function Prediction({ suggestion }: PredictionProps): ReactElement {
 function PredictionsFooter(): ReactElement {
   return (
     <div className="friday-ui-place-predictions-footer">
-      <img src={poweredByGoogle} alt="Powered by Google" />
+      <img src={poweredByGoogle as string} alt="Powered by Google" />
     </div>
   );
 }
 
-export interface Props extends FieldComponentProps<Place | null | undefined> {
-  predictionTypes?: PredictionType[];
+export interface Props extends FieldComponentProps<Value> {
+  predictionTypes?: PlacePredictionType[];
+  theme?: Theme;
   label?: string;
   placeholder?: string;
   instructions?: string;
@@ -70,11 +74,12 @@ export default function PlaceField({
   onChange,
   onBlur,
   form,
-  predictionTypes = [PredictionType.GEOCODE],
-  label = undefined,
-  placeholder = undefined,
-  instructions = undefined,
-  onSelectSuggestion = undefined,
+  predictionTypes = ['geocode'],
+  styleType = 'default',
+  label,
+  placeholder,
+  instructions,
+  onSelectSuggestion,
   leftIcon = null,
 }: Props): ReactElement {
   const predictions: AutocompletePrediction[] = usePlacePredictions(
@@ -89,7 +94,6 @@ export default function PlaceField({
         const placeDetails = await placeDetailsGetter(prediction.place_id);
 
         const nextValue: Place = {
-          ...newPlace(),
           value: `${prediction.structured_formatting.main_text}, ${prediction.structured_formatting.secondary_text}`,
           google_id: prediction.place_id,
           types: prediction.types,
@@ -127,7 +131,7 @@ export default function PlaceField({
 
   return (
     <div className="friday-ui-place">
-      <Input<Place | null | undefined>
+      <Input<Value, AutocompletePrediction>
         name={name}
         value={value}
         onFocus={onFocus}
@@ -145,6 +149,7 @@ export default function PlaceField({
         suggestionsFooter={<PredictionsFooter />}
         onSelectSuggestion={selectPrediction}
         leftIcon={leftIcon}
+        styleType={styleType}
         instructions={instructions}
         error={error}
         warning={warning}
