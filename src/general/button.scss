@@ -43,7 +43,7 @@
       }
 
       > .label {
-        @include fonts.AvantGardeGothicStd(1em, colors.$blue, 600);
+        @include fonts.AvantGardeGothicStd(.8em, colors.$blue, 600);
         align-self: center;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -88,11 +88,11 @@
 
   &.text {
     &.small {
-      font-size: .9em;
+      font-size: .7em;
     }
 
     &.large {
-      font-size: 1.1em;
+      font-size: .9em;
 
       > .container svg {
         height: 20px;

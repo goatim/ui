@@ -31,7 +31,7 @@
   }
 
   > span {
-    @include fonts.AvantGardeGothicStd(1em, colors.$grey);
+    @include fonts.AvantGardeGothicStd(.8em, colors.$grey);
   }
 
   &[aria-pressed=true] {
@@ -46,5 +46,4 @@
       color: colors.$blue;
     }
   }
-
 }

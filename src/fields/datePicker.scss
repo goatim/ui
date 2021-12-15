@@ -25,7 +25,6 @@
       opacity: 0;
       visibility: hidden;
       transition: opacity linear 100ms;
-
     }
 
     &.expanded {
@@ -51,7 +50,6 @@
       > span {
         @include fonts.AvantGardeGothicStd(1em);
       }
-
     }
 
     > .days-of-week {
@@ -64,7 +62,6 @@
         @include fonts.AvantGardeGothicStd(.9em);
         text-transform: uppercase;
       }
-
     }
 
     > .days {
@@ -97,22 +94,18 @@
           &:hover {
             background: none;
           }
-
         }
 
         &.selected {
           background: colors.$blue;
           color: colors.$grey;
         }
-
       }
 
       > .placeholder {
         width: 35px;
         height: 35px;
       }
-
     }
   }
-
 }

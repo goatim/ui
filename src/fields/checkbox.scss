@@ -3,14 +3,13 @@
 @use '../styles/fonts';
 
 .friday-ui-checkbox {
-
   > .container {
     display: flex;
     align-items: center;
     justify-content: flex-start;
 
-    >label {
-      @include fonts.AvantGardeGothicStd(.9em, colors.$blue, bold);
+    > label {
+      @include fonts.AvantGardeGothicStd(.8em, colors.$blue, bold);
       letter-spacing: .05em;
       text-transform: uppercase;
       display: inline-block;
@@ -20,8 +19,6 @@
         font-size: .8em;
         margin-left: 15px;
       }
-
     }
   }
-
 }

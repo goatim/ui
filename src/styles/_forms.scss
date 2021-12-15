@@ -28,7 +28,7 @@
 }
 
 @mixin instructions {
-  @include fonts.AvantGardeGothicStd(.9em, colors.$grey);
+  @include fonts.AvantGardeGothicStd(.8em, colors.$grey);
   margin-top: 10px;
 }
 
@@ -41,7 +41,7 @@
 }
 
 @mixin error {
-  @include fonts.AvantGardeGothicStd(1em, colors.$red);
+  @include fonts.AvantGardeGothicStd(.8em, colors.$red);
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -61,7 +61,7 @@
 }
 
 @mixin warning {
-  @include fonts.AvantGardeGothicStd(1em, colors.$orange);
+  @include fonts.AvantGardeGothicStd(.8em, colors.$orange);
   display: flex;
   align-items: center;
   justify-content: flex-start;

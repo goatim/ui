@@ -40,7 +40,7 @@
         border-radius: 4px;
 
         > span {
-          @include fonts.AvantGardeGothicStd(1em, colors.$grey);
+          @include fonts.AvantGardeGothicStd(.8em, colors.$grey);
           transition: background linear 100ms;
           text-align: center;
           display: inline-block;

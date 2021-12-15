@@ -1,23 +1,14 @@
 @use "~@cezembre/fronts/dist/screens";
 @use "../styles/colors";
 @use "../styles/fonts";
+@use "../styles/forms";
 
 .friday-ui-textarea {
   width: 100%;
   transition: width linear 100ms;
 
   > label {
-    @include fonts.AvantGardeGothicStd(.9em, colors.$blue, bold);
-    letter-spacing: .05em;
-    text-transform: uppercase;
-    padding-bottom: 10px;
-    display: inline-block;
-
-    @include screens.tablet() {
-      padding-bottom: 8px;
-      font-size: .8em;
-    }
-
+    @include forms.label();
   }
 
   textarea, textarea:active, textarea:focus {
@@ -51,8 +42,8 @@
       animation-fill-mode: forwards;
     }
 
-    >textarea {
-      @include fonts.AvantGardeGothicStd(1em, colors.$blue, normal);
+    > textarea {
+      @include fonts.AvantGardeGothicStd(.8em, colors.$blue, normal);
       flex: 1;
       padding: 10px 15px;
 
@@ -60,9 +51,7 @@
         color: rgba(colors.$blue, .3);
         font-style: italic;
       }
-
     }
-
   }
 
   &.visited {
@@ -83,42 +72,14 @@
   }
 
   > .instructions {
-    @include fonts.AvantGardeGothicStd(1em, colors.$grey);
-    margin-top: 10px;
-
-    @include screens.tablet() {
-      font-size: .9em;
-    }
+    @include forms.instructions();
   }
 
-  > .error, > .warning {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    margin-top: 15px;
-
-    @include screens.tablet() {
-      margin-top: 10px;
-    }
-
-    > span {
-      @include fonts.AvantGardeGothicStd(.9em, colors.$red);
-      margin-left: 10px;
-
-      @include screens.tablet() {
-        font-size: .9em;
-      }
-
-    }
-
+  > .error {
+    @include forms.error();
   }
 
   > .warning {
-
-    > span {
-      color: colors.$blue;
-    }
-
+    @include forms.warning();
   }
-
 }

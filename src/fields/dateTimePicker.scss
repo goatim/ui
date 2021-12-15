@@ -22,7 +22,6 @@
       &:first-letter {
         text-transform: uppercase;
       }
-
     }
 
     > .edit {
@@ -30,13 +29,10 @@
     }
 
     &.placeholder {
-
       > span {
         color: colors.$grey;
       }
-
     }
-
   }
 
   > .picker {
@@ -59,15 +55,11 @@
       opacity: 0;
       visibility: hidden;
       transition: opacity linear 100ms;
-
     }
 
     &.expanded {
       visibility: visible;
       opacity: 1;
     }
-
   }
-
-
 }

@@ -34,7 +34,7 @@
       box-sizing: border-box;
       border: none;
       outline: none;
-      @include fonts.AvantGardeGothicStd(2em, black, bold);
+      @include fonts.AvantGardeGothicStd(1.8em, black, bold);
       padding: 5px;
       background: none;
       cursor: pointer;
@@ -45,7 +45,7 @@
     }
 
     > input {
-      @include fonts.AvantGardeGothicStd(1em, black, bold);
+      @include fonts.AvantGardeGothicStd(.8em, black, bold);
       flex: 1;
       padding: 1.12em 1.1em .8em; // Magic value, compensate font bottom padding
       text-overflow: ellipsis;
@@ -105,7 +105,7 @@
     margin-top: 15px;
 
     > span {
-      @include fonts.AvantGardeGothicStd(.9em, colors.$red);
+      @include fonts.AvantGardeGothicStd(.8em, colors.$red);
       margin-left: 10px;
     }
   }
