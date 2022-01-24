@@ -4,8 +4,8 @@
 .friday-ui-check {
   width: 30px;
   height: 30px;
-  background: rgba(colors.$grey, .1);
-  border: solid rgba(colors.$grey, .4) 1px;
+  background: rgba(colors.$dark-blue, 0.1);
+  border: solid rgba(colors.$dark-blue, 0.4) 1px;
   cursor: pointer;
   outline: none;
   display: flex;
@@ -22,7 +22,7 @@
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 5px rgba(colors.$blue, .3);
+    box-shadow: 0 0 5px rgba(colors.$blue, 0.3);
   }
 
   > svg {
@@ -31,10 +31,10 @@
   }
 
   > span {
-    @include fonts.AvantGardeGothicStd(.8em, colors.$grey);
+    @include fonts.AvantGardeGothicStd(1em, colors.$dark-blue);
   }
 
-  &[aria-pressed=true] {
+  &[aria-pressed='true'] {
     border: solid colors.$blue 1px;
     background: white;
 

@@ -4,8 +4,8 @@ import Icon from '../general/icon';
 import Check from '../general/check';
 
 export interface Props extends FieldComponentProps<boolean> {
-  label?: string | null;
-  instructions?: string | null;
+  label?: string;
+  instructions?: string;
 }
 
 export default function Checkbox({
@@ -17,8 +17,8 @@ export default function Checkbox({
   name,
   onChange,
   onBlur,
-  label = null,
-  instructions = null,
+  label,
+  instructions,
 }: Props): ReactElement {
   const [classNames, setClassNames] = useState<string[]>(['friday-ui-checkbox']);
 

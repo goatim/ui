@@ -1,6 +1,7 @@
 @use '~@cezembre/fronts/dist/screens';
 @use '../styles/colors';
 @use '../styles/fonts';
+@use '../styles/forms';
 
 .friday-ui-checkbox {
   > .container {
@@ -9,16 +10,9 @@
     justify-content: flex-start;
 
     > label {
-      @include fonts.AvantGardeGothicStd(.8em, colors.$blue, bold);
-      letter-spacing: .05em;
-      text-transform: uppercase;
-      display: inline-block;
+      @include forms.label();
+      padding-bottom: 0;
       margin-left: 20px;
-
-      @include screens.tablet() {
-        font-size: .8em;
-        margin-left: 15px;
-      }
     }
   }
 }

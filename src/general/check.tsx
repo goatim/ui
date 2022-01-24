@@ -1,14 +1,8 @@
-import {
-  ReactNode,
-  FocusEvent,
-  KeyboardEvent,
-  ReactElement,
-  useCallback,
-} from 'react';
+import { ReactNode, FocusEvent, KeyboardEvent, ReactElement, useCallback } from 'react';
 
 export interface Props {
   active: boolean;
-  onChange?: ((value: boolean) => void) | null;
+  onChange?: (value: boolean) => void;
   onFocus?: (event: FocusEvent<HTMLDivElement>) => void;
   onBlur?: (event: FocusEvent<HTMLDivElement>) => void;
   tabIndex?: number;
@@ -21,7 +15,7 @@ export default function Check({
   onFocus,
   onBlur,
   tabIndex = 0,
-  children = null,
+  children,
 }: Props): ReactElement {
   const onClick = useCallback(() => {
     if (onChange) {
@@ -35,20 +29,19 @@ export default function Check({
         onChange(!active);
       }
     },
-    [active, onChange]
+    [active, onChange],
   );
 
   return (
     <div
-      className={`ui-check${children ? ' tag' : ''}`}
+      className={`friday-ui-check${children ? ' tag' : ''}`}
       role="button"
       aria-pressed={active}
       onKeyDown={onKeyDown}
       onClick={onClick}
       onFocus={onFocus}
       onBlur={onBlur}
-      tabIndex={tabIndex}
-    >
+      tabIndex={tabIndex}>
       {children ? (
         <span>{children}</span>
       ) : (
@@ -58,11 +51,10 @@ export default function Check({
           strokeDasharray={100}
           strokeDashoffset={0}
           strokeWidth={100}
-          stroke="red"
+          stroke="#0f175a"
           strokeLinecap="round"
           strokeLinejoin="round"
-          fill="transparent"
-        >
+          fill="transparent">
           <path pathLength={100} d="M0,250L250,500L700,10" />
         </svg>
       )}
