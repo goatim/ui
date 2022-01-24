@@ -3,7 +3,7 @@
 @use '../styles/fonts';
 @use '../styles/forms';
 
-.fleuraison-ui-credit-card {
+.fleuraison-ui-credit-card-input {
   width: 100%;
 
   > label {
@@ -24,7 +24,7 @@
       left: 0;
       width: 0;
       height: 3px;
-      background: colors.$blue;
+      background: colors.$dark-blue;
       transition: all 400ms cubic-bezier(0.215, 0.61, 0.355, 1);
     }
   }

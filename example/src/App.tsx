@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { Button, Input, Icon, Counter } from '@fridaygame/ui';
+import { Button, Input, Icon, Counter, CreditCardInput } from '@fridaygame/ui';
 import { Form, Field } from '@cezembre/forms';
 import './App.scss';
 
@@ -153,6 +153,8 @@ export default function App(): ReactElement {
           }
           step={500}
         />
+
+        <Field name="payment_method" label="Credit card" component={CreditCardInput} />
       </Form>
     </div>
   );

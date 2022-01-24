@@ -1,29 +1,42 @@
 {
   "compilerOptions": {
-    "target": "esnext",
+    "strict": true,
+    "target": "ES2019",
     "module": "esnext",
     "moduleResolution": "node",
-    "jsx": "react",
-    "declaration": true,
+    "outDir": "build",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
     "allowJs": true,
-    "removeComments": false,
-    "strict": true,
+    "isolatedModules": true,
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "alwaysStrict": true,
+    "sourceMap": true,
     "esModuleInterop": true,
-    "outDir": "./dist",
+    "jsx": "react-jsx",
     "lib": [
       "dom",
       "dom.iterable",
       "esnext"
     ],
-    "skipLibCheck": true,
-    "allowSyntheticDefaultImports": true,
-    "noFallthroughCasesInSwitch": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": true
+    "types": [
+      "react-scripts",
+      "googlemaps"
+    ],
+    "noEmit": true,
+    "noFallthroughCasesInSwitch": true
   },
+  "exclude": [
+    "node_modules"
+  ],
+  "lib": [
+    "es2016",
+    "dom"
+  ],
   "include": [
-    "./src"
+    "src/**/*"
   ]
 }
