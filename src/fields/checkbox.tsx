@@ -1,7 +1,6 @@
 import { ReactElement, useEffect, useState } from 'react';
 import { FieldComponentProps } from '@cezembre/forms';
 import Icon from '../general/icon';
-import colors from '../styles/_colors.scss';
 import Check from '../general/check';
 
 export interface Props extends FieldComponentProps<boolean> {
@@ -9,7 +8,7 @@ export interface Props extends FieldComponentProps<boolean> {
   instructions?: string | null;
 }
 
-export default function CheckboxField({
+export default function Checkbox({
   value,
   error,
   warning,

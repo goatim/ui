@@ -53,10 +53,10 @@ export default function Select<Value = unknown>({
   name,
   onChange,
   onBlur,
-  label = undefined,
+  label,
   options = [],
-  placeholder = undefined,
-  instructions = undefined,
+  placeholder,
+  instructions,
 }: Props<Value>): ReactElement {
   const [classNames, setClassNames] = useState<(string | undefined)[]>([
     'friday-ui-fields-select',

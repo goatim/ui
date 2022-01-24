@@ -1,7 +1,6 @@
 import { ReactElement, useCallback } from 'react';
 import { DateTime } from 'luxon';
 import { FieldComponentProps } from '@cezembre/forms';
-import SwitchField from './switch';
 
 export type Props = FieldComponentProps<DateTime | null>;
 

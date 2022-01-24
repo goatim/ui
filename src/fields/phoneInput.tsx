@@ -26,7 +26,7 @@ export interface Props extends FieldComponentProps<Value> {
   instructions?: string;
 }
 
-export default function Phone({
+export default function PhoneInput({
   value,
   initialValue,
   error,

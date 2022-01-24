@@ -17,7 +17,7 @@ export interface Props extends FieldComponentProps<DateTime | null> {
 const cells = new Array(42).fill(null);
 const now = DateTime.now();
 
-export default function DatePickerField({
+export default function DatePicker({
   value,
   onChange,
   expanded = false,

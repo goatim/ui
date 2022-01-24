@@ -9,7 +9,7 @@ export interface Props extends FieldComponentProps<string | number | null> {
   spellCheck?: boolean;
 }
 
-export default function TextareaField({
+export default function Textarea({
   value,
   error,
   warning,

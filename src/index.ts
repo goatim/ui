@@ -10,11 +10,11 @@ import Icon from './general/icon';
 import ImageUpload from './uploads/image';
 import CheckBox from './fields/checkbox';
 import Counter from './fields/counter';
-import CreditCard from './fields/creditCard';
+import CreditCardInput from './fields/creditCardInput';
 import DatePicker from './fields/datePicker';
 import DateTimePicker from './fields/dateTimePicker';
 import Input, { Adapter, Resolver } from './fields/input';
-import Phone from './fields/phone';
+import PhoneInput from './fields/phoneInput';
 import Radio from './fields/radio';
 import Select from './fields/select';
 import Switch from './fields/switch';
@@ -48,11 +48,11 @@ export { ImageUpload };
 export {
   CheckBox,
   Counter,
-  CreditCard,
+  CreditCardInput,
   DatePicker,
   DateTimePicker,
   Input,
-  Phone,
+  PhoneInput,
   Radio,
   Select,
   Switch,

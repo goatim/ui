@@ -2,15 +2,13 @@ import { ReactElement, useEffect, useState } from 'react';
 import { CardElement } from '@stripe/react-stripe-js';
 import { FieldComponentProps } from '@cezembre/forms';
 import Icon from '../general/icon';
-import colors from '../styles/_colors.scss';
-import CheckboxField from './checkbox';
 
 export interface Props extends FieldComponentProps {
   label?: string | null;
   instructions?: string | null;
 }
 
-export default function CreditCardField({
+export default function CreditCardInput({
   visited,
   error,
   submitted,
@@ -23,10 +21,10 @@ export default function CreditCardField({
   label = null,
   instructions = null,
 }: Props): ReactElement {
-  const [classNames, setClassNames] = useState<string[]>(['friday-ui-credit-card']);
+  const [classNames, setClassNames] = useState<string[]>(['fleuraison-ui-credit-card-input']);
 
   useEffect(() => {
-    const nextClassNames = ['friday-ui-credit-card'];
+    const nextClassNames = ['fleuraison-ui-credit-card-input'];
 
     if (visited) {
       nextClassNames.push('visited');

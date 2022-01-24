@@ -7,7 +7,7 @@ export interface Props extends FieldComponentProps {
   instructions?: string | null;
 }
 
-export default function SwitchField({
+export default function Switch({
   value,
   error,
   warning,

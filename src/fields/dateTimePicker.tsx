@@ -14,7 +14,7 @@ export interface Props extends FieldComponentProps<DateTime | null> {
   expanded?: boolean;
 }
 
-export default function DateTimePickerField({
+export default function DateTimePicker({
   value,
   onChange,
   onBlur,

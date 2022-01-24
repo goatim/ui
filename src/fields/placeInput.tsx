@@ -34,7 +34,7 @@ export interface PredictionProps {
 
 function Prediction({ suggestion }: PredictionProps): ReactElement {
   return (
-    <p className="friday-ui-place-prediction">
+    <p className="friday-ui-place-input-prediction">
       {suggestion.structured_formatting.main_text}
       <span className="secondary-text">, {suggestion.structured_formatting.secondary_text}</span>
     </p>
@@ -43,7 +43,7 @@ function Prediction({ suggestion }: PredictionProps): ReactElement {
 
 function PredictionsFooter(): ReactElement {
   return (
-    <div className="friday-ui-place-predictions-footer">
+    <div className="friday-ui-place-input-predictions-footer">
       <img src={poweredByGoogle as string} alt="Powered by Google" />
     </div>
   );
@@ -59,7 +59,7 @@ export interface Props extends FieldComponentProps<Value> {
   leftIcon?: ReactNode;
 }
 
-export default function PlaceField({
+export default function PlaceInput({
   value,
   initialValue,
   error,
@@ -130,7 +130,7 @@ export default function PlaceField({
   );
 
   return (
-    <div className="friday-ui-place">
+    <div className="friday-ui-place-input">
       <Input<Value, AutocompletePrediction>
         name={name}
         value={value}

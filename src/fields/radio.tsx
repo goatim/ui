@@ -3,7 +3,7 @@ import _ from 'lodash';
 import { FieldComponentProps } from '@cezembre/forms';
 import Icon from '../general/icon';
 
-export interface Option<Value = any> {
+export interface Option<Value = unknown> {
   value: Value;
   item?: ReactElement | string;
 }
@@ -31,19 +31,21 @@ function OptionComponent({ option }: OptionProps): ReactElement | null {
 export interface Props extends FieldComponentProps {
   label?: string;
   options?: Option[];
+  canReset?: boolean;
   instructions?: ReactElement | string;
 }
 
-export default function Select({
+export default function Radio({
   value,
   error,
   warning,
   isActive,
   name,
   onChange,
-  label = undefined,
+  label,
   options = [],
-  instructions = undefined,
+  canReset,
+  instructions,
 }: Props): ReactElement {
   const [classNames, setClassNames] = useState<(string | undefined)[]>([
     'friday-ui-fields-radio',
@@ -95,7 +97,11 @@ export default function Select({
       <div className="options">
         {options?.map((option, index) => (
           <button
-            key={option.value}
+            key={
+              typeof option.value === 'string' || typeof option.value === 'number'
+                ? option.value
+                : index
+            }
             type="button"
             className={`option${radioedOptionIndex === index ? ' selected' : ''}`}
             onClick={() => radioOption(index, option.value)}>
@@ -104,6 +110,11 @@ export default function Select({
             </div>
           </button>
         ))}
+        {canReset ? (
+          <button type="button" className="reset" onClick={() => radioOption(undefined, undefined)}>
+            <Icon name="x" />
+          </button>
+        ) : null}
       </div>
 
       {instructions ? <p className="instructions">{instructions}</p> : null}

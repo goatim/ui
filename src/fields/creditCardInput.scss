@@ -1,0 +1,52 @@
+@use '~@cezembre/fronts/dist/screens';
+@use '../styles/colors';
+@use '../styles/fonts';
+@use '../styles/forms';
+
+.fleuraison-ui-credit-card {
+  width: 100%;
+
+  > label {
+    @include forms.label();
+  }
+
+  > .card {
+    width: 100%;
+    padding: 15px;
+    background: white;
+    position: relative;
+
+    &:after {
+      content: '';
+      display: block;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 3px;
+      background: colors.$blue;
+      transition: all 400ms cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+  }
+
+  &:hover,
+  &:active {
+    > .card {
+      &:after {
+        width: 100%;
+      }
+    }
+  }
+
+  > .instructions {
+    @include forms.instructions();
+  }
+
+  > .error {
+    @include forms.error();
+  }
+
+  > .warning {
+    @include forms.warning();
+  }
+}
