@@ -14,28 +14,18 @@
     width: 100%;
     padding: 15px;
     background: white;
-    position: relative;
-
-    &:after {
-      content: '';
-      display: block;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 3px;
-      background: colors.$dark-blue;
-      transition: all 400ms cubic-bezier(0.215, 0.61, 0.355, 1);
-    }
+    border: solid colors.$border-grey 1px;
+    border-radius: 5px;
+    transition: border linear 100ms, box-shadow linear 100ms;
   }
 
-  &:hover,
-  &:active {
-    > .card {
-      &:after {
-        width: 100%;
-      }
-    }
+  &:hover > .card {
+    border: solid rgba(colors.$grey, .6) 1px;
+    box-shadow: 0 0 5px rgba(colors.$grey, .2);
+  }
+
+  &.active > .card {
+    border: solid colors.$grey 1px;
   }
 
   > .instructions {

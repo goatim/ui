@@ -22,7 +22,7 @@
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 5px rgba(colors.$blue, 0.3);
+    box-shadow: 0 0 5px rgba(colors.$dark-blue, 0.3);
   }
 
   > svg {
@@ -35,7 +35,7 @@
   }
 
   &[aria-pressed='true'] {
-    border: solid colors.$blue 1px;
+    border: solid colors.$dark-blue 1px;
     background: white;
 
     > svg {
@@ -43,7 +43,7 @@
     }
 
     > span {
-      color: colors.$blue;
+      color: colors.$dark-blue;
     }
   }
 }

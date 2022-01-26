@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { Button, Input, Icon, Counter, CreditCardInput } from '@fridaygame/ui';
+import { Button, Input, Icon, Counter, CreditCardInput, Radio } from '@fridaygame/ui';
 import { Form, Field } from '@cezembre/forms';
 import './App.scss';
 
@@ -154,7 +154,33 @@ export default function App(): ReactElement {
           step={500}
         />
 
+        <br />
+        <br />
+
         <Field name="payment_method" label="Credit card" component={CreditCardInput} />
+
+        <br />
+        <br />
+
+        <Field
+          name="booster"
+          label="Booster"
+          component={Radio}
+          options={[
+            {
+              value: 'one',
+              element: <p>Hello there</p>,
+            },
+            {
+              value: 'two',
+              element: 'x5',
+            },
+            {
+              value: 'three',
+              element: 'x8',
+            },
+          ]}
+        />
       </Form>
     </div>
   );

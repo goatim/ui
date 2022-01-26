@@ -16,10 +16,3 @@ $AvantGardeGothicStd: ITC Avant Garde Gothic Std;
   @include font($AvantGardeGothicStd, $size, $color, $weight);
   padding-top: .3em; // Magic value, compensate font bottom padding
 }
-
-$AvantGardeGothicStdCondensed: ITC Avant Garde Gothic Std Condensed;
-
-@mixin AvantGardeGothicStdCondensed($size: 1em, $color: colors.$dark-blue, $weight: normal) {
-  @include font($AvantGardeGothicStdCondensed, $size, $color, $weight);
-  padding-top: .3em; // Magic value, compensate font bottom padding
-}

@@ -21,7 +21,7 @@
     align-items: stretch;
     justify-content: space-between;
     position: relative;
-    transition: background linear 100ms;
+    transition: border linear 100ms;
     background: white;
     border: solid colors.$border-grey 1px;
     border-radius: 5px;
@@ -36,12 +36,12 @@
     }
 
     > input {
-      @include fonts.AvantGardeGothicStd(.8em, colors.$violet, 600);
+      @include fonts.AvantGardeGothicStd(1em, colors.$dark-blue, 300);
       flex: 1;
-      padding: 0.95em 0.9em 0.6em; // Magic value, compensate font bottom padding
+      padding: 1em 1em 0.75em; // Magic value, compensate font bottom padding
 
       &::placeholder {
-        color: rgba(colors.$violet, .5);
+        color: rgba(colors.$grey, .5);
       }
     }
 
@@ -79,7 +79,7 @@
         flex-shrink: 0;
         border-top: solid colors.$grey 1px;
         background: white;
-        transition: background linear 100ms;
+        transition: border linear 100ms, box-shadow linear 100ms;
 
         &:first-child {
           border: none;
@@ -92,14 +92,19 @@
     }
   }
 
+  &:hover > .container {
+    border: solid rgba(colors.$grey, .6) 1px;
+    box-shadow: 0 0 5px rgba(colors.$grey, .2);
+  }
+
   &.active > .container {
-    background: white;
+    border: solid colors.$grey 1px;
   }
 
   &.black {
     > .container {
-      background: black;
-      border-color: black;
+      background: colors.$dark-blue;
+      border-color: colors.$dark-blue;
 
       > input {
         color: white;

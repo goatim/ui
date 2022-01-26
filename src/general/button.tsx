@@ -11,16 +11,30 @@ import { NavLink } from 'react-router-dom';
 import Loader from '../feedbacks/loader';
 import Icon, { IconName } from './icon';
 
+export type ButtonType = 'button' | 'submit' | 'reset';
+
+export type ButtonSize = 'small' | 'medium' | 'large';
+
+export type ButtonStyle = 'text' | 'filled' | 'outlined';
+
+export type ButtonTheme =
+  | 'blue'
+  | 'medium-blue'
+  | 'dark-blue'
+  | 'violet-pink'
+  | 'orange-yellow'
+  | 'white';
+
 export interface Props {
   children?: ReactNode;
   href?: string;
   to?: string;
   onClick?: (event: MouseEvent<HTMLButtonElement>) => Promise<void> | void;
   onFocus?: (event: FocusEvent<HTMLElement>) => void;
-  type?: 'button' | 'submit' | 'reset';
-  size?: 'small' | 'medium' | 'large';
-  buttonStyle?: 'text' | 'filled' | 'outlined';
-  theme?: 'blue' | 'medium-blue' | 'dark-blue' | 'violet-pink' | 'orange-yellow' | 'white';
+  type?: ButtonType;
+  size?: ButtonSize;
+  buttonStyle?: ButtonStyle;
+  theme?: ButtonTheme;
   disabled?: boolean;
   pending?: boolean;
   active?: boolean;
@@ -32,10 +46,10 @@ export interface Props {
 
 function Wrapper({
   children,
-  href = undefined,
-  to = undefined,
-  onClick = undefined,
-  onFocus = undefined,
+  href,
+  to,
+  onClick,
+  onFocus,
   size = 'medium',
   buttonStyle = 'text',
   theme = 'blue',

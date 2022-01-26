@@ -1,24 +1,63 @@
-import { ReactElement, useState, useEffect, useCallback } from 'react';
+import {
+  ReactElement,
+  useState,
+  useEffect,
+  useCallback,
+  cloneElement,
+  MouseEvent,
+  FocusEvent,
+} from 'react';
 import _ from 'lodash';
 import { FieldComponentProps } from '@cezembre/forms';
-import Icon from '../general/icon';
+import Icon, { IconName } from '../general/icon';
+import Button, { ButtonSize, ButtonStyle, ButtonTheme } from '../general/button';
 
 export interface Option<Value = unknown> {
   value: Value;
-  item?: ReactElement | string;
+  element?: ReactElement | string | number;
 }
 
 export interface OptionProps {
   option?: Option;
-  placeholder?: ReactElement | string;
+  onClick?: (event: MouseEvent<HTMLButtonElement>) => Promise<void> | void;
+  onFocus?: (event: FocusEvent<HTMLElement>) => void;
+  active?: boolean;
+  size?: ButtonSize;
+  buttonStyle?: ButtonStyle;
+  theme?: ButtonTheme;
+  leftIcon?: IconName;
+  rightIcon?: IconName;
 }
 
-function OptionComponent({ option }: OptionProps): ReactElement | null {
-  if (option?.item) {
-    if (typeof option.item === 'string') {
-      return <span>{option.item}</span>;
+function OptionComponent({
+  option,
+  onClick,
+  onFocus,
+  active,
+  size,
+  buttonStyle = 'outlined',
+  theme = 'violet-pink',
+  leftIcon,
+  rightIcon,
+}: OptionProps): ReactElement | null {
+  if (option?.element) {
+    if (typeof option.element === 'string' || typeof option.element === 'number') {
+      return (
+        <Button
+          type="button"
+          onClick={onClick}
+          onFocus={onFocus}
+          active={active}
+          size={size}
+          buttonStyle={buttonStyle}
+          theme={theme}
+          leftIcon={leftIcon}
+          rightIcon={rightIcon}>
+          {option.element}
+        </Button>
+      );
     }
-    return option.item;
+    return cloneElement(option.element, { onClick, active });
   }
 
   if (option?.value && typeof option.value === 'string' && option.value.length) {
@@ -96,19 +135,19 @@ export default function Radio({
 
       <div className="options">
         {options?.map((option, index) => (
-          <button
+          <div
             key={
               typeof option.value === 'string' || typeof option.value === 'number'
                 ? option.value
                 : index
             }
-            type="button"
-            className={`option${radioedOptionIndex === index ? ' selected' : ''}`}
-            onClick={() => radioOption(index, option.value)}>
-            <div className="container">
-              <OptionComponent option={option} />
-            </div>
-          </button>
+            className="option">
+            <OptionComponent
+              option={option}
+              onClick={() => radioOption(index, option.value)}
+              active={index === radioedOptionIndex}
+            />
+          </div>
         ))}
         {canReset ? (
           <button type="button" className="reset" onClick={() => radioOption(undefined, undefined)}>
