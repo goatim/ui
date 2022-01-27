@@ -73,19 +73,19 @@ export default function App(): ReactElement {
         </div>
 
         <div className="button">
-          <Button buttonStyle="filled" theme="dark-blue">
+          <Button buttonStyle="filled" theme="dark-blue" disabled>
             Mon effectif
           </Button>
         </div>
 
         <div className="button">
-          <Button buttonStyle="filled" theme="violet-pink">
+          <Button buttonStyle="filled" theme="violet-pink" pending>
             Mon effectif
           </Button>
         </div>
 
         <div className="button">
-          <Button buttonStyle="filled" theme="orange-yellow">
+          <Button buttonStyle="filled" theme="orange-yellow" disabled>
             Mon effectif
           </Button>
         </div>

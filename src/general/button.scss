@@ -16,6 +16,7 @@
   background: transparent;
   position: relative;
   transition: box-shadow linear 100ms, background linear 100ms;
+  overflow: hidden;
 
   > .container {
     width: 100%;
@@ -86,8 +87,7 @@
     bottom: 0;
     justify-content: center;
     align-items: center;
-    background: colors.$blue;
-    border-radius: 8px;
+    background: colors.$medium-blue;
     display: flex;
     visibility: hidden;
     opacity: 0;
@@ -392,6 +392,21 @@
         }
       }
     }
+
+    &.disabled {
+      pointer-events: none;
+      background: colors.$grey;
+
+      > .container > .body {
+        > .left-icon svg, > .right-icon svg {
+          stroke: colors.$dark-blue;
+        }
+
+        > .label {
+          color: colors.$dark-blue;
+        }
+      }
+    }
   }
 
   &.outlined {
@@ -665,21 +680,6 @@
             color: colors.$medium-blue;
           }
         }
-      }
-    }
-  }
-
-  &.disabled {
-    pointer-events: none;
-    background: colors.$blue;
-
-    > .container > .body {
-      > .left-icon svg, > .right-icon svg {
-        stroke: colors.$blue;
-      }
-
-      > .label {
-        color: colors.$blue;
       }
     }
   }
