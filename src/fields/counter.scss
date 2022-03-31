@@ -5,18 +5,12 @@
 @use '../styles/forms';
 
 .friday-ui-fields-counter {
-  width: 200px;
+  width: 220px;
 
   > label {
     @include forms.label();
     text-align: center;
     width: 100%;
-  }
-
-  input, input:active, input:focus {
-    border: none;
-    outline: none;
-    text-decoration: none;
   }
 
   > .container {
@@ -26,33 +20,36 @@
     justify-content: space-between;
 
     > button {
-      -webkit-touch-callout: none;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
       box-sizing: border-box;
       border: none;
       outline: none;
-      @include fonts.AvantGardeGothicStd(1.8em, black, bold);
       padding: 5px;
       background: none;
       cursor: pointer;
-      width: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+
+      &.plus {
+        padding-left: 20px;
+      }
+
+      &.minus {
+        padding-right: 20px;
+      }
     }
 
     > input {
-      @include fonts.AvantGardeGothicStd(.8em, black, bold);
+      @include fonts.IBMPlexSans(1em, colors.$light-blue, bold);
+      background: colors.$blue;
+      text-align: center;
+      height: 40px;
+      outline: none;
+      text-decoration: none;
       flex: 1;
-      padding: 1.12em 1.1em .8em; // Magic value, compensate font bottom padding
+      padding: 0 1em;
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;
-      border-radius: 5px;
-      border: solid black 1px;
+      border-radius: 20px;
+      border: none;
       -moz-appearance: textfield;
 
       &::-webkit-outer-spin-button, &::-webkit-inner-spin-button {
@@ -61,58 +58,20 @@
       }
 
       &::placeholder {
-        color: rgba(black, .5);
-      }
-    }
-  }
-
-  &.black {
-    > .container {
-      > input {
-        background: black;
-        border: none;
-        color: white;
-
-        &::placeholder {
-          color: rgba(white, .6);
-        }
-      }
-    }
-  }
-
-  &.colored {
-    > .container {
-      > input {
-        background: colors.$violet-pink-gradient;
-        border: none;
-        color: white;
-
-        &::placeholder {
-          color: rgba(white, .6);
-        }
+        color: rgba(white, .5);
       }
     }
   }
 
   > .instructions {
-    @include forms.instructions();
+    @include forms.instructions;
   }
 
-  > .error, > .warning {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    margin-top: 15px;
-
-    > span {
-      @include fonts.AvantGardeGothicStd(.8em, colors.$red);
-      margin-left: 10px;
-    }
+  > .error {
+    @include forms.error;
   }
 
   > .warning {
-    > span {
-      color: colors.$orange;
-    }
+    @include forms.warning;
   }
 }

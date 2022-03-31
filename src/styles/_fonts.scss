@@ -1,18 +1,15 @@
 @use "colors";
 
-@mixin font($fontFamily: sans-serif, $size: 1em, $color: colors.$dark-blue, $weight: normal) {
+@mixin font($fontFamily: sans-serif, $size: 1em, $color: colors.$blue, $weight: normal) {
   font-family: $fontFamily;
   font-size: $size;
   font-weight: $weight;
   color: $color;
-  margin: 0;
-  padding: 0;
   transition: color ease-out 100ms, font-size ease-out 100ms;
 }
 
-$AvantGardeGothicStd: ITC Avant Garde Gothic Std;
+$IBMPlexSans: 'IBM Plex Sans', sans-serif;
 
-@mixin AvantGardeGothicStd($size: 1em, $color: colors.$dark-blue, $weight: normal) {
-  @include font($AvantGardeGothicStd, $size, $color, $weight);
-  padding-top: .3em; // Magic value, compensate font bottom padding
+@mixin IBMPlexSans($size: 1em, $color: colors.$blue, $weight: normal) {
+  @include font($IBMPlexSans, $size, $color, $weight);
 }

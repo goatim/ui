@@ -4,7 +4,7 @@ import { ModalContext, useModal, Modal } from './feedbacks/modal';
 import Overlay from './feedbacks/overlay';
 import Placeholder from './feedbacks/placeholder';
 import Selection from './feedbacks/selection';
-import Button from './general/button';
+import Button, { ButtonType, ButtonSize, ButtonShape, ButtonTheme } from './general/button';
 import Check from './general/check';
 import Icon from './general/icon';
 import ImageUpload from './uploads/image';
@@ -13,8 +13,7 @@ import Counter from './fields/counter';
 import CreditCardInput from './fields/creditCardInput';
 import DatePicker from './fields/datePicker';
 import DateTimePicker from './fields/dateTimePicker';
-import Input, { Adapter, Resolver } from './fields/input';
-import PhoneInput from './fields/phoneInput';
+import Input, { Adapter, Resolver, InputType, InputShape, InputTheme } from './fields/input';
 import Radio from './fields/radio';
 import Select from './fields/select';
 import Switch from './fields/switch';
@@ -35,6 +34,8 @@ export type { Modal };
 
 export { Button, Check, Icon };
 
+export type { ButtonType, ButtonSize, ButtonShape, ButtonTheme };
+
 /**
  * Uploads
  */
@@ -42,7 +43,7 @@ export { Button, Check, Icon };
 export { ImageUpload };
 
 /**
- * Inputs
+ * Fields
  */
 
 export {
@@ -52,7 +53,6 @@ export {
   DatePicker,
   DateTimePicker,
   Input,
-  PhoneInput,
   Radio,
   Select,
   Switch,
@@ -60,4 +60,4 @@ export {
   TimePicker,
 };
 
-export type { Adapter, Resolver };
+export type { InputType, InputShape, InputTheme, Adapter, Resolver };

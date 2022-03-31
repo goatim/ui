@@ -10,7 +10,7 @@ import {
 import _ from 'lodash';
 import { FieldComponentProps } from '@cezembre/forms';
 import Icon, { IconName } from '../general/icon';
-import Button, { ButtonSize, ButtonStyle, ButtonTheme } from '../general/button';
+import Button, { ButtonSize, ButtonShape, ButtonTheme } from '../general/button';
 
 export interface Option<Value = unknown> {
   value: Value;
@@ -23,7 +23,7 @@ export interface OptionProps {
   onFocus?: (event: FocusEvent<HTMLElement>) => void;
   active?: boolean;
   size?: ButtonSize;
-  buttonStyle?: ButtonStyle;
+  shape?: ButtonShape;
   theme?: ButtonTheme;
   leftIcon?: IconName;
   rightIcon?: IconName;
@@ -35,8 +35,8 @@ function OptionComponent({
   onFocus,
   active,
   size,
-  buttonStyle = 'outlined',
-  theme = 'violet-pink',
+  shape = 'filled',
+  theme = 'default',
   leftIcon,
   rightIcon,
 }: OptionProps): ReactElement | null {
@@ -49,7 +49,7 @@ function OptionComponent({
           onFocus={onFocus}
           active={active}
           size={size}
-          buttonStyle={buttonStyle}
+          shape={shape}
           theme={theme}
           leftIcon={leftIcon}
           rightIcon={rightIcon}>

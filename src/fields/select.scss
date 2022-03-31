@@ -36,7 +36,7 @@
       transition: background linear 100ms, border linear 100ms;
 
       > span {
-        @include fonts.AvantGardeGothicStd();
+        @include fonts.IBMPlexSans();
         text-align: left;
         flex: 1;
         padding: 8px 12px;
@@ -45,12 +45,12 @@
         overflow: hidden;
 
         &.placeholder {
-          color: colors.$placeholder-grey;
+          color: grey;
         }
       }
 
       svg {
-        stroke: colors.$dark-blue;
+        stroke: colors.$blue;
         margin-right: 12px;
       }
     }
@@ -60,7 +60,7 @@
       padding: 4px 0;
       max-height: 300px;
       overflow: auto;
-      box-shadow: 0 0 5px rgba(colors.$dark-blue, .15);
+      box-shadow: 0 0 5px rgba(colors.$blue, .15);
       visibility: hidden;
       width: 100%;
       position: absolute;
@@ -86,11 +86,11 @@
         cursor: pointer;
 
         &:hover, &.active {
-          background: colors.$background-grey;
+          background: grey;
         }
 
         > span {
-          @include fonts.AvantGardeGothicStd();
+          @include fonts.IBMPlexSans();
           display: block;
           text-align: left;
           padding: 8px 12px;
@@ -100,7 +100,7 @@
   }
 
   > .instructions {
-    @include fonts.AvantGardeGothicStd(1em, colors.$dark-blue);
+    @include fonts.IBMPlexSans(1em, colors.$blue);
     margin-top: 10px;
   }
 
@@ -119,7 +119,7 @@
       visibility: visible;
       position: relative;
       opacity: 1;
-      border-top: solid colors.$dark-blue 1px;
+      border-top: solid colors.$blue 1px;
       @include layouts.page();
     }
   }

@@ -10,9 +10,9 @@
     justify-content: flex-start;
 
     > label {
-      @include forms.label();
+      @include forms.label;
       padding-bottom: 0;
-      margin-left: 20px;
+      margin-left: 15px;
     }
   }
 }

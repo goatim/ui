@@ -1,20 +1,21 @@
 import { ReactElement } from 'react';
 
+export type LoaderTheme = 'default' | 'light';
+
 export interface Props {
+  theme?: LoaderTheme;
   size?: number;
   thickness?: number;
-  color?: string;
 }
 
-export default function Loader({ size = 20, thickness = 3, color = '#fff' }: Props): ReactElement {
+export default function Loader({
+  theme = 'default',
+  size = 20,
+  thickness = 3,
+}: Props): ReactElement {
   return (
-    <div className="friday-ui-loader" style={{ width: size, height: size }}>
-      <div
-        style={{
-          borderColor: `${color} transparent transparent transparent`,
-          borderWidth: thickness,
-        }}
-      />
+    <div className={`friday-ui-loader ${theme}`} style={{ width: size, height: size }}>
+      <div style={{ borderWidth: thickness }} />
     </div>
   );
 }

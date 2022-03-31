@@ -19,7 +19,7 @@
       border: solid rgba(colors.$blue, .1) 1px;
       box-shadow: 0 0 10px rgba(colors.$blue, .2);
       position: absolute;
-      background: colors.$grey;
+      background: grey;
       top: calc(100% + 5px);
       left: 0;
       opacity: 0;
@@ -48,7 +48,7 @@
       }
 
       > span {
-        @include fonts.AvantGardeGothicStd(1em);
+        @include fonts.IBMPlexSans(1em);
       }
     }
 
@@ -59,7 +59,7 @@
       justify-content: space-around;
 
       > span {
-        @include fonts.AvantGardeGothicStd(.9em);
+        @include fonts.IBMPlexSans(.9em);
         text-transform: uppercase;
       }
     }
@@ -72,7 +72,7 @@
       align-items: center;
 
       > .day {
-        @include fonts.AvantGardeGothicStd(1em);
+        @include fonts.IBMPlexSans(1em);
         background: none;
         border: none;
         outline: none;
@@ -88,7 +88,7 @@
         }
 
         &:disabled {
-          color: colors.$grey;
+          color: grey;
           cursor: default;
 
           &:hover {
@@ -98,7 +98,7 @@
 
         &.selected {
           background: colors.$blue;
-          color: colors.$grey;
+          color: grey;
         }
       }
 

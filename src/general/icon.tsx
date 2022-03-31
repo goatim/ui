@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
+import * as FeatherIcons from 'react-feather';
 import IconProps from '../icons/props';
-import FeatherIcons from 'react-feather';
 import Friday from '../icons/friday';
 import Money from '../icons/money';
 import Rocket from '../icons/rocket';
@@ -310,7 +310,6 @@ export default function Icon({
   strokeWidth = 2,
 }: Props): ReactElement<SVGElement> {
   switch (name) {
-    default:
     case 'activity':
       return <FeatherIcons.Activity size={size} strokeWidth={strokeWidth} />;
     case 'airplay':
@@ -893,5 +892,7 @@ export default function Icon({
       return <Shirt size={size} />;
     case 'trophy':
       return <Trophy size={size} />;
+    default:
+      return <Friday size={size} />;
   }
 }

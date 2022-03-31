@@ -95,8 +95,8 @@ export default function Counter({
       {label ? <label htmlFor={name}>{label}</label> : null}
 
       <div className="container">
-        <button onClick={decrease} type="button">
-          -
+        <button onClick={decrease} type="button" className="minus">
+          <Icon name="minus" size={20} />
         </button>
         <input
           name={name}
@@ -115,8 +115,8 @@ export default function Counter({
           max={resolver ? resolver(max) : max}
           step={resolver ? resolver(step) : step}
         />
-        <button onClick={increase} type="button">
-          +
+        <button onClick={increase} type="button" className="plus">
+          <Icon name="plus" size={20} />
         </button>
       </div>
 

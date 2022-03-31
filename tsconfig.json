@@ -1,5 +1,5 @@
 {
-  "include": ["./src"],
+  "include": ["./src/**/*"],
   "exclude": ["dist"],
   "compilerOptions": {
     "target": "esnext", // Let Babel deal with transpiling new language features

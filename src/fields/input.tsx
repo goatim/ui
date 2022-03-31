@@ -69,21 +69,27 @@ export type AutoComplete =
   | 'url'
   | 'photo';
 
-export type Theme = 'default' | 'black';
+export type InputShape = 'square' | 'round';
+
+export type InputTheme = 'default' | 'discreet' | 'discreet-light' | 'dark';
 
 export type Adapter<Value = string> = (value: string) => Value;
 export type Resolver<Value = string> = (value?: Value) => string | number;
+
+export interface SuggestionsNamespace<Suggestion = string> {
+  namespace: string;
+  suggestions?: Suggestion[];
+}
 
 export interface SuggestionProps<Suggestion = string> {
   suggestion: Suggestion;
 }
 
-function DefaultSuggestion({ suggestion }: SuggestionProps<ReactNode>): ReactElement {
-  return (
-    <div className="friday-ui-input-suggestion">
-      <span>{suggestion}</span>
-    </div>
-  );
+function DefaultSuggestion({ suggestion }: SuggestionProps<ReactNode>): ReactElement | null {
+  if (suggestion && (typeof suggestion === 'string' || typeof suggestion === 'number')) {
+    return <span className="friday-ui-input-suggestion">{suggestion}</span>;
+  }
+  return null;
 }
 
 export interface Props<Value = string, Suggestion = Value> extends FieldComponentProps<Value> {
@@ -91,13 +97,14 @@ export interface Props<Value = string, Suggestion = Value> extends FieldComponen
   resolver?: Resolver<Value>;
   format?: Resolver<Value>;
   type?: InputType | string;
-  theme?: Theme;
+  shape?: InputShape;
+  theme?: InputTheme;
   label?: string;
   placeholder?: string;
   instructions?: string;
   autoComplete?: AutoComplete | string;
   spellCheck?: boolean;
-  suggestions?: Suggestion[];
+  suggestions?: Suggestion[] | SuggestionsNamespace<Suggestion>[];
   SuggestionItem?: FC<SuggestionProps<Suggestion>>;
   suggestionsKeyExtractor?: (suggestion: Suggestion) => string;
   suggestionsHeader?: ReactNode;
@@ -122,6 +129,7 @@ export default function Input<Value = string, Suggestion = Value>({
   onChange,
   onBlur,
   type = 'text',
+  shape = 'square',
   theme = 'default',
   adapter,
   resolver,
@@ -143,8 +151,19 @@ export default function Input<Value = string, Suggestion = Value>({
   autoCapitalize = 'off',
 }: Props<Value, Suggestion>): ReactElement {
   const inputRef = useRef<HTMLInputElement>(null);
-  const [classNames, setClassNames] = useState<string[]>(['friday-ui-fields-input', theme]);
+
   const [suggestionsActive, setSuggestionsActive] = useState<boolean>(false);
+
+  const [classNames, setClassNames] = useState<(string | undefined)[]>([
+    'friday-ui-fields-input',
+    shape,
+    theme,
+    visited ? 'visited' : undefined,
+    isActive ? 'active' : undefined,
+    suggestions.length && suggestionsActive ? 'suggestions-active' : undefined,
+    (visited || submitted) && !isActive && error ? 'error' : undefined,
+    warning ? 'warning' : undefined,
+  ]);
 
   useEffect(() => {
     if (autoComplete === 'off' && window.MutationObserver && inputRef.current) {
@@ -162,27 +181,16 @@ export default function Input<Value = string, Suggestion = Value>({
   }, [autoComplete]);
 
   useEffect(() => {
-    const nextClassNames = ['friday-ui-fields-input', theme];
-
-    if (visited) {
-      nextClassNames.push('visited');
-    }
-
-    if (isActive) {
-      nextClassNames.push('active');
-    }
-
-    if (suggestions.length && suggestionsActive) {
-      nextClassNames.push('suggestions-active');
-    }
-
-    if ((visited || submitted) && !isActive && error) {
-      nextClassNames.push('error');
-    }
-
-    if (warning) {
-      nextClassNames.push('warning');
-    }
+    const nextClassNames = [
+      'friday-ui-fields-input',
+      shape,
+      theme,
+      visited ? 'visited' : undefined,
+      isActive ? 'active' : undefined,
+      suggestions.length && suggestionsActive ? 'suggestions-active' : undefined,
+      (visited || submitted) && !isActive && error ? 'error' : undefined,
+      warning ? 'warning' : undefined,
+    ];
 
     setClassNames(nextClassNames);
   }, [
@@ -195,9 +203,25 @@ export default function Input<Value = string, Suggestion = Value>({
     suggestionsActive,
     suggestions.length,
     theme,
+    shape,
   ]);
 
+  const [suggestionsLength, setSuggestionsLength] = useState<number>(0);
   const [selectedSuggestion, setSelectedSuggestion] = useState<number | undefined>(undefined);
+
+  useEffect(() => {
+    let length = 0;
+    if (suggestions?.length) {
+      suggestions.forEach((suggestion) => {
+        if (typeof suggestion === 'object' && 'namespace' in suggestion) {
+          length += suggestion.suggestions?.length || 0;
+        } else {
+          length += 1;
+        }
+      });
+    }
+    setSuggestionsLength(length);
+  }, [suggestions]);
 
   const change = useCallback(
     (event: ChangeEvent<{ value: string }>) => {
@@ -224,25 +248,35 @@ export default function Input<Value = string, Suggestion = Value>({
 
   const onKeyDown = useCallback(
     (event: KeyboardEvent<HTMLInputElement>) => {
-      if (event.key === 'ArrowDown') {
-        if (suggestions && suggestions.length) {
+      if (suggestions && suggestionsActive && suggestionsLength) {
+        if (event.key === 'ArrowDown') {
+          setSelectedSuggestion((sPrediction: number | undefined) =>
+            sPrediction !== undefined && sPrediction < suggestionsLength - 1 ? sPrediction + 1 : 0,
+          );
+        } else if (event.key === 'ArrowUp') {
           event.preventDefault();
           setSelectedSuggestion((sPrediction: number | undefined) =>
-            sPrediction !== undefined && sPrediction < suggestions.length - 1 ? sPrediction + 1 : 0,
+            sPrediction !== undefined && sPrediction > 0 ? sPrediction - 1 : suggestionsLength - 1,
           );
-        }
-      } else if (event.key === 'ArrowUp') {
-        if (suggestions && suggestions.length) {
+        } else if (event.key === 'Enter') {
           event.preventDefault();
-          setSelectedSuggestion((sPrediction: number | undefined) =>
-            sPrediction !== undefined && sPrediction > 0 ? sPrediction - 1 : suggestions.length - 1,
-          );
-        }
-      } else if (event.key === 'Enter') {
-        if (suggestions && suggestions.length) {
-          event.preventDefault();
-          if (selectedSuggestion !== undefined && suggestions.length > selectedSuggestion) {
-            selectSuggestion(suggestions[selectedSuggestion]);
+          if (selectedSuggestion !== undefined && suggestionsLength > selectedSuggestion) {
+            let index = 0;
+            suggestions.forEach((suggestion) => {
+              if (typeof suggestion === 'object' && 'namespace' in suggestion) {
+                suggestion.suggestions?.forEach((_suggestion) => {
+                  if (index === selectedSuggestion) {
+                    selectSuggestion(_suggestion);
+                  }
+                  index += 1;
+                });
+              } else {
+                if (index === selectedSuggestion) {
+                  selectSuggestion(suggestion);
+                }
+                index += 1;
+              }
+            });
             if (inputRef.current) {
               inputRef.current.blur();
             }
@@ -250,7 +284,7 @@ export default function Input<Value = string, Suggestion = Value>({
         }
       }
     },
-    [selectSuggestion, selectedSuggestion, suggestions],
+    [selectSuggestion, selectedSuggestion, suggestions, suggestionsActive, suggestionsLength],
   );
 
   const focus = useCallback(() => {
@@ -268,8 +302,10 @@ export default function Input<Value = string, Suggestion = Value>({
     setTimeout(() => setSuggestionsActive(false), 200);
   }, [onBlur]);
 
+  let nextedIndex = -1;
+
   return (
-    <div className={classNames.join(' ')}>
+    <div className={classNames.filter((c) => c).join(' ')}>
       {label ? <label htmlFor={name}>{label}</label> : null}
 
       <div className="container">
@@ -303,21 +339,49 @@ export default function Input<Value = string, Suggestion = Value>({
 
         <div className="suggestions">
           {suggestionsHeader}
-          {suggestions
-            ? suggestions.map((suggestion, index: number) => (
-                <button
-                  type="button"
-                  key={suggestionsKeyExtractor ? suggestionsKeyExtractor(suggestion) : index}
-                  className={`suggestion${selectedSuggestion === index ? ' selected' : ''}`}
-                  onClick={() => selectSuggestion(suggestion)}>
-                  {SuggestionItem ? (
-                    <SuggestionItem suggestion={suggestion} />
-                  ) : (
-                    <DefaultSuggestion suggestion={suggestion} />
-                  )}
-                </button>
-              ))
-            : null}
+          {suggestions?.map((suggestion, index) =>
+            typeof suggestion === 'object' && 'namespace' in suggestion ? (
+              <div className="namespace">
+                <span className="label">{suggestion.namespace}</span>
+                <div className="suggestions">
+                  {suggestion.suggestions?.map((_suggestion) => {
+                    nextedIndex += 1;
+                    return (
+                      <button
+                        type="button"
+                        key={
+                          suggestionsKeyExtractor
+                            ? suggestionsKeyExtractor(_suggestion)
+                            : nextedIndex
+                        }
+                        className={`suggestion${
+                          selectedSuggestion === nextedIndex ? ' selected' : ''
+                        }`}
+                        onClick={() => selectSuggestion(_suggestion)}>
+                        {SuggestionItem ? (
+                          <SuggestionItem suggestion={_suggestion} />
+                        ) : (
+                          <DefaultSuggestion suggestion={_suggestion} />
+                        )}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            ) : (
+              <button
+                type="button"
+                key={suggestionsKeyExtractor ? suggestionsKeyExtractor(suggestion) : index}
+                className={`suggestion${selectedSuggestion === index ? ' selected' : ''}`}
+                onClick={() => selectSuggestion(suggestion)}>
+                {SuggestionItem ? (
+                  <SuggestionItem suggestion={suggestion} />
+                ) : (
+                  <DefaultSuggestion suggestion={suggestion} />
+                )}
+              </button>
+            ),
+          )}
           {suggestionsFooter}
         </div>
       </div>

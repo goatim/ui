@@ -4,8 +4,8 @@
 .friday-ui-check {
   width: 30px;
   height: 30px;
-  background: rgba(colors.$dark-blue, 0.1);
-  border: solid rgba(colors.$dark-blue, 0.4) 1px;
+  background: white;
+  border: solid rgba(colors.$blue, 0.1) 1px;
   cursor: pointer;
   outline: none;
   display: flex;
@@ -13,7 +13,7 @@
   justify-content: center;
   position: relative;
   transition: all cubic-bezier(0.215, 0.61, 0.355, 1) 400ms;
-  border-radius: 2px;
+  border-radius: 5px;
 
   &.tag {
     width: auto;
@@ -22,7 +22,7 @@
 
   &:focus {
     outline: none;
-    box-shadow: 0 0 5px rgba(colors.$dark-blue, 0.3);
+    box-shadow: 0 0 5px rgba(colors.$blue, 0.1);
   }
 
   > svg {
@@ -31,19 +31,16 @@
   }
 
   > span {
-    @include fonts.AvantGardeGothicStd(1em, colors.$dark-blue);
+    @include fonts.IBMPlexSans(1em, colors.$blue);
   }
 
   &[aria-pressed='true'] {
-    border: solid colors.$dark-blue 1px;
-    background: white;
-
     > svg {
       stroke-dashoffset: 0;
     }
 
     > span {
-      color: colors.$dark-blue;
+      color: colors.$blue;
     }
   }
 }

@@ -2,33 +2,33 @@
 @use 'fonts';
 
 @mixin label {
-  @include fonts.AvantGardeGothicStd(.8em, colors.$grey, bold);
+  @include fonts.IBMPlexSans(.8em, rgba(colors.$blue, .5), bold);
   text-transform: uppercase;
-  letter-spacing: .12em;
-  padding-bottom: 10px;
+  letter-spacing: .05em;
+  padding-bottom: .8em;
   display: inline-block;
 }
 
 @mixin input {
   transition: border linear 100ms, background linear 100ms, box-shadow linear 100ms;
-  border: solid colors.$border-grey 1px;
   background: white;
-  box-shadow: 0 0 5px rgba(colors.$placeholder-grey, 0);
+  box-shadow: 0 0 5px rgba(colors.$blue, .1);
+  border: solid rgba(colors.$blue, .1) 1px;
   border-radius: 5px;
   width: 100%;
 
   &:hover {
-    box-shadow: 0 0 5px rgba(colors.$placeholder-grey, .15);
-    border-color: colors.$border-grey;
+    border: solid rgba(colors.$blue, .2) 1px;
+    box-shadow: 0 0 5px rgba(colors.$blue, .1);
   }
 
   &:focus, &.active {
-    border-color: colors.$border-grey;
+    border: solid rgba(colors.$blue, .3) 1px;
   }
 }
 
 @mixin instructions {
-  @include fonts.AvantGardeGothicStd(.8em, colors.$grey);
+  @include fonts.IBMPlexSans(.8em, rgba(colors.$blue, .5));
   margin-top: 10px;
 }
 
@@ -41,7 +41,7 @@
 }
 
 @mixin error {
-  @include fonts.AvantGardeGothicStd(.8em, colors.$red);
+  @include fonts.IBMPlexSans(.8em, colors.$red);
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -61,7 +61,7 @@
 }
 
 @mixin warning {
-  @include fonts.AvantGardeGothicStd(.8em, colors.$orange);
+  @include fonts.IBMPlexSans(.8em, colors.$orange);
   display: flex;
   align-items: center;
   justify-content: flex-start;

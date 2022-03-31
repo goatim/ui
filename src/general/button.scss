@@ -17,6 +17,7 @@
   position: relative;
   transition: box-shadow linear 100ms, background linear 100ms;
   overflow: hidden;
+  font-size: 1em;
 
   > .container {
     width: 100%;
@@ -48,7 +49,7 @@
       }
 
       > .label {
-        @include fonts.AvantGardeGothicStd(.9em, colors.$blue, 600);
+        @include fonts.IBMPlexSans(.8em, colors.$blue, bold);
         align-self: center;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -87,7 +88,7 @@
     bottom: 0;
     justify-content: center;
     align-items: center;
-    background: colors.$medium-blue;
+    background: rgba(colors.$blue, .5);
     display: flex;
     visibility: hidden;
     opacity: 0;
@@ -101,7 +102,7 @@
       }
 
       > .label {
-        font-size: .8em;
+        font-size: .7em;
       }
     }
 
@@ -110,26 +111,24 @@
     }
   }
 
-  &.large {
-    &.small > .container {
-      > .body {
-        > .left-icon > svg {
-          height: 20px;
-        }
-
-        > .label {
-          font-size: 1em;
-        }
-      }
-
-      > .right-icon > svg {
+  &.large > .container {
+    > .body {
+      > .left-icon > svg {
         height: 20px;
       }
+
+      > .label {
+        font-size: .9em;
+      }
+    }
+
+    > .right-icon > svg {
+      height: 20px;
     }
   }
 
   &.text {
-    &.blue {
+    &.default {
       > .container {
         svg[stroke] {
           stroke: colors.$blue;
@@ -147,32 +146,64 @@
       &:hover, &.active {
         > .container {
           svg[stroke] {
-            stroke: colors.$violet;
+            stroke: rgba(colors.$blue, .5);
           }
 
           svg:not([stroke]) {
-            fill: colors.$violet;
+            fill: rgba(colors.$blue, .5);
           }
 
           > .body > .label {
-            color: colors.$violet;
+            color: rgba(colors.$blue, .5);
           }
         }
       }
     }
 
-    &.medium-blue {
+    &.light {
       > .container {
         svg[stroke] {
-          stroke: colors.$medium-blue;
+          stroke: colors.$light-blue;
         }
 
         svg:not([stroke]) {
-          fill: colors.$medium-blue;
+          fill: colors.$light-blue;
         }
 
         > .body > .label {
-          color: colors.$medium-blue;
+          color: colors.$light-blue;
+        }
+      }
+
+      &:hover, &.active {
+        > .container {
+          svg[stroke] {
+            stroke: white;
+          }
+
+          svg:not([stroke]) {
+            fill: white;
+          }
+
+          > .body > .label {
+            color: white;
+          }
+        }
+      }
+    }
+
+    &.discreet {
+      > .container {
+        svg[stroke] {
+          stroke: rgba(colors.$blue, .2);
+        }
+
+        svg:not([stroke]) {
+          fill: rgba(colors.$blue, .2);
+        }
+
+        > .body > .label {
+          color: rgba(colors.$blue, .2);
         }
       }
 
@@ -193,100 +224,53 @@
       }
     }
 
-    &.dark-blue {
+    &.discreet-light {
       > .container {
         svg[stroke] {
-          stroke: colors.$dark-blue;
+          stroke: rgba(white, .5);
         }
 
         svg:not([stroke]) {
-          fill: colors.$dark-blue;
+          fill: rgba(white, .5);
         }
 
         > .body > .label {
-          color: colors.$dark-blue;
+          color: rgba(white, .5);
         }
       }
 
       &:hover, &.active {
         > .container {
           svg[stroke] {
-            stroke: colors.$violet;
+            stroke: white;
           }
 
           svg:not([stroke]) {
-            fill: colors.$violet;
+            fill: white;
           }
 
           > .body > .label {
-            color: colors.$violet;
+            color: white;
           }
         }
       }
     }
 
-    &.violet-pink {
+    &.submit {
       > .container {
         svg[stroke] {
-          stroke: colors.$violet;
+          stroke: colors.$blue;
         }
 
         svg:not([stroke]) {
-          fill: colors.$violet;
+          fill: colors.$blue;
         }
 
         > .body > .label {
-          color: colors.$violet;
-          background: colors.$violet-pink-gradient;
+          color: colors.$blue;
+          background: linear-gradient(90deg, colors.$blue 0%, colors.$fushia 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
-        }
-      }
-    }
-
-    &.orange-yellow {
-      > .container {
-        svg[stroke] {
-          stroke: colors.$orange;
-        }
-
-        svg:not([stroke]) {
-          fill: colors.$orange;
-        }
-
-        > .body > .label {
-          color: colors.$orange;
-          background: colors.$orange-yellow-gradient;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-        }
-      }
-    }
-
-    &.white {
-      > .container {
-        svg[stroke] {
-          stroke: white;
-        }
-
-        svg:not([stroke]) {
-          fill: white;
-        }
-
-        > .body > .label {
-          color: white;
-        }
-      }
-
-      &:hover, &.active {
-        > .container {
-          svg {
-            stroke: colors.$background-grey;
-          }
-
-          > .body > .label {
-            color: colors.$background-grey;
-          }
         }
       }
     }
@@ -294,171 +278,25 @@
 
   &.filled {
     &.small {
-      height: 30px;
+      height: 35px;
       border-radius: 4px;
-      padding: 0 10px;
+      padding: 0 1.5em;
     }
 
     &.medium {
-      height: 36px;
-      border-radius: 6px;
-      padding: 0 20px;
+      height: 40px;
+      border-radius: 5px;
+      padding: 0 2em;
     }
 
     &.large {
-      height: 40px;
-      border-radius: 8px;
-      padding: 0 30px;
-
-      > .container > .body > .label {
-        font-size: 1.1em;
-      }
-    }
-
-    > .container {
-      svg[stroke] {
-        stroke: white;
-      }
-
-      svg:not([stroke]) {
-        fill: white;
-      }
-
-      > .body > .label {
-        color: white;
-      }
-    }
-
-    &.blue {
-      background: colors.$blue;
-
-      &:hover, &.active {
-        background: colors.$dark-blue;
-      }
-    }
-
-    &.medium-blue {
-      background: colors.$medium-blue;
-
-      &:hover, &.active {
-        background: colors.$dark-blue;
-      }
-    }
-
-    &.dark-blue {
-      background: colors.$dark-blue;
-
-      &:hover, &.active {
-        background: colors.$violet;
-      }
-    }
-
-    &.violet-pink {
-      background: colors.$violet;
-      background: colors.$violet-pink-gradient;
-
-      &:hover, &.active {
-        box-shadow: 0 2px 5px rgba(colors.$violet, .5);
-      }
-    }
-
-    &.orange-yellow {
-      background: colors.$orange;
-      background: colors.$orange-yellow-gradient;
-
-      &:hover, &.active {
-        box-shadow: 0 2px 5px rgba(colors.$orange, .5);
-      }
-    }
-
-    &.white {
-      background: white;
-
-      &:hover, &.active {
-        box-shadow: 0 2px 5px rgba(colors.$grey, .8);
-      }
-
-      > .container {
-        svg[stroke] {
-          stroke: colors.$violet;
-        }
-
-        svg:not([stroke]) {
-          fill: colors.$violet;
-        }
-
-        > .body > .label {
-          color: colors.$violet;
-        }
-      }
-    }
-
-    &.disabled {
-      pointer-events: none;
-      background: colors.$grey;
-
-      > .container > .body {
-        > .left-icon svg, > .right-icon svg {
-          stroke: colors.$dark-blue;
-        }
-
-        > .label {
-          color: colors.$dark-blue;
-        }
-      }
-    }
-  }
-
-  &.outlined {
-    border: solid colors.$blue 1px;
-
-    &.small {
-      height: 30px;
-      border-radius: 4px;
-      padding: 0 10px;
-      border-width: 1px;
-
-      > .container > .body > .label {
-        font-size: .9em;
-      }
-    }
-
-    &.medium {
-      height: 36px;
+      height: 45px;
       border-radius: 6px;
-      padding: 0 20px;
-      border-width: 1px;
+      padding: 0 2.5em;
     }
 
-    &.large {
-      height: 40px;
-      border-radius: 8px;
-      padding: 0 30px;
-      border-width: 2px;
-
-      > .container > .body > .label {
-        font-size: 1.1em;
-      }
-    }
-
-    &:hover, &.active {
-      > .container {
-        svg[stroke] {
-          stroke: white;
-        }
-
-        svg:not([stroke]) {
-          fill: white;
-        }
-
-        > .body > .label {
-          color: white;
-        }
-      }
-    }
-
-    &.blue {
-      border-color: colors.$blue;
+    &.default {
+      background: colors.$light-blue;
 
       > .container {
         svg[stroke] {
@@ -468,6 +306,54 @@
         svg:not([stroke]) {
           fill: colors.$blue;
         }
+
+        > .body > .label {
+          color: colors.$blue;
+        }
+      }
+
+      &:hover, &.active {
+        background: rgba(colors.$blue, .2);
+      }
+    }
+
+    &.light {
+      background: white;
+
+      > .container {
+        svg[stroke] {
+          stroke: colors.$blue;
+        }
+
+        svg:not([stroke]) {
+          fill: colors.$blue;
+        }
+
+        > .body > .label {
+          color: colors.$blue;
+        }
+      }
+
+      &:hover, &.active {
+        background: colors.$light-blue;
+      }
+    }
+
+    &.discreet {
+      background: white;
+
+      > .container {
+        svg[stroke] {
+          stroke: rgba(colors.$blue, .2);
+        }
+
+        svg:not([stroke]) {
+          fill: rgba(colors.$blue, .2);
+        }
+
+        > .body > .label {
+          color: rgba(colors.$blue, .2);
+        }
       }
 
       &:hover, &.active {
@@ -475,180 +361,9 @@
       }
     }
 
-    &.medium-blue {
-      border-color: colors.$medium-blue;
-
-      > .container {
-        svg[stroke] {
-          stroke: colors.$medium-blue;
-        }
-
-        svg:not([stroke]) {
-          fill: colors.$medium-blue;
-        }
-
-        > .body > span {
-          color: colors.$medium-blue;
-        }
-      }
-
-      &:hover, &.active {
-        background: colors.$medium-blue;
-      }
-    }
-
-    &.dark-blue {
-      border-color: colors.$dark-blue;
-
-      > .container {
-        svg[stroke] {
-          stroke: colors.$dark-blue;
-        }
-
-        svg:not([stroke]) {
-          fill: colors.$dark-blue;
-        }
-
-        > .body > span {
-          color: colors.$dark-blue;
-        }
-      }
-
-      &:hover, &.active {
-        background: colors.$dark-blue;
-      }
-    }
-
-    &.violet-pink {
-      border: none;
-      background: colors.$border-grey;
-      transition: background linear 100ms;
-
-      &:before {
-        content: "";
-        display: block;
-        position: absolute;
-        width: calc(100% - 2px);
-        height: calc(100% - 2px);
-        top: 1px;
-        left: 1px;
-        right: 1px;
-        bottom: 1px;
-        background: white;
-      }
-
-      &.small {
-        &:before {
-          border-radius: 2px;
-        }
-      }
-
-      &.medium {
-        &:before {
-          border-radius: 4px;
-        }
-      }
-
-      &.large {
-        &:before {
-          border-radius: 6px;
-        }
-      }
-
-      > .container {
-        svg[stroke] {
-          stroke: colors.$violet;
-        }
-
-        svg:not([stroke]) {
-          fill: colors.$violet;
-        }
-
-        > .body > .label {
-          transition: -webkit-text-fill-color linear 100ms;
-          background: none;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: colors.$grey;
-        }
-      }
-
-      &:hover, &.active {
-        background: colors.$violet-pink-gradient;
-
-        .container > .body > .label {
-          background: colors.$violet-pink-gradient;
-          -webkit-text-fill-color: transparent;
-          -webkit-background-clip: text;
-        }
-      }
-    }
-
-    &.orange-yellow {
-      border: none;
-      background: colors.$border-grey;
-      transition: background linear 100ms;
-
-      &:before {
-        content: "";
-        display: block;
-        position: absolute;
-        width: calc(100% - 2px);
-        height: calc(100% - 2px);
-        top: 1px;
-        left: 1px;
-        right: 1px;
-        bottom: 1px;
-        background: white;
-      }
-
-      &.small {
-        &:before {
-          border-radius: 2px;
-        }
-      }
-
-      &.medium {
-        &:before {
-          border-radius: 4px;
-        }
-      }
-
-      &.large {
-        &:before {
-          border-radius: 6px;
-        }
-      }
-
-      > .container {
-        svg[stroke] {
-          stroke: colors.$orange;
-        }
-
-        svg:not([stroke]) {
-          fill: colors.$orange;
-        }
-
-        > .body > .label {
-          transition: -webkit-text-fill-color linear 100ms;
-          background: none;
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: colors.$grey;
-        }
-      }
-
-      &:hover, &.active {
-        background: colors.$orange-yellow-gradient;
-
-        .container > .body > .label {
-          background: colors.$orange-yellow-gradient;
-          -webkit-text-fill-color: transparent;
-          -webkit-background-clip: text;
-        }
-      }
-    }
-
-    &.white {
-      border-color: white;
+    &.discreet-light {
+      background: rgba(white, .2);
+      border: solid rgba(white, .1) 1px;
 
       > .container {
         svg[stroke] {
@@ -665,23 +380,49 @@
       }
 
       &:hover, &.active {
-        background: white;
+        background: rgba(white, .5);
+      }
+    }
 
+    &.submit {
+      background: linear-gradient(90deg, colors.$blue 0%, colors.$fushia 100%);
+
+      > .container {
+        svg[stroke] {
+          stroke: colors.$light-blue;
+        }
+
+        svg:not([stroke]) {
+          fill: colors.$light-blue;
+        }
+
+        > .body > .label {
+          color: colors.$light-blue;
+        }
+      }
+
+      &:hover, &.active {
         > .container {
           svg[stroke] {
-            stroke: colors.$medium-blue;
+            stroke: white;
           }
 
           svg:not([stroke]) {
-            fill: colors.$medium-blue;
+            fill: white;
           }
 
           > .body > .label {
-            color: colors.$medium-blue;
+            color: white;
           }
         }
       }
     }
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: .5;
   }
 
   &.pending > .pending {

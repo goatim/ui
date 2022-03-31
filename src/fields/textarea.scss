@@ -43,7 +43,7 @@
     }
 
     > textarea {
-      @include fonts.AvantGardeGothicStd(.8em, colors.$blue, normal);
+      @include fonts.IBMPlexSans(.8em, colors.$blue, normal);
       flex: 1;
       padding: 10px 15px;
 

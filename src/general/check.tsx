@@ -1,7 +1,7 @@
 import { ReactNode, FocusEvent, KeyboardEvent, ReactElement, useCallback } from 'react';
 
 export interface Props {
-  active: boolean;
+  active?: boolean;
   onChange?: (value: boolean) => void;
   onFocus?: (event: FocusEvent<HTMLDivElement>) => void;
   onBlur?: (event: FocusEvent<HTMLDivElement>) => void;
@@ -10,7 +10,7 @@ export interface Props {
 }
 
 export default function Check({
-  active = false,
+  active,
   onChange,
   onFocus,
   onBlur,

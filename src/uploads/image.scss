@@ -15,7 +15,7 @@
     padding: 0;
     background: none;
     position: relative;
-    background: colors.$violet;
+    background: rgba(colors.$blue, .5);
     cursor: pointer;
 
     > input[type=file] {
@@ -53,7 +53,7 @@
       }
 
       > .error {
-        @include fonts.AvantGardeGothicStd(1em, white);
+        @include fonts.IBMPlexSans(1em, white);
         background: colors.$red;
         padding: 5px 10px;
       }

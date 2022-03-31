@@ -14,18 +14,18 @@
     width: 100%;
     padding: 15px;
     background: white;
-    border: solid colors.$border-grey 1px;
+    border: solid rgba(colors.$blue, .1) 1px;
     border-radius: 5px;
     transition: border linear 100ms, box-shadow linear 100ms;
   }
 
   &:hover > .card {
-    border: solid rgba(colors.$grey, .6) 1px;
-    box-shadow: 0 0 5px rgba(colors.$grey, .2);
+    border: solid rgba(grey, .6) 1px;
+    box-shadow: 0 0 5px rgba(grey, .2);
   }
 
   &.active > .card {
-    border: solid colors.$grey 1px;
+    border: solid grey 1px;
   }
 
   > .instructions {

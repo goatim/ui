@@ -1,13 +1,25 @@
+@use '../styles/colors';
+
 .friday-ui-loader {
+  box-sizing: border-box;
   display: inline-block;
   position: relative;
 
   > div {
+    box-sizing: border-box;
     position: absolute;
     width: 100%;
     height: 100%;
     border-style: solid;
     border-radius: 50%;
     animation: spin 1s linear infinite;
+  }
+
+  &.default > div {
+    border-color: colors.$blue transparent transparent transparent;
+  }
+
+  &.light > div {
+    border-color: colors.$light-blue transparent transparent transparent;
   }
 }

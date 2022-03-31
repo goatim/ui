@@ -15,15 +15,9 @@ export type ButtonType = 'button' | 'submit' | 'reset';
 
 export type ButtonSize = 'small' | 'medium' | 'large';
 
-export type ButtonStyle = 'text' | 'filled' | 'outlined';
+export type ButtonShape = 'text' | 'filled';
 
-export type ButtonTheme =
-  | 'blue'
-  | 'medium-blue'
-  | 'dark-blue'
-  | 'violet-pink'
-  | 'orange-yellow'
-  | 'white';
+export type ButtonTheme = 'default' | 'light' | 'discreet' | 'discreet-light' | 'submit';
 
 export interface Props {
   children?: ReactNode;
@@ -31,9 +25,10 @@ export interface Props {
   to?: string;
   onClick?: (event: MouseEvent<HTMLButtonElement>) => Promise<void> | void;
   onFocus?: (event: FocusEvent<HTMLElement>) => void;
+  onBlur?: (event: FocusEvent<HTMLElement>) => void;
   type?: ButtonType;
   size?: ButtonSize;
-  buttonStyle?: ButtonStyle;
+  shape?: ButtonShape;
   theme?: ButtonTheme;
   disabled?: boolean;
   pending?: boolean;
@@ -50,60 +45,56 @@ function Wrapper({
   to,
   onClick,
   onFocus,
+  onBlur,
   size = 'medium',
-  buttonStyle = 'text',
-  theme = 'blue',
+  shape = 'text',
+  theme = 'default',
   type = 'button',
   disabled = false,
   pending = false,
   active = false,
   success = false,
   errored = false,
-}: Props): ReactElement {
+}: Partial<Props>): ReactElement {
   const [autoPending, setAutoPending] = useState<boolean>(false);
+  const [autoSuccess, setAutoSuccess] = useState<boolean>(false);
   const [autoErrored, setAutoErrored] = useState<boolean>(false);
-  const [className, setClassName] = useState<string[]>([
+  const [classNames, setClassNames] = useState<(string | undefined)[]>([
     'friday-ui-button',
     size,
-    buttonStyle,
+    shape,
     theme,
+    active ? 'active' : undefined,
+    pending || autoPending ? 'pending' : undefined,
+    success || autoSuccess ? 'success' : undefined,
+    errored || autoErrored ? 'errored' : undefined,
+    disabled ? 'disabled' : undefined,
   ]);
 
   useEffect(() => {
-    const nextClasses = ['friday-ui-button', size, buttonStyle, theme];
-
-    if (active) {
-      nextClasses.push('active');
-    }
-
-    if (success) {
-      nextClasses.push('success');
-    }
-
-    if (pending || autoPending) {
-      nextClasses.push('pending');
-    }
-
-    if (errored || autoErrored) {
-      nextClasses.push('errored');
-    }
-
-    if (disabled) {
-      nextClasses.push('disabled');
-    }
-
-    setClassName(nextClasses);
+    setClassNames([
+      'friday-ui-button',
+      size,
+      shape,
+      theme,
+      active ? 'active' : undefined,
+      pending || autoPending ? 'pending' : undefined,
+      success || autoSuccess ? 'success' : undefined,
+      errored || autoErrored ? 'errored' : undefined,
+      disabled ? 'disabled' : undefined,
+    ]);
   }, [
     active,
     success,
     errored,
     disabled,
     size,
-    buttonStyle,
+    shape,
     pending,
     autoPending,
     autoErrored,
     theme,
+    autoSuccess,
   ]);
 
   const onButtonClick = useCallback(
@@ -111,17 +102,12 @@ function Wrapper({
       if (onClick) {
         const response = onClick(event);
 
-        if (
-          typeof response === 'object' &&
-          response &&
-          'then' in response &&
-          response.then &&
-          typeof response.then === 'function'
-        ) {
+        if (typeof response === 'object' && response?.then && typeof response.then === 'function') {
           setAutoPending(true);
           try {
             await response;
             setAutoPending(false);
+            setAutoSuccess(true);
           } catch (e) {
             setAutoPending(false);
             setAutoErrored(true);
@@ -134,7 +120,7 @@ function Wrapper({
 
   if (!disabled && !pending && !autoPending && href && href.length) {
     return (
-      <a className={className.join(' ')} href={href} onFocus={onFocus}>
+      <a className={classNames.filter((e) => e).join(' ')} href={href} onFocus={onFocus}>
         {children}
       </a>
     );
@@ -142,7 +128,7 @@ function Wrapper({
 
   if (!disabled && !pending && !autoPending && to && to.length) {
     return (
-      <NavLink className={className.join(' ')} to={to} onFocus={onFocus}>
+      <NavLink className={classNames.filter((c) => c).join(' ')} to={to} onFocus={onFocus}>
         {children}
       </NavLink>
     );
@@ -150,9 +136,10 @@ function Wrapper({
 
   return (
     <button
-      className={className.join(' ')}
+      className={classNames.filter((c) => c).join(' ')}
       onClick={onButtonClick}
       onFocus={onFocus}
+      onBlur={onBlur}
       type={type}
       disabled={(disabled || pending || autoPending) as boolean}>
       {children}
@@ -161,27 +148,31 @@ function Wrapper({
 }
 
 export default function Button({
-  children = null,
-  href = undefined,
-  to = undefined,
-  onClick = undefined,
+  children,
+  href,
+  to,
+  onClick,
+  onFocus,
+  onBlur,
   size = 'medium',
-  buttonStyle = 'text',
+  shape = 'text',
   type = 'button',
-  theme = 'blue',
+  theme = 'default',
   active = false,
   pending = false,
   success = false,
   errored = false,
   disabled = false,
-  leftIcon = undefined,
-  rightIcon = undefined,
+  leftIcon,
+  rightIcon,
 }: Props): ReactElement {
   return (
     <Wrapper
       href={href}
       to={to}
       onClick={onClick}
+      onFocus={onFocus}
+      onBlur={onBlur}
       pending={pending}
       disabled={disabled}
       type={type}
@@ -190,7 +181,7 @@ export default function Button({
       active={active}
       success={success}
       errored={errored}
-      buttonStyle={buttonStyle}>
+      shape={shape}>
       <div className="container">
         <div className="body">
           {leftIcon ? (
@@ -214,7 +205,7 @@ export default function Button({
       </div>
 
       <div className="pending">
-        <Loader size={15} />
+        <Loader theme="light" />
       </div>
     </Wrapper>
   );
