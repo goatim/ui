@@ -1,0 +1,50 @@
+@use '../styles/fonts';
+@use '../styles/colors';
+
+.friday-ui-market-percentage-variation {
+  @include fonts.IBM-Plex-Sans(.7em, colors.$green, bold);
+
+  &.medium {
+    font-size: .8em;
+  }
+
+  &.big {
+    font-size: .9em;
+  }
+
+  &.filled {
+    padding: 2px 4px;
+    border-radius: 2px;
+    color: white;
+  }
+
+  &.positive {
+    &.text {
+      color: colors.$green;
+    }
+
+    &.filled {
+      background: colors.$green;
+    }
+  }
+
+  &.negative {
+    &.text {
+      color: colors.$red;
+    }
+
+    &.filled {
+      background: colors.$red;
+    }
+  }
+
+  &.zero {
+    &.text {
+      color: rgba(colors.$blue, .2);
+    }
+
+    &.filled {
+      background: rgba(colors.$blue, .2);
+    }
+  }
+}

@@ -21,32 +21,26 @@ export default function CreditCardInput({
   label = null,
   instructions = null,
 }: Props): ReactElement {
-  const [classNames, setClassNames] = useState<string[]>(['fleuraison-ui-credit-card-input']);
+  const [classNames, setClassNames] = useState<(string | undefined)[]>([
+    'fleuraison-ui-credit-card-input',
+    visited ? 'visited' : undefined,
+    isActive ? 'active' : undefined,
+    (visited || submitted) && !isActive && error ? 'error' : undefined,
+    warning ? 'warning' : undefined,
+  ]);
 
   useEffect(() => {
-    const nextClassNames = ['fleuraison-ui-credit-card-input'];
-
-    if (visited) {
-      nextClassNames.push('visited');
-    }
-
-    if (isActive) {
-      nextClassNames.push('active');
-    }
-
-    if ((visited || submitted) && !isActive && error) {
-      nextClassNames.push('error');
-    }
-
-    if (warning) {
-      nextClassNames.push('warning');
-    }
-
-    setClassNames(nextClassNames);
+    setClassNames([
+      'fleuraison-ui-credit-card-input',
+      visited ? 'visited' : undefined,
+      isActive ? 'active' : undefined,
+      (visited || submitted) && !isActive && error ? 'error' : undefined,
+      warning ? 'warning' : undefined,
+    ]);
   }, [error, isActive, submitted, visited, warning]);
 
   return (
-    <div className={classNames.join(' ')}>
+    <div className={classNames.filter((c) => c).join(' ')}>
       {label ? <label htmlFor={name}>{label}</label> : null}
 
       <CardElement

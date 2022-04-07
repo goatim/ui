@@ -71,7 +71,7 @@ export type AutoComplete =
 
 export type InputShape = 'square' | 'round';
 
-export type InputTheme = 'default' | 'discreet' | 'discreet-light' | 'dark';
+export type InputTheme = 'default' | 'darker' | 'lighter' | 'dark';
 
 export type Adapter<Value = string> = (value: string) => Value;
 export type Resolver<Value = string> = (value?: Value) => string | number;

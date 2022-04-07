@@ -1,0 +1,26 @@
+@use '../styles/fonts';
+@use '../styles/colors';
+
+.friday-ui-market-friday-coins-variation {
+  @include fonts.IBM-Plex-Sans(.7em, colors.$green, bold);
+
+  &.medium {
+    font-size: .8em;
+  }
+
+  &.big {
+    font-size: .9em;
+  }
+
+  &.positive {
+    color: colors.$green;
+  }
+
+  &.negative {
+    color: colors.$red;
+  }
+
+  &.zero {
+    color: rgba(colors.$blue, .2);
+  }
+}

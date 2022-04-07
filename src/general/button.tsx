@@ -17,7 +17,7 @@ export type ButtonSize = 'small' | 'medium' | 'large';
 
 export type ButtonShape = 'text' | 'filled';
 
-export type ButtonTheme = 'default' | 'light' | 'discreet' | 'discreet-light' | 'submit';
+export type ButtonTheme = 'default' | 'light' | 'darker' | 'lighter' | 'submit';
 
 export interface Props {
   children?: ReactNode;

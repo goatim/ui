@@ -2,9 +2,7 @@
 @use 'fonts';
 
 @mixin label {
-  @include fonts.IBMPlexSans(.8em, rgba(colors.$blue, .5), bold);
-  text-transform: uppercase;
-  letter-spacing: .05em;
+  @include fonts.label();
   padding-bottom: .8em;
   display: inline-block;
 }
@@ -12,7 +10,7 @@
 @mixin input {
   transition: border linear 100ms, background linear 100ms, box-shadow linear 100ms;
   background: white;
-  box-shadow: 0 0 5px rgba(colors.$blue, .1);
+  box-shadow: 0 0 5px rgba(colors.$blue, 0);
   border: solid rgba(colors.$blue, .1) 1px;
   border-radius: 5px;
   width: 100%;
@@ -28,7 +26,7 @@
 }
 
 @mixin instructions {
-  @include fonts.IBMPlexSans(.8em, rgba(colors.$blue, .5));
+  @include fonts.IBM-Plex-Sans(.8em, rgba(colors.$blue, .5));
   margin-top: 10px;
 }
 
@@ -41,7 +39,7 @@
 }
 
 @mixin error {
-  @include fonts.IBMPlexSans(.8em, colors.$red);
+  @include fonts.IBM-Plex-Sans(.8em, colors.$red);
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -61,7 +59,7 @@
 }
 
 @mixin warning {
-  @include fonts.IBMPlexSans(.8em, colors.$orange);
+  @include fonts.IBM-Plex-Sans(.8em, colors.$orange);
   display: flex;
   align-items: center;
   justify-content: flex-start;

@@ -31,7 +31,7 @@
   }
 
   > span {
-    @include fonts.IBMPlexSans(1em, colors.$blue);
+    @include fonts.IBM-Plex-Sans(1em, colors.$blue);
   }
 
   &[aria-pressed='true'] {

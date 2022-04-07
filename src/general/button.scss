@@ -49,7 +49,7 @@
       }
 
       > .label {
-        @include fonts.IBMPlexSans(.8em, colors.$blue, bold);
+        @include fonts.IBM-Plex-Sans(.8em, colors.$blue, bold);
         align-self: center;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -192,7 +192,7 @@
       }
     }
 
-    &.discreet {
+    &.darker {
       > .container {
         svg[stroke] {
           stroke: rgba(colors.$blue, .2);
@@ -224,7 +224,7 @@
       }
     }
 
-    &.discreet-light {
+    &.lighter {
       > .container {
         svg[stroke] {
           stroke: rgba(white, .5);
@@ -339,7 +339,7 @@
       }
     }
 
-    &.discreet {
+    &.darker {
       background: white;
 
       > .container {
@@ -361,7 +361,7 @@
       }
     }
 
-    &.discreet-light {
+    &.lighter {
       background: rgba(white, .2);
       border: solid rgba(white, .1) 1px;
 

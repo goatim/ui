@@ -37,7 +37,7 @@
     }
 
     > input {
-      @include fonts.IBMPlexSans(1em, colors.$light-blue, bold);
+      @include fonts.IBM-Plex-Sans(1em, colors.$light-blue, bold);
       background: colors.$blue;
       text-align: center;
       height: 40px;

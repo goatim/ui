@@ -1,0 +1,91 @@
+@use '../styles/fonts';
+@use '../styles/colors';
+
+.friday-ui-player-thumbnail {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-decoration: none;
+
+  > .infos {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 10px;
+
+    > .number {
+      @include fonts.IBM-Plex-Sans(.8em, colors.$blue);
+      opacity: .5;
+    }
+
+    > .name {
+      @include fonts.IBM-Plex-Sans(.8em, colors.$blue, bold);
+      margin-left: 5px;
+    }
+  }
+
+  &.medium > .infos > span {
+    font-size: .9em;
+
+    &.name {
+      margin-left: 8px;
+    }
+  }
+
+  &.big {
+    > .infos {
+      margin-left: 15px;
+
+      > span {
+        font-size: 1em;
+
+        &.name {
+          margin-left: 8px;
+        }
+      }
+    }
+  }
+
+  &.full {
+    flex-direction: column;
+    align-items: flex-start;
+
+    > .infos {
+      margin: 0;
+
+      > .number {
+        font-size: .8em;
+      }
+
+      > .position {
+        @include fonts.IBM-Plex-Sans(.7em, colors.$blue, bold);
+        opacity: .5;
+        text-transform: uppercase;
+        margin-left: 5px;
+      }
+    }
+
+    > .name {
+      @include fonts.IBM-Plex-Sans(1.6em, colors.$blue, bold);
+      margin: 10px 0 0;
+      padding: 0;
+    }
+
+    > .club {
+      margin-top: 10px;
+      text-decoration: none;
+    }
+
+    &.light > .name {
+      color: white;
+    }
+  }
+
+  &.light > .infos > span {
+    color: white;
+
+    &.position {
+      color: white;
+    }
+  }
+}
