@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { Booster, formatCurrencyAmount } from '@fridaygame/client';
+import { Booster, formatCurrency } from '@fridaygame/client';
 
 export type BoosterIconSize = 'small' | 'medium' | 'big';
 
@@ -23,13 +23,13 @@ function BoosterIconInfo({ booster, infos }: BoosterIconInfoProps): ReactElement
       return <span className="stock">{booster.nb_in_wallet}</span>;
 
     case 'price':
-      return <span className="price">{formatCurrencyAmount(booster.price)}</span>;
+      return <span className="price">{formatCurrency(booster.price)}</span>;
 
     case 'stock_or_price':
       if (booster.nb_in_wallet) {
         return <span className="stock">{booster.nb_in_wallet}</span>;
       }
-      return <span className="price">{formatCurrencyAmount(booster.price)}</span>;
+      return <span className="price">{formatCurrency(booster.price)}</span>;
 
     default:
       return null;
