@@ -1,17 +1,20 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import { User } from '@fridaygame/client';
-import UserThumbnail, { UserThumbnailSize, UserThumbnailInfos } from '../src/auth/userThumbnail';
+import { User, Wallet } from '@fridaygame/client';
+import WalletThumbnail, {
+  WalletThumbnailSize,
+  WalletThumbnailInfos,
+} from '../src/market/walletThumbnail';
 
 interface Props {
-  size?: UserThumbnailSize;
-  infos?: UserThumbnailInfos;
+  size?: WalletThumbnailSize;
+  infos?: WalletThumbnailInfos;
   is_defined?: boolean;
 }
 
 export default {
-  title: 'Auth/UserThumbnail',
-  component: UserThumbnail,
+  title: 'Market/WalletThumbnail',
+  component: WalletThumbnail,
   argTypes: {
     size: {
       control: {
@@ -33,7 +36,7 @@ export default {
   },
 } as ComponentMeta<JSXElementConstructor<Props>>;
 
-const user: User = {
+const owner: User = {
   id: 'us_sopsaA',
   picture: {
     id: 'me_dehHH',
@@ -44,13 +47,23 @@ const user: User = {
   last_name: 'Perouze',
 };
 
+const wallet: Wallet = {
+  id: 'wa_sopsaA',
+  owner,
+  picture: {
+    id: 'me_dehHH',
+    thumbnail_url: 'https://picsum.photos/200',
+  },
+  name: 'Smart Monkey',
+};
+
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({
   size,
   infos,
   is_defined,
 }: Props) => (
-  <UserThumbnail
-    user={{ ...user, picture: is_defined ? user.picture : undefined }}
+  <WalletThumbnail
+    wallet={{ ...wallet, picture: is_defined ? wallet.picture : undefined }}
     size={size}
     infos={infos}
   />

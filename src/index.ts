@@ -13,6 +13,17 @@ import CheckBox from './fields/checkbox';
 import Counter from './fields/counter';
 import CreditCardInput from './fields/creditCardInput';
 import Input, { Adapter, Resolver, InputType, InputShape, InputTheme } from './fields/input';
+import UserThumbnail, { UserThumbnailSize, UserThumbnailInfos } from './auth/userThumbnail';
+import FridayCoins, { FridayCoinsTheme, FridayCoinsSize } from './market/fridayCoins';
+import FridayCoinsVariation, { FridayCoinsVariationSize } from './market/fridayCoinsVariation';
+import PercentageVariation, {
+  PercentageVariationShape,
+  PercentageVariationSize,
+} from './market/percentageVariation';
+import WalletThumbnail, {
+  WalletThumbnailInfos,
+  WalletThumbnailSize,
+} from './market/walletThumbnail';
 import LeagueIcon, { LeagueIconSize } from './soccer/leagueIcon';
 import LeagueThumbnail, {
   LeagueThumbnailSize,
@@ -26,7 +37,12 @@ import PlayerThumbnail, {
 } from './soccer/playerThumbnail';
 import AssetThumbnail, { AssetThumbnailSize, AssetThumbnailTheme } from './trading/assetThumbnail';
 import BoosterIcon, { BoosterIconSize, BoosterIconInfos } from './trading/boosterIcon';
+import BoosterInUseThumbnail from './trading/boosterInUseThumbnail';
+import BoostersInUseStack from './trading/boostersInUseStack';
 import OrderThumbnail from './trading/orderThumbnail';
+import PortfolioThumbnail from './trading/portfolioThumbnail';
+import QuotationGraph, { DataPoint } from './trading/quotationGraph';
+import TransactionThumbnail from './trading/transactionThumbnail';
 
 /**
  * Feedback
@@ -59,6 +75,30 @@ export { CheckBox, Counter, CreditCardInput, Input };
 export type { InputType, InputShape, InputTheme, Adapter, Resolver };
 
 /**
+ * Auth
+ */
+
+export { UserThumbnail };
+
+export type { UserThumbnailInfos, UserThumbnailSize };
+
+/**
+ * Market
+ */
+
+export { FridayCoins, FridayCoinsVariation, PercentageVariation, WalletThumbnail };
+
+export type {
+  FridayCoinsSize,
+  FridayCoinsTheme,
+  FridayCoinsVariationSize,
+  PercentageVariationSize,
+  PercentageVariationShape,
+  WalletThumbnailSize,
+  WalletThumbnailInfos,
+};
+
+/**
  * Soccer
  */
 
@@ -79,6 +119,21 @@ export type {
  * Trading
  */
 
-export { AssetThumbnail, BoosterIcon, OrderThumbnail };
+export {
+  AssetThumbnail,
+  BoosterIcon,
+  BoosterInUseThumbnail,
+  BoostersInUseStack,
+  OrderThumbnail,
+  PortfolioThumbnail,
+  QuotationGraph,
+  TransactionThumbnail,
+};
 
-export type { AssetThumbnailSize, AssetThumbnailTheme, BoosterIconSize, BoosterIconInfos };
+export type {
+  AssetThumbnailSize,
+  AssetThumbnailTheme,
+  BoosterIconSize,
+  BoosterIconInfos,
+  DataPoint,
+};

@@ -1,19 +1,41 @@
 import { ReactElement } from 'react';
-import { User } from '@fridaygame/client';
+import { getUserPublicName, User } from '@fridaygame/client';
+import Wrapper, { WrapperProps } from '../general/wrapper';
 
 export type UserThumbnailSize = 'small' | 'medium' | 'big';
 
-export interface Props {
+export type UserThumbnailInfos = 'picture' | 'picture-and-name';
+
+export interface Props extends WrapperProps {
   user: User;
   size?: UserThumbnailSize;
+  infos?: UserThumbnailInfos;
 }
 
-export default function UserThumbnail({ user, size = 'small' }: Props): ReactElement {
+export default function UserThumbnail({
+  user,
+  size = 'small',
+  infos = 'picture',
+  to,
+  onClick,
+  href,
+  target,
+}: Props): ReactElement {
   return (
-    <div className={`friday-ui-user-thumbnail ${size}`}>
+    <Wrapper
+      className={`friday-ui-user-thumbnail ${size} ${infos}`}
+      to={to}
+      onClick={onClick}
+      href={href}
+      target={target}>
       {user.picture ? (
-        <img src={user.picture.thumbnail_url} alt={`${user.first_name} ${user.last_name}`} />
+        <img src={user.picture.thumbnail_url} alt={getUserPublicName(user) || user.id} />
+      ) : (
+        <div className="placeholder" />
+      )}
+      {infos === 'picture-and-name' ? (
+        <span className="name">{getUserPublicName(user) || user.id}</span>
       ) : null}
-    </div>
+    </Wrapper>
   );
 }

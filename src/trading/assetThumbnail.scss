@@ -6,6 +6,7 @@
   overflow: hidden;
   text-decoration: none;
   display: block;
+  box-sizing: border-box;
 
   > .quotation {
     width: calc(100% - 200px);

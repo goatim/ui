@@ -5,13 +5,12 @@ import { BrowserRouter } from 'react-router-dom';
 import PlayerThumbnail, {
   PlayerThumbnailSize,
   PlayerThumbnailTheme,
-  ClubTo,
 } from '../src/soccer/playerThumbnail';
 
 interface Props {
   size?: PlayerThumbnailSize;
   theme?: PlayerThumbnailTheme;
-  clubTo?: ClubTo;
+  clubTo?: string;
 }
 
 export default {
