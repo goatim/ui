@@ -12,6 +12,7 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
+    "rootDir": "./src",
     "outDir": "./dist",
     "declarationDir": "."
   }
