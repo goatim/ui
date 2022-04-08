@@ -6,6 +6,7 @@ import Money from '../icons/money';
 import Rocket from '../icons/rocket';
 import Shirt from '../icons/shirt';
 import Trophy from '../icons/trophy';
+import FridayIcon from '../icons/fridayIcon';
 
 export type IconName =
   | 'activity'
@@ -295,6 +296,7 @@ export type IconName =
   | 'zoom-in'
   | 'zoom-out'
   | 'friday'
+  | 'friday-icon'
   | 'money'
   | 'rocket'
   | 'shirt'
@@ -884,6 +886,8 @@ export default function Icon({
       return <FeatherIcons.ZoomOut size={size} strokeWidth={strokeWidth} />;
     case 'friday':
       return <Friday size={size} />;
+    case 'friday-icon':
+      return <FridayIcon size={size} />;
     case 'money':
       return <Money size={size} />;
     case 'rocket':
