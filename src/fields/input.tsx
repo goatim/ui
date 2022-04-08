@@ -73,29 +73,39 @@ export type InputShape = 'square' | 'round';
 
 export type InputTheme = 'default' | 'darker' | 'lighter' | 'dark';
 
-export type Adapter<Value = string> = (value: string) => Value;
-export type Resolver<Value = string> = (value?: Value) => string | number;
+export type Adapter<V = string> = (value: string) => V;
+export type Resolver<V = string> = (value?: V) => string | number;
 
-export interface SuggestionsNamespace<Suggestion = string> {
+export interface Suggestion<V = string> {
+  value: V;
+}
+
+export interface SuggestionsNamespace<V = string, S extends Suggestion<V> = Suggestion<V>> {
   namespace: string;
-  suggestions?: Suggestion[];
+  suggestions?: S[];
 }
 
-export interface SuggestionProps<Suggestion = string> {
-  suggestion: Suggestion;
+export interface SuggestionProps<V = string, S extends Suggestion<V> = Suggestion<V>> {
+  suggestion: S;
 }
 
-function DefaultSuggestion({ suggestion }: SuggestionProps<ReactNode>): ReactElement | null {
-  if (suggestion && (typeof suggestion === 'string' || typeof suggestion === 'number')) {
-    return <span className="friday-ui-input-suggestion">{suggestion}</span>;
+function DefaultSuggestion<V = string, S extends Suggestion<V> = Suggestion<V>>({
+  suggestion,
+}: SuggestionProps<V, S>): ReactElement | null {
+  if (
+    suggestion?.value &&
+    (typeof suggestion.value === 'string' || typeof suggestion.value === 'number')
+  ) {
+    return <span className="friday-ui-input-suggestion">{suggestion.value}</span>;
   }
   return null;
 }
 
-export interface Props<Value = string, Suggestion = Value> extends FieldComponentProps<Value> {
-  adapter?: Adapter<Value>;
-  resolver?: Resolver<Value>;
-  format?: Resolver<Value>;
+export interface Props<V = string, S extends Suggestion<V> = Suggestion<V>>
+  extends FieldComponentProps<V> {
+  adapter?: Adapter<V>;
+  resolver?: Resolver<V>;
+  format?: Resolver<V>;
   type?: InputType | string;
   shape?: InputShape;
   theme?: InputTheme;
@@ -104,19 +114,19 @@ export interface Props<Value = string, Suggestion = Value> extends FieldComponen
   instructions?: string;
   autoComplete?: AutoComplete | string;
   spellCheck?: boolean;
-  suggestions?: Suggestion[] | SuggestionsNamespace<Suggestion>[];
-  SuggestionItem?: FC<SuggestionProps<Suggestion>>;
-  suggestionsKeyExtractor?: (suggestion: Suggestion) => string;
+  suggestions?: S[] | SuggestionsNamespace<V, S>[];
+  SuggestionItem?: FC<SuggestionProps<V, S>>;
+  suggestionsKeyExtractor?: (suggestion: S) => string;
   suggestionsHeader?: ReactNode;
   suggestionsFooter?: ReactNode;
-  onSelectSuggestion?: (suggestion: Suggestion) => void;
+  onSelectSuggestion?: (suggestion: S) => void;
   leftComponent?: ReactNode | IconName;
   rightComponent?: ReactNode | IconName;
   autoCorrect?: boolean;
   autoCapitalize?: string;
 }
 
-export default function Input<Value = string, Suggestion = Value>({
+export default function Input<V = string, S extends Suggestion<V> = Suggestion<V>>({
   value,
   error,
   warning,
@@ -149,7 +159,7 @@ export default function Input<Value = string, Suggestion = Value>({
   rightComponent,
   autoCorrect = true,
   autoCapitalize = 'off',
-}: Props<Value, Suggestion>): ReactElement {
+}: Props<V, S>): ReactElement {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const [suggestionsActive, setSuggestionsActive] = useState<boolean>(false);
@@ -228,7 +238,7 @@ export default function Input<Value = string, Suggestion = Value>({
       if (adapter) {
         onChange(adapter(event.target.value));
       } else {
-        onChange(event.target.value as unknown as Value);
+        onChange(event.target.value as unknown as V);
       }
       setSelectedSuggestion(undefined);
     },
@@ -236,11 +246,11 @@ export default function Input<Value = string, Suggestion = Value>({
   );
 
   const selectSuggestion = useCallback(
-    (suggestion) => {
+    (suggestion: S) => {
       if (onSelectSuggestion) {
         onSelectSuggestion(suggestion);
       } else {
-        onChange(suggestion);
+        onChange(suggestion.value);
       }
     },
     [onChange, onSelectSuggestion],
@@ -315,9 +325,11 @@ export default function Input<Value = string, Suggestion = Value>({
           ref={inputRef}
           name={name}
           value={
+            // eslint-disable-next-line no-nested-ternary
             !isActive && format
               ? format(value)
-              : resolver
+              : // eslint-disable-next-line no-nested-ternary
+              resolver
               ? resolver(value)
               : typeof value === 'string' || typeof value === 'number'
               ? value
@@ -361,7 +373,7 @@ export default function Input<Value = string, Suggestion = Value>({
                         {SuggestionItem ? (
                           <SuggestionItem suggestion={_suggestion} />
                         ) : (
-                          <DefaultSuggestion suggestion={_suggestion} />
+                          <DefaultSuggestion<V, S> suggestion={_suggestion} />
                         )}
                       </button>
                     );
@@ -377,7 +389,7 @@ export default function Input<Value = string, Suggestion = Value>({
                 {SuggestionItem ? (
                   <SuggestionItem suggestion={suggestion} />
                 ) : (
-                  <DefaultSuggestion suggestion={suggestion} />
+                  <DefaultSuggestion<V, S> suggestion={suggestion} />
                 )}
               </button>
             ),

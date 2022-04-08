@@ -12,7 +12,14 @@ import ImageUpload from './uploads/image';
 import CheckBox from './fields/checkbox';
 import Counter from './fields/counter';
 import CreditCardInput from './fields/creditCardInput';
-import Input, { Adapter, Resolver, InputType, InputShape, InputTheme } from './fields/input';
+import Input, {
+  Adapter,
+  Resolver,
+  InputType,
+  InputShape,
+  InputTheme,
+  Suggestion,
+} from './fields/input';
 import UserThumbnail, { UserThumbnailSize, UserThumbnailInfos } from './auth/userThumbnail';
 import FridayCoins, { FridayCoinsTheme, FridayCoinsSize } from './market/fridayCoins';
 import FridayCoinsVariation, { FridayCoinsVariationSize } from './market/fridayCoinsVariation';
@@ -72,7 +79,7 @@ export { ImageUpload };
 
 export { CheckBox, Counter, CreditCardInput, Input };
 
-export type { InputType, InputShape, InputTheme, Adapter, Resolver };
+export type { InputType, InputShape, InputTheme, Adapter, Resolver, Suggestion };
 
 /**
  * Auth

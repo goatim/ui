@@ -1,7 +1,12 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Form, Field } from '@cezembre/forms';
 import { JSXElementConstructor } from 'react';
-import Input, { InputShape, InputTheme, SuggestionsNamespace } from '../src/fields/input';
+import Input, {
+  InputShape,
+  InputTheme,
+  Suggestion,
+  SuggestionsNamespace,
+} from '../src/fields/input';
 
 interface Props {
   label?: string;
@@ -49,8 +54,16 @@ export default {
   },
 } as ComponentMeta<JSXElementConstructor<Props>>;
 
-const playersSuggestions: string[] = ['Kylian Mbappé', 'Lionel Messi', 'Neymar JR.'];
-const clubsSuggestions: string[] = ['PSG', 'Real Madrid', 'FC Nantes'];
+const playersSuggestions: Suggestion[] = [
+  { value: 'Kylian Mbappé' },
+  { value: 'Lionel Messi' },
+  { value: 'Neymar JR.' },
+];
+const clubsSuggestions: Suggestion[] = [
+  { value: 'PSG' },
+  { value: 'Real Madrid' },
+  { value: 'FC Nantes' },
+];
 
 const suggestionsNamespaces: SuggestionsNamespace[] = [
   { namespace: 'Joueurs', suggestions: playersSuggestions },
