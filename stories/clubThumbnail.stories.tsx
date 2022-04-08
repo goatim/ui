@@ -2,16 +2,12 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { Club, League } from '@fridaygame/client';
 import { BrowserRouter } from 'react-router-dom';
-import ClubThumbnail, {
-  ClubThumbnailSize,
-  ClubThumbnailTheme,
-  LeagueTo,
-} from '../src/soccer/clubThumbnail';
+import ClubThumbnail, { ClubThumbnailSize, ClubThumbnailTheme } from '../src/soccer/clubThumbnail';
 
 interface Props {
   size?: ClubThumbnailSize;
   theme?: ClubThumbnailTheme;
-  leagueTo?: LeagueTo;
+  leagueTo?: string;
 }
 
 export default {
