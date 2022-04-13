@@ -8,6 +8,7 @@ import Button, { ButtonType, ButtonSize, ButtonShape, ButtonTheme } from './gene
 import Wrapper, { WrapperProps } from './general/wrapper';
 import Check from './general/check';
 import Icon from './general/icon';
+import Heading, { HeadingSize, HeadingTheme, HeadingLevel } from './general/heading';
 import ImageUpload from './uploads/image';
 import CheckBox from './fields/checkbox';
 import Counter from './fields/counter';
@@ -65,9 +66,18 @@ export type { Modal };
  * General
  */
 
-export { Button, Wrapper, Check, Icon };
+export { Button, Wrapper, Check, Icon, Heading };
 
-export type { ButtonType, ButtonSize, ButtonShape, ButtonTheme, WrapperProps };
+export type {
+  ButtonType,
+  ButtonSize,
+  ButtonShape,
+  ButtonTheme,
+  WrapperProps,
+  HeadingSize,
+  HeadingTheme,
+  HeadingLevel,
+};
 
 /**
  * Uploads
