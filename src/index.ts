@@ -38,6 +38,7 @@ import LeagueThumbnail, {
 } from './soccer/leagueThumbnail';
 import ClubIcon, { ClubIconSize } from './soccer/clubIcon';
 import ClubThumbnail, { ClubThumbnailSize, ClubThumbnailTheme } from './soccer/clubThumbnail';
+import ClubsGrid from './soccer/clubsGrid';
 import PlayerThumbnail, {
   PlayerThumbnailSize,
   PlayerThumbnailTheme,
@@ -110,7 +111,7 @@ export type {
  * Soccer
  */
 
-export { LeagueIcon, LeagueThumbnail, ClubIcon, ClubThumbnail, PlayerThumbnail };
+export { LeagueIcon, LeagueThumbnail, ClubIcon, ClubThumbnail, ClubsGrid, PlayerThumbnail };
 
 export type {
   LeagueIconSize,
