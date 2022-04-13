@@ -1,5 +1,6 @@
-import { ReactElement } from 'react';
+import { ReactElement, MouseEvent } from 'react';
 import { Asset } from '@fridaygame/client';
+import { To } from 'react-router-dom';
 import PlayerThumbnail from '../soccer/playerThumbnail';
 import QuotationGraph from './quotationGraph';
 import FridayCoins from '../market/fridayCoins';
@@ -8,14 +9,17 @@ import Button from '../general/button';
 
 export interface Props {
   asset: Asset;
+  clubTo?: To;
+  onBuy?: (event: MouseEvent<HTMLButtonElement>) => void;
+  onSell?: (event: MouseEvent<HTMLButtonElement>) => void;
 }
 
-export default function AssetOverview({ asset }: Props): ReactElement {
+export default function AssetOverview({ asset, clubTo, onBuy, onSell }: Props): ReactElement {
   return (
     <div className="friday-ui-asset-overview">
       <div className="header">
         {asset.type === 'player' && asset.player && typeof asset.player === 'object' ? (
-          <PlayerThumbnail player={asset.player} size="full" />
+          <PlayerThumbnail player={asset.player} size="full" clubTo={clubTo} />
         ) : null}
         <div className="metrics">
           <span className="shares">
@@ -30,12 +34,12 @@ export default function AssetOverview({ asset }: Props): ReactElement {
       </div>
       <div className="actions">
         <div className="action">
-          <Button shape="filled" theme="action">
+          <Button shape="filled" theme="action" onClick={onBuy}>
             Acheter
           </Button>
         </div>
         <div className="action">
-          <Button shape="filled" theme="action-discreet">
+          <Button shape="filled" theme="action-discreet" onClick={onSell}>
             Vendre
           </Button>
         </div>
