@@ -9,9 +9,9 @@ export interface Props {
   clubTo?: (club: Club) => To;
 }
 
-export default function ClubsGrid({ clubs, clubOnClick, clubTo }: Props): ReactElement {
+export default function ClubsList({ clubs, clubOnClick, clubTo }: Props): ReactElement {
   return (
-    <div className="friday-ui-clubs-grid">
+    <div className="friday-ui-clubs-list">
       {clubs ? (
         clubs.map((club) => (
           <div key={club.id} className="club">

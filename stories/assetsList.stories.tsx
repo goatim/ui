@@ -1,15 +1,15 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { Asset, Player, Club } from '@fridaygame/client';
-import AssetsGrid from '../src/trading/assetsGrid';
+import AssetsList from '../src/trading/assetsList';
 
 interface Props {
   length?: number;
 }
 
 export default {
-  title: 'Trading/AssetsGrid',
-  component: AssetsGrid,
+  title: 'Trading/AssetsList',
+  component: AssetsList,
   argTypes: {
     length: {
       control: {
@@ -58,7 +58,7 @@ const asset: Asset = {
 };
 
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({ length }: Props) => (
-  <AssetsGrid assets={Array(length).fill(asset)} />
+  <AssetsList assets={Array(length).fill(asset)} />
 );
 
 export const Default = Template.bind({});

@@ -38,7 +38,7 @@ import LeagueThumbnail, {
 } from './soccer/leagueThumbnail';
 import ClubIcon, { ClubIconSize } from './soccer/clubIcon';
 import ClubThumbnail, { ClubThumbnailSize, ClubThumbnailTheme } from './soccer/clubThumbnail';
-import ClubsGrid from './soccer/clubsGrid';
+import ClubsList from './soccer/clubsList';
 import PlayerThumbnail, {
   PlayerThumbnailSize,
   PlayerThumbnailTheme,
@@ -51,7 +51,7 @@ import OrderThumbnail from './trading/orderThumbnail';
 import PortfolioThumbnail from './trading/portfolioThumbnail';
 import QuotationGraph, { DataPoint } from './trading/quotationGraph';
 import TransactionThumbnail from './trading/transactionThumbnail';
-import AssetsGrid from './trading/assetsGrid';
+import AssetsList from './trading/assetsList';
 
 /**
  * Feedback
@@ -111,7 +111,7 @@ export type {
  * Soccer
  */
 
-export { LeagueIcon, LeagueThumbnail, ClubIcon, ClubThumbnail, ClubsGrid, PlayerThumbnail };
+export { LeagueIcon, LeagueThumbnail, ClubIcon, ClubThumbnail, ClubsList, PlayerThumbnail };
 
 export type {
   LeagueIconSize,
@@ -137,7 +137,7 @@ export {
   PortfolioThumbnail,
   QuotationGraph,
   TransactionThumbnail,
-  AssetsGrid,
+  AssetsList,
 };
 
 export type {
