@@ -34,7 +34,7 @@
       background: transparent;
       @include fonts.IBM-Plex-Sans(.9em, colors.$blue, 500);
       flex: 1;
-      padding: 0 1.5em;
+      padding: 0 1em;
 
       &::placeholder {
         color: rgba(colors.$blue, .5);
