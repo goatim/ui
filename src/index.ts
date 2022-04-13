@@ -50,6 +50,7 @@ import OrderThumbnail from './trading/orderThumbnail';
 import PortfolioThumbnail from './trading/portfolioThumbnail';
 import QuotationGraph, { DataPoint } from './trading/quotationGraph';
 import TransactionThumbnail from './trading/transactionThumbnail';
+import AssetsGrid from './trading/assetsGrid';
 
 /**
  * Feedback
@@ -135,6 +136,7 @@ export {
   PortfolioThumbnail,
   QuotationGraph,
   TransactionThumbnail,
+  AssetsGrid,
 };
 
 export type {

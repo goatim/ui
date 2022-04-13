@@ -1,0 +1,7 @@
+.friday-ui-assets-grid {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: center;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+}

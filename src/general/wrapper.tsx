@@ -1,9 +1,9 @@
-import { ReactElement, ReactNode } from 'react';
+import { MouseEventHandler, ReactElement, ReactNode } from 'react';
 import { NavLink, To } from 'react-router-dom';
 
 export interface WrapperProps {
   to?: To;
-  onClick?: () => unknown;
+  onClick?: MouseEventHandler<HTMLButtonElement>;
   type?: 'submit' | 'reset' | 'button';
   href?: string;
   target?: string;
