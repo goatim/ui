@@ -417,6 +417,68 @@
         }
       }
     }
+
+    &.action {
+      background: colors.$blue;
+
+      > .container {
+        svg[stroke] {
+          stroke: white;
+        }
+
+        svg:not([stroke]) {
+          fill: white;
+        }
+
+        > .body > .label {
+          text-transform: uppercase;
+          letter-spacing: .05em;
+          color: white;
+        }
+      }
+
+      &:hover, &.active {
+        background: rgba(colors.$blue, .7);
+      }
+    }
+
+    &.action-discreet {
+      background: rgba(colors.$blue, .2);
+
+      > .container {
+        svg[stroke] {
+          stroke: colors.$blue;
+        }
+
+        svg:not([stroke]) {
+          fill: colors.$blue;
+        }
+
+        > .body > .label {
+          text-transform: uppercase;
+          letter-spacing: .05em;
+          color: colors.$blue;
+        }
+      }
+
+      &:hover, &.active {
+        background: rgba(colors.$blue, .5);
+
+        > .container {
+          svg[stroke] {
+            stroke: white;
+          }
+
+          svg:not([stroke]) {
+            fill: white;
+          }
+
+          > .body > .label {
+            color: white;
+          }
+        }
+      }
+    }
   }
 
   &.disabled {

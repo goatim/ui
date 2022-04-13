@@ -66,7 +66,7 @@
     }
 
     > .name {
-      @include fonts.IBM-Plex-Sans(1.6em, colors.$blue, bold);
+      @include fonts.IBM-Plex-Sans(1.5em, colors.$blue, bold);
       margin: 10px 0 0;
       padding: 0;
     }
