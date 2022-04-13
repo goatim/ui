@@ -7,6 +7,7 @@ import {
   useCallback,
   useRef,
   FunctionComponent,
+  useMemo,
 } from 'react';
 import { useClickOutside } from '@cezembre/fronts';
 
@@ -119,8 +120,13 @@ export function ModalContext({ children }: ContextProps): ReactElement {
     [setModals],
   );
 
+  const value = useMemo(
+    () => ({ modals, popModal, dismissModal }),
+    [modals, popModal, dismissModal],
+  );
+
   return (
-    <Context.Provider value={{ modals, popModal, dismissModal }}>
+    <Context.Provider value={value}>
       {children}
       {modals.map((modal: Modal) => (
         <ModalContainer
