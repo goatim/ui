@@ -51,6 +51,7 @@ import PlayerThumbnail, {
   PlayerThumbnailTheme,
 } from './soccer/playerThumbnail';
 import AssetThumbnail, { AssetThumbnailSize, AssetThumbnailTheme } from './trading/assetThumbnail';
+import AssetOverview from './trading/assetOverview';
 import BoosterIcon, { BoosterIconSize, BoosterIconInfos } from './trading/boosterIcon';
 import BoosterInUseThumbnail from './trading/boosterInUseThumbnail';
 import BoostersInUseStack from './trading/boostersInUseStack';
@@ -146,6 +147,7 @@ export type {
 
 export {
   AssetThumbnail,
+  AssetOverview,
   BoosterIcon,
   BoosterInUseThumbnail,
   BoostersInUseStack,
