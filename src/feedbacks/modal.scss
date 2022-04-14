@@ -8,6 +8,7 @@
   transition: opacity linear 100ms, visibility linear 100ms;
 
   &.full {
+    box-sizing: border-box;
     position: fixed;
     width: 100vw;
     height: 100vh;
@@ -17,5 +18,10 @@
     align-items: center;
     justify-content: center;
     background: rgba(colors.$blue, .5);
+    overflow-y: auto;
+
+    > .container {
+      padding: 0 100px;
+    }
   }
 }

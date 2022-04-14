@@ -70,7 +70,7 @@ function ModalContainer({ id, modal, dismissModal }: ModalContainerProps): React
 
   return (
     <div className={`friday-ui-modal ${modal.type}`} id={id}>
-      <div ref={modalContainer}>
+      <div className="container" ref={modalContainer}>
         {modal.component ? <modal.component id={modal.id} dismissModal={dismissModal} /> : null}
       </div>
     </div>
