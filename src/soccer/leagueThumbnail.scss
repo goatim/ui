@@ -6,6 +6,8 @@
   justify-content: flex-start;
   align-items: center;
   text-decoration: none;
+  border: none;
+  font-size: 1em;
 
   > h1 {
     @include fonts.IBM-Plex-Sans(1.5em, colors.$blue, bold);

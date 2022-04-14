@@ -69,7 +69,7 @@ const asset: Asset = {
 };
 
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({ size, theme }: Props) => (
-  <AssetThumbnail asset={asset} size={size} theme={theme} />
+  <AssetThumbnail asset={asset} size={size} theme={theme} onClick={() => undefined} />
 );
 
 export const Default = Template.bind({});
