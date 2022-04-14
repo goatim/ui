@@ -11,7 +11,12 @@ import {
 } from 'react';
 import { useClickOutside } from '@cezembre/fronts';
 
-export type ModalComponent = FunctionComponent<{ id?: string; dismissModal: () => void }>;
+export interface ModalComponentProps {
+  id?: string;
+  dismissModal: () => unknown;
+}
+
+export type ModalComponent = FunctionComponent<ModalComponentProps>;
 
 export type ModalType = 'full' | 'overlay';
 
@@ -19,7 +24,7 @@ export interface Modal {
   id?: string;
   type?: ModalType;
   component?: ModalComponent;
-  onDismiss?: () => void;
+  onDismiss?: () => unknown;
   isActive?: boolean;
 }
 
@@ -28,9 +33,9 @@ export interface ModalsState {
   popModal: (
     component: ModalComponent,
     type?: ModalType,
-    onDismiss?: () => void,
+    onDismiss?: () => unknown,
   ) => string | undefined;
-  dismissModal: (id: string | undefined) => void;
+  dismissModal: (id: string | undefined) => unknown;
 }
 
 const Context = createContext<ModalsState>({
@@ -39,18 +44,18 @@ const Context = createContext<ModalsState>({
   dismissModal: () => undefined,
 });
 
-export function useModal(): ModalsState {
+export function useModals(): ModalsState {
   return useContext<ModalsState>(Context);
 }
 
 export interface ModalContainerProps {
   id?: string;
   modal: Modal;
-  dismissModal: () => void;
+  dismissModal: () => unknown;
 }
 
 function ModalContainer({ id, modal, dismissModal }: ModalContainerProps): ReactElement {
-  const modalContainer = useRef(null);
+  const modalContainer = useRef<HTMLDivElement>(null);
 
   const onClickOutside = useCallback(() => {
     if (modal.isActive) {
@@ -76,7 +81,7 @@ export interface ContextProps {
   children?: ReactNode;
 }
 
-export function ModalContext({ children }: ContextProps): ReactElement {
+export function ModalsContext({ children }: ContextProps): ReactElement {
   const [modals, setModals] = useState<Modal[]>([]);
 
   const popModal = useCallback(

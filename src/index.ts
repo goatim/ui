@@ -1,6 +1,12 @@
 import './index.scss';
 import Loader from './feedbacks/loader';
-import { ModalContext, useModal, Modal } from './feedbacks/modal';
+import {
+  ModalsContext,
+  useModals,
+  Modal,
+  ModalComponentProps,
+  ModalsState,
+} from './feedbacks/modal';
 import Overlay from './feedbacks/overlay';
 import Placeholder from './feedbacks/placeholder';
 import Selection from './feedbacks/selection';
@@ -58,9 +64,9 @@ import AssetsList from './trading/assetsList';
  * Feedback
  */
 
-export { Loader, ModalContext, useModal, Overlay, Placeholder, Selection };
+export { Loader, ModalsContext, useModals, Overlay, Placeholder, Selection };
 
-export type { Modal };
+export type { Modal, ModalComponentProps, ModalsState };
 
 /**
  * General
