@@ -27,6 +27,7 @@ import Input, {
   InputTheme,
   Suggestion,
 } from './fields/input';
+import Radio, { RadioOption } from './fields/radio';
 import UserThumbnail, { UserThumbnailSize, UserThumbnailInfos } from './auth/userThumbnail';
 import FridayCoins, { FridayCoinsTheme, FridayCoinsSize } from './market/fridayCoins';
 import FridayCoinsVariation, { FridayCoinsVariationSize } from './market/fridayCoinsVariation';
@@ -96,9 +97,9 @@ export { ImageUpload };
  * Fields
  */
 
-export { CheckBox, Counter, CreditCardInput, Input };
+export { CheckBox, Counter, CreditCardInput, Input, Radio };
 
-export type { InputType, InputShape, InputTheme, Adapter, Resolver, Suggestion };
+export type { InputType, InputShape, InputTheme, Adapter, Resolver, Suggestion, RadioOption };
 
 /**
  * Auth

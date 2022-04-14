@@ -1,10 +1,15 @@
 @use '../styles/fonts';
 @use '../styles/colors';
 
+button.friday-ui-booster-icon {
+  cursor: pointer;
+}
+
 .friday-ui-booster-icon {
   box-sizing: border-box;
   border: none;
   font-size: 1em;
+  background: none;
 
   > .icon {
     width: 30px;

@@ -1,11 +1,12 @@
 import { ReactElement } from 'react';
 import { Booster, formatCurrency } from '@fridaygame/client';
+import Wrapper, { WrapperProps } from '../general/wrapper';
 
 export type BoosterIconSize = 'small' | 'medium' | 'big';
 
 export type BoosterIconInfos = 'stock' | 'price' | 'stock_or_price' | 'none';
 
-export interface Props {
+export interface Props extends WrapperProps {
   booster: Booster;
   size?: BoosterIconSize;
   infos?: BoosterIconInfos;
@@ -41,13 +42,24 @@ export default function BoosterIcon({
   size,
   infos = 'stock_or_price',
   active = false,
+  to,
+  onClick,
+  type,
+  href,
+  target,
 }: Props): ReactElement {
   return (
-    <div className={`friday-ui-booster-icon ${size}${active ? ' active' : ''}`}>
+    <Wrapper
+      className={`friday-ui-booster-icon ${size}${active ? ' active' : ''}`}
+      to={to}
+      onClick={onClick}
+      type={type}
+      href={href}
+      target={target}>
       <div className="icon">
         <span>x{booster.leverage || 0}</span>
       </div>
       <BoosterIconInfo booster={booster} infos={infos} />
-    </div>
+    </Wrapper>
   );
 }

@@ -1,11 +1,11 @@
 import {
   ReactElement,
   MouseEvent,
-  FocusEvent,
   ReactNode,
   useCallback,
   useEffect,
   useState,
+  FocusEventHandler,
 } from 'react';
 import { NavLink } from 'react-router-dom';
 import Loader from '../feedbacks/loader';
@@ -31,8 +31,8 @@ export interface Props {
   href?: string;
   to?: string;
   onClick?: (event: MouseEvent<HTMLButtonElement>) => Promise<void> | void;
-  onFocus?: (event: FocusEvent<HTMLElement>) => void;
-  onBlur?: (event: FocusEvent<HTMLElement>) => void;
+  onFocus?: FocusEventHandler<HTMLElement>;
+  onBlur?: FocusEventHandler<HTMLElement>;
   type?: ButtonType;
   size?: ButtonSize;
   shape?: ButtonShape;

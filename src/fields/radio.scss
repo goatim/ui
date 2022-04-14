@@ -1,0 +1,36 @@
+@use "../styles/fonts";
+@use "../styles/colors";
+@use "../styles/forms";
+
+.friday-ui-fields-radio {
+  > label {
+    @include forms.label;
+  }
+
+  > .options {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    > .option {
+      margin-left: 40px;
+
+      &:first-child {
+        margin: 0;
+      }
+    }
+  }
+
+  > .instructions {
+    @include fonts.IBM-Plex-Sans;
+    margin-top: 10px;
+  }
+
+  >.error {
+    @include forms.error;
+  }
+
+  > .warning {
+    @include forms.warning;
+  }
+}
