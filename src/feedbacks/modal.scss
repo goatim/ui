@@ -4,6 +4,7 @@
 @use '../styles/fonts';
 
 .friday-ui-modal {
+  @include layouts.modal;
   transition: opacity linear 100ms, visibility linear 100ms;
 
   &.full {
@@ -15,7 +16,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(white, .5);
+    background: rgba(colors.$blue, .5);
   }
 
   > .container {
