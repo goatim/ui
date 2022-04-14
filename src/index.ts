@@ -39,6 +39,8 @@ import WalletThumbnail, {
   WalletThumbnailInfos,
   WalletThumbnailSize,
 } from './market/walletThumbnail';
+import ItemEditor, { ItemEditorFields } from './market/itemEditor';
+import OrderItemEditor, { OrderItemEditorFields } from './market/orderItemEditor';
 import LeagueIcon, { LeagueIconSize } from './soccer/leagueIcon';
 import LeagueThumbnail, {
   LeagueThumbnailSize,
@@ -113,7 +115,14 @@ export type { UserThumbnailInfos, UserThumbnailSize };
  * Market
  */
 
-export { FridayCoins, FridayCoinsVariation, PercentageVariation, WalletThumbnail };
+export {
+  FridayCoins,
+  FridayCoinsVariation,
+  PercentageVariation,
+  WalletThumbnail,
+  ItemEditor,
+  OrderItemEditor,
+};
 
 export type {
   FridayCoinsSize,
@@ -123,6 +132,8 @@ export type {
   PercentageVariationShape,
   WalletThumbnailSize,
   WalletThumbnailInfos,
+  ItemEditorFields,
+  OrderItemEditorFields,
 };
 
 /**

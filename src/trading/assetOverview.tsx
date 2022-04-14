@@ -1,20 +1,28 @@
-import { ReactElement, MouseEvent } from 'react';
-import { Asset } from '@fridaygame/client';
+import { ReactElement, useState } from 'react';
+import { Asset, Booster, OrderType } from '@fridaygame/client';
 import { To } from 'react-router-dom';
 import PlayerThumbnail from '../soccer/playerThumbnail';
 import QuotationGraph from './quotationGraph';
 import FridayCoins from '../market/fridayCoins';
 import PercentageVariation from '../market/percentageVariation';
 import Button from '../general/button';
+import ItemEditor, { ItemEditorFields } from '../market/itemEditor';
 
 export interface Props {
   asset: Asset;
+  boosters?: Booster[];
   clubTo?: To;
-  onBuy?: (event: MouseEvent<HTMLButtonElement>) => void;
-  onSell?: (event: MouseEvent<HTMLButtonElement>) => void;
+  onSubmitItem?: (itemFields: ItemEditorFields) => void | Promise<void>;
 }
 
-export default function AssetOverview({ asset, clubTo, onBuy, onSell }: Props): ReactElement {
+export default function AssetOverview({
+  asset,
+  clubTo,
+  boosters,
+  onSubmitItem,
+}: Props): ReactElement {
+  const [orderType, setOrderType] = useState<OrderType | undefined>();
+
   return (
     <div className="friday-ui-asset-overview">
       <div className="header">
@@ -29,20 +37,39 @@ export default function AssetOverview({ asset, clubTo, onBuy, onSell }: Props): 
           <PercentageVariation variation={asset.session_variation} size="big" />
         </div>
       </div>
+
       <div className="quotation">
         <QuotationGraph />
       </div>
+
       <div className="actions">
         <div className="action">
-          <Button shape="filled" theme="action" onClick={onBuy}>
+          <Button shape="filled" theme="action" onClick={() => setOrderType('buy')}>
             Acheter
           </Button>
         </div>
         <div className="action">
-          <Button shape="filled" theme="action-discreet" onClick={onSell}>
+          <Button shape="filled" theme="action-discreet" onClick={() => setOrderType('sell')}>
             Vendre
           </Button>
         </div>
+      </div>
+
+      <div className={`item-editor${orderType ? ' active' : ''}`}>
+        <ItemEditor
+          initialItem={{
+            type: 'order',
+            order: {
+              asset,
+              order_type: orderType,
+              price_limit: asset.quotation,
+              quantity: 1,
+            },
+          }}
+          boosters={boosters}
+          onSubmit={onSubmitItem}
+          onCancel={() => setOrderType(undefined)}
+        />
       </div>
     </div>
   );

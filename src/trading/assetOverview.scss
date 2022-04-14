@@ -44,4 +44,17 @@
       }
     }
   }
+
+  > .item-editor {
+    margin-top: 10px;
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    border: solid rgba(colors.$blue, .1) 1px;
+    display: none;
+
+    &.active {
+      display: block;
+    }
+  }
 }
