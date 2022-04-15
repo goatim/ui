@@ -7,7 +7,7 @@ export interface Props {
   onStopBooster?: (boosterInUse?: BoosterInUse) => void | Promise<void>;
 }
 
-export default function BoostersInUseStack({ boostersInUse, onStopBooster }: Props): ReactElement {
+export default function BoosterInUseStack({ boostersInUse, onStopBooster }: Props): ReactElement {
   const [activeBoosters, setActiveBoosters] = useState<BoosterInUse[]>(
     boostersInUse.filter(({ stopped_at }) => !stopped_at),
   );
@@ -23,7 +23,7 @@ export default function BoostersInUseStack({ boostersInUse, onStopBooster }: Pro
   // TODO : Collapse boosters if > 1
 
   return (
-    <div className="friday-ui-boosters-in-use-stack">
+    <div className="friday-ui-booster-in-use-stack">
       {inactiveBoosters.map((boosterInUse) => (
         <div className="booster" key={boosterInUse.id}>
           <BoosterInUseThumbnail boosterInUse={boosterInUse} />

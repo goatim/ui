@@ -9,9 +9,9 @@ export interface Props {
   assetTo?: (asset: Asset) => To;
 }
 
-export default function AssetsList({ assets, assetOnClick, assetTo }: Props): ReactElement {
+export default function AssetList({ assets, assetOnClick, assetTo }: Props): ReactElement {
   return (
-    <div className="friday-ui-assets-list">
+    <div className="friday-ui-asset-list">
       {assets ? (
         assets.map((asset) => (
           <div key={asset.id} className="asset">

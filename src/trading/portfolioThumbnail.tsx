@@ -1,11 +1,11 @@
 import { ReactElement } from 'react';
 import { BoosterInUse, Portfolio } from '@fridaygame/client';
-import { NavLink, To } from 'react-router-dom';
+import { To } from 'react-router-dom';
 import AssetThumbnail from './assetThumbnail';
 import FridayCoins from '../market/fridayCoins';
 import FridayCoinsVariation from '../market/fridayCoinsVariation';
 import PercentageVariation from '../market/percentageVariation';
-import BoostersInUseStack from './boostersInUseStack';
+import BoosterInUseStack from './boosterInUseStack';
 import Button from '../general/button';
 import QuotationGraph from './quotationGraph';
 
@@ -58,7 +58,7 @@ export default function PortfolioThumbnail({
 
         {portfolio.boosters?.length ? (
           <div className="boosters">
-            <BoostersInUseStack boostersInUse={portfolio.boosters} onStopBooster={onStopBooster} />
+            <BoosterInUseStack boostersInUse={portfolio.boosters} onStopBooster={onStopBooster} />
           </div>
         ) : null}
 

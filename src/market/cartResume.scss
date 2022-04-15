@@ -1,0 +1,8 @@
+@use '../styles/colors';
+
+.friday-ui-cart-resume {
+  background: white;
+  padding: 20px;
+  border-radius: 20px;
+  border: solid rgba(colors.$blue, .1) 1px;
+}

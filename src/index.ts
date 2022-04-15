@@ -41,6 +41,11 @@ import WalletThumbnail, {
 } from './market/walletThumbnail';
 import ItemEditor, { ItemEditorFields } from './market/itemEditor';
 import OrderItemEditor, { OrderItemEditorFields } from './market/orderItemEditor';
+import OrderItemThumbnail from './market/orderItemThumbnail';
+import ItemThumbnail from './market/itemThumbnail';
+import ItemList from './market/itemList';
+import CartResume from './market/cartResume';
+import CartOverview from './market/cartOverview';
 import LeagueIcon, { LeagueIconSize } from './soccer/leagueIcon';
 import LeagueThumbnail, {
   LeagueThumbnailSize,
@@ -48,7 +53,7 @@ import LeagueThumbnail, {
 } from './soccer/leagueThumbnail';
 import ClubIcon, { ClubIconSize } from './soccer/clubIcon';
 import ClubThumbnail, { ClubThumbnailSize, ClubThumbnailTheme } from './soccer/clubThumbnail';
-import ClubsList from './soccer/clubsList';
+import ClubList from './soccer/clubList';
 import PlayerThumbnail, {
   PlayerThumbnailSize,
   PlayerThumbnailTheme,
@@ -57,12 +62,12 @@ import AssetThumbnail, { AssetThumbnailSize, AssetThumbnailTheme } from './tradi
 import AssetOverview from './trading/assetOverview';
 import BoosterIcon, { BoosterIconSize, BoosterIconInfos } from './trading/boosterIcon';
 import BoosterInUseThumbnail from './trading/boosterInUseThumbnail';
-import BoostersInUseStack from './trading/boostersInUseStack';
+import BoosterInUseStack from './trading/boosterInUseStack';
 import OrderThumbnail from './trading/orderThumbnail';
 import PortfolioThumbnail from './trading/portfolioThumbnail';
 import QuotationGraph, { DataPoint } from './trading/quotationGraph';
 import TransactionThumbnail from './trading/transactionThumbnail';
-import AssetsList from './trading/assetsList';
+import AssetList from './trading/assetList';
 
 /**
  * Feedback
@@ -122,6 +127,11 @@ export {
   WalletThumbnail,
   ItemEditor,
   OrderItemEditor,
+  OrderItemThumbnail,
+  ItemThumbnail,
+  ItemList,
+  CartResume,
+  CartOverview,
 };
 
 export type {
@@ -140,7 +150,7 @@ export type {
  * Soccer
  */
 
-export { LeagueIcon, LeagueThumbnail, ClubIcon, ClubThumbnail, ClubsList, PlayerThumbnail };
+export { LeagueIcon, LeagueThumbnail, ClubIcon, ClubThumbnail, ClubList, PlayerThumbnail };
 
 export type {
   LeagueIconSize,
@@ -162,12 +172,12 @@ export {
   AssetOverview,
   BoosterIcon,
   BoosterInUseThumbnail,
-  BoostersInUseStack,
+  BoosterInUseStack,
   OrderThumbnail,
   PortfolioThumbnail,
   QuotationGraph,
   TransactionThumbnail,
-  AssetsList,
+  AssetList,
 };
 
 export type {

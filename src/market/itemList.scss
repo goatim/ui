@@ -1,0 +1,15 @@
+@use '../styles/colors';
+
+.friday-ui-item-list {
+  > .item {
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: solid rgba(colors.$blue, .1) 1px;
+
+    &:first-child {
+      margin: 0;
+      padding: 0;
+      border: none;
+    }
+  }
+}

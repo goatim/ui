@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { formatCurrency, Order } from '@fridaygame/client';
+import { Order } from '@fridaygame/client';
 import AssetThumbnail from './assetThumbnail';
 import FridayCoins from '../market/fridayCoins';
 import BoosterIcon from './boosterIcon';
@@ -46,23 +46,12 @@ export default function OrderThumbnail({ order, onCancel }: Props): ReactElement
         </div>
 
         {order.type === 'buy' && order.booster && typeof order.booster === 'object' ? (
-          <>
-            <div className="cell">
-              <span>Booster</span>
-              <div className="content centered">
-                <BoosterIcon booster={order.booster} infos="none" active />
-              </div>
+          <div className="cell">
+            <span>Booster</span>
+            <div className="content centered">
+              <BoosterIcon booster={order.booster} infos="none" active />
             </div>
-
-            {!order.booster.nb_in_wallet ? (
-              <div className="cell">
-                <span>Prix</span>
-                <div className="content">
-                  <span className="price">{formatCurrency(order.booster.price)}</span>
-                </div>
-              </div>
-            ) : null}
-          </>
+          </div>
         ) : null}
       </div>
 

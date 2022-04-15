@@ -20,6 +20,12 @@
     padding-bottom: .5em;
   }
 
+  > .emoji {
+    @include fonts.IBM-Plex-Sans(1.5em, colors.$blue, bold);
+    margin: 0;
+    padding: 0;
+  }
+
   > .title {
     @include fonts.IBM-Plex-Sans(1.5em, colors.$blue, bold);
     margin: 0;

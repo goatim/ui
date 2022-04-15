@@ -8,6 +8,7 @@ export type HeadingLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
 export interface Props {
   label?: string;
+  emoji?: string;
   title?: string;
   size?: HeadingSize;
   theme?: HeadingTheme;
@@ -17,6 +18,7 @@ export interface Props {
 
 export default function Heading({
   label,
+  emoji,
   title,
   size = 'medium',
   theme = 'default',
@@ -26,6 +28,7 @@ export default function Heading({
   return (
     <div className={`friday-ui-heading ${size} ${theme} ${align}`}>
       {label?.length ? <span className="label">{label}</span> : null}
+      {emoji?.length ? <span className="emoji">{emoji}</span> : null}
       {title?.length && level === 'h1' ? <h1 className="title">{title}</h1> : null}
       {title?.length && level === 'h2' ? <h2 className="title">{title}</h2> : null}
       {title?.length && level === 'h3' ? <h3 className="title">{title}</h3> : null}

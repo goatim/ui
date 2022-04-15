@@ -1,0 +1,11 @@
+.friday-ui-cart-overview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  > .resume {
+    margin-top: 30px;
+    flex: 1;
+    width: 100%;
+  }
+}

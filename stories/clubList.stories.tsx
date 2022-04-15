@@ -1,15 +1,15 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { Club } from '@fridaygame/client';
-import ClubsList from '../src/soccer/clubsList';
+import ClubList from '../src/soccer/clubList';
 
 interface Props {
   length?: number;
 }
 
 export default {
-  title: 'Soccer/ClubsList',
-  component: ClubsList,
+  title: 'Soccer/ClubList',
+  component: ClubList,
   argTypes: {
     length: {
       control: {
@@ -35,7 +35,7 @@ const club: Club = {
 };
 
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({ length }: Props) => (
-  <ClubsList clubs={Array(length).fill(club)} />
+  <ClubList clubs={Array(length).fill(club)} />
 );
 
 export const Default = Template.bind({});
