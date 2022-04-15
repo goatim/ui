@@ -101,6 +101,7 @@ export default function Counter({
         <input
           name={name}
           value={
+            // eslint-disable-next-line no-nested-ternary
             !isActive && format ? format(value) : resolver ? resolver(value) : value?.toString()
           }
           type="number"
@@ -111,9 +112,9 @@ export default function Counter({
           onBlur={onBlur}
           spellCheck={false}
           autoCorrect="off"
-          min={resolver ? resolver(min) : min}
-          max={resolver ? resolver(max) : max}
-          step={resolver ? resolver(step) : step}
+          min={min !== undefined && resolver ? resolver(min) : min}
+          max={max !== undefined && resolver ? resolver(max) : max}
+          step={step !== undefined && resolver ? resolver(step) : step}
         />
         <button onClick={increase} type="button" className="plus">
           <Icon name="plus" size={20} />
