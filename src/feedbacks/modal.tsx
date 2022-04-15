@@ -35,7 +35,7 @@ export interface ModalsState {
     type?: ModalType,
     onDismiss?: () => unknown,
   ) => string | undefined;
-  dismissModal: (id: string | undefined) => unknown;
+  dismissModal: (id: string | undefined) => void;
 }
 
 const Context = createContext<ModalsState>({
@@ -51,7 +51,7 @@ export function useModals(): ModalsState {
 export interface ModalContainerProps {
   id?: string;
   modal: Modal;
-  dismissModal: () => unknown;
+  dismissModal: () => void;
 }
 
 function ModalContainer({ id, modal, dismissModal }: ModalContainerProps): ReactElement {
