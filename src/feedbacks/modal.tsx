@@ -12,7 +12,7 @@ import {
 import { useClickOutside } from '@cezembre/fronts';
 
 export interface ModalComponentProps {
-  id?: string;
+  id: string;
   dismissModal: () => void;
 }
 
@@ -21,7 +21,7 @@ export type ModalComponent = FunctionComponent<ModalComponentProps>;
 export type ModalType = 'full' | 'overlay';
 
 export interface Modal {
-  id?: string;
+  id: string;
   type?: ModalType;
   component?: ModalComponent;
   onDismiss?: () => unknown;
@@ -49,7 +49,7 @@ export function useModals(): ModalsState {
 }
 
 export interface ModalContainerProps {
-  id?: string;
+  id: string;
   modal: Modal;
   dismissModal: () => void;
 }
@@ -109,7 +109,7 @@ export function ModalsContext({ children }: ContextProps): ReactElement {
   );
 
   const dismissModal = useCallback(
-    (id: string | undefined = undefined) => {
+    (id: string) => {
       setModals((_modals) => {
         const nextModals = [..._modals];
         const index = nextModals.findIndex((modal) => modal.id === id);
