@@ -1,0 +1,36 @@
+@use '~@cezembre/fronts/dist/screens';
+@use '../styles/fonts';
+@use '../styles/colors';
+
+button.friday-ui-credit-card-thumbnail {
+  cursor: pointer;
+}
+
+.friday-ui-credit-card-thumbnail {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px 15px;
+  background: white;
+  border-radius: 5px;
+  border: solid rgba(colors.$blue, .1) 1px;
+
+  > .details {
+    margin-left: 25px;
+
+    > .digits {
+      @include fonts.IBM-Plex-Sans(0.8em, colors.$blue, bold);
+      margin: 0;
+    }
+
+    > .expiration {
+      @include fonts.IBM-Plex-Sans(0.8em, rgba(colors.$blue, .5), bold);
+      margin: 0;
+    }
+  }
+
+  &.active {
+    background: rgba(colors.$blue, .2);
+  }
+}

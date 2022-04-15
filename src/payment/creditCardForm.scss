@@ -1,0 +1,12 @@
+@use '../styles/forms';
+
+.friday-ui-credit-card-form {
+  @include forms.form;
+
+  > .actions {
+    margin-top: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}

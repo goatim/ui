@@ -68,6 +68,10 @@ import PortfolioThumbnail from './trading/portfolioThumbnail';
 import QuotationGraph, { DataPoint } from './trading/quotationGraph';
 import TransactionThumbnail from './trading/transactionThumbnail';
 import AssetList from './trading/assetList';
+import CreditCardThumbnail from './payment/creditCardThumbnail';
+import PaymentMethodThumbnail from './payment/paymentMethodThumbnail';
+import CreditCardForm, { NewCreditCard } from './payment/creditCardForm';
+import PaymentMethodSelector from './payment/paymentMethodSelector';
 
 /**
  * Feedback
@@ -187,3 +191,11 @@ export type {
   BoosterIconInfos,
   DataPoint,
 };
+
+/**
+ * Payment
+ */
+
+export { CreditCardThumbnail, PaymentMethodThumbnail, CreditCardForm, PaymentMethodSelector };
+
+export type { NewCreditCard };
