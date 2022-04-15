@@ -12,7 +12,7 @@ import {
 import { useClickOutside } from '@cezembre/fronts';
 
 export interface ModalComponentProps {
-  id: string;
+  id?: string;
   dismissModal: () => void;
 }
 
