@@ -13,7 +13,7 @@ import { useClickOutside } from '@cezembre/fronts';
 
 export interface ModalComponentProps {
   id?: string;
-  dismissModal: () => unknown;
+  dismissModal: () => void;
 }
 
 export type ModalComponent = FunctionComponent<ModalComponentProps>;
@@ -35,7 +35,7 @@ export interface ModalsState {
     type?: ModalType,
     onDismiss?: () => unknown,
   ) => string | undefined;
-  dismissModal: (id: string | undefined) => void;
+  dismissModal: (id: string) => void;
 }
 
 const Context = createContext<ModalsState>({
@@ -88,7 +88,7 @@ export function ModalsContext({ children }: ContextProps): ReactElement {
     (
       component: ModalComponent,
       type: ModalType | undefined = 'full',
-      onDismiss: (() => void) | undefined = undefined,
+      onDismiss: (() => unknown) | undefined = undefined,
     ) => {
       const modal: Modal = {
         id: Math.random().toString(36).substring(5),
