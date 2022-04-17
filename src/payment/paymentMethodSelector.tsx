@@ -1,5 +1,6 @@
 import { ReactElement, useCallback, useEffect, useState } from 'react';
 import { PaymentMethod } from '@fridaygame/client';
+import { PaymentMethod as StripePaymentMethod } from '@stripe/stripe-js';
 import CreditCardForm, { NewCreditCard } from './creditCardForm';
 import Button from '../general/button';
 import PaymentMethodThumbnail from './paymentMethodThumbnail';
@@ -8,8 +9,10 @@ import Icon from '../general/icon';
 export interface Props {
   paymentMethods?: PaymentMethod[];
   initialPaymentMethod?: PaymentMethod;
-  onSelect?: (paymentMethod: PaymentMethod) => void;
-  onAddCreditCard?: (newCreditCard: NewCreditCard) => Promise<PaymentMethod> | PaymentMethod;
+  onSelect?: (paymentMethod: PaymentMethod | StripePaymentMethod) => void;
+  onAddCreditCard?: (
+    newCreditCard: NewCreditCard,
+  ) => Promise<PaymentMethod | StripePaymentMethod> | PaymentMethod | StripePaymentMethod;
 }
 
 export default function PaymentMethodSelector({
@@ -18,9 +21,9 @@ export default function PaymentMethodSelector({
   onSelect,
   onAddCreditCard,
 }: Props): ReactElement {
-  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<PaymentMethod | undefined>(
-    initialPaymentMethod,
-  );
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<
+    PaymentMethod | StripePaymentMethod | undefined
+  >(initialPaymentMethod);
   const [isAdding, setIsAdding] = useState<boolean>(false);
 
   useEffect(() => {
@@ -32,7 +35,7 @@ export default function PaymentMethodSelector({
   }, [paymentMethods]);
 
   const selectPaymentMethod = useCallback(
-    (paymentMethod: PaymentMethod) => {
+    (paymentMethod: PaymentMethod | StripePaymentMethod) => {
       setSelectedPaymentMethod(paymentMethod);
       if (onSelect) {
         onSelect(paymentMethod);
@@ -64,7 +67,7 @@ export default function PaymentMethodSelector({
     <div className="friday-ui-payment-method-selector">
       {paymentMethods?.length ? (
         <div className="payment-methods">
-          {paymentMethods.map((paymentMethod: PaymentMethod) => (
+          {paymentMethods.map((paymentMethod: PaymentMethod | StripePaymentMethod) => (
             <div key={paymentMethod.id} className="payment-method">
               <PaymentMethodThumbnail
                 paymentMethod={paymentMethod}
