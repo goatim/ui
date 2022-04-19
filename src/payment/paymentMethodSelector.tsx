@@ -3,14 +3,12 @@ import { PaymentMethod } from '@fridaygame/client';
 import { PaymentMethod as StripePaymentMethod } from '@stripe/stripe-js';
 import CreditCardForm, { NewCreditCard } from './creditCardForm';
 import Button from '../general/button';
-import PaymentMethodThumbnail from './paymentMethodThumbnail';
-import Icon from '../general/icon';
 import PaymentMethodList from './paymentMethodList';
 
 export interface Props {
-  paymentMethods?: PaymentMethod[];
-  initialPaymentMethod?: PaymentMethod;
-  onSelect?: (paymentMethod: PaymentMethod | StripePaymentMethod) => void;
+  paymentMethods?: (PaymentMethod | StripePaymentMethod)[];
+  onSelectPaymentMethod?: (paymentMethod: PaymentMethod | StripePaymentMethod | null) => void;
+  selectedPaymentMethod?: PaymentMethod | StripePaymentMethod | string | null;
   onAddCreditCard?: (
     newCreditCard: NewCreditCard,
   ) => Promise<PaymentMethod | StripePaymentMethod> | PaymentMethod | StripePaymentMethod;
@@ -18,13 +16,10 @@ export interface Props {
 
 export default function PaymentMethodSelector({
   paymentMethods,
-  initialPaymentMethod,
-  onSelect,
+  onSelectPaymentMethod,
+  selectedPaymentMethod,
   onAddCreditCard,
 }: Props): ReactElement {
-  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<
-    PaymentMethod | StripePaymentMethod | undefined
-  >(initialPaymentMethod);
   const [isAdding, setIsAdding] = useState<boolean>(false);
 
   useEffect(() => {
@@ -34,16 +29,6 @@ export default function PaymentMethodSelector({
       setIsAdding(false);
     }
   }, [paymentMethods]);
-
-  const selectPaymentMethod = useCallback(
-    (paymentMethod: PaymentMethod | StripePaymentMethod) => {
-      setSelectedPaymentMethod(paymentMethod);
-      if (onSelect) {
-        onSelect(paymentMethod);
-      }
-    },
-    [onSelect],
-  );
 
   const addCreditCard = useCallback(
     async (newCreditCard: NewCreditCard) => {
@@ -55,13 +40,15 @@ export default function PaymentMethodSelector({
             paymentMethod = await paymentMethod;
           }
 
-          selectPaymentMethod(paymentMethod as PaymentMethod);
+          if (onSelectPaymentMethod) {
+            onSelectPaymentMethod(paymentMethod as PaymentMethod);
+          }
         } catch (error) {
           // TODO: Handle error
         }
       }
     },
-    [onAddCreditCard, selectPaymentMethod],
+    [onAddCreditCard, onSelectPaymentMethod],
   );
 
   return (
@@ -70,7 +57,7 @@ export default function PaymentMethodSelector({
         <div className="payment-methods">
           <PaymentMethodList
             paymentMethods={paymentMethods}
-            onSelectPaymentMethod={selectPaymentMethod}
+            onSelectPaymentMethod={onSelectPaymentMethod}
             selectedPaymentMethod={selectedPaymentMethod}
           />
         </div>

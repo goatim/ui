@@ -8,7 +8,7 @@ import Check from '../general/check';
 
 export interface Props extends WrapperProps {
   card: Card | StripePaymentMethod.Card;
-  active?: boolean;
+  selected?: boolean;
 }
 
 function resolveIcon(brand?: CardBrands | string): IconName {
@@ -29,11 +29,11 @@ export default function CreditCardThumbnail({
   type,
   href,
   target,
-  active,
+  selected,
 }: Props): ReactElement {
   return (
     <Wrapper
-      className={`friday-ui-credit-card-thumbnail${active ? ' active' : ''}`}
+      className={`friday-ui-credit-card-thumbnail${selected ? ' selected' : ''}`}
       to={to}
       onClick={onClick}
       type={type}
@@ -42,7 +42,7 @@ export default function CreditCardThumbnail({
       <div className="body">
         {onClick ? (
           <div className="selector">
-            <Check active={active} />
+            <Check active={selected} />
           </div>
         ) : null}
 

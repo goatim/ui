@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { loadStripe } from '@stripe/stripe-js';
+import { loadStripe, PaymentMethod as StripePaymentMethod } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
-import { JSXElementConstructor } from 'react';
+import { JSXElementConstructor, useState } from 'react';
 import { PaymentMethod } from '@fridaygame/client';
 import PaymentMethodSelector from '../src/payment/paymentMethodSelector';
 
@@ -39,11 +39,20 @@ const paymentMethod2: PaymentMethod = {
   },
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
-  <Elements stripe={loadedStripe}>
-    <PaymentMethodSelector paymentMethods={[paymentMethod1, paymentMethod2]} />
-  </Elements>
-);
+const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => {
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<
+    PaymentMethod | StripePaymentMethod | null | undefined
+  >();
+  return (
+    <Elements stripe={loadedStripe}>
+      <PaymentMethodSelector
+        paymentMethods={[paymentMethod1, paymentMethod2]}
+        selectedPaymentMethod={selectedPaymentMethod}
+        onSelectPaymentMethod={setSelectedPaymentMethod}
+      />
+    </Elements>
+  );
+};
 
 export const Default = Template.bind({});
 

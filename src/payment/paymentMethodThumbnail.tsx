@@ -6,7 +6,7 @@ import { WrapperProps } from '../general/wrapper';
 
 export interface Props extends WrapperProps {
   paymentMethod: PaymentMethod | MinifiedPaymentMethod | StripePaymentMethod;
-  active?: boolean;
+  selected?: boolean;
 }
 
 export default function PaymentMethodThumbnail({
@@ -16,7 +16,7 @@ export default function PaymentMethodThumbnail({
   type,
   href,
   target,
-  active,
+  selected,
 }: Props): ReactElement | null {
   switch (paymentMethod.type) {
     case 'card':
@@ -28,7 +28,7 @@ export default function PaymentMethodThumbnail({
           type={type}
           href={href}
           target={target}
-          active={active}
+          selected={selected}
         />
       ) : null;
 
