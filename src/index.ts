@@ -46,6 +46,7 @@ import ItemThumbnail from './market/itemThumbnail';
 import ItemList from './market/itemList';
 import CartResume from './market/cartResume';
 import CartOverview from './market/cartOverview';
+import CheckoutBill from './market/checkoutBill';
 import LeagueIcon, { LeagueIconSize } from './soccer/leagueIcon';
 import LeagueThumbnail, {
   LeagueThumbnailSize,
@@ -137,6 +138,7 @@ export {
   ItemList,
   CartResume,
   CartOverview,
+  CheckoutBill,
 };
 
 export type {

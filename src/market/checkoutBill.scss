@@ -1,0 +1,24 @@
+@use "../styles/colors";
+@use "../styles/fonts";
+
+.friday-ui-checkout-bill {
+  > .line {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+
+    &:first-child {
+      margin: 0;
+    }
+
+    > span {
+      @include fonts.IBM-Plex-Sans(.8em, rgba(colors.$blue, .5), bold);
+      text-align: right;
+    }
+
+    &.total > span {
+      @include fonts.IBM-Plex-Sans(.9em, colors.$blue, bold);
+    }
+  }
+}
