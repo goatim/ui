@@ -4,33 +4,78 @@
 
 button.friday-ui-credit-card-thumbnail {
   cursor: pointer;
+  font-size: 1em;
+  text-align: left;
 }
 
 .friday-ui-credit-card-thumbnail {
+  width: 260px;
   box-sizing: border-box;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
-  padding: 10px 15px;
+  padding: 15px 25px 15px 15px;
   background: white;
-  border-radius: 5px;
+  border-radius: 10px;
   border: solid rgba(colors.$blue, .1) 1px;
+  transition: background linear 100ms;
 
-  > .details {
-    margin-left: 25px;
+  > .body {
+    display: flex;
+    align-items: center;
 
-    > .digits {
-      @include fonts.IBM-Plex-Sans(0.8em, colors.$blue, bold);
-      margin: 0;
+    > .selector {
+      margin-right: 15px;
     }
 
-    > .expiration {
-      @include fonts.IBM-Plex-Sans(0.8em, rgba(colors.$blue, .5), bold);
-      margin: 0;
+    > .details {
+      > .digits {
+        @include fonts.IBM-Plex-Sans(0.8em, rgba(colors.$blue, .5), bold);
+        margin: 0;
+      }
+
+      > .expiration {
+        @include fonts.IBM-Plex-Sans(0.8em, rgba(colors.$blue, .2));
+        margin: 0;
+      }
+    }
+  }
+
+  > .icon {
+    margin-left: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    opacity: .5;
+
+    > svg[stroke] {
+      stroke: colors.$blue;
+    }
+
+    > svg:not([stroke]) {
+      fill: colors.$blue;
     }
   }
 
   &.active {
-    background: rgba(colors.$blue, .2);
+    &:before {
+      border-color: rgba(white, .1);
+      background: rgba(white, .5);
+    }
+
+    > .icon {
+      opacity: 1;
+    }
+
+    > .body > .details {
+      > .digits {
+        color: colors.$blue;
+      }
+      > .expiration {
+        color: rgba(colors.$blue, .5);
+      }
+    }
   }
 }

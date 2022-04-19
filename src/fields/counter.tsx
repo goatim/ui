@@ -3,13 +3,10 @@ import { FieldComponentProps } from '@cezembre/forms';
 import { Adapter, Resolver } from './input';
 import Icon from '../general/icon';
 
-export type Theme = 'default' | 'black' | 'colored';
-
 export interface Props extends FieldComponentProps<number | undefined> {
   adapter?: Adapter<number | undefined>;
   resolver?: Resolver<number | undefined>;
   format?: Resolver<number | undefined>;
-  theme?: Theme;
   label?: string;
   placeholder?: string;
   instructions?: string;
@@ -30,7 +27,6 @@ export default function Counter({
   name,
   onChange,
   onBlur,
-  theme = 'default',
   adapter,
   resolver,
   format,
@@ -41,10 +37,10 @@ export default function Counter({
   max,
   step = 1,
 }: Props): ReactElement {
-  const [classNames, setClassNames] = useState<string[]>(['friday-ui-fields-counter', theme]);
+  const [classNames, setClassNames] = useState<string[]>(['friday-ui-fields-counter']);
 
   useEffect(() => {
-    const nextClassNames = ['friday-ui-fields-counter', theme];
+    const nextClassNames = ['friday-ui-fields-counter'];
 
     if (visited) {
       nextClassNames.push('visited');
@@ -63,7 +59,7 @@ export default function Counter({
     }
 
     setClassNames(nextClassNames);
-  }, [isActive, hasChanged, error, visited, warning, submitted, theme]);
+  }, [isActive, hasChanged, error, visited, warning, submitted]);
 
   const change = useCallback(
     (event: ChangeEvent<{ value: string }>) => {

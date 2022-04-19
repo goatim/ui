@@ -7,6 +7,8 @@ import Rocket from '../icons/rocket';
 import Shirt from '../icons/shirt';
 import Trophy from '../icons/trophy';
 import FridayIcon from '../icons/fridayIcon';
+import Visa from '../icons/visa';
+import Mastercard from '../icons/mastercard';
 
 export type IconName =
   | 'activity'
@@ -300,7 +302,9 @@ export type IconName =
   | 'money'
   | 'rocket'
   | 'shirt'
-  | 'trophy';
+  | 'trophy'
+  | 'visa'
+  | 'mastercard';
 
 export interface Props extends IconProps {
   name?: IconName;
@@ -896,6 +900,10 @@ export default function Icon({
       return <Shirt size={size} />;
     case 'trophy':
       return <Trophy size={size} />;
+    case 'visa':
+      return <Visa size={size} />;
+    case 'mastercard':
+      return <Mastercard size={size} />;
     default:
       return <Friday size={size} />;
   }

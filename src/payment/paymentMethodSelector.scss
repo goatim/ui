@@ -1,38 +1,9 @@
 @use '../styles/colors';
 
 .friday-ui-payment-method-selector {
-  > .payment-methods {
-    > .payment-method {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      cursor: pointer;
-      -webkit-touch-callout: none;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-      border: none;
-      flex-shrink: 0;
-      background: transparent;
-      margin-top: 10px;
-      padding: 0 20px 0 0;
-      transition: background linear 100ms;
-
-      &:first-child {
-        margin: 0;
-      }
-
-      &:hover,
-      &.selected {
-        background: colors.$light-blue;
-      }
-    }
-  }
 
   > .new {
-    padding: 20px;
+    margin-top: 20px;
   }
 
   > .new-button {

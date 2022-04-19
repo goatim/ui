@@ -5,6 +5,7 @@ import CreditCardForm, { NewCreditCard } from './creditCardForm';
 import Button from '../general/button';
 import PaymentMethodThumbnail from './paymentMethodThumbnail';
 import Icon from '../general/icon';
+import PaymentMethodList from './paymentMethodList';
 
 export interface Props {
   paymentMethods?: PaymentMethod[];
@@ -67,16 +68,11 @@ export default function PaymentMethodSelector({
     <div className="friday-ui-payment-method-selector">
       {paymentMethods?.length ? (
         <div className="payment-methods">
-          {paymentMethods.map((paymentMethod: PaymentMethod | StripePaymentMethod) => (
-            <div key={paymentMethod.id} className="payment-method">
-              <PaymentMethodThumbnail
-                paymentMethod={paymentMethod}
-                onClick={() => selectPaymentMethod(paymentMethod)}
-                active={selectedPaymentMethod?.id === paymentMethod.id}
-              />
-              {selectedPaymentMethod?.id === paymentMethod.id ? <Icon name="check" /> : null}
-            </div>
-          ))}
+          <PaymentMethodList
+            paymentMethods={paymentMethods}
+            onSelectPaymentMethod={selectPaymentMethod}
+            selectedPaymentMethod={selectedPaymentMethod}
+          />
         </div>
       ) : null}
 

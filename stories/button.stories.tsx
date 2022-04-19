@@ -26,15 +26,7 @@ export default {
       },
     },
     theme: {
-      options: [
-        'default',
-        'light',
-        'discreet',
-        'discreet-light',
-        'submit',
-        'action',
-        'action-discreet',
-      ],
+      options: ['default', 'light', 'darker', 'lighter', 'submit', 'action', 'action-discreet'],
       defaultValue: 'default',
       control: {
         type: 'select',

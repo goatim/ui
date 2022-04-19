@@ -1,0 +1,9 @@
+.friday-ui-payment-method-list {
+  > .payment-method {
+    margin-top: 10px;
+
+    &:first-child {
+      margin: 0;
+    }
+  }
+}

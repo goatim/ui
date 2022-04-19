@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 import { JSXElementConstructor } from 'react';
-import { Card, PaymentMethod } from '@fridaygame/client';
+import { PaymentMethod } from '@fridaygame/client';
 import PaymentMethodSelector from '../src/payment/paymentMethodSelector';
 
 interface Props {}
@@ -15,23 +15,33 @@ export default {
 
 const loadedStripe = loadStripe(process.env.STORYBOOK_STRIPE_PUBLIC_API_KEY || '');
 
-const card: Card = {
-  country: 'fr',
-  brand: 'mastercard',
-  exp_month: 7,
-  exp_year: 2022,
-  last4: '4444',
-};
-
-const paymentMethod: PaymentMethod = {
+const paymentMethod1: PaymentMethod = {
   id: 'pm_edsefsef',
   type: 'card',
-  card,
+  card: {
+    country: 'fr',
+    brand: 'mastercard',
+    exp_month: 7,
+    exp_year: 2022,
+    last4: '4444',
+  },
+};
+
+const paymentMethod2: PaymentMethod = {
+  id: 'pm_edqzdd45ef',
+  type: 'card',
+  card: {
+    country: 'fr',
+    brand: 'visa',
+    exp_month: 12,
+    exp_year: 2026,
+    last4: '3265',
+  },
 };
 
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
   <Elements stripe={loadedStripe}>
-    <PaymentMethodSelector paymentMethods={[paymentMethod]} />
+    <PaymentMethodSelector paymentMethods={[paymentMethod1, paymentMethod2]} />
   </Elements>
 );
 
