@@ -1,7 +1,7 @@
 @use '../styles/fonts';
 @use '../styles/colors';
 
-.friday-ui-market-percentage-variation {
+.friday-ui-percentage-variation {
   @include fonts.IBM-Plex-Sans(.7em, colors.$green, bold);
 
   &.medium {

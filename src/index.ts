@@ -73,6 +73,7 @@ import PortfolioList from './trading/portfolioList';
 import QuotationGraph, { DataPoint } from './trading/quotationGraph';
 import TransactionThumbnail from './trading/transactionThumbnail';
 import AssetList from './trading/assetList';
+import RankPosition from './trading/rankPosition';
 import CreditCardThumbnail from './payment/creditCardThumbnail';
 import PaymentMethodThumbnail from './payment/paymentMethodThumbnail';
 import CreditCardForm, { NewCreditCard } from './payment/creditCardForm';
@@ -193,6 +194,7 @@ export {
   QuotationGraph,
   TransactionThumbnail,
   AssetList,
+  RankPosition,
 };
 
 export type {

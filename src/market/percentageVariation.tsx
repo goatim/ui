@@ -29,7 +29,7 @@ export default function PercentageVariation({
   }, [variation]);
 
   return (
-    <span className={`friday-ui-market-percentage-variation ${sign} ${shape} ${size}`}>
+    <span className={`friday-ui-percentage-variation ${sign} ${shape} ${size}`}>
       {formatPercentageVariation(variation)}
     </span>
   );

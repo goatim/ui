@@ -17,8 +17,6 @@ export default function FridayCoins({
   theme = 'default',
 }: Props): ReactElement {
   return (
-    <span className={`friday-ui-market-friday-coins ${size} ${theme}`}>
-      {formatFridayCoins(amount)}
-    </span>
+    <span className={`friday-ui-friday-coins ${size} ${theme}`}>{formatFridayCoins(amount)}</span>
   );
 }

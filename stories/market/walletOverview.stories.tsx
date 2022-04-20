@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import { User, Wallet } from '@fridaygame/client';
+import { Rank, User, Wallet } from '@fridaygame/client';
 import WalletOverview from '../../src/market/walletOverview';
 
 interface Props {}
@@ -22,6 +22,12 @@ const owner: User = {
   last_name: 'Perouze',
 };
 
+const rank: Rank = {
+  id: 'ra_qedf5',
+  name: 'Ligue de plomb',
+  position: 42,
+};
+
 const wallet: Wallet = {
   id: 'wa_sopsaA',
   owner,
@@ -33,6 +39,8 @@ const wallet: Wallet = {
   amount: 420000,
   portfolios_quotation: 785200,
   portfolios_session_variation: 45,
+  rank,
+  rank_position: 12,
 };
 
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (

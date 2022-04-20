@@ -25,7 +25,7 @@ export default function FridayCoinsVariation({
   }, [variation]);
 
   return (
-    <span className={`friday-ui-market-friday-coins-variation ${sign} ${size}`}>
+    <span className={`friday-ui-friday-coins-variation ${sign} ${size}`}>
       {formatFridayCoinsVariation(variation)}
     </span>
   );

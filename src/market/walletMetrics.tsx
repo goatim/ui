@@ -3,6 +3,7 @@ import { Wallet } from '@fridaygame/client';
 import FridayCoins from './fridayCoins';
 import PercentageVariation from './percentageVariation';
 import QuotationGraph from '../trading/quotationGraph';
+import RankPosition from '../trading/rankPosition';
 
 export interface Props {
   wallet: Wallet;
@@ -14,8 +15,14 @@ export default function WalletMetrics({ wallet }: Props): ReactElement {
       <div className="metrics">
         <div className="metric">
           <span className="label">Classement</span>
-          <span className="rank">Ligue de bronze</span>
-          <span className="rank-position">26 ème</span>
+          {wallet.rank && typeof wallet.rank === 'object' ? (
+            <span className="rank">{wallet.rank.name}</span>
+          ) : (
+            <span className="rank">Non classé</span>
+          )}
+          {wallet.rank_position ? (
+            <RankPosition position={wallet.rank_position} size="medium" theme="light" />
+          ) : null}
         </div>
 
         <div className="metric center">

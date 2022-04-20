@@ -1,7 +1,7 @@
 @use '../styles/fonts';
 @use '../styles/colors';
 
-.friday-ui-market-friday-coins-variation {
+.friday-ui-friday-coins-variation {
   @include fonts.IBM-Plex-Sans(.7em, colors.$green, bold);
 
   &.medium {
