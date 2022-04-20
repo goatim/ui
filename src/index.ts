@@ -69,6 +69,7 @@ import BoosterInUseThumbnail from './trading/boosterInUseThumbnail';
 import BoosterInUseStack from './trading/boosterInUseStack';
 import OrderThumbnail from './trading/orderThumbnail';
 import PortfolioThumbnail from './trading/portfolioThumbnail';
+import PortfolioList from './trading/portfolioList';
 import QuotationGraph, { DataPoint } from './trading/quotationGraph';
 import TransactionThumbnail from './trading/transactionThumbnail';
 import AssetList from './trading/assetList';
@@ -188,6 +189,7 @@ export {
   BoosterInUseStack,
   OrderThumbnail,
   PortfolioThumbnail,
+  PortfolioList,
   QuotationGraph,
   TransactionThumbnail,
   AssetList,
