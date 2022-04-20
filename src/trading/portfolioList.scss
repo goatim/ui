@@ -1,0 +1,11 @@
+.friday-ui-portfolio-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 400px);
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  justify-content: center;
+
+  > .portfolio {
+    width: 400px;
+  }
+}
