@@ -7,7 +7,7 @@ import {
   useState,
   FocusEventHandler,
 } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, To } from 'react-router-dom';
 import Loader from '../feedbacks/loader';
 import Icon, { IconName } from './icon';
 
@@ -29,7 +29,7 @@ export type ButtonTheme =
 export interface Props {
   children?: ReactNode;
   href?: string;
-  to?: string;
+  to?: To;
   onClick?: (event: MouseEvent<HTMLButtonElement>) => Promise<void> | void;
   onFocus?: FocusEventHandler<HTMLElement>;
   onBlur?: FocusEventHandler<HTMLElement>;
@@ -133,7 +133,7 @@ function Wrapper({
     );
   }
 
-  if (!disabled && !pending && !autoPending && to && to.length) {
+  if (!disabled && !pending && !autoPending && to) {
     return (
       <NavLink className={classNames.filter((c) => c).join(' ')} to={to} onFocus={onFocus}>
         {children}
