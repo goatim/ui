@@ -39,6 +39,9 @@ import WalletThumbnail, {
   WalletThumbnailInfos,
   WalletThumbnailSize,
 } from './market/walletThumbnail';
+import WalletTeam from './market/walletTeam';
+import WalletMetrics from './market/walletMetrics';
+import WalletOverview from './market/walletOverview';
 import ItemEditor, { ItemEditorFields } from './market/itemEditor';
 import OrderItemEditor, { OrderItemEditorFields } from './market/orderItemEditor';
 import OrderItemThumbnail from './market/orderItemThumbnail';
@@ -139,6 +142,9 @@ export {
   CartResume,
   CartOverview,
   CheckoutBill,
+  WalletTeam,
+  WalletMetrics,
+  WalletOverview,
 };
 
 export type {
