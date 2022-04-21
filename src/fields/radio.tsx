@@ -2,12 +2,10 @@ import {
   ReactElement,
   useState,
   useEffect,
-  useCallback,
   cloneElement,
   MouseEventHandler,
   FocusEventHandler,
 } from 'react';
-import _ from 'lodash';
 import { FieldComponentProps } from '@cezembre/forms';
 import Icon, { IconName } from '../general/icon';
 import Button, { ButtonSize, ButtonShape, ButtonTheme } from '../general/button';
@@ -110,25 +108,6 @@ export default function Radio<V = unknown>({
     setClassNames(nextClassNames);
   }, [error, isActive, warning]);
 
-  const [selectedOptionIndex, setSelectedOptionIndex] = useState<number | undefined>();
-
-  useEffect(() => {
-    if (value !== undefined) {
-      const i = _.findIndex(options, (option) => option.value === value);
-      if (i !== -1) {
-        setSelectedOptionIndex(i);
-      }
-    }
-  }, [value, options]);
-
-  const selectOption = useCallback(
-    (index: number | undefined, _value: V | undefined) => {
-      setSelectedOptionIndex(index);
-      onChange(_value);
-    },
-    [onChange],
-  );
-
   return (
     <div className={classNames.filter(String).join(' ')}>
       {label && <label htmlFor={name}>{label}</label>}
@@ -144,16 +123,13 @@ export default function Radio<V = unknown>({
             className="option">
             <RadioOptionComponent<V>
               option={option}
-              onClick={() => selectOption(index, option.value)}
-              active={index === selectedOptionIndex}
+              onClick={() => onChange(option.value)}
+              active={option.value === value}
             />
           </div>
         ))}
         {canReset ? (
-          <button
-            type="button"
-            className="reset"
-            onClick={() => selectOption(undefined, undefined)}>
+          <button type="button" className="reset" onClick={() => onChange(undefined)}>
             <Icon name="x" />
           </button>
         ) : null}

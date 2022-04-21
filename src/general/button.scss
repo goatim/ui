@@ -146,15 +146,15 @@
       &:hover, &.active {
         > .container {
           svg[stroke] {
-            stroke: rgba(colors.$blue, .5);
+            stroke: colors.$electric-blue;
           }
 
           svg:not([stroke]) {
-            fill: rgba(colors.$blue, .5);
+            fill: colors.$electric-blue;
           }
 
           > .body > .label {
-            color: rgba(colors.$blue, .5);
+            color: colors.$electric-blue;
           }
         }
       }
@@ -438,7 +438,7 @@
       }
 
       &:hover, &.active {
-        background: rgba(colors.$blue, .7);
+        background: colors.$electric-blue;
       }
     }
 

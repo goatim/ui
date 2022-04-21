@@ -54,7 +54,7 @@ const Template: ComponentStory<JSXElementConstructor<Props>> = ({ label }: Props
       name="radio"
       component={Radio}
       label={label}
-      options={boosters.map((booster) => ({
+      options={boosters.map((booster: Booster) => ({
         value: booster.id,
         element: <BoosterIcon booster={booster} size="medium" />,
       }))}

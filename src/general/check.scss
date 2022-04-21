@@ -28,11 +28,12 @@
   > svg {
     stroke-dashoffset: 100;
     transition: stroke-dashoffset cubic-bezier(0.215, 0.61, 0.355, 1) 400ms;
-    stroke: colors.$blue;
+    stroke: colors.$electric-blue;
   }
 
   > span {
-    @include fonts.IBM-Plex-Sans(1em, colors.$blue);
+    @include fonts.IBM-Plex-Sans(.8em, colors.$blue, bold);
+    text-transform: uppercase;
   }
 
   &[aria-pressed='true'] {
@@ -41,7 +42,7 @@
     }
 
     > span {
-      color: colors.$blue;
+      color: colors.$electric-blue;
     }
   }
 }
