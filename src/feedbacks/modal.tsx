@@ -55,7 +55,7 @@ export interface ModalContainerProps {
 }
 
 function ModalContainer({ id, modal, dismissModal }: ModalContainerProps): ReactElement {
-  const modalContainer = useRef<HTMLDivElement>(null);
+  const modalElement = useRef<HTMLDivElement>(null);
 
   const onClickOutside = useCallback(() => {
     if (modal.isActive) {
@@ -66,12 +66,14 @@ function ModalContainer({ id, modal, dismissModal }: ModalContainerProps): React
     }
   }, [dismissModal, modal]);
 
-  useClickOutside(modalContainer, onClickOutside);
+  useClickOutside(modalElement, onClickOutside);
 
   return (
     <div className={`friday-ui-modal ${modal.type}`} id={id}>
-      <div ref={modalContainer} className="container">
-        {modal.component ? <modal.component id={modal.id} dismissModal={dismissModal} /> : null}
+      <div className="container">
+        <div ref={modalElement}>
+          {modal.component ? <modal.component id={modal.id} dismissModal={dismissModal} /> : null}
+        </div>
       </div>
     </div>
   );
