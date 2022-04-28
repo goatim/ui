@@ -1,0 +1,9 @@
+.friday-ui-player-list {
+  > .player {
+    margin-top: 10px;
+
+    &:first-child {
+      margin: 0;
+    }
+  }
+}

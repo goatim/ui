@@ -1,6 +1,10 @@
 @use '../styles/fonts';
 @use '../styles/colors';
 
+button.friday-ui-player-thumbnail {
+  cursor: pointer;
+}
+
 .friday-ui-player-thumbnail {
   display: flex;
   justify-content: flex-start;
@@ -8,6 +12,7 @@
   text-decoration: none;
   border: none;
   font-size: 1em;
+  background: none;
 
   > .infos {
     display: flex;

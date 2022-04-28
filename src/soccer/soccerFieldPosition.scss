@@ -1,7 +1,15 @@
 @use '../styles/colors';
 
-.friday-ui-club-icon {
+button.friday-ui-soccer-field-position {
+  cursor: pointer;
+}
+
+.friday-ui-soccer-field-position {
   border: none;
+  box-sizing: border-box;
+  padding: 0;
+  background: none;
+  outline: none;
 
   > img {
     width: 100%;
@@ -18,14 +26,15 @@
     width: 100%;
     height: 100%;
     display: block;
-    background: rgba(colors.$blue, .1);
-    border: solid rgba(colors.$blue, .1) 1px;
+    background: rgba(colors.$blue, .5);
+    border: solid colors.$blue 1px;
     border-radius: 50%;
+    box-shadow: 0 5px 10px rgba(colors.$blue, .2);
   }
 
   &.light > .placeholder {
-    background: rgba(white, .1);
-    border: solid rgba(white, .1) 1px;
+    background: rgba(white, .5);
+    border: solid white 1px;
   }
 
   &.small {

@@ -165,7 +165,7 @@ export default function Input<V = string, S extends Suggestion<V> = Suggestion<V
   const [suggestionsActive, setSuggestionsActive] = useState<boolean>(false);
 
   const [classNames, setClassNames] = useState<(string | undefined)[]>([
-    'friday-ui-fields-input',
+    'friday-ui-input',
     shape,
     theme,
     visited ? 'visited' : undefined,
@@ -192,7 +192,7 @@ export default function Input<V = string, S extends Suggestion<V> = Suggestion<V
 
   useEffect(() => {
     const nextClassNames = [
-      'friday-ui-fields-input',
+      'friday-ui-input',
       shape,
       theme,
       visited ? 'visited' : undefined,

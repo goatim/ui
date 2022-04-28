@@ -4,7 +4,7 @@
 @use '../styles/fonts';
 @use '../styles/forms';
 
-.friday-ui-fields-input {
+.friday-ui-input {
   > label {
     @include forms.label;
   }

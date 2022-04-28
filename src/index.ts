@@ -62,6 +62,13 @@ import PlayerThumbnail, {
   PlayerThumbnailSize,
   PlayerThumbnailTheme,
 } from './soccer/playerThumbnail';
+import PlayerList from './soccer/playerList';
+import SoccerField, { SoccerFieldTheme } from './soccer/soccerField';
+import SoccerFieldPosition, {
+  SoccerFieldPositionSize,
+  SoccerFieldPositionTheme,
+} from './soccer/soccerFieldPosition';
+import CompositionField, { CompositionFieldTheme } from './soccer/compositionField';
 import AssetThumbnail, { AssetThumbnailSize, AssetThumbnailTheme } from './trading/assetThumbnail';
 import AssetOverview from './trading/assetOverview';
 import BoosterIcon, { BoosterIconSize, BoosterIconInfos } from './trading/boosterIcon';
@@ -166,7 +173,18 @@ export type {
  * Soccer
  */
 
-export { LeagueIcon, LeagueThumbnail, ClubIcon, ClubThumbnail, ClubList, PlayerThumbnail };
+export {
+  LeagueIcon,
+  LeagueThumbnail,
+  ClubIcon,
+  ClubThumbnail,
+  ClubList,
+  PlayerThumbnail,
+  PlayerList,
+  SoccerField,
+  SoccerFieldPosition,
+  CompositionField,
+};
 
 export type {
   LeagueIconSize,
@@ -177,6 +195,10 @@ export type {
   ClubThumbnailTheme,
   PlayerThumbnailSize,
   PlayerThumbnailTheme,
+  SoccerFieldTheme,
+  SoccerFieldPositionSize,
+  SoccerFieldPositionTheme,
+  CompositionFieldTheme,
 };
 
 /**

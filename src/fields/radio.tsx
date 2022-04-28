@@ -85,14 +85,14 @@ export default function Radio<V = unknown>({
   instructions,
 }: Props<V>): ReactElement {
   const [classNames, setClassNames] = useState<(string | undefined)[]>([
-    'friday-ui-fields-radio',
+    'friday-ui-radio',
     isActive ? 'isActive' : undefined,
     error ? 'error' : undefined,
     warning ? 'warning' : undefined,
   ]);
 
   useEffect(() => {
-    const nextClassNames = ['friday-ui-fields-radio'];
+    const nextClassNames = ['friday-ui-radio'];
 
     if (isActive) {
       nextClassNames.push('active');

@@ -37,10 +37,10 @@ export default function Counter({
   max,
   step = 1,
 }: Props): ReactElement {
-  const [classNames, setClassNames] = useState<string[]>(['friday-ui-fields-counter']);
+  const [classNames, setClassNames] = useState<string[]>(['friday-ui-counter']);
 
   useEffect(() => {
-    const nextClassNames = ['friday-ui-fields-counter'];
+    const nextClassNames = ['friday-ui-counter'];
 
     if (visited) {
       nextClassNames.push('visited');

@@ -2,7 +2,7 @@
 @use "../styles/colors";
 @use "../styles/forms";
 
-.friday-ui-fields-radio {
+.friday-ui-radio {
   > label {
     @include forms.label;
   }

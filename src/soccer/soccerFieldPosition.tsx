@@ -2,20 +2,20 @@ import { ReactElement } from 'react';
 import { Image } from '@cezembre/fronts';
 import Wrapper, { WrapperProps } from '../general/wrapper';
 
-export type ClubIconSize = 'small' | 'medium' | 'large';
+export type SoccerFieldPositionSize = 'small' | 'medium' | 'large';
 
-export type ClubIconTheme = 'default' | 'light';
+export type SoccerFieldPositionTheme = 'default' | 'light';
 
 export interface Props extends WrapperProps {
   icon?: Image;
-  size?: ClubIconSize;
-  theme?: ClubIconTheme;
+  size?: SoccerFieldPositionSize;
+  theme?: SoccerFieldPositionTheme;
 }
 
-export default function ClubIcon({
+export default function SoccerFieldPosition({
   icon,
   size = 'small',
-  theme = 'default',
+  theme,
   to,
   onClick,
   href,
@@ -23,13 +23,13 @@ export default function ClubIcon({
 }: Props): ReactElement {
   return (
     <Wrapper
-      className={`friday-ui-club-icon ${size} ${theme}`}
+      className={`friday-ui-soccer-field-position ${size} ${theme}`}
       to={to}
       onClick={onClick}
       href={href}
       target={target}>
       {icon?.thumbnail_url ? (
-        <img src={icon.thumbnail_url} alt="Club logo" />
+        <img src={icon.thumbnail_url} alt="Soccer Field Position" />
       ) : (
         <span className="placeholder" />
       )}

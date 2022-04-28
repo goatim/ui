@@ -1,0 +1,30 @@
+@use '../styles/colors';
+
+.friday-ui-composition-field {
+  box-sizing: border-box;
+  background: rgba(colors.$blue, .1);
+  padding: 20px 30px;
+  border-radius: 20px;
+
+  &.light {
+    background: rgba(white, .1);
+  }
+
+  > .container {
+    position: relative;
+
+    > .field {
+      opacity: 0.3;
+    }
+
+    > .position {
+      position: absolute;
+      transform: translate3d(-50%, -50%, 0);
+
+      &.goal {
+        top: 100%;
+        left: 50%;
+      }
+    }
+  }
+}

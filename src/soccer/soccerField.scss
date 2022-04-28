@@ -1,0 +1,10 @@
+@use '../styles/colors';
+
+.friday-ui-soccer-field {
+  display: block;
+  fill: colors.$blue;
+
+  &.light {
+    fill: white;
+  }
+}

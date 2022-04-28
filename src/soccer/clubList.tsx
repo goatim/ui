@@ -5,7 +5,7 @@ import ClubThumbnail from './clubThumbnail';
 
 export interface Props {
   clubs?: Club[];
-  clubOnClick?: (club: Club, event: MouseEvent<HTMLButtonElement>) => void | Promise<void>;
+  clubOnClick?: (club: Club, event: MouseEvent<HTMLButtonElement>) => unknown;
   clubTo?: (club: Club) => To;
 }
 
