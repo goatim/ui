@@ -5,7 +5,9 @@ import PaymentMethodThumbnail from './paymentMethodThumbnail';
 
 export interface Props {
   paymentMethods?: (PaymentMethod | StripePaymentMethod)[];
-  onSelectPaymentMethod?: (paymentMethod: PaymentMethod | StripePaymentMethod | null) => unknown;
+  onSelectPaymentMethod?: (
+    paymentMethod: PaymentMethod | StripePaymentMethod | null,
+  ) => Promise<void> | void;
   selectedPaymentMethod?: PaymentMethod | StripePaymentMethod | string | null;
 }
 
