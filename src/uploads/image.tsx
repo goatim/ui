@@ -2,7 +2,7 @@ import { ChangeEvent, ReactElement, useEffect, useRef, useState } from 'react';
 import { AspectRatio, Orientation, Img } from '@cezembre/fronts';
 import { Property } from 'csstype';
 import Icon from '../general/icon';
-import Loader from '../feedbacks/loader';
+import Loader from '../general/loader';
 
 const reader = new FileReader();
 

@@ -1,8 +1,8 @@
 import { ReactElement } from 'react';
 import { PaymentMethod as StripePaymentMethod } from '@stripe/stripe-js';
 import { MinifiedPaymentMethod, PaymentMethod } from '@fridaygame/client';
+import { WrapperProps } from '@cezembre/fronts';
 import CreditCardThumbnail from './creditCardThumbnail';
-import { WrapperProps } from '../general/wrapper';
 
 export interface Props extends WrapperProps {
   paymentMethod: PaymentMethod | MinifiedPaymentMethod | StripePaymentMethod;

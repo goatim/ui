@@ -1,17 +1,10 @@
 import './index.scss';
-import Loader from './feedbacks/loader';
-import {
-  ModalsContext,
-  useModals,
-  Modal,
-  ModalComponentProps,
-  ModalsState,
-} from './feedbacks/modal';
-import Overlay from './feedbacks/overlay';
-import Placeholder from './feedbacks/placeholder';
-import Selection from './feedbacks/selection';
-import Button, { ButtonType, ButtonSize, ButtonShape, ButtonTheme } from './general/button';
-import Wrapper, { WrapperProps } from './general/wrapper';
+import Loader from './general/loader';
+import { ModalsContext, useModals, Modal, ModalComponentProps, ModalsState } from './general/modal';
+import Overlay from './general/overlay';
+import Placeholder from './general/placeholder';
+import Selection from './general/selection';
+import Button, { ButtonSize, ButtonShape, ButtonTheme } from './general/button';
 import Check from './general/check';
 import Icon from './general/icon';
 import Heading, { HeadingSize, HeadingTheme, HeadingLevel } from './general/heading';
@@ -42,6 +35,7 @@ import WalletThumbnail, {
 import WalletTeam from './market/walletTeam';
 import WalletMetrics from './market/walletMetrics';
 import WalletOverview from './market/walletOverview';
+import WalletList from './market/walletList';
 import ItemEditor, { ItemEditorFields } from './market/itemEditor';
 import OrderItemEditor, { OrderItemEditorFields } from './market/orderItemEditor';
 import OrderItemThumbnail from './market/orderItemThumbnail';
@@ -69,6 +63,10 @@ import SoccerFieldPosition, {
   SoccerFieldPositionTheme,
 } from './soccer/soccerFieldPosition';
 import CompositionField, { CompositionFieldTheme } from './soccer/compositionField';
+import Date from './general/date';
+import MatchCreatorThumbnail from './soccer/matchCreatorThumbnail';
+import MatchStatusThumbnail from './soccer/matchStatusThumbnail';
+import MatchThumbnail from './soccer/matchThumbnail';
 import AssetThumbnail, { AssetThumbnailSize, AssetThumbnailTheme } from './trading/assetThumbnail';
 import AssetOverview from './trading/assetOverview';
 import BoosterIcon, { BoosterIconSize, BoosterIconInfos } from './trading/boosterIcon';
@@ -89,28 +87,32 @@ import PaymentMethodList from './payment/paymentMethodList';
 import PaymentMethodSelector from './payment/paymentMethodSelector';
 
 /**
- * Feedback
- */
-
-export { Loader, ModalsContext, useModals, Overlay, Placeholder, Selection };
-
-export type { Modal, ModalComponentProps, ModalsState };
-
-/**
  * General
  */
 
-export { Button, Wrapper, Check, Icon, Heading };
+export {
+  Button,
+  Check,
+  Icon,
+  Heading,
+  Loader,
+  ModalsContext,
+  useModals,
+  Overlay,
+  Placeholder,
+  Selection,
+};
 
 export type {
-  ButtonType,
   ButtonSize,
   ButtonShape,
   ButtonTheme,
-  WrapperProps,
   HeadingSize,
   HeadingTheme,
   HeadingLevel,
+  Modal,
+  ModalComponentProps,
+  ModalsState,
 };
 
 /**
@@ -155,6 +157,7 @@ export {
   WalletTeam,
   WalletMetrics,
   WalletOverview,
+  WalletList,
 };
 
 export type {
@@ -184,6 +187,10 @@ export {
   SoccerField,
   SoccerFieldPosition,
   CompositionField,
+  MatchThumbnail,
+  MatchCreatorThumbnail,
+  MatchStatusThumbnail,
+  Date,
 };
 
 export type {

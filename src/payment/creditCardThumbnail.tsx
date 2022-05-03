@@ -2,8 +2,8 @@ import { ReactElement } from 'react';
 import { PaymentMethod as StripePaymentMethod } from '@stripe/stripe-js';
 import { Card, CardBrands } from '@fridaygame/client';
 import _ from 'lodash';
+import { Wrapper, WrapperProps } from '@cezembre/fronts';
 import Icon, { IconName } from '../general/icon';
-import Wrapper, { WrapperProps } from '../general/wrapper';
 import Check from '../general/check';
 
 export interface Props extends WrapperProps {

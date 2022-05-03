@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState, ReactElement, ChangeEvent } from 'react';
+import { useCallback, ReactElement, ChangeEvent, useMemo } from 'react';
 import { FieldComponentProps } from '@cezembre/forms';
 import { Adapter, Resolver } from './input';
 import Icon from '../general/icon';
@@ -37,29 +37,27 @@ export default function Counter({
   max,
   step = 1,
 }: Props): ReactElement {
-  const [classNames, setClassNames] = useState<string[]>(['friday-ui-counter']);
-
-  useEffect(() => {
-    const nextClassNames = ['friday-ui-counter'];
+  const className = useMemo<string>(() => {
+    let res = 'friday-ui-counter';
 
     if (visited) {
-      nextClassNames.push('visited');
+      res += 'visited';
     }
 
     if (isActive) {
-      nextClassNames.push('active');
+      res += 'active';
     }
 
     if ((visited || submitted) && !isActive && error) {
-      nextClassNames.push('error');
+      res += 'error';
     }
 
     if (warning) {
-      nextClassNames.push('warning');
+      res += 'warning';
     }
 
-    setClassNames(nextClassNames);
-  }, [isActive, hasChanged, error, visited, warning, submitted]);
+    return res;
+  }, [isActive, error, visited, warning, submitted]);
 
   const change = useCallback(
     (event: ChangeEvent<{ value: string }>) => {
@@ -87,7 +85,7 @@ export default function Counter({
   }, [min, onChange, step, value]);
 
   return (
-    <div className={classNames.join(' ')}>
+    <div className={className}>
       {label ? <label htmlFor={name}>{label}</label> : null}
 
       <div className="container">

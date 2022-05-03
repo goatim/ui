@@ -1,9 +1,9 @@
 import { ReactElement, useEffect, useState } from 'react';
-import { Club, League } from '@fridaygame/client';
-import { NavLink, To } from 'react-router-dom';
+import { Club } from '@fridaygame/client';
+import { To } from 'react-router-dom';
+import { Wrapper, WrapperProps } from '@cezembre/fronts';
 import ClubIcon, { ClubIconSize } from './clubIcon';
 import LeagueThumbnail from './leagueThumbnail';
-import Wrapper, { WrapperProps } from '../general/wrapper';
 
 export type ClubThumbnailSize = 'small' | 'medium' | 'big' | 'full';
 

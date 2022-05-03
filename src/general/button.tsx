@@ -1,17 +1,7 @@
-import {
-  ReactElement,
-  MouseEvent,
-  ReactNode,
-  useCallback,
-  useEffect,
-  useState,
-  FocusEventHandler,
-} from 'react';
-import { NavLink, To } from 'react-router-dom';
-import Loader from '../feedbacks/loader';
+import { ReactElement, MouseEvent, ReactNode, useCallback, useState, useMemo } from 'react';
+import { Wrapper, WrapperProps } from '@cezembre/fronts';
+import Loader from './loader';
 import Icon, { IconName } from './icon';
-
-export type ButtonType = 'button' | 'submit' | 'reset';
 
 export type ButtonSize = 'small' | 'medium' | 'large';
 
@@ -26,14 +16,8 @@ export type ButtonTheme =
   | 'action'
   | 'action-discreet';
 
-export interface Props {
+export interface Props extends WrapperProps {
   children?: ReactNode;
-  href?: string;
-  to?: To;
-  onClick?: (event: MouseEvent<HTMLButtonElement>) => Promise<void> | void;
-  onFocus?: FocusEventHandler<HTMLElement>;
-  onBlur?: FocusEventHandler<HTMLElement>;
-  type?: ButtonType;
   size?: ButtonSize;
   shape?: ButtonShape;
   theme?: ButtonTheme;
@@ -46,7 +30,7 @@ export interface Props {
   rightIcon?: IconName;
 }
 
-function Wrapper({
+export default function Button({
   children,
   href,
   to,
@@ -55,53 +39,52 @@ function Wrapper({
   onBlur,
   size = 'medium',
   shape = 'text',
-  theme = 'default',
   type = 'button',
-  disabled = false,
-  pending = false,
+  theme = 'default',
   active = false,
+  pending = false,
   success = false,
   errored = false,
-}: Partial<Props>): ReactElement {
+  disabled = false,
+  leftIcon,
+  rightIcon,
+}: Props): ReactElement {
   const [autoPending, setAutoPending] = useState<boolean>(false);
   const [autoSuccess, setAutoSuccess] = useState<boolean>(false);
   const [autoErrored, setAutoErrored] = useState<boolean>(false);
-  const [classNames, setClassNames] = useState<(string | undefined)[]>([
-    'friday-ui-button',
-    size,
-    shape,
-    theme,
-    active ? 'active' : undefined,
-    pending || autoPending ? 'pending' : undefined,
-    success || autoSuccess ? 'success' : undefined,
-    errored || autoErrored ? 'errored' : undefined,
-    disabled ? 'disabled' : undefined,
-  ]);
 
-  useEffect(() => {
-    setClassNames([
-      'friday-ui-button',
-      size,
-      shape,
-      theme,
-      active ? 'active' : undefined,
-      pending || autoPending ? 'pending' : undefined,
-      success || autoSuccess ? 'success' : undefined,
-      errored || autoErrored ? 'errored' : undefined,
-      disabled ? 'disabled' : undefined,
-    ]);
+  const className = useMemo<string>(() => {
+    let res = `friday-ui-button ${size} ${shape} ${theme}`;
+
+    if (active) {
+      res += ' active';
+    }
+    if (pending || autoPending) {
+      res += ' pending';
+    }
+    if (success || autoSuccess) {
+      res += ' success';
+    }
+    if (errored || autoErrored) {
+      res += ' errored';
+    }
+    if (disabled) {
+      res += ' disabled';
+    }
+
+    return res;
   }, [
     active,
-    success,
-    errored,
-    disabled,
-    size,
-    shape,
-    pending,
-    autoPending,
     autoErrored,
-    theme,
+    autoPending,
     autoSuccess,
+    disabled,
+    errored,
+    pending,
+    shape,
+    size,
+    success,
+    theme,
   ]);
 
   const onButtonClick = useCallback(
@@ -125,70 +108,16 @@ function Wrapper({
     [onClick],
   );
 
-  if (!disabled && !pending && !autoPending && href && href.length) {
-    return (
-      <a className={classNames.filter((e) => e).join(' ')} href={href} onFocus={onFocus}>
-        {children}
-      </a>
-    );
-  }
-
-  if (!disabled && !pending && !autoPending && to) {
-    return (
-      <NavLink className={classNames.filter((c) => c).join(' ')} to={to} onFocus={onFocus}>
-        {children}
-      </NavLink>
-    );
-  }
-
-  return (
-    <button
-      className={classNames.filter((c) => c).join(' ')}
-      onClick={onButtonClick}
-      onFocus={onFocus}
-      onBlur={onBlur}
-      type={type}
-      disabled={(disabled || pending || autoPending) as boolean}>
-      {children}
-    </button>
-  );
-}
-
-export default function Button({
-  children,
-  href,
-  to,
-  onClick,
-  onFocus,
-  onBlur,
-  size = 'medium',
-  shape = 'text',
-  type = 'button',
-  theme = 'default',
-  active = false,
-  pending = false,
-  success = false,
-  errored = false,
-  disabled = false,
-  leftIcon,
-  rightIcon,
-}: Props): ReactElement {
   return (
     <Wrapper
       href={href}
       to={to}
-      onClick={onClick}
+      onClick={onButtonClick}
+      disabled={disabled || pending || autoPending}
+      type={type}
       onFocus={onFocus}
       onBlur={onBlur}
-      pending={pending}
-      disabled={disabled}
-      type={type}
-      size={size}
-      theme={theme}
-      active={active}
-      success={success}
-      errored={errored}
-      shape={shape}>
+      className={className}>
       <div className="container">
         <div className="body">
           {leftIcon ? (

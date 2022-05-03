@@ -3,8 +3,8 @@ import {
   useState,
   useEffect,
   cloneElement,
-  MouseEventHandler,
   FocusEventHandler,
+  MouseEvent,
 } from 'react';
 import { FieldComponentProps } from '@cezembre/forms';
 import Icon, { IconName } from '../general/icon';
@@ -17,8 +17,9 @@ export interface RadioOption<V = unknown> {
 
 export interface RadioOptionProps<V = unknown> {
   option?: RadioOption<V>;
-  onClick?: MouseEventHandler<HTMLButtonElement>;
+  onClick?: (event: MouseEvent<HTMLButtonElement>) => Promise<void> | void;
   onFocus?: FocusEventHandler<HTMLButtonElement>;
+  onBlur?: FocusEventHandler<HTMLButtonElement>;
   active?: boolean;
   size?: ButtonSize;
   shape?: ButtonShape;
@@ -31,6 +32,7 @@ function RadioOptionComponent<V = unknown>({
   option,
   onClick,
   onFocus,
+  onBlur,
   active,
   size,
   shape = 'filled',
@@ -45,6 +47,7 @@ function RadioOptionComponent<V = unknown>({
           type="button"
           onClick={onClick}
           onFocus={onFocus}
+          onBlur={onBlur}
           active={active}
           size={size}
           shape={shape}
@@ -109,7 +112,7 @@ export default function Radio<V = unknown>({
   }, [error, isActive, warning]);
 
   return (
-    <div className={classNames.filter(String).join(' ')}>
+    <div className={classNames.filter((c) => c).join(' ')}>
       {label && <label htmlFor={name}>{label}</label>}
 
       <div className="options">

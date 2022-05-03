@@ -1,4 +1,4 @@
-@use '~@cezembre/fronts/dist/layouts';
+@use '../../node_modules/@cezembre/fronts/dist/layouts';
 
 .friday-ui-overlay {
   @include layouts.modal();

@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import { Wallet } from '@fridaygame/client';
-import Wrapper, { WrapperProps } from '../general/wrapper';
+import { Wrapper, WrapperProps } from '@cezembre/fronts';
 
 export type WalletThumbnailSize = 'small' | 'medium' | 'big';
 

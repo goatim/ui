@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import { Booster, formatCurrency } from '@fridaygame/client';
-import Wrapper, { WrapperProps } from '../general/wrapper';
+import { Wrapper, WrapperProps } from '@cezembre/fronts';
 
 export type BoosterIconSize = 'small' | 'medium' | 'big';
 

@@ -1,4 +1,4 @@
-import { ReactElement, useEffect, useState } from 'react';
+import { ReactElement, useMemo } from 'react';
 import { CardElement } from '@stripe/react-stripe-js';
 import { FieldComponentProps } from '@cezembre/forms';
 import Icon from '../general/icon';
@@ -21,26 +21,25 @@ export default function CreditCardInput({
   label = null,
   instructions = null,
 }: Props): ReactElement {
-  const [classNames, setClassNames] = useState<(string | undefined)[]>([
-    'fleuraison-ui-credit-card-input',
-    visited ? 'visited' : undefined,
-    isActive ? 'active' : undefined,
-    (visited || submitted) && !isActive && error ? 'error' : undefined,
-    warning ? 'warning' : undefined,
-  ]);
-
-  useEffect(() => {
-    setClassNames([
-      'fleuraison-ui-credit-card-input',
-      visited ? 'visited' : undefined,
-      isActive ? 'active' : undefined,
-      (visited || submitted) && !isActive && error ? 'error' : undefined,
-      warning ? 'warning' : undefined,
-    ]);
+  const className = useMemo<string>(() => {
+    let res = `fleuraison-ui-credit-card-input`;
+    if (visited) {
+      res += ' visited';
+    }
+    if (isActive) {
+      res += 'active';
+    }
+    if ((visited || submitted) && !isActive && error) {
+      res += 'error';
+    }
+    if (warning) {
+      res += warning;
+    }
+    return res;
   }, [error, isActive, submitted, visited, warning]);
 
   return (
-    <div className={classNames.filter((c) => c).join(' ')}>
+    <div className={className}>
       {label ? <label htmlFor={name}>{label}</label> : null}
 
       <CardElement

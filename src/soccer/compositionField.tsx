@@ -10,7 +10,7 @@ export interface PositionProps {
   theme?: CompositionFieldTheme;
   composition?: Composition;
   soccerFieldPositionSize?: SoccerFieldPositionSize;
-  onPositionClick?: (id: string) => unknown;
+  onPositionClick?: (id: string) => Promise<void> | void;
 }
 
 function Position({
@@ -55,7 +55,7 @@ export interface Props {
   compositionSetting?: CompositionSetting;
   composition?: Composition;
   soccerFieldPositionSize?: SoccerFieldPositionSize;
-  onPositionClick?: (id: string) => unknown;
+  onPositionClick?: (id: string) => Promise<void> | void;
 }
 
 export default function CompositionField({

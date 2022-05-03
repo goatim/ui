@@ -1,6 +1,5 @@
 import { ReactElement } from 'react';
-import { Image } from '@cezembre/fronts';
-import Wrapper, { WrapperProps } from '../general/wrapper';
+import { Wrapper, Image, WrapperProps } from '@cezembre/fronts';
 
 export type SoccerFieldPositionSize = 'small' | 'medium' | 'large';
 

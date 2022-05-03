@@ -1,0 +1,15 @@
+@use '../styles/fonts';
+@use '../styles/colors';
+
+.friday-ui-wallet-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 25px);
+  grid-gap: 10px;
+  align-items: center;
+  justify-content: center;
+
+  > .others {
+    @include fonts.IBM-Plex-Sans(.8em, rgba(colors.$blue, .5));
+    grid-column: span 3;
+  }
+}

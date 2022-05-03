@@ -8,6 +8,7 @@ import {
   ChangeEvent,
   FC,
   ReactNode,
+  useMemo,
 } from 'react';
 import { FieldComponentProps } from '@cezembre/forms';
 import Icon, { IconName } from '../general/icon';
@@ -164,15 +165,35 @@ export default function Input<V = string, S extends Suggestion<V> = Suggestion<V
 
   const [suggestionsActive, setSuggestionsActive] = useState<boolean>(false);
 
-  const [classNames, setClassNames] = useState<(string | undefined)[]>([
-    'friday-ui-input',
+  const className = useMemo<string>(() => {
+    let res = `friday-ui-input ${shape} ${theme}`;
+
+    if (visited) {
+      res += ' visited';
+    }
+    if (isActive) {
+      res += 'active';
+    }
+    if (suggestions?.length && suggestionsActive) {
+      res += 'suggestions-active';
+    }
+    if ((visited || submitted) && !isActive && error) {
+      res += 'error';
+    }
+    if (warning) {
+      res += 'warning';
+    }
+    return res;
+  }, [
+    error,
+    isActive,
     shape,
+    submitted,
+    suggestions.length,
+    suggestionsActive,
     theme,
-    visited ? 'visited' : undefined,
-    isActive ? 'active' : undefined,
-    suggestions.length && suggestionsActive ? 'suggestions-active' : undefined,
-    (visited || submitted) && !isActive && error ? 'error' : undefined,
-    warning ? 'warning' : undefined,
+    visited,
+    warning,
   ]);
 
   useEffect(() => {
@@ -189,32 +210,6 @@ export default function Input<V = string, S extends Suggestion<V> = Suggestion<V
       });
     }
   }, [autoComplete]);
-
-  useEffect(() => {
-    const nextClassNames = [
-      'friday-ui-input',
-      shape,
-      theme,
-      visited ? 'visited' : undefined,
-      isActive ? 'active' : undefined,
-      suggestions.length && suggestionsActive ? 'suggestions-active' : undefined,
-      (visited || submitted) && !isActive && error ? 'error' : undefined,
-      warning ? 'warning' : undefined,
-    ];
-
-    setClassNames(nextClassNames);
-  }, [
-    isActive,
-    hasChanged,
-    error,
-    visited,
-    warning,
-    submitted,
-    suggestionsActive,
-    suggestions.length,
-    theme,
-    shape,
-  ]);
 
   const [suggestionsLength, setSuggestionsLength] = useState<number>(0);
   const [selectedSuggestion, setSelectedSuggestion] = useState<number | undefined>(undefined);
@@ -315,7 +310,7 @@ export default function Input<V = string, S extends Suggestion<V> = Suggestion<V
   let nextedIndex = -1;
 
   return (
-    <div className={classNames.filter((c) => c).join(' ')}>
+    <div className={className}>
       {label ? <label htmlFor={name}>{label}</label> : null}
 
       <div className="container">

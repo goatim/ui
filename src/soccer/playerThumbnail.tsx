@@ -1,9 +1,9 @@
 import { ReactElement, useEffect, useState } from 'react';
 import { Player } from '@fridaygame/client';
 import { To } from 'react-router-dom';
+import { Wrapper, WrapperProps } from '@cezembre/fronts';
 import ClubIcon, { ClubIconSize } from './clubIcon';
 import ClubThumbnail, { ClubThumbnailTheme } from './clubThumbnail';
-import Wrapper, { WrapperProps } from '../general/wrapper';
 
 export type PlayerThumbnailSize = 'small' | 'medium' | 'big' | 'full';
 

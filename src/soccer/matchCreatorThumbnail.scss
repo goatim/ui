@@ -1,0 +1,21 @@
+@use '../styles/fonts';
+@use '../styles/colors';
+
+.friday-ui-match-creator-thumbnail {
+  display: flex;
+
+  > .body {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    > span {
+      @include fonts.IBM-Plex-Sans(.8em, rgba(colors.$blue, .5));
+
+      &.creator {
+        font-weight: bold;
+      }
+    }
+  }
+}

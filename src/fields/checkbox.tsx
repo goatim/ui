@@ -1,4 +1,4 @@
-import { ReactElement, useEffect, useState } from 'react';
+import { ReactElement, useMemo } from 'react';
 import { FieldComponentProps } from '@cezembre/forms';
 import Icon from '../general/icon';
 import Check from '../general/check';
@@ -20,27 +20,25 @@ export default function Checkbox({
   label,
   instructions,
 }: Props): ReactElement {
-  const [classNames, setClassNames] = useState<string[]>(['friday-ui-checkbox']);
-
-  useEffect(() => {
-    const nextClassNames = ['friday-ui-checkbox'];
+  const className = useMemo<string>(() => {
+    let res = 'friday-ui-checkbox';
 
     if (isActive) {
-      nextClassNames.push('active');
+      res += 'active';
     }
 
     if (error) {
-      nextClassNames.push('error');
+      res += 'error';
     }
 
     if (warning) {
-      nextClassNames.push('warning');
+      res += 'warning';
     }
-    setClassNames(nextClassNames);
+    return res;
   }, [error, isActive, warning]);
 
   return (
-    <div className={classNames.join(' ')}>
+    <div className={className}>
       <div className="container">
         <Check active={value as boolean} onChange={onChange} onFocus={onFocus} onBlur={onBlur} />
         {label ? <label htmlFor={name}>{label}</label> : null}

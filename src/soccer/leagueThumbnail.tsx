@@ -1,7 +1,7 @@
 import { ReactElement, useEffect, useState } from 'react';
 import { League } from '@fridaygame/client';
+import { Wrapper, WrapperProps } from '@cezembre/fronts';
 import LeagueIcon, { LeagueIconSize } from './leagueIcon';
-import Wrapper, { WrapperProps } from '../general/wrapper';
 
 export type LeagueThumbnailSize = 'small' | 'medium' | 'big' | 'full';
 

@@ -1,0 +1,28 @@
+@use '../styles/fonts';
+@use '../styles/colors';
+
+.friday-ui-date {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  &.left, &.start {
+    align-items: flex-start;
+  }
+
+  &.center {
+    align-items: flex-start;
+  }
+
+  &.right, &.end {
+    align-items: flex-end;
+  }
+
+  > span {
+    @include fonts.IBM-Plex-Sans(.8em, rgba(colors.$blue, .5));
+
+    &.label {
+      @include fonts.label;
+    }
+  }
+}

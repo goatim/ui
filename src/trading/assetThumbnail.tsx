@@ -1,5 +1,6 @@
 import { ReactElement, useEffect, useState } from 'react';
 import { Asset } from '@fridaygame/client';
+import { Wrapper, WrapperProps } from '@cezembre/fronts';
 import PlayerThumbnail, {
   PlayerThumbnailSize,
   PlayerThumbnailTheme,
@@ -7,7 +8,6 @@ import PlayerThumbnail, {
 import PercentageVariation, { PercentageVariationSize } from '../market/percentageVariation';
 import FridayCoins, { FridayCoinsSize, FridayCoinsTheme } from '../market/fridayCoins';
 import QuotationGraph from './quotationGraph';
-import Wrapper, { WrapperProps } from '../general/wrapper';
 
 export type AssetThumbnailSize = 'inline' | 'small' | 'medium' | 'big';
 
