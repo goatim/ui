@@ -7,14 +7,6 @@
   flex-direction: column;
   justify-content: flex-start;
 
-  &.center {
-    align-items: center;
-  }
-
-  &.right, &.end {
-    align-items: flex-end;
-  }
-
   > .label {
     @include fonts.label;
     padding-bottom: .5em;
@@ -30,6 +22,22 @@
     @include fonts.IBM-Plex-Sans(1.5em, colors.$blue, bold);
     margin: 0;
     padding: 0;
+  }
+
+  &.center {
+    align-items: center;
+
+    > .label, > .emoji, > .title {
+      text-align: center;
+    }
+  }
+
+  &.right, &.end {
+    align-items: flex-end;
+
+    > .label, > .emoji, > .title {
+      text-align: right;
+    }
   }
 
   &.small {

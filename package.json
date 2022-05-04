@@ -33,12 +33,13 @@
   },
   "peerDependencies": {
     "@cezembre/forms": ">=1.5.0",
-    "@cezembre/fronts": ">=0.5.10",
+    "@cezembre/fronts": ">=0.6.11",
     "@fridaygame/client": ">=0.1.15",
     "@stripe/react-stripe-js": ">=1.6.0",
     "draft-js": ">=0.11.7",
     "luxon": ">=2.0.0",
     "react": ">= 16.8.6 < 18",
+    "react-router": ">=6.0.0",
     "react-router-dom": ">=6.0.0"
   },
   "devDependencies": {

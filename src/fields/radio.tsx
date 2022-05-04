@@ -1,11 +1,4 @@
-import {
-  ReactElement,
-  useState,
-  useEffect,
-  cloneElement,
-  FocusEventHandler,
-  MouseEvent,
-} from 'react';
+import { ReactElement, cloneElement, FocusEventHandler, MouseEvent, useMemo } from 'react';
 import { FieldComponentProps } from '@cezembre/forms';
 import Icon, { IconName } from '../general/icon';
 import Button, { ButtonSize, ButtonShape, ButtonTheme } from '../general/button';
@@ -87,32 +80,25 @@ export default function Radio<V = unknown>({
   canReset,
   instructions,
 }: Props<V>): ReactElement {
-  const [classNames, setClassNames] = useState<(string | undefined)[]>([
-    'friday-ui-radio',
-    isActive ? 'isActive' : undefined,
-    error ? 'error' : undefined,
-    warning ? 'warning' : undefined,
-  ]);
-
-  useEffect(() => {
-    const nextClassNames = ['friday-ui-radio'];
+  const className = useMemo<string>(() => {
+    let res = 'friday-ui-select';
 
     if (isActive) {
-      nextClassNames.push('active');
+      res += ' active';
     }
 
     if (error) {
-      nextClassNames.push('error');
+      res += ' error';
     }
 
     if (warning) {
-      nextClassNames.push('warning');
+      res += ' warning';
     }
-    setClassNames(nextClassNames);
+    return res;
   }, [error, isActive, warning]);
 
   return (
-    <div className={classNames.filter((c) => c).join(' ')}>
+    <div className={className}>
       {label && <label htmlFor={name}>{label}</label>}
 
       <div className="options">
