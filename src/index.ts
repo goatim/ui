@@ -64,8 +64,9 @@ import SoccerFieldPosition, {
 } from './soccer/soccerFieldPosition';
 import CompositionField, { CompositionFieldTheme } from './soccer/compositionField';
 import Date from './general/date';
-import MatchCreatorThumbnail from './soccer/matchCreatorThumbnail';
+import MatchCreator from './soccer/matchCreator';
 import MatchStatusThumbnail from './soccer/matchStatusThumbnail';
+import MatchIcon from './soccer/matchIcon';
 import MatchThumbnail from './soccer/matchThumbnail';
 import AssetThumbnail, { AssetThumbnailSize, AssetThumbnailTheme } from './trading/assetThumbnail';
 import AssetOverview from './trading/assetOverview';
@@ -101,6 +102,7 @@ export {
   Overlay,
   Placeholder,
   Selection,
+  Date,
 };
 
 export type {
@@ -188,9 +190,9 @@ export {
   SoccerFieldPosition,
   CompositionField,
   MatchThumbnail,
-  MatchCreatorThumbnail,
+  MatchCreator,
   MatchStatusThumbnail,
-  Date,
+  MatchIcon,
 };
 
 export type {

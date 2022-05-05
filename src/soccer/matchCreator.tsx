@@ -7,9 +7,9 @@ export interface Props {
   nb_participants?: number;
 }
 
-export default function MatchCreatorThumbnail({ creator, nb_participants }: Props): ReactElement {
+export default function MatchCreator({ creator, nb_participants }: Props): ReactElement {
   return (
-    <div className="friday-ui-match-creator-thumbnail">
+    <div className="friday-ui-match-creator">
       <WalletThumbnail wallet={creator} />
       <div className="body">
         <span className="creator">Organisé par {creator.name}</span>

@@ -3,11 +3,12 @@ import { Match, MatchStatus } from '@fridaygame/client';
 import { To } from 'react-router';
 import { DateTime } from 'luxon';
 import Date from '../general/date';
-import MatchCreatorThumbnail from './matchCreatorThumbnail';
+import MatchCreator from './matchCreator';
 import Icon from '../general/icon';
 import WalletList from '../market/walletList';
 import Button from '../general/button';
 import MatchStatusThumbnail from './matchStatusThumbnail';
+import MatchIcon from './matchIcon';
 
 export interface Props {
   match: Match;
@@ -61,11 +62,7 @@ export default function MatchThumbnail({
   return (
     <div className="friday-ui-match-thumbnail">
       <div className="icon">
-        {match.icon ? (
-          <img src={match.icon.medium_url} alt={`${match.name}`} />
-        ) : (
-          <Icon name="award" size={50} />
-        )}
+        <MatchIcon icon={match.icon} />
       </div>
 
       <div className="body">
@@ -76,10 +73,7 @@ export default function MatchThumbnail({
             <span className="title">{match.title}</span>
             {match.creator && typeof match.creator === 'object' ? (
               <div className="creator">
-                <MatchCreatorThumbnail
-                  creator={match.creator}
-                  nb_participants={match.nb_participants}
-                />
+                <MatchCreator creator={match.creator} nb_participants={match.nb_participants} />
               </div>
             ) : null}
           </div>

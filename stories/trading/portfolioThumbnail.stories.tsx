@@ -10,6 +10,7 @@ export default {
   title: 'Trading/PortfolioThumbnail',
   component: PortfolioThumbnail,
   argTypes: {},
+  decorators: [(story) => <BrowserRouter>{story()}</BrowserRouter>],
 } as ComponentMeta<JSXElementConstructor<Props>>;
 
 const club: Club = {
@@ -96,15 +97,13 @@ const portfolio: Portfolio = {
 };
 
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
-  <BrowserRouter>
-    <PortfolioThumbnail
-      portfolio={portfolio}
-      assetTo="/"
-      onStopBooster={() => undefined}
-      onSell={() => undefined}
-      onBoost={() => undefined}
-    />
-  </BrowserRouter>
+  <PortfolioThumbnail
+    portfolio={portfolio}
+    assetTo="/"
+    onStopBooster={() => undefined}
+    onSell={() => undefined}
+    onBoost={() => undefined}
+  />
 );
 
 export const Default = Template.bind({});

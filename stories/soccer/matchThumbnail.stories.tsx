@@ -50,11 +50,7 @@ const match: Match = {
 };
 
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
-  <MatchThumbnail
-    match={match}
-    onClickAction={() => undefined}
-    actionLabel="Faire ma composition"
-  />
+  <MatchThumbnail match={match} />
 );
 
 export const Default = Template.bind({});

@@ -13,26 +13,6 @@
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 80px;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    > img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      object-position: center center;
-    }
-
-    > svg[stroke] {
-      stroke: colors.$gold;
-    }
-
-    > svg:not[stroke] {
-      fill: colors.$gold;
-    }
   }
 
   > .body {
