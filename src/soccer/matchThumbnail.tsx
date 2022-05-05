@@ -1,5 +1,7 @@
-import { MouseEvent, ReactElement } from 'react';
-import { Match } from '@fridaygame/client';
+import { MouseEvent, ReactElement, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { Match, MatchStatus } from '@fridaygame/client';
+import { To } from 'react-router';
+import { DateTime } from 'luxon';
 import Date from '../general/date';
 import MatchCreatorThumbnail from './matchCreatorThumbnail';
 import Icon from '../general/icon';
@@ -9,11 +11,53 @@ import MatchStatusThumbnail from './matchStatusThumbnail';
 
 export interface Props {
   match: Match;
-  onClickAction?: (event: MouseEvent<HTMLButtonElement>) => Promise<void> | void;
-  actionLabel?: string;
+  toComposition?: To;
+  onClickComposition?: (event: MouseEvent<HTMLButtonElement>) => Promise<void> | void;
+  toMatch?: To;
+  onClickMatch?: (event: MouseEvent<HTMLButtonElement>) => Promise<void> | void;
 }
 
-export default function MatchThumbnail({ match, onClickAction, actionLabel }: Props): ReactElement {
+export default function MatchThumbnail({
+  match,
+  toComposition,
+  onClickComposition,
+  toMatch,
+  onClickMatch,
+}: Props): ReactElement {
+  const tick = useRef<NodeJS.Timer | null>(null);
+
+  const resolvedStart = useMemo<DateTime | undefined>(
+    () => (typeof match.start === 'string' ? DateTime.fromISO(match.start) : match.start),
+    [match.start],
+  );
+  const resolvedEnd = useMemo<DateTime | undefined>(
+    () => (typeof match.end === 'string' ? DateTime.fromISO(match.end) : match.end),
+    [match.end],
+  );
+
+  const [liveStatus, setLiveStatus] = useState<MatchStatus | undefined>(match.status);
+
+  const resolveStatus = useCallback(() => {
+    if (match.status === 'cancelled') {
+      return;
+    }
+    if (resolvedStart && DateTime.now() < resolvedStart) {
+      setLiveStatus('planned');
+    } else if (resolvedEnd && DateTime.now() < resolvedEnd) {
+      setLiveStatus('ongoing');
+    } else {
+      setLiveStatus('passed');
+    }
+  }, [match.status, resolvedEnd, resolvedStart]);
+
+  useEffect(() => {
+    if (!tick.current) {
+      tick.current = setInterval(resolveStatus, 1000);
+      resolveStatus();
+    }
+    return () => (tick.current ? clearInterval(tick.current) : undefined);
+  }, [resolveStatus]);
+
   return (
     <div className="friday-ui-match-thumbnail">
       <div className="icon">
@@ -49,13 +93,23 @@ export default function MatchThumbnail({ match, onClickAction, actionLabel }: Pr
           </div>
         ) : null}
 
-        {onClickAction ? (
-          <div className="action">
-            <Button onClick={onClickAction} shape="filled">
-              {actionLabel || 'Voir le match'}
+        <div className="action">
+          {liveStatus === 'planned' ? (
+            <Button onClick={onClickComposition} to={toComposition} shape="filled">
+              Faire ma composition
             </Button>
-          </div>
-        ) : null}
+          ) : null}
+          {liveStatus === 'ongoing' ? (
+            <Button onClick={onClickMatch} to={toMatch} shape="filled">
+              Suivre le match
+            </Button>
+          ) : null}
+          {liveStatus === 'passed' ? (
+            <Button onClick={onClickMatch} to={toMatch} shape="filled">
+              Voir les résultats
+            </Button>
+          ) : null}
+        </div>
       </div>
       <div className="status">
         <MatchStatusThumbnail status={match.status} start={match.start} end={match.end} />
