@@ -3,7 +3,7 @@ import { FieldComponentProps } from '@cezembre/forms';
 import { CompositionPosition, Player, CompositionSetting } from '@fridaygame/client';
 import { useModals } from '@cezembre/fronts';
 import { CompositionSettingPosition } from '@fridaygame/client/dist/models/compositionSetting';
-import CompositionPositionsMap from './compositionPositionsMap';
+import CompositionPositionsMap, { CompositionPositionsMapTheme } from './compositionPositionsMap';
 import PositionPlayerSelector from './positionPlayerSelector';
 
 export interface CompositionPositionsMapFieldValuePosition {
@@ -19,6 +19,7 @@ export interface CompositionPositionsMapFieldValue {
 export interface Props extends FieldComponentProps<CompositionPositionsMapFieldValue> {
   compositionSetting?: CompositionSetting;
   getPositionPlayers?: (position: string) => Promise<Player[]> | Player[];
+  theme?: CompositionPositionsMapTheme;
 }
 
 export default function CompositionPositionsMapField({
@@ -27,6 +28,7 @@ export default function CompositionPositionsMapField({
   form,
   onChange,
   value,
+  theme,
 }: Props): ReactElement {
   const { pushModal } = useModals();
 
@@ -135,6 +137,7 @@ export default function CompositionPositionsMapField({
         compositionSetting={compositionSetting}
         composition={value}
         onPositionClick={onPositionClick}
+        theme={theme}
       />
     </div>
   );
