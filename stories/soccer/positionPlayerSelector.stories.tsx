@@ -185,7 +185,8 @@ const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
         name="player"
         component={PositionPlayerSelector}
         players={players}
-        compositionSetting={compositionSetting}
+        compositionSetting={compositionSetting.name}
+        position="Attaquant"
       />
     </Form>
   </div>
