@@ -6,7 +6,7 @@ import Input, {
   InputTheme,
   Suggestion,
   SuggestionsNamespace,
-} from '../../src/fields/input';
+} from '../../src/general/input';
 
 interface Props {
   label?: string;
@@ -17,7 +17,7 @@ interface Props {
 }
 
 export default {
-  title: 'Fields/Input',
+  title: 'General/Input',
   component: Input,
   argTypes: {
     label: {

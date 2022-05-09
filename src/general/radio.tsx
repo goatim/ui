@@ -1,7 +1,7 @@
 import { ReactElement, cloneElement, FocusEventHandler, MouseEvent, useMemo } from 'react';
 import { FieldComponentProps } from '@cezembre/forms';
-import Icon, { IconName } from '../general/icon';
-import Button, { ButtonSize, ButtonShape, ButtonTheme } from '../general/button';
+import Icon, { IconName } from './icon';
+import Button, { ButtonSize, ButtonShape, ButtonTheme } from './button';
 
 export interface RadioOption<V = unknown> {
   value: V;

@@ -9,8 +9,8 @@ import {
 } from '@cezembre/forms';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import { PaymentMethod, StripeCardElement, StripeCardNumberElement } from '@stripe/stripe-js';
-import CreditCardInput from '../fields/creditCardInput';
-import Checkbox from '../fields/checkbox';
+import CreditCardInput from './creditCardInput';
+import Checkbox from '../general/checkbox';
 import Button from '../general/button';
 
 export interface Fields extends FormFields {

@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Form, Field } from '@cezembre/forms';
 import { JSXElementConstructor } from 'react';
 import { Booster } from '@fridaygame/client';
-import Radio from '../../src/fields/radio';
+import Radio from '../../src/general/radio';
 import BoosterIcon from '../../src/trading/boosterIcon';
 
 interface Props {
@@ -10,7 +10,7 @@ interface Props {
 }
 
 export default {
-  title: 'Fields/Radio',
+  title: 'General/Radio',
   component: Radio,
   argTypes: {
     label: {

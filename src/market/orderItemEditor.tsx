@@ -8,9 +8,9 @@ import {
   resolveFridayCoins,
 } from '@fridaygame/client';
 import BoosterIcon from '../trading/boosterIcon';
-import Radio from '../fields/radio';
+import Radio from '../general/radio';
 import Button from '../general/button';
-import Counter from '../fields/counter';
+import Counter from '../general/counter';
 
 export interface OrderItemEditorFields extends FormFields {
   asset?: Asset | string;

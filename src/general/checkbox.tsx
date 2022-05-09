@@ -1,7 +1,7 @@
 import { ReactElement, useMemo } from 'react';
 import { FieldComponentProps } from '@cezembre/forms';
-import Icon from '../general/icon';
-import Check from '../general/check';
+import Icon from './icon';
+import Check from './check';
 
 export interface Props extends FieldComponentProps<boolean> {
   label?: string;

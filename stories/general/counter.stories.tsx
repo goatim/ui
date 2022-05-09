@@ -1,14 +1,14 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Form, Field } from '@cezembre/forms';
 import { JSXElementConstructor } from 'react';
-import Counter from '../../src/fields/counter';
+import Counter from '../../src/general/counter';
 
 interface Props {
   label?: string;
 }
 
 export default {
-  title: 'Fields/Counter',
+  title: 'General/Counter',
   component: Counter,
   argTypes: {
     label: {

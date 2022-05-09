@@ -1,16 +1,17 @@
 import { ReactElement } from 'react';
 import { Composition, CompositionPosition, CompositionSetting } from '@fridaygame/client';
+import { CompositionSettingPosition } from '@fridaygame/client/dist/models/compositionSetting';
 import SoccerField from './soccerField';
 import SoccerFieldPosition, { SoccerFieldPositionSize } from './soccerFieldPosition';
 
-export type CompositionFieldTheme = 'default' | 'light';
+export type CompositionPositionsMapTheme = 'default' | 'light';
 
 export interface PositionProps {
   id?: string;
-  theme?: CompositionFieldTheme;
-  composition?: Composition;
+  theme?: CompositionPositionsMapTheme;
+  composition?: Pick<Composition, 'goalkeeper' | 'positions'>;
   soccerFieldPositionSize?: SoccerFieldPositionSize;
-  onPositionClick?: (id: string) => Promise<void> | void;
+  onPositionClick?: () => void;
 }
 
 function Position({
@@ -34,7 +35,7 @@ function Position({
             theme={theme}
             icon={player.club.icon}
             size={soccerFieldPositionSize}
-            onClick={onPositionClick && id ? () => onPositionClick(id) : undefined}
+            onClick={onPositionClick}
           />
         );
       }
@@ -42,23 +43,19 @@ function Position({
   }
 
   return (
-    <SoccerFieldPosition
-      theme={theme}
-      size={soccerFieldPositionSize}
-      onClick={onPositionClick && id ? () => onPositionClick(id) : undefined}
-    />
+    <SoccerFieldPosition theme={theme} size={soccerFieldPositionSize} onClick={onPositionClick} />
   );
 }
 
 export interface Props {
-  theme?: CompositionFieldTheme;
+  theme?: CompositionPositionsMapTheme;
   compositionSetting?: CompositionSetting;
-  composition?: Composition;
+  composition?: Pick<Composition, 'goalkeeper' | 'positions'>;
   soccerFieldPositionSize?: SoccerFieldPositionSize;
-  onPositionClick?: (id: string) => Promise<void> | void;
+  onPositionClick?: (position: CompositionSettingPosition | string) => void;
 }
 
-export default function CompositionField({
+export default function CompositionPositionsMap({
   theme,
   compositionSetting,
   composition,
@@ -66,7 +63,7 @@ export default function CompositionField({
   onPositionClick,
 }: Props): ReactElement {
   return (
-    <div className={`friday-ui-composition-field ${theme}`}>
+    <div className={`friday-ui-composition-positions-map ${theme}`}>
       <div className="container">
         <div className="field">
           <SoccerField theme={theme} />
@@ -86,7 +83,7 @@ export default function CompositionField({
             }
           />
         </div>
-        {compositionSetting?.positions?.map((position) => (
+        {compositionSetting?.positions?.map((position: CompositionSettingPosition) => (
           <div
             className="position"
             key={position.id}
@@ -96,7 +93,11 @@ export default function CompositionField({
               theme={theme}
               composition={composition}
               soccerFieldPositionSize={soccerFieldPositionSize}
-              onPositionClick={onPositionClick}
+              onPositionClick={
+                onPositionClick
+                  ? () => (position ? onPositionClick(position) : undefined)
+                  : undefined
+              }
             />
           </div>
         ))}

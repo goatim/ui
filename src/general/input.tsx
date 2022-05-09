@@ -11,7 +11,7 @@ import {
   useMemo,
 } from 'react';
 import { FieldComponentProps } from '@cezembre/forms';
-import Icon, { IconName } from '../general/icon';
+import Icon, { IconName } from './icon';
 
 export type InputType = 'text' | 'password' | 'email' | 'search' | 'url' | 'number' | 'hidden';
 

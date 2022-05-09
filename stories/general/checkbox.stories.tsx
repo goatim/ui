@@ -1,17 +1,15 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Form, Field } from '@cezembre/forms';
-import { loadStripe } from '@stripe/stripe-js';
-import { Elements } from '@stripe/react-stripe-js';
 import { JSXElementConstructor } from 'react';
-import CreditCardInput from '../../src/fields/creditCardInput';
+import Checkbox from '../../src/general/checkbox';
 
 interface Props {
   label?: string;
 }
 
 export default {
-  title: 'Fields/CreditCardInput',
-  component: CreditCardInput,
+  title: 'General/Checkbox',
+  component: Checkbox,
   argTypes: {
     label: {
       control: {
@@ -21,14 +19,10 @@ export default {
   },
 } as ComponentMeta<JSXElementConstructor<Props>>;
 
-const loadedStripe = loadStripe(process.env.STORYBOOK_STRIPE_PUBLIC_API_KEY || '');
-
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({ label }: Props) => (
-  <Elements stripe={loadedStripe}>
-    <Form>
-      <Field name="counter" component={CreditCardInput} label={label} />
-    </Form>
-  </Elements>
+  <Form>
+    <Field<boolean | undefined> name="checkbox" component={Checkbox} label={label} />
+  </Form>
 );
 
 export const Default = Template.bind({});

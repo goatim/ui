@@ -4,7 +4,6 @@ import { To } from 'react-router';
 import { DateTime } from 'luxon';
 import Date from '../general/date';
 import MatchCreator from './matchCreator';
-import Icon from '../general/icon';
 import WalletList from '../market/walletList';
 import Button from '../general/button';
 import MatchStatusThumbnail from './matchStatusThumbnail';

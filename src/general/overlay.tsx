@@ -1,4 +1,4 @@
-import { ReactElement, ReactNode, useEffect, useState } from 'react';
+import { ReactElement, ReactNode, useMemo } from 'react';
 
 export interface Props {
   children?: ReactNode;
@@ -11,21 +11,19 @@ export default function Overlay({
   visible = false,
   closed = false,
 }: Props): ReactElement {
-  const [classNames, setClassNames] = useState<string[]>(['friday-ui-overlay']);
-
-  useEffect(() => {
-    const nextClassNames = ['friday-ui-overlay'];
+  const className = useMemo<string>(() => {
+    let res = 'friday-ui-overlay';
 
     if (visible) {
-      nextClassNames.push('visible');
+      res += ' visible';
     }
 
     if (closed) {
-      nextClassNames.push('closed');
+      res += ' closed';
     }
 
-    setClassNames(nextClassNames);
-  }, [visible, closed]);
+    return res;
+  }, [closed, visible]);
 
-  return <div className={classNames.join(' ')}>{children}</div>;
+  return <div className={className}>{children}</div>;
 }

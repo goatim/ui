@@ -1,7 +1,7 @@
 import { useCallback, ReactElement, ChangeEvent, useMemo } from 'react';
 import { FieldComponentProps } from '@cezembre/forms';
 import { Adapter, Resolver } from './input';
-import Icon from '../general/icon';
+import Icon from './icon';
 
 export interface Props extends FieldComponentProps<number | undefined> {
   adapter?: Adapter<number | undefined>;

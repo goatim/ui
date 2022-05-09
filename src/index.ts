@@ -1,6 +1,5 @@
 import './index.scss';
 import Loader from './general/loader';
-import { ModalsContext, useModals, Modal, ModalComponentProps, ModalsState } from './general/modal';
 import Overlay from './general/overlay';
 import Placeholder from './general/placeholder';
 import Selection from './general/selection';
@@ -9,9 +8,9 @@ import Check from './general/check';
 import Icon from './general/icon';
 import Heading, { HeadingSize, HeadingTheme, HeadingLevel } from './general/heading';
 import ImageUpload from './uploads/image';
-import CheckBox from './fields/checkbox';
-import Counter from './fields/counter';
-import CreditCardInput from './fields/creditCardInput';
+import CheckBox from './general/checkbox';
+import Counter from './general/counter';
+import CreditCardInput from './payment/creditCardInput';
 import Input, {
   Adapter,
   Resolver,
@@ -19,8 +18,9 @@ import Input, {
   InputShape,
   InputTheme,
   Suggestion,
-} from './fields/input';
-import Radio, { RadioOption } from './fields/radio';
+} from './general/input';
+import Select, { SelectOption, SelectType, SelectOptionProps } from './general/select';
+import Radio, { RadioOption, RadioOptionProps } from './general/radio';
 import UserThumbnail, { UserThumbnailSize, UserThumbnailInfos } from './auth/userThumbnail';
 import FridayCoins, { FridayCoinsTheme, FridayCoinsSize } from './market/fridayCoins';
 import FridayCoinsVariation, { FridayCoinsVariationSize } from './market/fridayCoinsVariation';
@@ -62,12 +62,19 @@ import SoccerFieldPosition, {
   SoccerFieldPositionSize,
   SoccerFieldPositionTheme,
 } from './soccer/soccerFieldPosition';
-import CompositionField, { CompositionFieldTheme } from './soccer/compositionField';
+import CompositionPositionsMap, {
+  CompositionPositionsMapTheme,
+} from './soccer/compositionPositionsMap';
 import Date from './general/date';
 import MatchCreator from './soccer/matchCreator';
 import MatchStatusThumbnail from './soccer/matchStatusThumbnail';
 import MatchIcon from './soccer/matchIcon';
 import MatchThumbnail from './soccer/matchThumbnail';
+import PositionPlayerSelector from './soccer/positionPlayerSelector';
+import CompositionPositionsMapField, {
+  CompositionPositionsMapFieldValue,
+  CompositionPositionsMapFieldValuePosition,
+} from './soccer/compositionPositionsMapField';
 import AssetThumbnail, { AssetThumbnailSize, AssetThumbnailTheme } from './trading/assetThumbnail';
 import AssetOverview from './trading/assetOverview';
 import BoosterIcon, { BoosterIconSize, BoosterIconInfos } from './trading/boosterIcon';
@@ -97,12 +104,15 @@ export {
   Icon,
   Heading,
   Loader,
-  ModalsContext,
-  useModals,
   Overlay,
   Placeholder,
   Selection,
   Date,
+  CheckBox,
+  Counter,
+  Input,
+  Select,
+  Radio,
 };
 
 export type {
@@ -112,9 +122,17 @@ export type {
   HeadingSize,
   HeadingTheme,
   HeadingLevel,
-  Modal,
-  ModalComponentProps,
-  ModalsState,
+  InputType,
+  InputShape,
+  InputTheme,
+  Adapter,
+  Resolver,
+  Suggestion,
+  SelectOptionProps,
+  SelectType,
+  SelectOption,
+  RadioOption,
+  RadioOptionProps,
 };
 
 /**
@@ -122,14 +140,6 @@ export type {
  */
 
 export { ImageUpload };
-
-/**
- * Fields
- */
-
-export { CheckBox, Counter, CreditCardInput, Input, Radio };
-
-export type { InputType, InputShape, InputTheme, Adapter, Resolver, Suggestion, RadioOption };
 
 /**
  * Auth
@@ -188,11 +198,13 @@ export {
   PlayerList,
   SoccerField,
   SoccerFieldPosition,
-  CompositionField,
+  CompositionPositionsMap,
   MatchThumbnail,
   MatchCreator,
   MatchStatusThumbnail,
   MatchIcon,
+  PositionPlayerSelector,
+  CompositionPositionsMapField,
 };
 
 export type {
@@ -207,7 +219,9 @@ export type {
   SoccerFieldTheme,
   SoccerFieldPositionSize,
   SoccerFieldPositionTheme,
-  CompositionFieldTheme,
+  CompositionPositionsMapTheme,
+  CompositionPositionsMapFieldValue,
+  CompositionPositionsMapFieldValuePosition,
 };
 
 /**
@@ -248,6 +262,7 @@ export {
   CreditCardForm,
   PaymentMethodList,
   PaymentMethodSelector,
+  CreditCardInput,
 };
 
 export type { NewCreditCard };
