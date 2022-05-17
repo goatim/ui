@@ -21,8 +21,9 @@
       align-items: center;
       justify-content: space-between;
 
-      > .selected {
+      > button.selected {
         @include forms.input;
+        font-size: 1em;
         -webkit-touch-callout: none;
         -webkit-user-select: none;
         -moz-user-select: none;
@@ -42,11 +43,11 @@
 
         > span {
           @include fonts.IBM-Plex-Sans(.9em, colors.$blue, bold);
+          white-space: nowrap;
           text-align: left;
           flex: 1;
           padding: 8px 12px;
           text-overflow: ellipsis;
-          white-space: nowrap;
           overflow: hidden;
 
           &.placeholder {
@@ -90,14 +91,14 @@
       box-shadow: 0 0 5px rgba(colors.$blue, .1);
       border: solid rgba(colors.$blue, .2) 1px;
       visibility: hidden;
-      width: 100%;
       position: absolute;
       top: calc(100% + 4px);
       background: white;
       opacity: 0;
       transition: opacity linear 100ms;
 
-      > .option {
+      > button.option {
+        font-size: 1em;
         -webkit-touch-callout: none;
         -webkit-user-select: none;
         -moz-user-select: none;
@@ -119,6 +120,7 @@
 
         > span {
           @include fonts.IBM-Plex-Sans();
+          white-space: nowrap;
           display: block;
           text-align: left;
           padding: 8px 12px;
