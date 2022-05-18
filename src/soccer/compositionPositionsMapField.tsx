@@ -44,7 +44,9 @@ export default function CompositionPositionsMapField({
 
       const resolvedPosition: string = typeof position === 'object' ? position.id : position;
 
-      const nextValue: CompositionPositionsMapFieldValue = value ? { ...value } : {};
+      const nextValue: CompositionPositionsMapFieldValue = value
+        ? JSON.parse(JSON.stringify(value))
+        : {};
 
       if (position === 'goalkeeper') {
         nextValue.goalkeeper = resolvedPlayer;
