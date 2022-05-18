@@ -41,19 +41,19 @@ export default function Counter({
     let res = 'friday-ui-counter';
 
     if (visited) {
-      res += 'visited';
+      res += ' visited';
     }
 
     if (isActive) {
-      res += 'active';
+      res += ' active';
     }
 
     if ((visited || submitted) && !isActive && error) {
-      res += 'error';
+      res += ' error';
     }
 
     if (warning) {
-      res += 'warning';
+      res += ' warning';
     }
 
     return res;
