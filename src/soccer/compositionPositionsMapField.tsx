@@ -16,9 +16,13 @@ export interface CompositionPositionsMapFieldValue {
   positions?: CompositionPositionsMapFieldValuePosition[];
 }
 
+export type GetPositionPlayersFunction = (
+  position: string,
+) => Promise<Player[] | undefined> | Player[] | undefined;
+
 export interface Props extends FieldComponentProps<CompositionPositionsMapFieldValue> {
   compositionSetting?: CompositionSetting;
-  getPositionPlayers?: (position: string) => Promise<Player[]> | Player[];
+  getPositionPlayers?: GetPositionPlayersFunction;
   theme?: CompositionPositionsMapTheme;
 }
 
@@ -75,7 +79,7 @@ export default function CompositionPositionsMapField({
 
   const onPositionClick = useCallback(
     async (position: CompositionSettingPosition | string) => {
-      let players: Player[];
+      let players: Player[] | undefined;
 
       if (getPositionPlayers) {
         const res = getPositionPlayers(typeof position === 'object' ? position.id : position);

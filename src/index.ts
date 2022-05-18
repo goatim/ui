@@ -74,6 +74,7 @@ import PositionPlayerSelector from './soccer/positionPlayerSelector';
 import CompositionPositionsMapField, {
   CompositionPositionsMapFieldValue,
   CompositionPositionsMapFieldValuePosition,
+  GetPositionPlayersFunction,
 } from './soccer/compositionPositionsMapField';
 import AssetThumbnail, { AssetThumbnailSize, AssetThumbnailTheme } from './trading/assetThumbnail';
 import AssetOverview from './trading/assetOverview';
@@ -222,6 +223,7 @@ export type {
   CompositionPositionsMapTheme,
   CompositionPositionsMapFieldValue,
   CompositionPositionsMapFieldValuePosition,
+  GetPositionPlayersFunction,
 };
 
 /**
