@@ -6,11 +6,14 @@
 @use "playerThumbnail";
 @use "soccerField";
 @use "soccerFieldPosition";
-@use "compositionPositionsMap";
+@use "compositionPositionMap";
 @use "playerList";
 @use "matchCreator";
 @use "matchStatusThumbnail";
 @use "matchIcon";
 @use "matchThumbnail";
 @use "positionPlayerSelector";
-@use "compositionPositionsMapField";
+@use "compositionPositionMapField";
+@use "compositionPositionThumbnail";
+@use "compositionPositionList";
+@use "compositionPositionListField";

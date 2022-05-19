@@ -62,20 +62,24 @@ import SoccerFieldPosition, {
   SoccerFieldPositionSize,
   SoccerFieldPositionTheme,
 } from './soccer/soccerFieldPosition';
-import CompositionPositionsMap, {
-  CompositionPositionsMapTheme,
-} from './soccer/compositionPositionsMap';
+import CompositionPositionMap, {
+  CompositionPositionMapTheme,
+} from './soccer/compositionPositionMap';
 import Date from './general/date';
 import MatchCreator from './soccer/matchCreator';
 import MatchStatusThumbnail from './soccer/matchStatusThumbnail';
 import MatchIcon from './soccer/matchIcon';
 import MatchThumbnail from './soccer/matchThumbnail';
 import PositionPlayerSelector from './soccer/positionPlayerSelector';
-import CompositionPositionsMapField, {
-  CompositionPositionsMapFieldValue,
-  CompositionPositionsMapFieldValuePosition,
+import CompositionPositionMapField, {
+  CompositionPositionMapFieldValue,
+  CompositionPositionMapFieldValuePosition,
   GetPositionPlayersFunction,
-} from './soccer/compositionPositionsMapField';
+} from './soccer/compositionPositionMapField';
+import CompositionPositionListField, {
+  CompositionPositionListFieldValue,
+  CompositionPositionListFieldValuePosition,
+} from './soccer/compositionPositionListField';
 import AssetThumbnail, { AssetThumbnailSize, AssetThumbnailTheme } from './trading/assetThumbnail';
 import AssetOverview from './trading/assetOverview';
 import BoosterIcon, { BoosterIconSize, BoosterIconInfos } from './trading/boosterIcon';
@@ -199,13 +203,14 @@ export {
   PlayerList,
   SoccerField,
   SoccerFieldPosition,
-  CompositionPositionsMap,
+  CompositionPositionMap,
   MatchThumbnail,
   MatchCreator,
   MatchStatusThumbnail,
   MatchIcon,
   PositionPlayerSelector,
-  CompositionPositionsMapField,
+  CompositionPositionMapField,
+  CompositionPositionListField,
 };
 
 export type {
@@ -220,10 +225,12 @@ export type {
   SoccerFieldTheme,
   SoccerFieldPositionSize,
   SoccerFieldPositionTheme,
-  CompositionPositionsMapTheme,
-  CompositionPositionsMapFieldValue,
-  CompositionPositionsMapFieldValuePosition,
+  CompositionPositionMapTheme,
+  CompositionPositionMapFieldValue,
+  CompositionPositionMapFieldValuePosition,
   GetPositionPlayersFunction,
+  CompositionPositionListFieldValue,
+  CompositionPositionListFieldValuePosition,
 };
 
 /**

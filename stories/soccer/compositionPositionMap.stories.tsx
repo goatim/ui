@@ -1,17 +1,17 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { Club, Composition, CompositionSetting, Player } from '@fridaygame/client';
-import CompositionPositionsMap, {
-  CompositionPositionsMapTheme,
-} from '../../src/soccer/compositionPositionsMap';
+import CompositionPositionMap, {
+  CompositionPositionMapTheme,
+} from '../../src/soccer/compositionPositionMap';
 
 interface Props {
-  theme?: CompositionPositionsMapTheme;
+  theme?: CompositionPositionMapTheme;
 }
 
 export default {
-  title: 'Soccer/CompositionPositionsMap',
-  component: CompositionPositionsMap,
+  title: 'Soccer/CompositionPositionMap',
+  component: CompositionPositionMap,
   argTypes: {
     theme: {
       options: ['default', 'light'],
@@ -132,7 +132,7 @@ const composition: Composition = {
 
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({ theme }: Props) => (
   <div style={{ width: 400 }}>
-    <CompositionPositionsMap
+    <CompositionPositionMap
       theme={theme}
       compositionSetting={compositionSetting}
       composition={composition}

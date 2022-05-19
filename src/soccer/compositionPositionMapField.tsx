@@ -3,30 +3,30 @@ import { FieldComponentProps } from '@cezembre/forms';
 import { CompositionPosition, Player, CompositionSetting } from '@fridaygame/client';
 import { useModals } from '@cezembre/fronts';
 import { CompositionSettingPosition } from '@fridaygame/client/dist/models/compositionSetting';
-import CompositionPositionsMap, { CompositionPositionsMapTheme } from './compositionPositionsMap';
+import CompositionPositionMap, { CompositionPositionMapTheme } from './compositionPositionMap';
 import PositionPlayerSelector from './positionPlayerSelector';
 
-export interface CompositionPositionsMapFieldValuePosition {
+export interface CompositionPositionMapFieldValuePosition {
   id: string;
   player: Player;
 }
 
-export interface CompositionPositionsMapFieldValue {
+export interface CompositionPositionMapFieldValue {
   goalkeeper?: Player;
-  positions?: CompositionPositionsMapFieldValuePosition[];
+  positions?: CompositionPositionMapFieldValuePosition[];
 }
 
 export type GetPositionPlayersFunction = (
   position: string,
 ) => Promise<Player[] | undefined> | Player[] | undefined;
 
-export interface Props extends FieldComponentProps<CompositionPositionsMapFieldValue> {
+export interface Props extends FieldComponentProps<CompositionPositionMapFieldValue> {
   compositionSetting?: CompositionSetting;
   getPositionPlayers?: GetPositionPlayersFunction;
-  theme?: CompositionPositionsMapTheme;
+  theme?: CompositionPositionMapTheme;
 }
 
-export default function CompositionPositionsMapField({
+export default function CompositionPositionMapField({
   compositionSetting,
   getPositionPlayers,
   form,
@@ -48,7 +48,7 @@ export default function CompositionPositionsMapField({
 
       const resolvedPosition: string = typeof position === 'object' ? position.id : position;
 
-      const nextValue: CompositionPositionsMapFieldValue = value
+      const nextValue: CompositionPositionMapFieldValue = value
         ? JSON.parse(JSON.stringify(value))
         : {};
 
@@ -139,7 +139,7 @@ export default function CompositionPositionsMapField({
 
   return (
     <div className="friday-ui-composition-positions-map-field">
-      <CompositionPositionsMap
+      <CompositionPositionMap
         compositionSetting={compositionSetting}
         composition={value}
         onPositionClick={onPositionClick}

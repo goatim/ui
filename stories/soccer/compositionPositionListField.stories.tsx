@@ -4,13 +4,13 @@ import { JSXElementConstructor } from 'react';
 import { Club, CompositionSetting, Player } from '@fridaygame/client';
 import { ModalsContext } from '@cezembre/fronts';
 import { CompositionSettingPosition } from '@fridaygame/client/dist/models/compositionSetting';
-import CompositionPositionsMapField from '../../src/soccer/compositionPositionsMapField';
+import CompositionPositionListField from '../../src/soccer/compositionPositionListField';
 
 interface Props {}
 
 export default {
-  title: 'Soccer/CompositionPositionsMapField',
-  component: CompositionPositionsMapField,
+  title: 'Soccer/CompositionPositionListField',
+  component: CompositionPositionListField,
   decorators: [(story) => <ModalsContext>{story()}</ModalsContext>],
 } as ComponentMeta<JSXElementConstructor<Props>>;
 
@@ -190,7 +190,7 @@ const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
     <Form>
       <Field
         name="positions"
-        component={CompositionPositionsMapField}
+        component={CompositionPositionListField}
         compositionSetting={compositionSetting}
         getPositionPlayers={getPositionPlayers}
       />

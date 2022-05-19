@@ -1,0 +1,9 @@
+.friday-ui-composition-positions-list {
+  > .position {
+    margin-top: 10px;
+
+    &:first-child {
+      margin: 0;
+    }
+  }
+}

@@ -4,11 +4,11 @@ import { CompositionSettingPosition } from '@fridaygame/client/dist/models/compo
 import SoccerField from './soccerField';
 import SoccerFieldPosition, { SoccerFieldPositionSize } from './soccerFieldPosition';
 
-export type CompositionPositionsMapTheme = 'default' | 'light';
+export type CompositionPositionMapTheme = 'default' | 'light';
 
 export interface PositionProps {
   id?: string;
-  theme?: CompositionPositionsMapTheme;
+  theme?: CompositionPositionMapTheme;
   composition?: Pick<Composition, 'goalkeeper' | 'positions'>;
   soccerFieldPositionSize?: SoccerFieldPositionSize;
   onPositionClick?: () => void;
@@ -48,14 +48,14 @@ function Position({
 }
 
 export interface Props {
-  theme?: CompositionPositionsMapTheme;
+  theme?: CompositionPositionMapTheme;
   compositionSetting?: CompositionSetting;
   composition?: Pick<Composition, 'goalkeeper' | 'positions'>;
   soccerFieldPositionSize?: SoccerFieldPositionSize;
   onPositionClick?: (position: CompositionSettingPosition | string) => void;
 }
 
-export default function CompositionPositionsMap({
+export default function CompositionPositionMap({
   theme,
   compositionSetting,
   composition,
