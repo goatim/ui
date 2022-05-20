@@ -41,6 +41,11 @@
         padding: 0;
         position: relative;
 
+        &:hover, &:focus {
+          border: none;
+          outline: none;
+        }
+
         > span {
           @include fonts.IBM-Plex-Sans(.9em, colors.$blue, bold);
           white-space: nowrap;
