@@ -1,4 +1,4 @@
-import { ReactElement, useMemo, useCallback, useRef } from 'react';
+import { ReactElement, useMemo, useCallback, useRef, JSXElementConstructor } from 'react';
 import { FieldComponentProps } from '@cezembre/forms';
 import { useClickOutside } from '@cezembre/fronts';
 import _ from 'lodash';
@@ -11,18 +11,24 @@ export interface SelectOption<V = unknown> {
 
 export interface SelectOptionProps<V = unknown> {
   option?: SelectOption<V>;
+  DefaultComponent?: JSXElementConstructor<{ value: V }>;
   placeholder?: string;
 }
 
-function SelectOptionComponent<V = unknown>({
+function SelectOptionComponent<V>({
   option,
+  DefaultComponent,
   placeholder,
-}: SelectOptionProps<V | undefined>): ReactElement | null {
-  if (option?.element) {
+}: SelectOptionProps<V>): ReactElement | null {
+  if (option?.element && option?.value) {
     if (typeof option.element === 'string' || typeof option.element === 'number') {
       return <span>{option.element}</span>;
     }
     return option.element;
+  }
+
+  if (DefaultComponent && option?.value) {
+    return <DefaultComponent value={option.value} />;
   }
 
   if (option?.value && typeof option.value === 'string' && option.value.length) {
@@ -37,6 +43,7 @@ export type SelectType = 'default' | 'flat';
 export interface Props<V = unknown> extends FieldComponentProps<V | undefined> {
   label?: string;
   options?: SelectOption<V>[];
+  DefaultComponent?: JSXElementConstructor<{ value: V }>;
   canCancel?: boolean;
   type?: SelectType;
   instructions?: ReactElement | string;
@@ -54,6 +61,7 @@ export default function Select<V = unknown>({
   onChange,
   label,
   options = [],
+  DefaultComponent,
   canCancel,
   instructions,
   type = 'default',
@@ -108,7 +116,7 @@ export default function Select<V = unknown>({
 
   const selectedOption = useMemo<SelectOption<V> | undefined>(() => {
     if (value) {
-      return options?.find((option) => _.isEqual(option.value, value));
+      return options?.find((option) => _.isEqual(option.value, value)) || { value };
     }
     return undefined;
   }, [options, value]);
@@ -121,7 +129,10 @@ export default function Select<V = unknown>({
         {selectedOption || type === 'default' ? (
           <div className="selector">
             <button onClick={toggleFocus} type="button" className="selected">
-              <SelectOptionComponent<V> option={selectedOption} />
+              <SelectOptionComponent<V>
+                option={selectedOption}
+                DefaultComponent={DefaultComponent}
+              />
               {type === 'default' ? <Icon name="chevron-down" /> : null}
             </button>
             {selectedOption && canCancel ? (
@@ -143,7 +154,7 @@ export default function Select<V = unknown>({
               }
               onClick={() => selectOption(option.value)}
               className={`option${_.isEqual(option.value, value) ? ' active' : ''}`}>
-              <SelectOptionComponent<V> option={option} />
+              <SelectOptionComponent<V> option={option} DefaultComponent={DefaultComponent} />
             </button>
           ))}
         </div>

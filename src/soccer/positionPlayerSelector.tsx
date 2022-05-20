@@ -28,7 +28,7 @@ export default function PositionPlayerSelector({
       </div>
 
       <div className="players">
-        <Select
+        <Select<Player | undefined>
           name={name}
           form={form}
           value={value}
@@ -40,8 +40,10 @@ export default function PositionPlayerSelector({
           type="flat"
           options={players?.map((player: Player) => ({
             value: player,
-            element: <PlayerThumbnail player={player} size="medium" />,
           }))}
+          DefaultComponent={({ value: player }) =>
+            player ? <PlayerThumbnail player={player} size="medium" /> : null
+          }
         />
       </div>
     </div>

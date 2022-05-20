@@ -181,8 +181,12 @@ const players: Player[] = [
   },
 ];
 
-function getPositionPlayers(position: CompositionSettingPosition): Player[] {
-  return players;
+function getPositionPlayers(position: CompositionSettingPosition): Promise<Player[]> {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(players);
+    }, 100);
+  });
 }
 
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
