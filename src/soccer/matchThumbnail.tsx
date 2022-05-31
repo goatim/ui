@@ -26,9 +26,10 @@ export default function MatchThumbnail({
 }: Props): ReactElement {
   const tick = useRef<NodeJS.Timer | null>(null);
 
-  const resolvedStart = useMemo<DateTime | undefined>(
-    () => (typeof match.start === 'string' ? DateTime.fromISO(match.start) : match.start),
-    [match.start],
+  const resolvedBeginning = useMemo<DateTime | undefined>(
+    () =>
+      typeof match.beginning === 'string' ? DateTime.fromISO(match.beginning) : match.beginning,
+    [match.beginning],
   );
   const resolvedEnd = useMemo<DateTime | undefined>(
     () => (typeof match.end === 'string' ? DateTime.fromISO(match.end) : match.end),
@@ -41,14 +42,14 @@ export default function MatchThumbnail({
     if (match.status === 'cancelled') {
       return;
     }
-    if (resolvedStart && DateTime.now() < resolvedStart) {
+    if (resolvedBeginning && DateTime.now() < resolvedBeginning) {
       setLiveStatus('planned');
     } else if (resolvedEnd && DateTime.now() < resolvedEnd) {
       setLiveStatus('ongoing');
     } else {
       setLiveStatus('passed');
     }
-  }, [match.status, resolvedEnd, resolvedStart]);
+  }, [match.status, resolvedEnd, resolvedBeginning]);
 
   useEffect(() => {
     if (!tick.current) {
@@ -66,7 +67,7 @@ export default function MatchThumbnail({
 
       <div className="body">
         <div className="header">
-          <Date label="Début" date={match.start} />
+          <Date label="Début" date={match.beginning} />
 
           <div className="infos">
             <span className="title">{match.title}</span>
@@ -105,7 +106,7 @@ export default function MatchThumbnail({
         </div>
       </div>
       <div className="status">
-        <MatchStatusThumbnail status={match.status} start={match.start} end={match.end} />
+        <MatchStatusThumbnail status={match.status} beginning={match.beginning} end={match.end} />
       </div>
     </div>
   );

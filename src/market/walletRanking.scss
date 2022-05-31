@@ -1,0 +1,25 @@
+@use '../styles/colors';
+@use '../styles/fonts';
+
+.friday-ui-wallet-ranking {
+  > .wallets {
+    > .wallet {
+      margin-top: 10px;
+
+      &:first-child {
+        margin: 0;
+      }
+    }
+  }
+  > .pinned {
+    border-top: solid rgba(colors.$blue, .1) 1px;
+    margin-top: 10px;
+    padding-top: 10px;
+  }
+
+  &.light {
+    > .pinned {
+      border-top: solid rgba(white, .1) 1px;
+    }
+  }
+}

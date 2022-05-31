@@ -5,16 +5,16 @@ import Countdown from '../general/countdown';
 
 export interface Props {
   status?: MatchStatus;
-  start?: DateTime | string;
+  beginning?: DateTime | string;
   end?: DateTime | string;
 }
 
-export default function MatchStatusThumbnail({ status, start, end }: Props): ReactElement {
+export default function MatchStatusThumbnail({ status, beginning, end }: Props): ReactElement {
   const tick = useRef<NodeJS.Timer | null>(null);
 
-  const resolvedStart = useMemo<DateTime | undefined>(
-    () => (typeof start === 'string' ? DateTime.fromISO(start) : start),
-    [start],
+  const resolvedBeginning = useMemo<DateTime | undefined>(
+    () => (typeof beginning === 'string' ? DateTime.fromISO(beginning) : beginning),
+    [beginning],
   );
   const resolvedEnd = useMemo<DateTime | undefined>(
     () => (typeof end === 'string' ? DateTime.fromISO(end) : end),
@@ -27,14 +27,14 @@ export default function MatchStatusThumbnail({ status, start, end }: Props): Rea
     if (status === 'cancelled') {
       return;
     }
-    if (resolvedStart && DateTime.now() < resolvedStart) {
+    if (resolvedBeginning && DateTime.now() < resolvedBeginning) {
       setLiveStatus('planned');
     } else if (resolvedEnd && DateTime.now() < resolvedEnd) {
       setLiveStatus('ongoing');
     } else {
       setLiveStatus('passed');
     }
-  }, [status, resolvedEnd, resolvedStart]);
+  }, [status, resolvedEnd, resolvedBeginning]);
 
   useEffect(() => {
     if (!tick.current) {
@@ -62,7 +62,7 @@ export default function MatchStatusThumbnail({ status, start, end }: Props): Rea
   return (
     <div className="friday-ui-match-status-thumbnail">
       {liveStatus === 'planned' ? (
-        <Countdown theme="light" label={textualStatus} date={start} />
+        <Countdown theme="light" label={textualStatus} date={beginning} />
       ) : null}
       {liveStatus === 'ongoing' ? (
         <Countdown theme="light" label={textualStatus} date={end} />

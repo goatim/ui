@@ -20,7 +20,7 @@ export default function WalletList({ wallets, total }: Props): ReactElement {
     <div className="friday-ui-wallet-list">
       {wallets.map((wallet) => (
         <div key={wallet.id} className="wallet">
-          <WalletThumbnail wallet={wallet} />
+          <WalletThumbnail wallet={wallet} infos="picture" />
         </div>
       ))}
       {nbMore > 0 ? (

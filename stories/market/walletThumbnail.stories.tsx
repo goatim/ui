@@ -4,12 +4,17 @@ import { User, Wallet } from '@fridaygame/client';
 import WalletThumbnail, {
   WalletThumbnailSize,
   WalletThumbnailInfos,
+  WalletThumbnailTheme,
 } from '../../src/market/walletThumbnail';
 
 interface Props {
   size?: WalletThumbnailSize;
   infos?: WalletThumbnailInfos;
+  theme?: WalletThumbnailTheme;
   is_defined?: boolean;
+  position?: number;
+  amount?: number;
+  variation?: number;
 }
 
 export default {
@@ -28,9 +33,30 @@ export default {
         type: 'select',
       },
     },
+    theme: {
+      control: {
+        options: ['default', 'light'],
+        type: 'select',
+      },
+    },
     is_defined: {
       control: {
         type: 'boolean',
+      },
+    },
+    position: {
+      control: {
+        type: 'number',
+      },
+    },
+    amount: {
+      control: {
+        type: 'number',
+      },
+    },
+    variation: {
+      control: {
+        type: 'number',
       },
     },
   },
@@ -59,13 +85,21 @@ const wallet: Wallet = {
 
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({
   size,
+  theme,
   infos,
   is_defined,
+  position,
+  amount,
+  variation,
 }: Props) => (
   <WalletThumbnail
     wallet={{ ...wallet, picture: is_defined ? wallet.picture : undefined }}
     size={size}
+    theme={theme}
     infos={infos}
+    position={position}
+    amount={amount}
+    variation={variation}
   />
 );
 
@@ -74,4 +108,5 @@ export const Default = Template.bind({});
 Default.args = {
   size: 'small',
   infos: 'picture',
+  theme: 'default',
 };
