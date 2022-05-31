@@ -2,15 +2,18 @@ import { ReactElement } from 'react';
 import { Wallet } from '@fridaygame/client';
 import WalletThumbnail from '../market/walletThumbnail';
 
+export type MatchCreatorTheme = 'default' | 'light';
+
 export interface Props {
   creator: Wallet;
   nb_participants?: number;
+  theme?: MatchCreatorTheme;
 }
 
-export default function MatchCreator({ creator, nb_participants }: Props): ReactElement {
+export default function MatchCreator({ creator, nb_participants, theme }: Props): ReactElement {
   return (
-    <div className="friday-ui-match-creator">
-      <WalletThumbnail wallet={creator} />
+    <div className={`friday-ui-match-creator ${theme}`}>
+      <WalletThumbnail wallet={creator} infos="picture" />
       <div className="body">
         <span className="creator">Organisé par {creator.name}</span>
         {nb_participants ? (

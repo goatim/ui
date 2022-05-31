@@ -1,0 +1,62 @@
+@use '../styles/colors';
+@use '../styles/fonts';
+
+.friday-ui-match-board {
+  display: flex;
+  border-radius: 10px;
+  overflow: hidden;
+  height: 100%;
+  background: rgba(colors.$blue, .1);
+  border: solid rgba(colors.$blue, .1) 1px;
+
+  > .participants {
+    border-right: solid rgba(colors.$blue, .1) 1px;
+
+    > .header {
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      > .title {
+        @include fonts.label;
+        text-align: center;
+        display: block;
+      }
+    }
+
+    > .wallets {
+      height: calc(100% - 60px);
+    }
+  }
+
+  > .game {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-between;
+
+    > .feed {
+      flex: 1;
+      overflow: scroll;
+
+      > .physical-events {
+        padding-bottom: 50px;
+      }
+    }
+  }
+
+  &.light {
+    background: rgba(white, .1);
+    border: solid rgba(white, .1) 1px;
+
+    > .participants {
+      border-right: solid rgba(white, .1) 1px;
+
+      > .header > .title {
+        @include fonts.label-light;
+      }
+    }
+  }
+}

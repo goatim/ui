@@ -71,6 +71,7 @@ import MatchCreator from './soccer/matchCreator';
 import MatchStatusThumbnail from './soccer/matchStatusThumbnail';
 import MatchIcon from './soccer/matchIcon';
 import MatchThumbnail from './soccer/matchThumbnail';
+import MatchBoard, { MatchBoardTheme } from './soccer/matchBoard';
 import PositionPlayerSelector from './soccer/positionPlayerSelector';
 import CompositionPositionMapField, {
   CompositionPositionMapFieldValue,
@@ -85,6 +86,7 @@ import PhysicalEventThumbnail, {
   PhysicalEventThumbnailTheme,
 } from './soccer/physicalEventThumbnail';
 import PhysicalEventTimeline, { PhysicalEventTimelineTheme } from './soccer/physicalEventTimeline';
+import PhysicalEventList from './soccer/physicalEventList';
 import AssetThumbnail, { AssetThumbnailSize, AssetThumbnailTheme } from './trading/assetThumbnail';
 import AssetOverview from './trading/assetOverview';
 import BoosterIcon, { BoosterIconSize, BoosterIconInfos } from './trading/boosterIcon';
@@ -218,11 +220,13 @@ export {
   MatchCreator,
   MatchStatusThumbnail,
   MatchIcon,
+  MatchBoard,
   PositionPlayerSelector,
   CompositionPositionMapField,
   CompositionPositionListField,
   PhysicalEventThumbnail,
   PhysicalEventTimeline,
+  PhysicalEventList,
 };
 
 export type {
@@ -245,6 +249,7 @@ export type {
   CompositionPositionListFieldValuePosition,
   PhysicalEventThumbnailTheme,
   PhysicalEventTimelineTheme,
+  MatchBoardTheme,
 };
 
 /**

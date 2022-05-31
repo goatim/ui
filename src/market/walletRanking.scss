@@ -2,7 +2,14 @@
 @use '../styles/fonts';
 
 .friday-ui-wallet-ranking {
+  height: 100%;
+
   > .wallets {
+    box-sizing: border-box;
+    height: 100%;
+    padding: 0 20px 40px;
+    overflow: scroll;
+
     > .wallet {
       margin-top: 10px;
 
@@ -11,10 +18,11 @@
       }
     }
   }
+
   > .pinned {
     border-top: solid rgba(colors.$blue, .1) 1px;
     margin-top: 10px;
-    padding-top: 10px;
+    padding: 10px 20px 0;
   }
 
   &.light {

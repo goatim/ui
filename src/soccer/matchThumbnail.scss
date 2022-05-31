@@ -15,59 +15,42 @@
     transform: translateX(-50%);
   }
 
-  > .body {
-    box-sizing: border-box;
-    background: white;
-    padding: 20px;
-    border-top: solid rgba(colors.$blue, .1) 1px;
-    border-left: solid rgba(colors.$blue, .1) 1px;
-    border-right: solid rgba(colors.$blue, .1) 1px;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
+  > .container {
+    background: colors.$blue;
+    border-radius: 20px;
+    border: solid rgba(white, .1) 1px;
+    overflow: hidden;
 
-    > .header {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
+    > .body {
+      box-sizing: border-box;
+      padding: 20px;
 
-      > .infos {
+      > .header {
         display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        align-items: center;
-        margin-top: 40px;
+        align-items: flex-start;
+        justify-content: space-between;
 
-        > .title {
-          @include fonts.IBM-Plex-Sans(.9em, colors.$blue, bold);
-        }
+        > .infos {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: center;
+          margin-top: 40px;
 
-        > .creator {
-          margin-top: 10px;
+          > .title {
+            @include fonts.IBM-Plex-Sans(.9em, white, bold);
+          }
+
+          > .creator {
+            margin-top: 10px;
+          }
         }
       }
-    }
 
-    > .participants {
-      width: 100%;
-      margin-top: 30px;
+      > .participants {
+        width: 100%;
+        margin-top: 30px;
+      }
     }
-
-    > .action {
-      margin-top: 30px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-  }
-
-  > .status {
-    box-sizing: border-box;
-    background: colors.$gold;
-    padding: 20px;
-    border-bottom: solid rgba(colors.$blue, .1) 1px;
-    border-left: solid rgba(colors.$blue, .1) 1px;
-    border-right: solid rgba(colors.$blue, .1) 1px;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
   }
 }

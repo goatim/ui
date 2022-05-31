@@ -51,9 +51,13 @@ export default function WalletThumbnail({
           <span className="name">{wallet.name || wallet.id}</span>
         ) : null}
       </div>
-      {amount !== undefined ? <FridayCoins amount={amount} theme={theme} size={size} /> : null}
-      {variation !== undefined && amount === undefined ? (
-        <FridayCoinsVariation variation={variation} size={size} />
+      {amount !== undefined || variation !== undefined ? (
+        <div className="metrics">
+          {amount !== undefined ? <FridayCoins amount={amount} theme={theme} size={size} /> : null}
+          {variation !== undefined ? (
+            <FridayCoinsVariation variation={variation} size={size} />
+          ) : null}
+        </div>
       ) : null}
     </Wrapper>
   );

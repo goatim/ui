@@ -12,4 +12,10 @@
     @include fonts.IBM-Plex-Sans(.8em, rgba(colors.$blue, .5));
     grid-column: span 3;
   }
+
+  &.light {
+    > .others {
+      color: rgba(white, .5);
+    }
+  }
 }

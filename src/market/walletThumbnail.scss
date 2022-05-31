@@ -40,7 +40,21 @@
     > .name {
       @include fonts.IBM-Plex-Sans(.8em, colors.$blue, bold);
       margin-left: .8em;
+      max-width: 100px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      line-clamp: 2;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
     }
+  }
+
+  > .metrics {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
   }
 
   &.light > .body {

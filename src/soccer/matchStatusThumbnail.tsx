@@ -1,30 +1,41 @@
-import { ReactElement, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { MouseEvent, ReactElement, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { DateTime } from 'luxon';
 import { MatchStatus } from '@fridaygame/client';
+import { To } from 'react-router';
 import Countdown from '../general/countdown';
+import Button from '../general/button';
 
 export interface Props {
   status?: MatchStatus;
   beginning?: DateTime | string;
   end?: DateTime | string;
+  toComposition?: To;
+  onClickComposition?: (event: MouseEvent<HTMLButtonElement>) => Promise<void> | void;
+  toMatch?: To;
+  onClickMatch?: (event: MouseEvent<HTMLButtonElement>) => Promise<void> | void;
 }
 
-export default function MatchStatusThumbnail({ status, beginning, end }: Props): ReactElement {
+export function useMatchLiveStatus(
+  beginning?: DateTime | string,
+  end?: DateTime | string,
+  initialStatus?: MatchStatus,
+): MatchStatus | undefined {
   const tick = useRef<NodeJS.Timer | null>(null);
 
   const resolvedBeginning = useMemo<DateTime | undefined>(
     () => (typeof beginning === 'string' ? DateTime.fromISO(beginning) : beginning),
     [beginning],
   );
+
   const resolvedEnd = useMemo<DateTime | undefined>(
     () => (typeof end === 'string' ? DateTime.fromISO(end) : end),
     [end],
   );
 
-  const [liveStatus, setLiveStatus] = useState<MatchStatus | undefined>(status);
+  const [liveStatus, setLiveStatus] = useState<MatchStatus | undefined>(initialStatus);
 
   const resolveStatus = useCallback(() => {
-    if (status === 'cancelled') {
+    if (initialStatus === 'cancelled') {
       return;
     }
     if (resolvedBeginning && DateTime.now() < resolvedBeginning) {
@@ -34,7 +45,7 @@ export default function MatchStatusThumbnail({ status, beginning, end }: Props):
     } else {
       setLiveStatus('passed');
     }
-  }, [status, resolvedEnd, resolvedBeginning]);
+  }, [initialStatus, resolvedEnd, resolvedBeginning]);
 
   useEffect(() => {
     if (!tick.current) {
@@ -43,6 +54,20 @@ export default function MatchStatusThumbnail({ status, beginning, end }: Props):
     }
     return () => (tick.current ? clearInterval(tick.current) : undefined);
   }, [resolveStatus]);
+
+  return liveStatus;
+}
+
+export default function MatchStatusThumbnail({
+  status,
+  beginning,
+  end,
+  toComposition,
+  onClickComposition,
+  toMatch,
+  onClickMatch,
+}: Props): ReactElement {
+  const liveStatus = useMatchLiveStatus(beginning, end, status);
 
   const textualStatus = useMemo<string | undefined>(() => {
     switch (liveStatus) {
@@ -60,12 +85,33 @@ export default function MatchStatusThumbnail({ status, beginning, end }: Props):
   }, [liveStatus]);
 
   return (
-    <div className="friday-ui-match-status-thumbnail">
+    <div className={`friday-ui-match-status-thumbnail ${liveStatus}`}>
       {liveStatus === 'planned' ? (
         <Countdown theme="light" label={textualStatus} date={beginning} />
       ) : null}
       {liveStatus === 'ongoing' ? (
         <Countdown theme="light" label={textualStatus} date={end} />
+      ) : null}
+      {liveStatus === 'planned' && (onClickComposition || toComposition) ? (
+        <div className="action">
+          <Button onClick={onClickComposition} to={toComposition} shape="filled">
+            Faire ma composition
+          </Button>
+        </div>
+      ) : null}
+      {liveStatus === 'ongoing' && (onClickMatch || toMatch) ? (
+        <div className="action">
+          <Button onClick={onClickMatch} to={toMatch} shape="filled">
+            Suivre le match
+          </Button>
+        </div>
+      ) : null}
+      {liveStatus === 'passed' && (onClickMatch || toMatch) ? (
+        <div className="action">
+          <Button onClick={onClickMatch} to={toMatch} shape="filled">
+            Voir les résultats
+          </Button>
+        </div>
       ) : null}
     </div>
   );

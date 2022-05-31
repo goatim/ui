@@ -2,11 +2,11 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { Asset, Club, Dividend, PhysicalEvent, Player } from '@fridaygame/client';
 import PhysicalEventThumbnail, {
-  PhysicalEventTheme,
+  PhysicalEventThumbnailTheme,
 } from '../../src/soccer/physicalEventThumbnail';
 
 interface Props {
-  theme?: PhysicalEventTheme;
+  theme?: PhysicalEventThumbnailTheme;
 }
 
 export default {

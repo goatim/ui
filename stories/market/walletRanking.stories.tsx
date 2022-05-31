@@ -51,6 +51,7 @@ const wallets: Wallet[] = [
     portfolios_session_variation: 45,
     rank,
     rank_position: 1,
+    total_gains: 45000,
   },
   {
     id: 'wa_sopqzdsaA',
@@ -65,6 +66,7 @@ const wallets: Wallet[] = [
     portfolios_session_variation: 45,
     rank,
     rank_position: 2,
+    total_gains: 56000,
   },
   {
     id: 'wa_soqdz59psaA',
@@ -79,6 +81,7 @@ const wallets: Wallet[] = [
     portfolios_session_variation: 45,
     rank,
     rank_position: 3,
+    total_gains: -5000,
   },
 ];
 
@@ -103,6 +106,7 @@ const Template: ComponentStory<JSXElementConstructor<Props>> = ({ theme }: Props
     pinned={pinned}
     theme={theme}
     positionExtractor={(wallet) => wallet.rank_position || 0}
+    variationExtractor={(wallet) => wallet.total_gains || 0}
   />
 );
 

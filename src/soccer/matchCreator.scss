@@ -18,4 +18,10 @@
       }
     }
   }
+
+  &.light {
+    > .body > span {
+      color: rgba(white, .5);
+    }
+  }
 }
