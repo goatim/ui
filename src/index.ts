@@ -66,7 +66,7 @@ import SoccerFieldPosition, {
 import CompositionPositionMap, {
   CompositionPositionMapTheme,
 } from './soccer/compositionPositionMap';
-import Date from './general/date';
+import Date, { DateTheme } from './general/date';
 import MatchCreator from './soccer/matchCreator';
 import MatchStatusThumbnail from './soccer/matchStatusThumbnail';
 import MatchIcon from './soccer/matchIcon';
@@ -81,6 +81,10 @@ import CompositionPositionListField, {
   CompositionPositionListFieldValue,
   CompositionPositionListFieldValuePosition,
 } from './soccer/compositionPositionListField';
+import PhysicalEventThumbnail, {
+  PhysicalEventThumbnailTheme,
+} from './soccer/physicalEventThumbnail';
+import PhysicalEventTimeline, { PhysicalEventTimelineTheme } from './soccer/physicalEventTimeline';
 import AssetThumbnail, { AssetThumbnailSize, AssetThumbnailTheme } from './trading/assetThumbnail';
 import AssetOverview from './trading/assetOverview';
 import BoosterIcon, { BoosterIconSize, BoosterIconInfos } from './trading/boosterIcon';
@@ -94,6 +98,8 @@ import QuotationGraph, { DataPoint } from './trading/quotationGraph';
 import TransactionThumbnail from './trading/transactionThumbnail';
 import AssetList from './trading/assetList';
 import RankPosition from './trading/rankPosition';
+import DividendThumbnail, { DividendThumbnailTheme } from './trading/dividendThumbnail';
+import DividendList from './trading/dividendList';
 import CreditCardThumbnail from './payment/creditCardThumbnail';
 import PaymentMethodThumbnail from './payment/paymentMethodThumbnail';
 import CreditCardForm, { NewCreditCard } from './payment/creditCardForm';
@@ -125,6 +131,7 @@ export type {
   ButtonSize,
   ButtonShape,
   ButtonTheme,
+  DateTheme,
   HeadingSize,
   HeadingTheme,
   HeadingLevel,
@@ -214,6 +221,8 @@ export {
   PositionPlayerSelector,
   CompositionPositionMapField,
   CompositionPositionListField,
+  PhysicalEventThumbnail,
+  PhysicalEventTimeline,
 };
 
 export type {
@@ -234,6 +243,8 @@ export type {
   GetPositionPlayersFunction,
   CompositionPositionListFieldValue,
   CompositionPositionListFieldValuePosition,
+  PhysicalEventThumbnailTheme,
+  PhysicalEventTimelineTheme,
 };
 
 /**
@@ -254,6 +265,8 @@ export {
   TransactionThumbnail,
   AssetList,
   RankPosition,
+  DividendThumbnail,
+  DividendList,
 };
 
 export type {
@@ -262,6 +275,7 @@ export type {
   BoosterIconSize,
   BoosterIconInfos,
   DataPoint,
+  DividendThumbnailTheme,
 };
 
 /**

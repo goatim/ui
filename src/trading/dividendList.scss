@@ -1,0 +1,9 @@
+.friday-ui-dividend-list {
+  > .dividend {
+    margin-top: 10px;
+
+    &:first-child {
+      margin: 0;
+    }
+  }
+}

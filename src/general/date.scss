@@ -25,4 +25,14 @@
       @include fonts.label;
     }
   }
+
+  &.light {
+    > span {
+      color: rgba(white, .5);
+
+      &.label {
+        @include fonts.label-light;
+      }
+    }
+  }
 }
