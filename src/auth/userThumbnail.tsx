@@ -6,10 +6,13 @@ export type UserThumbnailSize = 'small' | 'medium' | 'big';
 
 export type UserThumbnailInfos = 'picture' | 'picture-and-name';
 
+export type UserThumbnailTheme = 'default' | 'light';
+
 export interface Props extends WrapperProps {
   user: User;
   size?: UserThumbnailSize;
   infos?: UserThumbnailInfos;
+  theme?: UserThumbnailTheme;
 }
 
 export default function UserThumbnail({
@@ -20,10 +23,11 @@ export default function UserThumbnail({
   onClick,
   href,
   target,
+  theme = 'default',
 }: Props): ReactElement {
   return (
     <Wrapper
-      className={`friday-ui-user-thumbnail ${size} ${infos}`}
+      className={`friday-ui-user-thumbnail ${size} ${infos} ${theme}`}
       to={to}
       onClick={onClick}
       href={href}

@@ -28,6 +28,16 @@
     margin-left: .8em;
   }
 
+  &.light {
+    > .placeholder {
+      background: rgba(white, .2);
+    }
+
+    > .name {
+      color: white;
+    }
+  }
+
   &.medium {
     > img, > .placeholder {
       width: 30px;
