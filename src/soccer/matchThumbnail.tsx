@@ -25,7 +25,7 @@ export default function MatchThumbnail({
   return (
     <div className="friday-ui-match-thumbnail">
       <div className="icon">
-        <MatchIcon icon={match.icon} />
+        <MatchIcon icon={match.icon} size="big" />
       </div>
 
       <div className="container">
