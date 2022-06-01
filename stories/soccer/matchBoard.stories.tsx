@@ -65,9 +65,9 @@ const match: Match = {
   end: '2022-03-20T09:54:52.696+02:00',
   nb_participants: 213,
   is_public: true,
-  participants: Array(24)
-    .fill(wallet)
-    .map((w, index) => ({ ...w, position: index + 1 })),
+  // participants: Array(24)
+  //   .fill(wallet)
+  //   .map((w, index) => ({ ...w, position: index + 1 })),
 };
 
 const club: Club = {

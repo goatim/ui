@@ -1,6 +1,7 @@
 import { ReactElement } from 'react';
 import { Wallet } from '@fridaygame/client';
 import WalletThumbnail from './walletThumbnail';
+import Icon from '../general/icon';
 
 export type WalletRankingTheme = 'default' | 'light';
 
@@ -21,9 +22,15 @@ export default function WalletRanking({
   amountExtractor,
   variationExtractor,
 }: Props): ReactElement {
-  if (!wallets) {
-    return <span>Aucun portefeuille</span>;
+  if (!wallets?.length) {
+    return (
+      <div className={`friday-ui-wallet-ranking-empty ${theme}`}>
+        <Icon name="meh" size={25} />
+        <span>Personne</span>
+      </div>
+    );
   }
+
   return (
     <div className={`friday-ui-wallet-ranking ${theme}`}>
       <div className="wallets">

@@ -17,8 +17,13 @@ export default function WalletList({ wallets, total, theme }: Props): ReactEleme
   );
 
   if (!wallets?.length) {
-    return <span>Aucun joueur</span>;
+    return (
+      <div className={`friday-ui-wallet-list-empty ${theme}`}>
+        <span>Aucun portefeuille</span>
+      </div>
+    );
   }
+
   return (
     <div className={`friday-ui-wallet-list ${theme}`}>
       {wallets.map((wallet) => (
