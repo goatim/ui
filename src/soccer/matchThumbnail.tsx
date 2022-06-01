@@ -68,6 +68,7 @@ export default function MatchThumbnail({
           onClickComposition={onClickComposition}
           toMatch={toMatch}
           onClickMatch={onClickMatch}
+          theme="light"
         />
       </div>
     </div>

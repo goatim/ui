@@ -41,7 +41,7 @@ export default function MatchBoard({
       </div>
 
       <div className="game">
-        {liveStatus === 'planned' ? (
+        {liveStatus === 'planned' || liveStatus === 'cancelled' ? (
           <div className="beginning">
             <MatchStatusThumbnail
               status={match.status}
@@ -49,6 +49,7 @@ export default function MatchBoard({
               end={match.end}
               toComposition={toComposition}
               onClickComposition={onClickComposition}
+              theme={theme}
             />
           </div>
         ) : null}
@@ -61,12 +62,13 @@ export default function MatchBoard({
           ) : null}
         </div>
 
-        {liveStatus === 'ongoing' ? (
+        {liveStatus === 'ongoing' || liveStatus === 'passed' ? (
           <div className="beginning">
             <MatchStatusThumbnail
               status={match.status}
               beginning={match.beginning}
               end={match.end}
+              theme={theme}
             />
           </div>
         ) : null}

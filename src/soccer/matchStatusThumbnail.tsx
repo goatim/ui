@@ -5,16 +5,6 @@ import { To } from 'react-router';
 import Countdown from '../general/countdown';
 import Button from '../general/button';
 
-export interface Props {
-  status?: MatchStatus;
-  beginning?: DateTime | string;
-  end?: DateTime | string;
-  toComposition?: To;
-  onClickComposition?: (event: MouseEvent<HTMLButtonElement>) => Promise<void> | void;
-  toMatch?: To;
-  onClickMatch?: (event: MouseEvent<HTMLButtonElement>) => Promise<void> | void;
-}
-
 export function useMatchLiveStatus(
   beginning?: DateTime | string,
   end?: DateTime | string,
@@ -58,6 +48,19 @@ export function useMatchLiveStatus(
   return liveStatus;
 }
 
+export type MatchStatusThumbnailTheme = 'default' | 'light';
+
+export interface Props {
+  status?: MatchStatus;
+  beginning?: DateTime | string;
+  end?: DateTime | string;
+  toComposition?: To;
+  onClickComposition?: (event: MouseEvent<HTMLButtonElement>) => Promise<void> | void;
+  toMatch?: To;
+  onClickMatch?: (event: MouseEvent<HTMLButtonElement>) => Promise<void> | void;
+  theme?: MatchStatusThumbnailTheme;
+}
+
 export default function MatchStatusThumbnail({
   status,
   beginning,
@@ -66,6 +69,7 @@ export default function MatchStatusThumbnail({
   onClickComposition,
   toMatch,
   onClickMatch,
+  theme = 'default',
 }: Props): ReactElement {
   const liveStatus = useMatchLiveStatus(beginning, end, status);
 
@@ -85,13 +89,17 @@ export default function MatchStatusThumbnail({
   }, [liveStatus]);
 
   return (
-    <div className={`friday-ui-match-status-thumbnail ${liveStatus}`}>
+    <div className={`friday-ui-match-status-thumbnail ${liveStatus} ${theme}`}>
       {liveStatus === 'planned' ? (
-        <Countdown theme="light" label={textualStatus} date={beginning} />
+        <Countdown theme={theme} label={textualStatus} date={beginning} />
       ) : null}
       {liveStatus === 'ongoing' ? (
-        <Countdown theme="light" label={textualStatus} date={end} />
+        <Countdown theme={theme} label={textualStatus} date={end} />
       ) : null}
+
+      {liveStatus === 'cancelled' ? <span className="label">Match annulé !</span> : null}
+      {liveStatus === 'passed' ? <span className="label">Match terminé !</span> : null}
+
       {liveStatus === 'planned' && (onClickComposition || toComposition) ? (
         <div className="action">
           <Button onClick={onClickComposition} to={toComposition} shape="filled">

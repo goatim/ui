@@ -1,15 +1,30 @@
+@use '../styles/colors';
+@use '../styles/fonts';
+
 .friday-ui-match-status-thumbnail {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: rgba(white, .2);
+  background: rgba(colors.$blue, .2);
   padding: 20px;
   box-sizing: border-box;
+
+  > .label {
+    @include fonts.IBM-Plex-Sans(.8em, colors.$blue, bold);
+  }
 
   &.planned, &.ongoing {
     > .action {
       margin-top: 20px;
+    }
+  }
+
+  &.light {
+    background: rgba(white, .2);
+
+    > .label {
+      color: white;
     }
   }
 }
