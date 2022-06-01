@@ -14,10 +14,8 @@
     @include fonts.IBM-Plex-Sans(.8em, colors.$blue, bold);
   }
 
-  &.planned, &.ongoing {
-    > .action {
-      margin-top: 20px;
-    }
+  > .action {
+    margin-top: 20px;
   }
 
   &.light {

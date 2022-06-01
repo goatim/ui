@@ -89,7 +89,7 @@ export default function MatchStatusThumbnail({
   }, [liveStatus]);
 
   return (
-    <div className={`friday-ui-match-status-thumbnail ${liveStatus} ${theme}`}>
+    <div className={`friday-ui-match-status-thumbnail ${theme}`}>
       {liveStatus === 'planned' ? (
         <Countdown theme={theme} label={textualStatus} date={beginning} />
       ) : null}
@@ -97,8 +97,8 @@ export default function MatchStatusThumbnail({
         <Countdown theme={theme} label={textualStatus} date={end} />
       ) : null}
 
-      {liveStatus === 'cancelled' ? <span className="label">Match annulé !</span> : null}
       {liveStatus === 'passed' ? <span className="label">Match terminé !</span> : null}
+      {liveStatus === 'cancelled' ? <span className="label">Match annulé !</span> : null}
 
       {liveStatus === 'planned' && (onClickComposition || toComposition) ? (
         <div className="action">
