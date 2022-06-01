@@ -61,6 +61,10 @@
     > .position, > .name {
       color: white;
     }
+
+    > .placeholder {
+      background: rgba(white, .2);
+    }
   }
 
   &.medium {

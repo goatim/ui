@@ -71,6 +71,7 @@ export default function PlayerThumbnail({
       <ClubIcon
         icon={player.club && typeof player.club === 'object' ? player.club.icon : undefined}
         size={clubIconSize}
+        theme={theme}
       />
       <div className="infos">
         <span className="number">{player.number}</span>

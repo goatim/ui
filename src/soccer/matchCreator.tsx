@@ -13,7 +13,7 @@ export interface Props {
 export default function MatchCreator({ creator, nb_participants, theme }: Props): ReactElement {
   return (
     <div className={`friday-ui-match-creator ${theme}`}>
-      <WalletThumbnail wallet={creator} infos="picture" />
+      <WalletThumbnail wallet={creator} infos="picture" theme={theme} />
       <div className="body">
         <span className="creator">Organisé par {creator.name}</span>
         {nb_participants ? (
