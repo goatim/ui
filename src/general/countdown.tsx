@@ -16,7 +16,7 @@ export default function Countdown({
   theme = 'default',
   align = 'center',
 }: Props): ReactElement {
-  const tick = useRef<NodeJS.Timer | null>(null);
+  const timeout = useRef<NodeJS.Timeout | null>(null);
 
   const resolvedDate = useMemo<DateTime | undefined>(
     () => (typeof date === 'string' ? DateTime.fromISO(date) : date),
@@ -26,17 +26,13 @@ export default function Countdown({
   const [remainingTime, setRemainingTime] = useState<Duration | undefined>(resolvedDate?.diffNow());
 
   const resolveRemainingTime = useCallback(() => {
-    if (resolvedDate) {
-      setRemainingTime(resolvedDate.diffNow());
-    }
+    setRemainingTime(resolvedDate?.diffNow());
+    timeout.current = setTimeout(resolveRemainingTime, 1000);
   }, [resolvedDate]);
 
   useEffect(() => {
-    if (!tick.current) {
-      tick.current = setInterval(resolveRemainingTime, 1000);
-      resolveRemainingTime();
-    }
-    return () => (tick.current ? clearInterval(tick.current) : undefined);
+    resolveRemainingTime();
+    return () => (timeout.current ? clearTimeout(timeout.current) : undefined);
   }, [resolveRemainingTime]);
 
   return (

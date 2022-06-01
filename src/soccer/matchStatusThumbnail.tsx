@@ -10,7 +10,7 @@ export function useMatchLiveStatus(
   end?: DateTime | string,
   initialStatus?: MatchStatus,
 ): MatchStatus | undefined {
-  const tick = useRef<NodeJS.Timer | null>(null);
+  const timeout = useRef<NodeJS.Timeout | null>(null);
 
   const resolvedBeginning = useMemo<DateTime | undefined>(
     () => (typeof beginning === 'string' ? DateTime.fromISO(beginning) : beginning),
@@ -35,14 +35,12 @@ export function useMatchLiveStatus(
     } else {
       setLiveStatus('passed');
     }
+    timeout.current = setTimeout(resolveStatus, 1000);
   }, [initialStatus, resolvedEnd, resolvedBeginning]);
 
   useEffect(() => {
-    if (!tick.current) {
-      tick.current = setInterval(resolveStatus, 1000);
-      resolveStatus();
-    }
-    return () => (tick.current ? clearInterval(tick.current) : undefined);
+    resolveStatus();
+    return () => (timeout.current ? clearTimeout(timeout.current) : undefined);
   }, [resolveStatus]);
 
   return liveStatus;
@@ -73,28 +71,13 @@ export default function MatchStatusThumbnail({
 }: Props): ReactElement {
   const liveStatus = useMatchLiveStatus(beginning, end, status);
 
-  const textualStatus = useMemo<string | undefined>(() => {
-    switch (liveStatus) {
-      case 'planned':
-        return "Coup d'envoi";
-      case 'ongoing':
-        return 'Coup de sifflet final';
-      case 'passed':
-        return 'Terminé';
-      case 'cancelled':
-        return 'Annulé';
-      default:
-        return undefined;
-    }
-  }, [liveStatus]);
-
   return (
     <div className={`friday-ui-match-status-thumbnail ${theme}`}>
       {liveStatus === 'planned' ? (
-        <Countdown theme={theme} label={textualStatus} date={beginning} />
+        <Countdown theme={theme} label="Coup d'envoi" date={beginning} />
       ) : null}
       {liveStatus === 'ongoing' ? (
-        <Countdown theme={theme} label={textualStatus} date={end} />
+        <Countdown theme={theme} label="Coup de sifflet final" date={end} />
       ) : null}
 
       {liveStatus === 'passed' ? <span className="label">Match terminé !</span> : null}

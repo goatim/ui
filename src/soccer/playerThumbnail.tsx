@@ -1,4 +1,4 @@
-import { ReactElement, useEffect, useState } from 'react';
+import { ReactElement, useMemo } from 'react';
 import { Player } from '@fridaygame/client';
 import { To } from 'react-router-dom';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
@@ -16,18 +16,6 @@ export interface Props extends WrapperProps {
   clubTo?: To;
 }
 
-function getClubIconSize(size: PlayerThumbnailSize): ClubIconSize {
-  switch (size) {
-    case 'small':
-      return 'small';
-    case 'medium':
-    case 'big':
-      return 'medium';
-    default:
-      return 'small';
-  }
-}
-
 export default function PlayerThumbnail({
   player,
   size = 'small',
@@ -38,10 +26,14 @@ export default function PlayerThumbnail({
   target,
   clubTo,
 }: Props): ReactElement {
-  const [clubIconSize, setClubIconSize] = useState<ClubIconSize>(getClubIconSize(size));
-
-  useEffect(() => {
-    setClubIconSize(getClubIconSize(size));
+  const clubIconSize = useMemo<ClubIconSize>(() => {
+    switch (size) {
+      case 'medium':
+      case 'big':
+        return 'medium';
+      default:
+        return 'small';
+    }
   }, [size]);
 
   if (size === 'full') {
