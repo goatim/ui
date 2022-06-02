@@ -3,7 +3,7 @@
     padding: 20px;
     border-top: solid rgba(white, .1) 1px;
 
-    &:first-child {
+    &:first-of-type {
       border: none;
     }
   }

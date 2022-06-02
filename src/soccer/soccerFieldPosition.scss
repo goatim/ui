@@ -21,6 +21,20 @@ button.friday-ui-soccer-field-position {
     display: inline-block;
   }
 
+  > .no-icon {
+    width: 100%;
+    height: 100%;
+    background: colors.$blue;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    > svg {
+      stroke: white;
+    }
+  }
+
   > .placeholder {
     box-sizing: border-box;
     width: 100%;
@@ -32,9 +46,19 @@ button.friday-ui-soccer-field-position {
     box-shadow: 0 5px 10px rgba(colors.$blue, .2);
   }
 
-  &.light > .placeholder {
-    background: rgba(white, .5);
-    border: solid white 1px;
+  &.light {
+    > .no-icon {
+      background: white;
+
+      > svg {
+        stroke: colors.$blue;
+      }
+    }
+
+    > .placeholder {
+      background: rgba(white, .5);
+      border: solid white 1px;
+    }
   }
 
   &.small {

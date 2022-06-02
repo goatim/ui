@@ -41,7 +41,7 @@
       padding-bottom: 30px;
     }
 
-    &:first-child {
+    &:first-of-type {
       > .timeline {
         &:before {
           height: calc(100% - 5px);

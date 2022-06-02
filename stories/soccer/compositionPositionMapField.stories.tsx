@@ -87,14 +87,14 @@ const club: Club = {
   name: 'Paris Saint-Germain',
   slug: 'paris-saint-germain',
   description: '',
-  icon: {
-    id: '1',
-    url: 'https://www.psg.fr/img/logos/psg-logo.png',
-    large_url: 'https://www.psg.fr/img/logos/psg-logo.png',
-    medium_url: 'https://www.psg.fr/img/logos/psg-logo.png',
-    small_url: 'https://www.psg.fr/img/logos/psg-logo.png',
-    thumbnail_url: 'https://www.psg.fr/img/logos/psg-logo.png',
-  },
+  // icon: {
+  //   id: '1',
+  //   url: 'https://www.psg.fr/img/logos/psg-logo.png',
+  //   large_url: 'https://www.psg.fr/img/logos/psg-logo.png',
+  //   medium_url: 'https://www.psg.fr/img/logos/psg-logo.png',
+  //   small_url: 'https://www.psg.fr/img/logos/psg-logo.png',
+  //   thumbnail_url: 'https://www.psg.fr/img/logos/psg-logo.png',
+  // },
 };
 
 const players: Player[] = [

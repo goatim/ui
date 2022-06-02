@@ -32,7 +32,7 @@
 @mixin field {
   margin-top: 20px;
 
-  &:first-child {
+  &:first-of-type {
     margin: 0;
   }
 }

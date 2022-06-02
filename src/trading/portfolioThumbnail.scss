@@ -80,7 +80,7 @@
     > .action {
       margin-left: 20px;
 
-      &:first-child {
+      &:first-of-type {
         margin: 0;
       }
     }

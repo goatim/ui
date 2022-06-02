@@ -36,7 +36,7 @@
     > .counter {
       margin-left: 50px;
 
-      &:first-child {
+      &:first-of-type {
         margin: 0;
       }
     }
@@ -86,7 +86,7 @@
     > .action {
       margin-left: 30px;
 
-      &:first-child {
+      &:first-of-type {
         margin: 0;
       }
     }

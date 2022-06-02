@@ -15,7 +15,7 @@
     > .option {
       margin-left: 40px;
 
-      &:first-child {
+      &:first-of-type {
         margin: 0;
       }
     }

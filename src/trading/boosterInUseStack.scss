@@ -2,7 +2,7 @@
   > .booster {
     position: relative;
 
-    &:first-child:before {
+    &:first-of-type:before {
       content: "";
       display: block;
       width: 100%;

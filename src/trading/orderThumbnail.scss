@@ -20,7 +20,7 @@
       align-items: stretch;
       justify-content: flex-start;
 
-      &:first-child {
+      &:first-of-type {
         margin: 0;
       }
 

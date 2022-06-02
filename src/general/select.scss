@@ -173,7 +173,7 @@
         display: block;
         margin-top: 5px;
 
-        &:first-child {
+        &:first-of-type {
           margin: 0;
         }
       }

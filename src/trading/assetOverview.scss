@@ -39,7 +39,7 @@
     > .action {
       margin-left: 10px;
 
-      &:first-child {
+      &:first-of-type {
         margin: 0;
       }
     }

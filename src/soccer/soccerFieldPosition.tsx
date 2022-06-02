@@ -1,12 +1,13 @@
 import { ReactElement } from 'react';
 import { Wrapper, Image, WrapperProps } from '@cezembre/fronts';
+import Icon from '../general/icon';
 
 export type SoccerFieldPositionSize = 'small' | 'medium' | 'large';
 
 export type SoccerFieldPositionTheme = 'default' | 'light';
 
 export interface Props extends WrapperProps {
-  icon?: Image;
+  icon?: Image | null;
   size?: SoccerFieldPositionSize;
   theme?: SoccerFieldPositionTheme;
 }
@@ -27,11 +28,13 @@ export default function SoccerFieldPosition({
       onClick={onClick}
       href={href}
       target={target}>
-      {icon?.thumbnail_url ? (
-        <img src={icon.thumbnail_url} alt="Soccer Field Position" />
-      ) : (
-        <span className="placeholder" />
-      )}
+      {icon === null ? (
+        <div className="no-icon">
+          <Icon name="user" />
+        </div>
+      ) : null}
+      {icon?.thumbnail_url ? <img src={icon.thumbnail_url} alt="Soccer Field Position" /> : null}
+      {icon === undefined ? <span className="placeholder" /> : null}
     </Wrapper>
   );
 }
