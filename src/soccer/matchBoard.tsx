@@ -1,5 +1,5 @@
 import { MouseEvent, ReactElement } from 'react';
-import { Match, PhysicalEvent } from '@fridaygame/client';
+import { Match, PhysicalEvent, Wallet } from '@fridaygame/client';
 import { To } from 'react-router';
 import WalletRanking from '../market/walletRanking';
 import MatchStatusThumbnail, { useMatchLiveStatus } from './matchStatusThumbnail';
@@ -32,7 +32,11 @@ export default function MatchBoard({
         </div>
         <div className="wallets">
           <WalletRanking
-            wallets={match.participants}
+            wallets={
+              match.compositions?.compositions
+                ?.map((composition) => composition.wallet)
+                .filter((wallet) => wallet && typeof wallet === 'object') as Wallet[]
+            }
             theme={theme}
             positionExtractor={({ position }) => position || 0}
             variationExtractor={({ total_gains }) => total_gains || 0}

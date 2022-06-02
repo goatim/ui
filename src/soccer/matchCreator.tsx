@@ -6,19 +6,19 @@ export type MatchCreatorTheme = 'default' | 'light';
 
 export interface Props {
   creator: Wallet;
-  nb_participants?: number;
+  total_compositions?: number;
   theme?: MatchCreatorTheme;
 }
 
-export default function MatchCreator({ creator, nb_participants, theme }: Props): ReactElement {
+export default function MatchCreator({ creator, total_compositions, theme }: Props): ReactElement {
   return (
     <div className={`friday-ui-match-creator ${theme}`}>
       <WalletThumbnail wallet={creator} infos="picture" theme={theme} />
       <div className="body">
         <span className="creator">Organisé par {creator.name}</span>
-        {nb_participants ? (
+        {total_compositions ? (
           <span>
-            {nb_participants} participant{nb_participants > 1 ? 's' : ''}
+            {total_compositions} participant{total_compositions > 1 ? 's' : ''}
           </span>
         ) : (
           <span>Aucun participant</span>

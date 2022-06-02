@@ -1,5 +1,5 @@
 import { MouseEvent, ReactElement } from 'react';
-import { Match } from '@fridaygame/client';
+import { Match, Wallet } from '@fridaygame/client';
 import { To } from 'react-router';
 import Date from '../general/date';
 import MatchCreator from './matchCreator';
@@ -39,7 +39,7 @@ export default function MatchThumbnail({
                 <div className="creator">
                   <MatchCreator
                     creator={match.creator}
-                    nb_participants={match.nb_participants}
+                    total_compositions={match.compositions?.total}
                     theme="light"
                   />
                 </div>
@@ -49,11 +49,15 @@ export default function MatchThumbnail({
             <Date label="Fin" align="right" date={match.end} theme="light" />
           </div>
 
-          {match.participants?.length ? (
-            <div className="participants">
+          {match.compositions?.compositions?.length ? (
+            <div className="compositions">
               <WalletList
-                wallets={match.participants}
-                total={match.nb_participants}
+                wallets={
+                  match.compositions.compositions
+                    ?.map((composition) => composition.wallet)
+                    .filter((wallet) => wallet && typeof wallet === 'object') as Wallet[]
+                }
+                total={match.compositions.total}
                 theme="light"
               />
             </div>
