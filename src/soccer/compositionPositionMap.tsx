@@ -81,7 +81,7 @@ export default function CompositionPositionMap({
               composition.goalkeeper.club &&
               typeof composition.goalkeeper.club === 'object'
                 ? composition.goalkeeper.club.icon || null
-                : null
+                : undefined
             }
           />
         </div>
