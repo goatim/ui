@@ -33,7 +33,11 @@ export default function MatchBoard({
         </div>
         <div className="ranking">
           <WalletRanking
-            wallets={match.participants?.wallets}
+            wallets={
+              match.compositions?.compositions
+                .map((composition) => composition.wallet)
+                .filter((wallet) => wallet && typeof wallet === 'object') as Wallet[]
+            }
             theme={theme}
             positionExtractor={({ position }) => position || 0}
             variationExtractor={({ total_gains }) => total_gains || 0}
