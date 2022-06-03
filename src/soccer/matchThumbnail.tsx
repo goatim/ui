@@ -34,7 +34,7 @@ export default function MatchThumbnail({ match, to, onClick, href, target }: Pro
                 <div className="creator">
                   <MatchCreator
                     creator={match.creator}
-                    total_compositions={match.participants?.total}
+                    total_participants={match.participants?.total}
                     theme="light"
                   />
                 </div>
