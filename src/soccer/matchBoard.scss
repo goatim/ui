@@ -9,7 +9,7 @@
   background: rgba(colors.$blue, .1);
   border: solid rgba(colors.$blue, .1) 1px;
 
-  > .compositions {
+  > .participants {
     border-right: solid rgba(colors.$blue, .1) 1px;
     display: flex;
     flex-direction: column;
@@ -30,7 +30,7 @@
       }
     }
 
-    > .wallets {
+    > .ranking {
       flex: 1;
     }
 

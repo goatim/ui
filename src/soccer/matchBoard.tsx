@@ -27,17 +27,13 @@ export default function MatchBoard({
 
   return (
     <div className={`friday-ui-match-board ${theme} ${liveStatus}`}>
-      <div className="compositions">
+      <div className="participants">
         <div className="header">
           <span className="title">Participants</span>
         </div>
-        <div className="wallets">
+        <div className="ranking">
           <WalletRanking
-            wallets={
-              match.compositions?.compositions
-                ?.map((composition) => composition.wallet)
-                .filter((wallet) => wallet && typeof wallet === 'object') as Wallet[]
-            }
+            wallets={match.participants?.wallets}
             theme={theme}
             positionExtractor={({ position }) => position || 0}
             variationExtractor={({ total_gains }) => total_gains || 0}
