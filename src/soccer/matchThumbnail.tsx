@@ -1,29 +1,24 @@
-import { MouseEvent, ReactElement } from 'react';
+import { ReactElement } from 'react';
 import { Match, Wallet } from '@fridaygame/client';
-import { To } from 'react-router';
+import { Wrapper, WrapperProps } from '@cezembre/fronts';
 import Date from '../general/date';
 import MatchCreator from './matchCreator';
 import WalletList from '../market/walletList';
 import MatchStatusThumbnail from './matchStatusThumbnail';
 import MatchIcon from './matchIcon';
 
-export interface Props {
+export interface Props extends WrapperProps {
   match: Match;
-  toComposition?: To;
-  onClickComposition?: (event: MouseEvent<HTMLButtonElement>) => Promise<void> | void;
-  toMatch?: To;
-  onClickMatch?: (event: MouseEvent<HTMLButtonElement>) => Promise<void> | void;
 }
 
-export default function MatchThumbnail({
-  match,
-  toComposition,
-  onClickComposition,
-  toMatch,
-  onClickMatch,
-}: Props): ReactElement {
+export default function MatchThumbnail({ match, to, onClick, href, target }: Props): ReactElement {
   return (
-    <div className="friday-ui-match-thumbnail">
+    <Wrapper
+      className="friday-ui-match-thumbnail"
+      to={to}
+      onClick={onClick}
+      href={href}
+      target={target}>
       <div className="icon">
         <MatchIcon icon={match.icon} size="big" />
       </div>
@@ -68,13 +63,9 @@ export default function MatchThumbnail({
           status={match.status}
           beginning={match.beginning}
           end={match.end}
-          toComposition={toComposition}
-          onClickComposition={onClickComposition}
-          toMatch={toMatch}
-          onClickMatch={onClickMatch}
           theme="light"
         />
       </div>
-    </div>
+    </Wrapper>
   );
 }

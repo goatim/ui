@@ -9,8 +9,12 @@
   background: rgba(colors.$blue, .1);
   border: solid rgba(colors.$blue, .1) 1px;
 
-  > .participants {
+  > .compositions {
     border-right: solid rgba(colors.$blue, .1) 1px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
 
     > .header {
       height: 60px;
@@ -27,7 +31,11 @@
     }
 
     > .wallets {
-      height: calc(100% - 60px);
+      flex: 1;
+    }
+
+    > .action {
+      padding: 30px 20px;
     }
   }
 
@@ -52,7 +60,7 @@
     background: rgba(white, .1);
     border: solid rgba(white, .1) 1px;
 
-    > .participants {
+    > .compositions {
       border-right: solid rgba(white, .1) 1px;
 
       > .header > .title {

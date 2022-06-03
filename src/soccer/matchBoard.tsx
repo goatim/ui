@@ -4,6 +4,7 @@ import { To } from 'react-router';
 import WalletRanking from '../market/walletRanking';
 import MatchStatusThumbnail, { useMatchLiveStatus } from './matchStatusThumbnail';
 import PhysicalEventList from './physicalEventList';
+import Button from '../general/button';
 
 export type MatchBoardTheme = 'default' | 'light';
 
@@ -26,7 +27,7 @@ export default function MatchBoard({
 
   return (
     <div className={`friday-ui-match-board ${theme} ${liveStatus}`}>
-      <div className="participants">
+      <div className="compositions">
         <div className="header">
           <span className="title">Participants</span>
         </div>
@@ -42,6 +43,13 @@ export default function MatchBoard({
             variationExtractor={({ total_gains }) => total_gains || 0}
           />
         </div>
+        {toComposition || onClickComposition ? (
+          <div className="action">
+            <Button to={toComposition} onClick={onClickComposition} shape="filled">
+              Faire ma composition
+            </Button>
+          </div>
+        ) : null}
       </div>
 
       <div className="game">
@@ -51,8 +59,6 @@ export default function MatchBoard({
               status={match.status}
               beginning={match.beginning}
               end={match.end}
-              toComposition={toComposition}
-              onClickComposition={onClickComposition}
               theme={theme}
             />
           </div>
