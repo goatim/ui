@@ -87,6 +87,8 @@ import PhysicalEventThumbnail, {
 } from './soccer/physicalEventThumbnail';
 import PhysicalEventTimeline, { PhysicalEventTimelineTheme } from './soccer/physicalEventTimeline';
 import PhysicalEventList from './soccer/physicalEventList';
+import CompositionThumbnail from './soccer/compositionThumbnail';
+import CompositionRanking, { CompositionRankingTheme } from './soccer/compositionRanking';
 import AssetThumbnail, { AssetThumbnailSize, AssetThumbnailTheme } from './trading/assetThumbnail';
 import AssetOverview from './trading/assetOverview';
 import BoosterIcon, { BoosterIconSize, BoosterIconInfos } from './trading/boosterIcon';
@@ -227,6 +229,8 @@ export {
   PhysicalEventThumbnail,
   PhysicalEventTimeline,
   PhysicalEventList,
+  CompositionThumbnail,
+  CompositionRanking,
 };
 
 export type {
@@ -250,6 +254,7 @@ export type {
   PhysicalEventThumbnailTheme,
   PhysicalEventTimelineTheme,
   MatchBoardTheme,
+  CompositionRankingTheme,
 };
 
 /**
