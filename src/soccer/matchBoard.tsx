@@ -5,6 +5,7 @@ import WalletRanking from '../market/walletRanking';
 import MatchStatusThumbnail, { useMatchLiveStatus } from './matchStatusThumbnail';
 import PhysicalEventList from './physicalEventList';
 import Button from '../general/button';
+import CompositionRanking from './compositionRanking';
 
 export type MatchBoardTheme = 'default' | 'light';
 
@@ -32,16 +33,7 @@ export default function MatchBoard({
           <span className="title">Participants</span>
         </div>
         <div className="ranking">
-          <WalletRanking
-            wallets={
-              match.compositions?.compositions
-                .map((composition) => composition.wallet)
-                .filter((wallet) => wallet && typeof wallet === 'object') as Wallet[]
-            }
-            theme={theme}
-            positionExtractor={({ position }) => position || 0}
-            variationExtractor={({ total_gains }) => total_gains || 0}
-          />
+          <CompositionRanking compositions={match.compositions?.compositions} theme={theme} />
         </div>
         {toComposition || onClickComposition ? (
           <div className="action">
