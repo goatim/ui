@@ -35,7 +35,7 @@ export default function MatchBoard({
         <div className="ranking">
           <CompositionRanking compositions={match.compositions?.compositions} theme={theme} />
         </div>
-        {toComposition || onClickComposition ? (
+        {(toComposition || onClickComposition) && liveStatus === 'planned' ? (
           <div className="action">
             <Button to={toComposition} onClick={onClickComposition} shape="filled">
               Faire ma composition
