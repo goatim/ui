@@ -1,6 +1,10 @@
 import { ReactElement } from 'react';
-import { Composition, CompositionPosition, CompositionSetting } from '@fridaygame/client';
-import { CompositionSettingPosition } from '@fridaygame/client/dist/models/compositionSetting';
+import {
+  Composition,
+  CompositionPosition,
+  CompositionSetting,
+  CompositionSettingPosition,
+} from '@fridaygame/client';
 import SoccerField from './soccerField';
 import SoccerFieldPosition, { SoccerFieldPositionSize } from './soccerFieldPosition';
 

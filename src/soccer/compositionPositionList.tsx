@@ -1,6 +1,5 @@
 import { ReactElement } from 'react';
-import { Composition, CompositionPosition } from '@fridaygame/client';
-import { CompositionSettingPosition } from '@fridaygame/client/dist/models/compositionSetting';
+import { Composition, CompositionPosition, CompositionSettingPosition } from '@fridaygame/client';
 import CompositionPositionThumbnail from './compositionPositionThumbnail';
 
 export type CompositionPositionListTheme = 'default' | 'light';
