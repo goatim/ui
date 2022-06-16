@@ -1,7 +1,6 @@
 import { MouseEvent, ReactElement } from 'react';
-import { Match, PhysicalEvent, Wallet } from '@fridaygame/client';
+import { Match, PhysicalEvent } from '@fridaygame/client';
 import { To } from 'react-router';
-import WalletRanking from '../market/walletRanking';
 import MatchStatusThumbnail, { useMatchLiveStatus } from './matchStatusThumbnail';
 import PhysicalEventList from './physicalEventList';
 import Button from '../general/button';

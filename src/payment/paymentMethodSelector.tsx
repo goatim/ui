@@ -21,6 +21,9 @@ export default function PaymentMethodSelector({
   onAddCreditCard,
 }: Props): ReactElement {
   const [isAdding, setIsAdding] = useState<boolean>(false);
+  const [addedPaymentMethods, setAddedPaymentMethods] = useState<
+    (PaymentMethod | StripePaymentMethod)[]
+  >([]);
 
   useEffect(() => {
     if (!paymentMethods?.length) {
@@ -41,8 +44,13 @@ export default function PaymentMethodSelector({
           }
 
           if (onSelectPaymentMethod) {
-            onSelectPaymentMethod(paymentMethod as PaymentMethod);
+            onSelectPaymentMethod(paymentMethod as PaymentMethod | StripePaymentMethod);
           }
+
+          setAddedPaymentMethods((_addedPaymentMethods) => [
+            ..._addedPaymentMethods,
+            paymentMethod as PaymentMethod | StripePaymentMethod,
+          ]);
         } catch (error) {
           // TODO: Handle error
         }
@@ -56,7 +64,7 @@ export default function PaymentMethodSelector({
       {paymentMethods?.length ? (
         <div className="payment-methods">
           <PaymentMethodList
-            paymentMethods={paymentMethods}
+            paymentMethods={[...paymentMethods, ...addedPaymentMethods]}
             onSelectPaymentMethod={onSelectPaymentMethod}
             selectedPaymentMethod={selectedPaymentMethod}
           />

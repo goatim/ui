@@ -1,8 +1,12 @@
 import { ChangeEvent, ReactElement, useCallback } from 'react';
 import { FieldComponentProps } from '@cezembre/forms';
-import { CompositionPosition, Player, CompositionSetting } from '@fridaygame/client';
+import {
+  CompositionPosition,
+  Player,
+  CompositionSetting,
+  CompositionSettingPosition,
+} from '@fridaygame/client';
 import { useModals } from '@cezembre/fronts';
-import { CompositionSettingPosition } from '@fridaygame/client/dist/models/compositionSetting';
 import CompositionPositionMap, { CompositionPositionMapTheme } from './compositionPositionMap';
 import PositionPlayerSelector from './positionPlayerSelector';
 
@@ -108,23 +112,25 @@ export default function CompositionPositionMapField({
         )?.player;
       }
 
-      pushModal(({ dismissModal }) => (
-        <div className="friday-ui-composition-positions-map-field-position-player-selector">
-          <PositionPlayerSelector
-            players={players}
-            value={playerValue}
-            position={typeof position === 'object' ? position.name : 'Gardien'}
-            compositionSetting={compositionSetting?.name}
-            onChange={(player) => {
-              changePositionPlayer(position, player);
-              dismissModal();
-            }}
-            onFocus={() => undefined}
-            onBlur={() => undefined}
-            form={form}
-          />
-        </div>
-      ));
+      pushModal({
+        component: ({ dismissModal }) => (
+          <div className="friday-ui-composition-positions-map-field-position-player-selector">
+            <PositionPlayerSelector
+              players={players}
+              value={playerValue}
+              position={typeof position === 'object' ? position.name : 'Gardien'}
+              compositionSetting={compositionSetting?.name}
+              onChange={(player) => {
+                changePositionPlayer(position, player);
+                dismissModal();
+              }}
+              onFocus={() => undefined}
+              onBlur={() => undefined}
+              form={form}
+            />
+          </div>
+        ),
+      });
     },
     [
       changePositionPlayer,
