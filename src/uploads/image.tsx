@@ -1,8 +1,9 @@
 import { ChangeEvent, ReactElement, useEffect, useRef, useState } from 'react';
-import { AspectRatio, Orientation, Img } from '@cezembre/fronts';
+import { AspectRatio, Orientation } from '@fridaygame/client';
 import { Property } from 'csstype';
 import Icon from '../general/icon';
 import Loader from '../general/loader';
+import Img from '../general/image';
 
 const reader = new FileReader();
 

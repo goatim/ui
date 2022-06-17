@@ -6,6 +6,7 @@ import Selection from './general/selection';
 import Button, { ButtonSize, ButtonShape, ButtonTheme } from './general/button';
 import Check from './general/check';
 import Icon from './general/icon';
+import Img, { useImageDimensions } from './general/image';
 import Heading, { HeadingSize, HeadingTheme, HeadingLevel } from './general/heading';
 import ImageUpload from './uploads/image';
 import CheckBox from './general/checkbox';
@@ -109,6 +110,16 @@ import PaymentMethodThumbnail from './payment/paymentMethodThumbnail';
 import CreditCardForm, { NewCreditCard } from './payment/creditCardForm';
 import PaymentMethodList from './payment/paymentMethodList';
 import PaymentMethodSelector from './payment/paymentMethodSelector';
+import {
+  useGoogleMapsApi,
+  useAutocompleteService,
+  PlacePredictionType,
+  usePlacesService,
+  usePlacePredictions,
+  usePlaceDetails,
+  usePlaceDetailsGetter,
+} from './utils/googleMaps';
+import Place from './utils/place';
 
 /**
  * General
@@ -118,6 +129,8 @@ export {
   Button,
   Check,
   Icon,
+  Img,
+  useImageDimensions,
   Heading,
   Loader,
   Overlay,
@@ -302,3 +315,18 @@ export {
 };
 
 export type { NewCreditCard };
+
+/**
+ * Utils
+ */
+
+export {
+  usePlacesService,
+  useGoogleMapsApi,
+  useAutocompleteService,
+  usePlacePredictions,
+  usePlaceDetails,
+  usePlaceDetailsGetter,
+};
+
+export type { Place, PlacePredictionType };
