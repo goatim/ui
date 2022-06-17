@@ -1,5 +1,6 @@
 import { ReactElement } from 'react';
-import { Wrapper, Image, WrapperProps } from '@cezembre/fronts';
+import { Wrapper, WrapperProps } from '@cezembre/fronts';
+import { Image } from '@fridaygame/client';
 import Icon from '../general/icon';
 
 export type SoccerFieldPositionSize = 'small' | 'medium' | 'large';

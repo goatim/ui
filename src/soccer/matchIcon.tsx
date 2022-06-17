@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { Image } from '@cezembre/fronts';
+import { Image } from '@fridaygame/client';
 import Icon from '../general/icon';
 
 export type MatchIconSize = 'small' | 'medium' | 'big';

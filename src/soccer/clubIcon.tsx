@@ -1,5 +1,6 @@
 import { ReactElement } from 'react';
-import { Wrapper, Image, WrapperProps } from '@cezembre/fronts';
+import { Wrapper, WrapperProps } from '@cezembre/fronts';
+import { Image } from '@fridaygame/client';
 
 export type ClubIconSize = 'small' | 'medium' | 'large';
 

@@ -1,6 +1,6 @@
 import { RefObject, useCallback, useEffect, useRef, useState } from 'react';
 import _ from 'lodash';
-import useScript, { ScriptStatus } from './script';
+import { useScript, ScriptStatus } from '@cezembre/fronts';
 
 type AutocompleteService = google.maps.places.AutocompleteService;
 type PlacesService = google.maps.places.PlacesService;
