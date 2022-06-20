@@ -96,6 +96,7 @@ import BoosterIcon, { BoosterIconSize, BoosterIconInfos } from './trading/booste
 import BoosterInUseThumbnail from './trading/boosterInUseThumbnail';
 import BoosterInUseStack from './trading/boosterInUseStack';
 import OrderThumbnail from './trading/orderThumbnail';
+import OrderBookThumbnail from './trading/orderBookThumbnail';
 import OrderList from './trading/orderList';
 import PortfolioThumbnail from './trading/portfolioThumbnail';
 import PortfolioList from './trading/portfolioList';
@@ -281,6 +282,7 @@ export {
   BoosterInUseThumbnail,
   BoosterInUseStack,
   OrderThumbnail,
+  OrderBookThumbnail,
   OrderList,
   PortfolioThumbnail,
   PortfolioList,
