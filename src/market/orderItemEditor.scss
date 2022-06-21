@@ -42,16 +42,9 @@
     }
   }
 
-  > .orders {
+  > .order-book {
+    width: 100%;
     margin-top: 50px;
-    background: colors.$light-blue;
-    border-radius: 10px;
-    padding: 20px;
-
-    > .title {
-      @include fonts.IBM-Plex-Sans(1.1em, colors.$blue, bold);
-      text-align: center;
-    }
   }
 
   > .booster {

@@ -1,5 +1,5 @@
 import { ReactElement, useState } from 'react';
-import { Asset, Booster, OrderType } from '@fridaygame/client';
+import { Asset, Booster, OrderBook, OrderType } from '@fridaygame/client';
 import { To } from 'react-router-dom';
 import PlayerThumbnail from '../soccer/playerThumbnail';
 import QuotationGraph from './quotationGraph';
@@ -10,6 +10,7 @@ import ItemEditor, { ItemEditorFields } from '../market/itemEditor';
 
 export interface Props {
   asset: Asset;
+  orderBook?: OrderBook;
   boosters?: Booster[];
   clubTo?: To;
   onSubmitItem?: (itemFields: ItemEditorFields) => void | Promise<void>;
@@ -18,6 +19,7 @@ export interface Props {
 export default function AssetOverview({
   asset,
   clubTo,
+  orderBook,
   boosters,
   onSubmitItem,
 }: Props): ReactElement {
@@ -66,6 +68,7 @@ export default function AssetOverview({
               quantity: 1,
             },
           }}
+          orderBook={orderBook}
           boosters={boosters}
           onSubmit={onSubmitItem}
           onCancel={() => setOrderType(undefined)}

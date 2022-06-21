@@ -4,6 +4,7 @@ import {
   adaptFridayCoins,
   Asset,
   Booster,
+  OrderBook,
   OrderType,
   resolveFridayCoins,
 } from '@fridaygame/client';
@@ -11,6 +12,7 @@ import BoosterIcon from '../trading/boosterIcon';
 import Radio from '../general/radio';
 import Button from '../general/button';
 import Counter from '../general/counter';
+import OrderBookThumbnail from '../trading/orderBookThumbnail';
 
 export interface OrderItemEditorFields extends FormFields {
   asset?: Asset | string;
@@ -22,6 +24,7 @@ export interface OrderItemEditorFields extends FormFields {
 
 export interface Props {
   initialOrderItem?: OrderItemEditorFields;
+  orderBook?: OrderBook;
   boosters?: Booster[];
   onSubmit?: (orderItem: OrderItemEditorFields) => Promise<void> | void;
   onCancel?: () => void;
@@ -30,6 +33,7 @@ export interface Props {
 
 export default function OrderItemEditor({
   initialOrderItem,
+  orderBook,
   boosters,
   onSubmit,
   onCancel,
@@ -107,6 +111,10 @@ export default function OrderItemEditor({
             step={100}
           />
         </div>
+      </div>
+
+      <div className="order-book">
+        <OrderBookThumbnail orderBook={orderBook} />
       </div>
 
       {boosters && formState?.values?.order_type === 'buy' ? (
