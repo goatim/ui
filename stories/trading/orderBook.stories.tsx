@@ -18,26 +18,26 @@ const orderBook: OrderBook = {
       total_quantity: 450,
       price_limit: 45000,
     },
-    {
-      nb_orders: 6,
-      total_quantity: 7850,
-      price_limit: 44200,
-    },
-    {
-      nb_orders: 10,
-      total_quantity: 658,
-      price_limit: 44100,
-    },
-    {
-      nb_orders: 3,
-      total_quantity: 47,
-      price_limit: 40000,
-    },
-    {
-      nb_orders: 56,
-      total_quantity: 9892,
-      price_limit: 39000,
-    },
+    // {
+    //   nb_orders: 6,
+    //   total_quantity: 7850,
+    //   price_limit: 44200,
+    // },
+    // {
+    //   nb_orders: 10,
+    //   total_quantity: 658,
+    //   price_limit: 44100,
+    // },
+    // {
+    //   nb_orders: 3,
+    //   total_quantity: 47,
+    //   price_limit: 40000,
+    // },
+    // {
+    //   nb_orders: 56,
+    //   total_quantity: 9892,
+    //   price_limit: 39000,
+    // },
   ],
   selling: [
     {

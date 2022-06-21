@@ -3,11 +3,12 @@
 
 .friday-ui-order-book-thumbnail {
   display: flex;
-  align-items: flex-start;
-  justify-content: center;
+  align-items: stretch;
+  justify-content: stretch;
   background: white;
   border-radius: 20px;
   border: solid rgba(colors.$blue, .1) 1px;
+  min-height: 80px;
 
   > .aggregated-orders {
     flex: 1;
@@ -39,6 +40,18 @@
             }
           }
         }
+      }
+    }
+
+    > .no-order {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      > span {
+        @include fonts.IBM-Plex-Sans(.8em, rgba(colors.$blue, .5), bold);
       }
     }
 

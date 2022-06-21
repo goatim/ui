@@ -36,7 +36,11 @@ export default function OrderBookThumbnail({ orderBook }: Props): ReactElement {
               ))}
             </tbody>
           </table>
-        ) : null}
+        ) : (
+          <div className="no-order">
+            <span>Aucun ordre d'achat</span>
+          </div>
+        )}
       </div>
       <div className="aggregated-orders selling">
         {orderBook?.selling?.length ? (
@@ -65,7 +69,11 @@ export default function OrderBookThumbnail({ orderBook }: Props): ReactElement {
               ))}
             </tbody>
           </table>
-        ) : null}
+        ) : (
+          <div className="no-order">
+            <span>Aucun ordre de vente</span>
+          </div>
+        )}
       </div>
     </div>
   );
