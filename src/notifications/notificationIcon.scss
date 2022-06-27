@@ -1,0 +1,43 @@
+@use '../styles/colors';
+
+.friday-ui-notification-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 5px;
+  background: rgba(colors.$electric-blue, .2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  > svg[stroke] {
+    stroke: colors.$electric-blue;
+  }
+
+  > svg:not([stroke]) {
+    fill: colors.$electric-blue;
+  }
+
+  &.buy-order {
+    background: rgba(colors.$green, .2);
+
+    > svg[stroke] {
+      stroke: colors.$green;
+    }
+
+    > svg:not([stroke]) {
+      fill: colors.$green;
+    }
+  }
+
+  &.sell-order {
+    background: rgba(colors.$red, .2);
+
+    > svg[stroke] {
+      stroke: colors.$red;
+    }
+
+    > svg:not([stroke]) {
+      fill: colors.$red;
+    }
+  }
+}

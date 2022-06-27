@@ -1,0 +1,43 @@
+@use "../../styles/colors";
+
+.friday-ui-composition-position-thumbnail {
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background linear 100ms;
+  cursor: pointer;
+
+  &:hover {
+    background: rgba(colors.$blue, .1);
+  }
+
+  > .delete {
+    display: block;
+    cursor: pointer;
+    -webkit-touch-callout: none;
+    user-select: none;
+    border: none;
+    outline: none;
+    text-decoration: none;
+    background: none;
+    padding: 0;
+    margin: 0 0 0 20px;
+
+    > svg {
+      display: block;
+      stroke: colors.$blue;
+    }
+  }
+
+  &.light {
+    &:hover {
+      background: rgba(white, .1);
+    }
+
+    > .delete > svg {
+      stroke: white;
+    }
+  }
+}

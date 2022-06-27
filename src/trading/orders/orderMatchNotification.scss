@@ -1,0 +1,16 @@
+@use '../../styles/colors';
+@use '../../styles/fonts';
+
+.friday-ui-order-match-notification {
+  > p {
+    @include fonts.IBM-Plex-Sans(.8em, colors.$blue);
+    margin: 0;
+  }
+
+  > .payload {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background: rgba(colors.$blue, .1);
+    border-radius: 10px;
+  }
+}

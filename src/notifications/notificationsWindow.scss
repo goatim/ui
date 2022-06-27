@@ -1,0 +1,17 @@
+.friday-ui-notifications-window {
+  position: relative;
+
+  > .notifications {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    > .notification {
+      margin-top: 10px;
+
+      &:first-of-type {
+        margin: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,53 @@
+@use '../../styles/fonts';
+@use '../../styles/colors';
+
+.friday-ui-club-thumbnail {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-decoration: none;
+  border: none;
+  font-size: 1em;
+
+  > .full-infos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    > h1 {
+      @include fonts.IBM-Plex-Sans(1.5em, colors.$blue, bold);
+      margin: 15px 0 0;
+      padding: 0;
+    }
+
+    > .league {
+      margin-top: 10px;
+      text-decoration: none;
+    }
+  }
+
+  > span {
+    @include fonts.IBM-Plex-Sans(.8em);
+    margin: 0 0 0 10px;
+    padding: 0;
+  }
+
+  &.medium > span {
+    font-size: .9em;
+  }
+
+  &.big > span {
+    font-size: 1em;
+  }
+
+  &.full {
+    flex-direction: column;
+  }
+
+  &.light {
+    > .full-infos > h1, > span {
+      color: white;
+    }
+  }
+}

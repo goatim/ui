@@ -3,7 +3,7 @@ import { Form, Field } from '@cezembre/forms';
 import { JSXElementConstructor } from 'react';
 import { Booster } from '@fridaygame/client';
 import Radio from '../../src/general/radio';
-import BoosterIcon from '../../src/trading/boosterIcon';
+import BoosterIcon from '../../src/trading/boosters/boosterIcon';
 
 interface Props {
   label?: string;

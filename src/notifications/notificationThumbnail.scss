@@ -1,0 +1,17 @@
+@use '../styles/colors';
+@use '../styles/fonts';
+
+.friday-ui-notification-thumbnail {
+  display: flex;
+
+  > .container {
+    margin-left: 15px;
+    flex: 1;
+
+    > .creation {
+      @include fonts.IBM-Plex-Sans(.8em, rgba(colors.$blue, .5));
+      display: inline-block;
+      margin-top: 1em;
+    }
+  }
+}

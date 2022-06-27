@@ -1,0 +1,33 @@
+@use '../styles/colors';
+
+.friday-ui-notification-modal {
+  background: white;
+  width: 300px;
+  border-radius: 10px;
+  padding: 10px;
+  border: solid rgba(colors.$blue, .2) 1px;
+  box-shadow: 0 5px 10px rgba(colors.$blue, .1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  > .notification {
+    flex: 1;
+  }
+
+  > .dismiss {
+    background: none;
+    border: none;
+    outline: none;
+    border-radius: 0;
+    padding: 10px;
+    margin-left: 10px;
+    opacity: .5;
+    transition: opacity linear 100ms;
+    cursor: pointer;
+
+    > svg {
+      stroke: colors.$blue;
+    }
+  }
+}

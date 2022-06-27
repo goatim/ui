@@ -1,0 +1,57 @@
+@use '../../styles/colors';
+
+.friday-ui-club-icon {
+  border: none;
+
+  > img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center center;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+  }
+
+  > .placeholder {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    display: block;
+    background: rgba(colors.$blue, .1);
+    border: solid rgba(colors.$blue, .1) 1px;
+    border-radius: 50%;
+  }
+
+  &.light > .placeholder {
+    background: rgba(white, .1);
+    border: solid rgba(white, .1) 1px;
+  }
+
+  &.small {
+    width: 25px;
+    height: 25px;
+
+    > .placeholder {
+      border-width: 1px;
+    }
+  }
+
+  &.medium {
+    width: 30px;
+    height: 30px;
+
+    > .placeholder {
+      border-width: 2px;
+    }
+  }
+
+  &.large {
+    width: 60px;
+    height: 60px;
+
+    > .placeholder {
+      border-width: 3px;
+    }
+  }
+}

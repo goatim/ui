@@ -1,0 +1,9 @@
+@use '../styles/colors';
+
+.friday-ui-notification-list {
+  > .notification {
+    padding: 10px;
+    border-top: solid rgba(colors.$blue, .1) 1px;
+    background: white;
+  }
+}

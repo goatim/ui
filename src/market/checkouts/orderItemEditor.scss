@@ -1,0 +1,87 @@
+@use "../../../node_modules/@cezembre/fronts/dist/containers";
+@use "../../styles/fonts";
+@use "../../styles/colors";
+
+.friday-ui-order-item-editor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  > h1 {
+    @include fonts.IBM-Plex-Sans(1.1em, colors.$blue, bold);
+    margin: 0;
+    text-align: center;
+  }
+
+  > h2 {
+    @include fonts.IBM-Plex-Sans(.8em, rgba(colors.$blue, .5), bold);
+    text-align: center;
+    margin-top: .5em;
+  }
+
+  > .type {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  > .counters {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    > .counter {
+      margin-left: 50px;
+
+      &:first-of-type {
+        margin: 0;
+      }
+    }
+  }
+
+  > .order-book {
+    width: 100%;
+    margin-top: 50px;
+  }
+
+  > .booster {
+    margin-top: 50px;
+
+    > h2 {
+      @include fonts.IBM-Plex-Sans(1.1em, colors.$blue, bold);
+      margin: 0;
+      text-align: center;
+    }
+
+    > h3 {
+      @include fonts.IBM-Plex-Sans(.8em, rgba(colors.$blue, .5), bold);
+      text-align: center;
+      margin-top: .5em;
+    }
+
+    > .boosters {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 30px;
+    }
+  }
+
+  > .actions {
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    > .action {
+      margin-left: 30px;
+
+      &:first-of-type {
+        margin: 0;
+      }
+    }
+  }
+}

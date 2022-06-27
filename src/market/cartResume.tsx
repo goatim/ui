@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import { Item } from '@fridaygame/client';
-import ItemList from './itemList';
+import ItemList from './checkouts/itemList';
 
 export interface Props {
   items?: Item[];

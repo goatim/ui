@@ -32,85 +32,98 @@ import PercentageVariation, {
 import WalletThumbnail, {
   WalletThumbnailInfos,
   WalletThumbnailSize,
-} from './market/walletThumbnail';
-import WalletTeam from './market/walletTeam';
-import WalletMetrics from './market/walletMetrics';
-import WalletOverview from './market/walletOverview';
-import WalletList from './market/walletList';
-import WalletRanking, { WalletRankingTheme } from './market/walletRanking';
-import ItemEditor, { ItemEditorFields } from './market/itemEditor';
-import OrderItemEditor, { OrderItemEditorFields } from './market/orderItemEditor';
-import OrderItemThumbnail from './market/orderItemThumbnail';
-import ItemThumbnail from './market/itemThumbnail';
-import ItemList from './market/itemList';
+} from './market/wallets/walletThumbnail';
+import WalletTeam from './market/wallets/walletTeam';
+import WalletMetrics from './market/wallets/walletMetrics';
+import WalletOverview from './market/wallets/walletOverview';
+import WalletList from './market/wallets/walletList';
+import WalletRanking, { WalletRankingTheme } from './market/wallets/walletRanking';
+import ItemEditor, { ItemEditorFields } from './market/checkouts/itemEditor';
+import OrderItemEditor, { OrderItemEditorFields } from './market/checkouts/orderItemEditor';
+import OrderItemThumbnail from './market/checkouts/orderItemThumbnail';
+import ItemThumbnail from './market/checkouts/itemThumbnail';
+import ItemList from './market/checkouts/itemList';
 import CartResume from './market/cartResume';
 import CartOverview from './market/cartOverview';
-import CheckoutBill from './market/checkoutBill';
-import LeagueIcon, { LeagueIconSize } from './soccer/leagueIcon';
+import CheckoutBill from './market/checkouts/checkoutBill';
+import LeagueIcon, { LeagueIconSize } from './soccer/leagues/leagueIcon';
 import LeagueThumbnail, {
   LeagueThumbnailSize,
   LeagueThumbnailTheme,
-} from './soccer/leagueThumbnail';
-import ClubIcon, { ClubIconSize } from './soccer/clubIcon';
-import ClubThumbnail, { ClubThumbnailSize, ClubThumbnailTheme } from './soccer/clubThumbnail';
-import ClubList from './soccer/clubList';
+} from './soccer/leagues/leagueThumbnail';
+import ClubIcon, { ClubIconSize } from './soccer/clubs/clubIcon';
+import ClubThumbnail, { ClubThumbnailSize, ClubThumbnailTheme } from './soccer/clubs/clubThumbnail';
+import ClubList from './soccer/clubs/clubList';
 import PlayerThumbnail, {
   PlayerThumbnailSize,
   PlayerThumbnailTheme,
-} from './soccer/playerThumbnail';
-import PlayerList from './soccer/playerList';
-import SoccerField, { SoccerFieldTheme } from './soccer/soccerField';
+} from './soccer/players/playerThumbnail';
+import PlayerList from './soccer/players/playerList';
+import SoccerField, { SoccerFieldTheme } from './soccer/compositions/soccerField';
 import SoccerFieldPosition, {
   SoccerFieldPositionSize,
   SoccerFieldPositionTheme,
-} from './soccer/soccerFieldPosition';
+} from './soccer/compositions/soccerFieldPosition';
 import CompositionPositionMap, {
   CompositionPositionMapTheme,
-} from './soccer/compositionPositionMap';
+} from './soccer/compositions/compositionPositionMap';
 import Date, { DateTheme } from './general/date';
-import MatchCreator from './soccer/matchCreator';
-import MatchStatusThumbnail from './soccer/matchStatusThumbnail';
-import MatchIcon from './soccer/matchIcon';
-import MatchThumbnail from './soccer/matchThumbnail';
-import MatchBoard, { MatchBoardTheme } from './soccer/matchBoard';
-import PositionPlayerSelector from './soccer/positionPlayerSelector';
+import MatchCreator from './soccer/matches/matchCreator';
+import MatchStatusThumbnail from './soccer/matches/matchStatusThumbnail';
+import MatchIcon from './soccer/matches/matchIcon';
+import MatchThumbnail from './soccer/matches/matchThumbnail';
+import MatchBoard, { MatchBoardTheme } from './soccer/matches/matchBoard';
+import PositionPlayerSelector from './soccer/compositions/positionPlayerSelector';
 import CompositionPositionMapField, {
   CompositionPositionMapFieldValue,
   CompositionPositionMapFieldValuePosition,
   GetPositionPlayersFunction,
-} from './soccer/compositionPositionMapField';
+} from './soccer/compositions/compositionPositionMapField';
 import CompositionPositionListField, {
   CompositionPositionListFieldValue,
   CompositionPositionListFieldValuePosition,
-} from './soccer/compositionPositionListField';
+} from './soccer/compositions/compositionPositionListField';
 import PhysicalEventThumbnail, {
   PhysicalEventThumbnailTheme,
-} from './soccer/physicalEventThumbnail';
-import PhysicalEventTimeline, { PhysicalEventTimelineTheme } from './soccer/physicalEventTimeline';
-import PhysicalEventList from './soccer/physicalEventList';
-import CompositionThumbnail from './soccer/compositionThumbnail';
-import CompositionRanking, { CompositionRankingTheme } from './soccer/compositionRanking';
-import AssetThumbnail, { AssetThumbnailSize, AssetThumbnailTheme } from './trading/assetThumbnail';
-import AssetOverview from './trading/assetOverview';
-import BoosterIcon, { BoosterIconSize, BoosterIconInfos } from './trading/boosterIcon';
-import BoosterInUseThumbnail from './trading/boosterInUseThumbnail';
-import BoosterInUseStack from './trading/boosterInUseStack';
-import OrderThumbnail from './trading/orderThumbnail';
-import OrderBookThumbnail from './trading/orderBookThumbnail';
-import OrderList from './trading/orderList';
-import PortfolioThumbnail from './trading/portfolioThumbnail';
-import PortfolioList from './trading/portfolioList';
-import QuotationGraph, { DataPoint } from './trading/quotationGraph';
-import TransactionThumbnail from './trading/transactionThumbnail';
-import AssetList from './trading/assetList';
-import RankPosition from './trading/rankPosition';
-import DividendThumbnail, { DividendThumbnailTheme } from './trading/dividendThumbnail';
-import DividendList from './trading/dividendList';
+} from './soccer/physicalEvents/physicalEventThumbnail';
+import PhysicalEventTimeline, {
+  PhysicalEventTimelineTheme,
+} from './soccer/physicalEvents/physicalEventTimeline';
+import PhysicalEventList from './soccer/physicalEvents/physicalEventList';
+import CompositionThumbnail from './soccer/compositions/compositionThumbnail';
+import CompositionRanking, {
+  CompositionRankingTheme,
+} from './soccer/compositions/compositionRanking';
+import AssetThumbnail, {
+  AssetThumbnailSize,
+  AssetThumbnailTheme,
+} from './trading/assets/assetThumbnail';
+import AssetOverview from './trading/assets/assetOverview';
+import BoosterIcon, { BoosterIconSize, BoosterIconInfos } from './trading/boosters/boosterIcon';
+import BoosterInUseThumbnail from './trading/boosters/boosterInUseThumbnail';
+import BoosterInUseStack from './trading/boosters/boosterInUseStack';
+import OrderThumbnail from './trading/orders/orderThumbnail';
+import OrderBookThumbnail from './trading/orders/orderBookThumbnail';
+import OrderList from './trading/orders/orderList';
+import PortfolioThumbnail from './trading/portfolios/portfolioThumbnail';
+import PortfolioList from './trading/portfolios/portfolioList';
+import QuotationGraph, { DataPoint } from './trading/quotations/quotationGraph';
+import TransactionThumbnail from './trading/transactions/transactionThumbnail';
+import AssetList from './trading/assets/assetList';
+import RankPosition from './trading/ranks/rankPosition';
+import DividendThumbnail, { DividendThumbnailTheme } from './trading/dividends/dividendThumbnail';
+import DividendList from './trading/dividends/dividendList';
 import CreditCardThumbnail from './payment/creditCardThumbnail';
 import PaymentMethodThumbnail from './payment/paymentMethodThumbnail';
 import CreditCardForm, { NewCreditCard } from './payment/creditCardForm';
 import PaymentMethodList from './payment/paymentMethodList';
 import PaymentMethodSelector from './payment/paymentMethodSelector';
+import NotificationIcon from './notifications/notificationIcon';
+import NotificationThumbnail from './notifications/notificationThumbnail';
+import NotificationsWindow, {
+  useNotificationsContext,
+  NotificationsContext,
+} from './notifications/notificationsWindow';
 import {
   useGoogleMapsApi,
   useAutocompleteService,
@@ -317,6 +330,14 @@ export {
 };
 
 export type { NewCreditCard };
+
+/**
+ * Utils
+ */
+
+export { NotificationIcon, NotificationThumbnail, NotificationsWindow, useNotificationsContext };
+
+export type { NotificationsContext };
 
 /**
  * Utils
