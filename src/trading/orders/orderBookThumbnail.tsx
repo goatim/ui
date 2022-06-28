@@ -27,7 +27,7 @@ export default function OrderBookThumbnail({ orderBook }: Props): ReactElement {
                     <span className="data">{order.nb_orders}</span>
                   </td>
                   <td>
-                    <span className="data">{order.total_quantity}</span>
+                    <span className="data">{order.total_shares}</span>
                   </td>
                   <td>
                     <FridayCoins amount={order.price_limit} size="small" />
@@ -60,7 +60,7 @@ export default function OrderBookThumbnail({ orderBook }: Props): ReactElement {
                     <FridayCoins amount={order.price_limit} size="small" />
                   </td>
                   <td>
-                    <span className="data">{order.total_quantity}</span>
+                    <span className="data">{order.total_shares}</span>
                   </td>
                   <td>
                     <span className="data">{order.nb_orders}</span>

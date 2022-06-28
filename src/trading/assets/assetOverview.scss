@@ -16,7 +16,7 @@
       justify-content: center;
       align-items: flex-end;
 
-      > .shares {
+      > .total_shares {
         @include fonts.IBM-Plex-Sans(.8em, rgba(colors.$blue, .5))
       }
     }

@@ -43,7 +43,7 @@ const asset: Asset = {
   name: 'Kylian Mbappé',
   description: '',
   slug: 'kylian-mbappe',
-  shares: 450,
+  total_shares: 450,
   quotation: 2750,
   session_variation: 345,
   player,
@@ -64,7 +64,7 @@ const item: Item = {
   order: {
     order_type: 'buy',
     asset,
-    quantity: 2,
+    nb_shares: 2,
     price_limit: 75000,
     booster,
     unit_price: 200,

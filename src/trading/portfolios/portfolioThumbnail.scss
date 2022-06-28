@@ -21,7 +21,7 @@
       @include fonts.IBM-Plex-Sans(.7em, rgba(colors.$light-blue, .5));
     }
 
-    > .quantity {
+    > .nb_shares {
       display: flex;
       flex-direction: column;
       align-items: flex-end;

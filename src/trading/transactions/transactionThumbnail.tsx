@@ -55,7 +55,7 @@ export default function TransactionThumbnail({ transaction }: Props): ReactEleme
 
         <div className="data">
           <span className="label">Quantité</span>
-          <span className="value">{transaction.quantity || 1}</span>
+          <span className="value">{transaction.nb_shares || 1}</span>
         </div>
 
         <div className="data">

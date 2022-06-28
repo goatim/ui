@@ -18,7 +18,7 @@ export interface OrderItemEditorFields extends FormFields {
   asset?: Asset | string;
   order_type?: OrderType;
   price_limit?: number;
-  quantity?: number;
+  nb_shares?: number;
   booster?: string;
 }
 
@@ -91,11 +91,11 @@ export default function OrderItemEditor({
       <div className="counters">
         <div className="counter">
           <Field<number | undefined>
-            name="quantity"
+            name="nb_shares"
             label="Quantité"
             component={Counter}
             theme="black"
-            initialValue={initialOrderItem?.quantity}
+            initialValue={initialOrderItem?.nb_shares}
           />
         </div>
 

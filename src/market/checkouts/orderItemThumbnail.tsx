@@ -26,7 +26,7 @@ export default function OrderItemThumbnail({ orderItem, onDelete }: Props): Reac
         <div className="cell">
           <span>Quantité</span>
           <div className="content">
-            <span className="quantity">x{orderItem.quantity || 1}</span>
+            <span className="nb_shares">x{orderItem.nb_shares || 1}</span>
           </div>
         </div>
 
@@ -37,7 +37,7 @@ export default function OrderItemThumbnail({ orderItem, onDelete }: Props): Reac
               <FridayCoins amount={orderItem.price_limit} size="medium" />
               <br />
               <FridayCoins
-                amount={(orderItem.price_limit || 0) * (orderItem.quantity || 1)}
+                amount={(orderItem.price_limit || 0) * (orderItem.nb_shares || 1)}
                 size="medium"
                 theme="darker"
               />

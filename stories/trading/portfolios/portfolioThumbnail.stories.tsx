@@ -45,7 +45,7 @@ const asset: Asset = {
   name: 'Kylian Mbappé',
   description: '',
   slug: 'kylian-mbappe',
-  shares: 450,
+  total_shares: 450,
   quotation: 2750,
   session_variation: 345,
   player,
@@ -86,7 +86,7 @@ const inactiveBoosterInUse2: BoosterInUse = {
 const portfolio: Portfolio = {
   id: 'po_cUkDdk9VW4PwvsF',
   asset,
-  quantity: 26,
+  nb_shares: 26,
   buy_price: 42000,
   gains: 36000,
   variation: 2500,

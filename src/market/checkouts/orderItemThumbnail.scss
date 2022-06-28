@@ -40,7 +40,7 @@
           align-items: center;
         }
 
-        > .quantity {
+        > .nb_shares {
           @include fonts.IBM-Plex-Sans(.8em, colors.$blue, bold);
         }
 

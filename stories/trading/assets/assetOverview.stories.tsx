@@ -43,7 +43,7 @@ const asset: Asset = {
   name: 'Kylian Mbappé',
   description: '',
   slug: 'kylian-mbappe',
-  shares: 450,
+  total_shares: 450,
   quotation: 2750,
   session_variation: 345,
   player,

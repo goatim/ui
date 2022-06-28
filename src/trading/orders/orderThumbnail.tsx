@@ -26,7 +26,7 @@ export default function OrderThumbnail({ order, onCancel }: Props): ReactElement
         <div className="cell">
           <span>Quantité</span>
           <div className="content">
-            <span className="quantity">x{order.quantity || 1}</span>
+            <span className="nb_shares">x{order.nb_shares || 1}</span>
           </div>
         </div>
 
@@ -37,7 +37,7 @@ export default function OrderThumbnail({ order, onCancel }: Props): ReactElement
               <FridayCoins amount={order.price_limit} size="medium" />
               <br />
               <FridayCoins
-                amount={(order.price_limit || 0) * (order.quantity || 1)}
+                amount={(order.price_limit || 0) * (order.nb_shares || 1)}
                 size="medium"
                 theme="darker"
               />

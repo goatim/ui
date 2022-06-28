@@ -32,8 +32,8 @@ export default function AssetOverview({
           <PlayerThumbnail player={asset.player} size="full" clubTo={clubTo} />
         ) : null}
         <div className="metrics">
-          <span className="shares">
-            {asset.shares || 0} action{asset.shares || 0 > 1 ? 's' : null}
+          <span className="total_shares">
+            {asset.total_shares || 0} action{asset.total_shares || 0 > 1 ? 's' : null}
           </span>
           <FridayCoins amount={asset.quotation} size="large" />
           <PercentageVariation variation={asset.session_variation} size="big" />
@@ -65,7 +65,7 @@ export default function AssetOverview({
               asset,
               order_type: orderType,
               price_limit: asset.quotation,
-              quantity: 1,
+              nb_shares: 1,
             },
           }}
           orderBook={orderBook}

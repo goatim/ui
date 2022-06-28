@@ -45,7 +45,7 @@ export default function ItemEditor({
         initialOrderItem={{
           asset: initialItem.order.asset,
           order_type: initialItem.order.order_type,
-          quantity: initialItem.order.quantity,
+          nb_shares: initialItem.order.nb_shares,
           price_limit: initialItem.order.price_limit,
         }}
         orderBook={orderBook}
