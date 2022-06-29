@@ -34,6 +34,7 @@ import Switch from './general/switch';
 import DatePicker from './general/datePicker';
 import TimePicker from './general/timePicker';
 import DateTimePicker from './general/dateTimePicker';
+import Upload from './general/upload';
 import UserThumbnail, { UserThumbnailSize, UserThumbnailInfos } from './auth/userThumbnail';
 import FridayCoins, { FridayCoinsTheme, FridayCoinsSize } from './market/fridayCoins';
 import FridayCoinsVariation, { FridayCoinsVariationSize } from './market/fridayCoinsVariation';
@@ -175,6 +176,7 @@ export {
   DatePicker,
   TimePicker,
   DateTimePicker,
+  Upload,
 };
 
 export type {
