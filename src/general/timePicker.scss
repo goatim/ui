@@ -1,0 +1,69 @@
+@use "../styles/fonts";
+@use "../styles/colors";
+@use "../styles/forms";
+
+.friday-ui-time-picker {
+  box-sizing: border-box;
+  height: 300px;
+
+  > label {
+    @include forms.label();
+  }
+
+  > .container {
+    display: flex;
+    height: 100%;
+
+    > ul  {
+      border-left: solid rgba(colors.$blue, .1) 1px;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: auto;
+      list-style: none;
+
+      &:first-child {
+        border-left: none;
+      }
+
+      > li {
+        margin: 0;
+        padding: 0;
+        display: list-item;
+
+        > button {
+          @include fonts.Inter(.9em);
+          width: 100%;
+          margin: 0;
+          background: none;
+          border: none;
+          outline: none;
+          cursor: pointer;
+          padding: 5px 25px 5px 15px;
+
+          &:hover {
+            background: rgba(colors.$blue, .1);
+          }
+
+          &.selected {
+            background: colors.$electric-blue;
+            color: white;
+
+            &:hover {
+              background: colors.$electric-blue;
+              color: white;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  >.error {
+    @include forms.error;
+  }
+
+  > .warning {
+    @include forms.warning;
+  }
+}

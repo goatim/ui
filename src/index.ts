@@ -30,6 +30,10 @@ import Input, {
 import Textarea from './general/textarea';
 import Select, { SelectOption, SelectType, SelectOptionProps } from './general/select';
 import Radio, { RadioOption, RadioOptionProps } from './general/radio';
+import Switch from './general/switch';
+import DatePicker from './general/datePicker';
+import TimePicker from './general/timePicker';
+import DateTimePicker from './general/dateTimePicker';
 import UserThumbnail, { UserThumbnailSize, UserThumbnailInfos } from './auth/userThumbnail';
 import FridayCoins, { FridayCoinsTheme, FridayCoinsSize } from './market/fridayCoins';
 import FridayCoinsVariation, { FridayCoinsVariationSize } from './market/fridayCoinsVariation';
@@ -167,6 +171,10 @@ export {
   Radio,
   Datetime,
   Table,
+  Switch,
+  DatePicker,
+  TimePicker,
+  DateTimePicker,
 };
 
 export type {
