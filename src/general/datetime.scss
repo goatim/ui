@@ -1,0 +1,13 @@
+@use "../styles/fonts";
+@use "../styles/colors";
+
+.friday-ui-datetime {
+  @include fonts.Inter(.8em);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+
+  > .time {
+    color: colors.$blue;
+  }
+}

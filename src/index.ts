@@ -11,6 +11,13 @@ import Heading, { HeadingSize, HeadingTheme, HeadingLevel } from './general/head
 import ImageUpload from './uploads/image';
 import CheckBox from './general/checkbox';
 import Counter from './general/counter';
+import Datetime from './general/datetime';
+import Table, {
+  TableCellType,
+  TableColumn,
+  TableSelection,
+  TableItemAction,
+} from './general/table';
 import CreditCardInput from './payment/creditCardInput';
 import Input, {
   Adapter,
@@ -156,6 +163,8 @@ export {
   Input,
   Select,
   Radio,
+  Datetime,
+  Table,
 };
 
 export type {
@@ -177,6 +186,10 @@ export type {
   SelectOption,
   RadioOption,
   RadioOptionProps,
+  TableCellType,
+  TableColumn,
+  TableSelection,
+  TableItemAction,
 };
 
 /**
