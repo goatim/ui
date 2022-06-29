@@ -29,7 +29,7 @@
         justify-content: flex-start;
 
         > .count-selection {
-          @include fonts.Inter(.8em, colors.$text-light);
+          @include fonts.Inter(.8em, rgba(colors.$blue, .5));
         }
 
         > .action {
@@ -60,7 +60,7 @@
         padding: 0;
 
         > th {
-          @include fonts.Inter(.8em, colors.$text-light, bold);
+          @include fonts.Inter(.8em, rgba(colors.$blue, .5), bold);
           padding: 10px;
           border: none;
           outline: none;
@@ -90,7 +90,7 @@
         }
 
         &.selected {
-          background: colors.$lead-light;
+          background: rgba(colors.$electric-blue, .2);
 
           > td > .selection {
             visibility: visible;
@@ -121,14 +121,14 @@
           }
 
           > span {
-            @include fonts.Inter(.8em, colors.$text);
+            @include fonts.Inter(.8em, colors.$blue);
             text-overflow: ellipsis;
             white-space: nowrap;
             overflow: hidden;
 
             &.boolean {
               svg[stroke] {
-                stroke: colors.$text;
+                stroke: colors.$blue;
               }
             }
           }
@@ -139,7 +139,7 @@
             opacity: 0;
 
             > svg[stroke] {
-              stroke: colors.$text;
+              stroke: colors.$blue;
             }
           }
         }
@@ -152,7 +152,7 @@
       cursor: pointer;
 
       &:hover {
-        background: colors.$background;
+        background: rgba(colors.$blue, .2);
       }
     }
   }
@@ -175,11 +175,11 @@
   padding: 30px;
 
   > svg[stroke] {
-    stroke: colors.$text-medium;
+    stroke: colors.$blue;
   }
 
   > .label {
-    @include fonts.Inter(.9em, colors.$text-medium);
+    @include fonts.label;
     text-align: center;
     margin-top: 20px;
   }

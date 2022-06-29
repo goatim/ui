@@ -115,24 +115,16 @@ function Cell({ value, type = 'auto' }: TableCellProps): ReactElement | null {
         return null;
       }
       return (
-        <span className="date">
-          <Datetime
-            value={datetime}
-            date={['date', 'relative-date', 'datetime', 'relative-datetime'].includes(resolvedType)}
-            time={['time', 'relative-time', 'datetime', 'relative-datetime'].includes(resolvedType)}
-            relative={['relative-date', 'relative-time', 'relative-datetime'].includes(
-              resolvedType,
-            )}
-          />
-        </span>
+        <Datetime
+          value={datetime}
+          date={['date', 'relative-date', 'datetime', 'relative-datetime'].includes(resolvedType)}
+          time={['time', 'relative-time', 'datetime', 'relative-datetime'].includes(resolvedType)}
+          relative={['relative-date', 'relative-time', 'relative-datetime'].includes(resolvedType)}
+        />
       );
 
     case 'boolean':
-      return (
-        <span className="boolean">
-          {value ? <Icon name="check" size={15} /> : <Icon name="x" size={15} />}
-        </span>
-      );
+      return value ? <Icon name="check" size={15} /> : <Icon name="x" size={15} />;
 
     default:
       return null;
