@@ -39,7 +39,7 @@
           margin-top: 40px;
 
           > .title {
-            @include fonts.IBM-Plex-Sans(.9em, white, bold);
+            @include fonts.Inter(.9em, white, bold);
           }
 
           > .creator {

@@ -10,13 +10,13 @@
   font-size: 1em;
 
   > h1 {
-    @include fonts.IBM-Plex-Sans(1.5em, colors.$blue, bold);
+    @include fonts.Inter(1.5em, colors.$blue, 900);
     margin: 15px 0 0;
     padding: 0;
   }
 
   > span {
-    @include fonts.IBM-Plex-Sans(.8em);
+    @include fonts.Inter(.8em, colors.$blue, bold);
     margin: 0 0 0 10px;
     padding: 0;
   }

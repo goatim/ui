@@ -30,12 +30,12 @@ button.friday-ui-credit-card-thumbnail {
 
     > .details {
       > .digits {
-        @include fonts.IBM-Plex-Sans(0.8em, rgba(colors.$blue, .5), bold);
+        @include fonts.Inter(0.8em, rgba(colors.$blue, .5), bold);
         margin: 0;
       }
 
       > .expiration {
-        @include fonts.IBM-Plex-Sans(0.8em, rgba(colors.$blue, .2));
+        @include fonts.Inter(0.8em, rgba(colors.$blue, .2));
         margin: 0;
       }
     }

@@ -32,7 +32,7 @@
   }
 
   > span {
-    @include fonts.IBM-Plex-Sans(.8em, colors.$blue, bold);
+    @include fonts.Inter(.8em, colors.$blue, bold);
     text-transform: uppercase;
   }
 

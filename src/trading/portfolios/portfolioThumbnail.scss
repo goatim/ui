@@ -18,7 +18,7 @@
     padding: 15px 20px;
 
     > .id {
-      @include fonts.IBM-Plex-Sans(.7em, rgba(colors.$light-blue, .5));
+      @include fonts.Inter(.7em, rgba(colors.$light-blue, .5));
     }
 
     > .nb_shares {
@@ -32,7 +32,7 @@
       }
 
       > .value {
-        @include fonts.IBM-Plex-Sans(.9em, white, bold);
+        @include fonts.Inter(.9em, white, bold);
       }
     }
   }

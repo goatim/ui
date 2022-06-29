@@ -9,7 +9,7 @@
     flex: 1;
 
     > .creation {
-      @include fonts.IBM-Plex-Sans(.8em, rgba(colors.$blue, .5));
+      @include fonts.Inter(.8em, rgba(colors.$blue, .5));
       display: inline-block;
       margin-top: 1em;
     }

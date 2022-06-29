@@ -18,7 +18,7 @@
     }
 
     > .position {
-      @include fonts.IBM-Plex-Sans(.9em, colors.$blue, bold);
+      @include fonts.Inter(.9em, colors.$blue, bold);
       margin-top: 5px;
     }
   }

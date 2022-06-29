@@ -21,7 +21,7 @@
     }
 
     > .id {
-      @include fonts.IBM-Plex-Sans(.7em, rgba(colors.$blue, .5));
+      @include fonts.Inter(.7em, rgba(colors.$blue, .5));
       margin-left: 20px;
     }
   }
@@ -60,7 +60,7 @@
       }
 
       > .value {
-        @include fonts.IBM-Plex-Sans(.9em, colors.$blue, bold);
+        @include fonts.Inter(.9em, colors.$blue, bold);
       }
     }
   }

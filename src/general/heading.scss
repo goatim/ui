@@ -13,13 +13,13 @@
   }
 
   > .emoji {
-    @include fonts.IBM-Plex-Sans(1.5em, colors.$blue, bold);
+    @include fonts.Inter(1.5em, colors.$blue, bold);
     margin: 0;
     padding: 0;
   }
 
   > .title {
-    @include fonts.IBM-Plex-Sans(1.5em, colors.$blue, bold);
+    @include fonts.Inter(1.5em, colors.$blue, 900);
     margin: 0;
     padding: 0;
   }

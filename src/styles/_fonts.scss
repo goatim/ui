@@ -8,15 +8,14 @@
   transition: color ease-out 100ms, font-size ease-out 100ms;
 }
 
-$IBM-Plex-Sans: 'IBM Plex Sans', sans-serif;
+$Inter: 'Inter', sans-serif;
 
-@mixin IBM-Plex-Sans($size: 1em, $color: colors.$blue, $weight: normal) {
-  @include font($IBM-Plex-Sans, $size, $color, $weight);
-  letter-spacing: .02em;
+@mixin Inter($size: 1em, $color: colors.$blue, $weight: normal) {
+  @include font($Inter, $size, $color, $weight);
 }
 
 @mixin label($size: .7em, $color: rgba(colors.$blue, .5)) {
-  @include IBM-Plex-Sans($size, $color, bold);
+  @include Inter($size, $color, bold);
   text-transform: uppercase;
   letter-spacing: .05em;
 }

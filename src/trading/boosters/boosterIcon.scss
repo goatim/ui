@@ -38,7 +38,7 @@ button.friday-ui-booster-icon {
     }
 
     > span {
-      @include fonts.IBM-Plex-Sans(.8em, white, bold);
+      @include fonts.Inter(.8em, white, bold);
       box-sizing: border-box;
       padding: 0 .2em .2em 0;
       margin: 0;
@@ -46,7 +46,7 @@ button.friday-ui-booster-icon {
   }
 
   > span {
-    @include fonts.IBM-Plex-Sans(.8em, colors.$blue, bold);
+    @include fonts.Inter(.8em, colors.$blue, bold);
     width: 30px;
     display: inline-block;
     text-align: center;

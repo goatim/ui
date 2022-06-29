@@ -47,7 +47,7 @@
         }
 
         > span {
-          @include fonts.IBM-Plex-Sans(.9em, colors.$blue, bold);
+          @include fonts.Inter(.9em, colors.$blue, bold);
           white-space: nowrap;
           text-align: left;
           flex: 1;
@@ -124,7 +124,7 @@
         }
 
         > span {
-          @include fonts.IBM-Plex-Sans();
+          @include fonts.Inter();
           white-space: nowrap;
           display: block;
           text-align: left;
@@ -181,7 +181,7 @@
   }
 
   > .instructions {
-    @include fonts.IBM-Plex-Sans(.9em, colors.$blue);
+    @include fonts.Inter(.9em, colors.$blue);
     margin-top: 10px;
   }
 

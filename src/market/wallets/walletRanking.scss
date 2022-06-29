@@ -14,7 +14,7 @@
   }
 
   > span {
-    @include fonts.IBM-Plex-Sans(.8em, rgba(colors.$blue, .5), bold);
+    @include fonts.Inter(.8em, rgba(colors.$blue, .5), bold);
     margin-top: 10px;
   }
 

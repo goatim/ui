@@ -53,7 +53,7 @@
       }
 
       > .error {
-        @include fonts.IBM-Plex-Sans(1em, white);
+        @include fonts.Inter(1em, white);
         background: colors.$red;
         padding: 5px 10px;
       }

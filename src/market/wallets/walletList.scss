@@ -3,7 +3,7 @@
 
 .friday-ui-wallet-list-empty {
   > span {
-    @include fonts.IBM-Plex-Sans(.9em, colors.$blue, bold);
+    @include fonts.Inter(.9em, colors.$blue, bold);
   }
 
   &.light {
@@ -21,7 +21,7 @@
   justify-content: center;
 
   > .others {
-    @include fonts.IBM-Plex-Sans(.8em, rgba(colors.$blue, .5));
+    @include fonts.Inter(.8em, rgba(colors.$blue, .5));
     grid-column: span 3;
   }
 

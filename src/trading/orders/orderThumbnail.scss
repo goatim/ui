@@ -41,11 +41,11 @@
         }
 
         > .nb_shares {
-          @include fonts.IBM-Plex-Sans(.8em, colors.$blue, bold);
+          @include fonts.Inter(.8em, colors.$blue, bold);
         }
 
         > .price {
-          @include fonts.IBM-Plex-Sans(.8em, colors.$blue, bold);
+          @include fonts.Inter(.8em, colors.$blue, bold);
         }
       }
     }

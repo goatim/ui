@@ -21,12 +21,12 @@ button.friday-ui-player-thumbnail {
     margin-left: 10px;
 
     > .number {
-      @include fonts.IBM-Plex-Sans(.8em, colors.$blue);
+      @include fonts.Inter(.8em, colors.$blue);
       opacity: .5;
     }
 
     > .name {
-      @include fonts.IBM-Plex-Sans(.8em, colors.$blue, bold);
+      @include fonts.Inter(.8em, colors.$blue, bold);
       margin-left: 5px;
     }
   }
@@ -65,7 +65,7 @@ button.friday-ui-player-thumbnail {
       }
 
       > .position {
-        @include fonts.IBM-Plex-Sans(.7em, colors.$blue, bold);
+        @include fonts.Inter(.7em, colors.$blue, bold);
         opacity: .5;
         text-transform: uppercase;
         margin-left: 5px;
@@ -73,7 +73,7 @@ button.friday-ui-player-thumbnail {
     }
 
     > .name {
-      @include fonts.IBM-Plex-Sans(1.5em, colors.$blue, bold);
+      @include fonts.Inter(1.5em, colors.$blue, 900);
       margin: 10px 0 0;
       padding: 0;
     }

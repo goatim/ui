@@ -20,7 +20,7 @@
   }
 
   > .remaining {
-    @include fonts.IBM-Plex-Sans(1em, colors.$blue, bold);
+    @include fonts.Inter(1em, colors.$blue, bold);
     text-transform: uppercase;
     margin-top: 5px;
   }

@@ -13,7 +13,7 @@
     justify-content: flex-start;
 
     > .position {
-      @include fonts.IBM-Plex-Sans(.8em, colors.$blue, bold);
+      @include fonts.Inter(.8em, colors.$blue, bold);
       box-sizing: border-box;
       min-width: 30px;
       padding: 0 5px;
@@ -38,7 +38,7 @@
     }
 
     > .name {
-      @include fonts.IBM-Plex-Sans(.8em, colors.$blue, bold);
+      @include fonts.Inter(.8em, colors.$blue, bold);
       margin-left: .8em;
       max-width: 100px;
       overflow: hidden;

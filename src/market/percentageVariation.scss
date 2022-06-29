@@ -2,7 +2,7 @@
 @use '../styles/colors';
 
 .friday-ui-percentage-variation {
-  @include fonts.IBM-Plex-Sans(.7em, colors.$green, bold);
+  @include fonts.Inter(.7em, colors.$green, bold);
 
   &.medium {
     font-size: .8em;

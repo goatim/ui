@@ -2,7 +2,7 @@
 @use '../../styles/colors';
 
 .friday-ui-rank-position {
-  @include fonts.IBM-Plex-Sans(.7em, colors.$blue, bold);
+  @include fonts.Inter(.7em, colors.$blue, bold);
 
   &.medium {
     font-size: .8em;

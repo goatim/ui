@@ -3,7 +3,7 @@
 
 .friday-ui-order-match-notification {
   > p {
-    @include fonts.IBM-Plex-Sans(.8em, colors.$blue);
+    @include fonts.Inter(.8em, colors.$blue);
     margin: 0;
   }
 

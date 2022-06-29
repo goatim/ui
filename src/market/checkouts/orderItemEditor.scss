@@ -9,13 +9,13 @@
   justify-content: center;
 
   > h1 {
-    @include fonts.IBM-Plex-Sans(1.1em, colors.$blue, bold);
+    @include fonts.Inter(1.1em, colors.$blue, bold);
     margin: 0;
     text-align: center;
   }
 
   > h2 {
-    @include fonts.IBM-Plex-Sans(.8em, rgba(colors.$blue, .5), bold);
+    @include fonts.Inter(.8em, rgba(colors.$blue, .5), bold);
     text-align: center;
     margin-top: .5em;
   }
@@ -51,13 +51,13 @@
     margin-top: 50px;
 
     > h2 {
-      @include fonts.IBM-Plex-Sans(1.1em, colors.$blue, bold);
+      @include fonts.Inter(1.1em, colors.$blue, bold);
       margin: 0;
       text-align: center;
     }
 
     > h3 {
-      @include fonts.IBM-Plex-Sans(.8em, rgba(colors.$blue, .5), bold);
+      @include fonts.Inter(.8em, rgba(colors.$blue, .5), bold);
       text-align: center;
       margin-top: .5em;
     }

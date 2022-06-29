@@ -29,11 +29,11 @@
       }
 
       > .rank {
-        @include fonts.IBM-Plex-Sans(.9em, white);
+        @include fonts.Inter(.9em, white);
       }
 
       > .rank-position {
-        @include fonts.IBM-Plex-Sans(.9em, white, bold);
+        @include fonts.Inter(.9em, white, bold);
       }
     }
   }

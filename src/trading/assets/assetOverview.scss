@@ -17,7 +17,7 @@
       align-items: flex-end;
 
       > .total_shares {
-        @include fonts.IBM-Plex-Sans(.8em, rgba(colors.$blue, .5))
+        @include fonts.Inter(.8em, rgba(colors.$blue, .5))
       }
     }
   }

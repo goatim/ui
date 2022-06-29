@@ -30,7 +30,7 @@
             opacity: .5;
 
             > .data {
-              @include fonts.IBM-Plex-Sans(.7em, colors.$blue, bold);
+              @include fonts.Inter(.7em, colors.$blue, bold);
             }
           }
 
@@ -51,7 +51,7 @@
       justify-content: center;
 
       > span {
-        @include fonts.IBM-Plex-Sans(.8em, rgba(colors.$blue, .5), bold);
+        @include fonts.Inter(.8em, rgba(colors.$blue, .5), bold);
       }
     }
 

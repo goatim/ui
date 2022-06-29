@@ -28,7 +28,7 @@
         margin-top: 5px;
 
         > .value {
-          @include fonts.IBM-Plex-Sans(1.1em, white, bold);
+          @include fonts.Inter(1.1em, white, bold);
         }
 
         > .stop {

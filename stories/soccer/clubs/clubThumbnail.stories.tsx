@@ -44,15 +44,15 @@ const league: League = {
   description: '',
   icon: {
     id: '1',
-    url: 'https://www.ligue1.fr/-/media/Project/LFP/shared/Images/Competition/Logo/L1.svg?h=414&la=fr-FR&w=300&hash=783C68CC46CCFE1978298241C6AF705B',
+    url: 'https://upload.wikimedia.org/wikipedia/fr/thumb/c/ca/Logo_Ligue_1_Uber_Eats_2020.svg/411px-Logo_Ligue_1_Uber_Eats_2020.svg.png?20200821142847',
     large_url:
-      'https://www.ligue1.fr/-/media/Project/LFP/shared/Images/Competition/Logo/L1.svg?h=414&la=fr-FR&w=300&hash=783C68CC46CCFE1978298241C6AF705B',
+      'https://upload.wikimedia.org/wikipedia/fr/thumb/c/ca/Logo_Ligue_1_Uber_Eats_2020.svg/411px-Logo_Ligue_1_Uber_Eats_2020.svg.png?20200821142847',
     medium_url:
-      'https://www.ligue1.fr/-/media/Project/LFP/shared/Images/Competition/Logo/L1.svg?h=414&la=fr-FR&w=300&hash=783C68CC46CCFE1978298241C6AF705B',
+      'https://upload.wikimedia.org/wikipedia/fr/thumb/c/ca/Logo_Ligue_1_Uber_Eats_2020.svg/411px-Logo_Ligue_1_Uber_Eats_2020.svg.png?20200821142847',
     small_url:
-      'https://www.ligue1.fr/-/media/Project/LFP/shared/Images/Competition/Logo/L1.svg?h=414&la=fr-FR&w=300&hash=783C68CC46CCFE1978298241C6AF705B',
+      'https://upload.wikimedia.org/wikipedia/fr/thumb/c/ca/Logo_Ligue_1_Uber_Eats_2020.svg/411px-Logo_Ligue_1_Uber_Eats_2020.svg.png?20200821142847',
     thumbnail_url:
-      'https://www.ligue1.fr/-/media/Project/LFP/shared/Images/Competition/Logo/L1.svg?h=414&la=fr-FR&w=300&hash=783C68CC46CCFE1978298241C6AF705B',
+      'https://upload.wikimedia.org/wikipedia/fr/thumb/c/ca/Logo_Ligue_1_Uber_Eats_2020.svg/411px-Logo_Ligue_1_Uber_Eats_2020.svg.png?20200821142847',
   },
 };
 

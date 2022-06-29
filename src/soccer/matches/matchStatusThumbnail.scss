@@ -12,7 +12,7 @@
   box-sizing: border-box;
 
   > .label {
-    @include fonts.IBM-Plex-Sans(.8em, colors.$blue, bold);
+    @include fonts.Inter(.8em, colors.$blue, bold);
   }
 
   &.light {

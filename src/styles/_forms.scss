@@ -25,7 +25,7 @@
 }
 
 @mixin instructions {
-  @include fonts.IBM-Plex-Sans(.8em, rgba(colors.$blue, .5));
+  @include fonts.Inter(.8em, rgba(colors.$blue, .5));
   margin-top: 10px;
 }
 
@@ -38,7 +38,7 @@
 }
 
 @mixin error {
-  @include fonts.IBM-Plex-Sans(.8em, colors.$red);
+  @include fonts.Inter(.8em, colors.$red);
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -58,7 +58,7 @@
 }
 
 @mixin warning {
-  @include fonts.IBM-Plex-Sans(.8em, colors.$orange);
+  @include fonts.Inter(.8em, colors.$orange);
   display: flex;
   align-items: center;
   justify-content: flex-start;

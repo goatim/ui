@@ -13,12 +13,12 @@
     }
 
     > span {
-      @include fonts.IBM-Plex-Sans(.8em, rgba(colors.$blue, .5), bold);
+      @include fonts.Inter(.8em, rgba(colors.$blue, .5), bold);
       text-align: right;
     }
 
     &.total > span {
-      @include fonts.IBM-Plex-Sans(.9em, colors.$blue, bold);
+      @include fonts.Inter(.9em, colors.$blue, bold);
     }
   }
 }
