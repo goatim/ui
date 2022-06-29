@@ -1,0 +1,44 @@
+@use '~@cezembre/fronts/dist/screens';
+@use "../styles/forms";
+@use "../styles/fonts";
+@use "../styles/colors";
+
+.friday-ui-textarea {
+  width: 100%;
+
+  > label {
+    @include forms.label;
+  }
+
+  > textarea {
+    @include fonts.Inter(.9em);
+    @include forms.input;
+    display: block;
+    flex: 1;
+    padding: 8px 12px;
+    box-sizing: border-box;
+    width: 100%;
+
+    &:active, &:focus {
+      outline: none;
+      text-decoration: none;
+    }
+
+    &::placeholder {
+      color: rgba(colors.$blue, .3);
+      font-style: italic;
+    }
+  }
+
+  > .instructions {
+    @include forms.instructions;
+  }
+
+  >.error {
+    @include forms.error;
+  }
+
+  > .warning {
+    @include forms.warning;
+  }
+}

@@ -27,6 +27,7 @@ import Input, {
   InputTheme,
   Suggestion,
 } from './general/input';
+import Textarea from './general/textarea';
 import Select, { SelectOption, SelectType, SelectOptionProps } from './general/select';
 import Radio, { RadioOption, RadioOptionProps } from './general/radio';
 import UserThumbnail, { UserThumbnailSize, UserThumbnailInfos } from './auth/userThumbnail';
@@ -161,6 +162,7 @@ export {
   CheckBox,
   Counter,
   Input,
+  Textarea,
   Select,
   Radio,
   Datetime,
