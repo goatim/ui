@@ -7,7 +7,7 @@ export interface Props extends FieldComponentProps<boolean> {
   instructions?: string;
 }
 
-export default function Switch({
+export default function Toggle({
   value,
   error,
   warning,
@@ -20,7 +20,7 @@ export default function Switch({
   instructions,
 }: Props): ReactElement {
   const className = useMemo<string>(() => {
-    let nextClassName = 'friday-ui-switch';
+    let nextClassName = 'friday-ui-toggle';
 
     if (isActive) {
       nextClassName += ' active';

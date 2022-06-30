@@ -1,4 +1,12 @@
-import { ReactElement, useMemo, useCallback, useRef, JSXElementConstructor } from 'react';
+import {
+  ReactElement,
+  useMemo,
+  useCallback,
+  useRef,
+  JSXElementConstructor,
+  useState,
+  ChangeEventHandler,
+} from 'react';
 import { FieldComponentProps } from '@cezembre/forms';
 import { useClickOutside } from '@cezembre/fronts';
 import _ from 'lodash';
@@ -48,6 +56,7 @@ export interface Props<V = unknown> extends FieldComponentProps<V | undefined> {
   type?: SelectType;
   instructions?: ReactElement | string;
   fullWidth?: boolean;
+  onSearch?(search?: string): Promise<void> | void;
 }
 
 export default function Select<V = unknown>({
@@ -66,6 +75,7 @@ export default function Select<V = unknown>({
   instructions,
   type = 'default',
   fullWidth,
+  onSearch,
 }: Props<V>): ReactElement {
   const className = useMemo<string>(() => {
     let res = `friday-ui-select ${type}`;
@@ -121,6 +131,23 @@ export default function Select<V = unknown>({
     return undefined;
   }, [options, value]);
 
+  const [search, setSearch] = useState<string>('');
+
+  const onSearchDebounced = useMemo<(search?: string) => Promise<void> | void>(() => {
+    if (onSearch) {
+      return _.debounce(onSearch, 500);
+    }
+    return () => undefined;
+  }, [onSearch]);
+
+  const onChangeSearch = useCallback<ChangeEventHandler<HTMLInputElement>>(
+    (event) => {
+      setSearch(event.target.value);
+      onSearchDebounced(event.target.value);
+    },
+    [onSearchDebounced],
+  );
+
   return (
     <div className={className}>
       {label && <label htmlFor={name}>{label}</label>}
@@ -128,7 +155,7 @@ export default function Select<V = unknown>({
       <div className="container" ref={selectRef}>
         {selectedOption || type === 'default' ? (
           <div className="selector">
-            <button onClick={toggleFocus} type="button" className="selected">
+            <button onClick={toggleFocus} type="button" className="main">
               <SelectOptionComponent<V>
                 option={selectedOption}
                 DefaultComponent={DefaultComponent}
@@ -144,6 +171,14 @@ export default function Select<V = unknown>({
         ) : null}
 
         <div className="options">
+          {onSearch ? (
+            <div className="search">
+              <div className="container">
+                <input type="text" value={search} onChange={onChangeSearch} />
+                <Icon name="search" />
+              </div>
+            </div>
+          ) : null}
           {options?.map((option, index) => (
             <button
               type="button"

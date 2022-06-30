@@ -21,7 +21,7 @@
       align-items: center;
       justify-content: space-between;
 
-      > button.selected {
+      > button.main {
         @include forms.input;
         font-size: 1em;
         -webkit-touch-callout: none;
@@ -38,35 +38,31 @@
         text-decoration: none;
         flex-shrink: 0;
         margin: 0;
-        padding: 0;
         position: relative;
+        padding: 8px 12px;
 
-        &:hover, &:focus {
-          border: none;
-          outline: none;
-        }
 
         > span {
-          @include fonts.Inter(.9em, colors.$blue, bold);
+          @include fonts.Inter(.85em, colors.$blue);
           white-space: nowrap;
           text-align: left;
           flex: 1;
-          padding: 8px 12px;
           text-overflow: ellipsis;
           overflow: hidden;
 
           &.placeholder {
             color: rgba(colors.$blue, .5);
+            font-weight: 600;
           }
         }
 
         > svg[stroke] {
           stroke: rgba(colors.$blue, .5);
-          margin-right: 12px;
+          margin-left: 12px;
         }
       }
 
-      > .cancel {
+      > button.cancel {
         -webkit-touch-callout: none;
         -webkit-user-select: none;
         -moz-user-select: none;
@@ -93,14 +89,40 @@
       padding: 4px 0;
       max-height: 300px;
       overflow: auto;
-      box-shadow: 0 0 5px rgba(colors.$blue, .1);
       border: solid rgba(colors.$blue, .2) 1px;
+      box-shadow: 0 0 5px rgba(colors.$blue, .1);
       visibility: hidden;
       position: absolute;
       top: calc(100% + 4px);
       background: white;
       opacity: 0;
       transition: opacity linear 100ms;
+
+      > .search {
+        padding: 10px;
+
+        > .container {
+          @include forms.input;
+          display: flex;
+          align-items: center;
+
+          > input {
+            @include fonts.Inter(.9em, colors.$blue);
+            flex: 1;
+            box-sizing: border-box;
+            border: none;
+            outline: none;
+            padding: 8px 10px;
+            width: 100%;
+            background: none;
+          }
+
+          > svg {
+            stroke: rgba(colors.$blue, .5);
+            padding-right: 10px;
+          }
+        }
+      }
 
       > button.option {
         font-size: 1em;
@@ -116,7 +138,7 @@
         width: 100%;
         text-align: left;
         margin: 0;
-        padding: 0;
+        padding: 8px 12px;
         cursor: pointer;
 
         &:hover, &.active {
@@ -128,7 +150,6 @@
           white-space: nowrap;
           display: block;
           text-align: left;
-          padding: 8px 12px;
         }
       }
     }
@@ -142,9 +163,8 @@
   &.flat > .container {
     > .selector {
       border-bottom: solid rgba(colors.$blue, .1) 1px;
-      padding: 5px 10px;
 
-      > .selected {
+      > button.main {
         border-radius: 0;
         border: none;
         background: none;
@@ -167,7 +187,7 @@
       top: auto;
       padding: 5px 0 20px;
 
-      > .option {
+      > button.option {
         padding: 5px 10px;
         border-radius: 5px;
         display: block;

@@ -1,13 +1,13 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Form, Field } from '@cezembre/forms';
-import { JSXElementConstructor } from 'react';
+import { JSXElementConstructor, useCallback, useEffect, useState } from 'react';
 import { Club, Player } from '@fridaygame/client';
-import Select, { SelectType } from '../../src/general/select';
+import Select, { SelectOption, SelectType } from '../../src/general/select';
 import { PlayerThumbnail } from '../../src';
 
 interface Props {
   label?: string;
-  type?: SelectType;
+  selectType?: SelectType;
 }
 
 export default {
@@ -19,7 +19,7 @@ export default {
         type: 'text',
       },
     },
-    type: {
+    selectType: {
       options: ['default', 'flat'],
       control: {
         type: 'select',
@@ -44,7 +44,7 @@ const club: Club = {
   },
 };
 
-const players: Player[] = [
+const allPlayers: Player[] = [
   {
     id: 'pl_ygqzd648',
     club,
@@ -55,7 +55,43 @@ const players: Player[] = [
     textual_position: 'Attaquant centre',
   },
   {
-    id: 'pl_qefs54',
+    id: 'pl_qgypp54',
+    club,
+    name: 'Lionel Messi',
+    number: 10,
+    position: 'attacking_midfield',
+    side: 'left',
+    textual_position: 'Attaquant centre',
+  },
+  {
+    id: 'pl_qesfggy54',
+    club,
+    name: 'Lionel Messi',
+    number: 10,
+    position: 'attacking_midfield',
+    side: 'left',
+    textual_position: 'Attaquant centre',
+  },
+  {
+    id: 'pl_qeqzd4',
+    club,
+    name: 'Lionel Messi',
+    number: 10,
+    position: 'attacking_midfield',
+    side: 'left',
+    textual_position: 'Attaquant centre',
+  },
+  {
+    id: 'pl_qrgs54',
+    club,
+    name: 'Lionel Messi',
+    number: 10,
+    position: 'attacking_midfield',
+    side: 'left',
+    textual_position: 'Attaquant centre',
+  },
+  {
+    id: 'pl_qeflzs54',
     club,
     name: 'Lionel Messi',
     number: 10,
@@ -65,22 +101,68 @@ const players: Player[] = [
   },
 ];
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ label, type }: Props) => (
-  <Field
-    name="select"
-    component={Select}
-    type="flat"
-    label={label}
-    canCancel
-    options={players.map((player: Player) => ({
-      value: player.id,
-      element: <PlayerThumbnail player={player} />,
-    }))}
-  />
-);
+const filteredPlayers: Player[] = [
+  {
+    id: 'pl_ygqzd648',
+    club,
+    name: 'Kylian Mbappé',
+    number: 10,
+    position: 'attacking_midfield',
+    side: 'left',
+    textual_position: 'Attaquant centre',
+  },
+  {
+    id: 'pl_qgypp54',
+    club,
+    name: 'Lionel Messi',
+    number: 10,
+    position: 'attacking_midfield',
+    side: 'left',
+    textual_position: 'Attaquant centre',
+  },
+];
+
+const Template: ComponentStory<JSXElementConstructor<Props>> = ({ label, selectType }: Props) => {
+  const [options, setOptions] = useState<SelectOption<string>[]>([]);
+
+  useEffect(() => {
+    setOptions(
+      allPlayers.map((player: Player) => ({
+        value: player.id,
+        element: <PlayerThumbnail player={player} />,
+      })),
+    );
+  }, []);
+
+  const onSearch = useCallback((search: string) => {
+    if (search) {
+      setOptions(
+        filteredPlayers.map((player: Player) => ({
+          value: player.id,
+          element: <PlayerThumbnail player={player} />,
+        })),
+      );
+    } else {
+      setOptions(
+        allPlayers.map((player: Player) => ({
+          value: player.id,
+          element: <PlayerThumbnail player={player} />,
+        })),
+      );
+    }
+  }, []);
+
+  return (
+    <Field
+      name="test"
+      component={Select}
+      type={selectType}
+      label={label}
+      canCancel
+      options={options}
+      onSearch={onSearch}
+    />
+  );
+};
 
 export const Default = Template.bind({});
-
-Default.args = {
-  type: 'default',
-};

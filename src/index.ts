@@ -30,7 +30,7 @@ import Input, {
 import Textarea from './general/textarea';
 import Select, { SelectOption, SelectType, SelectOptionProps } from './general/select';
 import Radio, { RadioOption, RadioOptionProps } from './general/radio';
-import Switch from './general/switch';
+import Toggle from './general/toggle';
 import DatePicker from './general/datePicker';
 import TimePicker from './general/timePicker';
 import DateTimePicker from './general/dateTimePicker';
@@ -172,7 +172,7 @@ export {
   Radio,
   Datetime,
   Table,
-  Switch,
+  Toggle,
   DatePicker,
   TimePicker,
   DateTimePicker,
