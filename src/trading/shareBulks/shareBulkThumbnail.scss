@@ -1,0 +1,12 @@
+@use '../../styles/colors';
+@use '../../styles/fonts';
+
+.friday-ui-share-bulk-thumbnail {
+  display: flex;
+  align-items: center;
+
+  > .nb-shares {
+    @include fonts.Inter(.9em, colors.$blue, bold);
+    margin-left: 20px;
+  }
+}

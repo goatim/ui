@@ -41,7 +41,7 @@ export default function PlayerThumbnail({
       <div className={`friday-ui-player-thumbnail full ${theme}`}>
         <div className="infos">
           <span className="number">{player.number}</span>
-          <span className="position">{player.textual_position}</span>
+          <span className="position">{player.resolved_position}</span>
         </div>
         <h1 className="name">{player.name}</h1>
         {player.club && typeof player.club === 'object' ? (

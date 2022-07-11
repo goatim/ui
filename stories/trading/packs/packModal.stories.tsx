@@ -1,14 +1,14 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import { Asset, Club, Player, Transaction, Wallet } from '@fridaygame/client';
+import { Asset, Club, Player, Pack, PackFactory } from '@fridaygame/client';
 import { BrowserRouter } from 'react-router-dom';
-import TransactionThumbnail from '../../../src/trading/packs/packThumbnail';
+import PackModal from '../../../src/trading/packs/packModal';
 
 interface Props {}
 
 export default {
-  title: 'Trading/TransactionThumbnail',
-  component: TransactionThumbnail,
+  title: 'Trading/PackModal',
+  component: PackModal,
   argTypes: {},
 } as ComponentMeta<JSXElementConstructor<Props>>;
 
@@ -50,39 +50,40 @@ const asset: Asset = {
   player,
 };
 
-const from: Wallet = {
-  id: 'wa_sopsaA',
-  picture: {
-    id: 'me_dehHH',
-    thumbnail_url: 'https://picsum.photos/200',
-  },
-  name: 'Smart Monkey',
-};
-
-const to: Wallet = {
-  id: 'wa_sopsaA',
-  picture: {
-    id: 'me_dehHH',
-    thumbnail_url: 'https://picsum.photos/200',
-  },
-  name: 'Lovely Mouse',
-};
-
-const pack: Transaction = {
-  id: 'tr_cUkDdk9VW4PwvsF',
+const factory: PackFactory = {
+  id: 'pf_cUkDdk9VW4PwvsF',
   creation: '2021-09-29T16:08:39.129+00:00',
-  asset,
-  from,
-  to,
-  nb_shares: 42,
-  price: 45000,
-  asset_quotation_gain: 3500,
-  asset_quotation_variation: 150,
+  // title: 'Fellicitation !',
+};
+
+const pack: Pack = {
+  id: 'pa_cUkDdk9VW4PwvsF',
+  creation: '2021-09-29T16:08:39.129+00:00',
+  factory,
+  share_bulks: [
+    {
+      asset,
+      nb_shares: 2,
+    },
+    {
+      asset,
+      nb_shares: 1,
+    },
+    {
+      asset,
+      nb_shares: 5,
+    },
+    {
+      asset,
+      nb_shares: 2,
+    },
+  ],
+  tags: ['starter'],
 };
 
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
   <BrowserRouter>
-    <TransactionThumbnail pack={pack} />
+    <PackModal pack={pack} />
   </BrowserRouter>
 );
 

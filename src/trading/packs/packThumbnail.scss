@@ -1,0 +1,32 @@
+@use '../../styles/colors';
+@use '../../styles/fonts';
+
+.friday-ui-pack-thumbnail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  > .header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 300px;
+    text-align: center;
+
+    > h1 {
+      @include fonts.Inter(1.6em, colors.$blue, bold);
+      margin: .6em 0 0;
+    }
+
+    > p {
+      @include fonts.Inter(.9em, colors.$blue);
+      margin: 1em 0 0;
+    }
+  }
+
+  > .shares-bulks {
+    margin-top: 30px;
+  }
+}
