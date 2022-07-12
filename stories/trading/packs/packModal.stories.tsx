@@ -83,7 +83,7 @@ const pack: Pack = {
 
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
   <BrowserRouter>
-    <PackModal pack={pack} />
+    <PackModal pack={pack} onContinue={() => undefined} />
   </BrowserRouter>
 );
 

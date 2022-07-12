@@ -4,4 +4,12 @@
   background: colors.$light-blue;
   border-radius: 20px;
   padding: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  > .action {
+    margin-top: 30px;
+  }
 }

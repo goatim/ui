@@ -16,7 +16,7 @@ export default function PackModal({ pack, onContinue }: Props): ReactElement {
       </div>
       {onContinue ? (
         <div className="action">
-          <Button onClick={onContinue} theme="submit">
+          <Button onClick={onContinue} theme="submit" shape="filled">
             Continuer
           </Button>
         </div>
