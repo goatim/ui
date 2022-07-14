@@ -15,7 +15,7 @@
   padding: 0;
   background: transparent;
   position: relative;
-  transition: box-shadow linear 100ms, background linear 100ms;
+  transition: background linear 100ms, opacity linear 100ms;
   overflow: hidden;
   font-size: 1em;
 
@@ -51,7 +51,8 @@
     }
 
     > .label {
-      @include fonts.Inter(.8em, colors.$blue, bold);
+      @include fonts.Inter(.8em, colors.$blue, 500);
+      letter-spacing: .04em;
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;
@@ -85,7 +86,7 @@
     }
 
     > .label {
-      font-size: .7em;
+      font-size: .75em;
     }
   }
 
@@ -99,8 +100,216 @@
     }
   }
 
+  &.filled {
+    &.small {
+      height: 30px;
+      border-radius: 4px;
+      padding: 0 1em;
+    }
+
+    &.medium {
+      height: 35px;
+      border-radius: 5px;
+      padding: 0 1.5em;
+    }
+
+    &.large {
+      height: 40px;
+      border-radius: 8px;
+      padding: 0 1.8em;
+    }
+
+    &.default {
+      background: colors.$electric-blue;
+
+      > .container {
+        svg[stroke] {
+          stroke: white;
+        }
+
+        svg:not([stroke]) {
+          fill: white;
+        }
+
+        > .label {
+          color: white;
+        }
+      }
+
+      &:hover, &.active {
+        background: colors.$blue;
+      }
+    }
+
+    &.dark {
+      background: colors.$blue;
+
+      > .container {
+        svg[stroke] {
+          stroke: white;
+        }
+
+        svg:not([stroke]) {
+          fill: white;
+        }
+
+        > .label {
+          color: white;
+        }
+      }
+
+      &:hover, &.active {
+        background: colors.$electric-blue;
+      }
+    }
+
+    &.light {
+      background: white;
+
+      > .container {
+        svg[stroke] {
+          stroke: colors.$blue;
+        }
+
+        svg:not([stroke]) {
+          fill: colors.$blue;
+        }
+
+        > .label {
+          color: colors.$blue;
+        }
+      }
+
+      &:hover, &.active {
+        background: colors.$medium-blue;
+      }
+    }
+
+    &.transparent-dark {
+      background: rgba(colors.$blue, .2);
+      border: solid rgba(colors.$blue, .1) 1px;
+
+      > .container {
+        svg[stroke] {
+          stroke: colors.$blue;
+        }
+
+        svg:not([stroke]) {
+          fill: colors.$blue;
+        }
+
+        > .label {
+          color: colors.$blue;
+        }
+      }
+
+      &:hover, &.active {
+        background: rgba(colors.$blue, .3);
+      }
+    }
+
+    &.transparent-light {
+      background: rgba(white, .2);
+      border: solid rgba(white, .1) 1px;
+
+      > .container {
+        svg[stroke] {
+          stroke: white;
+        }
+
+        svg:not([stroke]) {
+          fill: white;
+        }
+
+        > .label {
+          color: white;
+        }
+      }
+
+      &:hover, &.active {
+        background: rgba(white, .5);
+      }
+    }
+
+    &.buy {
+      background: colors.$green;
+
+      > .container {
+        svg[stroke] {
+          stroke: white;
+        }
+
+        svg:not([stroke]) {
+          fill: white;
+        }
+
+        > .label {
+          color: white;
+        }
+      }
+
+      &:hover, &.active {
+        opacity: .8;
+      }
+    }
+
+    &.sell {
+      background: colors.$red;
+
+      > .container {
+        svg[stroke] {
+          stroke: white;
+        }
+
+        svg:not([stroke]) {
+          fill: white;
+        }
+
+        > .label {
+          color: white;
+        }
+      }
+
+      &:hover, &.active {
+        opacity: .7;
+      }
+    }
+  }
+
   &.text {
     &.default {
+      > .container {
+        svg[stroke] {
+          stroke: colors.$electric-blue;
+        }
+
+        svg:not([stroke]) {
+          fill: colors.$electric-blue;
+        }
+
+        > .label {
+          color: colors.$electric-blue;
+        }
+      }
+
+      &:hover, &.active {
+        > .container {
+          svg[stroke] {
+            stroke: colors.$blue;
+          }
+
+          svg:not([stroke]) {
+            fill: colors.$blue;
+          }
+
+          > .label {
+            color: colors.$blue;
+          }
+        }
+      }
+    }
+
+    &.dark {
       > .container {
         svg[stroke] {
           stroke: colors.$blue;
@@ -135,47 +344,47 @@
     &.light {
       > .container {
         svg[stroke] {
-          stroke: colors.$light-blue;
+          stroke: white;
         }
 
         svg:not([stroke]) {
-          fill: colors.$light-blue;
+          fill: white;
         }
 
         > .label {
-          color: colors.$light-blue;
+          color: white;
         }
       }
 
       &:hover, &.active {
         > .container {
           svg[stroke] {
-            stroke: white;
+            stroke: colors.$medium-blue;
           }
 
           svg:not([stroke]) {
-            fill: white;
+            fill: colors.$medium-blue;
           }
 
           > .label {
-            color: white;
+            color: colors.$medium-blue;
           }
         }
       }
     }
 
-    &.darker {
+    &.transparent-dark {
       > .container {
         svg[stroke] {
-          stroke: rgba(colors.$blue, .2);
+          stroke: rgba(colors.$blue, .5);
         }
 
         svg:not([stroke]) {
-          fill: rgba(colors.$blue, .2);
+          fill: rgba(colors.$blue, .5);
         }
 
         > .label {
-          color: rgba(colors.$blue, .2);
+          color: rgba(colors.$blue, .5);
         }
       }
 
@@ -196,7 +405,7 @@
       }
     }
 
-    &.lighter {
+    &.transparent-light {
       > .container {
         svg[stroke] {
           stroke: rgba(white, .5);
@@ -228,225 +437,34 @@
       }
     }
 
-    &.submit {
+    &.buy {
       > .container {
         svg[stroke] {
-          stroke: colors.$blue;
+          stroke: colors.$green;
         }
 
         svg:not([stroke]) {
-          fill: colors.$blue;
+          fill: colors.$green;
         }
 
         > .label {
-          color: colors.$blue;
-          background: linear-gradient(90deg, colors.$blue 0%, colors.$fushia 100%);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
+          color: colors.$green;
         }
       }
     }
-  }
 
-  &.filled {
-    border-radius: 5px;
-
-    &.small {
-      height: 35px;
-      padding: 0 1em;
-    }
-
-    &.medium {
-      height: 40px;
-      padding: 0 1.5em;
-    }
-
-    &.large {
-      height: 45px;
-      padding: 0 2em;
-    }
-
-    &.default {
-      background: colors.$light-blue;
-
+    &.sell {
       > .container {
         svg[stroke] {
-          stroke: colors.$blue;
+          stroke: colors.$red;
         }
 
         svg:not([stroke]) {
-          fill: colors.$blue;
+          fill: colors.$red;
         }
 
         > .label {
-          color: colors.$blue;
-        }
-      }
-
-      &:hover, &.active {
-        background: colors.$medium-blue;
-      }
-    }
-
-    &.light {
-      background: white;
-
-      > .container {
-        svg[stroke] {
-          stroke: colors.$blue;
-        }
-
-        svg:not([stroke]) {
-          fill: colors.$blue;
-        }
-
-        > .label {
-          color: colors.$blue;
-        }
-      }
-
-      &:hover, &.active {
-        background: colors.$light-blue;
-      }
-    }
-
-    &.darker {
-      background: white;
-
-      > .container {
-        svg[stroke] {
-          stroke: rgba(colors.$blue, .2);
-        }
-
-        svg:not([stroke]) {
-          fill: rgba(colors.$blue, .2);
-        }
-
-        > .label {
-          color: rgba(colors.$blue, .2);
-        }
-      }
-
-      &:hover, &.active {
-        background: colors.$blue;
-      }
-    }
-
-    &.lighter {
-      background: rgba(white, .2);
-      border: solid rgba(white, .1) 1px;
-
-      > .container {
-        svg[stroke] {
-          stroke: white;
-        }
-
-        svg:not([stroke]) {
-          fill: white;
-        }
-
-        > .label {
-          color: white;
-        }
-      }
-
-      &:hover, &.active {
-        background: rgba(white, .5);
-      }
-    }
-
-    &.submit {
-      background: linear-gradient(45deg, colors.$blue 0%, colors.$fushia 100%);
-
-      > .container {
-        svg[stroke] {
-          stroke: colors.$light-blue;
-        }
-
-        svg:not([stroke]) {
-          fill: colors.$light-blue;
-        }
-
-        > .label {
-          color: colors.$light-blue;
-        }
-      }
-
-      &:hover, &.active {
-        > .container {
-          svg[stroke] {
-            stroke: white;
-          }
-
-          svg:not([stroke]) {
-            fill: white;
-          }
-
-          > .label {
-            color: white;
-          }
-        }
-      }
-    }
-
-    &.action {
-      background: colors.$blue;
-
-      > .container {
-        svg[stroke] {
-          stroke: white;
-        }
-
-        svg:not([stroke]) {
-          fill: white;
-        }
-
-        > .label {
-          text-transform: uppercase;
-          letter-spacing: .05em;
-          color: white;
-        }
-      }
-
-      &:hover, &.active {
-        background: colors.$electric-blue;
-      }
-    }
-
-    &.action-discreet {
-      background: rgba(colors.$blue, .2);
-
-      > .container {
-        svg[stroke] {
-          stroke: colors.$blue;
-        }
-
-        svg:not([stroke]) {
-          fill: colors.$blue;
-        }
-
-        > .label {
-          text-transform: uppercase;
-          letter-spacing: .05em;
-          color: colors.$blue;
-        }
-      }
-
-      &:hover, &.active {
-        background: rgba(colors.$blue, .5);
-
-        > .container {
-          svg[stroke] {
-            stroke: white;
-          }
-
-          svg:not([stroke]) {
-            fill: white;
-          }
-
-          > .label {
-            color: white;
-          }
+          color: colors.$red;
         }
       }
     }

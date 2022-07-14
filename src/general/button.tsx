@@ -5,16 +5,16 @@ import Icon, { IconName } from './icon';
 
 export type ButtonSize = 'small' | 'medium' | 'large';
 
-export type ButtonShape = 'text' | 'filled';
+export type ButtonShape = 'filled' | 'text';
 
 export type ButtonTheme =
   | 'default'
+  | 'dark'
   | 'light'
-  | 'darker'
-  | 'lighter'
-  | 'submit'
-  | 'action'
-  | 'action-discreet';
+  | 'transparent-dark'
+  | 'transparent-light'
+  | 'buy'
+  | 'sell';
 
 export interface Props extends WrapperProps {
   children?: ReactNode;
@@ -39,7 +39,7 @@ export default function Button({
   onFocus,
   onBlur,
   size = 'medium',
-  shape = 'text',
+  shape = 'filled',
   type = 'button',
   theme = 'default',
   active,

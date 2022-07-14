@@ -143,9 +143,7 @@ export default function OrderItemEditor({
           </Button>
         </div>
         <div className="action">
-          <Button type="submit" shape="filled" theme="submit">
-            {label}
-          </Button>
+          <Button type="submit">{label}</Button>
         </div>
       </div>
 

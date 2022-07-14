@@ -46,12 +46,12 @@ export default function AssetOverview({
 
       <div className="actions">
         <div className="action">
-          <Button shape="filled" theme="action" onClick={() => setOrderType('buy')}>
+          <Button theme="buy" onClick={() => setOrderType('buy')}>
             Acheter
           </Button>
         </div>
         <div className="action">
-          <Button shape="filled" theme="action-discreet" onClick={() => setOrderType('sell')}>
+          <Button theme="sell" onClick={() => setOrderType('sell')}>
             Vendre
           </Button>
         </div>

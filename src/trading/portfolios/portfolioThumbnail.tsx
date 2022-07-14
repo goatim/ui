@@ -79,7 +79,7 @@ export default function PortfolioThumbnail({
       <div className="actions">
         {onSell ? (
           <div className="action">
-            <Button shape="filled" theme="lighter" onClick={onSell}>
+            <Button shape="filled" theme="transparent-light" onClick={onSell}>
               Vendre
             </Button>
           </div>
@@ -87,7 +87,7 @@ export default function PortfolioThumbnail({
 
         {onBuy ? (
           <div className="action">
-            <Button shape="filled" theme="lighter" onClick={onBuy}>
+            <Button shape="filled" theme="transparent-light" onClick={onBuy}>
               Acheter
             </Button>
           </div>
@@ -95,7 +95,7 @@ export default function PortfolioThumbnail({
 
         {onBoost ? (
           <div className="action">
-            <Button shape="filled" theme="lighter" onClick={onBoost}>
+            <Button shape="filled" theme="transparent-light" onClick={onBoost}>
               Booster
             </Button>
           </div>

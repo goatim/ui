@@ -19,14 +19,14 @@ export default {
       },
     },
     shape: {
-      options: ['text', 'filled'],
+      options: ['filled', 'text'],
       defaultValue: 'text',
       control: {
         type: 'select',
       },
     },
     theme: {
-      options: ['default', 'light', 'darker', 'lighter', 'submit', 'action', 'action-discreet'],
+      options: ['default', 'dark', 'light', 'transparent-dark', 'transparent-light', 'buy', 'sell'],
       defaultValue: 'default',
       control: {
         type: 'select',
