@@ -28,6 +28,7 @@ export interface Props extends WrapperProps {
   errored?: boolean;
   leftIcon?: IconName;
   rightIcon?: IconName;
+  fullWidth?: boolean;
 }
 
 export default function Button({
@@ -41,13 +42,14 @@ export default function Button({
   shape = 'text',
   type = 'button',
   theme = 'default',
-  active = false,
-  pending = false,
-  success = false,
-  errored = false,
-  disabled = false,
+  active,
+  pending,
+  success,
+  errored,
+  disabled,
   leftIcon,
   rightIcon,
+  fullWidth,
 }: Props): ReactElement {
   const [autoPending, setAutoPending] = useState<boolean>(false);
   const [autoSuccess, setAutoSuccess] = useState<boolean>(false);
@@ -72,6 +74,10 @@ export default function Button({
       res += ' disabled';
     }
 
+    if (fullWidth) {
+      res += ' full-width';
+    }
+
     return res;
   }, [
     active,
@@ -80,6 +86,7 @@ export default function Button({
     autoSuccess,
     disabled,
     errored,
+    fullWidth,
     pending,
     shape,
     size,
@@ -119,22 +126,20 @@ export default function Button({
       onBlur={onBlur}
       className={className}>
       <div className="container">
-        <div className="body">
-          {leftIcon ? (
-            <div className="left-icon">
-              <Icon name={leftIcon} />
-            </div>
-          ) : null}
+        {leftIcon ? (
+          <div className="icon left">
+            <Icon name={leftIcon} />
+          </div>
+        ) : null}
 
-          {typeof children === 'string' ? (
-            <span className="label">{children}</span>
-          ) : (
-            <div className="component">{children}</div>
-          )}
-        </div>
+        {typeof children === 'string' ? (
+          <span className="label">{children}</span>
+        ) : (
+          <div className="component">{children}</div>
+        )}
 
         {rightIcon ? (
-          <div className="right-icon">
+          <div className="icon right">
             <Icon name={rightIcon} />
           </div>
         ) : null}

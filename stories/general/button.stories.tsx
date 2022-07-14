@@ -54,6 +54,12 @@ export default {
         type: 'text',
       },
     },
+    fullWidth: {
+      defaultValue: false,
+      control: {
+        type: 'boolean',
+      },
+    },
   },
 } as ComponentMeta<typeof Button>;
 
@@ -66,6 +72,7 @@ const Template: ComponentStory<typeof Button> = ({
   disabled,
   leftIcon,
   rightIcon,
+  fullWidth,
 }: Props) => (
   <Button
     size={size}
@@ -74,18 +81,10 @@ const Template: ComponentStory<typeof Button> = ({
     pending={pending}
     disabled={disabled}
     leftIcon={leftIcon}
-    rightIcon={rightIcon}>
+    rightIcon={rightIcon}
+    fullWidth={fullWidth}>
     {children}
   </Button>
 );
 
 export const Default = Template.bind({});
-
-Default.args = {
-  children: 'Button',
-  size: 'medium',
-  shape: 'text',
-  theme: 'default',
-  pending: false,
-  disabled: false,
-};

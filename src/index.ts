@@ -6,7 +6,6 @@ import Selection from './general/selection';
 import Button, { ButtonSize, ButtonShape, ButtonTheme } from './general/button';
 import Check from './general/check';
 import Icon from './general/icon';
-import Img, { useImageDimensions } from './general/image';
 import Heading, { HeadingSize, HeadingTheme, HeadingLevel } from './general/heading';
 import ImageUpload from './uploads/image';
 import CheckBox from './general/checkbox';
@@ -161,8 +160,6 @@ export {
   Button,
   Check,
   Icon,
-  Img,
-  useImageDimensions,
   Heading,
   Loader,
   Overlay,

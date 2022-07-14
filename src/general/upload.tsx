@@ -1,75 +1,69 @@
-import { ChangeEvent, ReactElement, useEffect, useMemo, useRef, useState } from 'react';
-import { AspectRatio, Orientation } from '@fridaygame/client';
-import { Property } from 'csstype';
-import Loader from './loader';
-import Icon from './icon';
-import Img from './image';
-
-const reader = new FileReader();
+import { ChangeEvent, ReactElement, ReactNode, useMemo, useRef, useState } from 'react';
+import { IconName } from './icon';
+import Button, { ButtonShape, ButtonSize, ButtonTheme } from './button';
 
 export interface Props {
-  src?: string;
-  alt?: string;
-  width?: string | number;
-  height?: string | number;
-  aspectRatio?: AspectRatio;
-  orientation?: Orientation;
-  objectFit?: Property.ObjectFit;
-  objectPosition?: Property.ObjectPosition;
-  backgroundColor?: Property.BackgroundColor;
-  placeholder?: boolean;
-  onUpload?: (file: File) => Promise<void>;
+  multiple?: boolean;
+  onUpload?: (files: FileList) => Promise<void>;
+  onLoad?: (file: string) => void;
   tabIndex?: number;
-  label?: string;
+  children?: ReactNode;
+  size?: ButtonSize;
+  shape?: ButtonShape;
+  theme?: ButtonTheme;
+  leftIcon?: IconName;
+  rightIcon?: IconName;
+  fullWidth?: boolean;
   instructions?: string;
 }
 
 export default function Upload({
-  src,
-  alt,
-  width,
-  height,
-  aspectRatio,
-  orientation,
-  objectFit,
-  objectPosition,
-  backgroundColor,
-  placeholder,
+  children,
+  multiple,
   onUpload,
+  onLoad,
   tabIndex = 0,
-  label,
+  size = 'medium',
+  shape = 'filled',
+  theme,
+  leftIcon = 'upload',
+  rightIcon,
+  fullWidth,
   instructions,
 }: Props): ReactElement {
   const input = useRef<HTMLInputElement>(null);
-  const [imageSrc, setImageSrc] = useState<string | undefined>(src);
+  const [localSources, setLocalSources] = useState<string[]>([]);
   const [pending, setPending] = useState<boolean>(false);
   const [error, setError] = useState<Error | null>(null);
-
-  useEffect(() => {
-    setImageSrc(src);
-  }, [src]);
 
   async function onChange(event: ChangeEvent<HTMLInputElement>) {
     setError(null);
 
-    if (event.target.files && event.target.files[0]) {
-      // TODO : Check format && size
-      const image = event.target.files[0];
+    if (event.target.files?.length) {
+      const reader = new FileReader();
+
+      setLocalSources([]);
 
       reader.onload = (progressEvent: ProgressEvent<FileReader>) => {
-        if (progressEvent.target && progressEvent.target.result) {
-          if (typeof progressEvent.target.result === 'string') {
-            setImageSrc(progressEvent.target.result);
+        if (progressEvent.target) {
+          const { result } = progressEvent.target;
+          if (result && typeof result === 'string') {
+            setLocalSources((_src) => [..._src, result]);
+            if (onLoad) {
+              onLoad(result);
+            }
           }
         }
       };
 
-      reader.readAsDataURL(image);
+      for (let i = 0; i < event.target.files.length; i += 1) {
+        reader.readAsDataURL(event.target.files[i]);
+      }
 
       if (onUpload) {
         setPending(true);
         try {
-          await onUpload(event.target.files[0]);
+          await onUpload(event.target.files);
         } catch (e) {
           setError(e as Error);
         } finally {
@@ -82,50 +76,37 @@ export default function Upload({
   const className = useMemo<string>(() => {
     let res = 'friday-ui-upload';
 
-    if (pending || error) {
-      res += ' active';
+    if (error) {
+      res += ' error';
     }
 
-    if (!imageSrc) {
-      res += ' empty';
+    if (pending) {
+      res += ' pending';
     }
 
     return res;
-  }, [error, imageSrc, pending]);
+  }, [error, pending]);
 
   return (
-    <div className={className} tabIndex={tabIndex}>
-      {label ? <p className="label">{label}</p> : null}
+    <div className={className}>
+      <input type="file" onChange={onChange} ref={input} tabIndex={tabIndex} multiple={multiple} />
 
-      <button
-        onClick={() => (input.current ? input.current.click() : null)}
+      <Button
+        onClick={() => input.current?.click()}
         type="button"
-        style={{ width, height }}>
-        <input type="file" onChange={onChange} ref={input} />
-
-        <div className="image" style={{ width, height }}>
-          <Img
-            src={imageSrc}
-            alt={alt}
-            width={width}
-            height={height}
-            aspectRatio={aspectRatio}
-            orientation={orientation}
-            objectFit={objectFit}
-            objectPosition={objectPosition}
-            backgroundColor={backgroundColor}
-            placeholder={placeholder}
-          />
-        </div>
-
-        <div className="overlay">
-          {error ? <p className="error">{error.message}</p> : null}
-          {pending ? <Loader size={40} /> : null}
-          {!error && !pending ? <Icon name="image" size={30} /> : null}
-        </div>
-      </button>
+        pending={pending}
+        size={size}
+        shape={shape}
+        theme={theme}
+        leftIcon={leftIcon}
+        rightIcon={rightIcon}
+        fullWidth={fullWidth}>
+        {children || 'Upload file'}
+      </Button>
 
       {instructions ? <p className="instructions">{instructions}</p> : null}
+
+      {error ? <p className="error">{error.message}</p> : null}
     </div>
   );
 }
