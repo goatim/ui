@@ -51,8 +51,7 @@
     }
 
     > .label {
-      @include fonts.Inter(.8em, colors.$blue, 500);
-      letter-spacing: .04em;
+      @include fonts.Inter(.8em, colors.$blue, 600);
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;
