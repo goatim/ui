@@ -1,28 +1,18 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import { Asset, Player, Club } from '@fridaygame/client';
-import AssetThumbnail, {
-  AssetThumbnailSize,
-  AssetThumbnailTheme,
-} from '../../../src/trading/assets/assetThumbnail';
+import { Asset, Club, Spotlight, Player, SpotlightType } from '@fridaygame/client';
+import SpotlightThumbnail from '../../../src/soccer/spotlights/spotlightThumbnail';
 
 interface Props {
-  size?: AssetThumbnailSize;
-  theme?: AssetThumbnailTheme;
+  type?: SpotlightType;
 }
 
 export default {
-  title: 'Trading/AssetThumbnail',
-  component: AssetThumbnail,
+  title: 'Soccer/SpotlightThumbnail',
+  component: SpotlightThumbnail,
   argTypes: {
-    size: {
-      options: ['inline', 'small', 'big', 'full'],
-      control: {
-        type: 'select',
-      },
-    },
-    theme: {
-      options: ['default', 'darker', 'lighter'],
+    type: {
+      options: ['simple', 'duo'],
       control: {
         type: 'select',
       },
@@ -68,8 +58,25 @@ const asset: Asset = {
   player,
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ size, theme }: Props) => (
-  <AssetThumbnail asset={asset} size={size} theme={theme} onClick={() => undefined} />
+const spotlight: Spotlight = {
+  id: 'sp_qedfz489',
+  subtitle: 'Les joueurs',
+  title: "Ici c'est Paris !",
+  resolved_primary_color: '#063E6F',
+  resolved_secondary_color: '#ff1541',
+  resolved_primary_assets: [asset, asset, asset],
+  resolved_illustration: {
+    id: '1',
+    url: 'https://www.psg.fr/img/logos/psg-logo.png',
+    large_url: 'https://www.psg.fr/img/logos/psg-logo.png',
+    medium_url: 'https://www.psg.fr/img/logos/psg-logo.png',
+    small_url: 'https://www.psg.fr/img/logos/psg-logo.png',
+    thumbnail_url: 'https://www.psg.fr/img/logos/psg-logo.png',
+  },
+};
+
+const Template: ComponentStory<JSXElementConstructor<Props>> = ({ type }: Props) => (
+  <SpotlightThumbnail spotlight={{ ...spotlight, type }} />
 );
 
 export const Default = Template.bind({});

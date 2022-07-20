@@ -1,0 +1,85 @@
+@use '~@cezembre/fronts/dist/containers';
+@use '~@cezembre/fronts/dist/screens';
+@use '../../styles/colors';
+@use '../../styles/fonts';
+
+.friday-ui-spotlight-thumbnail {
+  background: black;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+
+  * {
+    box-sizing: border-box;
+  }
+
+  > img {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    height: 100%;
+    width: 300px;
+    object-position: center left;
+    object-fit: cover;
+    opacity: .5;
+
+    @include screens.laptop {
+      width: 250px;
+    }
+
+    @include screens.tablet {
+      display: none;
+    }
+  }
+
+  > .wrapper {
+    background: linear-gradient(45deg, rgba(black, .5) 0%, rgba(black, 0) 100%);
+
+    > .container {
+      @include containers.medium;
+      padding: 50px;
+
+      > .header {
+
+        > h2 {
+          @include fonts.label-light;
+          margin: 0;
+        }
+
+        > h1 {
+          @include fonts.Inter(1.5em, white, 900);
+          margin: 10px 0 0;
+        }
+      }
+
+      > .body {
+        margin-top: 20px;
+
+        > .assets {
+          > .asset {
+            margin-top: 20px;
+
+            &:first-of-type {
+              margin: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.simple {
+    > .wrapper {
+      padding-right: 300px;
+
+      @include screens.laptop {
+        padding-right: 250px;
+      }
+
+      @include screens.tablet {
+        padding-right: 0;
+      }
+    }
+  }
+}

@@ -9,7 +9,7 @@ import PercentageVariation, { PercentageVariationSize } from '../../market/perce
 import FridayCoins, { FridayCoinsSize, FridayCoinsTheme } from '../../market/fridayCoins';
 import QuotationGraph from '../quotations/quotationGraph';
 
-export type AssetThumbnailSize = 'inline' | 'small' | 'medium' | 'big';
+export type AssetThumbnailSize = 'inline' | 'small' | 'big' | 'full';
 
 export type AssetThumbnailTheme = 'default' | 'darker' | 'lighter';
 
@@ -24,10 +24,9 @@ function getPlayerThumbnailSize(size: AssetThumbnailSize): PlayerThumbnailSize {
     case 'inline':
     case 'small':
       return 'small';
-    case 'medium':
-      return 'medium';
     case 'big':
-      return 'big';
+    case 'full':
+      return 'medium';
     default:
       return 'small';
   }
@@ -38,10 +37,9 @@ function getSessionVariationSize(size: AssetThumbnailSize): PercentageVariationS
     case 'inline':
     case 'small':
       return 'small';
-    case 'medium':
-      return 'medium';
     case 'big':
-      return 'big';
+    case 'full':
+      return 'medium';
     default:
       return 'small';
   }
@@ -52,10 +50,9 @@ function getQuotationSize(size: AssetThumbnailSize): FridayCoinsSize {
     case 'inline':
     case 'small':
       return 'small';
-    case 'medium':
-      return 'medium';
     case 'big':
-      return 'big';
+    case 'full':
+      return 'medium';
     default:
       return 'small';
   }
@@ -114,7 +111,7 @@ export default function AssetThumbnail({
       onClick={onClick}
       href={href}
       target={target}>
-      {size === 'big' ? (
+      {size === 'full' ? (
         <div className="quotation">
           <QuotationGraph
             quotations={[

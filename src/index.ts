@@ -70,6 +70,7 @@ import PlayerThumbnail, {
   PlayerThumbnailTheme,
 } from './soccer/players/playerThumbnail';
 import PlayerList from './soccer/players/playerList';
+import SpotlightThumbnail from './soccer/spotlights/spotlightThumbnail';
 import SoccerField, { SoccerFieldTheme } from './soccer/compositions/soccerField';
 import SoccerFieldPosition, {
   SoccerFieldPositionSize,
@@ -262,6 +263,7 @@ export {
   ClubList,
   PlayerThumbnail,
   PlayerList,
+  SpotlightThumbnail,
   SoccerField,
   SoccerFieldPosition,
   CompositionPositionMap,
