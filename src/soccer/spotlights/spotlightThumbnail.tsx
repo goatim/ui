@@ -1,12 +1,19 @@
-import { ReactElement } from 'react';
-import { Spotlight } from '@fridaygame/client';
+import { MouseEvent, ReactElement } from 'react';
+import { Asset, Spotlight } from '@fridaygame/client';
+import { To } from 'react-router-dom';
 import AssetThumbnail from '../../trading/assets/assetThumbnail';
 
 export interface Props {
   spotlight: Spotlight;
+  toAsset?: (asset?: Asset) => To;
+  onClickAsset?: (asset: Asset) => (event: MouseEvent<HTMLButtonElement>) => Promise<void> | void;
 }
 
-export default function SpotlightThumbnail({ spotlight }: Props): ReactElement {
+export default function SpotlightThumbnail({
+  spotlight,
+  toAsset,
+  onClickAsset,
+}: Props): ReactElement {
   return (
     <div
       className={`friday-ui-spotlight-thumbnail ${spotlight.type}`}
@@ -40,7 +47,13 @@ export default function SpotlightThumbnail({ spotlight }: Props): ReactElement {
                 {spotlight.resolved_secondary_assets?.map((asset) =>
                   typeof asset === 'object' ? (
                     <div className="asset" key={asset.id}>
-                      <AssetThumbnail asset={asset} size="big" theme="lighter" />
+                      <AssetThumbnail
+                        asset={asset}
+                        size="big"
+                        theme="lighter"
+                        to={toAsset ? toAsset(asset) : undefined}
+                        onClick={onClickAsset ? onClickAsset(asset) : undefined}
+                      />
                     </div>
                   ) : null,
                 )}
