@@ -5,14 +5,14 @@ import AssetThumbnail from '../../trading/assets/assetThumbnail';
 
 export interface Props {
   spotlight: Spotlight;
-  toAsset?: (asset?: Asset) => To;
-  onClickAsset?: (asset: Asset) => (event: MouseEvent<HTMLButtonElement>) => Promise<void> | void;
+  assetOnClick?: (asset: Asset, event: MouseEvent<HTMLButtonElement>) => void | Promise<void>;
+  assetTo?: (asset: Asset) => To;
 }
 
 export default function SpotlightThumbnail({
   spotlight,
-  toAsset,
-  onClickAsset,
+  assetOnClick,
+  assetTo,
 }: Props): ReactElement {
   return (
     <div
@@ -36,7 +36,13 @@ export default function SpotlightThumbnail({
               {spotlight.resolved_primary_assets?.map((asset) =>
                 typeof asset === 'object' ? (
                   <div className="asset" key={asset.id}>
-                    <AssetThumbnail asset={asset} size="full" theme="lighter" />
+                    <AssetThumbnail
+                      asset={asset}
+                      size="full"
+                      theme="lighter"
+                      onClick={assetOnClick ? (event) => assetOnClick(asset, event) : undefined}
+                      to={assetTo ? assetTo(asset) : undefined}
+                    />
                   </div>
                 ) : null,
               )}
@@ -51,8 +57,8 @@ export default function SpotlightThumbnail({
                         asset={asset}
                         size="big"
                         theme="lighter"
-                        to={toAsset ? toAsset(asset) : undefined}
-                        onClick={onClickAsset ? onClickAsset(asset) : undefined}
+                        onClick={assetOnClick ? (event) => assetOnClick(asset, event) : undefined}
+                        to={assetTo ? assetTo(asset) : undefined}
                       />
                     </div>
                   ) : null,
