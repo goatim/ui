@@ -138,7 +138,7 @@ export default function OrderItemEditor({
 
       <div className="actions">
         <div className="action">
-          <Button type="button" onClick={onCancel} shape="filled">
+          <Button type="button" onClick={onCancel} shape="text">
             Annuler
           </Button>
         </div>

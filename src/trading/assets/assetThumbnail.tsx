@@ -1,4 +1,4 @@
-import { ReactElement, useEffect, useState } from 'react';
+import { ReactElement, useMemo } from 'react';
 import { Asset } from '@fridaygame/client';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
 import PlayerThumbnail, {
@@ -9,7 +9,7 @@ import PercentageVariation, { PercentageVariationSize } from '../../market/perce
 import FridayCoins, { FridayCoinsSize, FridayCoinsTheme } from '../../market/fridayCoins';
 import QuotationGraph from '../quotations/quotationGraph';
 
-export type AssetThumbnailSize = 'inline' | 'small' | 'big' | 'full';
+export type AssetThumbnailSize = 'inline' | 'narrow' | 'small' | 'big' | 'full';
 
 export type AssetThumbnailTheme = 'default' | 'darker' | 'lighter';
 
@@ -17,59 +17,6 @@ export interface Props extends WrapperProps {
   asset: Asset;
   size?: AssetThumbnailSize;
   theme?: AssetThumbnailTheme;
-}
-
-function getPlayerThumbnailSize(size: AssetThumbnailSize): PlayerThumbnailSize {
-  switch (size) {
-    case 'inline':
-    case 'small':
-      return 'small';
-    case 'big':
-    case 'full':
-      return 'medium';
-    default:
-      return 'small';
-  }
-}
-
-function getSessionVariationSize(size: AssetThumbnailSize): PercentageVariationSize {
-  switch (size) {
-    case 'inline':
-    case 'small':
-      return 'small';
-    case 'big':
-    case 'full':
-      return 'medium';
-    default:
-      return 'small';
-  }
-}
-
-function getQuotationSize(size: AssetThumbnailSize): FridayCoinsSize {
-  switch (size) {
-    case 'inline':
-    case 'small':
-      return 'small';
-    case 'big':
-    case 'full':
-      return 'medium';
-    default:
-      return 'small';
-  }
-}
-
-function getPlayerThumbnailTheme(theme: AssetThumbnailTheme): PlayerThumbnailTheme {
-  if (theme === 'default') {
-    return 'default';
-  }
-  return 'light';
-}
-
-function getQuotationTheme(theme: AssetThumbnailTheme): FridayCoinsTheme {
-  if (theme === 'default') {
-    return 'default';
-  }
-  return 'light';
 }
 
 export default function AssetThumbnail({
@@ -81,27 +28,59 @@ export default function AssetThumbnail({
   href,
   target,
 }: Props): ReactElement {
-  const [playerThumbnailSize, setPlayerThumbnailSize] = useState<PlayerThumbnailSize>(
-    getPlayerThumbnailSize(size),
-  );
-  const [playerThumbnailTheme, setPlayerThumbnailTheme] = useState<PlayerThumbnailTheme>(
-    getPlayerThumbnailTheme(theme),
-  );
-  const [SessionVariationSize, setSessionVariationSize] = useState<PercentageVariationSize>(
-    getSessionVariationSize(size),
-  );
-  const [quotationSize, setQuotationSize] = useState<FridayCoinsSize>(getQuotationSize(size));
-  const [quotationTheme, setQuotationTheme] = useState<FridayCoinsTheme>(getQuotationTheme(theme));
-
-  useEffect(() => {
-    setPlayerThumbnailSize(getPlayerThumbnailSize(size));
-    setSessionVariationSize(getSessionVariationSize(size));
-    setQuotationSize(getQuotationSize(size));
+  const playerThumbnailSize = useMemo<PlayerThumbnailSize>(() => {
+    switch (size) {
+      case 'inline':
+      case 'small':
+        return 'small';
+      case 'big':
+      case 'full':
+        return 'medium';
+      default:
+        return 'small';
+    }
   }, [size]);
 
-  useEffect(() => {
-    setPlayerThumbnailTheme(getPlayerThumbnailTheme(theme));
-    setQuotationTheme(getQuotationTheme(theme));
+  const playerThumbnailTheme = useMemo<PlayerThumbnailTheme>(() => {
+    if (theme === 'default') {
+      return 'default';
+    }
+    return 'light';
+  }, [theme]);
+
+  const SessionVariationSize = useMemo<PercentageVariationSize>(() => {
+    switch (size) {
+      case 'narrow':
+      case 'inline':
+      case 'small':
+        return 'small';
+      case 'big':
+      case 'full':
+        return 'medium';
+      default:
+        return 'small';
+    }
+  }, [size]);
+
+  const quotationSize = useMemo<FridayCoinsSize>(() => {
+    switch (size) {
+      case 'inline':
+      case 'narrow':
+      case 'small':
+        return 'small';
+      case 'big':
+      case 'full':
+        return 'medium';
+      default:
+        return 'small';
+    }
+  }, [size]);
+
+  const quotationTheme = useMemo<FridayCoinsTheme>(() => {
+    if (theme === 'default') {
+      return 'default';
+    }
+    return 'light';
   }, [theme]);
 
   return (

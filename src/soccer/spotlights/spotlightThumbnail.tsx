@@ -1,26 +1,44 @@
-import { MouseEvent, ReactElement } from 'react';
+import { MouseEvent, ReactElement, useMemo } from 'react';
 import { Asset, Spotlight } from '@fridaygame/client';
 import { To } from 'react-router-dom';
-import AssetThumbnail from '../../trading/assets/assetThumbnail';
+import { AssetThumbnailSize } from '../../trading/assets/assetThumbnail';
+import AssetList from '../../trading/assets/assetList';
+
+export type SpotlightThumbnailSize = 'narrow' | 'small' | 'medium' | 'large';
 
 export interface Props {
   spotlight: Spotlight;
+  size?: SpotlightThumbnailSize;
   assetOnClick?: (asset: Asset, event: MouseEvent<HTMLButtonElement>) => void | Promise<void>;
   assetTo?: (asset: Asset) => To;
 }
 
 export default function SpotlightThumbnail({
   spotlight,
+  size = 'large',
   assetOnClick,
   assetTo,
 }: Props): ReactElement {
+  const assetSize = useMemo<AssetThumbnailSize>(() => {
+    switch (size) {
+      case 'narrow':
+        return 'narrow';
+      case 'small':
+        return 'small';
+      case 'medium':
+      case 'large':
+      default:
+        return 'full';
+    }
+  }, [size]);
+
   return (
     <div
-      className={`friday-ui-spotlight-thumbnail ${spotlight.type}`}
+      className={`friday-ui-spotlight-thumbnail ${spotlight.type || 'simple'} ${size}`}
       style={{
         background: spotlight.resolved_primary_color,
       }}>
-      {spotlight.resolved_illustration && spotlight.type === 'simple' ? (
+      {spotlight.resolved_illustration && spotlight.type !== 'duo' ? (
         <img src={spotlight.resolved_illustration?.medium_url} alt={spotlight.title} />
       ) : null}
 
@@ -32,37 +50,35 @@ export default function SpotlightThumbnail({
           </div>
 
           <div className="body">
-            <div className="assets">
-              {spotlight.resolved_primary_assets?.map((asset) =>
-                typeof asset === 'object' ? (
-                  <div className="asset" key={asset.id}>
-                    <AssetThumbnail
-                      asset={asset}
-                      size="full"
-                      theme="lighter"
-                      onClick={assetOnClick ? (event) => assetOnClick(asset, event) : undefined}
-                      to={assetTo ? assetTo(asset) : undefined}
-                    />
-                  </div>
-                ) : null,
-              )}
-            </div>
-
-            {spotlight.type === 'duo' ? (
+            {spotlight.resolved_primary_assets?.length ? (
               <div className="assets">
-                {spotlight.resolved_secondary_assets?.map((asset) =>
-                  typeof asset === 'object' ? (
-                    <div className="asset" key={asset.id}>
-                      <AssetThumbnail
-                        asset={asset}
-                        size="big"
-                        theme="lighter"
-                        onClick={assetOnClick ? (event) => assetOnClick(asset, event) : undefined}
-                        to={assetTo ? assetTo(asset) : undefined}
-                      />
-                    </div>
-                  ) : null,
-                )}
+                <AssetList
+                  assets={
+                    spotlight.resolved_primary_assets.filter(
+                      (asset) => typeof asset === 'object',
+                    ) as Asset[]
+                  }
+                  size={assetSize}
+                  theme="lighter"
+                  assetOnClick={assetOnClick}
+                  assetTo={assetTo}
+                />
+              </div>
+            ) : null}
+
+            {spotlight.type === 'duo' && spotlight.resolved_secondary_assets?.length ? (
+              <div className="assets">
+                <AssetList
+                  assets={
+                    spotlight.resolved_secondary_assets.filter(
+                      (asset) => typeof asset === 'object',
+                    ) as Asset[]
+                  }
+                  size={assetSize}
+                  theme="lighter"
+                  assetOnClick={assetOnClick}
+                  assetTo={assetTo}
+                />
               </div>
             ) : null}
           </div>

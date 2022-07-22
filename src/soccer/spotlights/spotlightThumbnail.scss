@@ -23,25 +23,15 @@
     object-position: center left;
     object-fit: cover;
     opacity: .5;
-
-    @include screens.laptop {
-      width: 250px;
-    }
-
-    @include screens.tablet {
-      display: none;
-    }
   }
 
   > .wrapper {
     background: linear-gradient(45deg, rgba(black, .5) 0%, rgba(black, 0) 100%);
 
     > .container {
-      @include containers.medium;
-      padding: 50px;
+      width: 100%;
 
       > .header {
-
         > h2 {
           @include fonts.label-light;
           margin: 0;
@@ -71,14 +61,58 @@
 
   &.simple {
     > .wrapper {
-      padding-right: 300px;
+      padding: 0 300px;
 
-      @include screens.laptop {
-        padding-right: 250px;
+      > .container {
+        padding: 50px 0;
       }
+    }
+  }
 
-      @include screens.tablet {
-        padding-right: 0;
+  &.medium {
+    > img {
+      width: 250px;
+    }
+
+    &.simple {
+      > .wrapper {
+        padding: 0 250px;
+
+        > .container {
+          padding: 30px 0;
+        }
+      }
+    }
+  }
+
+  &.small, &.narrow {
+    > img {
+      display: none;
+    }
+
+    &.simple {
+      > .wrapper {
+        padding: 0;
+
+        > .container {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+          padding: 30px;
+
+          > .header {
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+
+  &.narrow {
+    &.simple {
+      > .wrapper > .container {
+        padding: 20px;
       }
     }
   }

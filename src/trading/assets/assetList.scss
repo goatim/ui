@@ -1,7 +1,11 @@
 .friday-ui-asset-list {
   display: grid;
-  grid-template-columns: repeat(2, auto);
   justify-content: center;
-  grid-column-gap: 20px;
-  grid-row-gap: 20px;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+
+  &.full {
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+  }
 }

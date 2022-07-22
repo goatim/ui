@@ -1,10 +1,13 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
+import { JSXElementConstructor, ReactElement } from 'react';
 import { Asset, Club, Spotlight, Player, SpotlightType } from '@fridaygame/client';
-import SpotlightThumbnail from '../../../src/soccer/spotlights/spotlightThumbnail';
+import SpotlightThumbnail, {
+  SpotlightThumbnailSize,
+} from '../../../src/soccer/spotlights/spotlightThumbnail';
 
 interface Props {
   type?: SpotlightType;
+  size?: SpotlightThumbnailSize;
 }
 
 export default {
@@ -13,6 +16,12 @@ export default {
   argTypes: {
     type: {
       options: ['simple', 'duo'],
+      control: {
+        type: 'select',
+      },
+    },
+    size: {
+      options: ['narrow', 'small', 'medium', 'large'],
       control: {
         type: 'select',
       },
@@ -28,8 +37,8 @@ const club: Club = {
   icon: {
     id: '1',
     url: 'https://www.psg.fr/img/logos/psg-logo.png',
-    large_url: 'https://www.psg.fr/img/logos/psg-logo.png',
-    medium_url: 'https://www.psg.fr/img/logos/psg-logo.png',
+    large_url: 'https://upload.wikimedia.org/wikipedia/fr/7/76/Paris_Saint-Germain_logo.png',
+    medium_url: 'https://upload.wikimedia.org/wikipedia/fr/7/76/Paris_Saint-Germain_logo.png',
     small_url: 'https://www.psg.fr/img/logos/psg-logo.png',
     thumbnail_url: 'https://www.psg.fr/img/logos/psg-logo.png',
   },
@@ -68,15 +77,20 @@ const spotlight: Spotlight = {
   resolved_illustration: {
     id: '1',
     url: 'https://www.psg.fr/img/logos/psg-logo.png',
-    large_url: 'https://www.psg.fr/img/logos/psg-logo.png',
-    medium_url: 'https://www.psg.fr/img/logos/psg-logo.png',
+    large_url: 'https://upload.wikimedia.org/wikipedia/fr/7/76/Paris_Saint-Germain_logo.png',
+    medium_url: 'https://upload.wikimedia.org/wikipedia/fr/7/76/Paris_Saint-Germain_logo.png',
     small_url: 'https://www.psg.fr/img/logos/psg-logo.png',
     thumbnail_url: 'https://www.psg.fr/img/logos/psg-logo.png',
   },
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ type }: Props) => (
-  <SpotlightThumbnail spotlight={{ ...spotlight, type }} />
+function App({ type, size }: Props): ReactElement {
+  // const isMobile = useBreakPoint()
+  return <SpotlightThumbnail spotlight={{ ...spotlight, type }} size={size} />;
+}
+
+const Template: ComponentStory<JSXElementConstructor<Props>> = ({ type, size }: Props) => (
+  <App type={type} size={size} />
 );
 
 export const Default = Template.bind({});
