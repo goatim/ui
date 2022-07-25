@@ -26,7 +26,9 @@
 
   &.small {
     width: 25px;
+    min-width: 25px;
     height: 25px;
+    min-height: 25px;
 
     > .placeholder {
       border-width: 1px;
@@ -36,7 +38,9 @@
 
   &.medium {
     width: 30px;
+    min-width: 30px;
     height: 30px;
+    min-height: 30px;
 
     > .placeholder {
       border-width: 2px;
@@ -46,7 +50,9 @@
 
   &.large {
     width: 60px;
+    min-width: 60px;
     height: 60px;
+    min-height: 60px;
 
     > .placeholder {
       border-width: 3px;
