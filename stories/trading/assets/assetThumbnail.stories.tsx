@@ -16,7 +16,7 @@ export default {
   component: AssetThumbnail,
   argTypes: {
     size: {
-      options: ['inline', 'narrow', 'small', 'big', 'full'],
+      options: ['inline', 'narrow', 'small', 'medium', 'big', 'full'],
       control: {
         type: 'select',
       },
@@ -69,7 +69,16 @@ const asset: Asset = {
 };
 
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({ size, theme }: Props) => (
-  <AssetThumbnail asset={asset} size={size} theme={theme} onClick={() => undefined} />
+  <div
+    style={{
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+    }}>
+    <div>
+      <AssetThumbnail asset={asset} size={size} theme={theme} onClick={() => undefined} />
+    </div>
+  </div>
 );
 
 export const Default = Template.bind({});

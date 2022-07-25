@@ -9,7 +9,7 @@ import PercentageVariation, { PercentageVariationSize } from '../../market/perce
 import FridayCoins, { FridayCoinsSize, FridayCoinsTheme } from '../../market/fridayCoins';
 import QuotationGraph from '../quotations/quotationGraph';
 
-export type AssetThumbnailSize = 'inline' | 'narrow' | 'small' | 'big' | 'full';
+export type AssetThumbnailSize = 'inline' | 'narrow' | 'small' | 'medium' | 'big' | 'full';
 
 export type AssetThumbnailTheme = 'default' | 'darker' | 'lighter';
 
@@ -32,6 +32,7 @@ export default function AssetThumbnail({
     switch (size) {
       case 'inline':
       case 'small':
+      case 'medium':
         return 'small';
       case 'big':
       case 'full':
@@ -53,6 +54,7 @@ export default function AssetThumbnail({
       case 'narrow':
       case 'inline':
       case 'small':
+      case 'medium':
         return 'small';
       case 'big':
       case 'full':
@@ -67,6 +69,7 @@ export default function AssetThumbnail({
       case 'inline':
       case 'narrow':
       case 'small':
+      case 'medium':
         return 'small';
       case 'big':
       case 'full':
