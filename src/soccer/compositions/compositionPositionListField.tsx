@@ -6,10 +6,10 @@ import {
   CompositionSetting,
   CompositionSettingPosition,
 } from '@fridaygame/client';
-import { useModals } from '@cezembre/fronts';
 import CompositionPositionList, { CompositionPositionListTheme } from './compositionPositionList';
 import PositionPlayerSelector from './positionPlayerSelector';
 import { GetPositionPlayersFunction } from './compositionPositionMapField';
+import { useModals } from '../../general/modal';
 
 export interface CompositionPositionListFieldValuePosition {
   id: string;
