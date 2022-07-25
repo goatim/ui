@@ -1,0 +1,67 @@
+@use '~@cezembre/fronts/dist/layouts';
+@use '~@cezembre/fronts/dist/containers';
+@use '~@cezembre/fronts/dist/screens';
+@use '../styles/colors';
+
+.friday-ui-modal {
+  @include layouts.modal;
+  transition: opacity linear 100ms, visibility linear 100ms;
+
+  * {
+    box-sizing: border-box;
+  }
+
+  &.pop-up {
+    box-sizing: border-box;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(colors.$blue, .3);
+    overflow-y: auto;
+
+    > .container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      min-height: 100%;
+      padding: 20px 20px 0;
+
+      @include screens.tablet-S {
+        align-items: flex-end;
+        padding: 20px 0 0;
+      }
+
+      > .element {
+        background: colors.$light-blue;
+        border-radius: 20px;
+        padding: 50px;
+
+        @include screens.tablet {
+          padding: 30px;
+        }
+
+        @include screens.tablet-S {
+          width: 100%;
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 0;
+          padding: 20px;
+
+          &:before {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 4px;
+            border-radius: 2px;
+            background: rgba(colors.$blue, .2);
+            margin: 0 auto;
+          }
+        }
+      }
+    }
+  }
+}

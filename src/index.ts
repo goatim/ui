@@ -33,6 +33,15 @@ import DatePicker from './general/datePicker';
 import TimePicker from './general/timePicker';
 import DateTimePicker from './general/dateTimePicker';
 import Upload from './general/upload';
+import {
+  ModalsContext,
+  useModals,
+  Modal,
+  ModalComponentProps,
+  ModalsState,
+  PushModalParams,
+  PushModalFunction,
+} from './general/modal';
 import UserThumbnail, { UserThumbnailSize, UserThumbnailInfos } from './auth/userThumbnail';
 import FridayCoins, { FridayCoinsTheme, FridayCoinsSize } from './market/fridayCoins';
 import FridayCoinsVariation, { FridayCoinsVariationSize } from './market/fridayCoinsVariation';
@@ -179,6 +188,8 @@ export {
   TimePicker,
   DateTimePicker,
   Upload,
+  ModalsContext,
+  useModals,
 };
 
 export type {
@@ -204,6 +215,11 @@ export type {
   TableColumn,
   TableSelection,
   TableItemAction,
+  Modal,
+  ModalComponentProps,
+  ModalsState,
+  PushModalParams,
+  PushModalFunction,
 };
 
 /**
