@@ -21,7 +21,7 @@ export default function PortfolioList({
   }
 
   return (
-    <div className="friday-ui-portfolio-list">
+    <div className={`friday-ui-portfolio-list ${size}`}>
       {portfolios.map((portfolio) => (
         <div key={portfolio.id} className="portfolio">
           <PortfolioThumbnail

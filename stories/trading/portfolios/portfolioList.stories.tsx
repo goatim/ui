@@ -2,9 +2,11 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { Asset, Player, Club, Portfolio, BoosterInUse } from '@fridaygame/client';
 import PortfolioList from '../../../src/trading/portfolios/portfolioList';
+import { PortfolioThumbnailSize } from '../../../src';
 
 interface Props {
   length?: number;
+  size?: PortfolioThumbnailSize;
 }
 
 export default {
@@ -14,6 +16,12 @@ export default {
     length: {
       control: {
         type: 'number',
+      },
+    },
+    size: {
+      control: {
+        type: 'select',
+        options: ['narrow', 'normal'],
       },
     },
   },
@@ -102,11 +110,12 @@ const portfolio: Portfolio = {
   total_variations: 1055,
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ length }: Props) => (
+const Template: ComponentStory<JSXElementConstructor<Props>> = ({ length, size }: Props) => (
   <PortfolioList
     portfolios={Array(length)
       .fill(portfolio)
       .map((p: Portfolio, index) => (index % 3 ? p : { ...p, boosters: [activeBoosterInUse] }))}
+    size={size}
   />
 );
 
