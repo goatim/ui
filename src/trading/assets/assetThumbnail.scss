@@ -21,6 +21,10 @@ a.friday-ui-asset-thumbnail {
   background: none;
   outline: none;
 
+  * {
+    box-sizing: border-box;
+  }
+
   > .quotation {
     width: calc(100% - 200px);
     position: absolute;
@@ -41,20 +45,17 @@ a.friday-ui-asset-thumbnail {
   &.narrow, &.small, &.medium, &.big, &.full {
     &.default {
       background: white;
-      outline: solid rgba(colors.$blue, .1) 1px;
-      outline-offset: -1px;
+      border: solid rgba(colors.$blue, .1) 1px;
     }
 
     &.darker {
       background: rgba(black, .2);
-      outline: solid rgba(black, .1) 1px;
-      outline-offset: -1px;
+      border: solid rgba(black, .1) 1px;
     }
 
     &.lighter {
       background: rgba(white, .2);
-      outline: solid rgba(white, .1) 1px;
-      outline-offset: -1px;
+      border: solid rgba(white, .1) 1px;
     }
 
     > .container {

@@ -85,7 +85,7 @@ export default function AssetOverview({
           />
         ) : null}
         <div className="metrics">
-          <span className="total_shares">
+          <span className="total-shares">
             {asset.total_shares || 0} action{asset.total_shares || 0 > 1 ? 's' : null}
           </span>
           <FridayCoins amount={asset.quotation} size={fridayCoinsSize} />

@@ -16,8 +16,9 @@
       justify-content: center;
       align-items: flex-end;
 
-      > .total_shares {
-        @include fonts.Inter(.8em, rgba(colors.$blue, .5))
+      > .total-shares {
+        @include fonts.Inter(.8em, rgba(colors.$blue, .5));
+        text-align: right;
       }
     }
   }
