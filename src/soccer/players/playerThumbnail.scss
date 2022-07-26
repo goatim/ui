@@ -1,7 +1,9 @@
 @use '../../styles/fonts';
 @use '../../styles/colors';
 
-button.friday-ui-player-thumbnail {
+button.friday-ui-player-thumbnail,
+a.friday-ui-player-thumbnail
+{
   cursor: pointer;
 }
 
@@ -14,12 +16,11 @@ button.friday-ui-player-thumbnail {
   font-size: 1em;
   background: none;
 
-  > .infos {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    margin-left: 10px;
+  * {
+    box-sizing: border-box;
+  }
 
+  > .infos {
     > .number {
       @include fonts.Inter(.8em, colors.$blue);
       opacity: .5;
@@ -27,33 +28,23 @@ button.friday-ui-player-thumbnail {
 
     > .name {
       @include fonts.Inter(.8em, colors.$blue, bold);
-      margin-left: 5px;
     }
   }
 
-  &.medium > .infos > span {
-    font-size: .9em;
-
-    &.name {
-      margin-left: 8px;
-    }
-  }
-
-  &.big {
+  &.inline {
     > .infos {
-      margin-left: 15px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin-left: 10px;
 
-      > span {
-        font-size: 1em;
-
-        &.name {
-          margin-left: 8px;
-        }
+      > .name {
+        margin-left: 5px;
       }
     }
   }
 
-  &.full {
+  &.extended {
     flex-direction: column;
     align-items: flex-start;
 
@@ -61,7 +52,7 @@ button.friday-ui-player-thumbnail {
       margin: 0;
 
       > .number {
-        font-size: .8em;
+        font-weight: bold;
       }
 
       > .position {
@@ -73,8 +64,8 @@ button.friday-ui-player-thumbnail {
     }
 
     > .name {
-      @include fonts.Inter(1.5em, colors.$blue, 900);
-      margin: 10px 0 0;
+      @include fonts.Inter(1em, colors.$blue, 900);
+      margin: 5px 0 0;
       padding: 0;
     }
 
@@ -82,16 +73,44 @@ button.friday-ui-player-thumbnail {
       margin-top: 10px;
       text-decoration: none;
     }
+  }
 
-    &.light > .name {
-      color: white;
+  &.medium {
+    > .infos {
+      > span {
+        font-size: .9em;
+      }
+    }
+
+    > .name {
+      font-size: 1.2em;
+      margin: 8px 0 0;
     }
   }
 
-  &.light > .infos > span {
-    color: white;
+  &.big {
+    > .infos {
+      > span {
+        font-size: 1em;
+      }
+    }
 
-    &.position {
+    > .name {
+      font-size: 1.5em;
+      margin: 10px 0 0;
+    }
+  }
+
+  &.light {
+    > .infos {
+      color: white;
+
+      > span {
+        color: white;
+      }
+    }
+
+    > .name {
       color: white;
     }
   }

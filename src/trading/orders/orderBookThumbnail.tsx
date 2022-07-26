@@ -2,13 +2,16 @@ import { ReactElement } from 'react';
 import { OrderBook } from '@fridaygame/client';
 import FridayCoins from '../../market/fridayCoins';
 
+export type OrderBookThumbnailSize = 'narrow' | 'small' | 'medium' | 'big';
+
 export interface Props {
   orderBook?: OrderBook;
+  size?: OrderBookThumbnailSize;
 }
 
-export default function OrderBookThumbnail({ orderBook }: Props): ReactElement {
+export default function OrderBookThumbnail({ orderBook, size = 'medium' }: Props): ReactElement {
   return (
-    <div className="friday-ui-order-book-thumbnail">
+    <div className={`friday-ui-order-book-thumbnail ${size}`}>
       <div className="aggregated-orders buying">
         {orderBook?.buying?.length ? (
           <table>
@@ -38,7 +41,7 @@ export default function OrderBookThumbnail({ orderBook }: Props): ReactElement {
           </table>
         ) : (
           <div className="no-order">
-            <span>Aucun ordre d'achat</span>
+            <span>Aucun ordre d&apos;achat</span>
           </div>
         )}
       </div>
@@ -47,9 +50,9 @@ export default function OrderBookThumbnail({ orderBook }: Props): ReactElement {
           <table>
             <thead>
               <tr>
-                <th>Vente</th>
+                <th>{size !== 'narrow' ? 'Vente' : 'Ordres'}</th>
                 <th>Quantité</th>
-                <th>Ordres</th>
+                <th>{size !== 'narrow' ? 'Ordres' : 'Vente'}</th>
               </tr>
             </thead>
 
@@ -57,13 +60,21 @@ export default function OrderBookThumbnail({ orderBook }: Props): ReactElement {
               {orderBook.selling.map((order) => (
                 <tr key={order.price_limit}>
                   <td>
-                    <FridayCoins amount={order.price_limit} size="small" />
+                    {size !== 'narrow' ? (
+                      <FridayCoins amount={order.price_limit} size="small" />
+                    ) : (
+                      <span className="data">{order.nb_orders}</span>
+                    )}
                   </td>
                   <td>
                     <span className="data">{order.total_shares}</span>
                   </td>
                   <td>
-                    <span className="data">{order.nb_orders}</span>
+                    {size !== 'narrow' ? (
+                      <span className="data">{order.nb_orders}</span>
+                    ) : (
+                      <FridayCoins amount={order.price_limit} size="small" />
+                    )}
                   </td>
                 </tr>
               ))}

@@ -1,4 +1,4 @@
-import { ReactElement, useCallback, useState } from 'react';
+import { ReactElement, useCallback, useMemo, useState } from 'react';
 import { Form, Field, FormErrors, FormState, FormContext, FormFields } from '@cezembre/forms';
 import {
   adaptFridayCoins,
@@ -12,7 +12,9 @@ import BoosterIcon from '../../trading/boosters/boosterIcon';
 import Radio from '../../general/radio';
 import Button from '../../general/button';
 import Counter from '../../general/counter';
-import OrderBookThumbnail from '../../trading/orders/orderBookThumbnail';
+import OrderBookThumbnail, {
+  OrderBookThumbnailSize,
+} from '../../trading/orders/orderBookThumbnail';
 
 export interface OrderItemEditorFields extends FormFields {
   asset?: Asset | string;
@@ -22,6 +24,8 @@ export interface OrderItemEditorFields extends FormFields {
   booster?: string;
 }
 
+export type OrderItemEditorSize = 'narrow' | 'big';
+
 export interface Props {
   initialOrderItem?: OrderItemEditorFields;
   orderBook?: OrderBook;
@@ -29,6 +33,7 @@ export interface Props {
   onSubmit?: (orderItem: OrderItemEditorFields) => Promise<void> | void;
   onCancel?: () => void;
   label?: string;
+  size?: OrderItemEditorSize;
 }
 
 export default function OrderItemEditor({
@@ -38,6 +43,7 @@ export default function OrderItemEditor({
   onSubmit,
   onCancel,
   label = 'Continuer',
+  size = 'big',
 }: Props): ReactElement | null {
   const [formState, setFormState] = useState<FormState<OrderItemEditorFields> | undefined>();
 
@@ -59,10 +65,19 @@ export default function OrderItemEditor({
     return errors;
   }, []);
 
+  const orderBookThumbnailSize = useMemo<OrderBookThumbnailSize>(() => {
+    switch (size) {
+      case 'narrow':
+        return 'narrow';
+      default:
+        return 'big';
+    }
+  }, [size]);
+
   return (
     <Form<OrderItemEditorFields>
       ref={form}
-      className="friday-ui-order-item-editor"
+      className={`friday-ui-order-item-editor ${size}`}
       onSubmit={onSubmit}
       validate={validate}>
       <h1>
@@ -99,7 +114,7 @@ export default function OrderItemEditor({
           />
         </div>
 
-        <div className="option">
+        <div className="counter">
           <Field<number | undefined>
             name="price_limit"
             label="Limite (FDY)"
@@ -114,7 +129,7 @@ export default function OrderItemEditor({
       </div>
 
       <div className="order-book">
-        <OrderBookThumbnail orderBook={orderBook} />
+        <OrderBookThumbnail orderBook={orderBook} size={orderBookThumbnailSize} />
       </div>
 
       {boosters && formState?.values?.order_type === 'buy' ? (

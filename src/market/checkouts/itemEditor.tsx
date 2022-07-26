@@ -1,12 +1,14 @@
-import { ReactElement, useCallback } from 'react';
+import { ReactElement, useCallback, useMemo } from 'react';
 import { Booster, ItemType, OrderBook } from '@fridaygame/client';
 import { FormFields } from '@cezembre/forms';
-import OrderItemEditor, { OrderItemEditorFields } from './orderItemEditor';
+import OrderItemEditor, { OrderItemEditorFields, OrderItemEditorSize } from './orderItemEditor';
 
 export interface ItemEditorFields extends FormFields {
   type?: ItemType;
   order?: OrderItemEditorFields;
 }
+
+export type ItemEditorSize = 'narrow' | 'small' | 'medium' | 'big';
 
 export interface Props {
   initialItem?: ItemEditorFields;
@@ -14,6 +16,7 @@ export interface Props {
   boosters?: Booster[];
   onSubmit?: (item: ItemEditorFields) => Promise<void> | void;
   onCancel?: () => void;
+  size?: ItemEditorSize;
 }
 
 export default function ItemEditor({
@@ -22,6 +25,7 @@ export default function ItemEditor({
   boosters,
   onSubmit,
   onCancel,
+  size = 'big',
 }: Props): ReactElement | null {
   const onSubmitOrderItem = useCallback(
     async (orderItemFields: OrderItemEditorFields) => {
@@ -34,6 +38,15 @@ export default function ItemEditor({
     },
     [initialItem, onSubmit],
   );
+
+  const orderItemEditorSize = useMemo<OrderItemEditorSize>(() => {
+    switch (size) {
+      case 'narrow':
+        return 'narrow';
+      default:
+        return 'big';
+    }
+  }, [size]);
 
   if (!initialItem) {
     return null; // TODO : Create new item
@@ -52,6 +65,7 @@ export default function ItemEditor({
         boosters={boosters}
         onSubmit={onSubmitOrderItem}
         onCancel={onCancel}
+        size={orderItemEditorSize}
       />
     );
   }

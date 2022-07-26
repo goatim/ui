@@ -34,7 +34,7 @@
     justify-content: center;
 
     > .counter {
-      margin-left: 50px;
+      margin-left: 20px;
 
       &:first-of-type {
         margin: 0;
@@ -81,6 +81,20 @@
 
       &:first-of-type {
         margin: 0;
+      }
+    }
+  }
+
+  &.narrow {
+    > .counters {
+      flex-direction: column;
+
+      > .counter {
+        margin: 20px 0 0;
+
+        &:first-of-type {
+          margin: 0;
+        }
       }
     }
   }

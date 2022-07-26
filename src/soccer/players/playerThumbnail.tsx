@@ -5,13 +5,16 @@ import { Wrapper, WrapperProps } from '@cezembre/fronts';
 import ClubIcon, { ClubIconSize } from '../clubs/clubIcon';
 import ClubThumbnail, { ClubThumbnailTheme } from '../clubs/clubThumbnail';
 
-export type PlayerThumbnailSize = 'small' | 'medium' | 'big' | 'full';
+export type PlayerThumbnailSize = 'small' | 'medium' | 'big';
+
+export type PlayerThumbnailFormat = 'inline' | 'extended';
 
 export type PlayerThumbnailTheme = 'default' | 'light';
 
 export interface Props extends WrapperProps {
   player: Player;
   size?: PlayerThumbnailSize;
+  format?: PlayerThumbnailFormat;
   theme?: ClubThumbnailTheme;
   clubTo?: To;
 }
@@ -19,6 +22,7 @@ export interface Props extends WrapperProps {
 export default function PlayerThumbnail({
   player,
   size = 'small',
+  format = 'inline',
   theme = 'default',
   to,
   onClick,
@@ -36,9 +40,27 @@ export default function PlayerThumbnail({
     }
   }, [size]);
 
-  if (size === 'full') {
+  const className = useMemo<string>(() => {
+    let nextClassName = 'friday-ui-player-thumbnail';
+
+    if (format) {
+      nextClassName += ` ${format}`;
+    }
+
+    if (size) {
+      nextClassName += ` ${size}`;
+    }
+
+    if (theme) {
+      nextClassName += ` ${theme}`;
+    }
+
+    return nextClassName;
+  }, [format, size, theme]);
+
+  if (format === 'extended') {
     return (
-      <div className={`friday-ui-player-thumbnail full ${theme}`}>
+      <Wrapper className={className} to={to} onClick={onClick} href={href} target={target}>
         <div className="infos">
           <span className="number">{player.number}</span>
           <span className="position">{player.resolved_position}</span>
@@ -46,20 +68,15 @@ export default function PlayerThumbnail({
         <h1 className="name">{player.name}</h1>
         {player.club && typeof player.club === 'object' ? (
           <div className="club">
-            <ClubThumbnail club={player.club} theme={theme} to={clubTo} />
+            <ClubThumbnail club={player.club} theme={theme} to={clubTo} size="small" />
           </div>
         ) : null}
-      </div>
+      </Wrapper>
     );
   }
 
   return (
-    <Wrapper
-      className={`friday-ui-player-thumbnail ${size} ${theme}`}
-      to={to}
-      onClick={onClick}
-      href={href}
-      target={target}>
+    <Wrapper className={className} to={to} onClick={onClick} href={href} target={target}>
       <ClubIcon
         icon={player.club && typeof player.club === 'object' ? player.club.icon : undefined}
         size={clubIconSize}

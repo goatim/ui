@@ -81,4 +81,48 @@
       }
     }
   }
+
+  &.narrow {
+    flex-direction: column;
+    border-radius: 10px;
+
+    > .aggregated-orders {
+      padding: 10px;
+
+      > table {
+        th {
+          padding-bottom: 5px;
+        }
+      }
+
+      &.selling {
+        border-left: none;
+        border-top: solid rgba(colors.$blue, .1) 1px;
+
+        > table {
+          th, td {
+            text-align: left;
+
+            &:last-of-type {
+              text-align: right;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.small {
+    border-radius: 15px;
+
+    > .aggregated-orders {
+      padding: 15px;
+
+      > table {
+        th {
+          padding-bottom: 10px;
+        }
+      }
+    }
+  }
 }

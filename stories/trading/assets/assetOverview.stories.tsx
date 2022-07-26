@@ -1,9 +1,11 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { Asset, Player, Club, Booster } from '@fridaygame/client';
-import AssetOverview from '../../../src/trading/assets/assetOverview';
+import AssetOverview, { AssetOverviewSize } from '../../../src/trading/assets/assetOverview';
 
-interface Props {}
+interface Props {
+  size: AssetOverviewSize;
+}
 
 export default {
   title: 'Trading/AssetOverview',
@@ -12,7 +14,7 @@ export default {
     size: {
       control: {
         type: 'select',
-        options: ['small', 'medium', 'large'],
+        options: ['small', 'medium', 'big'],
       },
     },
   },
@@ -83,8 +85,8 @@ const boosters: Booster[] = [
   },
 ];
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
-  <AssetOverview asset={asset} boosters={boosters} />
+const Template: ComponentStory<JSXElementConstructor<Props>> = ({ size }: Props) => (
+  <AssetOverview asset={asset} boosters={boosters} size={size} />
 );
 
 export const Default = Template.bind({});

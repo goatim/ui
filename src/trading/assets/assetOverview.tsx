@@ -1,14 +1,14 @@
-import { ReactElement, useState } from 'react';
+import { ReactElement, useMemo, useState } from 'react';
 import { Asset, Booster, OrderBook, OrderType } from '@fridaygame/client';
 import { To } from 'react-router-dom';
-import PlayerThumbnail from '../../soccer/players/playerThumbnail';
+import PlayerThumbnail, { PlayerThumbnailSize } from '../../soccer/players/playerThumbnail';
 import QuotationGraph from '../quotations/quotationGraph';
-import FridayCoins from '../../market/fridayCoins';
-import PercentageVariation from '../../market/percentageVariation';
+import FridayCoins, { FridayCoinsSize } from '../../market/fridayCoins';
+import PercentageVariation, { PercentageVariationSize } from '../../market/percentageVariation';
 import Button from '../../general/button';
 import ItemEditor, { ItemEditorFields } from '../../market/checkouts/itemEditor';
 
-export type AssetOverviewSize = 'small' | 'medium' | 'large';
+export type AssetOverviewSize = 'small' | 'medium' | 'big';
 
 export interface Props {
   asset: Asset;
@@ -29,18 +29,56 @@ export default function AssetOverview({
 }: Props): ReactElement {
   const [orderType, setOrderType] = useState<OrderType | undefined>();
 
+  const playerThumbnailSize = useMemo<PlayerThumbnailSize>(() => {
+    switch (size) {
+      case 'big':
+        return 'big';
+      case 'medium':
+        return 'medium';
+      default:
+        return 'small';
+    }
+  }, [size]);
+
+  const fridayCoinsSize = useMemo<FridayCoinsSize>(() => {
+    switch (size) {
+      case 'big':
+        return 'large';
+      case 'medium':
+        return 'big';
+      default:
+        return 'medium';
+    }
+  }, [size]);
+
+  const percentageVariationSize = useMemo<PercentageVariationSize>(() => {
+    switch (size) {
+      case 'big':
+        return 'big';
+      case 'medium':
+        return 'medium';
+      default:
+        return 'small';
+    }
+  }, [size]);
+
   return (
     <div className={`friday-ui-asset-overview ${size}`}>
       <div className="header">
         {asset.type === 'player' && asset.player && typeof asset.player === 'object' ? (
-          <PlayerThumbnail player={asset.player} size="full" clubTo={clubTo} />
+          <PlayerThumbnail
+            player={asset.player}
+            format="extended"
+            size={playerThumbnailSize}
+            clubTo={clubTo}
+          />
         ) : null}
         <div className="metrics">
           <span className="total_shares">
             {asset.total_shares || 0} action{asset.total_shares || 0 > 1 ? 's' : null}
           </span>
-          <FridayCoins amount={asset.quotation} size="large" />
-          <PercentageVariation variation={asset.session_variation} size="big" />
+          <FridayCoins amount={asset.quotation} size={fridayCoinsSize} />
+          <PercentageVariation variation={asset.session_variation} size={percentageVariationSize} />
         </div>
       </div>
 

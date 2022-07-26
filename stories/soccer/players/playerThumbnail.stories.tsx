@@ -3,12 +3,14 @@ import { JSXElementConstructor } from 'react';
 import { Player, Club } from '@fridaygame/client';
 import { BrowserRouter } from 'react-router-dom';
 import PlayerThumbnail, {
+  PlayerThumbnailFormat,
   PlayerThumbnailSize,
   PlayerThumbnailTheme,
 } from '../../../src/soccer/players/playerThumbnail';
 
 interface Props {
   size?: PlayerThumbnailSize;
+  format?: PlayerThumbnailFormat;
   theme?: PlayerThumbnailTheme;
   clubTo?: string;
 }
@@ -18,7 +20,13 @@ export default {
   component: PlayerThumbnail,
   argTypes: {
     size: {
-      options: ['small', 'medium', 'big', 'full'],
+      options: ['small', 'medium', 'big'],
+      control: {
+        type: 'select',
+      },
+    },
+    format: {
+      options: ['inline', 'extended'],
       control: {
         type: 'select',
       },
@@ -62,15 +70,15 @@ const player: Player = {
   textual_position: 'Attaquant centre',
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ size, theme, clubTo }: Props) => (
+const Template: ComponentStory<JSXElementConstructor<Props>> = ({
+  size,
+  format,
+  theme,
+  clubTo,
+}: Props) => (
   <BrowserRouter>
-    <PlayerThumbnail player={player} size={size} theme={theme} clubTo={clubTo} />
+    <PlayerThumbnail player={player} size={size} theme={theme} format={format} clubTo={clubTo} />
   </BrowserRouter>
 );
 
 export const Default = Template.bind({});
-
-Default.args = {
-  size: 'small',
-  theme: 'default',
-};

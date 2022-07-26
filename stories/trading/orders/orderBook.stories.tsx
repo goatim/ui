@@ -1,14 +1,25 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { OrderBook } from '@fridaygame/client';
-import OrderBookThumbnail from '../../../src/trading/orders/orderBookThumbnail';
+import OrderBookThumbnail, {
+  OrderBookThumbnailSize,
+} from '../../../src/trading/orders/orderBookThumbnail';
 
-interface Props {}
+interface Props {
+  size?: OrderBookThumbnailSize;
+}
 
 export default {
   title: 'Trading/OrderBookThumbnail',
   component: OrderBookThumbnail,
-  argTypes: {},
+  argTypes: {
+    size: {
+      control: {
+        type: 'select',
+        options: ['narrow', 'small', 'medium', 'big'],
+      },
+    },
+  },
 } as ComponentMeta<JSXElementConstructor<Props>>;
 
 const orderBook: OrderBook = {
@@ -18,26 +29,26 @@ const orderBook: OrderBook = {
       total_shares: 450,
       price_limit: 45000,
     },
-    // {
-    //   nb_orders: 6,
-    //   total_shares: 7850,
-    //   price_limit: 44200,
-    // },
-    // {
-    //   nb_orders: 10,
-    //   total_shares: 658,
-    //   price_limit: 44100,
-    // },
-    // {
-    //   nb_orders: 3,
-    //   total_shares: 47,
-    //   price_limit: 40000,
-    // },
-    // {
-    //   nb_orders: 56,
-    //   total_shares: 9892,
-    //   price_limit: 39000,
-    // },
+    {
+      nb_orders: 6,
+      total_shares: 7850,
+      price_limit: 44200,
+    },
+    {
+      nb_orders: 10,
+      total_shares: 658,
+      price_limit: 44100,
+    },
+    {
+      nb_orders: 3,
+      total_shares: 47,
+      price_limit: 40000,
+    },
+    {
+      nb_orders: 56,
+      total_shares: 9892,
+      price_limit: 39000,
+    },
   ],
   selling: [
     {
@@ -67,8 +78,9 @@ const orderBook: OrderBook = {
     },
   ],
 };
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
-  <OrderBookThumbnail orderBook={orderBook} />
+
+const Template: ComponentStory<JSXElementConstructor<Props>> = ({ size }: Props) => (
+  <OrderBookThumbnail orderBook={orderBook} size={size} />
 );
 
 export const Default = Template.bind({});
