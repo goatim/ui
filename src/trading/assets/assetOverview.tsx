@@ -6,7 +6,7 @@ import QuotationGraph from '../quotations/quotationGraph';
 import FridayCoins, { FridayCoinsSize } from '../../market/fridayCoins';
 import PercentageVariation, { PercentageVariationSize } from '../../market/percentageVariation';
 import Button from '../../general/button';
-import ItemEditor, { ItemEditorFields } from '../../market/checkouts/itemEditor';
+import ItemEditor, { ItemEditorFields, ItemEditorSize } from '../../market/checkouts/itemEditor';
 
 export type AssetOverviewSize = 'small' | 'medium' | 'big';
 
@@ -62,6 +62,17 @@ export default function AssetOverview({
     }
   }, [size]);
 
+  const itemEditorSize = useMemo<ItemEditorSize>(() => {
+    switch (size) {
+      case 'small':
+        return 'narrow';
+      case 'medium':
+        return 'medium';
+      default:
+        return 'big';
+    }
+  }, [size]);
+
   return (
     <div className={`friday-ui-asset-overview ${size}`}>
       <div className="header">
@@ -114,6 +125,7 @@ export default function AssetOverview({
           boosters={boosters}
           onSubmit={onSubmitItem}
           onCancel={() => setOrderType(undefined)}
+          size={itemEditorSize}
         />
       </div>
     </div>
