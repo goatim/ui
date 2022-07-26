@@ -68,4 +68,19 @@
       stroke: colors.$blue;
     }
   }
+
+  &.narrow {
+    > .container {
+      flex-direction: column;
+
+      > .cell {
+        margin-left: 0;
+        margin-top: 20px;
+
+        &:first-of-type {
+          margin: 0;
+        }
+      }
+    }
+  }
 }

@@ -1,13 +1,14 @@
 import { ReactElement } from 'react';
 import { Order } from '@fridaygame/client';
-import OrderThumbnail from './orderThumbnail';
+import OrderThumbnail, { OrderThumbnailSize } from './orderThumbnail';
 
 export interface Props {
   orders?: Order[];
   onCancelOrder?: (order: Order) => unknown;
+  size?: OrderThumbnailSize;
 }
 
-export default function OrderList({ orders, onCancelOrder }: Props): ReactElement {
+export default function OrderList({ orders, onCancelOrder, size }: Props): ReactElement {
   if (!orders?.length) {
     return <span>Aucun order en cours</span>;
   }
@@ -19,6 +20,7 @@ export default function OrderList({ orders, onCancelOrder }: Props): ReactElemen
           <OrderThumbnail
             order={order}
             onCancel={onCancelOrder ? () => onCancelOrder(order) : undefined}
+            size={size}
           />
         </div>
       ))}

@@ -1,10 +1,11 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { Asset, Player, Club, Order, Booster, OrderType } from '@fridaygame/client';
-import OrderThumbnail from '../../../src/trading/orders/orderThumbnail';
+import OrderThumbnail, { OrderThumbnailSize } from '../../../src/trading/orders/orderThumbnail';
 
 interface Props {
   type?: OrderType;
+  size?: OrderThumbnailSize;
   booster_selected?: boolean;
   has_booster_in_wallet?: boolean;
   on_cancel_defined?: boolean;
@@ -16,6 +17,12 @@ export default {
   argTypes: {
     type: {
       options: ['buy', 'sell'],
+      control: {
+        type: 'select',
+      },
+    },
+    size: {
+      options: ['narrow', 'normal'],
       control: {
         type: 'select',
       },
@@ -96,6 +103,7 @@ const order: Order = {
 
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({
   type,
+  size,
   booster_selected,
   has_booster_in_wallet,
   on_cancel_defined,
@@ -110,6 +118,7 @@ const Template: ComponentStory<JSXElementConstructor<Props>> = ({
           : undefined,
     }}
     onCancel={on_cancel_defined ? () => undefined : undefined}
+    size={size}
   />
 );
 

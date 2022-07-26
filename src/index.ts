@@ -54,17 +54,20 @@ import WalletThumbnail, {
   WalletThumbnailSize,
 } from './market/wallets/walletThumbnail';
 import WalletTeam from './market/wallets/walletTeam';
-import WalletMetrics from './market/wallets/walletMetrics';
-import WalletOverview from './market/wallets/walletOverview';
+import WalletMetrics, { WalletMetricsSize } from './market/wallets/walletMetrics';
+import WalletOverview, { WalletOverviewSize } from './market/wallets/walletOverview';
 import WalletList from './market/wallets/walletList';
 import WalletRanking, { WalletRankingTheme } from './market/wallets/walletRanking';
-import ItemEditor, { ItemEditorFields } from './market/checkouts/itemEditor';
-import OrderItemEditor, { OrderItemEditorFields } from './market/checkouts/orderItemEditor';
-import OrderItemThumbnail from './market/checkouts/orderItemThumbnail';
-import ItemThumbnail from './market/checkouts/itemThumbnail';
+import ItemEditor, { ItemEditorFields, ItemEditorSize } from './market/checkouts/itemEditor';
+import OrderItemEditor, {
+  OrderItemEditorFields,
+  OrderItemEditorSize,
+} from './market/checkouts/orderItemEditor';
+import OrderItemThumbnail, { OrderItemThumbnailSize } from './market/checkouts/orderItemThumbnail';
+import ItemThumbnail, { ItemThumbnailSize } from './market/checkouts/itemThumbnail';
 import ItemList from './market/checkouts/itemList';
-import CartResume from './market/cartResume';
-import CartOverview from './market/cartOverview';
+import CartResume, { CartResumeSize } from './market/cartResume';
+import CartOverview, { CartOverviewSize } from './market/cartOverview';
 import CheckoutBill from './market/checkouts/checkoutBill';
 import LeagueIcon, { LeagueIconSize } from './soccer/leagues/leagueIcon';
 import LeagueThumbnail, {
@@ -77,9 +80,10 @@ import ClubList from './soccer/clubs/clubList';
 import PlayerThumbnail, {
   PlayerThumbnailSize,
   PlayerThumbnailTheme,
+  PlayerThumbnailFormat,
 } from './soccer/players/playerThumbnail';
 import PlayerList from './soccer/players/playerList';
-import SpotlightThumbnail from './soccer/spotlights/spotlightThumbnail';
+import SpotlightThumbnail, { SpotlightThumbnailSize } from './soccer/spotlights/spotlightThumbnail';
 import SoccerField, { SoccerFieldTheme } from './soccer/compositions/soccerField';
 import SoccerFieldPosition, {
   SoccerFieldPositionSize,
@@ -119,11 +123,11 @@ import AssetThumbnail, {
   AssetThumbnailSize,
   AssetThumbnailTheme,
 } from './trading/assets/assetThumbnail';
-import AssetOverview from './trading/assets/assetOverview';
+import AssetOverview, { AssetOverviewSize } from './trading/assets/assetOverview';
 import BoosterIcon, { BoosterIconSize, BoosterIconInfos } from './trading/boosters/boosterIcon';
 import BoosterInUseThumbnail from './trading/boosters/boosterInUseThumbnail';
 import BoosterInUseStack from './trading/boosters/boosterInUseStack';
-import OrderThumbnail from './trading/orders/orderThumbnail';
+import OrderThumbnail, { OrderThumbnailSize } from './trading/orders/orderThumbnail';
 import OrderBookThumbnail from './trading/orders/orderBookThumbnail';
 import OrderList from './trading/orders/orderList';
 import ShareBulkThumbnail from './trading/shareBulks/shareBulkThumbnail';
@@ -131,7 +135,9 @@ import ShareBulkList from './trading/shareBulks/shareBulkList';
 import PackIcon from './trading/packs/packIcon';
 import PackThumbnail from './trading/packs/packThumbnail';
 import PackModal from './trading/packs/packModal';
-import PortfolioThumbnail from './trading/portfolios/portfolioThumbnail';
+import PortfolioThumbnail, {
+  PortfolioThumbnailSize,
+} from './trading/portfolios/portfolioThumbnail';
 import PortfolioList from './trading/portfolios/portfolioList';
 import QuotationGraph, { DataPoint } from './trading/quotations/quotationGraph';
 import TransactionThumbnail from './trading/transactions/transactionThumbnail';
@@ -228,7 +234,7 @@ export type {
 
 export { UserThumbnail };
 
-export type { UserThumbnailInfos, UserThumbnailSize };
+export type { UserThumbnailInfos, UserThumbnailSize, WalletMetricsSize, WalletOverviewSize };
 
 /**
  * Market
@@ -265,6 +271,12 @@ export type {
   ItemEditorFields,
   OrderItemEditorFields,
   WalletRankingTheme,
+  ItemEditorSize,
+  OrderItemEditorSize,
+  OrderItemThumbnailSize,
+  ItemThumbnailSize,
+  CartResumeSize,
+  CartOverviewSize,
 };
 
 /**
@@ -320,6 +332,8 @@ export type {
   PhysicalEventTimelineTheme,
   MatchBoardTheme,
   CompositionRankingTheme,
+  PlayerThumbnailFormat,
+  SpotlightThumbnailSize,
 };
 
 /**
@@ -357,6 +371,9 @@ export type {
   BoosterIconInfos,
   DataPoint,
   DividendThumbnailTheme,
+  AssetOverviewSize,
+  PortfolioThumbnailSize,
+  OrderThumbnailSize,
 };
 
 /**
