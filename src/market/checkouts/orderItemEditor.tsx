@@ -123,7 +123,7 @@ export default function OrderItemEditor({
             initialValue={initialOrderItem?.price_limit}
             resolver={resolveFridayCoins}
             adapter={adaptFridayCoins}
-            step={100}
+            increment={100}
           />
         </div>
       </div>

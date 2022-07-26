@@ -18,8 +18,8 @@ import Table, {
 } from './general/table';
 import CreditCardInput from './payment/creditCardInput';
 import Input, {
-  Adapter,
-  Resolver,
+  InputAdapter,
+  InputResolver,
   InputType,
   InputShape,
   InputTheme,
@@ -203,8 +203,8 @@ export type {
   InputType,
   InputShape,
   InputTheme,
-  Adapter,
-  Resolver,
+  InputAdapter,
+  InputResolver,
   Suggestion,
   SelectOptionProps,
   SelectType,

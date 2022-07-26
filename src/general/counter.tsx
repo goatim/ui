@@ -1,17 +1,19 @@
 import { useCallback, ReactElement, ChangeEvent, useMemo } from 'react';
 import { FieldComponentProps } from '@cezembre/forms';
-import { Adapter, Resolver } from './input';
 import Icon from './icon';
 
+export type CounterTransformationFunction = (value: number | undefined) => number | undefined;
+
 export interface Props extends FieldComponentProps<number | undefined> {
-  adapter?: Adapter<number | undefined>;
-  resolver?: Resolver<number | undefined>;
-  format?: Resolver<number | undefined>;
+  adapter?: CounterTransformationFunction;
+  resolver?: CounterTransformationFunction;
+  format?: CounterTransformationFunction;
   label?: string;
   placeholder?: string;
   instructions?: string;
   min?: number;
   max?: number;
+  increment?: number;
   step?: number;
 }
 
@@ -35,6 +37,7 @@ export default function Counter({
   instructions,
   min = 0,
   max,
+  increment = 1,
   step = 1,
 }: Props): ReactElement {
   const className = useMemo<string>(() => {
@@ -61,28 +64,41 @@ export default function Counter({
 
   const change = useCallback(
     (event: ChangeEvent<{ value: string }>) => {
+      const resolvedValue = event.target.value ? Number(event.target.value) : undefined;
       if (adapter) {
-        onChange(adapter(event.target.value));
+        onChange(adapter(resolvedValue));
       } else {
-        onChange(event.target.value.length ? Number(event.target.value) : undefined);
+        onChange(resolvedValue);
       }
     },
     [adapter, onChange],
   );
 
   const increase = useCallback(() => {
-    const nextValue: number = (value || 0) + (step || 1);
+    const nextValue: number = (value || 0) + (increment || 1);
     if (max === undefined || nextValue <= max) {
       onChange(nextValue);
     }
-  }, [max, onChange, step, value]);
+  }, [max, onChange, increment, value]);
 
   const decrease = useCallback(() => {
-    const nextValue: number = (value || 0) - (step || 1);
+    const nextValue: number = (value || 0) - (increment || 1);
     if (min === undefined || nextValue >= min) {
       onChange(nextValue);
     }
-  }, [min, onChange, step, value]);
+  }, [min, onChange, increment, value]);
+
+  const internalValue = useMemo<string>(() => {
+    let nextValue: number | undefined;
+    if (!isActive && format) {
+      nextValue = format(value);
+    } else if (resolver) {
+      nextValue = resolver(value);
+    } else if (value !== undefined) {
+      nextValue = value;
+    }
+    return nextValue !== undefined ? nextValue.toString() : '';
+  }, [format, isActive, resolver, value]);
 
   return (
     <div className={className}>
@@ -94,10 +110,7 @@ export default function Counter({
         </button>
         <input
           name={name}
-          value={
-            // eslint-disable-next-line no-nested-ternary
-            !isActive && format ? format(value) : resolver ? resolver(value) : value?.toString()
-          }
+          value={internalValue}
           type="number"
           placeholder={placeholder !== undefined ? placeholder : ''}
           autoComplete="off"

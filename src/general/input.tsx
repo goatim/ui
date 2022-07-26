@@ -74,8 +74,8 @@ export type InputShape = 'square' | 'round';
 
 export type InputTheme = 'default' | 'darker' | 'lighter' | 'dark';
 
-export type Adapter<V = string> = (value: string) => V;
-export type Resolver<V = string> = (value?: V) => string | number;
+export type InputAdapter<V = string> = (value: string) => V;
+export type InputResolver<V = string> = (value?: V) => string;
 
 export interface Suggestion<V = string> {
   value: V;
@@ -104,9 +104,9 @@ function DefaultSuggestion<V = string, S extends Suggestion<V> = Suggestion<V>>(
 
 export interface Props<V = string, S extends Suggestion<V> = Suggestion<V>>
   extends FieldComponentProps<V> {
-  adapter?: Adapter<V>;
-  resolver?: Resolver<V>;
-  format?: Resolver<V>;
+  adapter?: InputAdapter<V>;
+  resolver?: InputResolver<V>;
+  format?: InputResolver<V>;
   type?: InputType | string;
   shape?: InputShape;
   theme?: InputTheme;
@@ -309,6 +309,22 @@ export default function Input<V = string, S extends Suggestion<V> = Suggestion<V
 
   let nextedIndex = -1;
 
+  const internalValue = useMemo<string>(() => {
+    if (!isActive && format) {
+      return format(value);
+    }
+    if (resolver) {
+      return resolver(value);
+    }
+    if (typeof value === 'number') {
+      return value.toString();
+    }
+    if (typeof value === 'string') {
+      return value;
+    }
+    return '';
+  }, [format, isActive, resolver, value]);
+
   return (
     <div className={className}>
       {label ? <label htmlFor={name}>{label}</label> : null}
@@ -319,17 +335,7 @@ export default function Input<V = string, S extends Suggestion<V> = Suggestion<V
         <input
           ref={inputRef}
           name={name}
-          value={
-            // eslint-disable-next-line no-nested-ternary
-            !isActive && format
-              ? format(value)
-              : // eslint-disable-next-line no-nested-ternary
-              resolver
-              ? resolver(value)
-              : typeof value === 'string' || typeof value === 'number'
-              ? value
-              : ''
-          }
+          value={internalValue}
           type={type || 'text'}
           placeholder={placeholder || ''}
           autoComplete={autoComplete || 'off'}
