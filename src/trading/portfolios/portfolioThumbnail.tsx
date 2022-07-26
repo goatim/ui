@@ -1,7 +1,7 @@
-import { ReactElement } from 'react';
-import { BoosterInUse, Portfolio } from '@fridaygame/client';
+import { MouseEvent, ReactElement, useMemo } from 'react';
+import { Asset, BoosterInUse, Portfolio } from '@fridaygame/client';
 import { To } from 'react-router-dom';
-import AssetThumbnail from '../assets/assetThumbnail';
+import AssetThumbnail, { AssetThumbnailSize } from '../assets/assetThumbnail';
 import FridayCoins from '../../market/fridayCoins';
 import FridayCoinsVariation from '../../market/fridayCoinsVariation';
 import PercentageVariation from '../../market/percentageVariation';
@@ -9,9 +9,13 @@ import BoosterInUseStack from '../boosters/boosterInUseStack';
 import Button from '../../general/button';
 import QuotationGraph from '../quotations/quotationGraph';
 
+export type PortfolioThumbnailSize = 'narrow' | 'medium';
+
 export interface Props {
   portfolio: Portfolio;
-  assetTo?: To;
+  size?: PortfolioThumbnailSize;
+  assetOnClick?: (asset: Asset, event: MouseEvent<HTMLButtonElement>) => Promise<void> | void;
+  assetTo?: (asset: Asset) => To;
   onStopBooster?: (boosterInUse?: BoosterInUse) => void | Promise<void>;
   onSell?: () => void | Promise<void>;
   onBuy?: () => void | Promise<void>;
@@ -20,14 +24,24 @@ export interface Props {
 
 export default function PortfolioThumbnail({
   portfolio,
+  size = 'medium',
   assetTo,
+  assetOnClick,
   onStopBooster,
   onSell,
   onBuy,
   onBoost,
 }: Props): ReactElement {
+  const assetThumbnailSize = useMemo<AssetThumbnailSize>(() => {
+    switch (size) {
+      case 'narrow':
+        return 'narrow';
+      default:
+        return 'medium';
+    }
+  }, [size]);
   return (
-    <div className="friday-ui-portfolio-thumbnail">
+    <div className={`friday-ui-portfolio-thumbnail ${size}`}>
       <div className="header">
         <span className="id">{portfolio.id}</span>
         <div className="nb_shares">
@@ -38,7 +52,15 @@ export default function PortfolioThumbnail({
 
       {portfolio.asset && typeof portfolio.asset === 'object' ? (
         <div className="asset">
-          <AssetThumbnail asset={portfolio.asset} theme="lighter" to={assetTo} />
+          <AssetThumbnail
+            asset={portfolio.asset}
+            theme="lighter"
+            size={assetThumbnailSize}
+            onClick={
+              assetOnClick ? (event) => assetOnClick(portfolio.asset as Asset, event) : undefined
+            }
+            to={assetTo ? assetTo(portfolio.asset) : undefined}
+          />
         </div>
       ) : null}
 

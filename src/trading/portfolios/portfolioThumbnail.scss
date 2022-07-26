@@ -2,7 +2,6 @@
 @use '../../styles/colors';
 
 .friday-ui-portfolio-thumbnail {
-  box-sizing: border-box;
   display: inline-block;
   background: colors.$blue;
   border-radius: 10px;
@@ -10,6 +9,10 @@
   outline-offset: -2px;
   border: none;
   font-size: 1em;
+
+  * {
+    box-sizing: border-box;
+  }
 
   > .header {
     display: flex;

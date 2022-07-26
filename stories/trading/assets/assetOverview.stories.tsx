@@ -8,7 +8,14 @@ interface Props {}
 export default {
   title: 'Trading/AssetOverview',
   component: AssetOverview,
-  argTypes: {},
+  argTypes: {
+    size: {
+      control: {
+        type: 'select',
+        options: ['small', 'medium', 'large'],
+      },
+    },
+  },
 } as ComponentMeta<JSXElementConstructor<Props>>;
 
 const club: Club = {

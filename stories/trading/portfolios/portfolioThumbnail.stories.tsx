@@ -2,14 +2,25 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { Asset, BoosterInUse, Club, Player, Portfolio } from '@fridaygame/client';
 import { BrowserRouter } from 'react-router-dom';
-import PortfolioThumbnail from '../../../src/trading/portfolios/portfolioThumbnail';
+import PortfolioThumbnail, {
+  PortfolioThumbnailSize,
+} from '../../../src/trading/portfolios/portfolioThumbnail';
 
-interface Props {}
+interface Props {
+  size: PortfolioThumbnailSize;
+}
 
 export default {
   title: 'Trading/PortfolioThumbnail',
   component: PortfolioThumbnail,
-  argTypes: {},
+  argTypes: {
+    size: {
+      options: ['narrow', 'medium'],
+      control: {
+        type: 'select',
+      },
+    },
+  },
   decorators: [(story) => <BrowserRouter>{story()}</BrowserRouter>],
 } as ComponentMeta<JSXElementConstructor<Props>>;
 
@@ -96,10 +107,13 @@ const portfolio: Portfolio = {
   total_variations: 1055,
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
+const Template: ComponentStory<JSXElementConstructor<Props>> = ({ size }: Props) => (
   <PortfolioThumbnail
     portfolio={portfolio}
-    assetTo="/"
+    size={size}
+    assetOnClick={(_asset) => {
+      console.log(_asset.id);
+    }}
     onStopBooster={() => undefined}
     onSell={() => undefined}
     onBoost={() => undefined}
@@ -107,5 +121,3 @@ const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
 );
 
 export const Default = Template.bind({});
-
-Default.args = {};

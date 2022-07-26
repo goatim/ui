@@ -8,8 +8,11 @@ import PercentageVariation from '../../market/percentageVariation';
 import Button from '../../general/button';
 import ItemEditor, { ItemEditorFields } from '../../market/checkouts/itemEditor';
 
+export type AssetOverviewSize = 'small' | 'medium' | 'large';
+
 export interface Props {
   asset: Asset;
+  size?: AssetOverviewSize;
   orderBook?: OrderBook;
   boosters?: Booster[];
   clubTo?: To;
@@ -18,6 +21,7 @@ export interface Props {
 
 export default function AssetOverview({
   asset,
+  size = 'medium',
   clubTo,
   orderBook,
   boosters,
@@ -26,7 +30,7 @@ export default function AssetOverview({
   const [orderType, setOrderType] = useState<OrderType | undefined>();
 
   return (
-    <div className="friday-ui-asset-overview">
+    <div className={`friday-ui-asset-overview ${size}`}>
       <div className="header">
         {asset.type === 'player' && asset.player && typeof asset.player === 'object' ? (
           <PlayerThumbnail player={asset.player} size="full" clubTo={clubTo} />
