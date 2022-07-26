@@ -128,7 +128,7 @@ import BoosterIcon, { BoosterIconSize, BoosterIconInfos } from './trading/booste
 import BoosterInUseThumbnail from './trading/boosters/boosterInUseThumbnail';
 import BoosterInUseStack from './trading/boosters/boosterInUseStack';
 import OrderThumbnail, { OrderThumbnailSize } from './trading/orders/orderThumbnail';
-import OrderBookThumbnail from './trading/orders/orderBookThumbnail';
+import OrderBookThumbnail, { OrderBookThumbnailSize } from './trading/orders/orderBookThumbnail';
 import OrderList from './trading/orders/orderList';
 import ShareBulkThumbnail from './trading/shareBulks/shareBulkThumbnail';
 import ShareBulkList from './trading/shareBulks/shareBulkList';
@@ -374,6 +374,7 @@ export type {
   AssetOverviewSize,
   PortfolioThumbnailSize,
   OrderThumbnailSize,
+  OrderBookThumbnailSize,
 };
 
 /**
