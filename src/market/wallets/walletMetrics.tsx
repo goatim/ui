@@ -5,13 +5,16 @@ import PercentageVariation from '../percentageVariation';
 import QuotationGraph from '../../trading/quotations/quotationGraph';
 import RankPosition from '../../trading/ranks/rankPosition';
 
+export type WalletMetricsSize = 'narrow' | 'normal';
+
 export interface Props {
   wallet: Wallet;
+  size?: WalletMetricsSize;
 }
 
-export default function WalletMetrics({ wallet }: Props): ReactElement {
+export default function WalletMetrics({ wallet, size = 'normal' }: Props): ReactElement {
   return (
-    <div className="friday-ui-wallet-metrics">
+    <div className={`friday-ui-wallet-metrics ${size}`}>
       <div className="metrics">
         <div className="metric">
           <span className="label">Classement</span>
@@ -25,12 +28,12 @@ export default function WalletMetrics({ wallet }: Props): ReactElement {
           ) : null}
         </div>
 
-        <div className="metric center">
+        <div className={`metric${size !== 'narrow' ? ' center' : ''}`}>
           <span className="label">Solde espèces</span>
           <FridayCoins amount={wallet.amount} theme="light" size="medium" />
         </div>
 
-        <div className="metric right">
+        <div className={`metric${size !== 'narrow' ? ' right' : ''}`}>
           <span className="label">Évaluation titres</span>
           <FridayCoins amount={wallet.portfolios_quotation} theme="light" size="medium" />
           <PercentageVariation variation={wallet.portfolios_session_variation} size="medium" />

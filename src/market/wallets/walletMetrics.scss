@@ -42,4 +42,18 @@
     width: 100%;
     height: 80px;
   }
+
+  &.narrow {
+    > .metrics {
+      flex-direction: column;
+
+      > .metric {
+        margin-top: 10px;
+
+        &:first-of-type {
+          margin: 0;
+        }
+      }
+    }
+  }
 }

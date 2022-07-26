@@ -2,13 +2,13 @@
 @use '../../styles/colors';
 
 .friday-ui-portfolio-thumbnail {
-  display: inline-block;
   background: colors.$blue;
   border-radius: 10px;
   outline: solid rgba(white, .2) 2px;
   outline-offset: -2px;
   border: none;
-  font-size: 1em;
+  max-width: 400px;
+  width: 100%;
 
   * {
     box-sizing: border-box;
@@ -93,5 +93,9 @@
     width: 100%;
     height: 80px;
     margin-top: 15px;
+  }
+
+  &.narrow {
+    max-width: 300px;
   }
 }

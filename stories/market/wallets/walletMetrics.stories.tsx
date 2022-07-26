@@ -1,14 +1,23 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { User, Wallet } from '@fridaygame/client';
-import WalletMetrics from '../../../src/market/wallets/walletMetrics';
+import WalletMetrics, { WalletMetricsSize } from '../../../src/market/wallets/walletMetrics';
 
-interface Props {}
+interface Props {
+  size?: WalletMetricsSize;
+}
 
 export default {
   title: 'Market/WalletMetrics',
   component: WalletMetrics,
-  argTypes: {},
+  argTypes: {
+    size: {
+      control: {
+        type: 'select',
+        options: ['narrow', 'normal'],
+      },
+    },
+  },
 } as ComponentMeta<JSXElementConstructor<Props>>;
 
 const owner: User = {
@@ -35,10 +44,8 @@ const wallet: Wallet = {
   portfolios_session_variation: 45,
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
-  <WalletMetrics wallet={wallet} />
+const Template: ComponentStory<JSXElementConstructor<Props>> = ({ size }: Props) => (
+  <WalletMetrics wallet={wallet} size={size} />
 );
 
 export const Default = Template.bind({});
-
-Default.args = {};

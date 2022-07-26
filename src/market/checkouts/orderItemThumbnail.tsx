@@ -5,14 +5,21 @@ import FridayCoins from '../fridayCoins';
 import BoosterIcon from '../../trading/boosters/boosterIcon';
 import Icon from '../../general/icon';
 
+export type OrderItemThumbnailSize = 'narrow' | 'normal';
+
 export interface Props {
   orderItem: OrderItem;
   onDelete?: (() => void) | (() => Promise<void>);
+  size?: OrderItemThumbnailSize;
 }
 
-export default function OrderItemThumbnail({ orderItem, onDelete }: Props): ReactElement {
+export default function OrderItemThumbnail({
+  orderItem,
+  onDelete,
+  size = 'normal',
+}: Props): ReactElement {
   return (
-    <div className="friday-ui-order-item-thumbnail">
+    <div className={`friday-ui-order-item-thumbnail ${size}`}>
       <div className="container">
         {orderItem.asset && typeof orderItem.asset === 'object' ? (
           <div className="cell">
@@ -50,7 +57,7 @@ export default function OrderItemThumbnail({ orderItem, onDelete }: Props): Reac
         typeof orderItem.booster === 'object' ? (
           <div className="cell">
             <span>Booster</span>
-            <div className="content centered">
+            <div className={`content${size !== 'narrow' ? ' centered' : ''}`}>
               <BoosterIcon booster={orderItem.booster} infos="none" active />
             </div>
           </div>

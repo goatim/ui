@@ -1,10 +1,11 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { Asset, Booster, Club, Item, Player } from '@fridaygame/client';
-import CartOverview from '../../../src/market/cartOverview';
+import CartOverview, { CartOverviewSize } from '../../../src/market/cartOverview';
 
 interface Props {
   length?: number;
+  size?: CartOverviewSize;
 }
 
 export default {
@@ -14,6 +15,12 @@ export default {
     length: {
       control: {
         type: 'number',
+      },
+    },
+    size: {
+      control: {
+        type: 'select',
+        options: ['narrow', 'normal'],
       },
     },
   },
@@ -82,8 +89,8 @@ const item: Item = {
   },
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ length }: Props) => (
-  <CartOverview items={Array(length).fill(item)} />
+const Template: ComponentStory<JSXElementConstructor<Props>> = ({ length, size }: Props) => (
+  <CartOverview items={Array(length).fill(item)} size={size} />
 );
 
 export const Default = Template.bind({});

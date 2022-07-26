@@ -1,14 +1,23 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { Rank, User, Wallet } from '@fridaygame/client';
-import WalletOverview from '../../../src/market/wallets/walletOverview';
+import WalletOverview, { WalletOverviewSize } from '../../../src/market/wallets/walletOverview';
 
-interface Props {}
+interface Props {
+  size?: WalletOverviewSize;
+}
 
 export default {
   title: 'Market/WalletOverview',
   component: WalletOverview,
-  argTypes: {},
+  argTypes: {
+    size: {
+      control: {
+        type: 'select',
+        options: ['narrow', 'normal'],
+      },
+    },
+  },
 } as ComponentMeta<JSXElementConstructor<Props>>;
 
 const owner: User = {
@@ -43,10 +52,8 @@ const wallet: Wallet = {
   rank_position: 12,
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
-  <WalletOverview wallet={wallet} />
+const Template: ComponentStory<JSXElementConstructor<Props>> = ({ size }: Props) => (
+  <WalletOverview wallet={wallet} size={size} />
 );
 
 export const Default = Template.bind({});
-
-Default.args = {};

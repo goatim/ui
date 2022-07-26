@@ -1,14 +1,23 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { Asset, Player, Club, Booster, Item } from '@fridaygame/client';
-import ItemThumbnail from '../../../src/market/checkouts/itemThumbnail';
+import ItemThumbnail, { ItemThumbnailSize } from '../../../src/market/checkouts/itemThumbnail';
 
-interface Props {}
+interface Props {
+  size?: ItemThumbnailSize;
+}
 
 export default {
   title: 'Market/ItemThumbnail',
   component: ItemThumbnail,
-  argTypes: {},
+  argTypes: {
+    size: {
+      control: {
+        type: 'select',
+        options: ['narrow', 'normal'],
+      },
+    },
+  },
 } as ComponentMeta<JSXElementConstructor<Props>>;
 
 const club: Club = {
@@ -74,10 +83,8 @@ const item: Item = {
   },
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
-  <ItemThumbnail item={item} onDelete={() => undefined} />
+const Template: ComponentStory<JSXElementConstructor<Props>> = ({ size }: Props) => (
+  <ItemThumbnail item={item} onDelete={() => undefined} size={size} />
 );
 
 export const Default = Template.bind({});
-
-Default.args = {};
