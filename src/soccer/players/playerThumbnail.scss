@@ -53,13 +53,13 @@ a.friday-ui-player-thumbnail
 
       > .number {
         font-weight: bold;
+        margin-right: 5px;
       }
 
       > .position {
         @include fonts.Inter(.7em, colors.$blue, bold);
         opacity: .5;
         text-transform: uppercase;
-        margin-left: 5px;
       }
     }
 

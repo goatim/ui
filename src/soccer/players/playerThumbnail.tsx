@@ -62,10 +62,12 @@ export default function PlayerThumbnail({
     return (
       <Wrapper className={className} to={to} onClick={onClick} href={href} target={target}>
         <div className="infos">
-          <span className="number">{player.number}</span>
-          <span className="position">{player.resolved_position}</span>
+          {player.number !== undefined ? <span className="number">{player.number}</span> : null}
+          {player.resolved_position ? (
+            <span className="position">{player.resolved_position}</span>
+          ) : null}
         </div>
-        <h1 className="name">{player.name}</h1>
+        {player.name ? <h1 className="name">{player.name}</h1> : null}
         {player.club && typeof player.club === 'object' ? (
           <div className="club">
             <ClubThumbnail club={player.club} theme={theme} to={clubTo} size="small" />
@@ -83,8 +85,8 @@ export default function PlayerThumbnail({
         theme={theme}
       />
       <div className="infos">
-        <span className="number">{player.number}</span>
-        <span className="name">{player.name}</span>
+        {player.number !== undefined ? <span className="number">{player.number}</span> : null}
+        {player.name ? <span className="name">{player.name}</span> : null}
       </div>
     </Wrapper>
   );

@@ -50,23 +50,23 @@
           border-bottom-left-radius: 0;
           border-bottom-right-radius: 0;
           padding: 20px;
+        }
 
-          > .header {
-            display: flex;
-            justify-content: flex-end;
+        > .header {
+          display: flex;
+          justify-content: flex-end;
 
-            > button {
-              display: block;
-              cursor: pointer;
-              padding: 5px;
-              margin: 0;
-              border: none;
-              outline: none;
-              background: none;
+          > button {
+            display: block;
+            cursor: pointer;
+            padding: 5px;
+            margin: 0;
+            border: none;
+            outline: none;
+            background: none;
 
-              > svg {
-                stroke: colors.$blue;
-              }
+            > svg {
+              stroke: colors.$blue;
             }
           }
         }
