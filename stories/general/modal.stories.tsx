@@ -11,7 +11,7 @@ function App() {
       component: ({ dismissModal }) => (
         <div>
           <h1>Modal !</h1>
-          {Array(4).fill(
+          {Array(10).fill(
             <p>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. A alias aliquid aut error
               esse, et hic illo illum molestias, natus nemo quasi qui quisquam ratione saepe sequi

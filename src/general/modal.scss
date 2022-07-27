@@ -51,14 +51,23 @@
           border-bottom-right-radius: 0;
           padding: 20px;
 
-          &:before {
-            content: "";
-            display: block;
-            width: 80px;
-            height: 4px;
-            border-radius: 2px;
-            background: rgba(colors.$blue, .2);
-            margin: 0 auto;
+          > .header {
+            display: flex;
+            justify-content: flex-end;
+
+            > button {
+              display: block;
+              cursor: pointer;
+              padding: 5px;
+              margin: 0;
+              border: none;
+              outline: none;
+              background: none;
+
+              > svg {
+                stroke: colors.$blue;
+              }
+            }
           }
         }
       }
