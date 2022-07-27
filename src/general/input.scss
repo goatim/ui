@@ -32,9 +32,9 @@
       outline: none;
       text-decoration: none;
       background: transparent;
-      @include fonts.Inter(.9em, colors.$blue, 500);
+      @include fonts.Inter(1em, colors.$blue, 500);
       flex: 1;
-      padding: 0 1em;
+      padding: 0 .8em;
 
       &::placeholder {
         color: rgba(colors.$blue, .5);

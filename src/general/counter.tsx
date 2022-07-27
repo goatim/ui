@@ -1,4 +1,4 @@
-import { useCallback, ReactElement, ChangeEvent, useMemo } from 'react';
+import { useCallback, ReactElement, ChangeEvent, useMemo, useState, useEffect } from 'react';
 import { FieldComponentProps } from '@cezembre/forms';
 import Icon from './icon';
 
@@ -40,6 +40,8 @@ export default function Counter({
   increment = 1,
   step = 1,
 }: Props): ReactElement {
+  const [internalValue, setInternalValue] = useState<string>(value?.toString() || '');
+
   const className = useMemo<string>(() => {
     let res = 'friday-ui-counter';
 
@@ -64,7 +66,10 @@ export default function Counter({
 
   const change = useCallback(
     (event: ChangeEvent<{ value: string }>) => {
-      const resolvedValue = event.target.value ? Number(event.target.value) : undefined;
+      setInternalValue(event.target.value);
+      const resolvedValue: number | undefined = event.target.value
+        ? parseFloat(event.target.value)
+        : undefined;
       if (adapter) {
         onChange(adapter(resolvedValue));
       } else {
@@ -88,7 +93,7 @@ export default function Counter({
     }
   }, [min, onChange, increment, value]);
 
-  const internalValue = useMemo<string>(() => {
+  useEffect(() => {
     let nextValue: number | undefined;
     if (!isActive && format) {
       nextValue = format(value);
@@ -97,8 +102,10 @@ export default function Counter({
     } else if (value !== undefined) {
       nextValue = value;
     }
-    return nextValue !== undefined ? nextValue.toString() : '';
-  }, [format, isActive, resolver, value]);
+    if (nextValue !== parseFloat(internalValue)) {
+      setInternalValue(nextValue !== undefined ? nextValue.toString() : '');
+    }
+  }, [format, internalValue, isActive, resolver, value]);
 
   return (
     <div className={className}>

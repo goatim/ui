@@ -1,6 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Form, Field } from '@cezembre/forms';
 import { JSXElementConstructor } from 'react';
+import { adaptFridayCoins, resolveFridayCoins } from '@fridaygame/client';
 import Counter from '../../src/general/counter';
 
 interface Props {
@@ -21,7 +22,14 @@ export default {
 
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({ label }: Props) => (
   <Form>
-    <Field<number | undefined> name="counter" component={Counter} label={label} />
+    <Field<number | undefined>
+      name="counter"
+      component={Counter}
+      label={label}
+      resolver={resolveFridayCoins}
+      adapter={adaptFridayCoins}
+      increment={100}
+    />
   </Form>
 );
 
