@@ -8,6 +8,7 @@ import {
   useRef,
   FunctionComponent,
   useMemo,
+  useEffect,
 } from 'react';
 import { useClickOutside } from '@cezembre/fronts';
 
@@ -142,6 +143,21 @@ export function ModalsContext({ children }: ContextProps): ReactElement {
     () => ({ modals, pushModal, dismissModal }),
     [modals, pushModal, dismissModal],
   );
+
+  useEffect(() => {
+    const { height, overflow } = document.body.style;
+    if (modals.length) {
+      document.body.style.height = '100vh';
+      document.body.style.overflowY = 'hidden';
+    } else {
+      document.body.style.height = height;
+      document.body.style.overflowY = overflow;
+    }
+    return () => {
+      document.body.style.height = height;
+      document.body.style.overflowY = overflow;
+    };
+  }, [modals.length]);
 
   return (
     <Context.Provider value={value}>

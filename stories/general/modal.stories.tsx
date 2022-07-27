@@ -11,7 +11,7 @@ function App() {
       component: ({ dismissModal }) => (
         <div>
           <h1>Modal !</h1>
-          {Array(10).fill(
+          {Array(4).fill(
             <p>
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. A alias aliquid aut error
               esse, et hic illo illum molestias, natus nemo quasi qui quisquam ratione saepe sequi
@@ -24,7 +24,26 @@ function App() {
       onDismiss: () => console.log('First modal dismissed !'),
     });
   }, [pushModal]);
-  return <button onClick={openModal}>Open modal</button>;
+
+  return (
+    <div>
+      {Array(10).fill(
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. A alias aliquid aut error esse,
+          et hic illo illum molestias, natus nemo quasi qui quisquam ratione saepe sequi soluta
+          tenetur voluptates!
+        </p>,
+      )}
+      <button onClick={openModal}>Open modal</button>
+      {Array(10).fill(
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. A alias aliquid aut error esse,
+          et hic illo illum molestias, natus nemo quasi qui quisquam ratione saepe sequi soluta
+          tenetur voluptates!
+        </p>,
+      )}
+    </div>
+  );
 }
 
 export default {
