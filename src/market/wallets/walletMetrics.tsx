@@ -2,7 +2,7 @@ import { ReactElement } from 'react';
 import { Wallet } from '@fridaygame/client';
 import FridayCoins from '../fridayCoins';
 import PercentageVariation from '../percentageVariation';
-import QuotationGraph from '../../trading/quotations/quotationGraph';
+import QuotationHistoryGraph from '../../trading/quotations/quotationHistoryGraph';
 import RankPosition from '../../trading/ranks/rankPosition';
 
 export type WalletMetricsSize = 'narrow' | 'normal';
@@ -41,14 +41,9 @@ export default function WalletMetrics({ wallet, size = 'normal' }: Props): React
       </div>
 
       <div className="evolution">
-        <QuotationGraph
-          quotations={[
-            { t: 1, v: 3 },
-            { t: 2, v: 2 },
-            { t: 5, v: 5 },
-            { t: 6, v: 4 },
-          ]}
-        />
+        {/* <QuotationHistoryGraph */}
+        {/*  quotationHistory={} */}
+        {/* /> */}
       </div>
     </div>
   );

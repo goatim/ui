@@ -7,7 +7,7 @@ import FridayCoinsVariation from '../../market/fridayCoinsVariation';
 import PercentageVariation from '../../market/percentageVariation';
 import BoosterInUseStack from '../boosters/boosterInUseStack';
 import Button from '../../general/button';
-import QuotationGraph from '../quotations/quotationGraph';
+import QuotationHistoryGraph from '../quotations/quotationHistoryGraph';
 
 export type PortfolioThumbnailSize = 'narrow' | 'medium';
 
@@ -124,16 +124,15 @@ export default function PortfolioThumbnail({
         ) : null}
       </div>
 
-      <div className="quotation">
-        <QuotationGraph
-          quotations={[
-            { t: 1, v: 3 },
-            { t: 2, v: 2 },
-            { t: 5, v: 5 },
-            { t: 6, v: 4 },
-          ]}
-        />
-      </div>
+      {portfolio.asset &&
+      typeof portfolio.asset === 'object' &&
+      portfolio.asset.quotation_history ? (
+        <div className="quotation">
+          <QuotationHistoryGraph quotationHistory={portfolio.asset.quotation_history} />
+        </div>
+      ) : (
+        <div className="quotation-placeholder" />
+      )}
     </div>
   );
 }

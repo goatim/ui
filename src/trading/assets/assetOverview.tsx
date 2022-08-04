@@ -2,7 +2,7 @@ import { ReactElement, useMemo, useState } from 'react';
 import { Asset, Booster, OrderBook, OrderType } from '@fridaygame/client';
 import { To } from 'react-router-dom';
 import PlayerThumbnail, { PlayerThumbnailSize } from '../../soccer/players/playerThumbnail';
-import QuotationGraph from '../quotations/quotationGraph';
+import QuotationHistoryGraph from '../quotations/quotationHistoryGraph';
 import FridayCoins, { FridayCoinsSize } from '../../market/fridayCoins';
 import PercentageVariation, { PercentageVariationSize } from '../../market/percentageVariation';
 import Button from '../../general/button';
@@ -93,9 +93,11 @@ export default function AssetOverview({
         </div>
       </div>
 
-      <div className="quotation">
-        <QuotationGraph />
-      </div>
+      {asset.quotation_history ? (
+        <div className="quotation">
+          <QuotationHistoryGraph quotationHistory={asset.quotation_history} />
+        </div>
+      ) : null}
 
       <div className="actions">
         <div className="action">

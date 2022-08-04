@@ -139,7 +139,10 @@ import PortfolioThumbnail, {
   PortfolioThumbnailSize,
 } from './trading/portfolios/portfolioThumbnail';
 import PortfolioList from './trading/portfolios/portfolioList';
-import QuotationGraph, { DataPoint } from './trading/quotations/quotationGraph';
+import QuotationHistoryGraph, {
+  DataPoint,
+  QuotationHistoryGraphTheme,
+} from './trading/quotations/quotationHistoryGraph';
 import TransactionThumbnail from './trading/transactions/transactionThumbnail';
 import AssetList from './trading/assets/assetList';
 import RankPosition from './trading/ranks/rankPosition';
@@ -356,7 +359,7 @@ export {
   PackModal,
   PortfolioThumbnail,
   PortfolioList,
-  QuotationGraph,
+  QuotationHistoryGraph,
   TransactionThumbnail,
   AssetList,
   RankPosition,
@@ -370,6 +373,7 @@ export type {
   BoosterIconSize,
   BoosterIconInfos,
   DataPoint,
+  QuotationHistoryGraphTheme,
   DividendThumbnailTheme,
   AssetOverviewSize,
   PortfolioThumbnailSize,

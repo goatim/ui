@@ -1,4 +1,4 @@
-import { ReactElement, useRef, useCallback, useState } from 'react';
+import { ReactElement, useRef, useCallback, useEffect } from 'react';
 import {
   Chart,
   LineController,
@@ -9,21 +9,25 @@ import {
   Filler,
 } from 'chart.js';
 import 'chartjs-adapter-luxon';
-import { Quotation } from '@fridaygame/client';
+import { QuotationHistory } from '@fridaygame/client';
+import Icon from '../../general/icon';
+import FridayCoins from '../../market/fridayCoins';
+
+export type QuotationHistoryGraphTheme = 'light' | 'dark';
 
 export interface Props {
-  quotations?: Quotation[];
+  quotationHistory?: QuotationHistory;
+  theme?: QuotationHistoryGraphTheme;
 }
 
 export type DataPoint = { x: number; y: number };
 
-export default function QuotationGraph({ quotations }: Props): ReactElement {
+export default function QuotationHistoryGraph({
+  quotationHistory,
+  theme = 'light',
+}: Props): ReactElement {
   const chart = useRef<Chart<'line', DataPoint[]> | null>(null);
   const ctx = useRef<CanvasRenderingContext2D | null>(null);
-
-  const initialQuotations = useRef<Quotation[] | undefined>(quotations);
-
-  const [isPositive, setIsPositive] = useState<boolean>(true);
 
   const createBackground = useCallback(
     (_ctx: CanvasRenderingContext2D, height: number): CanvasGradient => {
@@ -31,13 +35,20 @@ export default function QuotationGraph({ quotations }: Props): ReactElement {
 
       background.addColorStop(
         0,
-        isPositive ? 'rgba(108, 230, 136, .5)' : 'rgba(230, 108, 119, .5)',
+        (quotationHistory?.variation || 0) >= 0
+          ? 'rgba(78, 183, 120, .5)'
+          : 'rgba(211, 103, 103, .5)',
       );
-      background.addColorStop(1, isPositive ? 'rgba(108, 230, 136, 0)' : 'rgba(230, 108, 119, 0)');
+      background.addColorStop(
+        1,
+        (quotationHistory?.variation || 0) >= 0
+          ? 'rgba(78, 183, 120, 0)'
+          : 'rgba(211, 103, 103, 0)',
+      );
 
       return background;
     },
-    [isPositive],
+    [quotationHistory?.variation],
   );
 
   const onResize = useCallback(
@@ -59,7 +70,7 @@ export default function QuotationGraph({ quotations }: Props): ReactElement {
 
       ctx.current = ref.getContext('2d');
 
-      if (!ctx.current || !initialQuotations.current) {
+      if (!ctx.current || !quotationHistory) {
         return;
       }
 
@@ -70,13 +81,13 @@ export default function QuotationGraph({ quotations }: Props): ReactElement {
         data: {
           datasets: [
             {
-              data: initialQuotations.current.map(({ t, v }) => ({
+              data: quotationHistory?.data.map(({ t, a }) => ({
                 x: t,
-                y: v,
+                y: a,
               })),
               backgroundColor: createBackground(ctx.current, 150),
               fill: 'origin',
-              borderColor: '#6CE688',
+              borderColor: quotationHistory.variation >= 0 ? '#4EB778' : '#D36767',
               pointRadius: 0,
               pointHitRadius: 0,
               borderWidth: 1,
@@ -110,25 +121,41 @@ export default function QuotationGraph({ quotations }: Props): ReactElement {
         },
       });
     },
-    [createBackground, onResize],
+    [createBackground, onResize, quotationHistory],
   );
 
-  // const destroyChart = useCallback(() => {
-  //   if (chart.current) {
-  //     chart.current.destroy();
-  //     chart.current = null;
-  //   }
-  // }, []);
+  const destroyChart = useCallback(() => {
+    if (chart.current) {
+      chart.current.destroy();
+      chart.current = null;
+    }
+  }, []);
 
-  // useEffect(() => {
-  //   renderChart();
-  //
-  //   return () => destroyChart();
-  // }, [destroyChart, renderChart]);
+  useEffect(() => {
+    return () => destroyChart();
+  }, [destroyChart]);
+
+  if ((quotationHistory?.data.length || 0) > 1) {
+    return (
+      <div className={`friday-ui-quotation-history-graph ${theme}`}>
+        <canvas ref={loadCanvas} />
+      </div>
+    );
+  }
 
   return (
-    <div className="friday-ui-quotation-graph">
-      <canvas ref={loadCanvas} />
+    <div className={`friday-ui-quotation-history-graph ${theme}`}>
+      {quotationHistory?.data.length === 1 ? (
+        <div className="placeholder">
+          <Icon name="git-commit" size={20} />
+          <FridayCoins amount={quotationHistory.data[0].a} />
+        </div>
+      ) : (
+        <div className="placeholder">
+          <Icon name="activity" size={20} />
+          <span>Aucune transaction</span>
+        </div>
+      )}
     </div>
   );
 }

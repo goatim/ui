@@ -7,7 +7,7 @@ import PlayerThumbnail, {
 } from '../../soccer/players/playerThumbnail';
 import PercentageVariation, { PercentageVariationSize } from '../../market/percentageVariation';
 import FridayCoins, { FridayCoinsSize, FridayCoinsTheme } from '../../market/fridayCoins';
-import QuotationGraph from '../quotations/quotationGraph';
+import QuotationHistoryGraph from '../quotations/quotationHistoryGraph';
 
 export type AssetThumbnailSize = 'inline' | 'narrow' | 'small' | 'medium' | 'big' | 'full';
 
@@ -93,16 +93,9 @@ export default function AssetThumbnail({
       onClick={onClick}
       href={href}
       target={target}>
-      {size === 'full' ? (
+      {size === 'full' && asset.quotation_history ? (
         <div className="quotation">
-          <QuotationGraph
-            quotations={[
-              { t: 1, v: 3 },
-              { t: 2, v: 2 },
-              { t: 5, v: 5 },
-              { t: 6, v: 4 },
-            ]}
-          />
+          <QuotationHistoryGraph quotationHistory={asset.quotation_history} />
         </div>
       ) : null}
 
