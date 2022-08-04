@@ -93,7 +93,7 @@ export default function AssetThumbnail({
       onClick={onClick}
       href={href}
       target={target}>
-      {size === 'full' && asset.quotation_history ? (
+      {size === 'full' && (asset.quotation_history?.data.length || 0) > 1 ? (
         <div className="quotation">
           <QuotationHistoryGraph quotationHistory={asset.quotation_history} />
         </div>
