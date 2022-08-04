@@ -131,9 +131,9 @@ export default function QuotationHistoryGraph({
     }
   }, []);
 
-  useEffect(() => {
-    return () => destroyChart();
-  }, [destroyChart]);
+  // useEffect(() => {
+  //   return () => destroyChart();
+  // }, [destroyChart]);
 
   if ((quotationHistory?.data.length || 0) > 1) {
     return (
