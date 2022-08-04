@@ -93,11 +93,9 @@ export default function AssetOverview({
         </div>
       </div>
 
-      {asset.quotation_history ? (
-        <div className="quotation">
-          <QuotationHistoryGraph quotationHistory={asset.quotation_history} />
-        </div>
-      ) : null}
+      <div className="quotation">
+        <QuotationHistoryGraph quotationHistory={asset.quotation_history} />
+      </div>
 
       <div className="actions">
         <div className="action">

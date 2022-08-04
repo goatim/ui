@@ -4,6 +4,10 @@
 .friday-ui-asset-overview {
   width: 100%;
 
+  * {
+    box-sizing: border-box;
+  }
+
   > .header {
     display: flex;
     align-items: center;
@@ -29,6 +33,7 @@
     background: colors.$blue;
     border-radius: 10px;
     height: 120px;
+    //overflow: hidden;
   }
 
   > .actions {
