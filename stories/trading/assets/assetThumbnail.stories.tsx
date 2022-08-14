@@ -2,12 +2,14 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { Asset, Player, Club, QuotationHistory } from '@fridaygame/client';
 import AssetThumbnail, {
+  AssetThumbnailPlayerFormat,
   AssetThumbnailShape,
   AssetThumbnailSize,
   AssetThumbnailTheme,
 } from '../../../src/trading/assets/assetThumbnail';
 
 interface Props {
+  playerFormat?: AssetThumbnailPlayerFormat;
   shape?: AssetThumbnailShape;
   size?: AssetThumbnailSize;
   theme?: AssetThumbnailTheme;
@@ -17,6 +19,12 @@ export default {
   title: 'Trading/AssetThumbnail',
   component: AssetThumbnail,
   argTypes: {
+    playerFormat: {
+      options: ['extended', 'inline'],
+      control: {
+        type: 'select',
+      },
+    },
     shape: {
       options: ['box', 'text'],
       control: {
@@ -128,7 +136,12 @@ const asset: Asset = {
   quotation_history: quotationHistory,
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ shape, size, theme }: Props) => (
+const Template: ComponentStory<JSXElementConstructor<Props>> = ({
+  playerFormat,
+  shape,
+  size,
+  theme,
+}: Props) => (
   <div
     style={{
       display: 'flex',
@@ -138,6 +151,7 @@ const Template: ComponentStory<JSXElementConstructor<Props>> = ({ shape, size, t
     <div>
       <AssetThumbnail
         asset={asset}
+        playerFormat={playerFormat}
         shape={shape}
         size={size}
         theme={theme}
