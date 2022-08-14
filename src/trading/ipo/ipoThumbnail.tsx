@@ -4,7 +4,7 @@ import { Wrapper, WrapperProps } from '@cezembre/fronts';
 import { DateTime } from 'luxon';
 import FridayCoins, { FridayCoinsSize, FridayCoinsTheme } from '../../market/fridayCoins';
 import Countdown from '../../general/countdown';
-import AssetThumbnail, { AssetThumbnailTheme } from '../assets/assetThumbnail';
+import AssetThumbnail, { AssetThumbnailSize, AssetThumbnailTheme } from '../assets/assetThumbnail';
 
 export type IPOThumbnailSize =
   | 'inline'
@@ -36,6 +36,20 @@ export default function IPOThumbnail({
   href,
   target,
 }: Props): ReactElement {
+  const assetThumbnailSize = useMemo<AssetThumbnailSize>(() => {
+    switch (size) {
+      case 'inline':
+      case 'small':
+        return 'small';
+      case 'medium':
+      case 'big':
+      case 'full':
+        return 'medium';
+      default:
+        return 'small';
+    }
+  }, [size]);
+
   const assetThumbnailTheme = useMemo<AssetThumbnailTheme>(() => {
     if (theme === 'default') {
       return 'default';
@@ -45,10 +59,10 @@ export default function IPOThumbnail({
 
   const quotationSize = useMemo<FridayCoinsSize>(() => {
     switch (size) {
+      case 'narrow':
       case 'small':
       case 'medium':
         return 'medium';
-      case 'narrow':
       case 'big':
       case 'full':
         return 'large';
@@ -76,7 +90,13 @@ export default function IPOThumbnail({
       </div>
       {displayContent ? (
         <div className="content">
-          <AssetThumbnail asset={asset} shape="text" size="full" theme={assetThumbnailTheme} />
+          <AssetThumbnail
+            asset={asset}
+            shape="text"
+            size={assetThumbnailSize}
+            theme={assetThumbnailTheme}
+            playerFormat="extended"
+          />
           <div className="quotation">
             <FridayCoins amount={asset.quotation} size={quotationSize} theme={quotationTheme} />
           </div>
