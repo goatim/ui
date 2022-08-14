@@ -9,6 +9,8 @@ import PercentageVariation, { PercentageVariationSize } from '../../market/perce
 import FridayCoins, { FridayCoinsSize, FridayCoinsTheme } from '../../market/fridayCoins';
 import QuotationHistoryGraph from '../quotations/quotationHistoryGraph';
 
+export type AssetThumbnailPlayerFormat = 'extended' | 'inline';
+
 export type AssetThumbnailShape = 'box' | 'text';
 
 export type AssetThumbnailSize = 'inline' | 'narrow' | 'small' | 'medium' | 'big' | 'full';
@@ -17,6 +19,7 @@ export type AssetThumbnailTheme = 'default' | 'darker' | 'lighter';
 
 export interface Props extends WrapperProps {
   asset: Asset;
+  playerFormat?: AssetThumbnailPlayerFormat;
   shape?: AssetThumbnailShape;
   size?: AssetThumbnailSize;
   theme?: AssetThumbnailTheme;
@@ -24,6 +27,7 @@ export interface Props extends WrapperProps {
 
 export default function AssetThumbnail({
   asset,
+  playerFormat = 'inline',
   shape = 'box',
   size = 'small',
   theme = 'default',
@@ -33,18 +37,33 @@ export default function AssetThumbnail({
   target,
 }: Props): ReactElement {
   const playerThumbnailSize = useMemo<PlayerThumbnailSize>(() => {
-    switch (size) {
-      case 'inline':
-      case 'small':
-      case 'medium':
-        return 'small';
-      case 'big':
-      case 'full':
-        return 'medium';
-      default:
-        return 'small';
+    if (playerFormat === 'inline') {
+      switch (size) {
+        case 'inline':
+        case 'small':
+        case 'medium':
+          return 'small';
+        case 'big':
+        case 'full':
+          return 'medium';
+        default:
+          return 'small';
+      }
+    } else {
+      switch (size) {
+        case 'inline':
+        case 'small':
+          return 'small';
+        case 'medium':
+          return 'medium';
+        case 'big':
+        case 'full':
+          return 'big';
+        default:
+          return 'small';
+      }
     }
-  }, [size]);
+  }, [size, playerFormat]);
 
   const playerThumbnailTheme = useMemo<PlayerThumbnailTheme>(() => {
     if (theme === 'default') {
@@ -109,7 +128,7 @@ export default function AssetThumbnail({
             player={asset.player}
             size={playerThumbnailSize}
             theme={playerThumbnailTheme}
-            format={shape === 'text' && size === 'full' ? 'extended' : 'inline'}
+            format={playerFormat}
           />
         ) : null}
         {shape === 'box' && size !== 'inline' ? (
