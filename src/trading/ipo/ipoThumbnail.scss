@@ -1,0 +1,183 @@
+@use '../../styles/colors';
+
+button.friday-ui-ipo-thumbnail,
+a.friday-ui-ipo-thumbnail {
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  box-shadow: none;
+}
+
+.friday-ui-ipo-thumbnail {
+  border-radius: 20px;
+  overflow: hidden;
+  font-size: 1em;
+
+  > .header {
+    background: colors.$electric-blue;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    padding: 10px 20px;
+    > .headerTitle {
+      font-weight: bold;
+    }
+  }
+
+  > .content {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    > .quotation {
+      margin-left: 5px;
+    }
+  }
+
+  > .countdown {
+    background: colors.$light-blue;
+    padding: 10px;
+  }
+
+  &.narrow, &.small, &.medium, &.big, &.full, &.stretch {
+    &.default {
+      background: white;
+      border: solid rgba(colors.$blue, .1) 1px;
+      > .header {
+        background: colors.$electric-blue;
+        > .headerTitle {
+          color: white;
+        }
+      }
+    }
+
+    &.dark {
+      background: rgba(black, .2);
+      border: solid rgba(black, .1) 1px;
+      > .header {
+        background: colors.$electric-blue;
+        > .headerTitle {
+          color: white;
+        }
+      }
+    }
+
+    &.light {
+      background: rgba(white, .2);
+      border: solid rgba(white, .1) 1px;
+      > .header {
+        background: colors.$electric-blue;
+        > .headerTitle {
+          color: white;
+        }
+      }
+    }
+  }
+
+  &.narrow {
+    width: 250px;
+
+    > .content {
+      padding: 0 15px;
+      height: 140px;
+      flex-wrap: wrap;
+
+      > .quotation {
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+      }
+    }
+
+    > .header {
+      padding: 15px 20px;
+      > .headerTitle {
+        font-size: 0.75em;
+      }
+    }
+  }
+
+  &.small {
+    width: 320px;
+    
+    > .content {
+      padding: 0 20px;
+      height: 120px;
+    }
+
+    > .header {
+      padding: 15px 20px;
+      > .headerTitle {
+        font-size: 0.8em;
+      }
+    }
+  }
+
+  &.medium {
+    width: 350px;
+
+    > .content {
+      padding: 0 25px;
+      height: 130px;
+    }
+
+    > .header {
+      padding: 15px 20px;
+      > .headerTitle {
+        font-size: 0.8em;
+      }
+    }
+  }
+
+  &.big {
+    width: 400px;
+
+      > .content {
+        padding: 0 30px;
+        height: 140px;
+      }
+
+      > .header {
+        padding: 15px 20px;
+        > .headerTitle {
+          font-size: 0.8em;
+        }
+      }
+  }
+
+  &.full {
+    width: 480px;
+
+    > .content {
+      padding: 0 30px;
+      height: 140px;
+    }
+
+    > .header {
+      padding: 15px 20px;
+      > .headerTitle {
+        font-size: 0.8em;
+      }
+    }
+  }
+
+  &.stretch {
+    width: 100%;
+
+    > .content {
+      padding: 0 30px;
+      height: 140px;
+      width: 100%;
+    }
+
+    > .header {
+      padding: 15px 20px;
+      > .headerTitle {
+        font-size: 0.8em;
+      }
+    }
+  }
+}
