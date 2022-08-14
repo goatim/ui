@@ -1,12 +1,12 @@
 import { ReactElement, useMemo, useState } from 'react';
 import { Asset, Booster, OrderBook, OrderType } from '@fridaygame/client';
 import { To } from 'react-router-dom';
-import PlayerThumbnail, { PlayerThumbnailSize } from '../../soccer/players/playerThumbnail';
 import QuotationHistoryGraph from '../quotations/quotationHistoryGraph';
 import FridayCoins, { FridayCoinsSize } from '../../market/fridayCoins';
 import PercentageVariation, { PercentageVariationSize } from '../../market/percentageVariation';
 import Button from '../../general/button';
 import ItemEditor, { ItemEditorFields, ItemEditorSize } from '../../market/checkouts/itemEditor';
+import AssetThumbnail, { AssetThumbnailSize } from './assetThumbnail';
 
 export type AssetOverviewSize = 'small' | 'medium' | 'big';
 
@@ -29,7 +29,7 @@ export default function AssetOverview({
 }: Props): ReactElement {
   const [orderType, setOrderType] = useState<OrderType | undefined>();
 
-  const playerThumbnailSize = useMemo<PlayerThumbnailSize>(() => {
+  const assetThumbnailSize = useMemo<AssetThumbnailSize>(() => {
     switch (size) {
       case 'big':
         return 'big';
@@ -76,14 +76,13 @@ export default function AssetOverview({
   return (
     <div className={`friday-ui-asset-overview ${size}`}>
       <div className="header">
-        {asset.type === 'player' && asset.player && typeof asset.player === 'object' ? (
-          <PlayerThumbnail
-            player={asset.player}
-            format="extended"
-            size={playerThumbnailSize}
-            clubTo={clubTo}
-          />
-        ) : null}
+        <AssetThumbnail
+          asset={asset}
+          shape="text"
+          size={assetThumbnailSize}
+          playerFormat="extended"
+          to={clubTo}
+        />
         <div className="metrics">
           <span className="total-shares">
             {asset.total_shares || 0} action{asset.total_shares || 0 > 1 ? 's' : null}
