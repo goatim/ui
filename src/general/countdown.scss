@@ -30,4 +30,10 @@
       color: white;
     }
   }
+
+  &.dark {
+    > .label, > .remaining {
+      color: colors.$blue;
+    }
+  }
 }
