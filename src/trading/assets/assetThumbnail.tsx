@@ -9,18 +9,22 @@ import PercentageVariation, { PercentageVariationSize } from '../../market/perce
 import FridayCoins, { FridayCoinsSize, FridayCoinsTheme } from '../../market/fridayCoins';
 import QuotationHistoryGraph from '../quotations/quotationHistoryGraph';
 
+export type AssetThumbnailShape = 'box' | 'text';
+
 export type AssetThumbnailSize = 'inline' | 'narrow' | 'small' | 'medium' | 'big' | 'full';
 
 export type AssetThumbnailTheme = 'default' | 'darker' | 'lighter';
 
 export interface Props extends WrapperProps {
   asset: Asset;
+  shape?: AssetThumbnailShape;
   size?: AssetThumbnailSize;
   theme?: AssetThumbnailTheme;
 }
 
 export default function AssetThumbnail({
   asset,
+  shape = 'box',
   size = 'small',
   theme = 'default',
   to,
@@ -49,7 +53,7 @@ export default function AssetThumbnail({
     return 'light';
   }, [theme]);
 
-  const SessionVariationSize = useMemo<PercentageVariationSize>(() => {
+  const sessionVariationSize = useMemo<PercentageVariationSize>(() => {
     switch (size) {
       case 'narrow':
       case 'inline':
@@ -88,12 +92,12 @@ export default function AssetThumbnail({
 
   return (
     <Wrapper
-      className={`friday-ui-asset-thumbnail ${size} ${theme}`}
+      className={`friday-ui-asset-thumbnail ${shape} ${size} ${theme}`}
       to={to}
       onClick={onClick}
       href={href}
       target={target}>
-      {size === 'full' && (asset.quotation_history?.data.length || 0) > 1 ? (
+      {shape === 'box' && size === 'full' && (asset.quotation_history?.data.length || 0) > 1 ? (
         <div className="quotation">
           <QuotationHistoryGraph quotationHistory={asset.quotation_history} />
         </div>
@@ -105,15 +109,16 @@ export default function AssetThumbnail({
             player={asset.player}
             size={playerThumbnailSize}
             theme={playerThumbnailTheme}
+            format={shape === 'text' && size === 'full' ? 'extended' : 'inline'}
           />
         ) : null}
-        {size !== 'inline' ? (
+        {shape === 'box' && size !== 'inline' ? (
           <div className="metrics">
             <div className="session-variation">
               <PercentageVariation
                 variation={asset.session_variation}
                 shape="filled"
-                size={SessionVariationSize}
+                size={sessionVariationSize}
               />
             </div>
             <div className="quotation">

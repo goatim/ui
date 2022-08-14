@@ -2,11 +2,13 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { Asset, Player, Club, QuotationHistory } from '@fridaygame/client';
 import AssetThumbnail, {
+  AssetThumbnailShape,
   AssetThumbnailSize,
   AssetThumbnailTheme,
 } from '../../../src/trading/assets/assetThumbnail';
 
 interface Props {
+  shape?: AssetThumbnailShape;
   size?: AssetThumbnailSize;
   theme?: AssetThumbnailTheme;
 }
@@ -15,6 +17,12 @@ export default {
   title: 'Trading/AssetThumbnail',
   component: AssetThumbnail,
   argTypes: {
+    shape: {
+      options: ['box', 'text'],
+      control: {
+        type: 'select',
+      },
+    },
     size: {
       options: ['inline', 'narrow', 'small', 'medium', 'big', 'full'],
       control: {
@@ -120,7 +128,7 @@ const asset: Asset = {
   quotation_history: quotationHistory,
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ size, theme }: Props) => (
+const Template: ComponentStory<JSXElementConstructor<Props>> = ({ shape, size, theme }: Props) => (
   <div
     style={{
       display: 'flex',
@@ -128,7 +136,13 @@ const Template: ComponentStory<JSXElementConstructor<Props>> = ({ size, theme }:
       alignItems: 'center',
     }}>
     <div>
-      <AssetThumbnail asset={asset} size={size} theme={theme} onClick={() => undefined} />
+      <AssetThumbnail
+        asset={asset}
+        shape={shape}
+        size={size}
+        theme={theme}
+        onClick={() => undefined}
+      />
     </div>
   </div>
 );

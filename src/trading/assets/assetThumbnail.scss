@@ -9,7 +9,6 @@ a.friday-ui-asset-thumbnail {
 }
 
 .friday-ui-asset-thumbnail {
-  width: 100%;
   border-radius: 10px;
   position: relative;
   overflow: hidden;
@@ -36,104 +35,105 @@ a.friday-ui-asset-thumbnail {
     mask-image: linear-gradient(to left, black 0%, black 40%, transparent 100%);
   }
 
-  > .container {
-    box-sizing: border-box;
+  &.box {
     width: 100%;
-    height: 100%;
-  }
+    
+    &.narrow, &.small, &.medium, &.big, &.full {
+      &.default {
+        background: white;
+        border: solid rgba(colors.$blue, .1) 1px;
+      }
+  
+      &.darker {
+        background: rgba(black, .2);
+        border: solid rgba(black, .1) 1px;
+      }
+  
+      &.lighter {
+        background: rgba(white, .2);
+        border: solid rgba(white, .1) 1px;
+      }
 
-  &.narrow, &.small, &.medium, &.big, &.full {
-    &.default {
-      background: white;
-      border: solid rgba(colors.$blue, .1) 1px;
-    }
-
-    &.darker {
-      background: rgba(black, .2);
-      border: solid rgba(black, .1) 1px;
-    }
-
-    &.lighter {
-      background: rgba(white, .2);
-      border: solid rgba(white, .1) 1px;
-    }
-
-    > .container {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      > .metrics {
+      > .container {
+        box-sizing: border-box;
+        width: 100%;
+        height: 100%;
         display: flex;
         align-items: center;
-        justify-content: flex-end;
-
-        > .quotation {
-          margin-left: 5px;
-        }
-      }
-    }
-  }
-
-  &.narrow {
-    min-width: 250px;
-
-    > .container {
-      padding: 10px;
-      flex-direction: column;
-      align-items: stretch;
-
-      > .metrics {
-        width: 100%;
-        margin-top: 10px;
         justify-content: space-between;
-        flex-direction: row-reverse;
-
-        > .quotation {
-          margin: 0;
+    
+        > .metrics {
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+    
+          > .quotation {
+            margin-left: 5px;
+          }
         }
       }
     }
-  }
 
-  &.small {
-    min-width: 320px;
-    height: 40px;
-
-    > .container {
-      padding: 0 10px;
+    &.narrow {
+      min-width: 250px;
+  
+      > .container {
+        padding: 10px;
+        flex-direction: column;
+        align-items: stretch;
+  
+        > .metrics {
+          width: 100%;
+          margin-top: 10px;
+          justify-content: space-between;
+          flex-direction: row-reverse;
+  
+          > .quotation {
+            margin: 0;
+          }
+        }
+      }
     }
-  }
-
-  &.medium {
-    min-width: 350px;
-    height: 50px;
-
-    > .container {
-      padding: 0 15px;
+  
+    &.small {
+      min-width: 320px;
+      height: 40px;
+  
+      > .container {
+        padding: 0 10px;
+      }
     }
-  }
-
-  &.big {
-    min-width: 400px;
-    height: 60px;
-
-    > .container {
-      padding: 0 20px;
+  
+    &.medium {
+      min-width: 350px;
+      height: 50px;
+  
+      > .container {
+        padding: 0 15px;
+      }
     }
-  }
-
-  &.full {
-    min-width: 480px;
-    height: 60px;
-
-    > .container {
-      padding: 0 20px;
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
+  
+    &.big {
+      min-width: 400px;
+      height: 60px;
+  
+      > .container {
+        padding: 0 20px;
+      }
+    }
+  
+    &.full {
+      min-width: 480px;
+      height: 60px;
+  
+      > .container {
+        padding: 0 20px;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
     }
   }
 }
