@@ -2,12 +2,9 @@ import { ReactElement, useMemo } from 'react';
 import { Asset } from '@fridaygame/client';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
 import { DateTime } from 'luxon';
-import PlayerThumbnail, {
-  PlayerThumbnailSize,
-  PlayerThumbnailTheme,
-} from '../../soccer/players/playerThumbnail';
 import FridayCoins, { FridayCoinsSize, FridayCoinsTheme } from '../../market/fridayCoins';
 import Countdown from '../../general/countdown';
+import AssetThumbnail, { AssetThumbnailTheme } from '../assets/assetThumbnail';
 
 export type IPOThumbnailSize =
   | 'inline'
@@ -39,25 +36,11 @@ export default function IPOThumbnail({
   href,
   target,
 }: Props): ReactElement {
-  const playerThumbnailSize = useMemo<PlayerThumbnailSize>(() => {
-    switch (size) {
-      case 'narrow':
-      case 'small':
-      case 'medium':
-        return 'small';
-      case 'big':
-      case 'full':
-        return 'medium';
-      default:
-        return 'small';
-    }
-  }, [size]);
-
-  const playerThumbnailTheme = useMemo<PlayerThumbnailTheme>(() => {
+  const assetThumbnailTheme = useMemo<AssetThumbnailTheme>(() => {
     if (theme === 'default') {
       return 'default';
     }
-    return 'light';
+    return 'lighter';
   }, [theme]);
 
   const quotationSize = useMemo<FridayCoinsSize>(() => {
@@ -93,14 +76,7 @@ export default function IPOThumbnail({
       </div>
       {displayContent ? (
         <div className="content">
-          {asset.type === 'player' && asset.player && typeof asset.player === 'object' ? (
-            <PlayerThumbnail
-              player={asset.player}
-              format="extended"
-              size={playerThumbnailSize}
-              theme={playerThumbnailTheme}
-            />
-          ) : null}
+          <AssetThumbnail asset={asset} shape="text" size="full" theme={assetThumbnailTheme} />
           <div className="quotation">
             <FridayCoins amount={asset.quotation} size={quotationSize} theme={quotationTheme} />
           </div>
