@@ -9,61 +9,46 @@ import PercentageVariation, { PercentageVariationSize } from '../../market/perce
 import FridayCoins, { FridayCoinsSize, FridayCoinsTheme } from '../../market/fridayCoins';
 import QuotationHistoryGraph from '../quotations/quotationHistoryGraph';
 
-export type AssetThumbnailPlayerFormat = 'extended' | 'inline';
-
 export type AssetThumbnailShape = 'box' | 'text';
 
-export type AssetThumbnailSize = 'inline' | 'narrow' | 'small' | 'medium' | 'big' | 'full';
+export type AssetThumbnailSize = 'narrow' | 'small' | 'medium' | 'big' | 'large' | 'full';
 
 export type AssetThumbnailTheme = 'default' | 'darker' | 'lighter';
 
 export interface Props extends WrapperProps {
   asset: Asset;
-  playerFormat?: AssetThumbnailPlayerFormat;
   shape?: AssetThumbnailShape;
   size?: AssetThumbnailSize;
   theme?: AssetThumbnailTheme;
+  showQuotation?: boolean;
 }
 
 export default function AssetThumbnail({
   asset,
-  playerFormat = 'inline',
   shape = 'box',
   size = 'small',
   theme = 'default',
+  showQuotation = true,
   to,
   onClick,
   href,
   target,
 }: Props): ReactElement {
   const playerThumbnailSize = useMemo<PlayerThumbnailSize>(() => {
-    if (playerFormat === 'inline') {
-      switch (size) {
-        case 'inline':
-        case 'small':
-        case 'medium':
-          return 'small';
-        case 'big':
-        case 'full':
-          return 'medium';
-        default:
-          return 'small';
-      }
-    } else {
-      switch (size) {
-        case 'inline':
-        case 'small':
-          return 'small';
-        case 'medium':
-          return 'medium';
-        case 'big':
-        case 'full':
-          return 'big';
-        default:
-          return 'small';
-      }
+    switch (size) {
+      case 'narrow':
+      case 'small':
+      case 'medium':
+        return 'small';
+      case 'big':
+      case 'large':
+        return 'medium';
+      case 'full':
+        return 'full';
+      default:
+        return 'small';
     }
-  }, [size, playerFormat]);
+  }, [size]);
 
   const playerThumbnailTheme = useMemo<PlayerThumbnailTheme>(() => {
     if (theme === 'default') {
@@ -75,7 +60,6 @@ export default function AssetThumbnail({
   const sessionVariationSize = useMemo<PercentageVariationSize>(() => {
     switch (size) {
       case 'narrow':
-      case 'inline':
       case 'small':
       case 'medium':
         return 'small';
@@ -89,7 +73,6 @@ export default function AssetThumbnail({
 
   const quotationSize = useMemo<FridayCoinsSize>(() => {
     switch (size) {
-      case 'inline':
       case 'narrow':
       case 'small':
       case 'medium':
@@ -116,7 +99,10 @@ export default function AssetThumbnail({
       onClick={onClick}
       href={href}
       target={target}>
-      {shape === 'box' && size === 'full' && (asset.quotation_history?.data.length || 0) > 1 ? (
+      {showQuotation &&
+      size === 'large' &&
+      shape === 'box' &&
+      (asset.quotation_history?.data.length || 0) > 1 ? (
         <div className="quotation">
           <QuotationHistoryGraph quotationHistory={asset.quotation_history} />
         </div>
@@ -128,10 +114,10 @@ export default function AssetThumbnail({
             player={asset.player}
             size={playerThumbnailSize}
             theme={playerThumbnailTheme}
-            format={playerFormat}
           />
         ) : null}
-        {shape === 'box' && size !== 'inline' ? (
+
+        {showQuotation ? (
           <div className="metrics">
             <div className="session-variation">
               <PercentageVariation

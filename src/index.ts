@@ -80,7 +80,6 @@ import ClubList from './soccer/clubs/clubList';
 import PlayerThumbnail, {
   PlayerThumbnailSize,
   PlayerThumbnailTheme,
-  PlayerThumbnailFormat,
 } from './soccer/players/playerThumbnail';
 import PlayerList from './soccer/players/playerList';
 import SpotlightThumbnail, { SpotlightThumbnailSize } from './soccer/spotlights/spotlightThumbnail';
@@ -120,6 +119,7 @@ import CompositionRanking, {
   CompositionRankingTheme,
 } from './soccer/compositions/compositionRanking';
 import AssetThumbnail, {
+  AssetThumbnailShape,
   AssetThumbnailSize,
   AssetThumbnailTheme,
 } from './trading/assets/assetThumbnail';
@@ -335,7 +335,6 @@ export type {
   PhysicalEventTimelineTheme,
   MatchBoardTheme,
   CompositionRankingTheme,
-  PlayerThumbnailFormat,
   SpotlightThumbnailSize,
 };
 
@@ -368,6 +367,7 @@ export {
 };
 
 export type {
+  AssetThumbnailShape,
   AssetThumbnailSize,
   AssetThumbnailTheme,
   BoosterIconSize,

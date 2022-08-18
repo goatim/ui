@@ -1,10 +1,9 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Form, Field } from '@cezembre/forms';
 import { JSXElementConstructor } from 'react';
-import { Club, CompositionSetting, Player } from '@fridaygame/client';
-import { ModalsContext } from '@cezembre/fronts';
-import { CompositionSettingPosition } from '@fridaygame/client/dist/models/compositionSetting';
+import { Club, CompositionSetting, CompositionSettingPosition, Player } from '@fridaygame/client';
 import CompositionPositionListField from '../../../src/soccer/compositions/compositionPositionListField';
+import { ModalsContext } from '../../../src';
 
 interface Props {}
 
@@ -105,7 +104,7 @@ const players: Player[] = [
     number: 10,
     position: 'attacking_midfield',
     side: 'left',
-    textual_position: 'Attaquant centre',
+    resolved_position: 'Attaquant centre',
   },
   {
     id: 'pl_qefs33354',
@@ -114,7 +113,7 @@ const players: Player[] = [
     number: 10,
     position: 'attacking_midfield',
     side: 'left',
-    textual_position: 'Attaquant centre',
+    resolved_position: 'Attaquant centre',
   },
   {
     id: 'pl_qe84fs54',
@@ -123,7 +122,7 @@ const players: Player[] = [
     number: 10,
     position: 'attacking_midfield',
     side: 'left',
-    textual_position: 'Attaquant centre',
+    resolved_position: 'Attaquant centre',
   },
   {
     id: 'pl_qe524fs54',
@@ -132,7 +131,7 @@ const players: Player[] = [
     number: 10,
     position: 'attacking_midfield',
     side: 'left',
-    textual_position: 'Attaquant centre',
+    resolved_position: 'Attaquant centre',
   },
   {
     id: 'pl_qedcwefs54',
@@ -141,7 +140,7 @@ const players: Player[] = [
     number: 10,
     position: 'attacking_midfield',
     side: 'left',
-    textual_position: 'Attaquant centre',
+    resolved_position: 'Attaquant centre',
   },
   {
     id: 'pl_qkhikefs54',
@@ -150,7 +149,7 @@ const players: Player[] = [
     number: 10,
     position: 'attacking_midfield',
     side: 'left',
-    textual_position: 'Attaquant centre',
+    resolved_position: 'Attaquant centre',
   },
   {
     id: 'pl_qeqzdcfs54',
@@ -159,7 +158,7 @@ const players: Player[] = [
     number: 10,
     position: 'attacking_midfield',
     side: 'left',
-    textual_position: 'Attaquant centre',
+    resolved_position: 'Attaquant centre',
   },
   {
     id: 'pl_qefqzds54',
@@ -168,7 +167,7 @@ const players: Player[] = [
     number: 10,
     position: 'attacking_midfield',
     side: 'left',
-    textual_position: 'Attaquant centre',
+    resolved_position: 'Attaquant centre',
   },
   {
     id: 'pl_qtfhefs54',
@@ -177,7 +176,7 @@ const players: Player[] = [
     number: 10,
     position: 'attacking_midfield',
     side: 'left',
-    textual_position: 'Attaquant centre',
+    resolved_position: 'Attaquant centre',
   },
 ];
 

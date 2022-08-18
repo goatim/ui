@@ -6,9 +6,11 @@ a.friday-ui-asset-thumbnail {
   margin: 0;
   padding: 0;
   box-shadow: none;
+  font-size: 1em;
 }
 
 .friday-ui-asset-thumbnail {
+  width: 100%;
   border-radius: 10px;
   position: relative;
   overflow: hidden;
@@ -35,97 +37,101 @@ a.friday-ui-asset-thumbnail {
     mask-image: linear-gradient(to left, black 0%, black 40%, transparent 100%);
   }
 
-  &.box {
+  > .container {
+    box-sizing: border-box;
     width: 100%;
-    
-    &.narrow, &.small, &.medium, &.big, &.full {
-      &.default {
-        background: white;
-        border: solid rgba(colors.$blue, .1) 1px;
-      }
-  
-      &.darker {
-        background: rgba(black, .2);
-        border: solid rgba(black, .1) 1px;
-      }
-  
-      &.lighter {
-        background: rgba(white, .2);
-        border: solid rgba(white, .1) 1px;
-      }
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-      > .container {
-        box-sizing: border-box;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    
-        > .metrics {
-          display: flex;
-          align-items: center;
-          justify-content: flex-end;
-    
-          > .quotation {
-            margin-left: 5px;
-          }
-        }
+    > .metrics {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      margin-left: 10px;
+
+      > .quotation {
+        margin-left: 5px;
       }
     }
+  }
 
-    &.narrow {
+
+  &.narrow {
+    &.box {
       min-width: 250px;
-  
+
       > .container {
         padding: 10px;
-        flex-direction: column;
-        align-items: stretch;
-  
-        > .metrics {
-          width: 100%;
-          margin-top: 10px;
-          justify-content: space-between;
-          flex-direction: row-reverse;
-  
-          > .quotation {
-            margin: 0;
-          }
+      }
+    }
+
+    > .container {
+      flex-direction: column;
+      align-items: stretch;
+
+      > .metrics {
+        width: 100%;
+        margin-top: 10px;
+        justify-content: space-between;
+        flex-direction: row-reverse;
+        margin-left: 0;
+
+        > .quotation {
+          margin: 0;
         }
       }
     }
-  
+  }
+
+  &.box {
+    &.default {
+      background: white;
+      border: solid rgba(colors.$blue, .1) 1px;
+    }
+
+    &.darker {
+      background: rgba(black, .2);
+      border: solid rgba(black, .1) 1px;
+    }
+
+    &.lighter {
+      background: rgba(white, .2);
+      border: solid rgba(white, .1) 1px;
+    }
+
     &.small {
       min-width: 320px;
       height: 40px;
-  
+
       > .container {
         padding: 0 10px;
       }
     }
-  
+
     &.medium {
       min-width: 350px;
       height: 50px;
-  
+
       > .container {
         padding: 0 15px;
       }
     }
-  
+
     &.big {
       min-width: 400px;
       height: 60px;
-  
+
       > .container {
         padding: 0 20px;
       }
     }
-  
-    &.full {
+
+    &.large {
       min-width: 480px;
       height: 60px;
-  
+
       > .container {
         padding: 0 20px;
         position: absolute;
@@ -133,6 +139,14 @@ a.friday-ui-asset-thumbnail {
         bottom: 0;
         left: 0;
         right: 0;
+      }
+    }
+
+    &.full {
+      min-width: 500px;
+
+      > .container {
+        padding: 10px 20px;
       }
     }
   }

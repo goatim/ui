@@ -52,7 +52,7 @@ const allPlayers: Player[] = [
     number: 10,
     position: 'attacking_midfield',
     side: 'left',
-    textual_position: 'Attaquant centre',
+    resolved_position: 'Attaquant centre',
   },
   {
     id: 'pl_qgypp54',
@@ -61,7 +61,7 @@ const allPlayers: Player[] = [
     number: 10,
     position: 'attacking_midfield',
     side: 'left',
-    textual_position: 'Attaquant centre',
+    resolved_position: 'Attaquant centre',
   },
   {
     id: 'pl_qesfggy54',
@@ -70,7 +70,7 @@ const allPlayers: Player[] = [
     number: 10,
     position: 'attacking_midfield',
     side: 'left',
-    textual_position: 'Attaquant centre',
+    resolved_position: 'Attaquant centre',
   },
   {
     id: 'pl_qeqzd4',
@@ -79,7 +79,7 @@ const allPlayers: Player[] = [
     number: 10,
     position: 'attacking_midfield',
     side: 'left',
-    textual_position: 'Attaquant centre',
+    resolved_position: 'Attaquant centre',
   },
   {
     id: 'pl_qrgs54',
@@ -88,7 +88,7 @@ const allPlayers: Player[] = [
     number: 10,
     position: 'attacking_midfield',
     side: 'left',
-    textual_position: 'Attaquant centre',
+    resolved_position: 'Attaquant centre',
   },
   {
     id: 'pl_qeflzs54',
@@ -97,7 +97,7 @@ const allPlayers: Player[] = [
     number: 10,
     position: 'attacking_midfield',
     side: 'left',
-    textual_position: 'Attaquant centre',
+    resolved_position: 'Attaquant centre',
   },
 ];
 
@@ -109,7 +109,7 @@ const filteredPlayers: Player[] = [
     number: 10,
     position: 'attacking_midfield',
     side: 'left',
-    textual_position: 'Attaquant centre',
+    resolved_position: 'Attaquant centre',
   },
   {
     id: 'pl_qgypp54',
@@ -118,7 +118,7 @@ const filteredPlayers: Player[] = [
     number: 10,
     position: 'attacking_midfield',
     side: 'left',
-    textual_position: 'Attaquant centre',
+    resolved_position: 'Attaquant centre',
   },
 ];
 

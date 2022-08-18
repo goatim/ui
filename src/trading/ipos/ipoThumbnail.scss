@@ -1,0 +1,67 @@
+@use '../../styles/colors';
+@use '../../styles/fonts';
+
+button.friday-ui-ipo-thumbnail,
+a.friday-ui-ipo-thumbnail {
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  box-shadow: none;
+}
+
+.friday-ui-ipo-thumbnail {
+  box-sizing: border-box;
+  border-radius: 20px;
+  overflow: hidden;
+  background: white;
+  border: solid rgba(colors.$blue, .1) 1px;
+
+  * {
+    box-sizing: border-box;
+  }
+
+  &.banner {
+    border-radius: 10px;
+  }
+
+  > .header {
+    background: colors.$electric-blue;
+    padding: 10px 20px;
+
+    > .title {
+      @include fonts.Inter(.8em, white, bold);
+    }
+  }
+
+  > .body {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+  }
+
+  > .countdown {
+    background: colors.$light-blue;
+    padding: 10px;
+  }
+
+  &.narrow {
+    min-width: 250px;
+
+    > .body {
+      flex-direction: column;
+
+      > .quotation {
+        margin-top: 10px;
+      }
+    }
+  }
+
+  &.small {
+    min-width: 320px;
+  }
+
+  &.big {
+    min-width: 400px;
+  }
+}

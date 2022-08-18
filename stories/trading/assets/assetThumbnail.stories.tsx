@@ -2,29 +2,22 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { Asset, Player, Club, QuotationHistory } from '@fridaygame/client';
 import AssetThumbnail, {
-  AssetThumbnailPlayerFormat,
   AssetThumbnailShape,
   AssetThumbnailSize,
   AssetThumbnailTheme,
 } from '../../../src/trading/assets/assetThumbnail';
 
 interface Props {
-  playerFormat?: AssetThumbnailPlayerFormat;
   shape?: AssetThumbnailShape;
   size?: AssetThumbnailSize;
   theme?: AssetThumbnailTheme;
+  showQuotation?: boolean;
 }
 
 export default {
   title: 'Trading/AssetThumbnail',
   component: AssetThumbnail,
   argTypes: {
-    playerFormat: {
-      options: ['extended', 'inline'],
-      control: {
-        type: 'select',
-      },
-    },
     shape: {
       options: ['box', 'text'],
       control: {
@@ -32,7 +25,7 @@ export default {
       },
     },
     size: {
-      options: ['inline', 'narrow', 'small', 'medium', 'big', 'full'],
+      options: ['narrow', 'small', 'medium', 'big', 'large', 'full'],
       control: {
         type: 'select',
       },
@@ -41,6 +34,11 @@ export default {
       options: ['default', 'darker', 'lighter'],
       control: {
         type: 'select',
+      },
+    },
+    showQuotation: {
+      control: {
+        type: 'boolean',
       },
     },
   },
@@ -68,7 +66,7 @@ const player: Player = {
   number: 10,
   position: 'attacking_midfield',
   side: 'left',
-  textual_position: 'Attaquant centre',
+  resolved_position: 'Attaquant centre',
 };
 
 const quotationHistory: QuotationHistory = {
@@ -137,10 +135,10 @@ const asset: Asset = {
 };
 
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({
-  playerFormat,
   shape,
   size,
   theme,
+  showQuotation,
 }: Props) => (
   <div
     style={{
@@ -151,11 +149,10 @@ const Template: ComponentStory<JSXElementConstructor<Props>> = ({
     <div>
       <AssetThumbnail
         asset={asset}
-        playerFormat={playerFormat}
         shape={shape}
         size={size}
         theme={theme}
-        onClick={() => undefined}
+        showQuotation={showQuotation}
       />
     </div>
   </div>

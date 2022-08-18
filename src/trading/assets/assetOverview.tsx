@@ -1,5 +1,5 @@
 import { ReactElement, useMemo, useState } from 'react';
-import { Asset, Booster, OrderBook, OrderType } from '@fridaygame/client';
+import { Asset, Booster, Ipo, OrderBook, OrderType } from '@fridaygame/client';
 import { To } from 'react-router-dom';
 import QuotationHistoryGraph from '../quotations/quotationHistoryGraph';
 import FridayCoins, { FridayCoinsSize } from '../../market/fridayCoins';
@@ -7,8 +7,9 @@ import PercentageVariation, { PercentageVariationSize } from '../../market/perce
 import Button from '../../general/button';
 import ItemEditor, { ItemEditorFields, ItemEditorSize } from '../../market/checkouts/itemEditor';
 import AssetThumbnail, { AssetThumbnailSize } from './assetThumbnail';
+import IpoThumbnail from '../ipos/ipoThumbnail';
 
-export type AssetOverviewSize = 'small' | 'medium' | 'big';
+export type AssetOverviewSize = 'small' | 'medium' | 'full';
 
 export interface Props {
   asset: Asset;
@@ -17,22 +18,24 @@ export interface Props {
   boosters?: Booster[];
   clubTo?: To;
   onSubmitItem?: (itemFields: ItemEditorFields) => void | Promise<void>;
+  ipo?: Ipo;
 }
 
 export default function AssetOverview({
   asset,
-  size = 'medium',
+  size = 'full',
   clubTo,
   orderBook,
   boosters,
   onSubmitItem,
+  ipo,
 }: Props): ReactElement {
   const [orderType, setOrderType] = useState<OrderType | undefined>();
 
   const assetThumbnailSize = useMemo<AssetThumbnailSize>(() => {
     switch (size) {
-      case 'big':
-        return 'big';
+      case 'full':
+        return 'full';
       case 'medium':
         return 'medium';
       default:
@@ -42,7 +45,7 @@ export default function AssetOverview({
 
   const fridayCoinsSize = useMemo<FridayCoinsSize>(() => {
     switch (size) {
-      case 'big':
+      case 'full':
         return 'large';
       case 'medium':
         return 'big';
@@ -53,7 +56,7 @@ export default function AssetOverview({
 
   const percentageVariationSize = useMemo<PercentageVariationSize>(() => {
     switch (size) {
-      case 'big':
+      case 'full':
         return 'big';
       case 'medium':
         return 'medium';
@@ -76,13 +79,16 @@ export default function AssetOverview({
   return (
     <div className={`friday-ui-asset-overview ${size}`}>
       <div className="header">
-        <AssetThumbnail
-          asset={asset}
-          shape="text"
-          size={assetThumbnailSize}
-          playerFormat="extended"
-          to={clubTo}
-        />
+        <div className="asset">
+          <AssetThumbnail
+            asset={asset}
+            shape="text"
+            size={assetThumbnailSize}
+            to={clubTo}
+            showQuotation={false}
+          />
+        </div>
+
         <div className="metrics">
           <span className="total-shares">
             {asset.total_shares || 0} action{asset.total_shares || 0 > 1 ? 's' : null}
@@ -108,6 +114,12 @@ export default function AssetOverview({
           </Button>
         </div>
       </div>
+
+      {ipo ? (
+        <div className="ipo-banner">
+          <IpoThumbnail ipo={ipo} shape="banner" />
+        </div>
+      ) : null}
 
       <div className={`item-editor${orderType ? ' active' : ''}`}>
         <ItemEditor

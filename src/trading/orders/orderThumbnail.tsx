@@ -21,7 +21,7 @@ export default function OrderThumbnail({ order, onCancel, size = 'normal' }: Pro
           <div className="cell">
             <span>Ordre {order.type === 'buy' ? "d'achat" : 'de vente'}</span>
             <div className="content">
-              <AssetThumbnail asset={order.asset} size="inline" />
+              <AssetThumbnail asset={order.asset} size="small" shape="text" showQuotation={false} />
             </div>
           </div>
         ) : null}

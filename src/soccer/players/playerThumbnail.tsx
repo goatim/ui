@@ -5,16 +5,13 @@ import { Wrapper, WrapperProps } from '@cezembre/fronts';
 import ClubIcon, { ClubIconSize } from '../clubs/clubIcon';
 import ClubThumbnail, { ClubThumbnailTheme } from '../clubs/clubThumbnail';
 
-export type PlayerThumbnailSize = 'small' | 'medium' | 'big';
-
-export type PlayerThumbnailFormat = 'inline' | 'extended';
+export type PlayerThumbnailSize = 'small' | 'medium' | 'big' | 'full';
 
 export type PlayerThumbnailTheme = 'default' | 'light';
 
 export interface Props extends WrapperProps {
   player: Player;
   size?: PlayerThumbnailSize;
-  format?: PlayerThumbnailFormat;
   theme?: ClubThumbnailTheme;
   clubTo?: To;
 }
@@ -22,7 +19,6 @@ export interface Props extends WrapperProps {
 export default function PlayerThumbnail({
   player,
   size = 'small',
-  format = 'inline',
   theme = 'default',
   to,
   onClick,
@@ -43,10 +39,6 @@ export default function PlayerThumbnail({
   const className = useMemo<string>(() => {
     let nextClassName = 'friday-ui-player-thumbnail';
 
-    if (format) {
-      nextClassName += ` ${format}`;
-    }
-
     if (size) {
       nextClassName += ` ${size}`;
     }
@@ -56,9 +48,9 @@ export default function PlayerThumbnail({
     }
 
     return nextClassName;
-  }, [format, size, theme]);
+  }, [size, theme]);
 
-  if (format === 'extended') {
+  if (size === 'full') {
     return (
       <Wrapper className={className} to={to} onClick={onClick} href={href} target={target}>
         <div className="infos">

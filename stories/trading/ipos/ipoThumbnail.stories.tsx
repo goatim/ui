@@ -1,37 +1,30 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import { Player, Club } from '@fridaygame/client';
-import { BrowserRouter } from 'react-router-dom';
-import PlayerThumbnail, {
-  PlayerThumbnailSize,
-  PlayerThumbnailTheme,
-} from '../../../src/soccer/players/playerThumbnail';
+import { Asset, Player, Club, Ipo } from '@fridaygame/client';
+import IpoThumbnail, {
+  IpoThumbnailShape,
+  IpoThumbnailSize,
+} from '../../../src/trading/ipos/ipoThumbnail';
 
 interface Props {
-  size?: PlayerThumbnailSize;
-  theme?: PlayerThumbnailTheme;
-  clubTo?: string;
+  size?: IpoThumbnailSize;
+  shape?: IpoThumbnailShape;
 }
 
 export default {
-  title: 'Soccer/PlayerThumbnail',
-  component: PlayerThumbnail,
+  title: 'Trading/IpoThumbnail',
+  component: IpoThumbnail,
   argTypes: {
     size: {
-      options: ['small', 'medium', 'big', 'full'],
+      options: ['narrow', 'small', 'big'],
       control: {
         type: 'select',
       },
     },
-    theme: {
-      options: ['default', 'light'],
+    shape: {
+      options: ['box', 'banner'],
       control: {
-        type: 'radio',
-      },
-    },
-    clubTo: {
-      control: {
-        type: 'text',
+        type: 'select',
       },
     },
   },
@@ -62,10 +55,33 @@ const player: Player = {
   resolved_position: 'Attaquant centre',
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ size, theme, clubTo }: Props) => (
-  <BrowserRouter>
-    <PlayerThumbnail player={player} size={size} theme={theme} clubTo={clubTo} />
-  </BrowserRouter>
+const asset: Asset = {
+  id: 'as_Ded512',
+  entity: 'pl_de45d54DD',
+  type: 'player',
+  name: 'Kylian Mbappé',
+  description: '',
+  slug: 'kylian-mbappe',
+  total_shares: 450,
+  quotation: 2750,
+  session_variation: 345,
+  player,
+};
+
+const ipo: Ipo = {
+  id: 'ip_qd54zd321d3',
+  beginning: '2022-10-23T17:31:41.171+02:00',
+  asset,
+};
+
+const Template: ComponentStory<JSXElementConstructor<Props>> = ({ size, shape }: Props) => (
+  <div
+    style={{
+      display: 'flex',
+      justifyContent: 'center',
+    }}>
+    <IpoThumbnail ipo={ipo} size={size} shape={shape} />
+  </div>
 );
 
 export const Default = Template.bind({});

@@ -24,7 +24,13 @@ export default function DividendThumbnail({ dividend, theme = 'default' }: Props
     <div className="friday-ui-dividend-thumbnail">
       {dividend.asset && typeof dividend.asset === 'object' ? (
         <div className="asset">
-          <AssetThumbnail asset={dividend.asset} size="inline" theme={assetTheme} />
+          <AssetThumbnail
+            asset={dividend.asset}
+            size="small"
+            shape="text"
+            showQuotation={false}
+            theme={assetTheme}
+          />
         </div>
       ) : null}
       <div className="amount">
