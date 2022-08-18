@@ -148,6 +148,7 @@ import AssetList from './trading/assets/assetList';
 import RankPosition from './trading/ranks/rankPosition';
 import DividendThumbnail, { DividendThumbnailTheme } from './trading/dividends/dividendThumbnail';
 import DividendList from './trading/dividends/dividendList';
+import IpoThumbnail, { IpoThumbnailShape, IpoThumbnailSize } from './trading/ipos/ipoThumbnail';
 import CreditCardThumbnail from './payment/creditCardThumbnail';
 import PaymentMethodThumbnail from './payment/paymentMethodThumbnail';
 import CreditCardForm, { NewCreditCard } from './payment/creditCardForm';
@@ -364,6 +365,7 @@ export {
   RankPosition,
   DividendThumbnail,
   DividendList,
+  IpoThumbnail,
 };
 
 export type {
@@ -375,6 +377,8 @@ export type {
   DataPoint,
   QuotationHistoryGraphTheme,
   DividendThumbnailTheme,
+  IpoThumbnailShape,
+  IpoThumbnailSize,
   AssetOverviewSize,
   PortfolioThumbnailSize,
   OrderThumbnailSize,
