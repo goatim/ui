@@ -1,15 +1,21 @@
 import { MouseEvent, ReactElement } from 'react';
 import { Player } from '@fridaygame/client';
 import { To } from 'react-router';
-import PlayerThumbnail from './playerThumbnail';
+import PlayerThumbnail, { PlayerThumbnailSize } from './playerThumbnail';
 
 export interface Props {
   players?: Player[];
+  size?: PlayerThumbnailSize;
   playerOnClick?: (player: Player, event: MouseEvent<HTMLButtonElement>) => Promise<void> | void;
   playerTo?: (player: Player) => To;
 }
 
-export default function PlayerList({ players, playerOnClick, playerTo }: Props): ReactElement {
+export default function PlayerList({
+  players,
+  size,
+  playerOnClick,
+  playerTo,
+}: Props): ReactElement {
   if (!players?.length) {
     return <span>Aucun joueur</span>;
   }
@@ -20,6 +26,7 @@ export default function PlayerList({ players, playerOnClick, playerTo }: Props):
         <div className="player" key={player.id}>
           <PlayerThumbnail
             player={player}
+            size={size}
             onClick={playerOnClick ? (event) => playerOnClick(player, event) : undefined}
             to={playerTo ? playerTo(player) : undefined}
           />

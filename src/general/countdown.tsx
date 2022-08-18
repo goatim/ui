@@ -1,7 +1,7 @@
 import { ReactElement, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { DateTime, Duration } from 'luxon';
 
-export type CountdownTheme = 'default' | 'light';
+export type CountdownTheme = 'default' | 'light' | 'dark';
 
 export interface Props {
   label?: string;

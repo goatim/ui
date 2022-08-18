@@ -9,20 +9,26 @@ import PercentageVariation, { PercentageVariationSize } from '../../market/perce
 import FridayCoins, { FridayCoinsSize, FridayCoinsTheme } from '../../market/fridayCoins';
 import QuotationHistoryGraph from '../quotations/quotationHistoryGraph';
 
-export type AssetThumbnailSize = 'inline' | 'narrow' | 'small' | 'medium' | 'big' | 'full';
+export type AssetThumbnailShape = 'box' | 'text';
+
+export type AssetThumbnailSize = 'narrow' | 'small' | 'medium' | 'big' | 'large' | 'full';
 
 export type AssetThumbnailTheme = 'default' | 'darker' | 'lighter';
 
 export interface Props extends WrapperProps {
   asset: Asset;
+  shape?: AssetThumbnailShape;
   size?: AssetThumbnailSize;
   theme?: AssetThumbnailTheme;
+  showQuotation?: boolean;
 }
 
 export default function AssetThumbnail({
   asset,
+  shape = 'box',
   size = 'small',
   theme = 'default',
+  showQuotation = true,
   to,
   onClick,
   href,
@@ -30,13 +36,15 @@ export default function AssetThumbnail({
 }: Props): ReactElement {
   const playerThumbnailSize = useMemo<PlayerThumbnailSize>(() => {
     switch (size) {
-      case 'inline':
+      case 'narrow':
       case 'small':
       case 'medium':
         return 'small';
       case 'big':
-      case 'full':
+      case 'large':
         return 'medium';
+      case 'full':
+        return 'full';
       default:
         return 'small';
     }
@@ -49,10 +57,9 @@ export default function AssetThumbnail({
     return 'light';
   }, [theme]);
 
-  const SessionVariationSize = useMemo<PercentageVariationSize>(() => {
+  const sessionVariationSize = useMemo<PercentageVariationSize>(() => {
     switch (size) {
       case 'narrow':
-      case 'inline':
       case 'small':
       case 'medium':
         return 'small';
@@ -66,7 +73,6 @@ export default function AssetThumbnail({
 
   const quotationSize = useMemo<FridayCoinsSize>(() => {
     switch (size) {
-      case 'inline':
       case 'narrow':
       case 'small':
       case 'medium':
@@ -88,12 +94,15 @@ export default function AssetThumbnail({
 
   return (
     <Wrapper
-      className={`friday-ui-asset-thumbnail ${size} ${theme}`}
+      className={`friday-ui-asset-thumbnail ${shape} ${size} ${theme}`}
       to={to}
       onClick={onClick}
       href={href}
       target={target}>
-      {size === 'full' && (asset.quotation_history?.data.length || 0) > 1 ? (
+      {showQuotation &&
+      size === 'large' &&
+      shape === 'box' &&
+      (asset.quotation_history?.data.length || 0) > 1 ? (
         <div className="quotation">
           <QuotationHistoryGraph quotationHistory={asset.quotation_history} />
         </div>
@@ -107,13 +116,14 @@ export default function AssetThumbnail({
             theme={playerThumbnailTheme}
           />
         ) : null}
-        {size !== 'inline' ? (
+
+        {showQuotation ? (
           <div className="metrics">
             <div className="session-variation">
               <PercentageVariation
                 variation={asset.session_variation}
                 shape="filled"
-                size={SessionVariationSize}
+                size={sessionVariationSize}
               />
             </div>
             <div className="quotation">

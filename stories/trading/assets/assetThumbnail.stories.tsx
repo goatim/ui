@@ -2,21 +2,30 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { Asset, Player, Club, QuotationHistory } from '@fridaygame/client';
 import AssetThumbnail, {
+  AssetThumbnailShape,
   AssetThumbnailSize,
   AssetThumbnailTheme,
 } from '../../../src/trading/assets/assetThumbnail';
 
 interface Props {
+  shape?: AssetThumbnailShape;
   size?: AssetThumbnailSize;
   theme?: AssetThumbnailTheme;
+  showQuotation?: boolean;
 }
 
 export default {
   title: 'Trading/AssetThumbnail',
   component: AssetThumbnail,
   argTypes: {
+    shape: {
+      options: ['box', 'text'],
+      control: {
+        type: 'select',
+      },
+    },
     size: {
-      options: ['inline', 'narrow', 'small', 'medium', 'big', 'full'],
+      options: ['narrow', 'small', 'medium', 'big', 'large', 'full'],
       control: {
         type: 'select',
       },
@@ -25,6 +34,11 @@ export default {
       options: ['default', 'darker', 'lighter'],
       control: {
         type: 'select',
+      },
+    },
+    showQuotation: {
+      control: {
+        type: 'boolean',
       },
     },
   },
@@ -52,7 +66,7 @@ const player: Player = {
   number: 10,
   position: 'attacking_midfield',
   side: 'left',
-  textual_position: 'Attaquant centre',
+  resolved_position: 'Attaquant centre',
 };
 
 const quotationHistory: QuotationHistory = {
@@ -120,7 +134,12 @@ const asset: Asset = {
   quotation_history: quotationHistory,
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ size, theme }: Props) => (
+const Template: ComponentStory<JSXElementConstructor<Props>> = ({
+  shape,
+  size,
+  theme,
+  showQuotation,
+}: Props) => (
   <div
     style={{
       display: 'flex',
@@ -128,7 +147,13 @@ const Template: ComponentStory<JSXElementConstructor<Props>> = ({ size, theme }:
       alignItems: 'center',
     }}>
     <div>
-      <AssetThumbnail asset={asset} size={size} theme={theme} onClick={() => undefined} />
+      <AssetThumbnail
+        asset={asset}
+        shape={shape}
+        size={size}
+        theme={theme}
+        showQuotation={showQuotation}
+      />
     </div>
   </div>
 );

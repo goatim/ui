@@ -25,7 +25,12 @@ export default function OrderItemThumbnail({
           <div className="cell">
             <span>Ordre {orderItem.order_type === 'buy' ? "d'achat" : 'de vente'}</span>
             <div className="content">
-              <AssetThumbnail asset={orderItem.asset} size="inline" />
+              <AssetThumbnail
+                asset={orderItem.asset}
+                size="small"
+                showQuotation={false}
+                shape="text"
+              />
             </div>
           </div>
         ) : null}

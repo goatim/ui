@@ -51,7 +51,7 @@ const player: Player = {
   number: 10,
   position: 'attacking_midfield',
   side: 'left',
-  textual_position: 'Attaquant centre',
+  resolved_position: 'Attaquant centre',
 };
 
 const asset: Asset = {

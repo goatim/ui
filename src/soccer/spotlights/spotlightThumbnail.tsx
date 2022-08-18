@@ -28,7 +28,7 @@ export default function SpotlightThumbnail({
       case 'medium':
       case 'large':
       default:
-        return 'full';
+        return 'large';
     }
   }, [size]);
 
