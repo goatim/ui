@@ -6,10 +6,10 @@
 
 .friday-ui-counter {
   width: 220px;
+  text-align: center;
 
   > label {
     @include forms.label();
-    text-align: center;
     width: 100%;
   }
 
@@ -63,8 +63,15 @@
     }
   }
 
+  > .conversion {
+    @include fonts.Inter(.8em, rgba(colors.$blue, .5), bold);
+    margin-top: 10px;
+    width: 100%;
+  }
+
   > .instructions {
     @include forms.instructions;
+    width: 100%;
   }
 
   > .error {

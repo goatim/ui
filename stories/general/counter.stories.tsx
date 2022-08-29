@@ -25,10 +25,12 @@ const Template: ComponentStory<JSXElementConstructor<Props>> = ({ label }: Props
     <Field<number | undefined>
       name="counter"
       component={Counter}
-      label={label}
+      label={label || 'Montant (FDY)'}
       resolver={resolveFridayCoins}
       adapter={adaptFridayCoins}
       increment={100}
+      initialValue={42000}
+      conversion="0.002 ETH"
     />
   </Form>
 );

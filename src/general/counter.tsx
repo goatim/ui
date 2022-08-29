@@ -11,6 +11,7 @@ export interface Props extends FieldComponentProps<number | undefined> {
   label?: string;
   placeholder?: string;
   instructions?: string;
+  conversion?: string;
   min?: number;
   max?: number;
   increment?: number;
@@ -34,6 +35,7 @@ export default function Counter({
   format,
   label,
   placeholder,
+  conversion,
   instructions,
   min = 0,
   max,
@@ -134,6 +136,8 @@ export default function Counter({
           <Icon name="plus" size={20} />
         </button>
       </div>
+
+      {conversion ? <p className="conversion">{conversion}</p> : null}
 
       {instructions ? <p className="instructions">{instructions}</p> : null}
 
