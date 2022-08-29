@@ -1,0 +1,45 @@
+@use '../../styles/colors';
+@use '../../styles/fonts';
+
+.friday-ui-wallet-amount-detail {
+  display: flex;
+  justify-content: space-between;
+
+  > .section {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+
+    &.center {
+      align-items: center;
+      text-align: center;
+    }
+
+    &.right {
+      align-items: flex-end;
+      text-align: right;
+    }
+
+    > .label {
+      @include fonts.label;
+      margin-bottom: 10px;
+    }
+
+    > .instruction {
+      @include fonts.Inter(.8em, rgba(colors.$blue, .5));
+      margin-top: 10px;
+    }
+  }
+
+  &.narrow {
+    flex-direction: column;
+
+    > .section {
+      margin-top: 20px;
+
+      &:first-of-type {
+        margin: 0;
+      }
+    }
+  }
+}
