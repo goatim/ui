@@ -18,7 +18,7 @@ export default function OrderMatchNotification({ payload }: Props): ReactElement
       </p>
       {payload?.asset ? (
         <div className="payload highlight">
-          <AssetThumbnail asset={payload.asset} size="inline" />
+          <AssetThumbnail asset={payload.asset} size="small" shape="text" />
         </div>
       ) : null}
     </div>
