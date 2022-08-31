@@ -13,13 +13,13 @@ export default function WalletAmountDetail({ wallet, size = 'normal' }: Props): 
   return (
     <div className={`friday-ui-wallet-amount-detail ${size}`}>
       <div className="section">
-        <span className="label">Solde initial</span>
+        <span className="label">Pack Starter</span>
         <FridayCoins amount={wallet.floor_withdrawal} size="small" />
-        <span className="instruction">Solde reçu à l&apos;inscription en espèces et actions.</span>
+        <span className="instruction">Reçu lors de l&apos;inscription.</span>
       </div>
 
       <div className={`section${size !== 'narrow' ? ' center' : ''}`}>
-        <span className="label">Solde espèces</span>
+        <span className="label">Solde Friday coins</span>
         <FridayCoins amount={wallet.amount} size="small" />
       </div>
 

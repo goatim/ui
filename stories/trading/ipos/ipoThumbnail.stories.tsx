@@ -70,7 +70,7 @@ const asset: Asset = {
 
 const ipo: Ipo = {
   id: 'ip_qd54zd321d3',
-  beginning: '2022-10-23T17:31:41.171+02:00',
+  // beginning: '2022-10-23T17:31:41.171+02:00',
   asset,
 };
 

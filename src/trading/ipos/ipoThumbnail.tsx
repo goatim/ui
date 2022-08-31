@@ -72,9 +72,11 @@ export default function IpoThumbnail({
         </div>
       ) : null}
 
-      <div className="countdown">
-        <Countdown label="Ouverture" date={ipo.beginning} />
-      </div>
+      {ipo.beginning ? (
+        <div className="countdown">
+          <Countdown label="Ouverture" date={ipo.beginning} />
+        </div>
+      ) : null}
     </Wrapper>
   );
 }
