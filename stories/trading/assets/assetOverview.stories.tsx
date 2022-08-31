@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import { Asset, Player, Club, Booster, Ipo } from '@fridaygame/client';
+import { Asset, Player, Club, Booster, Ipo, QuotationHistory } from '@fridaygame/client';
 import AssetOverview, { AssetOverviewSize } from '../../../src/trading/assets/assetOverview';
 
 interface Props {
@@ -45,6 +45,57 @@ const player: Player = {
   resolved_position: 'Attaquant centre',
 };
 
+const quotationHistory: QuotationHistory = {
+  data: [
+    {
+      t: 1646755289000,
+      a: 100,
+      o: 0,
+      c: 0,
+      h: 0,
+      l: 0,
+      v: 0,
+    },
+    // {
+    //   t: 1647273689000,
+    //   a: 75,
+    //   o: 0,
+    //   c: 0,
+    //   h: 0,
+    //   l: 0,
+    //   v: 0,
+    // },
+    // {
+    //   t: 1647373889000,
+    //   a: 23,
+    //   o: 0,
+    //   c: 0,
+    //   h: 0,
+    //   l: 0,
+    //   v: 0,
+    // },
+    // {
+    //   t: 1647532889000,
+    //   a: 125,
+    //   o: 0,
+    //   c: 0,
+    //   h: 0,
+    //   l: 0,
+    //   v: 0,
+    // },
+    {
+      t: 1648137689000,
+      a: 100,
+      o: 0,
+      c: 0,
+      h: 0,
+      l: 0,
+      v: 0,
+    },
+  ],
+  variation: 0.25,
+};
+
 const asset: Asset = {
   id: 'as_Ded512',
   entity: 'pl_de45d54DD',
@@ -56,6 +107,7 @@ const asset: Asset = {
   quotation: 2750,
   session_variation: 345,
   player,
+  quotation_history: quotationHistory,
 };
 
 const boosters: Booster[] = [
