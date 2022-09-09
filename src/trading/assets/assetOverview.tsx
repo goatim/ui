@@ -7,7 +7,7 @@ import PercentageVariation, { PercentageVariationSize } from '../../market/perce
 import Button from '../../general/button';
 import ItemEditor, { ItemEditorFields, ItemEditorSize } from '../../market/checkouts/itemEditor';
 import AssetThumbnail, { AssetThumbnailSize } from './assetThumbnail';
-import IpoThumbnail from '../ipos/ipoThumbnail';
+import IpoThumbnail, { IpoThumbnailSize } from '../ipos/ipoThumbnail';
 
 export type AssetOverviewSize = 'small' | 'medium' | 'full';
 
@@ -76,6 +76,17 @@ export default function AssetOverview({
     }
   }, [size]);
 
+  const ipoThumbnailSize = useMemo<IpoThumbnailSize>(() => {
+    switch (size) {
+      case 'small':
+        return 'narrow';
+      case 'medium':
+        return 'small';
+      default:
+        return 'big';
+    }
+  }, [size]);
+
   return (
     <div className={`friday-ui-asset-overview ${size}`}>
       <div className="header">
@@ -117,7 +128,7 @@ export default function AssetOverview({
 
       {ipo ? (
         <div className="ipo-banner">
-          <IpoThumbnail ipo={ipo} shape="banner" />
+          <IpoThumbnail ipo={ipo} shape="banner" size={ipoThumbnailSize} />
         </div>
       ) : null}
 
