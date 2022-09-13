@@ -1,10 +1,9 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Form, Field } from '@cezembre/forms';
 import { JSXElementConstructor } from 'react';
-import { Club, CompositionSetting, Player } from '@fridaygame/client';
-import { ModalsContext } from '@cezembre/fronts';
-import { CompositionSettingPosition } from '@fridaygame/client/dist/models/compositionSetting';
+import { Club, CompositionSetting, Player, CompositionSettingPosition } from '@fridaygame/client';
 import CompositionPositionMapField from '../../../src/soccer/compositions/compositionPositionMapField';
+import { ModalsContext } from '../../../src';
 
 interface Props {}
 

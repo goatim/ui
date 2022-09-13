@@ -20,7 +20,7 @@ export interface ModalComponentProps {
 
 export type ModalComponent = FunctionComponent<ModalComponentProps>;
 
-export type ModalType = 'pop-up' | 'banner' | 'message';
+export type ModalType = 'pop-up' | 'overlay' | 'banner' | 'message';
 
 export interface Modal {
   id: string;

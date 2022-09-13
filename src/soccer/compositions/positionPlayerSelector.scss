@@ -2,11 +2,6 @@
 @use "../../styles/colors";
 
 .friday-ui-position-player-selector {
-  background: white;
-  padding: 20px 20px 0;
-  border-radius: 10px;
-  border: solid rgba(colors.$blue, .1) 1px;
-
   > .header {
     display: flex;
     flex-direction: column;

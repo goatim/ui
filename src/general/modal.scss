@@ -11,8 +11,7 @@
     box-sizing: border-box;
   }
 
-  &.pop-up {
-    box-sizing: border-box;
+  &.pop-up, &.overlay {
     position: fixed;
     width: 100vw;
     height: 100vh;
@@ -36,41 +35,55 @@
         padding: 20px 0 0;
       }
 
-      > .element {
-        background: colors.$light-blue;
-        border-radius: 20px;
-        padding: 50px;
+      > .element > .header {
+        display: flex;
+        justify-content: flex-end;
 
-        @include screens.tablet {
-          padding: 30px;
-        }
+        > button {
+          display: block;
+          cursor: pointer;
+          padding: 5px;
+          margin: 0;
+          border: none;
+          outline: none;
+          background: none;
 
-        @include screens.tablet-S {
-          width: 100%;
-          border-bottom-left-radius: 0;
-          border-bottom-right-radius: 0;
-          padding: 20px;
-        }
-
-        > .header {
-          display: flex;
-          justify-content: flex-end;
-
-          > button {
-            display: block;
-            cursor: pointer;
-            padding: 5px;
-            margin: 0;
-            border: none;
-            outline: none;
-            background: none;
-
-            > svg {
-              stroke: colors.$blue;
-            }
+          > svg {
+            stroke: colors.$blue;
           }
         }
       }
+    }
+  }
+
+  &.pop-up > .container > .element {
+    background: colors.$light-blue;
+    border-radius: 20px;
+    padding: 50px;
+
+    @include screens.tablet {
+      padding: 30px;
+    }
+
+    @include screens.tablet-S {
+      width: 100%;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+      padding: 20px;
+    }
+  }
+
+  &.overlay > .container > .element {
+    min-width: 350px;
+    background: white;
+    padding: 20px 20px 0;
+    border-radius: 10px;
+    border: solid rgba(colors.$blue, .1) 1px;
+
+    @include screens.tablet-S {
+      width: 100%;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
     }
   }
 }

@@ -113,22 +113,21 @@ export default function CompositionPositionMapField({
       }
 
       pushModal({
+        type: 'overlay',
         component: ({ dismissModal }) => (
-          <div className="friday-ui-composition-positions-map-field-position-player-selector">
-            <PositionPlayerSelector
-              players={players}
-              value={playerValue}
-              position={typeof position === 'object' ? position.name : 'Gardien'}
-              compositionSetting={compositionSetting?.name}
-              onChange={(player) => {
-                changePositionPlayer(position, player);
-                dismissModal();
-              }}
-              onFocus={() => undefined}
-              onBlur={() => undefined}
-              form={form}
-            />
-          </div>
+          <PositionPlayerSelector
+            players={players}
+            value={playerValue}
+            position={typeof position === 'object' ? position.name : 'Gardien'}
+            compositionSetting={compositionSetting?.name}
+            onChange={(player) => {
+              changePositionPlayer(position, player);
+              dismissModal();
+            }}
+            onFocus={() => undefined}
+            onBlur={() => undefined}
+            form={form}
+          />
         ),
       });
     },
