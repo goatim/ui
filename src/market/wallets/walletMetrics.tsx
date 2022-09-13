@@ -2,7 +2,6 @@ import { ReactElement } from 'react';
 import { Wallet } from '@fridaygame/client';
 import FridayCoins from '../fridayCoins';
 import PercentageVariation from '../percentageVariation';
-import QuotationHistoryGraph from '../../trading/quotations/quotationHistoryGraph';
 import RankPosition from '../../trading/ranks/rankPosition';
 
 export type WalletMetricsSize = 'narrow' | 'normal';

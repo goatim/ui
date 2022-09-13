@@ -105,7 +105,7 @@ export default function AssetOverview({
             {asset.total_shares || 0} action{asset.total_shares || 0 > 1 ? 's' : null}
           </span>
           <FridayCoins amount={asset.quotation} size={fridayCoinsSize} />
-          <PercentageVariation variation={asset.session_variation} size={percentageVariationSize} />
+          <PercentageVariation variation={asset.day_variation} size={percentageVariationSize} />
         </div>
       </div>
 

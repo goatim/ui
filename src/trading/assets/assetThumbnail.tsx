@@ -57,7 +57,7 @@ export default function AssetThumbnail({
     return 'light';
   }, [theme]);
 
-  const sessionVariationSize = useMemo<PercentageVariationSize>(() => {
+  const dayVariationSize = useMemo<PercentageVariationSize>(() => {
     switch (size) {
       case 'narrow':
       case 'small':
@@ -119,11 +119,11 @@ export default function AssetThumbnail({
 
         {showQuotation ? (
           <div className="metrics">
-            <div className="session-variation">
+            <div className="day-variation">
               <PercentageVariation
-                variation={asset.session_variation}
+                variation={asset.day_variation}
                 shape="filled"
-                size={sessionVariationSize}
+                size={dayVariationSize}
               />
             </div>
             <div className="quotation">
