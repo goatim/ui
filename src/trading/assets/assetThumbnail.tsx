@@ -52,7 +52,7 @@ export default function AssetThumbnail({
 
   const playerThumbnailTheme = useMemo<PlayerThumbnailTheme>(() => {
     if (theme === 'default') {
-      return 'default';
+      return 'dark';
     }
     return 'light';
   }, [theme]);
@@ -87,7 +87,7 @@ export default function AssetThumbnail({
 
   const quotationTheme = useMemo<FridayCoinsTheme>(() => {
     if (theme === 'default') {
-      return 'default';
+      return 'dark';
     }
     return 'light';
   }, [theme]);

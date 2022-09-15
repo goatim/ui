@@ -18,7 +18,7 @@ export default function CompositionThumbnail({
   composition,
   size = 'small',
   infos = 'picture-and-name',
-  theme = 'default',
+  theme = 'dark',
   to,
   onClick,
   href,

@@ -72,7 +72,7 @@ export type AutoComplete =
 
 export type InputShape = 'square' | 'round';
 
-export type InputTheme = 'default' | 'darker' | 'lighter' | 'dark';
+export type InputTheme = 'dark' | 'darker' | 'lighter' | 'dark';
 
 export type InputAdapter<V = string> = (value: string) => V;
 export type InputResolver<V = string> = (value?: V) => string;
@@ -141,7 +141,7 @@ export default function Input<V = string, S extends Suggestion<V> = Suggestion<V
   onBlur,
   type = 'text',
   shape = 'square',
-  theme = 'default',
+  theme = 'dark',
   adapter,
   resolver,
   format,

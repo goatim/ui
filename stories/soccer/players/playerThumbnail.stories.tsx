@@ -24,7 +24,7 @@ export default {
       },
     },
     theme: {
-      options: ['default', 'light'],
+      options: ['dark', 'light'],
       control: {
         type: 'radio',
       },

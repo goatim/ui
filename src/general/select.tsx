@@ -46,7 +46,7 @@ function SelectOptionComponent<V>({
   return <span className="placeholder">{placeholder || 'Selectioner une option'}</span>;
 }
 
-export type SelectType = 'default' | 'flat';
+export type SelectType = 'dark' | 'flat';
 
 export interface Props<V = unknown> extends FieldComponentProps<V | undefined> {
   label?: string;
@@ -73,7 +73,7 @@ export default function Select<V = unknown>({
   DefaultComponent,
   canCancel,
   instructions,
-  type = 'default',
+  type = 'dark',
   fullWidth,
   onSearch,
 }: Props<V>): ReactElement {
@@ -153,14 +153,14 @@ export default function Select<V = unknown>({
       {label && <label htmlFor={name}>{label}</label>}
 
       <div className="container" ref={selectRef}>
-        {selectedOption || type === 'default' ? (
+        {selectedOption || type === 'dark' ? (
           <div className="selector">
             <button onClick={toggleFocus} type="button" className="main">
               <SelectOptionComponent<V>
                 option={selectedOption}
                 DefaultComponent={DefaultComponent}
               />
-              {type === 'default' ? <Icon name="chevron-down" /> : null}
+              {type === 'dark' ? <Icon name="chevron-down" /> : null}
             </button>
             {selectedOption && canCancel ? (
               <button type="button" className="cancel" onClick={() => onChange(undefined)}>

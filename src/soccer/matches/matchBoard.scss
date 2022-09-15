@@ -9,50 +9,28 @@
   background: rgba(colors.$blue, .1);
   border: solid rgba(colors.$blue, .1) 1px;
 
-  > .participants {
-    border-right: solid rgba(colors.$blue, .1) 1px;
+  > .tab-menu {
     display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 20px;
+    border-bottom: solid rgba(white, .1) 1px;
+  }
+
+  > .ranking {
+    border-right: solid rgba(colors.$blue, .1) 1px;
+  }
+
+  > .feed {
+    flex: 1;
+    overflow: scroll;
+  }
+
+  &.small {
     flex-direction: column;
-    justify-content: space-between;
-    align-items: stretch;
-
-    > .header {
-      height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      > .title {
-        @include fonts.label;
-        text-align: center;
-        display: block;
-        padding: 0 20px;
-      }
-    }
 
     > .ranking {
       flex: 1;
-    }
-
-    > .action {
-      padding: 30px 20px;
-    }
-  }
-
-  > .game {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: space-between;
-
-    > .feed {
-      flex: 1;
-      overflow: scroll;
-
-      > .physical-events {
-        padding-bottom: 50px;
-      }
     }
   }
 
@@ -60,12 +38,8 @@
     background: rgba(white, .1);
     border: solid rgba(white, .1) 1px;
 
-    > .participants {
+    > .ranking {
       border-right: solid rgba(white, .1) 1px;
-
-      > .header > .title {
-        @include fonts.label-light;
-      }
     }
   }
 }

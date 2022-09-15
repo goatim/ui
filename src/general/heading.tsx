@@ -2,7 +2,7 @@ import { ReactElement } from 'react';
 
 export type HeadingSize = 'small' | 'medium' | 'big';
 
-export type HeadingTheme = 'default' | 'light' | 'live' | 'live-light';
+export type HeadingTheme = 'dark' | 'light' | 'live' | 'live-light';
 
 export type HeadingLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
@@ -21,7 +21,7 @@ export default function Heading({
   emoji,
   title,
   size = 'medium',
-  theme = 'default',
+  theme = 'dark',
   level = 'h2',
   align = 'left',
 }: Props): ReactElement {

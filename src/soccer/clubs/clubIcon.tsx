@@ -4,7 +4,7 @@ import { Image } from '@fridaygame/client';
 
 export type ClubIconSize = 'small' | 'medium' | 'large';
 
-export type ClubIconTheme = 'default' | 'light';
+export type ClubIconTheme = 'dark' | 'light';
 
 export interface Props extends WrapperProps {
   icon?: Image;
@@ -15,7 +15,7 @@ export interface Props extends WrapperProps {
 export default function ClubIcon({
   icon,
   size = 'small',
-  theme = 'default',
+  theme = 'dark',
   to,
   onClick,
   href,

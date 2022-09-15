@@ -2,8 +2,8 @@ import { ReactElement, useMemo } from 'react';
 import { Ipo } from '@fridaygame/client';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
 import FridayCoins, { FridayCoinsSize } from '../../market/fridayCoins';
-import Countdown from '../../general/countdown';
 import AssetThumbnail, { AssetThumbnailSize } from '../assets/assetThumbnail';
+import DateTimeThumbnail from '../../general/dateTimeThumbnail';
 
 export type IpoThumbnailSize = 'narrow' | 'small' | 'big';
 
@@ -74,7 +74,7 @@ export default function IpoThumbnail({
 
       {ipo.beginning ? (
         <div className="countdown">
-          <Countdown label="Ouverture" date={ipo.beginning} />
+          <DateTimeThumbnail label="Ouverture" dateTime={ipo.beginning} countdown />
         </div>
       ) : null}
     </Wrapper>

@@ -5,7 +5,7 @@ import LeagueIcon, { LeagueIconSize } from './leagueIcon';
 
 export type LeagueThumbnailSize = 'small' | 'medium' | 'big' | 'full';
 
-export type LeagueThumbnailTheme = 'default' | 'light';
+export type LeagueThumbnailTheme = 'dark' | 'light';
 
 export interface Props extends WrapperProps {
   league: League;
@@ -30,7 +30,7 @@ function getIconSize(size: LeagueThumbnailSize): LeagueIconSize {
 export default function LeagueThumbnail({
   league,
   size = 'small',
-  theme = 'default',
+  theme = 'dark',
   to,
   onClick,
   href,

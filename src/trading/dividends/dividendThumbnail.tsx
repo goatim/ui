@@ -3,14 +3,14 @@ import { Dividend } from '@fridaygame/client';
 import AssetThumbnail, { AssetThumbnailTheme } from '../assets/assetThumbnail';
 import FridayCoinsVariation from '../../market/fridayCoinsVariation';
 
-export type DividendThumbnailTheme = 'default' | 'light';
+export type DividendThumbnailTheme = 'dark' | 'light';
 
 export interface Props {
   dividend: Dividend;
   theme?: DividendThumbnailTheme;
 }
 
-export default function DividendThumbnail({ dividend, theme = 'default' }: Props): ReactElement {
+export default function DividendThumbnail({ dividend, theme = 'dark' }: Props): ReactElement {
   const assetTheme = useMemo<AssetThumbnailTheme>(() => {
     switch (theme) {
       case 'light':

@@ -13,7 +13,7 @@ export default {
   argTypes: {
     theme: {
       control: {
-        options: ['default', 'light'],
+        options: ['dark', 'light'],
         type: 'select',
       },
     },

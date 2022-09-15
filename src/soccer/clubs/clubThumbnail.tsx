@@ -7,7 +7,7 @@ import LeagueThumbnail from '../leagues/leagueThumbnail';
 
 export type ClubThumbnailSize = 'small' | 'medium' | 'big' | 'full';
 
-export type ClubThumbnailTheme = 'default' | 'light';
+export type ClubThumbnailTheme = 'dark' | 'light';
 
 export interface Props extends WrapperProps {
   club: Club;
@@ -33,7 +33,7 @@ function getIconSize(size: ClubThumbnailSize): ClubIconSize {
 export default function ClubThumbnail({
   club,
   size = 'small',
-  theme = 'default',
+  theme = 'dark',
   to,
   onClick,
   href,

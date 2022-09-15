@@ -2,7 +2,7 @@ import { ReactElement } from 'react';
 import { Composition, CompositionPosition, CompositionSettingPosition } from '@fridaygame/client';
 import CompositionPositionThumbnail from './compositionPositionThumbnail';
 
-export type CompositionPositionListTheme = 'default' | 'light';
+export type CompositionPositionListTheme = 'dark' | 'light';
 
 export interface Props {
   theme?: CompositionPositionListTheme;

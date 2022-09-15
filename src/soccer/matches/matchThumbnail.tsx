@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 import { Match, Wallet } from '@fridaygame/client';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
-import Date from '../../general/date';
+import DateTimeThumbnail from '../../general/dateTimeThumbnail';
 import MatchCreator from './matchCreator';
 import WalletList from '../../market/wallets/walletList';
 import MatchStatusThumbnail from './matchStatusThumbnail';
@@ -26,7 +26,7 @@ export default function MatchThumbnail({ match, to, onClick, href, target }: Pro
       <div className="container">
         <div className="body">
           <div className="header">
-            <Date label="Début" date={match.beginning} theme="light" />
+            <DateTimeThumbnail label="Début" dateTime={match.beginning} theme="light" />
 
             <div className="infos">
               <span className="title">{match.title}</span>
@@ -41,7 +41,7 @@ export default function MatchThumbnail({ match, to, onClick, href, target }: Pro
               ) : null}
             </div>
 
-            <Date label="Fin" align="right" date={match.end} theme="light" />
+            <DateTimeThumbnail label="Fin" align="right" dateTime={match.end} theme="light" />
           </div>
 
           {match.compositions?.compositions?.length ? (

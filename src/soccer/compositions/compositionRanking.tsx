@@ -3,7 +3,7 @@ import { Composition } from '@fridaygame/client';
 import CompositionThumbnail from './compositionThumbnail';
 import Icon from '../../general/icon';
 
-export type CompositionRankingTheme = 'default' | 'light';
+export type CompositionRankingTheme = 'dark' | 'light';
 
 export interface Props {
   compositions?: Composition[];
@@ -14,13 +14,13 @@ export interface Props {
 export default function CompositionRanking({
   compositions,
   pinned,
-  theme = 'default',
+  theme = 'dark',
 }: Props): ReactElement {
   if (!compositions?.length) {
     return (
       <div className={`friday-ui-composition-ranking-empty ${theme}`}>
         <Icon name="meh" size={25} />
-        <span>Personne</span>
+        <span>Aucun participant</span>
       </div>
     );
   }

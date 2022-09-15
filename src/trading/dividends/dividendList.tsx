@@ -7,7 +7,7 @@ export interface Props {
   theme?: DividendThumbnailTheme;
 }
 
-export default function DividendList({ dividends, theme = 'default' }: Props): ReactElement {
+export default function DividendList({ dividends, theme = 'dark' }: Props): ReactElement {
   if (!dividends?.length) {
     return <span>Aucun dividende</span>;
   }

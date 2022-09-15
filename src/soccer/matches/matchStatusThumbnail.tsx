@@ -1,7 +1,7 @@
 import { ReactElement, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { DateTime } from 'luxon';
 import { MatchStatus } from '@fridaygame/client';
-import Countdown from '../../general/countdown';
+import DateTimeThumbnail from '../../general/dateTimeThumbnail';
 
 export function useMatchLiveStatus(
   beginning?: DateTime | string,
@@ -44,7 +44,7 @@ export function useMatchLiveStatus(
   return liveStatus;
 }
 
-export type MatchStatusThumbnailTheme = 'default' | 'light';
+export type MatchStatusThumbnailTheme = 'dark' | 'light';
 
 export interface Props {
   status?: MatchStatus;
@@ -57,17 +57,30 @@ export default function MatchStatusThumbnail({
   status,
   beginning,
   end,
-  theme = 'default',
+  theme = 'dark',
 }: Props): ReactElement {
   const liveStatus = useMatchLiveStatus(beginning, end, status);
 
   return (
     <div className={`friday-ui-match-status-thumbnail ${theme}`}>
       {liveStatus === 'planned' ? (
-        <Countdown theme={theme} label="Coup d'envoi" date={beginning} />
+        <DateTimeThumbnail
+          theme={theme}
+          label="Coup d'envoi"
+          dateTime={beginning}
+          countdown
+          align="center"
+        />
       ) : null}
+
       {liveStatus === 'ongoing' ? (
-        <Countdown theme={theme} label="Coup de sifflet final" date={end} />
+        <DateTimeThumbnail
+          theme={theme}
+          label="Coup de sifflet final"
+          dateTime={end}
+          countdown
+          align="center"
+        />
       ) : null}
 
       {liveStatus === 'passed' ? <span className="label">Match terminé !</span> : null}

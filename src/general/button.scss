@@ -118,7 +118,7 @@
       padding: 0 1.8em;
     }
 
-    &.default {
+    &.electric-blue {
       background: colors.$electric-blue;
 
       > .container {
@@ -276,7 +276,7 @@
   }
 
   &.text {
-    &.default {
+    &.electric-blue {
       > .container {
         svg[stroke] {
           stroke: colors.$electric-blue;

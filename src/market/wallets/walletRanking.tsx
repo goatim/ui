@@ -3,7 +3,7 @@ import { Wallet } from '@fridaygame/client';
 import WalletThumbnail from './walletThumbnail';
 import Icon from '../../general/icon';
 
-export type WalletRankingTheme = 'default' | 'light';
+export type WalletRankingTheme = 'dark' | 'light';
 
 export interface Props {
   wallets?: Wallet[];
@@ -17,7 +17,7 @@ export interface Props {
 export default function WalletRanking({
   wallets,
   pinned,
-  theme = 'default',
+  theme = 'dark',
   positionExtractor,
   amountExtractor,
   variationExtractor,

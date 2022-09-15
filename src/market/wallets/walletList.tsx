@@ -2,7 +2,7 @@ import { ReactElement, useMemo } from 'react';
 import { Wallet } from '@fridaygame/client';
 import WalletThumbnail from './walletThumbnail';
 
-export type WalletListTheme = 'default' | 'light';
+export type WalletListTheme = 'dark' | 'light';
 
 export interface Props {
   wallets?: Wallet[];

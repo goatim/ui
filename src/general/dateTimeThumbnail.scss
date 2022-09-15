@@ -1,0 +1,68 @@
+@use '../styles/fonts';
+@use '../styles/colors';
+
+.friday-ui-date-time-thumbnail {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  &.left, &.start {
+    align-items: flex-start;
+  }
+
+  &.center {
+    align-items: center;
+    text-align: center;
+  }
+
+  &.right, &.end {
+    align-items: flex-end;
+    text-align: right;
+  }
+
+  > span {
+    @include fonts.Inter(.8em, colors.$blue);
+
+    &.label {
+      @include fonts.label(.8em, colors.$blue);
+      padding-bottom: .5em;
+    }
+
+    &.countdown {
+      font-size: 1.1em;
+      font-weight: bold;
+    }
+  }
+
+  &.light > span {
+    color: white;
+  }
+
+  &.transparent-dark > span {
+    color: rgba(colors.$blue, .5);
+  }
+
+  &.transparent-light > span {
+    color: rgba(white, .5);
+  }
+
+  &.small {
+    > span {
+      font-size: .7em;
+
+      &.countdown {
+        font-size: 1em;
+      }
+    }
+  }
+
+  &.big {
+    > span {
+      font-size: .9em;
+
+      &.countdown {
+        font-size: 1.3em;
+      }
+    }
+  }
+}

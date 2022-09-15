@@ -1,8 +1,8 @@
-import { ReactElement } from 'react';
+import { ReactElement, useMemo } from 'react';
 import { PhysicalEvent } from '@fridaygame/client';
-import Date from '../../general/date';
+import DateTimeThumbnail, { DateTimeThumbnailTheme } from '../../general/dateTimeThumbnail';
 
-export type PhysicalEventTimelineTheme = 'default' | 'light';
+export type PhysicalEventTimelineTheme = 'dark' | 'light';
 
 export interface Props {
   physicalEvent: PhysicalEvent;
@@ -24,12 +24,26 @@ function Milestone({ children }: MilestoneProps): ReactElement {
 
 export default function PhysicalEventTimeline({
   physicalEvent,
-  theme = 'default',
+  theme = 'dark',
 }: Props): ReactElement {
+  const dateTimeThumbnailTheme = useMemo<DateTimeThumbnailTheme>(() => {
+    switch (theme) {
+      case 'dark':
+        return 'transparent-dark';
+      default:
+        return 'transparent-light';
+    }
+  }, [theme]);
+
   return (
     <div className={`friday-ui-physical-event-timeline ${theme}`}>
       <Milestone>
-        <Date date={physicalEvent.beginning} align="left" label="Début" theme={theme} />
+        <DateTimeThumbnail
+          dateTime={physicalEvent.beginning}
+          align="left"
+          label="Début"
+          theme={dateTimeThumbnailTheme}
+        />
       </Milestone>
       {physicalEvent.sub_events?.map((subEvent) => (
         <Milestone key={subEvent.id}>
@@ -37,7 +51,12 @@ export default function PhysicalEventTimeline({
         </Milestone>
       ))}
       <Milestone>
-        <Date date={physicalEvent.end} align="left" label="Fin" theme={theme} />
+        <DateTimeThumbnail
+          dateTime={physicalEvent.end}
+          align="left"
+          label="Fin"
+          theme={dateTimeThumbnailTheme}
+        />
       </Milestone>
     </div>
   );

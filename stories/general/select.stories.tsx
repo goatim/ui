@@ -20,7 +20,7 @@ export default {
       },
     },
     selectType: {
-      options: ['default', 'flat'],
+      options: ['dark', 'flat'],
       control: {
         type: 'select',
       },

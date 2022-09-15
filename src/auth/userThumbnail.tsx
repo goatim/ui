@@ -6,7 +6,7 @@ export type UserThumbnailSize = 'small' | 'medium' | 'big';
 
 export type UserThumbnailInfos = 'picture' | 'picture-and-name';
 
-export type UserThumbnailTheme = 'default' | 'light';
+export type UserThumbnailTheme = 'dark' | 'light';
 
 export interface Props extends WrapperProps {
   user: User;
@@ -23,7 +23,7 @@ export default function UserThumbnail({
   onClick,
   href,
   target,
-  theme = 'default',
+  theme = 'dark',
 }: Props): ReactElement {
   return (
     <Wrapper

@@ -35,8 +35,8 @@ export default {
       },
     },
     theme: {
-      options: ['default', 'light', 'live', 'live-light'],
-      defaultValue: 'default',
+      options: ['dark', 'light', 'live', 'live-light'],
+      defaultValue: 'dark',
       control: {
         type: 'select',
       },
@@ -75,7 +75,7 @@ Default.args = {
   label: 'label',
   title: 'Title',
   size: 'medium',
-  theme: 'default',
+  theme: 'dark',
   level: 'h2',
   align: 'left',
 };

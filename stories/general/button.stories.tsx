@@ -26,8 +26,16 @@ export default {
       },
     },
     theme: {
-      options: ['default', 'dark', 'light', 'transparent-dark', 'transparent-light', 'buy', 'sell'],
-      defaultValue: 'default',
+      options: [
+        'electric-blue',
+        'dark',
+        'light',
+        'transparent-dark',
+        'transparent-light',
+        'buy',
+        'sell',
+      ],
+      defaultValue: 'dark',
       control: {
         type: 'select',
       },

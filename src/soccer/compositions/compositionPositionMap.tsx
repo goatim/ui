@@ -8,7 +8,7 @@ import {
 import SoccerField from './soccerField';
 import SoccerFieldPosition, { SoccerFieldPositionSize } from './soccerFieldPosition';
 
-export type CompositionPositionMapTheme = 'default' | 'light';
+export type CompositionPositionMapTheme = 'dark' | 'light';
 
 export interface PositionProps {
   id?: string;

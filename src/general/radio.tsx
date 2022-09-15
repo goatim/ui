@@ -29,7 +29,7 @@ function RadioOptionComponent<V = unknown>({
   active,
   size,
   shape = 'filled',
-  theme = 'default',
+  theme = 'dark',
   leftIcon,
   rightIcon,
 }: RadioOptionProps<V>): ReactElement | null {

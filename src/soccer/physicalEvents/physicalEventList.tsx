@@ -7,10 +7,7 @@ export interface Props {
   theme?: PhysicalEventThumbnailTheme;
 }
 
-export default function PhysicalEventList({
-  physicalEvents,
-  theme = 'default',
-}: Props): ReactElement {
+export default function PhysicalEventList({ physicalEvents, theme = 'dark' }: Props): ReactElement {
   if (!physicalEvents?.length) {
     return <span>Pas d&eapos;événements</span>;
   }

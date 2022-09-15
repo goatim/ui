@@ -92,7 +92,7 @@ import SoccerFieldPosition, {
 import CompositionPositionMap, {
   CompositionPositionMapTheme,
 } from './soccer/compositions/compositionPositionMap';
-import Date, { DateTheme } from './general/date';
+import DateTimeThumbnail, { DateTimeThumbnailTheme } from './general/dateTimeThumbnail';
 import MatchCreator from './soccer/matches/matchCreator';
 import MatchStatusThumbnail from './soccer/matches/matchStatusThumbnail';
 import MatchIcon from './soccer/matches/matchIcon';
@@ -181,7 +181,7 @@ export {
   Check,
   CheckBox,
   Counter,
-  Date,
+  DateTimeThumbnail,
   DatePicker,
   DateTimePicker,
   Datetime,
@@ -207,7 +207,7 @@ export type {
   ButtonShape,
   ButtonSize,
   ButtonTheme,
-  DateTheme,
+  DateTimeThumbnailTheme,
   HeadingLevel,
   HeadingSize,
   HeadingTheme,

@@ -8,7 +8,7 @@ export type WalletThumbnailSize = 'small' | 'medium' | 'big';
 
 export type WalletThumbnailInfos = 'picture' | 'picture-and-name';
 
-export type WalletThumbnailTheme = 'default' | 'light';
+export type WalletThumbnailTheme = 'dark' | 'light';
 
 export interface Props extends WrapperProps {
   wallet: Wallet;
@@ -24,7 +24,7 @@ export default function WalletThumbnail({
   wallet,
   size = 'small',
   infos = 'picture-and-name',
-  theme = 'default',
+  theme = 'dark',
   position,
   amount,
   variation,

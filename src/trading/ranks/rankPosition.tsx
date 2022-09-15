@@ -2,7 +2,7 @@ import { ReactElement } from 'react';
 
 export type FridayCoinsSize = 'small' | 'medium' | 'big' | 'large';
 
-export type FridayCoinsTheme = 'default' | 'light' | 'darker';
+export type FridayCoinsTheme = 'dark' | 'light' | 'darker';
 
 export interface Props {
   position?: number;
@@ -13,7 +13,7 @@ export interface Props {
 export default function RankPosition({
   position = 0,
   size = 'small',
-  theme = 'default',
+  theme = 'dark',
 }: Props): ReactElement {
   if (position <= 0) {
     return <span className={`friday-ui-rank-position ${size} ${theme}`}>0</span>;

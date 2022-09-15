@@ -10,19 +10,15 @@ import {
   Asset,
   Dividend,
 } from '@fridaygame/client';
-import MatchBoard, {
-  MatchBoardSize,
-  MatchBoardTheme,
-} from '../../../src/soccer/matches/matchBoard';
+import MatchFeed, { MatchFeedTheme } from '../../../src/soccer/matches/matchFeed';
 
 interface Props {
-  theme?: MatchBoardTheme;
-  size?: MatchBoardSize;
+  theme?: MatchFeedTheme;
 }
 
 export default {
-  title: 'Soccer/MatchBoard',
-  component: MatchBoard,
+  title: 'Soccer/MatchFeed',
+  component: MatchFeed,
   argTypes: {
     theme: {
       control: {
@@ -32,7 +28,7 @@ export default {
     },
     size: {
       control: {
-        options: ['small', 'big'],
+        options: ['narrow', 'small', 'big'],
         type: 'select',
       },
     },
@@ -71,8 +67,8 @@ const match: Match = {
     thumbnail_url: 'https://picsum.photos/200',
     medium_url: 'https://picsum.photos/400',
   },
-  beginning: '2022-09-29T09:54:52.696+02:00',
-  end: '2022-10-20T09:54:52.696+02:00',
+  beginning: '2022-10-29T09:54:52.696+02:00',
+  end: '2022-11-20T09:54:52.696+02:00',
   nb_participants: 213,
   is_public: true,
   // participants: Array(24)
@@ -162,16 +158,8 @@ const physicalEvents: PhysicalEvent[] = [
   },
 ];
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ theme, size }: Props) => (
-  <div style={{ height: 500 }}>
-    <MatchBoard
-      match={match}
-      theme={theme}
-      size={size}
-      onClickComposition={() => undefined}
-      physicalEvents={physicalEvents}
-    />
-  </div>
+const Template: ComponentStory<JSXElementConstructor<Props>> = ({ theme }: Props) => (
+  <MatchFeed match={match} theme={theme} physicalEvents={physicalEvents} />
 );
 
 export const Default = Template.bind({});

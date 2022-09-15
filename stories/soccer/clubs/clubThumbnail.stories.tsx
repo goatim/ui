@@ -24,7 +24,7 @@ export default {
       },
     },
     theme: {
-      options: ['default', 'light'],
+      options: ['dark', 'light'],
       control: {
         type: 'radio',
       },
@@ -86,5 +86,5 @@ export const Default = Template.bind({});
 
 Default.args = {
   size: 'small',
-  theme: 'default',
+  theme: 'dark',
 };

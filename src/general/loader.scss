@@ -15,7 +15,7 @@
     animation: spin 1s linear infinite;
   }
 
-  &.default > div {
+  &.dark > div {
     border-color: colors.$blue transparent transparent transparent;
   }
 

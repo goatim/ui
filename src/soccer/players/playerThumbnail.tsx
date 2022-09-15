@@ -7,7 +7,7 @@ import ClubThumbnail, { ClubThumbnailTheme } from '../clubs/clubThumbnail';
 
 export type PlayerThumbnailSize = 'small' | 'medium' | 'big' | 'full';
 
-export type PlayerThumbnailTheme = 'default' | 'light';
+export type PlayerThumbnailTheme = 'dark' | 'light';
 
 export interface Props extends WrapperProps {
   player: Player;
@@ -19,7 +19,7 @@ export interface Props extends WrapperProps {
 export default function PlayerThumbnail({
   player,
   size = 'small',
-  theme = 'default',
+  theme = 'dark',
   to,
   onClick,
   href,

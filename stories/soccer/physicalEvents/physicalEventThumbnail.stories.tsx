@@ -14,7 +14,7 @@ export default {
   component: PhysicalEventThumbnail,
   argTypes: {
     theme: {
-      options: ['default', 'light'],
+      options: ['dark', 'light'],
       control: {
         type: 'select',
       },
@@ -93,5 +93,5 @@ const Template: ComponentStory<JSXElementConstructor<Props>> = ({ theme }: Props
 export const Default = Template.bind({});
 
 Default.args = {
-  theme: 'default',
+  theme: 'dark',
 };

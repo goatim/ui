@@ -5,7 +5,7 @@ import Icon from '../../general/icon';
 
 export type SoccerFieldPositionSize = 'small' | 'medium' | 'large';
 
-export type SoccerFieldPositionTheme = 'default' | 'light';
+export type SoccerFieldPositionTheme = 'dark' | 'light';
 
 export interface Props extends WrapperProps {
   icon?: Image | null;

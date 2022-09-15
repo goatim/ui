@@ -1,15 +1,17 @@
-import { MouseEvent, ReactElement } from 'react';
+import { MouseEvent, ReactElement, useState } from 'react';
 import { Match, PhysicalEvent } from '@fridaygame/client';
 import { To } from 'react-router';
-import MatchStatusThumbnail, { useMatchLiveStatus } from './matchStatusThumbnail';
-import PhysicalEventList from '../physicalEvents/physicalEventList';
+import MatchFeed from './matchFeed';
+import MatchRanking from './matchRanking';
 import Button from '../../general/button';
-import CompositionRanking from '../compositions/compositionRanking';
 
-export type MatchBoardTheme = 'default' | 'light';
+export type MatchBoardSize = 'small' | 'big';
+
+export type MatchBoardTheme = 'dark' | 'light';
 
 export interface Props {
   match: Match;
+  size?: MatchBoardSize;
   theme?: MatchBoardTheme;
   toComposition?: To;
   onClickComposition?: (event: MouseEvent<HTMLButtonElement>) => Promise<void> | void;
@@ -18,62 +20,52 @@ export interface Props {
 
 export default function MatchBoard({
   match,
-  theme = 'default',
+  size = 'big',
+  theme = 'dark',
   toComposition,
   onClickComposition,
   physicalEvents,
 }: Props): ReactElement {
-  const liveStatus = useMatchLiveStatus(match.beginning, match.end, match.status);
+  const [tab, setTab] = useState<'feed' | 'ranking'>('feed');
 
   return (
-    <div className={`friday-ui-match-board ${theme} ${liveStatus}`}>
-      <div className="participants">
-        <div className="header">
-          <span className="title">Participants</span>
+    <div className={`friday-ui-match-board ${size} ${theme}`}>
+      {size === 'small' ? (
+        <div className="tab-menu">
+          <Button
+            onClick={() => setTab('feed')}
+            active={tab === 'feed'}
+            shape="text"
+            theme="transparent-light">
+            Match
+          </Button>
+          <Button
+            onClick={() => setTab('ranking')}
+            active={tab === 'ranking'}
+            shape="text"
+            theme="transparent-light">
+            Classement
+          </Button>
         </div>
+      ) : null}
+
+      {size === 'big' || tab === 'ranking' ? (
         <div className="ranking">
-          <CompositionRanking compositions={match.compositions?.compositions} theme={theme} />
+          <MatchRanking
+            match={match}
+            compositions={match.compositions}
+            toComposition={toComposition}
+            onClickComposition={onClickComposition}
+            theme={theme}
+          />
         </div>
-        {(toComposition || onClickComposition) && liveStatus === 'planned' ? (
-          <div className="action">
-            <Button to={toComposition} onClick={onClickComposition} shape="filled">
-              Faire ma composition
-            </Button>
-          </div>
-        ) : null}
-      </div>
+      ) : null}
 
-      <div className="game">
-        {liveStatus === 'planned' || liveStatus === 'cancelled' ? (
-          <div className="beginning">
-            <MatchStatusThumbnail
-              status={match.status}
-              beginning={match.beginning}
-              end={match.end}
-              theme={theme}
-            />
-          </div>
-        ) : null}
-
+      {size === 'big' || tab === 'feed' ? (
         <div className="feed">
-          {physicalEvents?.length ? (
-            <div className="physical-events">
-              <PhysicalEventList physicalEvents={physicalEvents} theme={theme} />
-            </div>
-          ) : null}
+          <MatchFeed match={match} physicalEvents={physicalEvents} theme={theme} />
         </div>
-
-        {liveStatus === 'ongoing' || liveStatus === 'passed' ? (
-          <div className="beginning">
-            <MatchStatusThumbnail
-              status={match.status}
-              beginning={match.beginning}
-              end={match.end}
-              theme={theme}
-            />
-          </div>
-        ) : null}
-      </div>
+      ) : null}
     </div>
   );
 }

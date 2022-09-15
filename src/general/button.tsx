@@ -8,7 +8,7 @@ export type ButtonSize = 'small' | 'medium' | 'large';
 export type ButtonShape = 'filled' | 'text';
 
 export type ButtonTheme =
-  | 'default'
+  | 'electric-blue'
   | 'dark'
   | 'light'
   | 'transparent-dark'
@@ -41,7 +41,7 @@ export default function Button({
   size = 'medium',
   shape = 'filled',
   type = 'button',
-  theme = 'default',
+  theme = 'electric-blue',
   active,
   pending,
   success,

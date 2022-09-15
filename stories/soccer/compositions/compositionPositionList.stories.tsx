@@ -14,7 +14,7 @@ export default {
   component: CompositionPositionList,
   argTypes: {
     theme: {
-      options: ['default', 'light'],
+      options: ['dark', 'light'],
       control: {
         type: 'radio',
       },
@@ -75,5 +75,5 @@ const Template: ComponentStory<JSXElementConstructor<Props>> = ({ theme }: Props
 export const Default = Template.bind({});
 
 Default.args = {
-  theme: 'default',
+  theme: 'dark',
 };

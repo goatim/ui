@@ -3,7 +3,7 @@ import { Player } from '@fridaygame/client';
 import PlayerThumbnail from '../players/playerThumbnail';
 import Icon from '../../general/icon';
 
-export type CompositionPositionThumbnailTheme = 'default' | 'light';
+export type CompositionPositionThumbnailTheme = 'dark' | 'light';
 
 export interface Props {
   player?: Player;

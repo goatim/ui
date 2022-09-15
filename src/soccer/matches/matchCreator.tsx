@@ -2,7 +2,7 @@ import { ReactElement } from 'react';
 import { Wallet } from '@fridaygame/client';
 import WalletThumbnail from '../../market/wallets/walletThumbnail';
 
-export type MatchCreatorTheme = 'default' | 'light';
+export type MatchCreatorTheme = 'dark' | 'light';
 
 export interface Props {
   creator: Wallet;

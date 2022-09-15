@@ -1,3 +1,14 @@
-.friday-ui-match-feed {
+@use '../../styles/colors';
 
+.friday-ui-match-feed {
+  > .beginning, > .end {
+    background: rgba(colors.$blue, .2);
+    padding: 20px;
+  }
+
+  &.light {
+    > .beginning, > .end {
+      background: rgba(white, .2);
+    }
+  }
 }

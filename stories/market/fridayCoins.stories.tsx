@@ -26,7 +26,7 @@ export default {
     },
     theme: {
       control: {
-        options: ['default', 'light', 'discreet'],
+        options: ['dark', 'light', 'discreet'],
         type: 'select',
       },
     },
@@ -42,5 +42,5 @@ export const Default = Template.bind({});
 Default.args = {
   amount: 50,
   size: 'small',
-  theme: 'default',
+  theme: 'dark',
 };

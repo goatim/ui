@@ -33,8 +33,8 @@ export default {
       },
     },
     theme: {
-      options: ['default', 'discreet', 'discreet-light', 'dark'],
-      defaultValue: 'default',
+      options: ['dark', 'discreet', 'discreet-light', 'dark'],
+      defaultValue: 'dark',
       control: {
         type: 'select',
       },
