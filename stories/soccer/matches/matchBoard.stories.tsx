@@ -169,7 +169,7 @@ const Template: ComponentStory<JSXElementConstructor<Props>> = ({ theme, size }:
       theme={theme}
       size={size}
       onClickComposition={() => undefined}
-      physicalEvents={physicalEvents}
+      // physicalEvents={physicalEvents}
     />
   </div>
 );

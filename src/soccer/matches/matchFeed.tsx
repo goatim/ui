@@ -2,6 +2,7 @@ import { ReactElement } from 'react';
 import { Match, PhysicalEvent } from '@fridaygame/client';
 import PhysicalEventList from '../physicalEvents/physicalEventList';
 import DateTimeThumbnail from '../../general/dateTimeThumbnail';
+import Icon from '../../general/icon';
 
 export type MatchFeedTheme = 'dark' | 'light';
 
@@ -28,7 +29,12 @@ export default function MatchFeed({ match, physicalEvents, theme = 'dark' }: Pro
         <div className="physical-events">
           <PhysicalEventList physicalEvents={physicalEvents} theme={theme} />
         </div>
-      ) : null}
+      ) : (
+        <div className="no-events">
+          <Icon name="meh" size={25} />
+          <span>Aucun événement pour le moment</span>
+        </div>
+      )}
 
       <div className="end">
         <DateTimeThumbnail
