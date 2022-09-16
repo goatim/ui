@@ -1,0 +1,114 @@
+@use '../styles/colors';
+@use '../styles/fonts';
+
+.friday-ui-onboarding-carousel {
+  display: flex;
+  flex-direction: column;
+
+  > .topContainer {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    background: white;
+  }
+
+  > .bottomContainer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background: colors.$light-blue;
+
+    > .description {
+      max-width: 80%;
+      text-align: center;
+    }
+  }
+
+  &.narrow {
+    height: 340px;
+    width: 250px;
+
+    > .topContainer {
+      display: flex;
+      padding: 10px;
+
+      > img {
+        height: 110px;
+      }
+    }
+  
+    > .bottomContainer {
+      background: colors.$light-blue;
+      padding: 15px;
+
+      > .title {
+        @include fonts.Inter(0.7em, colors.$blue, bold);
+        padding-bottom: 8px;
+      }
+  
+      > .description {
+        @include fonts.Inter(0.5em, colors.$blue);
+      }
+    }
+  }
+
+  &.medium {
+    height: 420px;
+    width: 600px;
+
+    > .topContainer {
+      padding: 30px;
+
+      > img {
+        height: 150px;
+      }
+    }
+  
+    > .bottomContainer {
+      background: colors.$light-blue;
+      padding: 20px;
+
+      > .title {
+        @include fonts.Inter(1em, colors.$blue, bold);
+        padding-bottom: 10px;
+      }
+  
+      > .description {
+        @include fonts.Inter(0.65em, colors.$blue);
+      }
+    }
+  }
+
+  &.big {
+    height: 600px;
+    width: 900px;
+
+    > .topContainer {
+      padding: 40px;
+
+      > img {
+        height: 230px;
+      }
+    }
+  
+    > .bottomContainer {
+      background: colors.$light-blue;
+      padding: 40px;
+
+      > .title {
+        @include fonts.Inter(1.5em, colors.$blue, bold);
+        padding-bottom: 20px;
+      }
+  
+      > .description {
+        @include fonts.Inter(0.9em, colors.$blue);
+      }
+    }
+  }
+}
