@@ -5,11 +5,16 @@ import { getOnboardingCarouselItems, OnboardingCarouselItem } from './onboarding
 export type OnboardingCarouselSize = 'narrow' | 'medium' | 'large';
 
 export interface Props {
-  username: string;
+  onDismiss: () => unknown;
   size?: OnboardingCarouselSize;
+  username: string;
 }
 
-export default function OnboardingCarousel({ size = 'large', username }: Props): ReactElement {
+export default function OnboardingCarousel({
+  onDismiss,
+  size = 'large',
+  username,
+}: Props): ReactElement {
   const [currentIndex, setCurrentIndex] = useState<number>(3);
 
   const onboardingItems = useMemo<OnboardingCarouselItem[]>(
@@ -30,21 +35,24 @@ export default function OnboardingCarousel({ size = 'large', username }: Props):
     }
   }, [size]);
 
-  const decrementIndex = () => {
+  const onPreviousClick = () => {
     if (currentIndex === 0) {
       return;
     }
     setCurrentIndex(currentIndex - 1);
   };
 
-  const incrementIndex = () => {
+  const onNextClick = () => {
     if (currentIndex === onboardingItems.length - 1) {
-      return;
+      onDismiss();
+    } else {
+      setCurrentIndex(currentIndex + 1);
     }
-    setCurrentIndex(currentIndex + 1);
   };
 
-  const onSkipButtonClick = () => {};
+  const onSkipButtonClick = () => {
+    onDismiss();
+  };
 
   const renderIndexIndication = () => (
     <div className="indications">
@@ -77,7 +85,7 @@ export default function OnboardingCarousel({ size = 'large', username }: Props):
         <div className="button">
           {currentIndex > 0 && (
             <Button
-              onClick={decrementIndex}
+              onClick={onPreviousClick}
               leftIcon="arrow-left"
               shape="text"
               theme="dark"
@@ -88,16 +96,14 @@ export default function OnboardingCarousel({ size = 'large', username }: Props):
         </div>
         {renderIndexIndication()}
         <div className="button">
-          {currentIndex < onboardingItems.length - 1 && (
-            <Button
-              onClick={incrementIndex}
-              rightIcon="arrow-right"
-              shape="text"
-              theme="dark"
-              size={buttonSize}>
-              Suivant
-            </Button>
-          )}
+          <Button
+            onClick={onNextClick}
+            rightIcon="arrow-right"
+            shape="text"
+            theme="dark"
+            size={buttonSize}>
+            Suivant
+          </Button>
         </div>
       </div>
     </div>

@@ -5,6 +5,7 @@ import OnboardingCarousel, {
 } from '../../src/onboarding/onboardingCarousel';
 
 interface Props {
+  onDismiss: () => unknown;
   size?: OnboardingCarouselSize;
 }
 
@@ -21,7 +22,7 @@ export default {
   },
 } as ComponentMeta<JSXElementConstructor<Props>>;
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ size }: Props) => (
+const Template: ComponentStory<JSXElementConstructor<Props>> = ({ onDismiss, size }: Props) => (
   <div
     style={{
       padding: 20,
@@ -29,7 +30,7 @@ const Template: ComponentStory<JSXElementConstructor<Props>> = ({ size }: Props)
       justifyContent: 'center',
       alignItems: 'center',
     }}>
-    <OnboardingCarousel size={size} username="John" />
+    <OnboardingCarousel onDismiss={() => console.log('dismiss')} size={size} username="John" />
   </div>
 );
 
