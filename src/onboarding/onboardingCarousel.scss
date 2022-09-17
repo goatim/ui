@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: column;
 
-  > .topContainer {
+  > .top-container {
     flex: 1;
     display: flex;
     justify-content: center;
@@ -13,9 +13,14 @@
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     background: white;
+    position: relative;
+
+    > .skip-button {
+      position: absolute;
+    }
   }
 
-  > .bottomContainer {
+  > .bottom-container {
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -67,16 +72,21 @@
     height: 320px;
     width: 250px;
 
-    > .topContainer {
+    > .top-container {
       display: flex;
       padding: 10px;
+
+      > .skip-button {
+        top: 20px;
+        left: 20px;
+      }
 
       > img {
         height: 110px;
       }
     }
   
-    > .bottomContainer {
+    > .bottom-container {
       background: colors.$light-blue;
       padding: 15px;
 
@@ -108,15 +118,20 @@
     height: 390px;
     width: 600px;
 
-    > .topContainer {
+    > .top-container {
       padding: 30px;
+
+      > .skip-button {
+        top: 30px;
+        left: 60px;
+      }
 
       > img {
         height: 150px;
       }
     }
   
-    > .bottomContainer {
+    > .bottom-container {
       background: colors.$light-blue;
       padding: 20px;
 
@@ -139,15 +154,20 @@
     height: 580px;
     width: 900px;
 
-    > .topContainer {
+    > .top-container {
       padding: 40px;
+
+      > .skip-button {
+        top: 40px;
+        left: 80px;
+      }
 
       > img {
         height: 230px;
       }
     }
   
-    > .bottomContainer {
+    > .bottom-container {
       background: colors.$light-blue;
       padding: 40px;
 

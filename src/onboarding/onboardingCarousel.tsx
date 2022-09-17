@@ -44,6 +44,8 @@ export default function OnboardingCarousel({ size = 'large', username }: Props):
     setCurrentIndex(currentIndex + 1);
   };
 
+  const onSkipButtonClick = () => {};
+
   const renderIndexIndication = () => (
     <div className="indications">
       {onboardingItems.map((onboardingItem, index: number) => (
@@ -59,10 +61,15 @@ export default function OnboardingCarousel({ size = 'large', username }: Props):
 
   return (
     <div className={`friday-ui-onboarding-carousel ${size}`}>
-      <div className="topContainer">
+      <div className="top-container">
         <img src={image} alt={`onboarding ${currentIndex}`} />
+        <div className="skip-button">
+          <Button onClick={onSkipButtonClick} shape="text" theme="dark" size={buttonSize}>
+            Passer
+          </Button>
+        </div>
       </div>
-      <div className="bottomContainer">
+      <div className="bottom-container">
         <span className="title">{title}</span>
         <span className="description">{description}</span>
       </div>
