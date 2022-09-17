@@ -37,10 +37,34 @@
     background: colors.$light-blue;
     width: 100%;
 
+    > .button { 
+      display: flex;
+      justify-content: center;
+      width: 90px;
+    }
+
+    > .indications {
+      display: flex;
+
+      > .indication {
+        height: 8px;
+        width: 8px;
+        border-radius: 100px;
+        margin-left: 4px;
+        margin-right: 4px;
+      }
+      > .selectedIndication {
+        background: colors.$blue;
+      }
+      > .unselectedIndication {
+        background: rgba(colors.$blue, .1);
+      }
+    }
+
   }
 
   &.narrow {
-    height: 340px;
+    height: 320px;
     width: 250px;
 
     > .topContainer {
@@ -68,11 +92,20 @@
 
     > .navigation {
       padding-bottom: 25px;
+
+      > .indications {
+        > .indication {
+          height: 6px;
+          width: 6px;
+          margin-left: 2px;
+          margin-right: 2px;
+        }
+      }
     }
   }
 
   &.medium {
-    height: 400px;
+    height: 390px;
     width: 600px;
 
     > .topContainer {
@@ -103,7 +136,7 @@
   }
 
   &.large {
-    height: 600px;
+    height: 580px;
     width: 900px;
 
     > .topContainer {

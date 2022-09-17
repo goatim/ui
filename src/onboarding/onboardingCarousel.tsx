@@ -44,6 +44,19 @@ export default function OnboardingCarousel({ size = 'large', username }: Props):
     setCurrentIndex(currentIndex + 1);
   };
 
+  const renderIndexIndication = () => (
+    <div className="indications">
+      {onboardingItems.map((onboardingItem, index: number) => (
+        <div
+          key={`indication${onboardingItem.title}`}
+          className={`indication ${
+            index === currentIndex ? 'selectedIndication' : 'unselectedIndication'
+          }`}
+        />
+      ))}
+    </div>
+  );
+
   return (
     <div className={`friday-ui-onboarding-carousel ${size}`}>
       <div className="topContainer">
@@ -54,30 +67,31 @@ export default function OnboardingCarousel({ size = 'large', username }: Props):
         <span className="description">{description}</span>
       </div>
       <div className="navigation">
-        {currentIndex > 0 ? (
-          <Button
-            onClick={decrementIndex}
-            leftIcon="arrow-left-circle"
-            shape="text"
-            theme="dark"
-            size={buttonSize}>
-            Précédent
-          </Button>
-        ) : (
-          <div />
-        )}
-        {currentIndex < onboardingItems.length - 1 ? (
-          <Button
-            onClick={incrementIndex}
-            rightIcon="arrow-right-circle"
-            shape="text"
-            theme="dark"
-            size={buttonSize}>
-            Suivant
-          </Button>
-        ) : (
-          <div />
-        )}
+        <div className="button">
+          {currentIndex > 0 && (
+            <Button
+              onClick={decrementIndex}
+              leftIcon="arrow-left"
+              shape="text"
+              theme="dark"
+              size={buttonSize}>
+              Précédent
+            </Button>
+          )}
+        </div>
+        {renderIndexIndication()}
+        <div className="button">
+          {currentIndex < onboardingItems.length - 1 && (
+            <Button
+              onClick={incrementIndex}
+              rightIcon="arrow-right"
+              shape="text"
+              theme="dark"
+              size={buttonSize}>
+              Suivant
+            </Button>
+          )}
+        </div>
       </div>
     </div>
   );
