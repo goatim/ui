@@ -13,7 +13,7 @@ export default {
   component: OnboardingCarousel,
   argTypes: {
     size: {
-      options: ['narrow', 'medium', 'big'],
+      options: ['narrow', 'medium', 'large'],
       control: {
         type: 'select',
       },
