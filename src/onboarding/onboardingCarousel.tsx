@@ -15,7 +15,7 @@ export default function OnboardingCarousel({
   size = 'large',
   username,
 }: Props): ReactElement {
-  const [currentIndex, setCurrentIndex] = useState<number>(3);
+  const [currentIndex, setCurrentIndex] = useState<number>(0);
 
   const onboardingItems = useMemo<OnboardingCarouselItem[]>(
     () => getOnboardingCarouselItems(username),
@@ -54,6 +54,18 @@ export default function OnboardingCarousel({
     onDismiss();
   };
 
+  const renderHypertextDescription = () => {
+    if (description === '') return description;
+
+    const splittedDescription = description.split('**');
+
+    return splittedDescription?.map((child: string, index: number) => (
+      <span key={child} className={`${index % 2 === 1 ? 'highlight' : ''}`}>
+        {child}
+      </span>
+    ));
+  };
+
   const renderIndexIndication = () => (
     <div className="indications">
       {onboardingItems.map((onboardingItem, index: number) => (
@@ -79,7 +91,7 @@ export default function OnboardingCarousel({
       </div>
       <div className="bottom-container">
         <span className="title">{title}</span>
-        <span className="description">{description}</span>
+        <div className="description-container">{renderHypertextDescription()}</div>
       </div>
       <div className="navigation">
         <div className="button">

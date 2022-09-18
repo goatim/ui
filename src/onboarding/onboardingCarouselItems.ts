@@ -12,7 +12,7 @@ export interface OnboardingCarouselItem {
 export const getOnboardingCarouselItems = (username: string): OnboardingCarouselItem[] => [
   {
     description:
-      'Bienvenue sur FRIDAY la première plateforme de trading de joueurs de football professionnels !',
+      'Bienvenue sur **FRIDAY** la première plateforme de trading de joueurs de football professionnels !',
     image: onboarding1,
     title: `Bienvenue ${username}`,
   },
@@ -30,7 +30,7 @@ export const getOnboardingCarouselItems = (username: string): OnboardingCarousel
   },
   {
     description:
-      "Grâce à tes performances de trader, tu pourras convertir tes FridayCoins en Ether. Rien de plus simple, crée toi un Wallet d'Ether (ex : Coinbase Wallet), puis sur le site FRIDAY, clique sur le bouton de conversion, entre l'adresse de ton Wallet et confirme. Le tour est joué, tu recevras tes Ethers dès que notre support aura validé la transaction.",
+      "Grâce à tes performances de trader, tu pourras convertir tes FridayCoins en Ether. Rien de plus simple, crée toi un Wallet d'Ether (ex : Coinbase Wallet), puis sur le site **FRIDAY**, clique sur le bouton de conversion, entre l'adresse de ton Wallet et confirme. Le tour est joué, tu recevras tes Ethers dès que notre support aura validé la transaction.",
     image: onboarding4,
     title: 'Convertis tes FridayCoins en Ether',
   },

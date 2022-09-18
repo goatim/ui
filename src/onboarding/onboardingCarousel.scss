@@ -27,9 +27,13 @@
     align-items: center;
     background: colors.$light-blue;
 
-    > .description {
+    > .description-container {
       max-width: 80%;
       text-align: center;
+
+      > .highlight {
+        font-weight: bold;
+      }
     }
   }
 
@@ -95,7 +99,7 @@
         padding-bottom: 8px;
       }
   
-      > .description {
+      > .description-container {
         @include fonts.Inter(0.5em, colors.$blue);
       }
     }
@@ -140,7 +144,7 @@
         padding-bottom: 10px;
       }
   
-      > .description {
+      > .description-container {
         @include fonts.Inter(0.65em, colors.$blue);
       }
     }
@@ -176,7 +180,7 @@
         padding-bottom: 20px;
       }
   
-      > .description {
+      > .description-container {
         @include fonts.Inter(0.9em, colors.$blue);
       }
     }
