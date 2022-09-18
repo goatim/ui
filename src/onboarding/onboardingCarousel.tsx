@@ -72,7 +72,7 @@ export default function OnboardingCarousel({
         <div
           key={`indication${onboardingItem.title}`}
           className={`indication ${
-            index === currentIndex ? 'selectedIndication' : 'unselectedIndication'
+            index === currentIndex ? 'selected-indication' : 'unselected-indication'
           }`}
         />
       ))}
