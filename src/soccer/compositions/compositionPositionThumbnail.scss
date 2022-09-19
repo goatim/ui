@@ -8,11 +8,11 @@
   justify-content: space-between;
   transition: background linear 100ms;
 
-  &.not(.readonly) {
+  &:not(.readonly) {
     cursor: pointer;
   }
 
-  &.not(.readonly):hover {
+  &:not(.readonly):hover {
     background: rgba(colors.$blue, .1);
   }
 
