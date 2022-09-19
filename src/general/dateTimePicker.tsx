@@ -59,10 +59,19 @@ export default function DateTimePicker({
 
   return (
     <div ref={picker} className="friday-ui-date-time-picker">
-      {label ? <label htmlFor={name}>{label}</label> : null}
+      {label ? (
+        <>
+          <label htmlFor={name}>{label}</label>
+          <br />
+        </>
+      ) : null}
 
       {!expanded ? (
-        <Button onClick={() => setIsExpanded(true)} shape="filled" leftIcon={buttonIcon}>
+        <Button
+          onClick={() => setIsExpanded(true)}
+          shape="filled"
+          theme="transparent-dark"
+          leftIcon={buttonIcon}>
           {actionLabel}
         </Button>
       ) : null}

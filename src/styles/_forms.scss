@@ -17,12 +17,11 @@
   outline: none;
 
   &:hover {
-    border: solid rgba(colors.$blue, .2) 1px;
     box-shadow: 0 0 5px rgba(colors.$blue, .1);
   }
 
   &:focus, &.active {
-    border: solid rgba(colors.$blue, .3) 1px;
+    border: solid rgba(colors.$blue, .2) 1px;
     background: white;
   }
 }

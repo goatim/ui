@@ -152,7 +152,12 @@ export default function Select<V = unknown>({
 
   return (
     <div className={className}>
-      {label && <label htmlFor={name}>{label}</label>}
+      {label && (
+        <>
+          <label htmlFor={name}>{label}</label>
+          <br />
+        </>
+      )}
 
       <div className="container" ref={selectRef}>
         {selectedOption || type === 'dark' ? (
