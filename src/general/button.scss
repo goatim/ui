@@ -167,7 +167,8 @@
     }
 
     &.light {
-      background: white;
+      background: colors.$light-blue;
+      border: solid rgba(colors.$blue, .1) 1px;
 
       > .container {
         svg[stroke] {
