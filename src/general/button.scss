@@ -19,6 +19,10 @@
   overflow: hidden;
   font-size: 1em;
 
+  * {
+    box-sizing: border-box;
+  }
+
   &.full-width {
     width: 100%;
   }

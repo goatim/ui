@@ -3,8 +3,11 @@
 @use "../styles/forms";
 
 .friday-ui-time-picker {
-  box-sizing: border-box;
   height: 300px;
+
+  * {
+    box-sizing: border-box;
+  }
 
   > label {
     @include forms.label();

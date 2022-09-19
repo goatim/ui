@@ -5,6 +5,10 @@
 @use '../styles/forms';
 
 .friday-ui-input {
+  * {
+    box-sizing: border-box;
+  }
+
   > label {
     @include forms.label;
   }

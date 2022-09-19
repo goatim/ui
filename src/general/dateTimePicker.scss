@@ -5,7 +5,10 @@
 
 .friday-ui-date-time-picker {
   position: relative;
-  box-sizing: border-box;
+
+  * {
+    box-sizing: border-box;
+  }
 
   > label {
     @include forms.label();

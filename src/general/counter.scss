@@ -8,6 +8,10 @@
   width: 220px;
   text-align: center;
 
+  * {
+    box-sizing: border-box;
+  }
+
   > label {
     @include forms.label;
     width: 100%;
