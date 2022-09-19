@@ -26,7 +26,7 @@ export default function MatchThumbnail({ match, to, onClick, href, target }: Pro
       <div className="container">
         <div className="body">
           <div className="header">
-            <DateTimeThumbnail label="Début" dateTime={match.beginning} theme="light" />
+            <DateTimeThumbnail label="Début" dateTime={match.beginning} theme="transparent-light" />
 
             <div className="infos">
               <span className="title">{match.title}</span>
@@ -41,7 +41,12 @@ export default function MatchThumbnail({ match, to, onClick, href, target }: Pro
               ) : null}
             </div>
 
-            <DateTimeThumbnail label="Fin" align="right" dateTime={match.end} theme="light" />
+            <DateTimeThumbnail
+              label="Fin"
+              align="right"
+              dateTime={match.end}
+              theme="transparent-light"
+            />
           </div>
 
           {match.compositions?.compositions?.length ? (
