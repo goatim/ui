@@ -45,7 +45,7 @@
 
 
         > span {
-          @include fonts.Inter(.9em, colors.$blue);
+          @include fonts.Inter(.9em, colors.$blue, 500);
           white-space: nowrap;
           text-align: left;
           flex: 1;
@@ -148,7 +148,7 @@
         }
 
         > span {
-          @include fonts.Inter(.9em);
+          @include fonts.Inter(.9em, colors.$blue, 500);
           white-space: nowrap;
           display: block;
           text-align: left;
