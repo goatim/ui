@@ -7,9 +7,12 @@
   align-items: center;
   justify-content: space-between;
   transition: background linear 100ms;
-  cursor: pointer;
 
-  &:hover {
+  &.not(.readonly) {
+    cursor: pointer;
+  }
+
+  &.not(.readonly):hover {
     background: rgba(colors.$blue, .1);
   }
 

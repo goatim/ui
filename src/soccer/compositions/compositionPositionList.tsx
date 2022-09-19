@@ -8,12 +8,14 @@ export interface Props {
   theme?: CompositionPositionListTheme;
   composition?: Pick<Composition, 'goalkeeper' | 'positions'>;
   onPositionClick?: (position: CompositionSettingPosition | string) => void;
+  onPositionDelete?: (position: CompositionSettingPosition | string) => void;
 }
 
 export default function CompositionPositionList({
   theme,
   composition,
   onPositionClick,
+  onPositionDelete,
 }: Props): ReactElement {
   return (
     <div className={`friday-ui-composition-positions-list ${theme}`}>
@@ -22,7 +24,8 @@ export default function CompositionPositionList({
           <CompositionPositionThumbnail
             player={composition?.goalkeeper}
             theme={theme}
-            onPlayerClick={onPositionClick ? () => onPositionClick('goalkeeper') : undefined}
+            onClick={onPositionClick ? () => onPositionClick('goalkeeper') : undefined}
+            onDelete={onPositionDelete ? () => onPositionDelete('goalkeeper') : undefined}
           />
         </div>
       ) : null}
@@ -32,11 +35,12 @@ export default function CompositionPositionList({
             <CompositionPositionThumbnail
               player={position.player}
               theme={theme}
-              onPlayerClick={
+              onClick={
                 onPositionClick
                   ? () => (position ? onPositionClick(position) : undefined)
                   : undefined
               }
+              onDelete={onPositionDelete ? () => onPositionDelete(position) : undefined}
             />
           ) : null}
         </div>
