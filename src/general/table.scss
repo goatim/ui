@@ -121,7 +121,7 @@
           }
 
           > span {
-            @include fonts.Inter(.8em, colors.$blue);
+            @include fonts.Inter(.8em, colors.$blue, 500);
             text-overflow: ellipsis;
             white-space: nowrap;
             overflow: hidden;
