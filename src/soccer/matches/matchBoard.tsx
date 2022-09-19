@@ -15,7 +15,12 @@ export interface Props {
   size?: MatchBoardSize;
   theme?: MatchBoardTheme;
   toComposition?: To;
-  onClickComposition?: (event: MouseEvent<HTMLButtonElement>) => Promise<void> | void;
+  onClickComposition?: (
+    composition: Composition,
+    event: MouseEvent<HTMLButtonElement>,
+  ) => Promise<void> | void;
+  toCurrentComposition?: To;
+  onClickCurrentComposition?: (event: MouseEvent<HTMLButtonElement>) => Promise<void> | void;
   physicalEvents?: PhysicalEvent[];
 }
 
@@ -26,6 +31,8 @@ export default function MatchBoard({
   theme = 'dark',
   toComposition,
   onClickComposition,
+  toCurrentComposition,
+  onClickCurrentComposition,
   physicalEvents,
 }: Props): ReactElement {
   const [tab, setTab] = useState<'feed' | 'ranking'>('feed');
@@ -58,6 +65,8 @@ export default function MatchBoard({
             compositions={compositions}
             toComposition={toComposition}
             onClickComposition={onClickComposition}
+            toCurrentComposition={toCurrentComposition}
+            onClickCurrentComposition={onClickCurrentComposition}
             theme={theme}
           />
         </div>
