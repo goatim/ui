@@ -90,6 +90,7 @@ const Template: ComponentStory<JSXElementConstructor<Props>> = ({
   <Form>
     <Field
       name="input"
+      type="email"
       component={Input}
       label={label}
       shape={shape}
