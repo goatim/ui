@@ -28,6 +28,7 @@ export interface Props extends FieldComponentProps<CompositionPositionMapFieldVa
   compositionSetting?: CompositionSetting;
   getPositionPlayers?: GetPositionPlayersFunction;
   theme?: CompositionPositionMapTheme;
+  readonly?: boolean;
 }
 
 export default function CompositionPositionMapField({
@@ -37,6 +38,7 @@ export default function CompositionPositionMapField({
   onChange,
   value,
   theme,
+  readonly = false,
 }: Props): ReactElement {
   const { pushModal } = useModals();
 
@@ -147,7 +149,7 @@ export default function CompositionPositionMapField({
       <CompositionPositionMap
         compositionSetting={compositionSetting}
         composition={value}
-        onPositionClick={onPositionClick}
+        onPositionClick={!readonly ? onPositionClick : undefined}
         theme={theme}
       />
     </div>

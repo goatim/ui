@@ -25,6 +25,7 @@ export interface Props extends FieldComponentProps<CompositionPositionListFieldV
   compositionSetting?: CompositionSetting;
   getPositionPlayers?: GetPositionPlayersFunction;
   theme?: CompositionPositionListTheme;
+  readonly?: boolean;
 }
 
 export default function CompositionPositionListField({
@@ -34,6 +35,7 @@ export default function CompositionPositionListField({
   onChange,
   value,
   theme,
+  readonly = false,
 }: Props): ReactElement {
   const { pushModal } = useModals();
 
@@ -144,7 +146,7 @@ export default function CompositionPositionListField({
     <div className="friday-ui-composition-positions-list-field">
       <CompositionPositionList
         composition={value}
-        onPositionClick={onPositionClick}
+        onPositionClick={!readonly ? onPositionClick : undefined}
         theme={theme}
       />
     </div>
