@@ -131,6 +131,8 @@ export default function Select<V = unknown>({
     return undefined;
   }, [options, value]);
 
+  const [searchActive, setSearchActive] = useState<boolean>(false);
+
   const [search, setSearch] = useState<string>('');
 
   const onSearchDebounced = useMemo<(search?: string) => Promise<void> | void>(() => {
@@ -173,8 +175,14 @@ export default function Select<V = unknown>({
         <div className="options">
           {onSearch ? (
             <div className="search">
-              <div className="container">
-                <input type="text" value={search} onChange={onChangeSearch} />
+              <div className={`container${searchActive ? ' active' : ''}`}>
+                <input
+                  type="text"
+                  value={search}
+                  onChange={onChangeSearch}
+                  onFocus={() => setSearchActive(true)}
+                  onBlur={() => setSearchActive(false)}
+                />
                 <Icon name="search" />
               </div>
             </div>

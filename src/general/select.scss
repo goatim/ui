@@ -27,7 +27,6 @@
 
       > button.main {
         @include forms.input;
-        font-size: 1em;
         -webkit-touch-callout: none;
         -webkit-user-select: none;
         -moz-user-select: none;
@@ -38,7 +37,6 @@
         justify-content: space-between;
         align-items: center;
         cursor: pointer;
-        outline: none;
         text-decoration: none;
         flex-shrink: 0;
         margin: 0;
@@ -47,7 +45,7 @@
 
 
         > span {
-          @include fonts.Inter(.85em, colors.$blue);
+          @include fonts.Inter(.9em, colors.$blue);
           white-space: nowrap;
           text-align: left;
           flex: 1;
@@ -146,11 +144,11 @@
         cursor: pointer;
 
         &:hover, &.active {
-          background: rgba(colors.$blue, .1);
+          background: colors.$light-blue;
         }
 
         > span {
-          @include fonts.Inter();
+          @include fonts.Inter(.9em);
           white-space: nowrap;
           display: block;
           text-align: left;
