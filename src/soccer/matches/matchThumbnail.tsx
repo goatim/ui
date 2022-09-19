@@ -9,9 +9,19 @@ import MatchIcon from './matchIcon';
 
 export interface Props extends WrapperProps {
   match: Match;
+  participants?: Wallet[];
+  total_participants?: number;
 }
 
-export default function MatchThumbnail({ match, to, onClick, href, target }: Props): ReactElement {
+export default function MatchThumbnail({
+  match,
+  participants,
+  total_participants,
+  to,
+  onClick,
+  href,
+  target,
+}: Props): ReactElement {
   return (
     <Wrapper
       className="friday-ui-match-thumbnail"
@@ -34,7 +44,7 @@ export default function MatchThumbnail({ match, to, onClick, href, target }: Pro
                 <div className="creator">
                   <MatchCreator
                     creator={match.creator}
-                    total_participants={match.compositions?.total}
+                    total_participants={total_participants}
                     theme="light"
                   />
                 </div>
@@ -49,17 +59,9 @@ export default function MatchThumbnail({ match, to, onClick, href, target }: Pro
             />
           </div>
 
-          {match.compositions?.compositions?.length ? (
-            <div className="compositions">
-              <WalletList
-                wallets={
-                  match.compositions?.compositions
-                    .map((composition) => composition.wallet)
-                    .filter((wallet) => wallet && typeof wallet === 'object') as Wallet[]
-                }
-                total={match.compositions.total}
-                theme="light"
-              />
+          {participants?.length ? (
+            <div className="participants">
+              <WalletList wallets={participants} total={total_participants} theme="light" />
             </div>
           ) : null}
         </div>

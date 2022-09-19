@@ -1,5 +1,5 @@
 import { MouseEvent, ReactElement, useState } from 'react';
-import { Match, PhysicalEvent } from '@fridaygame/client';
+import { Composition, Match, PhysicalEvent } from '@fridaygame/client';
 import { To } from 'react-router';
 import MatchFeed from './matchFeed';
 import MatchRanking from './matchRanking';
@@ -11,6 +11,7 @@ export type MatchBoardTheme = 'dark' | 'light';
 
 export interface Props {
   match: Match;
+  compositions?: Composition[];
   size?: MatchBoardSize;
   theme?: MatchBoardTheme;
   toComposition?: To;
@@ -20,6 +21,7 @@ export interface Props {
 
 export default function MatchBoard({
   match,
+  compositions,
   size = 'big',
   theme = 'dark',
   toComposition,
@@ -53,7 +55,7 @@ export default function MatchBoard({
         <div className="ranking">
           <MatchRanking
             match={match}
-            compositions={match.compositions}
+            compositions={compositions}
             toComposition={toComposition}
             onClickComposition={onClickComposition}
             theme={theme}

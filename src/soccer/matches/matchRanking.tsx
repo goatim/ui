@@ -1,6 +1,5 @@
 import { MouseEvent, ReactElement } from 'react';
 import { To } from 'react-router';
-import { PaginatedList } from '@fridaygame/client/dist/api';
 import Composition from '@fridaygame/client/dist/soccer/compositions/model';
 import { Match } from '@fridaygame/client';
 import CompositionRanking from '../compositions/compositionRanking';
@@ -11,7 +10,7 @@ export type MatchRankingTheme = 'dark' | 'light';
 
 export interface Props {
   match: Match;
-  compositions?: PaginatedList<'compositions', Composition>;
+  compositions?: Composition[];
   toComposition?: To;
   onClickComposition?: (event: MouseEvent<HTMLButtonElement>) => Promise<void> | void;
   theme?: MatchRankingTheme;
@@ -33,7 +32,7 @@ export default function MatchRanking({
       </div>
 
       <div className="ranking">
-        <CompositionRanking compositions={compositions?.compositions} theme={theme} />
+        <CompositionRanking compositions={compositions} theme={theme} />
       </div>
 
       {(toComposition || onClickComposition) && liveStatus === 'planned' ? (
