@@ -9,7 +9,7 @@
   text-align: center;
 
   > label {
-    @include forms.label();
+    @include forms.label;
     width: 100%;
   }
 
@@ -28,28 +28,28 @@
       cursor: pointer;
 
       &.plus {
-        padding-left: 20px;
+        padding-left: 10px;
       }
 
       &.minus {
-        padding-right: 20px;
+        padding-right: 10px;
+      }
+
+      > svg {
+        stroke: colors.$blue;
       }
     }
 
     > input {
-      @include fonts.Inter(1em, colors.$light-blue, bold);
-      background: colors.$blue;
+      @include forms.input;
+      font-weight: bold;
       text-align: center;
       height: 40px;
-      outline: none;
-      text-decoration: none;
       flex: 1;
       padding: 0 1em;
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;
-      border-radius: 20px;
-      border: none;
       -moz-appearance: textfield;
 
       &::-webkit-outer-spin-button, &::-webkit-inner-spin-button {
@@ -59,6 +59,10 @@
 
       &::placeholder {
         color: rgba(white, .5);
+      }
+
+      &:focus {
+        background: white;
       }
     }
   }

@@ -74,6 +74,8 @@ export type InputShape = 'square' | 'round';
 
 export type InputTheme = 'light' | 'darker' | 'lighter' | 'dark';
 
+export type InputSize = 'small' | 'medium' | 'big';
+
 export type InputAdapter<V = string> = (value: string) => V;
 export type InputResolver<V = string> = (value?: V) => string;
 
@@ -110,6 +112,7 @@ export interface Props<V = string, S extends Suggestion<V> = Suggestion<V>>
   type?: InputType | string;
   shape?: InputShape;
   theme?: InputTheme;
+  size?: InputSize;
   label?: string;
   placeholder?: string;
   instructions?: string;
@@ -142,6 +145,7 @@ export default function Input<V = string, S extends Suggestion<V> = Suggestion<V
   type = 'text',
   shape = 'square',
   theme = 'light',
+  size = 'medium',
   adapter,
   resolver,
   format,
@@ -166,7 +170,7 @@ export default function Input<V = string, S extends Suggestion<V> = Suggestion<V
   const [suggestionsActive, setSuggestionsActive] = useState<boolean>(false);
 
   const className = useMemo<string>(() => {
-    let res = `friday-ui-input ${shape} ${theme}`;
+    let res = `friday-ui-input ${shape} ${theme} ${size}`;
 
     if (visited) {
       res += ' visited';
@@ -188,8 +192,9 @@ export default function Input<V = string, S extends Suggestion<V> = Suggestion<V
     error,
     isActive,
     shape,
+    size,
     submitted,
-    suggestions.length,
+    suggestions?.length,
     suggestionsActive,
     theme,
     visited,
@@ -329,7 +334,7 @@ export default function Input<V = string, S extends Suggestion<V> = Suggestion<V
     <div className={className}>
       {label ? <label htmlFor={name}>{label}</label> : null}
 
-      <div className="container">
+      <div className={`container ${isActive ? ' active' : ''}`}>
         {leftComponent ? <div className="left-component">{leftComponent}</div> : null}
 
         <input

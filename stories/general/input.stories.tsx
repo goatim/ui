@@ -3,6 +3,7 @@ import { Form, Field } from '@cezembre/forms';
 import { JSXElementConstructor } from 'react';
 import Input, {
   InputShape,
+  InputSize,
   InputTheme,
   Suggestion,
   SuggestionsNamespace,
@@ -12,6 +13,7 @@ interface Props {
   label?: string;
   shape?: InputShape;
   theme?: InputTheme;
+  size?: InputSize;
   placeholder?: string;
   show_suggestions?: boolean;
 }
@@ -33,8 +35,15 @@ export default {
       },
     },
     theme: {
-      options: ['dark', 'discreet', 'discreet-light', 'dark'],
-      defaultValue: 'dark',
+      options: ['light', 'darker', 'lighter', 'dark'],
+      defaultValue: 'light',
+      control: {
+        type: 'select',
+      },
+    },
+    size: {
+      options: ['small', 'medium', 'big'],
+      defaultValue: 'medium',
       control: {
         type: 'select',
       },
@@ -74,6 +83,7 @@ const Template: ComponentStory<JSXElementConstructor<Props>> = ({
   label,
   shape,
   theme,
+  size,
   placeholder,
   show_suggestions,
 }: Props) => (
@@ -84,6 +94,7 @@ const Template: ComponentStory<JSXElementConstructor<Props>> = ({
       label={label}
       shape={shape}
       theme={theme}
+      size={size}
       placeholder={placeholder}
       suggestions={show_suggestions ? suggestionsNamespaces : undefined}
     />

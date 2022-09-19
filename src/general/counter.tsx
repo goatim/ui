@@ -64,7 +64,7 @@ export default function Counter({
     }
 
     return res;
-  }, [isActive, error, visited, warning, submitted]);
+  }, [visited, isActive, submitted, error, warning]);
 
   const change = useCallback(
     (event: ChangeEvent<{ value: string }>) => {

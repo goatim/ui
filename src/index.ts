@@ -23,6 +23,7 @@ import Input, {
   InputType,
   InputShape,
   InputTheme,
+  InputSize,
   Suggestion,
 } from './general/input';
 import Textarea from './general/textarea';
@@ -215,6 +216,7 @@ export type {
   InputResolver,
   InputShape,
   InputTheme,
+  InputSize,
   InputType,
   Modal,
   ModalComponentProps,

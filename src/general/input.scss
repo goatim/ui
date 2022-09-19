@@ -16,7 +16,6 @@
     align-items: stretch;
     justify-content: space-between;
     position: relative;
-    transition: border linear 100ms, background linear 100ms, box-shadow linear 100ms;
 
     > .left-component {
       display: flex;
@@ -32,7 +31,7 @@
       outline: none;
       text-decoration: none;
       background: transparent;
-      @include fonts.Inter(1em, colors.$blue, 500);
+      font-size: .9em;
       flex: 1;
       padding: 0 .8em;
 
@@ -120,6 +119,22 @@
     }
   }
 
+  &.small >.container {
+    height: 35px;
+
+    > input {
+      font-size: .8em;
+    }
+  }
+
+  &.big >.container {
+    height: 45px;
+
+    > input {
+      font-size: 1em;
+    }
+  }
+
   &.darker > .container {
     background: rgba(colors.$blue, .1);
   }
@@ -141,8 +156,24 @@
   &.dark > .container {
     background: colors.$blue;
 
-    > input::placeholder {
-      color: rgba(white, .5);
+    > input {
+      color: white;
+
+      &::placeholder {
+        color: rgba(white, .5);
+      }
+    }
+
+    &.active {
+      background: white;
+
+      > input {
+        color: colors.$blue;
+
+        &::placeholder {
+          color: rgba(colors.$blue, .5);
+        }
+      }
     }
   }
 
