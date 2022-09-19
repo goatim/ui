@@ -35,7 +35,7 @@
   }
 
   &.light {
-    &:hover {
+    &:not(.readonly):hover {
       background: rgba(white, .1);
     }
 
