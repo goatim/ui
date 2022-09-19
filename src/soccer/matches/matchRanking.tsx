@@ -12,7 +12,12 @@ export interface Props {
   match: Match;
   compositions?: Composition[];
   toComposition?: To;
-  onClickComposition?: (event: MouseEvent<HTMLButtonElement>) => Promise<void> | void;
+  onClickComposition?: (
+    composition: Composition,
+    event: MouseEvent<HTMLButtonElement>,
+  ) => Promise<void> | void;
+  toCurrentComposition?: To;
+  onClickCurrentComposition?: (event: MouseEvent<HTMLButtonElement>) => Promise<void> | void;
   theme?: MatchRankingTheme;
 }
 
@@ -21,6 +26,8 @@ export default function MatchRanking({
   compositions,
   toComposition,
   onClickComposition,
+  toCurrentComposition,
+  onClickCurrentComposition,
   theme = 'dark',
 }: Props): ReactElement {
   const liveStatus = useMatchLiveStatus(match.beginning, match.end, match.status);
@@ -32,14 +39,19 @@ export default function MatchRanking({
       </div>
 
       <div className="ranking">
-        <CompositionRanking compositions={compositions} theme={theme} />
+        <CompositionRanking
+          compositions={compositions}
+          theme={theme}
+          toComposition={toComposition}
+          onClickComposition={onClickComposition}
+        />
       </div>
 
       {(toComposition || onClickComposition) && liveStatus === 'planned' ? (
         <div className="action">
           <Button
-            to={toComposition}
-            onClick={onClickComposition}
+            to={toCurrentComposition}
+            onClick={onClickCurrentComposition}
             shape="filled"
             theme={theme === 'light' ? 'light' : 'dark'}>
             Faire ma composition

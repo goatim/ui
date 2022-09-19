@@ -20,12 +20,12 @@
     flex-direction: column;
 
     > svg {
-      stroke: white;
+      stroke: colors.$blue;
       opacity: 50%;
     }
 
     > span {
-      @include fonts.Inter(.9em, rgba(white, .5), bold);
+      @include fonts.Inter(.9em, rgba(colors.$blue, .5), bold);
       margin-top: 10px;
     }
   }
@@ -33,6 +33,16 @@
   &.light {
     > .beginning, > .end {
       background: rgba(white, .2);
+    }
+
+    > .no-events {
+      > svg {
+        stroke: white;
+      }
+
+      > span {
+        color: rgba(white, .5);
+      }
     }
   }
 }
