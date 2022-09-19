@@ -70,7 +70,7 @@ export default function DateTimePicker({
         <Button
           onClick={() => setIsExpanded(true)}
           shape="filled"
-          theme="transparent-dark"
+          theme="light"
           leftIcon={buttonIcon}>
           {actionLabel}
         </Button>
