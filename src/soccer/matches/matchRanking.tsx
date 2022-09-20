@@ -1,10 +1,9 @@
 import { MouseEvent, ReactElement } from 'react';
 import { To } from 'react-router';
 import Composition from '@fridaygame/client/dist/soccer/compositions/model';
-import { Match } from '@fridaygame/client';
+import { Match, useMatchLiveStatus } from '@fridaygame/client';
 import CompositionRanking from '../compositions/compositionRanking';
 import Button from '../../general/button';
-import { useMatchLiveStatus } from './matchStatusThumbnail';
 
 export type MatchRankingTheme = 'dark' | 'light';
 

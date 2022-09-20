@@ -1,48 +1,7 @@
-import { ReactElement, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { ReactElement } from 'react';
 import { DateTime } from 'luxon';
-import { MatchStatus } from '@fridaygame/client';
+import { MatchStatus, useMatchLiveStatus } from '@fridaygame/client';
 import DateTimeThumbnail from '../../general/dateTimeThumbnail';
-
-export function useMatchLiveStatus(
-  beginning?: DateTime | string,
-  end?: DateTime | string,
-  initialStatus?: MatchStatus,
-): MatchStatus | undefined {
-  const timeout = useRef<NodeJS.Timeout | null>(null);
-
-  const resolvedBeginning = useMemo<DateTime | undefined>(
-    () => (typeof beginning === 'string' ? DateTime.fromISO(beginning) : beginning),
-    [beginning],
-  );
-
-  const resolvedEnd = useMemo<DateTime | undefined>(
-    () => (typeof end === 'string' ? DateTime.fromISO(end) : end),
-    [end],
-  );
-
-  const [liveStatus, setLiveStatus] = useState<MatchStatus | undefined>(initialStatus);
-
-  const resolveStatus = useCallback(() => {
-    if (initialStatus === 'cancelled') {
-      return;
-    }
-    if (resolvedBeginning && DateTime.now() < resolvedBeginning) {
-      setLiveStatus('planned');
-    } else if (resolvedEnd && DateTime.now() < resolvedEnd) {
-      setLiveStatus('ongoing');
-    } else {
-      setLiveStatus('passed');
-    }
-    timeout.current = setTimeout(resolveStatus, 1000);
-  }, [initialStatus, resolvedEnd, resolvedBeginning]);
-
-  useEffect(() => {
-    resolveStatus();
-    return () => (timeout.current ? clearTimeout(timeout.current) : undefined);
-  }, [resolveStatus]);
-
-  return liveStatus;
-}
 
 export type MatchStatusThumbnailTheme = 'dark' | 'light';
 
