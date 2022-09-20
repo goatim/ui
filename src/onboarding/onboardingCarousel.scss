@@ -1,0 +1,192 @@
+@use '../styles/colors';
+@use '../styles/fonts';
+
+.friday-ui-onboarding-carousel {
+  display: flex;
+  flex-direction: column;
+
+  > .top-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    background: white;
+    position: relative;
+
+    > .skip-button {
+      position: absolute;
+    }
+  }
+
+  > .bottom-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: colors.$light-blue;
+
+    > .description-container {
+      max-width: 80%;
+      text-align: center;
+
+      > .highlight {
+        font-weight: bold;
+      }
+    }
+  }
+
+  > .navigation {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    background: colors.$light-blue;
+    width: 100%;
+
+    > .button { 
+      display: flex;
+      justify-content: center;
+      width: 90px;
+    }
+
+    > .indications {
+      display: flex;
+
+      > .indication {
+        height: 8px;
+        width: 8px;
+        border-radius: 100px;
+        margin-left: 4px;
+        margin-right: 4px;
+      }
+      > .selectedIndication {
+        background: colors.$blue;
+      }
+      > .unselectedIndication {
+        background: rgba(colors.$blue, .1);
+      }
+    }
+
+  }
+
+  &.narrow {
+    height: 310px;
+    width: 250px;
+
+    > .top-container {
+      display: flex;
+      padding: 10px;
+
+      > .skip-button {
+        top: 20px;
+        left: 20px;
+      }
+
+      > img {
+        height: 110px;
+      }
+    }
+  
+    > .bottom-container {
+      background: colors.$light-blue;
+      padding: 15px;
+
+      > .title {
+        @include fonts.Inter(0.7em, colors.$blue, bold);
+        padding-bottom: 8px;
+      }
+  
+      > .description-container {
+        @include fonts.Inter(0.5em, colors.$blue);
+      }
+    }
+
+    > .navigation {
+      padding-bottom: 25px;
+
+      > .indications {
+        > .indication {
+          height: 6px;
+          width: 6px;
+          margin-left: 2px;
+          margin-right: 2px;
+        }
+      }
+    }
+  }
+
+  &.medium {
+    height: 390px;
+    width: 600px;
+
+    > .top-container {
+      padding: 30px;
+
+      > .skip-button {
+        top: 30px;
+        left: 60px;
+      }
+
+      > img {
+        height: 150px;
+      }
+    }
+  
+    > .bottom-container {
+      background: colors.$light-blue;
+      padding: 20px;
+
+      > .title {
+        @include fonts.Inter(1em, colors.$blue, bold);
+        padding-bottom: 10px;
+      }
+  
+      > .description-container {
+        @include fonts.Inter(0.65em, colors.$blue);
+      }
+    }
+
+    > .navigation {
+      padding-bottom: 30px;
+    }
+  }
+
+  &.large {
+    height: 580px;
+    width: 900px;
+
+    > .top-container {
+      padding: 40px;
+
+      > .skip-button {
+        top: 40px;
+        left: 80px;
+      }
+
+      > img {
+        height: 230px;
+      }
+    }
+  
+    > .bottom-container {
+      background: colors.$light-blue;
+      padding: 40px;
+
+      > .title {
+        @include fonts.Inter(1.5em, colors.$blue, bold);
+        padding-bottom: 20px;
+      }
+  
+      > .description-container {
+        @include fonts.Inter(0.9em, colors.$blue);
+      }
+    }
+
+    > .navigation {
+      padding-bottom: 40px;
+    }
+  }
+}
