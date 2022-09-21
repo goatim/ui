@@ -114,7 +114,7 @@ export default function Select<V = unknown>({
     [onBlur, onChange],
   );
 
-  const selectRef = useRef<HTMLDivElement>(null);
+  const optionsRef = useRef<HTMLDivElement>(null);
 
   const clickOutside = useCallback(() => {
     if (isActive) {
@@ -122,7 +122,7 @@ export default function Select<V = unknown>({
     }
   }, [isActive, onBlur]);
 
-  useClickOutside(selectRef, clickOutside);
+  useClickOutside(optionsRef, clickOutside);
 
   const selectedOption = useMemo<SelectOption<V> | undefined>(() => {
     if (value) {
@@ -152,14 +152,9 @@ export default function Select<V = unknown>({
 
   return (
     <div className={className}>
-      {label && (
-        <>
-          <label htmlFor={name}>{label}</label>
-          <br />
-        </>
-      )}
+      {label && <label htmlFor={name}>{label}</label>}
 
-      <div className="container" ref={selectRef}>
+      <div className="container">
         {selectedOption || type === 'dark' ? (
           <div className="selector">
             <button onClick={toggleFocus} type="button" className="main">
@@ -177,7 +172,7 @@ export default function Select<V = unknown>({
           </div>
         ) : null}
 
-        <div className="options">
+        <div className="options" ref={optionsRef}>
           {onSearch ? (
             <div className="search">
               <div className={`container${searchActive ? ' active' : ''}`}>

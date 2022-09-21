@@ -24,7 +24,7 @@ export default function PositionPlayerSelector({
     <div className="friday-ui-position-player-selector">
       <div className="header">
         <span className="composition-setting">{compositionSetting || 'Joueur'}</span>
-        <span className="position">{position || 'Sélectionner un joueur'}</span>
+        <span className="position">{position || 'Sélectionne un joueur'}</span>
       </div>
 
       <div className="players">

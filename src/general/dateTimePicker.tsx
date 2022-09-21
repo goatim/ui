@@ -1,4 +1,4 @@
-import { ReactElement, useMemo, useRef, useState } from 'react';
+import { ReactElement, useCallback, useMemo, useRef } from 'react';
 import { DateTime } from 'luxon';
 import { formatRelativeDateTime, useClickOutside } from '@cezembre/fronts';
 import DatePicker, { Props as DatePickerProps } from './datePicker';
@@ -35,10 +35,23 @@ export default function DateTimePicker({
   disabledDays,
   disabledPeriods,
 }: Props): ReactElement {
-  const [isExpanded, setIsExpanded] = useState<boolean>(false);
-  const picker = useRef<HTMLDivElement>(null);
+  const pickerRef = useRef<HTMLDivElement>(null);
 
-  useClickOutside(picker, () => setIsExpanded(false));
+  const toggleFocus = useCallback(() => {
+    if (!isActive) {
+      onFocus();
+    } else {
+      onBlur();
+    }
+  }, [isActive, onBlur, onFocus]);
+
+  const clickOutside = useCallback(() => {
+    if (isActive) {
+      onBlur();
+    }
+  }, [isActive, onBlur]);
+
+  useClickOutside(pickerRef, clickOutside);
 
   const resolvedValue = useMemo<DateTime | null | undefined>(() => {
     return typeof value === 'string' ? DateTime.fromISO(value) : value;
@@ -58,25 +71,18 @@ export default function DateTimePicker({
   }, [format, placeholder, resolvedValue]);
 
   return (
-    <div ref={picker} className="friday-ui-date-time-picker">
-      {label ? (
-        <>
-          <label htmlFor={name}>{label}</label>
-          <br />
-        </>
-      ) : null}
+    <div className="friday-ui-date-time-picker">
+      {label ? <label htmlFor={name}>{label}</label> : null}
 
       {!expanded ? (
-        <Button
-          onClick={() => setIsExpanded(true)}
-          shape="filled"
-          theme="light"
-          leftIcon={buttonIcon}>
+        <Button onClick={toggleFocus} shape="filled" theme="light" leftIcon={buttonIcon}>
           {actionLabel}
         </Button>
       ) : null}
 
-      <div className={`picker${!expanded ? ' expandable' : ''}${isExpanded ? ' expanded' : ''}`}>
+      <div
+        ref={pickerRef}
+        className={`picker${!expanded ? ' expandable' : ''}${isActive ? ' active' : ''}`}>
         <div className="date">
           <DatePicker
             value={value}

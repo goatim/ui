@@ -185,7 +185,7 @@
       }
 
       &:hover, &.active {
-        background: colors.$medium-blue;
+        background: rgba(colors.$blue, .1);
       }
     }
 
