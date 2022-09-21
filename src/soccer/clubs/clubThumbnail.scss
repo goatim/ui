@@ -7,10 +7,7 @@ a.friday-ui-club-thumbnail {
 }
 
 .friday-ui-club-thumbnail {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  flex-direction: column;
+  display: inline-block;
   text-decoration: none;
   border: none;
   font-size: 1em;
@@ -29,6 +26,9 @@ a.friday-ui-club-thumbnail {
 
   > .league {
     margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   &.small > .body > .name {
