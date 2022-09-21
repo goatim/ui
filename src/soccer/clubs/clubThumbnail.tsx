@@ -1,71 +1,55 @@
-import { ReactElement, useEffect, useState } from 'react';
+import { ReactElement } from 'react';
 import { Club } from '@fridaygame/client';
 import { To } from 'react-router-dom';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
-import ClubIcon, { ClubIconSize } from './clubIcon';
+import ClubIcon from './clubIcon';
 import LeagueThumbnail from '../leagues/leagueThumbnail';
 
-export type ClubThumbnailSize = 'small' | 'medium' | 'big' | 'full';
+export type ClubThumbnailSize = 'small' | 'medium' | 'big';
 
 export type ClubThumbnailTheme = 'dark' | 'light';
+
+export type ClubThumbnailDisposition = 'inline' | 'logo';
 
 export interface Props extends WrapperProps {
   club: Club;
   size?: ClubThumbnailSize;
   theme?: ClubThumbnailTheme;
   leagueTo?: To;
-}
-
-function getIconSize(size: ClubThumbnailSize): ClubIconSize {
-  switch (size) {
-    case 'small':
-      return 'small';
-    case 'medium':
-    case 'big':
-      return 'medium';
-    case 'full':
-      return 'large';
-    default:
-      return 'small';
-  }
+  disposition?: ClubThumbnailDisposition;
+  title?: boolean;
+  showLeague?: boolean;
 }
 
 export default function ClubThumbnail({
   club,
-  size = 'small',
+  size = 'medium',
   theme = 'dark',
   to,
   onClick,
   href,
   target,
   leagueTo,
+  disposition = 'inline',
+  title = false,
+  showLeague = false,
 }: Props): ReactElement {
-  const [iconSize, setIconSize] = useState<ClubIconSize>(getIconSize(size));
-
-  useEffect(() => {
-    setIconSize(getIconSize(size));
-  }, [size]);
-
   return (
     <Wrapper
-      className={`friday-ui-club-thumbnail ${size} ${theme}`}
+      className={`friday-ui-club-thumbnail ${size} ${theme} ${disposition}`}
       to={to}
       onClick={onClick}
       href={href}
       target={target}>
-      <ClubIcon icon={club.icon} size={iconSize} />
-      {size === 'full' ? (
-        <div className="full-infos">
-          <h1>{club.name}</h1>
-          {club.league && typeof club.league === 'object' ? (
-            <div className="league">
-              <LeagueThumbnail league={club.league} theme={theme} to={leagueTo} />
-            </div>
-          ) : null}
+      <div className="body">
+        <ClubIcon icon={club.icon} size={size} />
+        {title ? <h1 className="name">{club.name}</h1> : <span className="name">{club.name}</span>}
+      </div>
+      {showLeague && club.league && typeof club.league === 'object' ? (
+        <div className="league">
+          <LeagueThumbnail league={club.league} theme={theme} to={leagueTo} />
         </div>
-      ) : (
-        <span>{club.name}</span>
-      )}
+      ) : null}
     </Wrapper>
   );
 }

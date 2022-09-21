@@ -35,7 +35,7 @@ const club: Club = {
 };
 
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({ length }: Props) => (
-  <ClubList clubs={Array(length).fill(club)} />
+  <ClubList clubs={Array(length).fill(club)} columns={3} size="big" />
 );
 
 export const Default = Template.bind({});

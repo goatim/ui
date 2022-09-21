@@ -2,7 +2,7 @@ import { ReactElement } from 'react';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
 import { Image } from '@fridaygame/client';
 
-export type ClubIconSize = 'small' | 'medium' | 'large';
+export type ClubIconSize = 'small' | 'medium' | 'big';
 
 export type ClubIconTheme = 'dark' | 'light';
 
