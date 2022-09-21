@@ -1,6 +1,7 @@
-import { ReactElement, useMemo } from 'react';
+import { MouseEvent, ReactElement, useMemo } from 'react';
 import { Asset } from '@fridaygame/client';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
+import { To } from 'react-router-dom';
 import PlayerThumbnail, {
   PlayerThumbnailSize,
   PlayerThumbnailTheme,
@@ -21,6 +22,7 @@ export interface Props extends WrapperProps {
   size?: AssetThumbnailSize;
   theme?: AssetThumbnailTheme;
   showQuotation?: boolean;
+  secondaryTo?: To;
 }
 
 export default function AssetThumbnail({
@@ -33,6 +35,7 @@ export default function AssetThumbnail({
   onClick,
   href,
   target,
+  secondaryTo,
 }: Props): ReactElement {
   const playerThumbnailSize = useMemo<PlayerThumbnailSize>(() => {
     switch (size) {
@@ -114,6 +117,7 @@ export default function AssetThumbnail({
             player={asset.player}
             size={playerThumbnailSize}
             theme={playerThumbnailTheme}
+            clubTo={secondaryTo}
           />
         ) : null}
 

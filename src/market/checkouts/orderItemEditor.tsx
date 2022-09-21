@@ -129,7 +129,11 @@ export default function OrderItemEditor({
       </div>
 
       <div className="order-book">
-        <OrderBookThumbnail orderBook={orderBook} size={orderBookThumbnailSize} />
+        <OrderBookThumbnail
+          orderBook={orderBook}
+          size={orderBookThumbnailSize}
+          theme="medium-light"
+        />
       </div>
 
       {boosters && formState?.values?.order_type === 'buy' ? (

@@ -2,7 +2,9 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Form, Field } from '@cezembre/forms';
 import { JSXElementConstructor } from 'react';
 import { Club, CompositionSetting, CompositionSettingPosition, Player } from '@fridaygame/client';
-import CompositionPositionListField from '../../../src/soccer/compositions/compositionPositionListField';
+import CompositionPositionListField, {
+  CompositionPositionListFieldValue,
+} from '../../../src/soccer/compositions/compositionPositionListField';
 import { ModalsContext } from '../../../src';
 
 interface Props {}
@@ -180,6 +182,24 @@ const players: Player[] = [
   },
 ];
 
+const initialValue: CompositionPositionListFieldValue = {
+  goalkeeper: players[0],
+  positions: [
+    {
+      id: '1',
+      player: players[1],
+    },
+    {
+      id: '2',
+      player: players[2],
+    },
+    {
+      id: '3',
+      player: players[3],
+    },
+  ],
+};
+
 function getPositionPlayers(position: CompositionSettingPosition): Player[] {
   return players;
 }
@@ -187,7 +207,8 @@ function getPositionPlayers(position: CompositionSettingPosition): Player[] {
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
   <div style={{ width: 400 }}>
     <Form>
-      <Field
+      <Field<CompositionPositionListFieldValue>
+        initialValue={initialValue}
         name="positions"
         component={CompositionPositionListField}
         compositionSetting={compositionSetting}

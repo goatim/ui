@@ -4,14 +4,21 @@ import FridayCoins from '../../market/fridayCoins';
 
 export type OrderBookThumbnailSize = 'narrow' | 'small' | 'medium' | 'big';
 
+export type OrderBookThumbnailTheme = 'light' | 'medium-light';
+
 export interface Props {
   orderBook?: OrderBook;
   size?: OrderBookThumbnailSize;
+  theme?: OrderBookThumbnailTheme;
 }
 
-export default function OrderBookThumbnail({ orderBook, size = 'medium' }: Props): ReactElement {
+export default function OrderBookThumbnail({
+  orderBook,
+  size = 'medium',
+  theme = 'light',
+}: Props): ReactElement {
   return (
-    <div className={`friday-ui-order-book-thumbnail ${size}`}>
+    <div className={`friday-ui-order-book-thumbnail ${size} ${theme}`}>
       <div className="aggregated-orders buying">
         {orderBook?.buying?.length ? (
           <table>

@@ -16,15 +16,15 @@ export interface Props {
   size?: AssetOverviewSize;
   orderBook?: OrderBook;
   boosters?: Booster[];
-  clubTo?: To;
   onSubmitItem?: (itemFields: ItemEditorFields) => void | Promise<void>;
   ipo?: Ipo;
+  secondaryTo?: To;
 }
 
 export default function AssetOverview({
   asset,
   size = 'full',
-  clubTo,
+  secondaryTo,
   orderBook,
   boosters,
   onSubmitItem,
@@ -95,7 +95,7 @@ export default function AssetOverview({
             asset={asset}
             shape="text"
             size={assetThumbnailSize}
-            to={clubTo}
+            secondaryTo={secondaryTo}
             showQuotation={false}
           />
         </div>

@@ -5,7 +5,7 @@
   display: flex;
   align-items: stretch;
   justify-content: stretch;
-  background: colors.$light-blue;
+  background: white;
   border-radius: 20px;
   border: solid rgba(colors.$blue, .1) 1px;
   min-height: 80px;
@@ -124,5 +124,9 @@
         }
       }
     }
+  }
+
+  &.medium-light {
+    background: colors.$light-blue;
   }
 }

@@ -1,11 +1,12 @@
-import { MouseEvent, ReactElement, useMemo } from 'react';
+import { MouseEvent, ReactElement, useCallback, useMemo } from 'react';
 import { Player } from '@fridaygame/client';
+import { Wrapper, WrapperProps } from '@cezembre/fronts';
 import PlayerThumbnail from '../players/playerThumbnail';
 import Icon from '../../general/icon';
 
 export type CompositionPositionThumbnailTheme = 'dark' | 'light';
 
-export interface Props {
+export interface Props extends WrapperProps {
   player?: Player;
   theme?: CompositionPositionThumbnailTheme;
   onClick?: (event: MouseEvent<HTMLButtonElement>) => Promise<void> | void;
@@ -18,18 +19,23 @@ export default function CompositionPositionThumbnail({
   onClick,
   onDelete,
 }: Props): ReactElement {
-  const readonly = useMemo<boolean>(() => {
-    return !onClick && !onDelete;
-  }, [onDelete, onClick]);
+  const deleteWrapper = useCallback(
+    (event: MouseEvent<HTMLButtonElement>) => {
+      event.preventDefault();
+      if (onDelete) {
+        onDelete(event);
+      }
+    },
+    [onDelete],
+  );
 
   return (
-    <div
-      className={`friday-ui-composition-position-thumbnail ${theme}${readonly ? ' readonly' : ''}`}>
-      {player ? (
-        <PlayerThumbnail player={player} onClick={!readonly ? onClick : undefined} theme={theme} />
-      ) : null}
+    <div className={`friday-ui-composition-position-thumbnail ${theme}`}>
+      <Wrapper className="player" onClick={onClick}>
+        {player ? <PlayerThumbnail player={player} theme={theme} /> : null}
+      </Wrapper>
       {onDelete ? (
-        <button type="button" className="delete" onClick={onDelete}>
+        <button type="button" className="delete" onClick={deleteWrapper}>
           <Icon name="x" />
         </button>
       ) : null}

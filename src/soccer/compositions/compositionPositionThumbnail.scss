@@ -1,19 +1,31 @@
 @use "../../styles/colors";
 
 .friday-ui-composition-position-thumbnail {
-  padding: 10px;
-  border-radius: 5px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  transition: background linear 100ms;
 
-  &:not(.readonly) {
-    cursor: pointer;
+  > .player {
+    background: none;
+    border: none;
+    outline: none;
+    padding: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1em;
+    transition: background linear 100ms;
+    flex: 1;
+    -webkit-touch-callout: none;
+    user-select: none;
   }
 
-  &:not(.readonly):hover {
-    background: rgba(colors.$blue, .1);
+  > button.player,
+  > a.player {
+    cursor: pointer;
+
+    &:hover {
+      background: rgba(colors.$blue, .1);
+    }
   }
 
   > .delete {
@@ -25,8 +37,8 @@
     outline: none;
     text-decoration: none;
     background: none;
-    padding: 0;
-    margin: 0 0 0 20px;
+    padding: 5px;
+    margin: 0 0 0 10px;
 
     > svg {
       display: block;
@@ -35,8 +47,11 @@
   }
 
   &.light {
-    &:not(.readonly):hover {
-      background: rgba(white, .1);
+    > button.player,
+    > a.player {
+      &:hover {
+        background: rgba(white, .1);
+      }
     }
 
     > .delete > svg {
