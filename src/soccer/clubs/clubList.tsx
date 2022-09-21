@@ -1,7 +1,9 @@
-import { ReactElement, MouseEvent } from 'react';
+import { ReactElement, MouseEvent, useMemo } from 'react';
 import { To } from 'react-router';
 import { Club } from '@fridaygame/client';
+import { Property } from 'csstype';
 import ClubThumbnail, { ClubThumbnailDisposition, ClubThumbnailSize } from './clubThumbnail';
+import JustifyItems = Property.JustifyItems;
 
 export interface Props {
   clubs?: Club[];
@@ -22,10 +24,16 @@ export default function ClubList({
   disposition = 'inline',
   showLeagues = false,
 }: Props): ReactElement {
+  const justifyItems = useMemo<JustifyItems>(() => {
+    if (disposition === 'logo') {
+      return 'center';
+    }
+    return 'normal';
+  }, [disposition]);
   return (
     <div
       className="friday-ui-club-list"
-      style={{ gridTemplateColumns: `repeat(${columns}, auto)` }}>
+      style={{ gridTemplateColumns: `repeat(${columns}, auto)`, justifyItems }}>
       {clubs ? (
         clubs.map((club) => (
           <div key={club.id} className="club">
