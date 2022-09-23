@@ -3,6 +3,7 @@ import Loader from './general/loader';
 import Overlay from './general/overlay';
 import Placeholder from './general/placeholder';
 import Selection from './general/selection';
+import StepIndicator from './general/stepIndicator';
 import Button, { ButtonSize, ButtonShape, ButtonTheme } from './general/button';
 import Check from './general/check';
 import Icon from './general/icon';
@@ -169,6 +170,7 @@ import NotificationsWindow, {
   useNotificationsContext,
   NotificationsContext,
 } from './notifications/notificationsWindow';
+import OnboardingCarousel, { OnboardingCarouselSlideData } from './onboarding/onboardingCarousel';
 import {
   useGoogleMapsApi,
   useAutocompleteService,
@@ -203,6 +205,7 @@ export {
   Radio,
   Select,
   Selection,
+  StepIndicator,
   Table,
   Textarea,
   TimePicker,
@@ -417,12 +420,20 @@ export {
 export type { NewCreditCard };
 
 /**
- * Utils
+ * Notifications
  */
 
 export { NotificationIcon, NotificationThumbnail, NotificationsWindow, useNotificationsContext };
 
 export type { NotificationsContext };
+
+/**
+ * Onboarding
+ */
+
+export { OnboardingCarousel };
+
+export type { OnboardingCarouselSlideData };
 
 /**
  * Utils

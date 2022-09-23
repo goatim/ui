@@ -1,121 +1,106 @@
-import { ReactElement, useMemo, useState } from 'react';
-import Button, { ButtonSize } from '../general/button';
-import { getOnboardingCarouselItems, OnboardingCarouselItem } from './onboardingCarouselItems';
+import { ReactElement, useCallback, useState } from 'react';
+import Button from '../general/button';
+import StepIndicator from '../general/stepIndicator';
 
-export type OnboardingCarouselSize = 'narrow' | 'medium' | 'large';
-
-export interface Props {
-  onDismiss: () => unknown;
-  size?: OnboardingCarouselSize;
-  username: string;
+export interface OnboardingCarouselSlideData {
+  image?: string;
+  title?: string;
+  description?: string;
 }
 
-export default function OnboardingCarousel({
-  onDismiss,
-  size = 'large',
-  username,
-}: Props): ReactElement {
-  const [currentIndex, setCurrentIndex] = useState<number>(0);
+export interface OnboardingCarouselProps {
+  slide: OnboardingCarouselSlideData;
+}
 
-  const onboardingItems = useMemo<OnboardingCarouselItem[]>(
-    () => getOnboardingCarouselItems(username),
-    [username],
-  );
-
-  const { description, image, title } = onboardingItems[currentIndex];
-
-  const buttonSize = useMemo<ButtonSize>(() => {
-    switch (size) {
-      case 'narrow':
-        return 'small';
-      case 'medium':
-        return 'medium';
-      default:
-        return 'large';
-    }
-  }, [size]);
-
-  const onPreviousClick = () => {
-    if (currentIndex === 0) {
-      return;
-    }
-    setCurrentIndex(currentIndex - 1);
-  };
-
-  const onNextClick = () => {
-    if (currentIndex === onboardingItems.length - 1) {
-      onDismiss();
-    } else {
-      setCurrentIndex(currentIndex + 1);
-    }
-  };
-
-  const onSkipButtonClick = () => {
-    onDismiss();
-  };
-
-  const renderHypertextDescription = () => {
-    if (description === '') return description;
-
-    const splittedDescription = description.split('**');
-
-    return splittedDescription?.map((child: string, index: number) => (
-      <span key={child} className={`${index % 2 === 1 ? 'highlight' : ''}`}>
-        {child}
-      </span>
-    ));
-  };
-
-  const renderIndexIndication = () => (
-    <div className="indications">
-      {onboardingItems.map((onboardingItem, index: number) => (
-        <div
-          key={`indication${onboardingItem.title}`}
-          className={`indication ${
-            index === currentIndex ? 'selected-indication' : 'unselected-indication'
-          }`}
-        />
-      ))}
+export function OnboardingCarouselSlide({ slide }: OnboardingCarouselProps): ReactElement {
+  return (
+    <div className="friday-ui-onboarding-carousel-slide">
+      {slide.image ? (
+        <div className="header">
+          <img src={slide.image} alt={`onboarding ${slide.title}`} />
+        </div>
+      ) : null}
+      <div className="body">
+        <h1 className="title">{slide.title}</h1>
+        <p className="description">{slide.description}</p>
+      </div>
     </div>
+  );
+}
+
+export interface Props {
+  slides: OnboardingCarouselSlideData[];
+}
+
+export default function OnboardingCarousel({ slides }: Props): ReactElement {
+  const [slideIndex, setSlideIndex] = useState<number>(0);
+
+  const previousSlide = useCallback(() => {
+    setTimeout(() => {
+      setSlideIndex((i) => (i > 0 ? i - 1 : i));
+    }, 5);
+  }, []);
+
+  const nextSlide = useCallback(() => {
+    setTimeout(() => {
+      setSlideIndex((i) => (i < slides.length - 1 ? i + 1 : i));
+    }, 5);
+  }, [slides.length]);
+
+  const [slideHeight, setSlideHeight] = useState<number | undefined>();
+
+  const calcHeight = useCallback(
+    (index: number, ref?: HTMLDivElement | null) => {
+      if (ref) {
+        const { height } = ref.getBoundingClientRect();
+        if (index === slideIndex) {
+          setSlideHeight(height);
+        }
+      }
+    },
+    [slideIndex],
   );
 
   return (
-    <div className={`friday-ui-onboarding-carousel ${size}`}>
-      <div className="top-container">
-        <img src={image} alt={`onboarding ${currentIndex}`} />
-        <div className="skip-button">
-          <Button onClick={onSkipButtonClick} shape="text" theme="dark" size={buttonSize}>
-            Passer
-          </Button>
-        </div>
-      </div>
-      <div className="bottom-container">
-        <span className="title">{title}</span>
-        <div className="description-container">{renderHypertextDescription()}</div>
+    <div className="friday-ui-onboarding-carousel">
+      <div
+        className="slides"
+        style={{ transform: `translateX(-${slideIndex * 100}%)`, height: slideHeight }}>
+        {slides.map((slide, index) => (
+          <div key={slide.title} className="slide" ref={(ref) => calcHeight(index, ref)}>
+            <OnboardingCarouselSlide slide={slide} />
+          </div>
+        ))}
       </div>
       <div className="navigation">
-        <div className="button">
-          {currentIndex > 0 && (
+        <div className="previous">
+          {slideIndex > 0 ? (
             <Button
-              onClick={onPreviousClick}
-              leftIcon="arrow-left"
+              onClick={previousSlide}
+              leftIcon="chevron-left"
               shape="text"
               theme="dark"
-              size={buttonSize}>
+              size="large">
               Précédent
             </Button>
-          )}
+          ) : null}
         </div>
-        {renderIndexIndication()}
-        <div className="button">
-          <Button
-            onClick={onNextClick}
-            rightIcon="arrow-right"
-            shape="text"
-            theme="dark"
-            size={buttonSize}>
-            Suivant
-          </Button>
+        <div className="steps">
+          <StepIndicator nbSteps={slides.length} step={slideIndex} onClickStep={setSlideIndex} />
+        </div>
+        <div className="next">
+          {slideIndex < slides.length - 1 ? (
+            <div className="button">
+              <Button
+                onClick={nextSlide}
+                rightIcon="chevron-right"
+                shape="text"
+                theme="dark"
+                size="large">
+                Suivant
+              </Button>
+            </div>
+          ) : null}
         </div>
       </div>
     </div>

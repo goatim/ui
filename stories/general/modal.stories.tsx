@@ -1,27 +1,51 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor, useCallback } from 'react';
-import { useModals, ModalsContext } from '../../src';
+import { Pack } from '@fridaygame/client';
+import { useModals, ModalsContext, PackModal } from '../../src';
+import OnboardingCarousel, {
+  OnboardingCarouselSlideData,
+} from '../../src/onboarding/onboardingCarousel';
+import onboarding1 from '../onboarding/assets/onboarding1.jpg';
+import onboarding2 from '../onboarding/assets/onboarding2.jpg';
+import onboarding3 from '../onboarding/assets/onboarding3.jpg';
+import onboarding4 from '../onboarding/assets/onboarding4.jpg';
 
-interface Props {}
+const slides: OnboardingCarouselSlideData[] = [
+  {
+    description:
+      'Bienvenue sur Friday la première plateforme de trading de joueurs de football professionnels !',
+    image: onboarding1,
+    title: `Bienvenue John`,
+  },
+  {
+    description:
+      "A la suite de ton inscription, tu as reçu ton Starter Pack composé de FridayCoins et d'actions de joueurs. Désormais, tu vas pouvoir acheter et vendre des actions de joueurs de football professionnels.",
+    image: onboarding2,
+    title: 'Achète et vends',
+  },
+  {
+    description:
+      'Avant chaque week-end, compose ton équipe avec les joueurs que tu possèdes. Tous les lundis, tu percevras tes dividendes de provenant de ton équipe. Ils sont calculés en fonction des performances sportives réels des joueurs. Attention, ils peuvent être positifs comme négatifs alors choisis bien !',
+    image: onboarding3,
+    title: 'Compose ton équipe',
+  },
+  {
+    description:
+      "Grâce à tes performances de trader, tu pourras convertir tes FridayCoins en Ether. Rien de plus simple, crée toi un Wallet d'Ether (ex : Coinbase Wallet), puis sur le site Friday, clique sur le bouton de conversion, entre l'adresse de ton Wallet et confirme. Le tour est joué, tu recevras tes Ethers dès que notre support aura validé la transaction.",
+    image: onboarding4,
+    title: 'Convertis tes FridayCoins en Ether',
+  },
+];
+
+// const pack: Pack = {};
 
 function App() {
   const { pushModal } = useModals();
   const openModal = useCallback(() => {
     pushModal({
-      component: ({ dismissModal }) => (
-        <div>
-          <h1>Modal !</h1>
-          {Array(10).fill(
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. A alias aliquid aut error
-              esse, et hic illo illum molestias, natus nemo quasi qui quisquam ratione saepe sequi
-              soluta tenetur voluptates!
-            </p>,
-          )}
-          <button onClick={dismissModal}>Dismiss !</button>
-        </div>
-      ),
-      onDismiss: () => console.log('First modal dismissed !'),
+      type: 'overlay',
+      component: () => <OnboardingCarousel slides={slides} />,
+      // component: () => <PackModal pack={pack} />,
     });
   }, [pushModal]);
 
@@ -48,9 +72,10 @@ function App() {
 
 export default {
   title: 'General/Modal',
-} as ComponentMeta<JSXElementConstructor<Props>>;
+  component: App,
+} as ComponentMeta<JSXElementConstructor<unknown>>;
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
+const Template: ComponentStory<JSXElementConstructor<unknown>> = () => (
   <ModalsContext>
     <App />
   </ModalsContext>

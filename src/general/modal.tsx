@@ -84,12 +84,10 @@ function ModalContainer({ id, modal, dismissModal }: ModalContainerProps): React
       <div className="container">
         {modal.component ? (
           <div className="element" ref={modalElement}>
-            <div className="header">
-              <button type="button" onClick={delayedDismissModal}>
-                <Icon name="x" size={20} />
-              </button>
-            </div>
             <modal.component id={modal.id} dismissModal={delayedDismissModal} />
+            <button className="dismiss" type="button" onClick={delayedDismissModal}>
+              <Icon name="x" size={20} />
+            </button>
           </div>
         ) : null}
       </div>

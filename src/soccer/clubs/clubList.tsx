@@ -3,7 +3,6 @@ import { To } from 'react-router';
 import { Club } from '@fridaygame/client';
 import { Property } from 'csstype';
 import ClubThumbnail, { ClubThumbnailDisposition, ClubThumbnailSize } from './clubThumbnail';
-import JustifyItems = Property.JustifyItems;
 
 export interface Props {
   clubs?: Club[];
@@ -24,7 +23,7 @@ export default function ClubList({
   disposition = 'inline',
   showLeagues = false,
 }: Props): ReactElement {
-  const justifyItems = useMemo<JustifyItems>(() => {
+  const justifyItems = useMemo<Property.JustifyItems>(() => {
     if (disposition === 'logo') {
       return 'center';
     }
