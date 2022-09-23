@@ -28,11 +28,14 @@ export function OnboardingCarouselSlide({ slide }: OnboardingCarouselProps): Rea
   );
 }
 
+export type OnboardingCarouselSize = 'narrow' | 'big';
+
 export interface Props {
   slides: OnboardingCarouselSlideData[];
+  size?: OnboardingCarouselSize;
 }
 
-export default function OnboardingCarousel({ slides }: Props): ReactElement {
+export default function OnboardingCarousel({ slides, size = 'big' }: Props): ReactElement {
   const [slideIndex, setSlideIndex] = useState<number>(0);
 
   const previousSlide = useCallback(() => {
@@ -62,7 +65,7 @@ export default function OnboardingCarousel({ slides }: Props): ReactElement {
   );
 
   return (
-    <div className="friday-ui-onboarding-carousel">
+    <div className={`friday-ui-onboarding-carousel ${size}`}>
       <div
         className="slides"
         style={{ transform: `translateX(-${slideIndex * 100}%)`, height: slideHeight }}>

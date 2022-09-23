@@ -18,7 +18,7 @@ export default {
   component: OnboardingCarousel,
   argTypes: {
     size: {
-      options: ['narrow', 'medium', 'large'],
+      options: ['narrow', 'big'],
       control: {
         type: 'select',
       },
@@ -54,15 +54,7 @@ const slides: OnboardingCarouselSlideData[] = [
 ];
 
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({ size }: Props) => (
-  <div
-    style={{
-      padding: 20,
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-    }}>
-    <OnboardingCarousel slides={slides} size={size} />
-  </div>
+  <OnboardingCarousel slides={slides} size={size} />
 );
 
 export const Default = Template.bind({});
