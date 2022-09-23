@@ -170,7 +170,10 @@ import NotificationsWindow, {
   useNotificationsContext,
   NotificationsContext,
 } from './notifications/notificationsWindow';
-import OnboardingCarousel, { OnboardingCarouselSlideData } from './onboarding/onboardingCarousel';
+import OnboardingCarousel, {
+  OnboardingCarouselSize,
+  OnboardingCarouselSlideData,
+} from './onboarding/onboardingCarousel';
 import {
   useGoogleMapsApi,
   useAutocompleteService,
@@ -433,7 +436,7 @@ export type { NotificationsContext };
 
 export { OnboardingCarousel };
 
-export type { OnboardingCarouselSlideData };
+export type { OnboardingCarouselSize, OnboardingCarouselSlideData };
 
 /**
  * Utils
