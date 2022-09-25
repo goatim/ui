@@ -125,6 +125,9 @@ import CompositionThumbnail from './soccer/compositions/compositionThumbnail';
 import CompositionRanking, {
   CompositionRankingTheme,
 } from './soccer/compositions/compositionRanking';
+import SubscriptionThumbnail, {
+  SubscriptionThumbnailTheme,
+} from './subscriptions/subscriptionThumbnail';
 import AssetThumbnail, {
   AssetThumbnailShape,
   AssetThumbnailSize,
@@ -132,6 +135,7 @@ import AssetThumbnail, {
 } from './trading/assets/assetThumbnail';
 import AssetOverview, { AssetOverviewSize } from './trading/assets/assetOverview';
 import BoosterIcon, { BoosterIconSize, BoosterIconInfos } from './trading/boosters/boosterIcon';
+import BoosterThumbnail, { BoosterThumbnailTheme } from './trading/boosters/boosterThumbnail';
 import BoosterInUseThumbnail from './trading/boosters/boosterInUseThumbnail';
 import BoosterInUseStack from './trading/boosters/boosterInUseStack';
 import OrderThumbnail, { OrderThumbnailSize } from './trading/orders/orderThumbnail';
@@ -142,6 +146,9 @@ import OrderBookThumbnail, {
 import OrderList from './trading/orders/orderList';
 import ShareBulkThumbnail from './trading/shareBulks/shareBulkThumbnail';
 import ShareBulkList from './trading/shareBulks/shareBulkList';
+import PackFactoryThumbnail, {
+  PackFactoryThumbnailTheme,
+} from './trading/packs/packFactoryThumbnail';
 import PackIcon from './trading/packs/packIcon';
 import PackThumbnail from './trading/packs/packThumbnail';
 import PackModal from './trading/packs/packModal';
@@ -370,11 +377,13 @@ export {
   BoosterIcon,
   BoosterInUseThumbnail,
   BoosterInUseStack,
+  BoosterThumbnail,
   OrderThumbnail,
   OrderBookThumbnail,
   OrderList,
   ShareBulkThumbnail,
   ShareBulkList,
+  PackFactoryThumbnail,
   PackIcon,
   PackThumbnail,
   PackModal,
@@ -395,6 +404,7 @@ export type {
   AssetThumbnailTheme,
   BoosterIconSize,
   BoosterIconInfos,
+  BoosterThumbnailTheme,
   DataPoint,
   QuotationHistoryGraphTheme,
   DividendThumbnailTheme,
@@ -405,6 +415,7 @@ export type {
   OrderThumbnailSize,
   OrderBookThumbnailSize,
   OrderBookThumbnailTheme,
+  PackFactoryThumbnailTheme,
 };
 
 /**
@@ -437,6 +448,14 @@ export type { NotificationsContext };
 export { OnboardingCarousel };
 
 export type { OnboardingCarouselSize, OnboardingCarouselSlideData };
+
+/**
+ * Subscriptions
+ */
+
+export { SubscriptionThumbnail };
+
+export type { SubscriptionThumbnailTheme };
 
 /**
  * Utils
