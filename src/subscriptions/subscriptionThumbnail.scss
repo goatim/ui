@@ -72,7 +72,7 @@ a.friday-ui-subscription-thumbnail {
   &.light {
     background: white;
     > .title {
-      @include fonts.Inter(0.8em, colors.$blue, bold);
+      @include fonts.Inter(0.7em, colors.$blue, bold);
     }
 
     > .monthly-price-container {
@@ -100,7 +100,7 @@ a.friday-ui-subscription-thumbnail {
   &.dark {
     background: colors.$blue;
     > .title {
-      @include fonts.Inter(0.8em, white, bold);
+      @include fonts.Inter(0.7em, white, bold);
     }
 
     > .monthly-price-container {
