@@ -39,7 +39,7 @@ export default function BoosterThumbnail({
       <div className="popular-container" style={!isPopular ? { display: 'none' } : undefined}>
         <span className="popular-label">POPULAIRE</span>
       </div>
-      <span className="title">{`Pack ${booster.type}`}</span>
+      <span className="title">{`Booster ${booster.type}`}</span>
       <span className="price">{formatCurrency(booster.price)}</span>
       <span className="description">De pur produit du centre de formation FRIDAY</span>
       <div className="separator" />
