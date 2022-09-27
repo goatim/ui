@@ -28,7 +28,7 @@ export default function WalletMetrics({ wallet, size = 'normal' }: Props): React
         </div>
 
         <div className={`metric${size !== 'narrow' ? ' center' : ''}`}>
-          <span className="label">Solde espèces</span>
+          <span className="label">Solde FDY</span>
           <FridayCoins amount={wallet.amount} theme="light" size="medium" />
         </div>
 
