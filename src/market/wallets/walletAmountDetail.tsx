@@ -27,7 +27,7 @@ export default function WalletAmountDetail({ wallet, size = 'normal' }: Props): 
         <span className="label">Plafond de retrait</span>
         <FridayCoins amount={(wallet.amount || 0) - (wallet.floor_withdrawal || 0)} size="small" />
         <span className="instruction">
-          Solde espèces
+          Solde FDY
           <br />- solde intial
         </span>
       </div>

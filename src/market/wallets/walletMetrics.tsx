@@ -33,7 +33,7 @@ export default function WalletMetrics({ wallet, size = 'normal' }: Props): React
         </div>
 
         <div className={`metric${size !== 'narrow' ? ' right' : ''}`}>
-          <span className="label">Évaluation titres</span>
+          <span className="label">Évaluation équipe</span>
           <FridayCoins amount={wallet.portfolios_quotation} theme="light" size="medium" />
           <PercentageVariation variation={wallet.portfolios_session_variation} size="medium" />
         </div>
