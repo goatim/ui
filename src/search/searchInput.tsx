@@ -59,7 +59,7 @@ export default function SearchInput({
     // Hack to register click event on results
     setTimeout(() => {
       setActive(false);
-    }, 50);
+    }, 100);
   }, []);
 
   const className = useMemo<string>(() => {
