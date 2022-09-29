@@ -56,7 +56,10 @@ export default function SearchInput({
   );
 
   const blur = useCallback(() => {
-    setActive(false);
+    // Hack to register click event on results
+    setTimeout(() => {
+      setActive(false);
+    }, 50);
   }, []);
 
   const className = useMemo<string>(() => {
