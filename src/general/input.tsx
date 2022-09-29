@@ -303,12 +303,8 @@ export default function Input<V = string, S extends Suggestion<V> = Suggestion<V
 
   const blur = useCallback(() => {
     onBlur();
-    // Warning : Hack here
-    // Blur event gets called before the click one so we have
-    // to delay the hiding of the suggestions in order to still
-    // register the click event. 50ms seems to be a good threshold.
-    // Suggestions should disappear with an outside click instead of blur
-    setTimeout(() => setSuggestionsActive(false), 50);
+    // Hack to register click event on suggestions
+    setTimeout(() => setSuggestionsActive(false), 200);
   }, [onBlur]);
 
   let nextedIndex = -1;
