@@ -174,6 +174,7 @@ import OnboardingCarousel, {
   OnboardingCarouselSize,
   OnboardingCarouselSlideData,
 } from './onboarding/onboardingCarousel';
+import SearchInput, { SearchInputTheme } from './search/searchInput';
 import {
   useGoogleMapsApi,
   useAutocompleteService,
@@ -437,6 +438,14 @@ export type { NotificationsContext };
 export { OnboardingCarousel };
 
 export type { OnboardingCarouselSize, OnboardingCarouselSlideData };
+
+/**
+ * Search
+ */
+
+export { SearchInput };
+
+export type { SearchInputTheme };
 
 /**
  * Utils

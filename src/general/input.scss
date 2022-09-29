@@ -1,4 +1,3 @@
-@use '~@cezembre/fronts/dist/screens';
 @use '~@cezembre/fronts/dist/layouts';
 @use '../styles/colors';
 @use '../styles/fonts';
@@ -111,6 +110,7 @@
         flex-shrink: 0;
         background: white;
         transition: border linear 100ms, box-shadow linear 100ms;
+        font-size: 1em;
 
         &:hover, &.selected {
           background: rgba(colors.$blue, .05);

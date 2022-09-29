@@ -89,7 +89,7 @@ export function usePlacePredictions(
   const memoizedTypes = useRef<string[] | undefined>();
   const memoizedCountry = useRef<string | undefined>();
 
-  const getPlacePredictionsDebounced = useRef<_.DebouncedFunc<GetPlacePrediction> | undefined>();
+  const getPlacePredictionsThrottled = useRef<_.DebouncedFunc<GetPlacePrediction> | undefined>();
 
   const [predictions, setPredictions] = useState<AutocompletePrediction[]>([]);
 
@@ -131,19 +131,21 @@ export function usePlacePredictions(
         );
       };
 
-      getPlacePredictionsDebounced.current = _.debounce(getPlacePrediction, 500);
+      getPlacePredictionsThrottled.current = _.throttle(getPlacePrediction, 500, {
+        leading: false,
+      });
     }
   }, [autocompleteService, callback, country, types]);
 
   useEffect(() => {
-    if (getPlacePredictionsDebounced?.current) {
+    if (getPlacePredictionsThrottled?.current) {
       if (query && typeof query === 'string' && query.length) {
         if (!_.isEqual(memoizedQuery.current, query)) {
           memoizedQuery.current = query;
-          getPlacePredictionsDebounced.current(query);
+          getPlacePredictionsThrottled.current(query);
         }
       } else {
-        getPlacePredictionsDebounced.current.cancel();
+        getPlacePredictionsThrottled.current.cancel();
         setPredictions([]);
       }
     }

@@ -1,0 +1,127 @@
+@use '~@cezembre/fronts/dist/layouts';
+@use '../styles/colors';
+@use '../styles/fonts';
+@use '../styles/forms';
+
+.friday-ui-search-input {
+  position: relative;
+
+  * {
+    box-sizing: border-box;
+  }
+
+  > .container {
+    @include forms.input;
+    height: 40px;
+    border-radius: 20px;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    position: relative;
+
+    > .icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-left: 15px;
+
+      > svg {
+        stroke: colors.$blue;
+      }
+    }
+
+    > input {
+      font-family: inherit;
+      font-weight: inherit;
+      color: inherit;
+      border: none;
+      outline: none;
+      text-decoration: none;
+      background: transparent;
+      font-size: .9em;
+      flex: 1;
+      padding: 0 .8em;
+
+      &::placeholder {
+        color: rgba(colors.$blue, .5);
+        font-style: italic;
+      }
+    }
+  }
+
+  > .results {
+    visibility: hidden;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    background: white;
+    border-radius: 10px;
+    border: solid rgba(colors.$blue, .1) 1px;
+    width: 100%;
+    top: calc(100% + 10px);
+    transition: opacity linear 100ms;
+    @include layouts.modal;
+    padding: 10px 0;
+
+    > .result {
+      transition: background linear 100ms;
+      padding: 5px 15px;
+      text-align: left;
+      margin: 0;
+      width: 100%;
+      border: none;
+      cursor: pointer;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      flex-shrink: 0;
+      display: block;
+      background: none;
+      font-size: 1em;
+
+      &:hover, &.selected {
+        background: rgba(colors.$blue, .05);
+      }
+    }
+  }
+
+  &.flat {
+    > .results {
+      visibility: visible;
+      opacity: 1;
+      background: none;
+      border: none;
+      border-radius: 0;
+    }
+  }
+
+  &.active {
+    > .results {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  &.lighter {
+    > .container {
+      background: rgba(white, .2);
+      border-color: rgba(white, .2);
+
+      > .icon > svg {
+        stroke: white;
+      }
+    }
+  }
+
+  &.active {
+    > .container {
+      background: white;
+
+      > .icon > svg {
+        stroke: colors.$blue;
+      }
+    }
+  }
+}

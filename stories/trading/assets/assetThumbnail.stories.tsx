@@ -31,7 +31,7 @@ export default {
       },
     },
     theme: {
-      options: ['dark', 'darker', 'lighter'],
+      options: ['default', 'darker', 'lighter'],
       control: {
         type: 'select',
       },

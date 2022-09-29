@@ -135,7 +135,6 @@ export default function Input<V = string, S extends Suggestion<V> = Suggestion<V
   error,
   warning,
   isActive,
-  hasChanged,
   visited,
   submitted,
   onFocus,
@@ -176,16 +175,16 @@ export default function Input<V = string, S extends Suggestion<V> = Suggestion<V
       res += ' visited';
     }
     if (isActive) {
-      res += 'active';
+      res += ' active';
     }
     if (suggestions?.length && suggestionsActive) {
-      res += 'suggestions-active';
+      res += ' suggestions-active';
     }
     if ((visited || submitted) && !isActive && error) {
-      res += 'error';
+      res += ' error';
     }
     if (warning) {
-      res += 'warning';
+      res += ' warning';
     }
     return res;
   }, [
@@ -234,7 +233,7 @@ export default function Input<V = string, S extends Suggestion<V> = Suggestion<V
   }, [suggestions]);
 
   const change = useCallback(
-    (event: ChangeEvent<{ value: string }>) => {
+    (event: ChangeEvent<HTMLInputElement>) => {
       if (adapter) {
         onChange(adapter(event.target.value));
       } else {
@@ -307,9 +306,9 @@ export default function Input<V = string, S extends Suggestion<V> = Suggestion<V
     // Warning : Hack here
     // Blur event gets called before the click one so we have
     // to delay the hiding of the suggestions in order to still
-    // register the click event. 200ms seems to be a good threshold.
+    // register the click event. 50ms seems to be a good threshold.
     // Suggestions should disappear with an outside click instead of blur
-    setTimeout(() => setSuggestionsActive(false), 200);
+    setTimeout(() => setSuggestionsActive(false), 50);
   }, [onBlur]);
 
   let nextedIndex = -1;
