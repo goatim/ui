@@ -99,7 +99,13 @@ export default function Button({
       if (onClick) {
         const response = onClick(event);
 
-        if (typeof response === 'object' && response?.then && typeof response.then === 'function') {
+        if (
+          response &&
+          typeof response === 'object' &&
+          'then' in response &&
+          (response as Promise<unknown>).then &&
+          typeof (response as Promise<unknown>).then === 'function'
+        ) {
           setAutoPending(true);
           try {
             await response;

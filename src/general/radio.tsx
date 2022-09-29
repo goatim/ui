@@ -10,7 +10,7 @@ export interface RadioOption<V = unknown> {
 
 export interface RadioOptionProps<V = unknown> {
   option?: RadioOption<V>;
-  onClick?: (event: MouseEvent<HTMLButtonElement>) => Promise<void> | void;
+  onClick?: (event: MouseEvent<HTMLButtonElement>) => unknown;
   onFocus?: FocusEventHandler<HTMLButtonElement>;
   onBlur?: FocusEventHandler<HTMLButtonElement>;
   active?: boolean;
