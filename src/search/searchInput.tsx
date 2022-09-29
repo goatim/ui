@@ -23,7 +23,7 @@ export default function SearchInput({
   results,
   onClickResult,
   toResult,
-  throttle = 10000,
+  throttle = 1000,
   theme = 'light',
   flat = false,
 }: Props): ReactElement {
