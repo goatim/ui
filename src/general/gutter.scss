@@ -1,0 +1,16 @@
+.friday-ui-gutter {
+  width: 100%;
+  overflow: hidden;
+
+  * {
+    box-sizing: border-box;
+  }
+
+  > .container {
+    display: flex;
+
+    > .element {
+      flex-shrink: 0;
+    }
+  }
+}

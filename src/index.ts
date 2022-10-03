@@ -44,6 +44,7 @@ import {
   PushModalParams,
   PushModalFunction,
 } from './general/modal';
+import Gutter from './general/gutter';
 import UserThumbnail, { UserThumbnailSize, UserThumbnailInfos } from './auth/userThumbnail';
 import FridayCoins, { FridayCoinsTheme, FridayCoinsSize } from './market/fridayCoins';
 import FridayCoinsVariation, { FridayCoinsVariationSize } from './market/fridayCoinsVariation';
@@ -216,6 +217,7 @@ export {
   Toggle,
   Upload,
   useModals,
+  Gutter,
 };
 
 export type {
