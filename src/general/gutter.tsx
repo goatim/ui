@@ -83,7 +83,7 @@ export default function Gutter({
       if (moved) {
         setTimeout(() => {
           setMoved(false);
-        }, 100);
+        }, 500);
       }
     }
   }, [moved, pointerStartPosition, translation]);
