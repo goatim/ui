@@ -50,7 +50,7 @@ export default function Gutter({
 
   const [pointerStartPosition, setPointerStartPosition] = useState<number | undefined>();
 
-  const [moved, setMoved] = useState<boolean>();
+  const [moving, setMoving] = useState<boolean>();
 
   const pointerDown = useCallback((event: React.PointerEvent<HTMLDivElement>) => {
     setPointerStartPosition(event.pageX);
@@ -63,7 +63,7 @@ export default function Gutter({
         let nextTranslation = lastTranslation + event.pageX - pointerStartPosition;
         const delta = nextTranslation - lastTranslation;
         if (delta < -clickThreshold || delta > clickThreshold) {
-          setMoved(true);
+          setMoving(true);
         }
         if (nextTranslation > 0) {
           nextTranslation = 0;
@@ -80,23 +80,13 @@ export default function Gutter({
     if (pointerStartPosition !== undefined) {
       setPointerStartPosition(undefined);
       setLastTranslation(translation);
-      if (moved) {
+      if (moving) {
         setTimeout(() => {
-          setMoved(false);
+          setMoving(false);
         }, 500);
       }
     }
-  }, [moved, pointerStartPosition, translation]);
-
-  const click = useCallback(
-    (event: React.PointerEvent<HTMLDivElement>) => {
-      if (moved) {
-        event.preventDefault();
-        event.stopPropagation();
-      }
-    },
-    [moved],
-  );
+  }, [moving, pointerStartPosition, translation]);
 
   useEffect(() => {
     window.addEventListener('pointerup', pointerUp);
@@ -118,9 +108,10 @@ export default function Gutter({
           transform: `translateX(${translation}px)`,
           padding: `0 ${padding}px`,
           width: containerWidth ? containerWidth + padding : undefined,
+          pointerEvents: moving ? 'none' : 'all',
+          cursor: moving ? 'grab' : 'default',
         }}
         onPointerDown={pointerDown}
-        onClick={click}
         onKeyDown={() => undefined}>
         {elements}
       </div>
