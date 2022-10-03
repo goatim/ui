@@ -3,9 +3,10 @@ import React, { ReactElement, useCallback, useMemo, useState, useEffect } from '
 export interface Props {
   children?: ReactElement | ReactElement[];
   spacing?: number;
+  padding?: number;
 }
 
-export default function Gutter({ children, spacing = 20 }: Props): ReactElement {
+export default function Gutter({ children, spacing = 20, padding = 20 }: Props): ReactElement {
   const elements = useMemo<ReactElement | ReactElement[]>(() => {
     if (Array.isArray(children)) {
       return children.map((child, index) => (
@@ -20,6 +21,20 @@ export default function Gutter({ children, spacing = 20 }: Props): ReactElement 
     return <div className="element">{children}</div>;
   }, [children, spacing]);
 
+  const [gutterWidth, setGutterWidth] = useState<number | undefined>();
+  const gutterRef = useCallback((gutter: HTMLDivElement) => {
+    setGutterWidth(gutter.offsetWidth);
+  }, []);
+
+  const [containerWidth, setContainerWidth] = useState<number | undefined>();
+  const containerRef = useCallback((container: HTMLDivElement) => {
+    setContainerWidth(container.scrollWidth);
+  }, []);
+
+  const maxTranslation = useMemo<number>(() => {
+    return -(containerWidth || 0) + (gutterWidth || 0) - padding;
+  }, [containerWidth, gutterWidth, padding]);
+
   const [translation, setTranslation] = useState<number>(0);
   const [lastTranslation, setLastTranslation] = useState<number>(0);
 
@@ -32,10 +47,16 @@ export default function Gutter({ children, spacing = 20 }: Props): ReactElement 
   const pointerMove = useCallback(
     (event: PointerEvent) => {
       if (pointerStartPosition !== undefined) {
-        setTranslation(lastTranslation + event.pageX - pointerStartPosition);
+        let nextTranslation = lastTranslation + event.pageX - pointerStartPosition;
+        if (nextTranslation > 0) {
+          nextTranslation = 0;
+        } else if (nextTranslation < maxTranslation) {
+          nextTranslation = maxTranslation;
+        }
+        setTranslation(nextTranslation);
       }
     },
-    [lastTranslation, pointerStartPosition],
+    [lastTranslation, maxTranslation, pointerStartPosition],
   );
 
   const pointerUp = useCallback(() => {
@@ -53,10 +74,15 @@ export default function Gutter({ children, spacing = 20 }: Props): ReactElement 
   }, [pointerMove, pointerUp]);
 
   return (
-    <div className="friday-ui-gutter">
+    <div className="friday-ui-gutter" ref={gutterRef}>
       <div
         className="container"
-        style={{ transform: `translateX(${translation}px)` }}
+        ref={containerRef}
+        style={{
+          transform: `translateX(${translation}px)`,
+          padding: `0 ${padding}px`,
+          width: containerWidth ? containerWidth + padding : undefined,
+        }}
         onPointerDown={pointerDown}>
         {elements}
       </div>
