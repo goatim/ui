@@ -92,6 +92,7 @@ export default function Gutter({
     (event: React.PointerEvent<HTMLDivElement>) => {
       if (moved) {
         event.preventDefault();
+        event.stopPropagation();
       }
     },
     [moved],
