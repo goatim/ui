@@ -18,71 +18,71 @@ export default {
 const Template: ComponentStory<typeof Gutter> = ({}: Props) => (
   <div style={{ width: 450, background: 'bisque' }}>
     <Gutter>
-      <div>
+      <a href="https://www.google.com/" target="_blank" rel="noreferrer">
         <p>One</p>
         <p>Two</p>
         <p>Three</p>
-      </div>
-      <div>
+      </a>
+      <a href="https://www.google.com/" target="_blank" rel="noreferrer">
         <p>Four</p>
-      </div>
-      <div>
+      </a>
+      <a href="https://www.google.com/" target="_blank" rel="noreferrer">
         <p>Five</p>
         <p>Six</p>
-      </div>
-      <div>
+      </a>
+      <a href="https://www.google.com/" target="_blank" rel="noreferrer">
         <p>Seven</p>
         <p>Eight</p>
         <p>Nine</p>
         <p>Ten</p>
         <p>Eleven</p>
         <p>Twelve</p>
-      </div>
-      <div>
+      </a>
+      <a href="https://www.google.com/" target="_blank" rel="noreferrer">
         <p>Thirteen</p>
         <p>Fourteen</p>
-      </div>
-      <div>
+      </a>
+      <a href="https://www.google.com/" target="_blank" rel="noreferrer">
         <p>Fifteen</p>
-      </div>
-      <div>
+      </a>
+      <a href="https://www.google.com/" target="_blank" rel="noreferrer">
         <p>Sixteen</p>
         <p>Seventeen</p>
         <p>Eighteen</p>
-      </div>
-      <div>
+      </a>
+      <a href="https://www.google.com/" target="_blank" rel="noreferrer">
         <p>Nineteen</p>
         <p>Twenty</p>
-      </div>
-      <div>
+      </a>
+      <a href="https://www.google.com/" target="_blank" rel="noreferrer">
         <p>Twenty-one</p>
         <p>Twenty-two</p>
         <p>Twenty-three</p>
         <p>Twenty-four</p>
-      </div>
-      <div>
+      </a>
+      <a href="https://www.google.com/" target="_blank" rel="noreferrer">
         <p>Twenty-five</p>
         <p>Twenty-six</p>
         <p>Twenty-seven</p>
-      </div>
-      <div>
+      </a>
+      <a href="https://www.google.com/" target="_blank" rel="noreferrer">
         <p>Twenty-eight</p>
         <p>Twenty-nine</p>
-      </div>
-      <div>
+      </a>
+      <a href="https://www.google.com/" target="_blank" rel="noreferrer">
         <p>Thirty</p>
         <p>Thirty-one</p>
-      </div>
-      <div>
+      </a>
+      <a href="https://www.google.com/" target="_blank" rel="noreferrer">
         <p>Thirty-two</p>
         <p>Thirty-three</p>
-      </div>
-      <div>
+      </a>
+      <a href="https://www.google.com/" target="_blank" rel="noreferrer">
         <p>Thirty-four</p>
         <p>Thirty-five</p>
         <p>Thirty-six</p>
         <p>Thirty-seven</p>
-      </div>
+      </a>
     </Gutter>
   </div>
 );

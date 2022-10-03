@@ -4,9 +4,15 @@ export interface Props {
   children?: ReactElement | ReactElement[];
   spacing?: number;
   padding?: number;
+  clickThreshold?: number;
 }
 
-export default function Gutter({ children, spacing = 20, padding = 20 }: Props): ReactElement {
+export default function Gutter({
+  children,
+  spacing = 20,
+  padding = 20,
+  clickThreshold = 5,
+}: Props): ReactElement {
   const elements = useMemo<ReactElement | ReactElement[]>(() => {
     if (Array.isArray(children)) {
       return children.map((child, index) => (
@@ -44,6 +50,8 @@ export default function Gutter({ children, spacing = 20, padding = 20 }: Props):
 
   const [pointerStartPosition, setPointerStartPosition] = useState<number | undefined>();
 
+  const [moved, setMoved] = useState<boolean>();
+
   const pointerDown = useCallback((event: React.PointerEvent<HTMLDivElement>) => {
     setPointerStartPosition(event.pageX);
   }, []);
@@ -51,7 +59,12 @@ export default function Gutter({ children, spacing = 20, padding = 20 }: Props):
   const pointerMove = useCallback(
     (event: PointerEvent) => {
       if (pointerStartPosition !== undefined) {
+        event.preventDefault();
         let nextTranslation = lastTranslation + event.pageX - pointerStartPosition;
+        const delta = nextTranslation - lastTranslation;
+        if (delta < -clickThreshold || delta > clickThreshold) {
+          setMoved(true);
+        }
         if (nextTranslation > 0) {
           nextTranslation = 0;
         } else if (nextTranslation < maxTranslation) {
@@ -60,13 +73,29 @@ export default function Gutter({ children, spacing = 20, padding = 20 }: Props):
         setTranslation(nextTranslation);
       }
     },
-    [lastTranslation, maxTranslation, pointerStartPosition],
+    [clickThreshold, lastTranslation, maxTranslation, pointerStartPosition],
   );
 
   const pointerUp = useCallback(() => {
-    setPointerStartPosition(undefined);
-    setLastTranslation(translation);
-  }, [translation]);
+    if (pointerStartPosition !== undefined) {
+      setPointerStartPosition(undefined);
+      setLastTranslation(translation);
+      if (moved) {
+        setTimeout(() => {
+          setMoved(false);
+        }, 100);
+      }
+    }
+  }, [moved, pointerStartPosition, translation]);
+
+  const click = useCallback(
+    (event: React.PointerEvent<HTMLDivElement>) => {
+      if (moved) {
+        event.preventDefault();
+      }
+    },
+    [moved],
+  );
 
   useEffect(() => {
     window.addEventListener('pointerup', pointerUp);
@@ -79,7 +108,9 @@ export default function Gutter({ children, spacing = 20, padding = 20 }: Props):
 
   return (
     <div className="friday-ui-gutter" ref={gutterRef}>
+      {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
       <div
+        role="list"
         className="container"
         ref={containerRef}
         style={{
@@ -87,7 +118,9 @@ export default function Gutter({ children, spacing = 20, padding = 20 }: Props):
           padding: `0 ${padding}px`,
           width: containerWidth ? containerWidth + padding : undefined,
         }}
-        onPointerDown={pointerDown}>
+        onPointerDown={pointerDown}
+        onClick={click}
+        onKeyDown={() => undefined}>
         {elements}
       </div>
     </div>
