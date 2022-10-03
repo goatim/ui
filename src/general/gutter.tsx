@@ -22,13 +22,17 @@ export default function Gutter({ children, spacing = 20, padding = 20 }: Props):
   }, [children, spacing]);
 
   const [gutterWidth, setGutterWidth] = useState<number | undefined>();
-  const gutterRef = useCallback((gutter: HTMLDivElement) => {
-    setGutterWidth(gutter.offsetWidth);
+  const gutterRef = useCallback((gutter?: HTMLDivElement | null) => {
+    if (gutter) {
+      setGutterWidth(gutter.offsetWidth);
+    }
   }, []);
 
   const [containerWidth, setContainerWidth] = useState<number | undefined>();
-  const containerRef = useCallback((container: HTMLDivElement) => {
-    setContainerWidth(container.scrollWidth);
+  const containerRef = useCallback((container?: HTMLDivElement | null) => {
+    if (container) {
+      setContainerWidth(container.scrollWidth);
+    }
   }, []);
 
   const maxTranslation = useMemo<number>(() => {
