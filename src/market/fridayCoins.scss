@@ -23,4 +23,8 @@
   &.darker {
     color: rgba(colors.$blue, .5);
   }
+
+  &.gold {
+    color: rgba(colors.$gold, 1);
+  }
 }
