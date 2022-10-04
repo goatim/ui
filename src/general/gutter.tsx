@@ -1,4 +1,5 @@
 import React, { ReactElement, useCallback, useMemo, useState, useEffect } from 'react';
+import { Property } from 'csstype';
 
 export interface Props {
   children?: ReactElement | ReactElement[];
@@ -97,6 +98,46 @@ export default function Gutter({
     };
   }, [pointerMove, pointerUp]);
 
+  const transform = useMemo<Property.Transform>(() => {
+    return `translateX(${translation}px)`;
+  }, [translation]);
+
+  const sidePadding = useMemo<Property.Padding>(() => {
+    return `0 ${padding}px`;
+  }, [padding]);
+
+  const width = useMemo<number | undefined>(() => {
+    if (containerWidth) {
+      return containerWidth + padding;
+    }
+    return undefined;
+  }, [containerWidth, padding]);
+
+  const pointerEvents = useMemo<Property.PointerEvents>(() => {
+    if (moving) {
+      return 'none';
+    }
+    return 'all';
+  }, [moving]);
+
+  const justifyContent = useMemo<Property.JustifyContent>(() => {
+    if (
+      containerWidth !== undefined &&
+      gutterWidth !== undefined &&
+      containerWidth <= gutterWidth
+    ) {
+      return 'center';
+    }
+    return 'flex-start';
+  }, [containerWidth, gutterWidth]);
+
+  const cursor = useMemo<Property.Cursor>(() => {
+    if (moving) {
+      return 'grab';
+    }
+    return 'default';
+  }, [moving]);
+
   return (
     <div className="friday-ui-gutter" ref={gutterRef}>
       {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
@@ -105,11 +146,12 @@ export default function Gutter({
         className="container"
         ref={containerRef}
         style={{
-          transform: `translateX(${translation}px)`,
-          padding: `0 ${padding}px`,
-          width: containerWidth ? containerWidth + padding : undefined,
-          pointerEvents: moving ? 'none' : 'all',
-          cursor: moving ? 'grab' : 'default',
+          transform,
+          padding: sidePadding,
+          width,
+          pointerEvents,
+          cursor,
+          justifyContent,
         }}
         onPointerDown={pointerDown}
         onKeyDown={() => undefined}>
