@@ -9,7 +9,7 @@ export type HeadingLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 export interface Props {
   label?: string;
   emoji?: string;
-  title?: string;
+  children?: string;
   size?: HeadingSize;
   theme?: HeadingTheme;
   level?: HeadingLevel;
@@ -19,7 +19,7 @@ export interface Props {
 export default function Heading({
   label,
   emoji,
-  title,
+  children,
   size = 'medium',
   theme = 'dark',
   level = 'h2',
@@ -29,12 +29,12 @@ export default function Heading({
     <div className={`friday-ui-heading ${size} ${theme} ${align}`}>
       {label?.length ? <span className="label">{label}</span> : null}
       {emoji?.length ? <span className="emoji">{emoji}</span> : null}
-      {title?.length && level === 'h1' ? <h1 className="title">{title}</h1> : null}
-      {title?.length && level === 'h2' ? <h2 className="title">{title}</h2> : null}
-      {title?.length && level === 'h3' ? <h3 className="title">{title}</h3> : null}
-      {title?.length && level === 'h4' ? <h4 className="title">{title}</h4> : null}
-      {title?.length && level === 'h5' ? <h5 className="title">{title}</h5> : null}
-      {title?.length && level === 'h6' ? <h6 className="title">{title}</h6> : null}
+      {children?.length && level === 'h1' ? <h1 className="title">{children}</h1> : null}
+      {children?.length && level === 'h2' ? <h2 className="title">{children}</h2> : null}
+      {children?.length && level === 'h3' ? <h3 className="title">{children}</h3> : null}
+      {children?.length && level === 'h4' ? <h4 className="title">{children}</h4> : null}
+      {children?.length && level === 'h5' ? <h5 className="title">{children}</h5> : null}
+      {children?.length && level === 'h6' ? <h6 className="title">{children}</h6> : null}
     </div>
   );
 }
