@@ -66,7 +66,9 @@ const Template: ComponentStory<JSXElementConstructor<Props>> = ({
   level,
   align,
 }: Props) => (
-  <Heading label={label} title={title} size={size} theme={theme} level={level} align={align} />
+  <Heading label={label} size={size} theme={theme} level={level} align={align}>
+    {title}
+  </Heading>
 );
 
 export const Default = Template.bind({});

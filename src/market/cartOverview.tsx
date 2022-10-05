@@ -18,7 +18,9 @@ export default function CartOverview({
 }: Props): ReactElement {
   return (
     <div className={`friday-ui-cart-overview ${size}`}>
-      <Heading emoji="🛒" title="Panier" align="center" />
+      <Heading emoji="🛒" align="center">
+        Panier
+      </Heading>
       <div className="resume">
         <CartResume items={items} onDeleteItem={onDeleteItem} size={size} />
       </div>
