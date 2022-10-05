@@ -3,18 +3,18 @@ import { Form, Field, FormErrors, FormState, FormContext, FormFields } from '@ce
 import {
   adaptFridayCoins,
   Asset,
-  Booster,
+  BoosterFactory,
   OrderBook,
   OrderType,
   resolveFridayCoins,
 } from '@fridaygame/client';
-import BoosterIcon from '../../trading/boosters/boosterIcon';
 import Radio from '../../general/radio';
 import Button from '../../general/button';
 import Counter from '../../general/counter';
 import OrderBookThumbnail, {
   OrderBookThumbnailSize,
 } from '../../trading/orders/orderBookThumbnail';
+import BoosterFactoryIcon from '../../trading/boosters/boosterFactoryThumbnail.tsx';
 
 export interface OrderItemEditorFields extends FormFields {
   asset?: Asset | string;
@@ -29,7 +29,7 @@ export type OrderItemEditorSize = 'narrow' | 'big';
 export interface Props {
   initialOrderItem?: OrderItemEditorFields;
   orderBook?: OrderBook;
-  boosters?: Booster[];
+  boosterFactories?: BoosterFactory[];
   onSubmit?: (orderItem: OrderItemEditorFields) => Promise<void> | void;
   onCancel?: () => void;
   label?: string;
@@ -39,7 +39,7 @@ export interface Props {
 export default function OrderItemEditor({
   initialOrderItem,
   orderBook,
-  boosters,
+  boosterFactories,
   onSubmit,
   onCancel,
   label = 'Continuer',
@@ -136,7 +136,7 @@ export default function OrderItemEditor({
         />
       </div>
 
-      {boosters && formState?.values?.order_type === 'buy' ? (
+      {boosterFactories && formState?.values?.order_type === 'buy' ? (
         <div className="booster">
           <h2>Veux-tu ajouter un booster ?</h2>
           <h3>Multiplie tes gains ou tes pertes !</h3>
@@ -145,9 +145,9 @@ export default function OrderItemEditor({
             <Field
               name="booster"
               component={Radio}
-              options={boosters.map((booster) => ({
-                value: booster.id,
-                element: <BoosterIcon booster={booster} size="medium" />,
+              options={boosterFactories.map((boosterFactory) => ({
+                value: boosterFactory.id,
+                element: <BoosterFactoryThumbnail boosterFactory={boosterFactory} size="medium" />,
               }))}
               initialValue={initialOrderItem?.booster}
             />

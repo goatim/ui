@@ -1,0 +1,120 @@
+@use '../../styles/fonts';
+@use '../../styles/colors';
+
+a.friday-ui-booster-factory-thumbnail,
+button.friday-ui-booster-factory-thumbnail {
+  cursor: pointer;
+}
+
+.friday-ui-booster-factory-thumbnail {
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  font-size: 1em;
+  background: none;
+  display: inline-block;
+
+  * {
+    box-sizing: border-box;
+  }
+
+  &.card {
+    width: 100%;
+    max-width: 280px;
+    background: white;
+    border-radius: 20px;
+    border: solid rgba(colors.$blue, .1) 1px;
+    overflow: hidden;
+  }
+
+  > .icon {
+    min-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  > .header {
+    width: 100%;
+    height: 80px;
+    background: linear-gradient(135deg, colors.$fushia 0%, colors.$blue 100%);
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 10px 20px;
+
+    > .title {
+      @include fonts.Inter(.9em, rgba(white, .8), 500);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      padding: 0;
+      margin: 0;
+    }
+
+    > .leverage {
+      @include fonts.Inter(2em, white, bold);
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+  > .price {
+    @include fonts.Inter(.9em, colors.$blue, bold);
+    text-align: center;
+    display: inline-block;
+    padding: 0;
+    margin-top: .5em;
+    min-width: 100%;
+    opacity: .5;
+    transition: opacity linear 100ms;
+  }
+
+  > .body {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+
+    > .name {
+      @include fonts.Inter(.9em, colors.$blue, bold);
+      margin: 0;
+      padding: 0;
+    }
+
+    > .price {
+      @include fonts.Inter(1.5em, colors.$blue, bold);
+      margin-top: 0.2em;
+      padding: 0;
+    }
+
+    > .description {
+      @include fonts.Inter(.9em, rgba(colors.$blue, .5));
+      margin-top: 1em;
+      padding: 0;
+    }
+  }
+
+  > .actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  &.active {
+    > .price {
+      opacity: 1;
+    }
+  }
+
+  &.small {
+    > span {
+      font-size: .8em;
+    }
+  }
+
+  &.big {
+    > span {
+      font-size: 1em;
+    }
+  }
+}

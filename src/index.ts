@@ -135,10 +135,13 @@ import AssetThumbnail, {
   AssetThumbnailTheme,
 } from './trading/assets/assetThumbnail';
 import AssetOverview, { AssetOverviewSize } from './trading/assets/assetOverview';
-import BoosterIcon, { BoosterIconSize, BoosterIconInfos } from './trading/boosters/boosterIcon';
-import BoosterThumbnail, { BoosterThumbnailTheme } from './trading/boosters/boosterThumbnail';
-import BoosterInUseThumbnail from './trading/boosters/boosterInUseThumbnail';
-import BoosterInUseStack from './trading/boosters/boosterInUseStack';
+import BoosterIcon, { BoosterIconSize } from './trading/boosters/boosterIcon';
+import BoosterFactoryThumbnail, {
+  BoosterFactoryThumbnailSize,
+  BoosterFactoryThumbnailShape,
+} from './trading/boosters/boosterFactoryThumbnail';
+import BoosterThumbnail from './trading/boosters/boosterThumbnail';
+import BoosterStack from './trading/boosters/boosterStack';
 import OrderThumbnail, { OrderThumbnailSize } from './trading/orders/orderThumbnail';
 import OrderBookThumbnail, {
   OrderBookThumbnailSize,
@@ -147,9 +150,7 @@ import OrderBookThumbnail, {
 import OrderList from './trading/orders/orderList';
 import ShareBulkThumbnail from './trading/shareBulks/shareBulkThumbnail';
 import ShareBulkList from './trading/shareBulks/shareBulkList';
-import PackFactoryThumbnail, {
-  PackFactoryThumbnailTheme,
-} from './trading/packs/packFactoryThumbnail';
+import PackFactoryThumbnail from './trading/packs/packFactoryThumbnail';
 import PackIcon from './trading/packs/packIcon';
 import PackThumbnail from './trading/packs/packThumbnail';
 import PackModal from './trading/packs/packModal';
@@ -224,6 +225,7 @@ export {
   Toggle,
   Upload,
   useModals,
+  Gutter,
 };
 
 export type {
@@ -377,9 +379,9 @@ export {
   AssetThumbnail,
   AssetOverview,
   BoosterIcon,
-  BoosterInUseThumbnail,
-  BoosterInUseStack,
+  BoosterFactoryThumbnail,
   BoosterThumbnail,
+  BoosterStack,
   OrderThumbnail,
   OrderBookThumbnail,
   OrderList,
@@ -405,8 +407,8 @@ export type {
   AssetThumbnailSize,
   AssetThumbnailTheme,
   BoosterIconSize,
-  BoosterIconInfos,
-  BoosterThumbnailTheme,
+  BoosterFactoryThumbnailSize,
+  BoosterFactoryThumbnailShape,
   DataPoint,
   QuotationHistoryGraphTheme,
   DividendThumbnailTheme,
@@ -417,7 +419,6 @@ export type {
   OrderThumbnailSize,
   OrderBookThumbnailSize,
   OrderBookThumbnailTheme,
-  PackFactoryThumbnailTheme,
 };
 
 /**

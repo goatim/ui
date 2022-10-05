@@ -3,7 +3,7 @@ import { Form, Field } from '@cezembre/forms';
 import { JSXElementConstructor } from 'react';
 import { Booster } from '@fridaygame/client';
 import Radio from '../../src/general/radio';
-import BoosterIcon from '../../src/trading/boosters/boosterIcon';
+import BoosterFactoryThumbnail from '../../src/trading/boosters/boosterFactoryThumbnail';
 
 interface Props {
   label?: string;
@@ -56,7 +56,7 @@ const Template: ComponentStory<JSXElementConstructor<Props>> = ({ label }: Props
       label={label}
       options={boosters.map((booster: Booster) => ({
         value: booster.id,
-        element: <BoosterIcon booster={booster} size="medium" />,
+        element: <BoosterFactoryThumbnail booster={booster} size="medium" />,
       }))}
     />
   </Form>

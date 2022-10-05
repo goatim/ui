@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import { Asset, Player, Club, Booster, Item } from '@fridaygame/client';
+import { Asset, Player, Club, BoosterFactory, Item } from '@fridaygame/client';
 import ItemThumbnail, { ItemThumbnailSize } from '../../../src/market/checkouts/itemThumbnail';
 
 interface Props {
@@ -54,11 +54,11 @@ const asset: Asset = {
   slug: 'kylian-mbappe',
   total_shares: 450,
   quotation: 2750,
-  session_variation: 345,
+  day_variation: 345,
   player,
 };
 
-const booster: Booster = {
+const boosterFactory: BoosterFactory = {
   id: 'bo_ied5',
   name: 'Pavaaard !',
   slug: 'pavaaard',
@@ -75,7 +75,7 @@ const item: Item = {
     asset,
     nb_shares: 2,
     price_limit: 75000,
-    booster,
+    booster_factory: boosterFactory,
     unit_price: 200,
     unit_vat: 50,
     total_price: 200,

@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import { Asset, Player, Club, Booster, OrderBook, OrderType } from '@fridaygame/client';
+import { Asset, Player, Club, BoosterFactory, OrderBook, OrderType } from '@fridaygame/client';
 import ItemEditor, { ItemEditorSize } from '../../../src/market/checkouts/itemEditor';
 
 interface Props {
@@ -61,11 +61,11 @@ const asset: Asset = {
   slug: 'kylian-mbappe',
   total_shares: 450,
   quotation: 2750,
-  session_variation: 345,
+  day_variation: 345,
   player,
 };
 
-const boosters: Booster[] = [
+const boosterFactories: BoosterFactory[] = [
   {
     id: 'bo_ied5',
     name: 'Pavaaard !',
@@ -161,7 +161,7 @@ const Template: ComponentStory<JSXElementConstructor<Props>> = ({ size, orderTyp
       },
     }}
     orderBook={orderBook}
-    boosters={boosters}
+    boosterFactories={boosterFactories}
     onSubmit={(item) => console.log(item)}
     onCancel={() => undefined}
     size={size}

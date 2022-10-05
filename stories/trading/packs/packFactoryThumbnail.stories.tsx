@@ -1,13 +1,11 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
+import { PackFactory } from '@fridaygame/client';
 import PackFactoryThumbnail, {
-  PackFactory,
   PackFactoryThumbnailTheme,
 } from '../../../src/trading/packs/packFactoryThumbnail';
-// import { PackFactory } from '@fridaygame/client';
 
 interface Props {
-  isPopular: boolean;
   theme: PackFactoryThumbnailTheme;
 }
 
@@ -15,12 +13,6 @@ export default {
   title: 'Trading/PackFactoryThumbnail',
   component: PackFactoryThumbnail,
   argTypes: {
-    isPopular: {
-      options: [true, false],
-      control: {
-        type: 'select',
-      },
-    },
     theme: {
       options: ['light', 'dark'],
       control: {
@@ -31,23 +23,20 @@ export default {
 } as ComponentMeta<JSXElementConstructor<Props>>;
 
 const packFactory: PackFactory = {
-  creditAmount: 500000,
+  id: 'silver',
+  name: 'Silver',
+  description: 'De pur produit du centre de formation de Friday.',
   price: 399,
-  type: 'gold',
+  odds: { '100000': 1 },
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ isPopular, theme }: Props) => (
+const Template: ComponentStory<JSXElementConstructor<Props>> = ({ theme }: Props) => (
   <div
     style={{
       display: 'flex',
       justifyContent: 'center',
     }}>
-    <PackFactoryThumbnail
-      packFactory={packFactory}
-      isPopular={isPopular}
-      onBuy={() => console.log('onBuy')}
-      theme={theme}
-    />
+    <PackFactoryThumbnail packFactory={packFactory} theme={theme} />
   </div>
 );
 

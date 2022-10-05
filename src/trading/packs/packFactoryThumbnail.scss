@@ -11,97 +11,72 @@ a.friday-ui-pack-factory-thumbnail {
 
 .friday-ui-pack-factory-thumbnail {
   box-sizing: border-box;
-  border-radius: 18px;
+  border-radius: 20px;
+  background: white;
   border: solid rgba(colors.$blue, .1) 1px;
   width: 100%;
-  max-width: 275px;
-  padding: 15px 35px 25px 35px;
-  display: flex;
-  flex-direction: column;
+  max-width: 280px;
   position: relative;
+  overflow: hidden;
 
-  > .popular-container {
-    position: absolute;
-    right: 35px;
-    > .popular-label {
-      @include fonts.Inter(0.6em, white, bold);
-      padding: 4px 12px;
-      background: colors.$green;
-      border-radius: 20px;
+  * {
+    box-sizing: border-box;
+  }
+
+  > .header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: colors.$gold;
+    border-bottom: solid rgba(black, .05) 1px;
+    padding: 20px;
+
+    > .label {
+      @include fonts.Inter(0.9em, rgba(white, .5), 600);
+      text-transform: uppercase;
+    }
+
+    > .odds {
+      margin-top: 5px;
+
+      > .odd {
+        > .label {
+          @include fonts.Inter(0.9em, white, 500);
+          margin-right: 5px;
+        }
+      }
     }
   }
 
-  > .title {
-    text-transform: capitalize;
-    margin-bottom: 2px;
-    margin-top: 15px;
-  }
-
-  > .price {
-    margin-bottom: 10px;
-  }
-
-  > .description {
-    margin-bottom: 18px;
-  }
-
-  > .separator {
-    width: 100%;
-    margin-bottom: 18px;
-  }
-
-  > .credit-amount-container {
+  > .body {
     display: flex;
-    width: 100%;
-    justify-content: center;
-    margin-bottom: 18px;
-    > .credit-amount-label {
-      @include fonts.Inter(0.9em, colors.$gold, bold);
-      margin-right: 4px;
-    }
-  }
+    flex-direction: column;
+    padding: 20px;
 
-  > .buy-button {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-  }
-
-  &.light {
-    background: white;
     > .title {
       @include fonts.Inter(0.7em, colors.$blue, bold);
+      margin: 0;
+      padding: 0;
     }
-  
+
     > .price {
       @include fonts.Inter(1.8em, colors.$blue, bold);
+      margin: .1em 0 0;
+      padding: 0;
     }
 
     > .description {
       @include fonts.Inter(0.7em, rgba(colors.$blue, .7), medium);
-    }
-  
-    > .separator {
-      border-top:solid 1px rgba(colors.$blue, .1);
+      margin: 1em 0 0;
+      padding: 0;
     }
   }
 
-  &.dark {
-    background: colors.$blue;
-    > .title {
-      @include fonts.Inter(0.7em, white, bold);
-    }
-  
-    > .price {
-      @include fonts.Inter(1.8em, white, bold);
-    }
-
-    > .description {
-      @include fonts.Inter(0.7em, #F5F8FF, medium);
-    }
-  
-    > .separator {
-      border-top:solid 1px #F5F8FF;
-    }
+  > .actions {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
   }
 }

@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import { Asset, Booster, Club, Item, Player } from '@fridaygame/client';
+import { Asset, BoosterFactory, Club, Item, Player } from '@fridaygame/client';
 import CartOverview, { CartOverviewSize } from '../../../src/market/cartOverview';
 
 interface Props {
@@ -64,7 +64,7 @@ const asset: Asset = {
   player,
 };
 
-const booster: Booster = {
+const boosterFactory: BoosterFactory = {
   id: 'bo_ied5',
   name: 'Pavaaard !',
   slug: 'pavaaard',
@@ -81,7 +81,7 @@ const item: Item = {
     order_type: 'buy',
     nb_shares: 2,
     price_limit: 75000,
-    booster,
+    booster_factory: boosterFactory,
     unit_price: 200,
     unit_vat: 50,
     total_price: 200,

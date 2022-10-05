@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import { User, Wallet } from '@fridaygame/client';
+import { Wallet } from '@fridaygame/client';
 import WalletAmountDetail, {
   WalletAmountDetailSize,
 } from '../../../src/market/wallets/walletAmountDetail';

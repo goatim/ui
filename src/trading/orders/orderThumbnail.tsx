@@ -2,8 +2,8 @@ import { ReactElement } from 'react';
 import { Order } from '@fridaygame/client';
 import AssetThumbnail from '../assets/assetThumbnail';
 import FridayCoins from '../../market/fridayCoins';
-import BoosterIcon from '../boosters/boosterIcon';
 import Icon from '../../general/icon';
+import BoosterIcon from '../boosters/boosterIcon';
 
 export type OrderThumbnailSize = 'narrow' | 'normal';
 
@@ -52,7 +52,7 @@ export default function OrderThumbnail({ order, onCancel, size = 'normal' }: Pro
           <div className="cell">
             <span>Booster</span>
             <div className={`content${size !== 'narrow' ? ' centered' : ''}`}>
-              <BoosterIcon booster={order.booster} infos="none" active />
+              <BoosterIcon leverage={order.booster.leverage} active />
             </div>
           </div>
         ) : null}

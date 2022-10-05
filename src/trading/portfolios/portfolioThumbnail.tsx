@@ -5,7 +5,7 @@ import AssetThumbnail, { AssetThumbnailSize } from '../assets/assetThumbnail';
 import FridayCoins from '../../market/fridayCoins';
 import FridayCoinsVariation from '../../market/fridayCoinsVariation';
 import PercentageVariation from '../../market/percentageVariation';
-import BoosterInUseStack from '../boosters/boosterInUseStack';
+import BoosterStack from '../boosters/boosterStack';
 import Button from '../../general/button';
 import QuotationHistoryGraph from '../quotations/quotationHistoryGraph';
 
@@ -80,7 +80,7 @@ export default function PortfolioThumbnail({
 
         {portfolio.boosters?.length ? (
           <div className="boosters">
-            <BoosterInUseStack boostersInUse={portfolio.boosters} onStopBooster={onStopBooster} />
+            <BoosterStack boostersInUse={portfolio.boosters} onStopBooster={onStopBooster} />
           </div>
         ) : null}
 

@@ -1,54 +1,52 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import BoosterThumbnail, {
-  Booster,
-  BoosterThumbnailTheme,
-} from '../../../src/trading/boosters/boosterThumbnail';
-// import { Booster } from '@fridaygame/client';
+import { Booster } from '@fridaygame/client';
+import BoosterThumbnail from '../../../src/trading/boosters/boosterThumbnail';
 
 interface Props {
-  isPopular: boolean;
-  theme: BoosterThumbnailTheme;
+  active?: boolean;
+  positive?: boolean;
 }
 
 export default {
   title: 'Trading/BoosterThumbnail',
   component: BoosterThumbnail,
   argTypes: {
-    isPopular: {
-      options: [true, false],
+    active: {
       control: {
-        type: 'select',
+        type: 'boolean',
       },
     },
-    theme: {
-      options: ['light', 'dark'],
+    positive: {
       control: {
-        type: 'select',
+        type: 'boolean',
       },
     },
   },
 } as ComponentMeta<JSXElementConstructor<Props>>;
 
 const booster: Booster = {
-  multiplier: 5,
-  price: 199,
-  type: 'gold',
+  id: 'bi_cUkDdk9VW4PwvsF',
+  leverage: 2,
+  start_quotation: 42220,
+  stop_quotation: 422200,
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ isPopular, theme }: Props) => (
-  <div
-    style={{
-      display: 'flex',
-      justifyContent: 'center',
-    }}>
-    <BoosterThumbnail
-      booster={booster}
-      isPopular={isPopular}
-      onBuy={() => console.log('onBuy')}
-      theme={theme}
-    />
-  </div>
+const Template: ComponentStory<JSXElementConstructor<Props>> = ({ active, positive }: Props) => (
+  <BoosterThumbnail
+    booster={{
+      ...booster,
+      stopped_at: !active ? '2021-11-04 14:07:26.679000 +00:00' : undefined,
+      gains: positive ? 42000 : -42000,
+      variation: positive ? 3200 : -3200,
+    }}
+    onStop={() => undefined}
+  />
 );
 
 export const Default = Template.bind({});
+
+Default.args = {
+  active: true,
+  positive: true,
+};

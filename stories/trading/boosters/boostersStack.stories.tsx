@@ -1,17 +1,17 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import { BoosterInUse } from '@fridaygame/client';
-import BoosterInUseStack from '../../../src/trading/boosters/boosterInUseStack';
+import { Booster } from '@fridaygame/client';
+import BoosterStack from '../../../src/trading/boosters/boosterStack';
 
 interface Props {}
 
 export default {
-  title: 'Trading/BoosterInUseStack',
-  component: BoosterInUseStack,
+  title: 'Trading/BoosterStack',
+  component: BoosterStack,
   argTypes: {},
 } as ComponentMeta<JSXElementConstructor<Props>>;
 
-const activeBoosterInUse: BoosterInUse = {
+const activeBooster: Booster = {
   id: 'bi_dqqzjkoid55',
   portfolio: 'po_cUkDdk9VW4PwvsF',
   leverage: 2,
@@ -21,7 +21,7 @@ const activeBoosterInUse: BoosterInUse = {
   variation: 3200,
 };
 
-const inactiveBoosterInUse1: BoosterInUse = {
+const inactiveBooster1: Booster = {
   id: 'bi_dqqzskoid55',
   portfolio: 'po_cUkDdk9VW4PwvsF',
   leverage: 2,
@@ -32,7 +32,7 @@ const inactiveBoosterInUse1: BoosterInUse = {
   stopped_at: '2021-11-04 14:07:26.679000 +00:00',
 };
 
-const inactiveBoosterInUse2: BoosterInUse = {
+const inactiveBooster2: Booster = {
   id: 'bi_dqqzdqzdskoid55',
   portfolio: 'po_cUkDdk9VW4PwvsF',
   leverage: 10,
@@ -44,8 +44,8 @@ const inactiveBoosterInUse2: BoosterInUse = {
 };
 
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
-  <BoosterInUseStack
-    boostersInUse={[activeBoosterInUse, inactiveBoosterInUse1, inactiveBoosterInUse2]}
+  <BoosterStack
+    boosters={[activeBooster, inactiveBooster1, inactiveBooster2]}
     onStopBooster={() => undefined}
   />
 );

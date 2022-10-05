@@ -1,5 +1,5 @@
 import { ReactElement, useCallback, useMemo } from 'react';
-import { Booster, ItemType, OrderBook } from '@fridaygame/client';
+import { BoosterFactory, ItemType, OrderBook } from '@fridaygame/client';
 import { FormFields } from '@cezembre/forms';
 import OrderItemEditor, { OrderItemEditorFields, OrderItemEditorSize } from './orderItemEditor';
 
@@ -13,7 +13,7 @@ export type ItemEditorSize = 'narrow' | 'small' | 'medium' | 'big';
 export interface Props {
   initialItem?: ItemEditorFields;
   orderBook?: OrderBook;
-  boosters?: Booster[];
+  boosterFactories?: BoosterFactory[];
   onSubmit?: (item: ItemEditorFields) => Promise<void> | void;
   onCancel?: () => void;
   size?: ItemEditorSize;
@@ -22,7 +22,7 @@ export interface Props {
 export default function ItemEditor({
   initialItem,
   orderBook,
-  boosters,
+  boosterFactories,
   onSubmit,
   onCancel,
   size = 'big',
@@ -62,7 +62,7 @@ export default function ItemEditor({
           price_limit: initialItem.order.price_limit,
         }}
         orderBook={orderBook}
-        boosters={boosters}
+        boosterFactories={boosterFactories}
         onSubmit={onSubmitOrderItem}
         onCancel={onCancel}
         size={orderItemEditorSize}

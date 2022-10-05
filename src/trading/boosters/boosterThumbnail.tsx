@@ -1,61 +1,35 @@
 import { ReactElement } from 'react';
-import { Wrapper, WrapperProps } from '@cezembre/fronts';
-import { formatCurrency } from '@fridaygame/client';
-import Button from '../../general/button';
+import { Booster } from '@fridaygame/client';
+import Icon from '../../general/icon';
+import FridayCoinsVariation from '../../market/fridayCoinsVariation';
+import PercentageVariation from '../../market/percentageVariation';
 
-export type BoosterType = 'gold' | 'platinium' | 'silver';
-export type BoosterThumbnailTheme = 'light' | 'dark';
-
-export interface Booster {
-  multiplier: number;
-  price: number;
-  type: BoosterType;
-}
-
-export interface Props extends WrapperProps {
+export interface Props {
   booster: Booster;
-  isPopular?: boolean;
-  onBuy: (event: MouseEvent<HTMLButtonElement>) => Promise<void> | void;
-  theme: BoosterThumbnailTheme;
+  onStop?: () => unknown;
 }
 
-export default function BoosterThumbnail({
-  booster,
-  isPopular = false,
-  onBuy,
-  theme = 'light',
-  onClick,
-  href,
-  target,
-  to,
-}: Props): ReactElement {
+export default function BoosterThumbnail({ booster, onStop }: Props): ReactElement {
   return (
-    <Wrapper
-      className={`friday-ui-booster-thumbnail ${theme}`}
-      to={to}
-      onClick={onClick}
-      href={href}
-      target={target}>
-      <div className="popular-container" style={!isPopular ? { display: 'none' } : undefined}>
-        <span className="popular-label">POPULAIRE</span>
+    <div className={`friday-ui-booster-thumbnail${!booster.stopped_at ? ' active' : ''}`}>
+      <div className="container">
+        <div className="infos">
+          <span className="label">Booster</span>
+          <div className="leverage">
+            <span className="value">x{booster.leverage}</span>
+            {!booster.stopped_at && onStop ? (
+              <button className="stop" onClick={onStop}>
+                <Icon name="x-circle" size={18} />
+              </button>
+            ) : null}
+          </div>
+        </div>
+
+        <div className="variations">
+          <FridayCoinsVariation variation={booster.gains} size="medium" />
+          <PercentageVariation variation={booster.variation} />
+        </div>
       </div>
-      <span className="title">{`Booster ${booster.type}`}</span>
-      <span className="price">{formatCurrency(booster.price)}</span>
-      <span className="description">De pur produit du centre de formation FRIDAY</span>
-      <div className="separator" />
-      <div className="multiplier-container">
-        <span className="multiplier-label">{`Valeur du pack : x${booster.multiplier}`}</span>
-      </div>
-      <div className="buy-button">
-        <Button
-          shape="filled"
-          size="small"
-          onClick={onBuy}
-          fullWidth={false}
-          theme={theme === 'dark' ? 'buy' : 'electric-blue'}>
-          Acheter
-        </Button>
-      </div>
-    </Wrapper>
+    </div>
   );
 }

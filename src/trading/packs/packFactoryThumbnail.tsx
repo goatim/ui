@@ -1,63 +1,51 @@
 import { ReactElement } from 'react';
-import { Wrapper, WrapperProps } from '@cezembre/fronts';
-import FridayCoins from '../../market/fridayCoins';
-import { formatCurrency } from '@fridaygame/client';
+import { WrapperProps } from '@cezembre/fronts';
+import { formatCurrency, PackFactory } from '@fridaygame/client';
 import Button from '../../general/button';
-
-export type PackFactoryType = 'gold' | 'platinium' | 'silver';
-export type PackFactoryThumbnailTheme = 'light' | 'dark';
-
-export interface PackFactory {
-  creditAmount: number;
-  price: number;
-  type: PackFactoryType;
-}
+import FridayCoins from '../../market/fridayCoins';
 
 export interface Props extends WrapperProps {
-  isPopular?: boolean;
-  onBuy: (event: MouseEvent<HTMLButtonElement>) => Promise<void> | void;
   packFactory: PackFactory;
-  theme: PackFactoryThumbnailTheme;
+  actionLabel?: string;
 }
 
 export default function PackFactoryThumbnail({
-  isPopular = false,
-  onBuy,
   packFactory,
-  theme = 'light',
+  actionLabel = 'Ajouter au panier',
   onClick,
   href,
   target,
   to,
 }: Props): ReactElement {
   return (
-    <Wrapper
-      className={`friday-ui-pack-factory-thumbnail ${theme}`}
-      to={to}
-      onClick={onClick}
-      href={href}
-      target={target}>
-      <div className="popular-container" style={!isPopular ? { display: 'none' } : undefined}>
-        <span className="popular-label">POPULAIRE</span>
+    <div className="friday-ui-pack-factory-thumbnail">
+      <div className="header">
+        <span className="label">Pack</span>
+        {packFactory.odds ? (
+          <div className="odds">
+            {Object.entries(packFactory.odds).map(([value]) => (
+              <div key={value} className="odd">
+                <span className="label">Valeur</span>
+                <FridayCoins amount={Number(value)} size="big" theme="light" />
+              </div>
+            ))}
+          </div>
+        ) : null}
       </div>
-      <span className="title">{`Pack ${packFactory.type}`}</span>
-      <span className="price">{formatCurrency(packFactory.price)}</span>
-      <span className="description">De pur produit du centre de formation FRIDAY</span>
-      <div className="separator" />
-      <div className="credit-amount-container">
-        <span className="credit-amount-label">Valeur du pack :</span>
-        <FridayCoins amount={packFactory.creditAmount} decimalDigits={0} size="big" theme="gold" />
+
+      <div className="body">
+        <span className="title">{packFactory.name}</span>
+        <span className="price">{formatCurrency(packFactory.price)}</span>
+        {packFactory.description ? (
+          <span className="description">{packFactory.description}</span>
+        ) : null}
       </div>
-      <div className="buy-button">
-        <Button
-          shape="filled"
-          size="small"
-          onClick={onBuy}
-          fullWidth={false}
-          theme={theme === 'dark' ? 'buy' : 'electric-blue'}>
-          Acheter
+
+      <div className="actions">
+        <Button shape="filled" size="small" to={to} onClick={onClick} href={href} target={target}>
+          {actionLabel}
         </Button>
       </div>
-    </Wrapper>
+    </div>
   );
 }
