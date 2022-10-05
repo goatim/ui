@@ -9,10 +9,7 @@ export type CompositionRankingTheme = 'dark' | 'light';
 export interface Props {
   compositions?: Composition[];
   toComposition?: To;
-  onClickComposition?: (
-    composition: Composition,
-    event: MouseEvent<HTMLButtonElement>,
-  ) => Promise<void> | void;
+  onClickComposition?: (composition: Composition, event: MouseEvent<HTMLButtonElement>) => unknown;
   pinned?: Composition;
   theme?: CompositionRankingTheme;
 }

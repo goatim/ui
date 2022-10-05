@@ -6,7 +6,7 @@ import PortfolioThumbnail, { PortfolioThumbnailSize } from './portfolioThumbnail
 export interface Props {
   portfolios?: Portfolio[];
   size?: PortfolioThumbnailSize;
-  assetOnClick?: (asset: Asset, event: MouseEvent<HTMLButtonElement>) => Promise<void> | void;
+  assetOnClick?: (asset: Asset, event: MouseEvent<HTMLButtonElement>) => unknown;
   assetTo?: (asset: Asset) => To;
 }
 

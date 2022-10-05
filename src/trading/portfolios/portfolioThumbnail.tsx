@@ -1,5 +1,5 @@
 import { MouseEvent, ReactElement, useMemo } from 'react';
-import { Asset, BoosterInUse, Portfolio } from '@fridaygame/client';
+import { Asset, Booster, Portfolio } from '@fridaygame/client';
 import { To } from 'react-router-dom';
 import AssetThumbnail, { AssetThumbnailSize } from '../assets/assetThumbnail';
 import FridayCoins from '../../market/fridayCoins';
@@ -14,12 +14,12 @@ export type PortfolioThumbnailSize = 'narrow' | 'medium';
 export interface Props {
   portfolio: Portfolio;
   size?: PortfolioThumbnailSize;
-  assetOnClick?: (asset: Asset, event: MouseEvent<HTMLButtonElement>) => Promise<void> | void;
+  assetOnClick?: (asset: Asset, event: MouseEvent<HTMLButtonElement>) => unknown;
   assetTo?: (asset: Asset) => To;
-  onStopBooster?: (boosterInUse?: BoosterInUse) => void | Promise<void>;
-  onSell?: () => void | Promise<void>;
-  onBuy?: () => void | Promise<void>;
-  onBoost?: () => void | Promise<void>;
+  onStopBooster?: (booster?: Booster) => unknown;
+  onSell?: () => unknown;
+  onBuy?: () => unknown;
+  onBoost?: () => unknown;
 }
 
 export default function PortfolioThumbnail({
@@ -80,7 +80,7 @@ export default function PortfolioThumbnail({
 
         {portfolio.boosters?.length ? (
           <div className="boosters">
-            <BoosterStack boostersInUse={portfolio.boosters} onStopBooster={onStopBooster} />
+            <BoosterStack boosters={portfolio.boosters} onStopBooster={onStopBooster} />
           </div>
         ) : null}
 

@@ -15,12 +15,9 @@ export interface Props {
   size?: MatchBoardSize;
   theme?: MatchBoardTheme;
   toComposition?: To;
-  onClickComposition?: (
-    composition: Composition,
-    event: MouseEvent<HTMLButtonElement>,
-  ) => Promise<void> | void;
+  onClickComposition?: (composition: Composition, event: MouseEvent<HTMLButtonElement>) => unknown;
   toCurrentComposition?: To;
-  onClickCurrentComposition?: (event: MouseEvent<HTMLButtonElement>) => Promise<void> | void;
+  onClickCurrentComposition?: (event: MouseEvent<HTMLButtonElement>) => unknown;
   physicalEvents?: PhysicalEvent[];
 }
 

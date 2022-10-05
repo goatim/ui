@@ -6,7 +6,7 @@ import PlayerThumbnail, { PlayerThumbnailSize } from './playerThumbnail';
 export interface Props {
   players?: Player[];
   size?: PlayerThumbnailSize;
-  playerOnClick?: (player: Player, event: MouseEvent<HTMLButtonElement>) => Promise<void> | void;
+  playerOnClick?: (player: Player, event: MouseEvent<HTMLButtonElement>) => unknown;
   playerTo?: (player: Player) => To;
 }
 

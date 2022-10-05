@@ -137,7 +137,7 @@ export interface TableColumn<M extends Model = Model> {
   type?: TableCellType;
   width?: string | number;
   sorted?: 'asc' | 'desc';
-  onSort?: () => Promise<void> | void;
+  onSort?: () => unknown;
   Cell?: (props: { item: M }) => ReactElement;
 }
 
@@ -153,7 +153,7 @@ export interface Props<M extends Model = Model> {
   data?: M[];
   EmptyPlaceholder?: ReactElement;
   emptyLabel?: string;
-  onSelectItem?: (selection: TableSelection) => Promise<void> | void;
+  onSelectItem?: (selection: TableSelection) => unknown;
   selectionMode?: 'single' | 'multiple';
   defaultSelection?: TableSelection;
   itemActions?: TableItemAction[];
@@ -187,7 +187,7 @@ export default function Table<M extends Model = Model>({
     (id: string) => {
       (async () => {
         let nextSelection: TableSelection;
-        let callback: Promise<void> | void | undefined;
+        let callback: unknown | undefined;
 
         switch (selectionMode) {
           case 'multiple':
@@ -221,8 +221,8 @@ export default function Table<M extends Model = Model>({
           callback &&
           typeof callback === 'object' &&
           'then' in callback &&
-          callback.then &&
-          typeof callback.then === 'function'
+          (callback as Promise<unknown>).then &&
+          typeof (callback as Promise<unknown>).then === 'function'
         ) {
           await callback;
         }
@@ -249,7 +249,7 @@ export default function Table<M extends Model = Model>({
     (active: boolean) => {
       (async () => {
         const nextSelection = active && data && data.length ? data.map(({ id }) => id) : undefined;
-        let callback: Promise<void> | void | undefined;
+        let callback: unknown | undefined;
         setSelection(nextSelection);
         if (onSelectItem) {
           callback = onSelectItem(nextSelection);
@@ -258,8 +258,8 @@ export default function Table<M extends Model = Model>({
           callback &&
           typeof callback === 'object' &&
           'then' in callback &&
-          callback.then &&
-          typeof callback.then === 'function'
+          (callback as Promise<unknown>).then &&
+          typeof (callback as Promise<unknown>).then === 'function'
         ) {
           await callback;
         }
@@ -359,7 +359,14 @@ export default function Table<M extends Model = Model>({
                   {column.Cell ? (
                     <column.Cell item={item} />
                   ) : (
-                    <Cell value={item[column.key]} type={column.type} />
+                    <Cell
+                      value={
+                        column.key in item
+                          ? (item as unknown as { [key: string]: unknown })[column.key]
+                          : '-'
+                      }
+                      type={column.type}
+                    />
                   )}
                 </td>
               ))}

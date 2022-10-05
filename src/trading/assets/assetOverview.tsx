@@ -1,5 +1,5 @@
 import { ReactElement, useMemo, useState } from 'react';
-import { Asset, Booster, Ipo, OrderBook, OrderType } from '@fridaygame/client';
+import { Asset, BoosterFactory, Ipo, OrderBook, OrderType } from '@fridaygame/client';
 import { To } from 'react-router-dom';
 import QuotationHistoryGraph from '../quotations/quotationHistoryGraph';
 import FridayCoins, { FridayCoinsSize } from '../../market/fridayCoins';
@@ -15,8 +15,8 @@ export interface Props {
   asset: Asset;
   size?: AssetOverviewSize;
   orderBook?: OrderBook;
-  boosters?: Booster[];
-  onSubmitItem?: (itemFields: ItemEditorFields) => void | Promise<void>;
+  boosterFactories?: BoosterFactory[];
+  onSubmitItem?: (itemFields: ItemEditorFields) => unknown;
   ipo?: Ipo;
   secondaryTo?: To;
 }
@@ -26,7 +26,7 @@ export default function AssetOverview({
   size = 'full',
   secondaryTo,
   orderBook,
-  boosters,
+  boosterFactories,
   onSubmitItem,
   ipo,
 }: Props): ReactElement {
@@ -144,7 +144,7 @@ export default function AssetOverview({
             },
           }}
           orderBook={orderBook}
-          boosters={boosters}
+          boosterFactories={boosterFactories}
           onSubmit={onSubmitItem}
           onCancel={() => setOrderType(undefined)}
           size={itemEditorSize}

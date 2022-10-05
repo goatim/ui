@@ -7,7 +7,7 @@ export interface Props {
   assets?: Asset[];
   size?: AssetThumbnailSize;
   theme?: AssetThumbnailTheme;
-  assetOnClick?: (asset: Asset, event: MouseEvent<HTMLButtonElement>) => void | Promise<void>;
+  assetOnClick?: (asset: Asset, event: MouseEvent<HTMLButtonElement>) => unknown;
   assetTo?: (asset: Asset) => To;
   columns?: number;
 }

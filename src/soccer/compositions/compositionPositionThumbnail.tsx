@@ -9,8 +9,8 @@ export type CompositionPositionThumbnailTheme = 'dark' | 'light';
 export interface Props extends WrapperProps {
   player?: Player;
   theme?: CompositionPositionThumbnailTheme;
-  onClick?: (event: MouseEvent<HTMLButtonElement>) => Promise<void> | void;
-  onDelete?: (event: MouseEvent<HTMLButtonElement>) => Promise<void> | void;
+  onClick?: (event: MouseEvent<HTMLButtonElement>) => unknown;
+  onDelete?: (event: MouseEvent<HTMLButtonElement>) => unknown;
 }
 
 export default function CompositionPositionThumbnail({

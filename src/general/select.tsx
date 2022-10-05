@@ -56,7 +56,7 @@ export interface Props<V = unknown> extends FieldComponentProps<V | undefined> {
   type?: SelectType;
   instructions?: ReactElement | string;
   fullWidth?: boolean;
-  onSearch?(search?: string): Promise<void> | void;
+  onSearch?(search?: string): unknown;
 }
 
 export default function Select<V = unknown>({
@@ -135,7 +135,7 @@ export default function Select<V = unknown>({
 
   const [search, setSearch] = useState<string>('');
 
-  const onSearchDebounced = useMemo<(search?: string) => Promise<void> | void>(() => {
+  const onSearchDebounced = useMemo<(search?: string) => unknown>(() => {
     if (onSearch) {
       return _.debounce(onSearch, 500);
     }

@@ -14,7 +14,7 @@ export interface Props {
   initialItem?: ItemEditorFields;
   orderBook?: OrderBook;
   boosterFactories?: BoosterFactory[];
-  onSubmit?: (item: ItemEditorFields) => Promise<void> | void;
+  onSubmit?: (item: ItemEditorFields) => unknown;
   onCancel?: () => void;
   size?: ItemEditorSize;
 }

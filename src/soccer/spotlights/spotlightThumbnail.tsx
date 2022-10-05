@@ -9,7 +9,7 @@ export type SpotlightThumbnailSize = 'narrow' | 'small' | 'medium' | 'large';
 export interface Props {
   spotlight: Spotlight;
   size?: SpotlightThumbnailSize;
-  assetOnClick?: (asset: Asset, event: MouseEvent<HTMLButtonElement>) => void | Promise<void>;
+  assetOnClick?: (asset: Asset, event: MouseEvent<HTMLButtonElement>) => unknown;
   assetTo?: (asset: Asset) => To;
 }
 

@@ -9,7 +9,7 @@ export type OrderItemThumbnailSize = 'narrow' | 'normal';
 
 export interface Props {
   orderItem: OrderItem;
-  onDelete?: (() => void) | (() => Promise<void>);
+  onDelete?: () => unknown;
   size?: OrderItemThumbnailSize;
 }
 

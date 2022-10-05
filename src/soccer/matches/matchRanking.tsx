@@ -11,12 +11,9 @@ export interface Props {
   match: Match;
   compositions?: Composition[];
   toComposition?: To;
-  onClickComposition?: (
-    composition: Composition,
-    event: MouseEvent<HTMLButtonElement>,
-  ) => Promise<void> | void;
+  onClickComposition?: (composition: Composition, event: MouseEvent<HTMLButtonElement>) => unknown;
   toCurrentComposition?: To;
-  onClickCurrentComposition?: (event: MouseEvent<HTMLButtonElement>) => Promise<void> | void;
+  onClickCurrentComposition?: (event: MouseEvent<HTMLButtonElement>) => unknown;
   theme?: MatchRankingTheme;
 }
 

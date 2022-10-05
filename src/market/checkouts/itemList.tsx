@@ -4,7 +4,7 @@ import ItemThumbnail, { ItemThumbnailSize } from './itemThumbnail';
 
 export interface Props {
   items?: Item[];
-  onDeleteItem?: (item: Item) => void | Promise<void>;
+  onDeleteItem?: (item: Item) => unknown;
   size?: ItemThumbnailSize;
 }
 

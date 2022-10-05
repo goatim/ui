@@ -1,4 +1,4 @@
-import { ReactElement, useMemo } from 'react';
+import { ReactElement, useMemo, MouseEvent } from 'react';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
 import { formatCurrency } from '@fridaygame/client';
 import Button from '../general/button';
@@ -16,7 +16,7 @@ export interface Props extends WrapperProps {
   bonusesDescriptions: string[];
   subscription: Subscription;
   isPopular?: boolean;
-  onBuy: (event: MouseEvent<HTMLButtonElement>) => Promise<void> | void;
+  onBuy: (event: MouseEvent<HTMLButtonElement>) => unknown;
   theme: SubscriptionThumbnailTheme;
 }
 

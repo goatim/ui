@@ -6,7 +6,7 @@ export type ItemThumbnailSize = 'narrow' | 'normal';
 
 export interface Props {
   item: Item;
-  onDelete?: (() => void) | (() => Promise<void>);
+  onDelete?: () => unknown;
   size?: ItemThumbnailSize;
 }
 

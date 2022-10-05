@@ -48,7 +48,7 @@ export default function CompositionPositionMapField({
       player?: ChangeEvent<{ value: Player | undefined }> | Player,
     ) => {
       const resolvedPlayer: Player | undefined =
-        typeof player === 'object' && player?.target
+        typeof player === 'object' && 'target' in player && player?.target
           ? (player as ChangeEvent<{ value: Player | undefined }>).target.value
           : (player as Player | undefined);
 

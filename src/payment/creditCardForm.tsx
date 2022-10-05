@@ -24,8 +24,8 @@ export interface NewCreditCard {
 }
 
 export interface Props {
-  onSubmit?: (newCreditCard: NewCreditCard) => Promise<void> | void;
-  onCancel?: () => Promise<void> | void;
+  onSubmit?: (newCreditCard: NewCreditCard) => unknown;
+  onCancel?: () => unknown;
 }
 
 export default function CreditCardForm({ onSubmit, onCancel }: Props): ReactElement {

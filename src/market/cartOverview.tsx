@@ -7,7 +7,7 @@ export type CartOverviewSize = 'narrow' | 'normal';
 
 export interface Props {
   items?: Item[];
-  onDeleteItem?: (item: Item) => void | Promise<void>;
+  onDeleteItem?: (item: Item) => unknown;
   size?: CartOverviewSize;
 }
 

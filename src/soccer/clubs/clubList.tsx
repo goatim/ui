@@ -7,7 +7,7 @@ import ClubThumbnail, { ClubThumbnailDisposition, ClubThumbnailSize } from './cl
 export interface Props {
   clubs?: Club[];
   columns?: number;
-  clubOnClick?: (club: Club, event: MouseEvent<HTMLButtonElement>) => Promise<void> | void;
+  clubOnClick?: (club: Club, event: MouseEvent<HTMLButtonElement>) => unknown;
   clubTo?: (club: Club) => To;
   size?: ClubThumbnailSize;
   disposition?: ClubThumbnailDisposition;

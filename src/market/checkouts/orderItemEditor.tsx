@@ -14,7 +14,7 @@ import Counter from '../../general/counter';
 import OrderBookThumbnail, {
   OrderBookThumbnailSize,
 } from '../../trading/orders/orderBookThumbnail';
-import BoosterFactoryIcon from '../../trading/boosters/boosterFactoryThumbnail.tsx';
+import BoosterFactoryThumbnail from '../../trading/boosters/boosterFactoryThumbnail';
 
 export interface OrderItemEditorFields extends FormFields {
   asset?: Asset | string;
@@ -30,7 +30,7 @@ export interface Props {
   initialOrderItem?: OrderItemEditorFields;
   orderBook?: OrderBook;
   boosterFactories?: BoosterFactory[];
-  onSubmit?: (orderItem: OrderItemEditorFields) => Promise<void> | void;
+  onSubmit?: (orderItem: OrderItemEditorFields) => unknown;
   onCancel?: () => void;
   label?: string;
   size?: OrderItemEditorSize;
