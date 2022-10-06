@@ -10,7 +10,7 @@ export interface Props {
 
 export default function ItemList({ items, onDeleteItem, size }: Props): ReactElement {
   if (!items?.length) {
-    return <span>Aucun item</span>;
+    return <span className="empty-list">Aucun item</span>;
   }
   return (
     <div className={`friday-ui-item-list ${size}`}>

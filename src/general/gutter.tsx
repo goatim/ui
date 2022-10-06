@@ -12,7 +12,7 @@ export default function Gutter({
   children,
   spacing = 20,
   padding = 20,
-  clickThreshold = 5,
+  clickThreshold = 10,
 }: Props): ReactElement {
   const elements = useMemo<ReactElement | ReactElement[]>(() => {
     if (Array.isArray(children)) {
@@ -40,7 +40,6 @@ export default function Gutter({
   const containerRef = useCallback(
     (container?: HTMLDivElement | null) => {
       if (children && container) {
-        console.log('Here !', container.scrollWidth);
         setContainerWidth(container.scrollWidth);
       }
     },

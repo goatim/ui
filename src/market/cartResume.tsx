@@ -13,7 +13,11 @@ export interface Props {
 export default function CartResume({ items, onDeleteItem, size = 'normal' }: Props): ReactElement {
   return (
     <div className={`friday-ui-cart-resume ${size}`}>
-      <ItemList items={items} onDeleteItem={onDeleteItem} size={size} />
+      {items?.length ? (
+        <ItemList items={items} onDeleteItem={onDeleteItem} size={size} />
+      ) : (
+        <span className="empty-cart">Panier vide</span>
+      )}
     </div>
   );
 }
