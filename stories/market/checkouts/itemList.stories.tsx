@@ -1,11 +1,10 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import { Asset, BoosterFactory, Club, Item, Player } from '@fridaygame/client';
+import { Asset, BoosterFactory, Club, Item, PackFactory, Player } from '@fridaygame/client';
 import ItemList from '../../../src/market/checkouts/itemList';
 import { ItemThumbnailSize } from '../../../src/market/checkouts/itemThumbnail';
 
 interface Props {
-  length?: number;
   size?: ItemThumbnailSize;
 }
 
@@ -61,7 +60,7 @@ const asset: Asset = {
   slug: 'kylian-mbappe',
   total_shares: 450,
   quotation: 2750,
-  session_variation: 345,
+  day_variation: 345,
   player,
 };
 
@@ -74,7 +73,7 @@ const boosterFactory: BoosterFactory = {
   nb_in_wallet: 0,
 };
 
-const item: Item = {
+const orderItem: Item = {
   id: 'or_frsf54s56f',
   type: 'order',
   order: {
@@ -90,12 +89,44 @@ const item: Item = {
   },
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ length, size }: Props) => (
-  <ItemList items={Array(length).fill(item)} size={size} />
+const packFactory: PackFactory = {
+  id: 'silver',
+  name: 'Silver',
+  description: 'De pur produit du centre de formation de Friday.',
+  price: 399,
+  odds: { '100000': 1 },
+};
+
+const packItem: Item = {
+  id: 'pf_frsf54s56f',
+  type: 'pack',
+  pack: {
+    pack_factory: packFactory,
+    quantity: 50,
+    unit_price: 200,
+    unit_vat: 50,
+    total_price: 200,
+    total_vat: 50,
+  },
+};
+
+const boosterItem: Item = {
+  id: 'pf_frsf54s56f',
+  type: 'booster',
+  booster: {
+    booster_factory: boosterFactory,
+    quantity: 50,
+    unit_price: 200,
+    unit_vat: 50,
+    total_price: 200,
+    total_vat: 50,
+  },
+};
+
+const Template: ComponentStory<JSXElementConstructor<Props>> = ({ size }: Props) => (
+  <ItemList items={[orderItem, packItem, boosterItem]} size={size} />
 );
 
 export const Default = Template.bind({});
 
-Default.args = {
-  length: 8,
-};
+Default.args = {};

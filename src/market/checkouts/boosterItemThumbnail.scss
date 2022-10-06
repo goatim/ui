@@ -1,0 +1,89 @@
+@use "../../styles/fonts";
+@use "../../styles/colors";
+
+.friday-ui-booster-item-thumbnail {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: none;
+  font-size: 1em;
+
+  > .container {
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-start;
+
+    > .cell {
+      margin-left: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      justify-content: flex-start;
+
+      &:first-of-type {
+        margin: 0;
+      }
+
+      > span {
+        @include fonts.label;
+      }
+
+      > .content {
+        padding-top: 5px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+
+        &.centered {
+          align-items: center;
+        }
+
+        > .name {
+          @include fonts.Inter(.8em, colors.$blue, bold);
+        }
+
+        > .quantity {
+          @include fonts.Inter(.8em, colors.$blue, bold);
+        }
+
+        > .price {
+          @include fonts.Inter(.8em, colors.$blue, bold);
+        }
+      }
+    }
+  }
+
+  > .delete {
+    border: none;
+    background: none;
+    margin: 0;
+    padding: 10px;
+    opacity: .5;
+    transition: opacity linear 100ms;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    > svg {
+      stroke: colors.$blue;
+    }
+  }
+
+  &.narrow {
+    > .container {
+      flex-direction: column;
+
+      > .cell {
+        margin: 20px 0 0;
+
+        &:first-of-type {
+          margin: 0;
+        }
+      }
+    }
+  }
+}

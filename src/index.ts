@@ -68,6 +68,10 @@ import OrderItemEditor, {
   OrderItemEditorSize,
 } from './market/checkouts/orderItemEditor';
 import OrderItemThumbnail, { OrderItemThumbnailSize } from './market/checkouts/orderItemThumbnail';
+import PackItemThumbnail, { PackItemThumbnailSize } from './market/checkouts/packItemThumbnail';
+import BoosterItemThumbnail, {
+  BoosterItemThumbnailSize,
+} from './market/checkouts/boosterItemThumbnail';
 import ItemThumbnail, { ItemThumbnailSize } from './market/checkouts/itemThumbnail';
 import ItemList from './market/checkouts/itemList';
 import CartResume, { CartResumeSize } from './market/cartResume';
@@ -282,6 +286,8 @@ export {
   ItemThumbnail,
   OrderItemEditor,
   OrderItemThumbnail,
+  PackItemThumbnail,
+  BoosterItemThumbnail,
   PercentageVariation,
   WalletAmountDetail,
   WalletList,
@@ -304,6 +310,8 @@ export type {
   OrderItemEditorFields,
   OrderItemEditorSize,
   OrderItemThumbnailSize,
+  PackItemThumbnailSize,
+  BoosterItemThumbnailSize,
   PercentageVariationShape,
   PercentageVariationSize,
   WalletAmountDetailSize,

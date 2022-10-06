@@ -1,13 +1,9 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { PackFactory } from '@fridaygame/client';
-import PackFactoryThumbnail, {
-  PackFactoryThumbnailTheme,
-} from '../../../src/trading/packs/packFactoryThumbnail';
+import PackFactoryThumbnail from '../../../src/trading/packs/packFactoryThumbnail';
 
-interface Props {
-  theme: PackFactoryThumbnailTheme;
-}
+interface Props {}
 
 export default {
   title: 'Trading/PackFactoryThumbnail',
@@ -30,13 +26,13 @@ const packFactory: PackFactory = {
   odds: { '100000': 1 },
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ theme }: Props) => (
+const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
   <div
     style={{
       display: 'flex',
       justifyContent: 'center',
     }}>
-    <PackFactoryThumbnail packFactory={packFactory} theme={theme} />
+    <PackFactoryThumbnail packFactory={packFactory} />
   </div>
 );
 
