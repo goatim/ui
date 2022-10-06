@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { formatCurrency, OrderItem } from '@fridaygame/client';
+import { formatEuros, OrderItem } from '@fridaygame/client';
 import AssetThumbnail from '../../trading/assets/assetThumbnail';
 import FridayCoins from '../fridayCoins';
 import Icon from '../../general/icon';
@@ -72,7 +72,7 @@ export default function OrderItemThumbnail({
           <div className="cell">
             <span>Prix</span>
             <div className="content">
-              <span className="price">{formatCurrency(orderItem.total_price)}</span>
+              <span className="price">{formatEuros(orderItem.total_price)}</span>
             </div>
           </div>
         ) : null}
