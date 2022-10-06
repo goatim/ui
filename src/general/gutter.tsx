@@ -36,11 +36,16 @@ export default function Gutter({
   }, []);
 
   const [containerWidth, setContainerWidth] = useState<number | undefined>();
-  const containerRef = useCallback((container?: HTMLDivElement | null) => {
-    if (container) {
-      setContainerWidth(container.scrollWidth);
-    }
-  }, []);
+
+  const containerRef = useCallback(
+    (container?: HTMLDivElement | null) => {
+      if (children && container) {
+        console.log('Here !', container.scrollWidth);
+        setContainerWidth(container.scrollWidth);
+      }
+    },
+    [children],
+  );
 
   const maxTranslation = useMemo<number>(() => {
     return -(containerWidth || 0) + (gutterWidth || 0) - padding;
