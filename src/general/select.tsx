@@ -125,7 +125,7 @@ export default function Select<V = unknown>({
     }
   }, [isActive, onBlur]);
 
-  useClickOutside(optionsRef, clickOutside);
+  useClickOutside([selectButtonRef, optionsRef], clickOutside);
 
   const selectedOption = useMemo<SelectOption<V> | undefined>(() => {
     if (value) {
