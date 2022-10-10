@@ -78,24 +78,25 @@ export default function Select<V = unknown>({
   onSearch,
 }: Props<V>): ReactElement {
   const className = useMemo<string>(() => {
-    let res = `friday-ui-select ${type}`;
+    const classNames: string[] = ['friday-ui-select', type];
 
     if (isActive) {
-      res += ' active';
+      classNames.push('active');
     }
 
     if (error) {
-      res += ' error';
+      classNames.push('error');
     }
 
     if (warning) {
-      res += ' warning';
+      classNames.push('warning');
     }
 
     if (fullWidth) {
-      res += ' full-width';
+      classNames.push('full-width');
     }
-    return res;
+
+    return classNames.join(' ');
   }, [error, fullWidth, isActive, type, warning]);
 
   const toggleFocus = useCallback(() => {
@@ -113,6 +114,8 @@ export default function Select<V = unknown>({
     },
     [onBlur, onChange],
   );
+
+  const selectButtonRef = useRef<HTMLButtonElement>(null);
 
   const optionsRef = useRef<HTMLDivElement>(null);
 
@@ -157,7 +160,7 @@ export default function Select<V = unknown>({
       <div className="container">
         {selectedOption || type === 'dark' ? (
           <div className="selector">
-            <button onClick={toggleFocus} type="button" className="main">
+            <button ref={selectButtonRef} onClick={toggleFocus} type="button" className="main">
               <SelectOptionComponent<V>
                 option={selectedOption}
                 DefaultComponent={DefaultComponent}

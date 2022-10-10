@@ -1,4 +1,13 @@
-import { ReactElement, MouseEvent, ReactNode, useCallback, useState, useMemo } from 'react';
+import {
+  ReactElement,
+  MouseEvent,
+  ReactNode,
+  useCallback,
+  useState,
+  useMemo,
+  forwardRef,
+  ForwardedRef,
+} from 'react';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
 import Loader from './loader';
 import Icon, { IconName } from './icon';
@@ -31,54 +40,57 @@ export interface Props extends WrapperProps {
   fullWidth?: boolean;
 }
 
-export default function Button({
-  children,
-  href,
-  to,
-  onClick,
-  onFocus,
-  onBlur,
-  size = 'medium',
-  shape = 'filled',
-  type = 'button',
-  theme = 'electric-blue',
-  active,
-  pending,
-  success,
-  errored,
-  disabled,
-  leftIcon,
-  rightIcon,
-  fullWidth,
-}: Props): ReactElement {
+export default forwardRef<HTMLButtonElement | HTMLAnchorElement, Props>(function Button(
+  {
+    children,
+    href,
+    to,
+    onClick,
+    onFocus,
+    onBlur,
+    size = 'medium',
+    shape = 'filled',
+    type = 'button',
+    theme = 'electric-blue',
+    active,
+    pending,
+    success,
+    errored,
+    disabled,
+    leftIcon,
+    rightIcon,
+    fullWidth,
+  }: Props,
+  ref: ForwardedRef<HTMLButtonElement | HTMLAnchorElement>,
+): ReactElement {
   const [autoPending, setAutoPending] = useState<boolean>(false);
   const [autoSuccess, setAutoSuccess] = useState<boolean>(false);
   const [autoErrored, setAutoErrored] = useState<boolean>(false);
 
   const className = useMemo<string>(() => {
-    let res = `friday-ui-button ${size} ${shape} ${theme}`;
+    const classNames: string[] = ['friday-ui-button', size, shape, theme];
 
     if (active) {
-      res += ' active';
+      classNames.push('active');
     }
     if (pending || autoPending) {
-      res += ' pending';
+      classNames.push('pending');
     }
     if (success || autoSuccess) {
-      res += ' success';
+      classNames.push('success');
     }
     if (errored || autoErrored) {
-      res += ' errored';
+      classNames.push('errored');
     }
     if (disabled) {
-      res += ' disabled';
+      classNames.push('disabled');
     }
 
     if (fullWidth) {
-      res += ' full-width';
+      classNames.push('full-width');
     }
 
-    return res;
+    return classNames.join(' ');
   }, [
     active,
     autoErrored,
@@ -123,6 +135,7 @@ export default function Button({
 
   return (
     <Wrapper
+      ref={ref}
       href={href}
       to={to}
       onClick={onButtonClick}
@@ -156,4 +169,4 @@ export default function Button({
       </div>
     </Wrapper>
   );
-}
+});

@@ -5,43 +5,15 @@
 
 .friday-ui-date-time-picker {
   position: relative;
+  box-sizing: border-box;
 
   * {
     box-sizing: border-box;
   }
 
   > label {
-    @include forms.label();
-  }
-
-  > .label {
-    background: none;
-    margin: 0;
-    padding: 0;
-    border: none;
-    outline: none;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    cursor: pointer;
-
-    > span {
-      @include fonts.Inter(1em);
-
-      &:first-letter {
-        text-transform: uppercase;
-      }
-    }
-
-    > .edit {
-      margin-left: 10px;
-    }
-
-    &.placeholder {
-      > span {
-        color: black;
-      }
-    }
+    @include forms.label;
+    display: block;
   }
 
   > .picker {

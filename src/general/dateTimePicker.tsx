@@ -35,6 +35,8 @@ export default function DateTimePicker({
   disabledDays,
   disabledPeriods,
 }: Props): ReactElement {
+  const buttonRef = useRef<HTMLButtonElement>(null);
+
   const pickerRef = useRef<HTMLDivElement>(null);
 
   const toggleFocus = useCallback(() => {
@@ -51,7 +53,7 @@ export default function DateTimePicker({
     }
   }, [isActive, onBlur]);
 
-  useClickOutside(pickerRef, clickOutside);
+  useClickOutside([buttonRef, pickerRef], clickOutside);
 
   const resolvedValue = useMemo<DateTime | null | undefined>(() => {
     return typeof value === 'string' ? DateTime.fromISO(value) : value;
@@ -75,7 +77,12 @@ export default function DateTimePicker({
       {label ? <label htmlFor={name}>{label}</label> : null}
 
       {!expanded ? (
-        <Button onClick={toggleFocus} shape="filled" theme="light" leftIcon={buttonIcon}>
+        <Button
+          ref={buttonRef}
+          onClick={toggleFocus}
+          shape="filled"
+          theme="light"
+          leftIcon={buttonIcon}>
           {actionLabel}
         </Button>
       ) : null}
