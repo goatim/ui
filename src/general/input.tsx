@@ -9,11 +9,10 @@ import {
   FC,
   ReactNode,
   useMemo,
+  HTMLInputTypeAttribute,
 } from 'react';
 import { FieldComponentProps } from '@cezembre/forms';
 import Icon, { IconName } from './icon';
-
-export type InputType = 'text' | 'password' | 'email' | 'search' | 'url' | 'number' | 'hidden';
 
 export type AutoComplete =
   | 'off'
@@ -109,7 +108,7 @@ export interface Props<V = string, S extends Suggestion<V> = Suggestion<V>>
   adapter?: InputAdapter<V>;
   resolver?: InputResolver<V>;
   format?: InputResolver<V>;
-  type?: InputType | string;
+  type?: HTMLInputTypeAttribute;
   shape?: InputShape;
   theme?: InputTheme;
   size?: InputSize;
@@ -169,24 +168,24 @@ export default function Input<V = string, S extends Suggestion<V> = Suggestion<V
   const [suggestionsActive, setSuggestionsActive] = useState<boolean>(false);
 
   const className = useMemo<string>(() => {
-    let res = `friday-ui-input ${shape} ${theme} ${size}`;
+    const classNames: string[] = ['friday-ui-input', shape, theme, size];
 
     if (visited) {
-      res += ' visited';
+      classNames.push('visited');
     }
     if (isActive) {
-      res += ' active';
+      classNames.push('active');
     }
     if (suggestions?.length && suggestionsActive) {
-      res += ' suggestions-active';
+      classNames.push('suggestions-active');
     }
     if ((visited || submitted) && !isActive && error) {
-      res += ' error';
+      classNames.push('error');
     }
     if (warning) {
-      res += ' warning';
+      classNames.push('warning');
     }
-    return res;
+    return classNames.join(' ');
   }, [
     error,
     isActive,

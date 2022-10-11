@@ -1,0 +1,40 @@
+@use '~@cezembre/fronts/dist/screens';
+@use '../styles/colors';
+@use '../styles/fonts';
+@use '../styles/forms';
+
+.friday-ui-stripe-credit-card-input {
+  > label {
+    @include forms.label;
+  }
+
+  > .card {
+    box-sizing: border-box;
+    padding: 10px 15px;
+    background: white;
+    border: solid rgba(colors.$blue, .1) 1px;
+    border-radius: 5px;
+    transition: border linear 100ms, box-shadow linear 100ms;
+  }
+
+  &:hover > .card {
+    border: solid rgba(colors.$blue, .2) 1px;
+    box-shadow: 0 0 5px rgba(colors.$blue, .1);
+  }
+
+  &.active > .card {
+    border: solid rgba(colors.$blue, .3) 1px;
+  }
+
+  > .instructions {
+    @include forms.instructions;
+  }
+
+  > .error {
+    @include forms.error;
+  }
+
+  > .warning {
+    @include forms.warning;
+  }
+}

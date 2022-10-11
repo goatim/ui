@@ -1,6 +1,4 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { loadStripe } from '@stripe/stripe-js';
-import { Elements } from '@stripe/react-stripe-js';
 import { JSXElementConstructor } from 'react';
 import CreditCardForm from '../../src/payment/creditCardForm';
 
@@ -12,13 +10,7 @@ export default {
   argTypes: {},
 } as ComponentMeta<JSXElementConstructor<Props>>;
 
-const loadedStripe = loadStripe(process.env.STORYBOOK_STRIPE_PUBLIC_API_KEY || '');
-
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
-  <Elements stripe={loadedStripe}>
-    <CreditCardForm />
-  </Elements>
-);
+const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => <CreditCardForm />;
 
 export const Default = Template.bind({});
 

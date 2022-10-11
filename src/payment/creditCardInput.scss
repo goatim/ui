@@ -3,18 +3,72 @@
 @use '../styles/fonts';
 @use '../styles/forms';
 
-.fleuraison-ui-credit-card-input {
+.friday-ui-credit-card-input {
+  box-sizing: border-box;
+  display: inline-block;
+
+  * {
+    box-sizing: border-box;
+  }
+
   > label {
     @include forms.label;
   }
 
-  > .card {
-    box-sizing: border-box;
+  > .container {
+    @include forms.input;
     padding: 10px 15px;
     background: white;
     border: solid rgba(colors.$blue, .1) 1px;
     border-radius: 5px;
     transition: border linear 100ms, box-shadow linear 100ms;
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-start;
+
+    > .icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-right: 10px;
+
+      > svg {
+        stroke: colors.$blue;
+      }
+    }
+
+    > input {
+      @include fonts.Inter(.85em, colors.$blue, 500);
+      background: none;
+      border: none;
+      outline: none;
+      text-decoration: none;
+      border-radius: 0;
+      margin: 0;
+      -moz-appearance: textfield;
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      &.number {
+        width: 170px;
+      }
+
+      &.exp {
+        width: 70px;
+      }
+
+      &.csc {
+        width: 50px;
+      }
+
+      &::placeholder {
+        color: rgba(colors.$blue, .5);
+      }
+    }
   }
 
   &:hover > .card {

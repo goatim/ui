@@ -1,15 +1,17 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Form, Field } from '@cezembre/forms';
+import { loadStripe } from '@stripe/stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
 import { JSXElementConstructor } from 'react';
-import CreditCardInput from '../../src/payment/creditCardInput';
+import StripeCreditCardInput from '../../src/payment/stripeCreditCardInput';
 
 interface Props {
   label?: string;
 }
 
 export default {
-  title: 'Payment/CreditCardInput',
-  component: CreditCardInput,
+  title: 'Payment/StripeCreditCardInput',
+  component: StripeCreditCardInput,
   argTypes: {
     label: {
       control: {
@@ -19,10 +21,14 @@ export default {
   },
 } as ComponentMeta<JSXElementConstructor<Props>>;
 
+const loadedStripe = loadStripe(process.env.STORYBOOK_STRIPE_PUBLIC_API_KEY || '');
+
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({ label }: Props) => (
-  <Form>
-    <Field name="credit-card" component={CreditCardInput} label={label} />
-  </Form>
+  <Elements stripe={loadedStripe}>
+    <Form>
+      <Field name="counter" component={StripeCreditCardInput} label={label} />
+    </Form>
+  </Elements>
 );
 
 export const Default = Template.bind({});

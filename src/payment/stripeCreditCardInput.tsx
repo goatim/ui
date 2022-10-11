@@ -1,53 +1,58 @@
 import { ReactElement, useMemo } from 'react';
+import { CardElement } from '@stripe/react-stripe-js';
 import { FieldComponentProps } from '@cezembre/forms';
-import Icon from './icon';
-import Check from './check';
+import Icon from '../general/icon';
 
-export interface Props extends FieldComponentProps<boolean> {
-  label?: string;
-  instructions?: string;
+export interface Props extends FieldComponentProps {
+  label?: string | null;
+  instructions?: string | null;
 }
 
-export default function Checkbox({
-  value,
+export default function StripeCreditCardInput({
+  visited,
   error,
+  submitted,
   warning,
   isActive,
-  onFocus,
   name,
-  onChange,
+  onFocus,
   onBlur,
-  label,
-  instructions,
+  onChange,
+  label = null,
+  instructions = null,
 }: Props): ReactElement {
   const className = useMemo<string>(() => {
-    const classNames: string[] = ['friday-ui-checkbox'];
-
+    const classNames = ['friday-ui-stripe-credit-card-input'];
+    if (visited) {
+      classNames.push('visited');
+    }
     if (isActive) {
       classNames.push('active');
     }
-
-    if (error) {
+    if ((visited || submitted) && !isActive && error) {
       classNames.push('error');
     }
-
     if (warning) {
       classNames.push('warning');
     }
-
     return classNames.join(' ');
-  }, [error, isActive, warning]);
+  }, [error, isActive, submitted, visited, warning]);
 
   return (
     <div className={className}>
-      <div className="container">
-        <Check active={value as boolean} onChange={onChange} onFocus={onFocus} onBlur={onBlur} />
-        {label ? <label htmlFor={name}>{label}</label> : null}
-      </div>
+      {label ? <label htmlFor={name}>{label}</label> : null}
+
+      <CardElement
+        className="card"
+        onFocus={onFocus}
+        onChange={onChange}
+        onBlur={onBlur}
+        options={{ hidePostalCode: true }}
+      />
 
       {instructions ? <p className="instructions">{instructions}</p> : null}
 
-      {error ? (
+      {(visited || submitted) && !isActive && error ? (
         <div className="error">
           <Icon name="alert-triangle" size={15} />
           <span>{error}</span>

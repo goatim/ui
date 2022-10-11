@@ -17,11 +17,9 @@ import Table, {
   TableSelection,
   TableItemAction,
 } from './general/table';
-import CreditCardInput from './payment/creditCardInput';
 import Input, {
   InputAdapter,
   InputResolver,
-  InputType,
   InputShape,
   InputTheme,
   InputSize,
@@ -174,7 +172,10 @@ import DividendList from './trading/dividends/dividendList';
 import IpoThumbnail, { IpoThumbnailShape, IpoThumbnailSize } from './trading/ipos/ipoThumbnail';
 import CreditCardThumbnail from './payment/creditCardThumbnail';
 import PaymentMethodThumbnail from './payment/paymentMethodThumbnail';
-import CreditCardForm, { NewCreditCard } from './payment/creditCardForm';
+import CreditCardInput from './payment/creditCardInput';
+import CreditCardForm from './payment/creditCardForm';
+import StripeCreditCardInput from './payment/stripeCreditCardInput';
+import StripeCreditCardForm, { NewCreditCard } from './payment/stripeCreditCardForm';
 import PaymentMethodList from './payment/paymentMethodList';
 import PaymentMethodSelector from './payment/paymentMethodSelector';
 import NotificationIcon from './notifications/notificationIcon';
@@ -245,7 +246,6 @@ export type {
   InputShape,
   InputTheme,
   InputSize,
-  InputType,
   Modal,
   ModalComponentProps,
   ModalsState,
@@ -436,10 +436,12 @@ export type {
 export {
   CreditCardThumbnail,
   PaymentMethodThumbnail,
-  CreditCardForm,
   PaymentMethodList,
   PaymentMethodSelector,
   CreditCardInput,
+  CreditCardForm,
+  StripeCreditCardInput,
+  StripeCreditCardForm,
 };
 
 export type { NewCreditCard };

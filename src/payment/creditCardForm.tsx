@@ -1,84 +1,35 @@
 import { ReactElement, useCallback, useState } from 'react';
-import {
-  Form,
-  Field,
-  FormState,
-  getDefaultFormState,
-  FormFields,
-  FormContext,
-} from '@cezembre/forms';
-import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import { PaymentMethod, StripeCardElement, StripeCardNumberElement } from '@stripe/stripe-js';
-import CreditCardInput from './creditCardInput';
+import { Form, Field, FormFields, FormState, FormContext } from '@cezembre/forms';
+import { FormProps } from '@cezembre/forms/dist/form';
+import CreditCardInput, { CreditCardValue } from './creditCardInput';
 import Checkbox from '../general/checkbox';
 import Button from '../general/button';
 
 export interface Fields extends FormFields {
-  card: StripeCardElement | StripeCardNumberElement | { token: string };
-  save_card: boolean;
-}
-
-export interface NewCreditCard {
-  paymentMethod: PaymentMethod;
+  card?: CreditCardValue;
   save_card?: boolean;
 }
 
-export interface Props {
-  onSubmit?: (newCreditCard: NewCreditCard) => unknown;
+export interface Props extends FormProps<Fields> {
   onCancel?: () => unknown;
 }
 
 export default function CreditCardForm({ onSubmit, onCancel }: Props): ReactElement {
-  const [formState, setFormState] = useState<FormState<Fields>>(getDefaultFormState<Fields>());
+  const [formState, setFormState] = useState<FormState<Fields>>();
 
-  const form = useCallback((formContext: FormContext) => {
+  const form = useCallback((formContext: FormContext<Fields>) => {
     if (formContext) {
       setFormState(formContext.formState);
     }
   }, []);
 
-  const stripe = useStripe();
-  const elements = useElements();
-
-  const submit = useCallback(
-    async (fields: Fields) => {
-      if (!stripe || !elements) {
-        throw new Error('Stripe indisponible pour le moment');
-      }
-
-      const card = elements.getElement(CardElement);
-
-      if (!card) {
-        throw new Error('Champ Stripe non trouvé');
-      }
-
-      const paymentMethodResult = await stripe.createPaymentMethod({
-        type: 'card',
-        card,
-      });
-
-      if (paymentMethodResult.error) {
-        throw new Error(paymentMethodResult.error.message);
-      }
-
-      if (!paymentMethodResult.paymentMethod) {
-        throw new Error("Impossible d'ajouter cette carte");
-      }
-
-      if (onSubmit) {
-        onSubmit({ paymentMethod: paymentMethodResult.paymentMethod, save_card: fields.save_card });
-      }
-    },
-    [elements, onSubmit, stripe],
-  );
-
   return (
-    <Form<Fields> className="friday-ui-credit-card-form" ref={form} onSubmit={submit}>
+    <Form<Fields> className="friday-ui-credit-card-form" ref={form} onSubmit={onSubmit}>
       <div className="field">
         <Field
           label="Carte de crédit"
           name="card"
-          instructions="Sécurisé par Stripe"
+          instructions="Sécurisé par EasyTransac"
           component={CreditCardInput}
         />
       </div>
@@ -96,15 +47,15 @@ export default function CreditCardForm({ onSubmit, onCancel }: Props): ReactElem
 
         <Button
           type="submit"
-          pending={formState.isSubmitting}
-          success={formState.submitSucceeded}
-          disabled={!formState.isValid}
-          errored={formState.submitFailed}>
+          pending={formState?.isSubmitting}
+          success={formState?.submitSucceeded}
+          disabled={!formState?.isValid}
+          errored={formState?.submitFailed}>
           Ajouter cette carte
         </Button>
       </div>
 
-      {formState.error ? <p className="error">{formState.error}</p> : null}
+      {formState?.error ? <p className="error">{formState.error}</p> : null}
     </Form>
   );
 }

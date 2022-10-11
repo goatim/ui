@@ -1,7 +1,7 @@
 import { ReactElement, useCallback, useEffect, useState } from 'react';
 import { PaymentMethod } from '@fridaygame/client';
 import { PaymentMethod as StripePaymentMethod } from '@stripe/stripe-js';
-import CreditCardForm, { NewCreditCard } from './creditCardForm';
+import StripeCreditCardForm, { NewCreditCard } from './stripeCreditCardForm';
 import Button from '../general/button';
 import PaymentMethodList from './paymentMethodList';
 
@@ -73,7 +73,7 @@ export default function PaymentMethodSelector({
 
       {isAdding ? (
         <div className="new">
-          <CreditCardForm onSubmit={addCreditCard} onCancel={() => setIsAdding(false)} />
+          <StripeCreditCardForm onSubmit={addCreditCard} onCancel={() => setIsAdding(false)} />
         </div>
       ) : (
         <div className="new-button">
