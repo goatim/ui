@@ -35,6 +35,8 @@ export default function PaymentMethodSelector({
         }
 
         setAddedPaymentMethods((_addedPaymentMethods) => [..._addedPaymentMethods, newCard]);
+
+        setIsAdding(false);
       } catch (error) {
         // TODO: Handle error
       }

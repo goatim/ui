@@ -15,11 +15,13 @@ import { CardBrand } from '@fridaygame/client';
 import Icon from '../general/icon';
 
 export interface CreditCardValue {
-  brand: CardBrand;
   number: string;
   exp_month: string;
   exp_year: string;
   csc: string;
+  brand: CardBrand;
+  isComplete: boolean;
+  isValid: boolean;
 }
 
 export interface Props extends FieldComponentProps<CreditCardValue> {
@@ -73,21 +75,22 @@ export default function CreditCardInput({
   const [expComplete, setExpComplete] = useState<boolean>(false);
   const [cscComplete, setCscComplete] = useState<boolean>(false);
 
-  const numberKeyDown = useCallback<KeyboardEventHandler<HTMLInputElement>>(
-    (event: KeyboardEvent<HTMLInputElement>) => {
-      if (event.key === 'Backspace') {
-        const digitToRemove = [6, 11, 16].includes(numberValue.length) ? 2 : 1;
-        setNumberValue((n) => (n.length ? n.slice(0, -digitToRemove) : ''));
-      } else if (event.key.match(/[0-9]/)) {
-        if (numberValue.length < 19) {
-          const nextDigit = [3, 8, 13].includes(numberValue.length) ? `${event.key} ` : event.key;
-          setNumberValue((n) => n + nextDigit);
-        } else {
-          expRef.current?.focus();
-        }
+  const numberChange = useCallback<ChangeEventHandler<HTMLInputElement>>(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      const { value } = event.target;
+      const digits = value.replace(/[^0-9]+/g, '');
+      const formattedDigits = digits
+        .replace(/([0-9]{4})/g, '$1 ')
+        .replace(/([0-9\s]{19})(.+)$/g, '$1');
+      setNumberValue(formattedDigits);
+      if (formattedDigits.length >= 19) {
+        setNumberComplete(true);
+        expRef.current?.focus();
+      } else {
+        setNumberComplete(false);
       }
     },
-    [numberValue.length],
+    [],
   );
 
   const expKeyDown = useCallback<KeyboardEventHandler<HTMLInputElement>>(
@@ -120,6 +123,11 @@ export default function CreditCardInput({
     [expValue.length],
   );
 
+  // const expChange = useCallback<ChangeEventHandler<HTMLInputElement>>(
+  //   (event: ChangeEvent<HTMLInputElement>) => {},
+  //   [expValue.length],
+  // );
+
   const cscChange = useCallback<ChangeEventHandler<HTMLInputElement>>(
     (event: ChangeEvent<HTMLInputElement>) => {
       const { value } = event.target;
@@ -137,14 +145,6 @@ export default function CreditCardInput({
       onBlur();
     }
   }, [cscFocus, expFocus, numberFocus, onBlur, onFocus]);
-
-  useEffect(() => {
-    if (numberValue.length === 19) {
-      setNumberComplete(true);
-    } else {
-      setNumberComplete(false);
-    }
-  }, [numberValue.length]);
 
   useEffect(() => {
     if (expValue.length === 7) {
@@ -171,6 +171,8 @@ export default function CreditCardInput({
         exp_month: expValue.substring(0, 2),
         exp_year: `20${expValue.substring(5)}`,
         csc: cscValue,
+        isComplete: numberComplete && expComplete && cscComplete,
+        isValid: true,
       });
     }
   }, [cscComplete, cscValue, expComplete, expValue, numberComplete, numberValue, onChange]);
@@ -186,7 +188,8 @@ export default function CreditCardInput({
         <input
           ref={numberRef}
           value={numberValue}
-          onKeyDown={numberKeyDown}
+          // onKeyDown={numberKeyDown}
+          onChange={numberChange}
           onFocus={() => setNumberFocus(true)}
           onBlur={() => setNumberFocus(false)}
           name="cardnumber"

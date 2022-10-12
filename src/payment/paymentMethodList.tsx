@@ -14,48 +14,35 @@ export default function PaymentMethodList({
   onSelectPaymentMethod,
   selectedPaymentMethod,
 }: Props): ReactElement {
+  const getPaymentMethodKey = useCallback(
+    (paymentMethod: PaymentMethod | CreditCardFields | string): string => {
+      if (typeof paymentMethod === 'string') {
+        return paymentMethod;
+      }
+      if ('id' in paymentMethod && paymentMethod.id && typeof paymentMethod.id === 'string') {
+        return paymentMethod.id;
+      }
+      if (paymentMethod.card && 'number' in paymentMethod.card) {
+        return (
+          paymentMethod.card.number +
+          paymentMethod.card.exp_month +
+          paymentMethod.card.exp_year +
+          paymentMethod.card.csc
+        );
+      }
+      return '';
+    },
+    [],
+  );
+
   const isSelected = useCallback(
     (paymentMethod: PaymentMethod | CreditCardFields | string): boolean => {
-      let selectedPaymentMethodId: string | undefined;
-      let paymentMethodId: string | undefined;
       if (!selectedPaymentMethod) {
         return false;
       }
-      if (typeof selectedPaymentMethod === 'object') {
-        if (
-          'id' in selectedPaymentMethod &&
-          selectedPaymentMethod.id &&
-          typeof selectedPaymentMethod.id === 'string'
-        ) {
-          selectedPaymentMethodId = selectedPaymentMethod.id;
-        } else if (
-          selectedPaymentMethod.card &&
-          'number' in selectedPaymentMethod.card &&
-          selectedPaymentMethod.card.number
-        ) {
-          selectedPaymentMethodId = selectedPaymentMethod.card.number;
-        }
-      } else {
-        selectedPaymentMethodId = selectedPaymentMethod;
-      }
-
-      if (typeof paymentMethod === 'object') {
-        if ('id' in paymentMethod && paymentMethod.id && typeof paymentMethod.id === 'string') {
-          paymentMethodId = paymentMethod.id;
-        } else if (
-          paymentMethod.card &&
-          'number' in paymentMethod.card &&
-          paymentMethod.card.number
-        ) {
-          paymentMethodId = paymentMethod.card.number;
-        }
-      } else {
-        paymentMethodId = paymentMethod;
-      }
-
-      return selectedPaymentMethodId === paymentMethodId;
+      return getPaymentMethodKey(selectedPaymentMethod) === getPaymentMethodKey(paymentMethod);
     },
-    [selectedPaymentMethod],
+    [getPaymentMethodKey, selectedPaymentMethod],
   );
 
   if (!paymentMethods?.length) {
@@ -68,13 +55,7 @@ export default function PaymentMethodList({
         const selected = isSelected(paymentMethod);
 
         return (
-          <div
-            key={
-              paymentMethod.card && 'number' in paymentMethod.card
-                ? paymentMethod.card.number
-                : (paymentMethod.id as string)
-            }
-            className="payment-method">
+          <div key={getPaymentMethodKey(paymentMethod)} className="payment-method">
             <PaymentMethodThumbnail
               paymentMethod={paymentMethod}
               onClick={
