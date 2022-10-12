@@ -8,7 +8,11 @@ import {
   FormContext,
 } from '@cezembre/forms';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import { PaymentMethod, StripeCardElement, StripeCardNumberElement } from '@stripe/stripe-js';
+import {
+  PaymentMethod as StripePaymentMethod,
+  StripeCardElement,
+  StripeCardNumberElement,
+} from '@stripe/stripe-js';
 import StripeCreditCardInput from './stripeCreditCardInput';
 import Checkbox from '../general/checkbox';
 import Button from '../general/button';
@@ -18,13 +22,13 @@ export interface Fields extends FormFields {
   save_card: boolean;
 }
 
-export interface NewCreditCard {
-  paymentMethod: PaymentMethod;
+export interface NewStripeCard {
+  payment_method: StripePaymentMethod;
   save_card?: boolean;
 }
 
 export interface Props {
-  onSubmit?: (newCreditCard: NewCreditCard) => unknown;
+  onSubmit?: (newStripeCard: NewStripeCard) => unknown;
   onCancel?: () => unknown;
 }
 
@@ -66,7 +70,10 @@ export default function StripeCreditCardForm({ onSubmit, onCancel }: Props): Rea
       }
 
       if (onSubmit) {
-        onSubmit({ paymentMethod: paymentMethodResult.paymentMethod, save_card: fields.save_card });
+        onSubmit({
+          payment_method: paymentMethodResult.paymentMethod,
+          save_card: fields.save_card,
+        });
       }
     },
     [elements, onSubmit, stripe],

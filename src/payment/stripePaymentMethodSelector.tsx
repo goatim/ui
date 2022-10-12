@@ -1,24 +1,29 @@
 import { ReactElement, useCallback, useEffect, useState } from 'react';
 import { PaymentMethod } from '@fridaygame/client';
-import CreditCardForm, { Fields } from './creditCardForm';
+import { PaymentMethod as StripePaymentMethod } from '@stripe/stripe-js';
+import StripeCreditCardForm, { NewStripeCard } from './stripeCreditCardForm';
 import Button from '../general/button';
-import PaymentMethodList from './paymentMethodList';
+import StripePaymentMethodList from './stripePaymentMethodList';
 
 export interface Props {
-  paymentMethods?: PaymentMethod[];
-  onSelectPaymentMethod?: (paymentMethod: PaymentMethod | null) => unknown;
-  selectedPaymentMethod?: PaymentMethod | string | null;
-  onAddCreditCard?: (fields: Fields) => Promise<PaymentMethod> | PaymentMethod;
+  paymentMethods?: (PaymentMethod | StripePaymentMethod)[];
+  onSelectPaymentMethod?: (paymentMethod: PaymentMethod | StripePaymentMethod | null) => unknown;
+  selectedPaymentMethod?: PaymentMethod | StripePaymentMethod | string | null;
+  onAddCreditCard?: (
+    newStripeCard: NewStripeCard,
+  ) => Promise<PaymentMethod | StripePaymentMethod> | PaymentMethod | StripePaymentMethod;
 }
 
-export default function PaymentMethodSelector({
+export default function StripePaymentMethodSelector({
   paymentMethods,
   onSelectPaymentMethod,
   selectedPaymentMethod,
   onAddCreditCard,
 }: Props): ReactElement {
   const [isAdding, setIsAdding] = useState<boolean>(false);
-  const [addedPaymentMethods, setAddedPaymentMethods] = useState<PaymentMethod[]>([]);
+  const [addedPaymentMethods, setAddedPaymentMethods] = useState<
+    (PaymentMethod | StripePaymentMethod)[]
+  >([]);
 
   useEffect(() => {
     if (!paymentMethods?.length) {
@@ -29,22 +34,22 @@ export default function PaymentMethodSelector({
   }, [paymentMethods]);
 
   const addCreditCard = useCallback(
-    async (fields: Fields) => {
+    async (newStripeCard: NewStripeCard) => {
       if (onAddCreditCard) {
         try {
-          let paymentMethod = onAddCreditCard(fields);
+          let paymentMethod = onAddCreditCard(newStripeCard);
 
           if ('then' in paymentMethod && typeof paymentMethod.then === 'function') {
             paymentMethod = await paymentMethod;
           }
 
           if (onSelectPaymentMethod) {
-            onSelectPaymentMethod(paymentMethod as PaymentMethod);
+            onSelectPaymentMethod(paymentMethod as PaymentMethod | StripePaymentMethod);
           }
 
           setAddedPaymentMethods((_addedPaymentMethods) => [
             ..._addedPaymentMethods,
-            paymentMethod as PaymentMethod,
+            paymentMethod as PaymentMethod | StripePaymentMethod,
           ]);
         } catch (error) {
           // TODO: Handle error
@@ -55,10 +60,10 @@ export default function PaymentMethodSelector({
   );
 
   return (
-    <div className="friday-ui-payment-method-selector">
+    <div className="friday-ui-stripe-payment-method-selector">
       {paymentMethods?.length ? (
         <div className="payment-methods">
-          <PaymentMethodList
+          <StripePaymentMethodList
             paymentMethods={[...paymentMethods, ...addedPaymentMethods]}
             onSelectPaymentMethod={onSelectPaymentMethod}
             selectedPaymentMethod={selectedPaymentMethod}
@@ -68,7 +73,7 @@ export default function PaymentMethodSelector({
 
       {isAdding ? (
         <div className="new">
-          <CreditCardForm onSubmit={addCreditCard} onCancel={() => setIsAdding(false)} />
+          <StripeCreditCardForm onSubmit={addCreditCard} onCancel={() => setIsAdding(false)} />
         </div>
       ) : (
         <div className="new-button">

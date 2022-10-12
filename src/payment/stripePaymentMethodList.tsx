@@ -1,14 +1,15 @@
 import { ReactElement } from 'react';
 import { PaymentMethod } from '@fridaygame/client';
+import { PaymentMethod as StripePaymentMethod } from '@stripe/stripe-js';
 import PaymentMethodThumbnail from './paymentMethodThumbnail';
 
 export interface Props {
-  paymentMethods?: PaymentMethod[];
-  onSelectPaymentMethod?: (paymentMethod: PaymentMethod | null) => unknown;
-  selectedPaymentMethod?: PaymentMethod | string | null;
+  paymentMethods?: (PaymentMethod | StripePaymentMethod)[];
+  onSelectPaymentMethod?: (paymentMethod: PaymentMethod | StripePaymentMethod | null) => unknown;
+  selectedPaymentMethod?: PaymentMethod | StripePaymentMethod | string | null;
 }
 
-export default function PaymentMethodList({
+export default function StripePaymentMethodList({
   paymentMethods,
   onSelectPaymentMethod,
   selectedPaymentMethod,
@@ -18,8 +19,8 @@ export default function PaymentMethodList({
   }
 
   return (
-    <div className="friday-ui-payment-method-list">
-      {paymentMethods.map((paymentMethod: PaymentMethod) => {
+    <div className="friday-ui-stripe-payment-method-list">
+      {paymentMethods.map((paymentMethod: PaymentMethod | StripePaymentMethod) => {
         const selected =
           typeof selectedPaymentMethod === 'object'
             ? selectedPaymentMethod?.id === paymentMethod.id

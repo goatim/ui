@@ -175,9 +175,9 @@ import PaymentMethodThumbnail from './payment/paymentMethodThumbnail';
 import CreditCardInput from './payment/creditCardInput';
 import CreditCardForm from './payment/creditCardForm';
 import StripeCreditCardInput from './payment/stripeCreditCardInput';
-import StripeCreditCardForm, { NewCreditCard } from './payment/stripeCreditCardForm';
+import StripeCreditCardForm, { NewStripeCard } from './payment/stripeCreditCardForm';
 import PaymentMethodList from './payment/paymentMethodList';
-import PaymentMethodSelector from './payment/paymentMethodSelector';
+import StripePaymentMethodSelector from './payment/stripePaymentMethodSelector';
 import NotificationIcon from './notifications/notificationIcon';
 import NotificationThumbnail from './notifications/notificationThumbnail';
 import NotificationsWindow, {
@@ -437,14 +437,14 @@ export {
   CreditCardThumbnail,
   PaymentMethodThumbnail,
   PaymentMethodList,
-  PaymentMethodSelector,
+  StripePaymentMethodSelector,
   CreditCardInput,
   CreditCardForm,
   StripeCreditCardInput,
   StripeCreditCardForm,
 };
 
-export type { NewCreditCard };
+export type { NewStripeCard };
 
 /**
  * Notifications

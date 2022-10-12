@@ -3,13 +3,13 @@ import { loadStripe, PaymentMethod as StripePaymentMethod } from '@stripe/stripe
 import { Elements } from '@stripe/react-stripe-js';
 import { JSXElementConstructor, useState } from 'react';
 import { PaymentMethod } from '@fridaygame/client';
-import PaymentMethodSelector from '../../src/payment/paymentMethodSelector';
+import StripePaymentMethodSelector from '../../src/payment/stripePaymentMethodSelector';
 
 interface Props {}
 
 export default {
-  title: 'Payment/PaymentMethodSelector',
-  component: PaymentMethodSelector,
+  title: 'Payment/StripePaymentMethodSelector',
+  component: StripePaymentMethodSelector,
   argTypes: {},
 } as ComponentMeta<JSXElementConstructor<Props>>;
 
@@ -45,7 +45,7 @@ const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => {
   >();
   return (
     <Elements stripe={loadedStripe}>
-      <PaymentMethodSelector
+      <StripePaymentMethodSelector
         paymentMethods={[paymentMethod1, paymentMethod2]}
         selectedPaymentMethod={selectedPaymentMethod}
         onSelectPaymentMethod={setSelectedPaymentMethod}

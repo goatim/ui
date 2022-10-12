@@ -1,0 +1,15 @@
+@use '../styles/colors';
+
+.friday-ui-stripe-payment-method-selector {
+
+  > .new {
+    margin-top: 20px;
+  }
+
+  > .new-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 25px;
+  }
+}
