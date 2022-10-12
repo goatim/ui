@@ -201,6 +201,7 @@ import {
   usePlaceDetailsGetter,
 } from './utils/googleMaps';
 import Place from './utils/place';
+import ThreeDSecure from './payment/threeDSecure';
 
 /**
  * General
@@ -446,6 +447,7 @@ export {
   StripeCreditCardInput,
   StripeCreditCardForm,
   StripePaymentMethodList,
+  ThreeDSecure,
 };
 
 export type { CreditCardFields, NewStripeCard };
