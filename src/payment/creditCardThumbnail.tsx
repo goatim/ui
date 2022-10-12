@@ -1,13 +1,14 @@
-import { ReactElement } from 'react';
+import { ReactElement, useMemo } from 'react';
 import { PaymentMethod as StripePaymentMethod } from '@stripe/stripe-js';
 import { Card, CardBrands } from '@fridaygame/client';
 import _ from 'lodash';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
 import Icon, { IconName } from '../general/icon';
 import Check from '../general/check';
+import { CreditCardValue } from './creditCardInput';
 
 export interface Props extends WrapperProps {
-  card: Card | StripePaymentMethod.Card;
+  card: Card | CreditCardValue | StripePaymentMethod.Card;
   selected?: boolean;
 }
 
@@ -31,6 +32,16 @@ export default function CreditCardThumbnail({
   target,
   selected,
 }: Props): ReactElement {
+  const last4 = useMemo<string>(() => {
+    if ('last4' in card && card.last4) {
+      return card.last4;
+    }
+    if ('number' in card && card.number) {
+      return card.number.slice(-4);
+    }
+    return '';
+  }, [card]);
+
   return (
     <Wrapper
       className={`friday-ui-credit-card-thumbnail${selected ? ' selected' : ''}`}
@@ -47,7 +58,7 @@ export default function CreditCardThumbnail({
         ) : null}
 
         <div className="details">
-          <p className="digits">xxxx {card.last4}</p>
+          <p className="digits">xxxx {last4}</p>
           <p className="expiration">
             {_.padStart(card.exp_month?.toString(), 2, '0')} / {card.exp_year}
           </p>

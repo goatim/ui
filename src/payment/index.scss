@@ -1,8 +1,9 @@
 @use "creditCardThumbnail";
 @use "paymentMethodList";
-@use "stripePaymentMethodSelector";
+@use "paymentMethodSelector";
 @use "creditCardInput";
 @use "creditCardForm";
+@use "stripePaymentMethodSelector";
 @use "stripeCreditCardInput";
 @use "stripeCreditCardForm";
 @use "stripePaymentMethodList";

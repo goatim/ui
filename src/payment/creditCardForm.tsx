@@ -6,6 +6,7 @@ import Checkbox from '../general/checkbox';
 import Button from '../general/button';
 
 export interface CreditCardFields extends FormFields {
+  type: 'card';
   card?: CreditCardValue;
   save_card?: boolean;
 }
@@ -25,6 +26,8 @@ export default function CreditCardForm({ onSubmit, onCancel }: Props): ReactElem
 
   return (
     <Form<CreditCardFields> className="friday-ui-credit-card-form" ref={form} onSubmit={onSubmit}>
+      <Field name="type" initialValue="card" type="hidden" />
+
       <div className="field">
         <Field
           label="Carte de crédit"

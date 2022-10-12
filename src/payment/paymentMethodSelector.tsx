@@ -5,20 +5,18 @@ import Button from '../general/button';
 import PaymentMethodList from './paymentMethodList';
 
 export interface Props {
-  paymentMethods?: PaymentMethod[];
-  onSelectPaymentMethod?: (paymentMethod: PaymentMethod | null) => unknown;
-  selectedPaymentMethod?: PaymentMethod | string | null;
-  onAddCreditCard?: (fields: CreditCardFields) => Promise<PaymentMethod> | PaymentMethod;
+  paymentMethods?: (PaymentMethod | CreditCardFields)[];
+  onSelectPaymentMethod?: (paymentMethod: PaymentMethod | CreditCardFields | null) => unknown;
+  selectedPaymentMethod?: PaymentMethod | CreditCardFields | string | null;
 }
 
 export default function PaymentMethodSelector({
   paymentMethods,
   onSelectPaymentMethod,
   selectedPaymentMethod,
-  onAddCreditCard,
 }: Props): ReactElement {
   const [isAdding, setIsAdding] = useState<boolean>(false);
-  const [addedPaymentMethods, setAddedPaymentMethods] = useState<PaymentMethod[]>([]);
+  const [addedPaymentMethods, setAddedPaymentMethods] = useState<CreditCardFields[]>([]);
 
   useEffect(() => {
     if (!paymentMethods?.length) {
@@ -30,36 +28,28 @@ export default function PaymentMethodSelector({
 
   const addCreditCard = useCallback(
     async (fields: CreditCardFields) => {
-      if (onAddCreditCard) {
-        try {
-          let paymentMethod = onAddCreditCard(fields);
-
-          if ('then' in paymentMethod && typeof paymentMethod.then === 'function') {
-            paymentMethod = await paymentMethod;
-          }
-
-          if (onSelectPaymentMethod) {
-            onSelectPaymentMethod(paymentMethod as PaymentMethod);
-          }
-
-          setAddedPaymentMethods((_addedPaymentMethods) => [
-            ..._addedPaymentMethods,
-            paymentMethod as PaymentMethod,
-          ]);
-        } catch (error) {
-          // TODO: Handle error
+      const newCard = JSON.parse(JSON.stringify(fields)) as CreditCardFields;
+      try {
+        if (onSelectPaymentMethod) {
+          onSelectPaymentMethod(newCard);
         }
+
+        setAddedPaymentMethods((_addedPaymentMethods) => [..._addedPaymentMethods, newCard]);
+      } catch (error) {
+        // TODO: Handle error
       }
     },
-    [onAddCreditCard, onSelectPaymentMethod],
+    [onSelectPaymentMethod],
   );
 
   return (
     <div className="friday-ui-payment-method-selector">
-      {paymentMethods?.length ? (
+      {paymentMethods?.length || addedPaymentMethods.length ? (
         <div className="payment-methods">
           <PaymentMethodList
-            paymentMethods={[...paymentMethods, ...addedPaymentMethods]}
+            paymentMethods={
+              paymentMethods ? [...paymentMethods, ...addedPaymentMethods] : addedPaymentMethods
+            }
             onSelectPaymentMethod={onSelectPaymentMethod}
             selectedPaymentMethod={selectedPaymentMethod}
           />

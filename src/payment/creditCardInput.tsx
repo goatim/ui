@@ -11,12 +11,14 @@ import {
   useState,
 } from 'react';
 import { FieldComponentProps } from '@cezembre/forms';
+import { CardBrands } from '@fridaygame/client';
 import Icon from '../general/icon';
 
 export interface CreditCardValue {
+  brand: CardBrands;
   number: string;
-  expMonth: string;
-  expYear: string;
+  exp_month: string;
+  exp_year: string;
   csc: string;
 }
 
@@ -164,9 +166,10 @@ export default function CreditCardInput({
     // TODO : Check validity
     if (numberComplete && expComplete && cscComplete) {
       onChange({
+        brand: 'unknown',
         number: numberValue.replace(/\s+/g, ''),
-        expMonth: expValue.substring(0, 2),
-        expYear: `20${expValue.substring(5)}`,
+        exp_month: expValue.substring(0, 2),
+        exp_year: `20${expValue.substring(5)}`,
         csc: cscValue,
       });
     }

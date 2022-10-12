@@ -1,16 +1,19 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { loadStripe, PaymentMethod as StripePaymentMethod } from '@stripe/stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
 import { JSXElementConstructor, useState } from 'react';
 import { PaymentMethod } from '@fridaygame/client';
-import PaymentMethodSelector from '../../src/payment/paymentMethodSelector';
-import { CreditCardFields } from '../../src';
+import StripePaymentMethodSelector from '../../src/payment/stripePaymentMethodSelector';
 
 interface Props {}
 
 export default {
-  title: 'Payment/PaymentMethodSelector',
-  component: PaymentMethodSelector,
+  title: 'Payment/StripePaymentMethodSelector',
+  component: StripePaymentMethodSelector,
   argTypes: {},
 } as ComponentMeta<JSXElementConstructor<Props>>;
+
+const loadedStripe = loadStripe(process.env.STORYBOOK_STRIPE_PUBLIC_API_KEY || '');
 
 const paymentMethod1: PaymentMethod = {
   id: 'pm_edsefsef',
@@ -37,20 +40,17 @@ const paymentMethod2: PaymentMethod = {
 };
 
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => {
-  const [paymentMethods, setPaymentMethods] = useState<(PaymentMethod | CreditCardFields)[]>([
-    paymentMethod1,
-    paymentMethod2,
-  ]);
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<
-    PaymentMethod | CreditCardFields | null | undefined
+    PaymentMethod | StripePaymentMethod | null | undefined
   >();
-
   return (
-    <PaymentMethodSelector
-      paymentMethods={paymentMethods}
-      selectedPaymentMethod={selectedPaymentMethod}
-      onSelectPaymentMethod={setSelectedPaymentMethod}
-    />
+    <Elements stripe={loadedStripe}>
+      <StripePaymentMethodSelector
+        paymentMethods={[paymentMethod1, paymentMethod2]}
+        selectedPaymentMethod={selectedPaymentMethod}
+        onSelectPaymentMethod={setSelectedPaymentMethod}
+      />
+    </Elements>
   );
 };
 

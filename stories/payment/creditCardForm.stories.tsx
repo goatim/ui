@@ -10,7 +10,9 @@ export default {
   argTypes: {},
 } as ComponentMeta<JSXElementConstructor<Props>>;
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => <CreditCardForm />;
+const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => {
+  return <CreditCardForm />;
+};
 
 export const Default = Template.bind({});
 

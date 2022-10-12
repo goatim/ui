@@ -3,9 +3,10 @@ import { PaymentMethod as StripePaymentMethod } from '@stripe/stripe-js';
 import { MinifiedPaymentMethod, PaymentMethod } from '@fridaygame/client';
 import { WrapperProps } from '@cezembre/fronts';
 import CreditCardThumbnail from './creditCardThumbnail';
+import { CreditCardFields } from './creditCardForm';
 
 export interface Props extends WrapperProps {
-  paymentMethod: PaymentMethod | MinifiedPaymentMethod | StripePaymentMethod;
+  paymentMethod: PaymentMethod | MinifiedPaymentMethod | CreditCardFields | StripePaymentMethod;
   selected?: boolean;
 }
 
