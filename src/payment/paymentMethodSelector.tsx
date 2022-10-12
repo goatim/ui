@@ -1,6 +1,6 @@
 import { ReactElement, useCallback, useEffect, useState } from 'react';
 import { PaymentMethod } from '@fridaygame/client';
-import CreditCardForm, { Fields } from './creditCardForm';
+import CreditCardForm, { CreditCardFields } from './creditCardForm';
 import Button from '../general/button';
 import PaymentMethodList from './paymentMethodList';
 
@@ -8,7 +8,7 @@ export interface Props {
   paymentMethods?: PaymentMethod[];
   onSelectPaymentMethod?: (paymentMethod: PaymentMethod | null) => unknown;
   selectedPaymentMethod?: PaymentMethod | string | null;
-  onAddCreditCard?: (fields: Fields) => Promise<PaymentMethod> | PaymentMethod;
+  onAddCreditCard?: (fields: CreditCardFields) => Promise<PaymentMethod> | PaymentMethod;
 }
 
 export default function PaymentMethodSelector({
@@ -29,7 +29,7 @@ export default function PaymentMethodSelector({
   }, [paymentMethods]);
 
   const addCreditCard = useCallback(
-    async (fields: Fields) => {
+    async (fields: CreditCardFields) => {
       if (onAddCreditCard) {
         try {
           let paymentMethod = onAddCreditCard(fields);
