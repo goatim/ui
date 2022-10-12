@@ -1,6 +1,6 @@
 import { ReactElement, useMemo } from 'react';
 import { PaymentMethod as StripePaymentMethod } from '@stripe/stripe-js';
-import { Card, CardBrands } from '@fridaygame/client';
+import { Card, CardBrand } from '@fridaygame/client';
 import _ from 'lodash';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
 import Icon, { IconName } from '../general/icon';
@@ -12,7 +12,7 @@ export interface Props extends WrapperProps {
   selected?: boolean;
 }
 
-function resolveIcon(brand?: CardBrands | string): IconName {
+function resolveIcon(brand?: CardBrand | string): IconName {
   switch (brand) {
     case 'mastercard':
       return 'mastercard';
