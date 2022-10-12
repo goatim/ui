@@ -5,26 +5,26 @@ import CreditCardInput, { CreditCardValue } from './creditCardInput';
 import Checkbox from '../general/checkbox';
 import Button from '../general/button';
 
-export interface Fields extends FormFields {
+export interface CreditCardFields extends FormFields {
   card?: CreditCardValue;
   save_card?: boolean;
 }
 
-export interface Props extends FormProps<Fields> {
+export interface Props extends FormProps<CreditCardFields> {
   onCancel?: () => unknown;
 }
 
 export default function CreditCardForm({ onSubmit, onCancel }: Props): ReactElement {
-  const [formState, setFormState] = useState<FormState<Fields>>();
+  const [formState, setFormState] = useState<FormState<CreditCardFields>>();
 
-  const form = useCallback((formContext: FormContext<Fields>) => {
+  const form = useCallback((formContext: FormContext<CreditCardFields>) => {
     if (formContext) {
       setFormState(formContext.formState);
     }
   }, []);
 
   return (
-    <Form<Fields> className="friday-ui-credit-card-form" ref={form} onSubmit={onSubmit}>
+    <Form<CreditCardFields> className="friday-ui-credit-card-form" ref={form} onSubmit={onSubmit}>
       <div className="field">
         <Field
           label="Carte de crédit"

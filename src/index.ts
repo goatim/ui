@@ -173,10 +173,12 @@ import IpoThumbnail, { IpoThumbnailShape, IpoThumbnailSize } from './trading/ipo
 import CreditCardThumbnail from './payment/creditCardThumbnail';
 import PaymentMethodThumbnail from './payment/paymentMethodThumbnail';
 import CreditCardInput from './payment/creditCardInput';
-import CreditCardForm from './payment/creditCardForm';
+import CreditCardForm, { CreditCardFields } from './payment/creditCardForm';
+import PaymentMethodList from './payment/paymentMethodList';
+import StripePaymentMethodList from './payment/stripePaymentMethodList';
+import PaymentMethodSelector from './payment/paymentMethodSelector';
 import StripeCreditCardInput from './payment/stripeCreditCardInput';
 import StripeCreditCardForm, { NewStripeCard } from './payment/stripeCreditCardForm';
-import PaymentMethodList from './payment/paymentMethodList';
 import StripePaymentMethodSelector from './payment/stripePaymentMethodSelector';
 import NotificationIcon from './notifications/notificationIcon';
 import NotificationThumbnail from './notifications/notificationThumbnail';
@@ -437,14 +439,16 @@ export {
   CreditCardThumbnail,
   PaymentMethodThumbnail,
   PaymentMethodList,
-  StripePaymentMethodSelector,
   CreditCardInput,
   CreditCardForm,
+  PaymentMethodSelector,
+  StripePaymentMethodSelector,
   StripeCreditCardInput,
   StripeCreditCardForm,
+  StripePaymentMethodList,
 };
 
-export type { NewStripeCard };
+export type { CreditCardFields, NewStripeCard };
 
 /**
  * Notifications
