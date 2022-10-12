@@ -11,11 +11,11 @@ import {
   useState,
 } from 'react';
 import { FieldComponentProps } from '@cezembre/forms';
-import { CardBrands } from '@fridaygame/client';
+import { CardBrand } from '@fridaygame/client';
 import Icon from '../general/icon';
 
 export interface CreditCardValue {
-  brand: CardBrands;
+  brand: CardBrand;
   number: string;
   exp_month: string;
   exp_year: string;
