@@ -14,17 +14,14 @@ import {
   StripeCardNumberElement,
 } from '@stripe/stripe-js';
 import StripeCreditCardInput from './stripeCreditCardInput';
-import Checkbox from '../general/checkbox';
 import Button from '../general/button';
 
 export interface Fields extends FormFields {
   card: StripeCardElement | StripeCardNumberElement | { token: string };
-  save_card: boolean;
 }
 
 export interface NewStripeCard {
   payment_method: StripePaymentMethod;
-  save_card?: boolean;
 }
 
 export interface Props {
@@ -44,40 +41,36 @@ export default function StripeCreditCardForm({ onSubmit, onCancel }: Props): Rea
   const stripe = useStripe();
   const elements = useElements();
 
-  const submit = useCallback(
-    async (fields: Fields) => {
-      if (!stripe || !elements) {
-        throw new Error('Stripe indisponible pour le moment');
-      }
+  const submit = useCallback(async () => {
+    if (!stripe || !elements) {
+      throw new Error('Stripe indisponible pour le moment');
+    }
 
-      const card = elements.getElement(CardElement);
+    const card = elements.getElement(CardElement);
 
-      if (!card) {
-        throw new Error('Champ Stripe non trouvé');
-      }
+    if (!card) {
+      throw new Error('Champ Stripe non trouvé');
+    }
 
-      const paymentMethodResult = await stripe.createPaymentMethod({
-        type: 'card',
-        card,
+    const paymentMethodResult = await stripe.createPaymentMethod({
+      type: 'card',
+      card,
+    });
+
+    if (paymentMethodResult.error) {
+      throw new Error(paymentMethodResult.error.message);
+    }
+
+    if (!paymentMethodResult.paymentMethod) {
+      throw new Error("Impossible d'ajouter cette carte");
+    }
+
+    if (onSubmit) {
+      onSubmit({
+        payment_method: paymentMethodResult.paymentMethod,
       });
-
-      if (paymentMethodResult.error) {
-        throw new Error(paymentMethodResult.error.message);
-      }
-
-      if (!paymentMethodResult.paymentMethod) {
-        throw new Error("Impossible d'ajouter cette carte");
-      }
-
-      if (onSubmit) {
-        onSubmit({
-          payment_method: paymentMethodResult.paymentMethod,
-          save_card: fields.save_card,
-        });
-      }
-    },
-    [elements, onSubmit, stripe],
-  );
+    }
+  }, [elements, onSubmit, stripe]);
 
   return (
     <Form<Fields> className="friday-ui-stripe-credit-card-form" ref={form} onSubmit={submit}>
@@ -88,10 +81,6 @@ export default function StripeCreditCardForm({ onSubmit, onCancel }: Props): Rea
           instructions="Sécurisé par Stripe"
           component={StripeCreditCardInput}
         />
-      </div>
-
-      <div className="field">
-        <Field label="Enregistrer la carte" name="save_card" component={Checkbox} initialValue />
       </div>
 
       <div className="actions">
