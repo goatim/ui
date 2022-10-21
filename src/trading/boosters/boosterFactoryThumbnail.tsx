@@ -40,7 +40,9 @@ export default function BoosterFactoryThumbnail({
         <div className="icon">
           <BoosterIcon leverage={boosterFactory.leverage} size={size} active={active} />
         </div>
-        <span className="price">{formatEuros(boosterFactory.price)}</span>
+        {boosterFactory.price ? (
+          <span className="price">{formatEuros(boosterFactory.price)}</span>
+        ) : null}
       </Wrapper>
     );
   }
@@ -53,7 +55,9 @@ export default function BoosterFactoryThumbnail({
       </div>
       <div className="body">
         <span className="name">{boosterFactory.name}</span>
-        <span className="price">{formatEuros(boosterFactory.price)}</span>
+        {boosterFactory.price ? (
+          <span className="price">{formatEuros(boosterFactory.price)}</span>
+        ) : null}
         {boosterFactory.description ? (
           <span className="description">{boosterFactory.description}</span>
         ) : null}

@@ -10,11 +10,10 @@ export default function CurrenciesRateThumbnail({ currenciesRate }: Props): Reac
     <div className="friday-ui-currencies-rate-thumbnail">
       {currenciesRate.base_currency && typeof currenciesRate.base_currency === 'object' ? (
         <span>
-          {formatCurrency(
-            1,
-            Number(currenciesRate.base_currency.smallest_unit),
-            currenciesRate.base_currency.iso,
-          )}
+          {formatCurrency(1, {
+            smallestUnit: Number(currenciesRate.base_currency.smallest_unit),
+            iso: currenciesRate.base_currency.iso,
+          })}
         </span>
       ) : null}
     </div>

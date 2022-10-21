@@ -34,12 +34,14 @@ export default function BoosterItemThumbnail({
           </div>
         </div>
 
-        <div className="cell">
-          <span>Prix</span>
-          <div className="content">
-            <span className="price">{formatEuros(boosterItem.total_price)}</span>
+        {boosterItem.total_price ? (
+          <div className="cell">
+            <span>Prix</span>
+            <div className="content">
+              <span className="price">{formatEuros(boosterItem.total_price)}</span>
+            </div>
           </div>
-        </div>
+        ) : null}
       </div>
 
       {onDelete ? (

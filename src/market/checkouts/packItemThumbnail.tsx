@@ -34,12 +34,14 @@ export default function PackItemThumbnail({
           </div>
         </div>
 
-        <div className="cell">
-          <span>Prix</span>
-          <div className="content">
-            <span className="price">{formatEuros(packItem.total_price)}</span>
+        {packItem.total_price ? (
+          <div className="cell">
+            <span>Prix</span>
+            <div className="content">
+              <span className="price">{formatEuros(packItem.total_price)}</span>
+            </div>
           </div>
-        </div>
+        ) : null}
       </div>
 
       {onDelete ? (

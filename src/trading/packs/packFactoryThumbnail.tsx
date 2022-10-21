@@ -35,7 +35,7 @@ export default function PackFactoryThumbnail({
 
       <div className="body">
         <span className="title">{packFactory.name}</span>
-        <span className="price">{formatEuros(packFactory.price)}</span>
+        {packFactory.price ? <span className="price">{formatEuros(packFactory.price)}</span> : null}
         {packFactory.description ? (
           <span className="description">{packFactory.description}</span>
         ) : null}
