@@ -6,6 +6,7 @@ interface Props {
   amount?: number;
   size?: FridayCoinsSize;
   theme?: FridayCoinsTheme;
+  decimalDigits?: number;
 }
 
 export default {
