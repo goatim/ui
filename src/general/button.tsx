@@ -138,7 +138,7 @@ export default forwardRef<HTMLButtonElement | HTMLAnchorElement, Props>(function
       ref={ref}
       href={href}
       to={to}
-      onClick={onButtonClick}
+      onClick={onClick ? onButtonClick : undefined}
       disabled={disabled || pending || autoPending}
       type={type}
       onFocus={onFocus}
