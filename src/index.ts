@@ -1,5 +1,6 @@
 import './index.scss';
-import Loader from './general/loader';
+import Loader, { LoaderTheme } from './general/loader';
+import SoccerLoader, { SoccerLoaderTheme } from './general/soccerLoader';
 import Overlay from './general/overlay';
 import Placeholder from './general/placeholder';
 import Selection from './general/selection';
@@ -220,6 +221,7 @@ export {
   Icon,
   Input,
   Loader,
+  SoccerLoader,
   ModalsContext,
   Overlay,
   Placeholder,
@@ -237,6 +239,8 @@ export {
 };
 
 export type {
+  LoaderTheme,
+  SoccerLoaderTheme,
   ButtonShape,
   ButtonSize,
   ButtonTheme,

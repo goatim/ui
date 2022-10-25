@@ -12,6 +12,20 @@
     padding-bottom: .5em;
   }
 
+  > svg {
+    padding-bottom: 10px;
+  }
+
+  > svg[stroke] {
+    stroke: colors.$blue;
+    opacity: .5;
+  }
+
+  > svg:not([stroke]) {
+    fill: colors.$blue;
+    opacity: .5;
+  }
+
   > .emoji {
     @include fonts.Inter(1.5em, colors.$blue, bold);
     margin: 0;
@@ -69,6 +83,16 @@
       color: rgba(white, .5);
     }
 
+    > svg[stroke] {
+      stroke: white;
+      opacity: .5;
+    }
+
+    > svg:not([stroke]) {
+      fill: white;
+      opacity: .5;
+    }
+
     > .title {
       color: white;
     }
@@ -81,6 +105,14 @@
   &.live-light {
     > .label {
       color: colors.$fushia;
+    }
+
+    > svg[stroke] {
+      stroke: colors.$fushia;
+    }
+
+    > svg:not([stroke]) {
+      fill: colors.$fushia;
     }
 
     > .title {

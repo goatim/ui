@@ -12,7 +12,11 @@ export interface Props {
 export default function MatchIcon({ icon, size = 'medium' }: Props): ReactElement {
   return (
     <div className={`friday-ui-match-icon ${size}`}>
-      {icon ? <img src={icon.medium_url} alt="Match icon" /> : <Icon name="award" size={50} />}
+      {icon ? (
+        <img src={icon.medium_url} alt="Match icon" />
+      ) : (
+        <Icon name="soccer-field" size={50} />
+      )}
     </div>
   );
 }

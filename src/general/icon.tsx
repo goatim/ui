@@ -1,14 +1,17 @@
 import { ReactElement } from 'react';
 import * as FeatherIcons from 'react-feather';
-import IconProps from '../icons/props';
-import Friday from '../icons/friday';
-import Money from '../icons/money';
-import Rocket from '../icons/rocket';
-import Shirt from '../icons/shirt';
-import Trophy from '../icons/trophy';
-import FridayIcon from '../icons/fridayIcon';
-import Visa from '../icons/visa';
-import Mastercard from '../icons/mastercard';
+import { Slash } from 'react-feather';
+import IconProps from './icons/props';
+import Friday from './icons/friday';
+import Money from './icons/money';
+import Rocket from './icons/rocket';
+import Shirt from './icons/shirt';
+import Trophy from './icons/trophy';
+import FridayIcon from './icons/fridayIcon';
+import Visa from './icons/visa';
+import Mastercard from './icons/mastercard';
+import SoccerBall from './icons/soccerBall';
+import SoccerField from './icons/soccerField';
 
 export type IconName =
   | 'activity'
@@ -304,7 +307,9 @@ export type IconName =
   | 'shirt'
   | 'trophy'
   | 'visa'
-  | 'mastercard';
+  | 'mastercard'
+  | 'soccer-ball'
+  | 'soccer-field';
 
 export interface Props extends IconProps {
   color?: string;
@@ -906,7 +911,11 @@ export default function Icon({
       return <Visa size={size} />;
     case 'mastercard':
       return <Mastercard size={size} />;
+    case 'soccer-ball':
+      return <SoccerBall size={size} />;
+    case 'soccer-field':
+      return <SoccerField size={size} />;
     default:
-      return <Friday size={size} />;
+      return <Slash size={size} />;
   }
 }
