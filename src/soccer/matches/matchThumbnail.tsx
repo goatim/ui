@@ -10,13 +10,11 @@ import MatchIcon from './matchIcon';
 export interface Props extends WrapperProps {
   match: Match;
   participants?: Wallet[];
-  total_participants?: number;
 }
 
 export default function MatchThumbnail({
   match,
   participants,
-  total_participants,
   to,
   onClick,
   href,
