@@ -45,12 +45,13 @@ const match: Match = {
   beginning: '2022-06-29T09:54:52.696+02:00',
   end: '2022-06-20T09:54:52.696+02:00',
   is_public: true,
+  nb_participants: 213,
 };
 
 const participants = Array(24).fill(wallet);
 
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
-  <MatchThumbnail match={match} total_participants={213} participants={participants} />
+  <MatchThumbnail match={match} participants={participants} />
 );
 
 export const Default = Template.bind({});

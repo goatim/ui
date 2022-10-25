@@ -42,7 +42,7 @@ export default function MatchThumbnail({
                 <div className="creator">
                   <MatchCreator
                     creator={match.creator}
-                    total_participants={total_participants}
+                    total_participants={match.nb_participants}
                     theme="light"
                   />
                 </div>
@@ -59,7 +59,7 @@ export default function MatchThumbnail({
 
           {participants?.length ? (
             <div className="participants">
-              <WalletList wallets={participants} total={total_participants} theme="light" />
+              <WalletList wallets={participants} total={match.nb_participants} theme="light" />
             </div>
           ) : null}
         </div>
