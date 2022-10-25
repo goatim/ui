@@ -37,11 +37,11 @@ const match: Match = {
   creator: wallet,
   title: 'Match de la semaine',
   slug: 'match-de-la-semaine',
-  icon: {
-    id: 'me_ddqHH',
-    thumbnail_url: 'https://picsum.photos/200',
-    medium_url: 'https://picsum.photos/400',
-  },
+  // icon: {
+  //   id: 'me_ddqHH',
+  //   thumbnail_url: 'https://picsum.photos/200',
+  //   medium_url: 'https://picsum.photos/400',
+  // },
   beginning: '2022-06-29T09:54:52.696+02:00',
   end: '2022-06-20T09:54:52.696+02:00',
   is_public: true,
