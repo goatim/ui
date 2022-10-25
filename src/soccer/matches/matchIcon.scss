@@ -20,7 +20,7 @@
     stroke: colors.$gold;
   }
 
-  > svg:not[stroke] {
+  > svg:not([stroke]) {
     fill: colors.$gold;
   }
 
