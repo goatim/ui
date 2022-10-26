@@ -32,19 +32,19 @@ export interface Modal<P extends ModalComponentProps = ModalComponentProps> {
   isActive?: boolean;
 }
 
-export interface PushModalParams<P = Record<string, unknown>> {
-  component: FunctionComponent<ModalComponentProps & P>;
+export interface PushModalParams<P extends ModalComponentProps = ModalComponentProps> {
+  component: FunctionComponent<P>;
   props?: P;
-  element?: ReactElement<ModalComponentProps & P>;
+  element?: ReactElement<P>;
   type?: ModalType;
   onDismiss?: () => unknown;
 }
 
-export type PushModalFunction<P = Record<string, unknown>> = (
+export type PushModalFunction<P extends ModalComponentProps = ModalComponentProps> = (
   params: PushModalParams<P>,
 ) => string | undefined;
 
-export interface ModalsState<P = Record<string, unknown>> {
+export interface ModalsState<P extends ModalComponentProps = any> {
   modals: Modal[];
   pushModal: PushModalFunction<P>;
   dismissModal: (id: string) => unknown;
@@ -52,8 +52,8 @@ export interface ModalsState<P = Record<string, unknown>> {
 
 const Context = createContext<ModalsState | undefined>(undefined);
 
-export function useModals(): ModalsState {
-  const modals = useContext<ModalsState | undefined>(Context);
+export function useModals<P extends ModalComponentProps = any>(): ModalsState<P> {
+  const modals = useContext<ModalsState<P> | undefined>(Context);
   if (!modals) {
     throw new Error('useModals() should be used inside <ModalContext> component');
   }
