@@ -33,7 +33,7 @@ export interface Modal<P extends ModalComponentProps = ModalComponentProps> {
 }
 
 export interface PushModalParams<P extends ModalComponentProps = ModalComponentProps> {
-  component: FunctionComponent<P>;
+  component?: FunctionComponent<P>;
   props?: P;
   element?: ReactElement<P>;
   type?: ModalType;
