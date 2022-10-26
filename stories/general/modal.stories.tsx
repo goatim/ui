@@ -1,7 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor, useCallback } from 'react';
-import { Pack } from '@fridaygame/client';
-import { useModals, ModalsContext, PackModal } from '../../src';
+import { useModals, ModalsContext } from '../../src';
 import OnboardingCarousel, {
   OnboardingCarouselSlideData,
 } from '../../src/onboarding/onboardingCarousel';
@@ -44,7 +43,8 @@ function App() {
   const openModal = useCallback(() => {
     pushModal({
       type: 'overlay',
-      component: () => <OnboardingCarousel slides={slides} />,
+      component: OnboardingCarousel,
+      props: { slides },
       // component: () => <PackModal pack={pack} />,
     });
   }, [pushModal]);

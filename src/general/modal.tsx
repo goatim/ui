@@ -9,39 +9,45 @@ import {
   FunctionComponent,
   useMemo,
   useEffect,
+  createElement,
+  cloneElement,
 } from 'react';
 import { useClickOutside } from '@cezembre/fronts';
 import Icon from './icon';
 
 export interface ModalComponentProps {
-  id?: string;
-  dismissModal: () => void;
+  id: string;
+  dismissModal: () => unknown;
 }
-
-export type ModalComponent = FunctionComponent<ModalComponentProps>;
 
 export type ModalType = 'pop-up' | 'overlay' | 'banner' | 'message';
 
-export interface Modal {
+export interface Modal<P extends ModalComponentProps = ModalComponentProps> {
   id: string;
   type?: ModalType;
-  component?: ModalComponent;
+  component?: FunctionComponent<P>;
+  props?: P;
+  element?: ReactElement<P>;
   onDismiss?: () => unknown;
   isActive?: boolean;
 }
 
-export interface PushModalParams {
-  component: ModalComponent;
+export interface PushModalParams<P = Record<string, unknown>> {
+  component: FunctionComponent<ModalComponentProps & P>;
+  props?: P;
+  element?: ReactElement<ModalComponentProps & P>;
   type?: ModalType;
   onDismiss?: () => unknown;
 }
 
-export type PushModalFunction = (params: PushModalParams) => string | undefined;
+export type PushModalFunction<P = Record<string, unknown>> = (
+  params: PushModalParams<P>,
+) => string | undefined;
 
-export interface ModalsState {
+export interface ModalsState<P = Record<string, unknown>> {
   modals: Modal[];
-  pushModal: PushModalFunction;
-  dismissModal: (id: string) => void;
+  pushModal: PushModalFunction<P>;
+  dismissModal: (id: string) => unknown;
 }
 
 const Context = createContext<ModalsState | undefined>(undefined);
@@ -54,13 +60,17 @@ export function useModals(): ModalsState {
   return modals;
 }
 
-export interface ModalContainerProps {
+export interface ModalContainerProps<P extends ModalComponentProps = ModalComponentProps> {
   id: string;
-  modal: Modal;
-  dismissModal: () => void;
+  modal: Modal<P>;
+  dismissModal: () => unknown;
 }
 
-function ModalContainer({ id, modal, dismissModal }: ModalContainerProps): ReactElement {
+function ModalContainer<P extends ModalComponentProps = ModalComponentProps>({
+  id,
+  modal,
+  dismissModal,
+}: ModalContainerProps<P>): ReactElement {
   const modalElement = useRef<HTMLDivElement>(null);
 
   const onClickOutside = useCallback(() => {
@@ -79,17 +89,33 @@ function ModalContainer({ id, modal, dismissModal }: ModalContainerProps): React
     }
   }, [dismissModal]);
 
+  const element = useMemo<ReactElement<P> | null>(() => {
+    if (modal.element) {
+      return cloneElement<P>(modal.element, {
+        ...modal.props,
+        id: modal.id,
+        dismissModal: delayedDismissModal,
+      } as P);
+    }
+    if (modal.component) {
+      return createElement<P>(modal.component, {
+        ...modal.props,
+        id: modal.id,
+        dismissModal: delayedDismissModal,
+      } as P);
+    }
+    return null;
+  }, [delayedDismissModal, modal]);
+
   return (
     <div className={`friday-ui-modal ${modal.type || 'pop-up'}`} id={id}>
       <div className="container">
-        {modal.component ? (
-          <div className="element" ref={modalElement}>
-            <modal.component id={modal.id} dismissModal={delayedDismissModal} />
-            <button className="dismiss" type="button" onClick={delayedDismissModal}>
-              <Icon name="x" size={20} />
-            </button>
-          </div>
-        ) : null}
+        <div className="element" ref={modalElement}>
+          {element}
+          <button className="dismiss" type="button" onClick={delayedDismissModal}>
+            <Icon name="x" size={20} />
+          </button>
+        </div>
       </div>
     </div>
   );
@@ -103,7 +129,7 @@ export function ModalsContext({ children }: ContextProps): ReactElement {
   const [modals, setModals] = useState<Modal[]>([]);
 
   const pushModal = useCallback(
-    (params: PushModalParams) => {
+    (params: PushModalParams<any>) => {
       const modal: Modal = {
         ...params,
         id: Math.random().toString(36).substring(5),

@@ -31,12 +31,16 @@ export function OnboardingCarouselSlide({ slide }: OnboardingCarouselProps): Rea
 export type OnboardingCarouselSize = 'narrow' | 'big';
 
 export interface Props {
-  slides: OnboardingCarouselSlideData[];
+  slides?: OnboardingCarouselSlideData[];
   size?: OnboardingCarouselSize;
-  dismiss?: () => unknown;
+  dismissModal?: () => unknown;
 }
 
-export default function OnboardingCarousel({ slides, size = 'big', dismiss }: Props): ReactElement {
+export default function OnboardingCarousel({
+  slides,
+  size = 'big',
+  dismissModal,
+}: Props): ReactElement {
   const [slideIndex, setSlideIndex] = useState<number>(0);
 
   const previousSlide = useCallback(() => {
@@ -46,10 +50,12 @@ export default function OnboardingCarousel({ slides, size = 'big', dismiss }: Pr
   }, []);
 
   const nextSlide = useCallback(() => {
-    setTimeout(() => {
-      setSlideIndex((i) => (i < slides.length - 1 ? i + 1 : i));
-    }, 5);
-  }, [slides.length]);
+    if (slides?.length) {
+      setTimeout(() => {
+        setSlideIndex((i) => (i < slides.length - 1 ? i + 1 : i));
+      }, 5);
+    }
+  }, [slides?.length]);
 
   const [slideHeight, setSlideHeight] = useState<number | undefined>();
 
@@ -70,7 +76,7 @@ export default function OnboardingCarousel({ slides, size = 'big', dismiss }: Pr
       <div
         className="slides"
         style={{ transform: `translateX(-${slideIndex * 100}%)`, height: slideHeight }}>
-        {slides.map((slide, index) => (
+        {slides?.map((slide, index) => (
           <div key={slide.title} className="slide" ref={(ref) => calcHeight(index, ref)}>
             <OnboardingCarouselSlide slide={slide} />
           </div>
@@ -90,10 +96,10 @@ export default function OnboardingCarousel({ slides, size = 'big', dismiss }: Pr
           ) : null}
         </div>
         <div className="steps">
-          <StepIndicator nbSteps={slides.length} step={slideIndex} onClickStep={setSlideIndex} />
+          <StepIndicator nbSteps={slides?.length} step={slideIndex} onClickStep={setSlideIndex} />
         </div>
         <div className="next">
-          {slideIndex < slides.length - 1 ? (
+          {slides && slideIndex < slides.length - 1 ? (
             <div className="button">
               <Button
                 onClick={nextSlide}
@@ -106,7 +112,7 @@ export default function OnboardingCarousel({ slides, size = 'big', dismiss }: Pr
             </div>
           ) : (
             <div className="button">
-              <Button onClick={dismiss} shape="text" theme="electric-blue" size="large">
+              <Button onClick={dismissModal} shape="text" size="large">
                 C&apos;est parti !
               </Button>
             </div>
