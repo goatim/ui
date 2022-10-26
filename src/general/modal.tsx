@@ -32,7 +32,9 @@ export interface Modal<P extends ModalComponentProps = ModalComponentProps> {
   isActive?: boolean;
 }
 
-export interface PushModalParams<P extends ModalComponentProps = ModalComponentProps> {
+export interface PushModalParams<
+  P extends Partial<ModalComponentProps> = Partial<ModalComponentProps>,
+> {
   component?: FunctionComponent<P>;
   props?: P;
   element?: ReactElement<P>;
@@ -40,11 +42,11 @@ export interface PushModalParams<P extends ModalComponentProps = ModalComponentP
   onDismiss?: () => unknown;
 }
 
-export type PushModalFunction<P extends ModalComponentProps = ModalComponentProps> = (
-  params: PushModalParams<P>,
-) => string | undefined;
+export type PushModalFunction<
+  P extends Partial<ModalComponentProps> = Partial<ModalComponentProps>,
+> = (params: PushModalParams<P>) => string | undefined;
 
-export interface ModalsState<P extends ModalComponentProps = any> {
+export interface ModalsState<P extends Partial<ModalComponentProps> = any> {
   modals: Modal[];
   pushModal: PushModalFunction<P>;
   dismissModal: (id: string) => unknown;
@@ -52,7 +54,7 @@ export interface ModalsState<P extends ModalComponentProps = any> {
 
 const Context = createContext<ModalsState | undefined>(undefined);
 
-export function useModals<P extends ModalComponentProps = any>(): ModalsState<P> {
+export function useModals<P extends Partial<ModalComponentProps> = any>(): ModalsState<P> {
   const modals = useContext<ModalsState<P> | undefined>(Context);
   if (!modals) {
     throw new Error('useModals() should be used inside <ModalContext> component');
@@ -60,10 +62,9 @@ export function useModals<P extends ModalComponentProps = any>(): ModalsState<P>
   return modals;
 }
 
-export interface ModalContainerProps<P extends ModalComponentProps = ModalComponentProps> {
-  id: string;
+export interface ModalContainerProps<P extends ModalComponentProps = ModalComponentProps>
+  extends ModalComponentProps {
   modal: Modal<P>;
-  dismissModal: () => unknown;
 }
 
 function ModalContainer<P extends ModalComponentProps = ModalComponentProps>({
