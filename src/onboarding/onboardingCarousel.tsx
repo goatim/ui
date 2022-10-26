@@ -1,6 +1,7 @@
 import { ReactElement, useCallback, useState } from 'react';
 import Button from '../general/button';
 import StepIndicator from '../general/stepIndicator';
+import { ModalComponentProps } from '../general/modal';
 
 export interface OnboardingCarouselSlideData {
   image?: string;
@@ -30,10 +31,9 @@ export function OnboardingCarouselSlide({ slide }: OnboardingCarouselProps): Rea
 
 export type OnboardingCarouselSize = 'narrow' | 'big';
 
-export interface Props {
+export interface Props extends ModalComponentProps {
   slides?: OnboardingCarouselSlideData[];
   size?: OnboardingCarouselSize;
-  dismissModal?: () => unknown;
 }
 
 export default function OnboardingCarousel({
