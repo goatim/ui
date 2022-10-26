@@ -33,9 +33,10 @@ export type OnboardingCarouselSize = 'narrow' | 'big';
 export interface Props {
   slides: OnboardingCarouselSlideData[];
   size?: OnboardingCarouselSize;
+  dismiss?: () => unknown;
 }
 
-export default function OnboardingCarousel({ slides, size = 'big' }: Props): ReactElement {
+export default function OnboardingCarousel({ slides, size = 'big', dismiss }: Props): ReactElement {
   const [slideIndex, setSlideIndex] = useState<number>(0);
 
   const previousSlide = useCallback(() => {
@@ -103,7 +104,13 @@ export default function OnboardingCarousel({ slides, size = 'big' }: Props): Rea
                 Suivant
               </Button>
             </div>
-          ) : null}
+          ) : (
+            <div className="button">
+              <Button onClick={dismiss} shape="text" theme="electric-blue" size="large">
+                C&apos;est parti !
+              </Button>
+            </div>
+          )}
         </div>
       </div>
     </div>
