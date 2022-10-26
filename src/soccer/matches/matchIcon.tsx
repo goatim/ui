@@ -13,11 +13,11 @@ export default function MatchIcon({ icon, size = 'medium' }: Props): ReactElemen
   const iconSize = useMemo<number>(() => {
     switch (size) {
       case 'small':
-        return 40;
+        return 30;
       case 'big':
-        return 80;
+        return 70;
       default:
-        return 60;
+        return 50;
     }
   }, [size]);
 

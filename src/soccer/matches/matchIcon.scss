@@ -3,8 +3,8 @@
 
 .friday-ui-match-icon {
   box-sizing: border-box;
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -25,12 +25,12 @@
   }
 
   &.small {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
   }
 
   &.big {
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
   }
 }
