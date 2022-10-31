@@ -5,12 +5,17 @@ button.friday-ui-user-picture {
   cursor: pointer;
   border: none;
   outline: none;
+  font-size: 1em;
 }
 
 .friday-ui-user-picture {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  background: none;
+  text-decoration: none;
+  border: none;
+  outline: none;
 
   > img {
     width: 25px;

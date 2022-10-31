@@ -4,10 +4,15 @@ button.friday-ui-wallet-picture {
   cursor: pointer;
   outline: none;
   border: none;
+  font-size: 1em;
 }
 
 .friday-ui-wallet-picture {
   box-sizing: border-box;
+  background: none;
+  text-decoration: none;
+  border: none;
+  outline: none;
 
   > img {
     width: 25px;
