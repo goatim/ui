@@ -31,4 +31,10 @@
     flex-direction: column;
     align-items: flex-end;
   }
+
+  &.light {
+    > .body > .position {
+      color: white;
+    }
+  }
 }
