@@ -17,7 +17,11 @@ export default function TradingBanner({ fridayCoinsRate, wallet }: Props): React
         ) : null}
       </div>
       <div className="assets" />
-      <div className="wallet">{wallet ? <WalletThumbnail wallet={wallet} /> : null}</div>
+      <div className="wallet">
+        {wallet ? (
+          <WalletThumbnail wallet={wallet} theme="light" showPicture={false} showAmount />
+        ) : null}
+      </div>
     </div>
   );
 }

@@ -53,6 +53,7 @@ const wallet: Wallet = {
     thumbnail_url: 'https://picsum.photos/200',
   },
   name: 'Smart Monkey',
+  amount: 42000,
 };
 
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
