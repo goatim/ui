@@ -6,6 +6,7 @@ button.friday-ui-user-picture {
   border: none;
   outline: none;
   font-size: 1em;
+  box-shadow: none;
 }
 
 .friday-ui-user-picture {
@@ -16,6 +17,8 @@ button.friday-ui-user-picture {
   text-decoration: none;
   border: none;
   outline: none;
+  padding: 0;
+  margin: 0;
 
   > img {
     width: 25px;

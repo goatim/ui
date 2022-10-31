@@ -3,8 +3,6 @@
 button.friday-ui-asset-thumbnail,
 a.friday-ui-asset-thumbnail {
   cursor: pointer;
-  margin: 0;
-  padding: 0;
   box-shadow: none;
   font-size: 1em;
 }
@@ -21,6 +19,8 @@ a.friday-ui-asset-thumbnail {
   font-size: 1em;
   background: none;
   outline: none;
+  padding: 0;
+  margin: 0;
 
   * {
     box-sizing: border-box;

@@ -5,6 +5,7 @@ button.friday-ui-wallet-picture {
   outline: none;
   border: none;
   font-size: 1em;
+  box-shadow: none;
 }
 
 .friday-ui-wallet-picture {
@@ -13,6 +14,8 @@ button.friday-ui-wallet-picture {
   text-decoration: none;
   border: none;
   outline: none;
+  padding: 0;
+  margin: 0;
 
   > img {
     width: 25px;

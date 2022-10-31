@@ -6,6 +6,7 @@ button.friday-ui-wallet-thumbnail {
   font-size: 1em;
   outline: none;
   border: none;
+  box-shadow: none;
 }
 
 .friday-ui-wallet-thumbnail {
@@ -18,6 +19,8 @@ button.friday-ui-wallet-thumbnail {
   border: none;
   outline: none;
   border-radius: 0;
+  padding: 0;
+  margin: 0;
 
   * {
     box-sizing: border-box;
