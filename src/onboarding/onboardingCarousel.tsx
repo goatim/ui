@@ -113,7 +113,7 @@ export default function OnboardingCarousel({
           ) : (
             <div className="button">
               <Button onClick={dismissModal} shape="text" size="large">
-                C&apos;est parti !
+                Let’s gooooo !
               </Button>
             </div>
           )}

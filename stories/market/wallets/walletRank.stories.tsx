@@ -1,10 +1,10 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { User, Wallet } from '@fridaygame/client';
-import WalletThumbnail, {
+import WalletRank, {
   WalletThumbnailSize,
   WalletThumbnailTheme,
-} from '../../../src/market/wallets/walletThumbnail';
+} from '../../../src/market/wallets/walletRank';
 
 interface Props {
   size?: WalletThumbnailSize;
@@ -16,8 +16,8 @@ interface Props {
 }
 
 export default {
-  title: 'Market/WalletThumbnail',
-  component: WalletThumbnail,
+  title: 'Market/WalletRank',
+  component: WalletRank,
   argTypes: {
     size: {
       control: {
@@ -84,13 +84,16 @@ const Template: ComponentStory<JSXElementConstructor<Props>> = ({
   showAmount,
   is_defined,
 }: Props) => (
-  <WalletThumbnail
+  <WalletRank
     wallet={{ ...wallet, picture: is_defined ? wallet.picture : undefined }}
     size={size}
     theme={theme}
     showPicture={showPicture}
     showName={showName}
     showAmount={showAmount}
+    position={4}
+    amount={4000}
+    variation={2000}
   />
 );
 

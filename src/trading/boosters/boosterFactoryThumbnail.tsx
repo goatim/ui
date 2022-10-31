@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { BoosterFactory, formatEuros } from '@fridaygame/client';
+import { BoosterFactory, formatEurosAmount } from '@fridaygame/client';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
 import BoosterIcon from './boosterIcon';
 import Button from '../../general/button';
@@ -41,7 +41,7 @@ export default function BoosterFactoryThumbnail({
           <BoosterIcon leverage={boosterFactory.leverage} size={size} active={active} />
         </div>
         {boosterFactory.price ? (
-          <span className="price">{formatEuros(boosterFactory.price)}</span>
+          <span className="price">{formatEurosAmount(boosterFactory.price)}</span>
         ) : null}
       </Wrapper>
     );
@@ -56,7 +56,7 @@ export default function BoosterFactoryThumbnail({
       <div className="body">
         <span className="name">{boosterFactory.name}</span>
         {boosterFactory.price ? (
-          <span className="price">{formatEuros(boosterFactory.price)}</span>
+          <span className="price">{formatEurosAmount(boosterFactory.price)}</span>
         ) : null}
         {boosterFactory.description ? (
           <span className="description">{boosterFactory.description}</span>

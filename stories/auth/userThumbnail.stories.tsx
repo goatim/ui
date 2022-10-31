@@ -1,11 +1,10 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { User } from '@fridaygame/client';
-import UserThumbnail, { UserThumbnailSize, UserThumbnailInfos } from '../../src/auth/userThumbnail';
+import UserThumbnail, { UserThumbnailSize } from '../../src/auth/userThumbnail';
 
 interface Props {
   size?: UserThumbnailSize;
-  infos?: UserThumbnailInfos;
   is_defined?: boolean;
 }
 
@@ -44,21 +43,12 @@ const user: User = {
   last_name: 'Perouze',
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({
-  size,
-  infos,
-  is_defined,
-}: Props) => (
-  <UserThumbnail
-    user={{ ...user, picture: is_defined ? user.picture : undefined }}
-    size={size}
-    infos={infos}
-  />
+const Template: ComponentStory<JSXElementConstructor<Props>> = ({ size, is_defined }: Props) => (
+  <UserThumbnail user={{ ...user, picture: is_defined ? user.picture : undefined }} size={size} />
 );
 
 export const Default = Template.bind({});
 
 Default.args = {
   size: 'small',
-  infos: 'picture',
 };

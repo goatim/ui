@@ -1,13 +1,13 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import { CurrenciesRate, Currency } from '@fridaygame/client';
-import CurrenciesRateThumbnail from '../../../src/market/currenciesRates/currenciesRateThumbnail';
+import { CurrenciesRate, Currency, User, Wallet } from '@fridaygame/client';
+import TradingBanner from '../../src/navigation/tradingBanner';
 
 interface Props {}
 
 export default {
-  title: 'Market/CurrenciesRateThumbnail',
-  component: CurrenciesRateThumbnail,
+  title: 'Navigation/TradingBanner',
+  component: TradingBanner,
   argTypes: {},
 } as ComponentMeta<JSXElementConstructor<Props>>;
 
@@ -34,8 +34,29 @@ const currenciesRate: CurrenciesRate = {
   target_currency: ether,
 };
 
+const owner: User = {
+  id: 'us_sopsaA',
+  picture: {
+    id: 'me_dehHH',
+    thumbnail_url: 'https://picsum.photos/200',
+  },
+  pseudo: 'Player 1',
+  first_name: 'Lucien',
+  last_name: 'Perouze',
+};
+
+const wallet: Wallet = {
+  id: 'wa_sopsaA',
+  owner,
+  picture: {
+    id: 'me_dehHH',
+    thumbnail_url: 'https://picsum.photos/200',
+  },
+  name: 'Smart Monkey',
+};
+
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
-  <CurrenciesRateThumbnail currenciesRate={currenciesRate} />
+  <TradingBanner fridayCoinsRate={currenciesRate} wallet={wallet} />
 );
 
 export const Default = Template.bind({});

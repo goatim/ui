@@ -28,7 +28,7 @@ export default function WalletList({ wallets, total, theme }: Props): ReactEleme
     <div className={`friday-ui-wallet-list ${theme}`}>
       {wallets.map((wallet) => (
         <div key={wallet.id} className="wallet">
-          <WalletThumbnail wallet={wallet} infos="picture" theme={theme} />
+          <WalletThumbnail wallet={wallet} showName={false} theme={theme} />
         </div>
       ))}
       {nbMore > 0 ? (

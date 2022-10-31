@@ -44,21 +44,28 @@ import {
   PushModalFunction,
 } from './general/modal';
 import Gutter from './general/gutter';
-import UserThumbnail, { UserThumbnailSize, UserThumbnailInfos } from './auth/userThumbnail';
+import TradingBanner from './navigation/tradingBanner';
+import UserPicture, { UserPictureSize, UserPictureTheme } from './auth/userPicture';
+import UserThumbnail, { UserThumbnailSize, UserThumbnailTheme } from './auth/userThumbnail';
 import FridayCoins, { FridayCoinsTheme, FridayCoinsSize } from './market/fridayCoins';
 import FridayCoinsVariation, { FridayCoinsVariationSize } from './market/fridayCoinsVariation';
 import PercentageVariation, {
   PercentageVariationShape,
   PercentageVariationSize,
 } from './market/percentageVariation';
+import WalletPicture, {
+  WalletPictureSize,
+  WalletPictureTheme,
+} from './market/wallets/walletPicture';
 import WalletThumbnail, {
-  WalletThumbnailInfos,
   WalletThumbnailSize,
+  WalletThumbnailTheme,
 } from './market/wallets/walletThumbnail';
 import WalletTeam from './market/wallets/walletTeam';
 import WalletMetrics, { WalletMetricsSize } from './market/wallets/walletMetrics';
 import WalletOverview, { WalletOverviewSize } from './market/wallets/walletOverview';
 import WalletList from './market/wallets/walletList';
+import WalletRank from './market/wallets/walletRank';
 import WalletRanking, { WalletRankingTheme } from './market/wallets/walletRanking';
 import WalletAmountDetail, { WalletAmountDetailSize } from './market/wallets/walletAmountDetail';
 import ItemEditor, { ItemEditorFields, ItemEditorSize } from './market/checkouts/itemEditor';
@@ -271,12 +278,18 @@ export type {
 };
 
 /**
+ * Navigation
+ */
+
+export { TradingBanner };
+
+/**
  * Auth
  */
 
-export { UserThumbnail };
+export { UserPicture, UserThumbnail };
 
-export type { UserThumbnailInfos, UserThumbnailSize };
+export type { UserPictureSize, UserPictureTheme, UserThumbnailTheme, UserThumbnailSize };
 
 /**
  * Market
@@ -300,6 +313,8 @@ export {
   WalletList,
   WalletMetrics,
   WalletOverview,
+  WalletRank,
+  WalletPicture,
   WalletRanking,
   WalletTeam,
   WalletThumbnail,
@@ -325,8 +340,10 @@ export type {
   WalletMetricsSize,
   WalletOverviewSize,
   WalletRankingTheme,
-  WalletThumbnailInfos,
   WalletThumbnailSize,
+  WalletThumbnailTheme,
+  WalletPictureSize,
+  WalletPictureTheme,
 };
 
 /**

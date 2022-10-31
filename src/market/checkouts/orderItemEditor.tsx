@@ -1,12 +1,12 @@
 import { ReactElement, useCallback, useMemo, useState } from 'react';
 import { Form, Field, FormErrors, FormState, FormContext, FormFields } from '@cezembre/forms';
 import {
-  adaptFridayCoins,
+  adaptFridayCoinsAmount,
   Asset,
   BoosterFactory,
   OrderBook,
   OrderType,
-  resolveFridayCoins,
+  resolveFridayCoinsAmount,
 } from '@fridaygame/client';
 import Radio from '../../general/radio';
 import Button from '../../general/button';
@@ -121,8 +121,8 @@ export default function OrderItemEditor({
             component={Counter}
             theme="black"
             initialValue={initialOrderItem?.price_limit}
-            resolver={resolveFridayCoins}
-            adapter={adaptFridayCoins}
+            resolver={resolveFridayCoinsAmount}
+            adapter={adaptFridayCoinsAmount}
             increment={100}
           />
         </div>

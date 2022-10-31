@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import { Wallet } from '@fridaygame/client';
-import WalletThumbnail from './walletThumbnail';
+import WalletRank from './walletRank';
 import Icon from '../../general/icon';
 
 export type WalletRankingTheme = 'dark' | 'light';
@@ -36,7 +36,7 @@ export default function WalletRanking({
       <div className="wallets">
         {wallets.map((wallet) => (
           <div className="wallet" key={wallet.id}>
-            <WalletThumbnail
+            <WalletRank
               wallet={wallet}
               theme={theme}
               position={positionExtractor ? positionExtractor(wallet) : undefined}
@@ -48,7 +48,7 @@ export default function WalletRanking({
       </div>
       {pinned ? (
         <div className="pinned">
-          <WalletThumbnail
+          <WalletRank
             wallet={pinned}
             theme={theme}
             position={positionExtractor ? positionExtractor(pinned) : undefined}

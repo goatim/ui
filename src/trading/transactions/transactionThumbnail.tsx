@@ -27,7 +27,7 @@ export default function TransactionThumbnail({ transaction }: Props): ReactEleme
       <div className="header">
         {transaction.from && typeof transaction.from === 'object' ? (
           <div className="from">
-            <WalletThumbnail wallet={transaction.from} size="small" infos="picture-and-name" />
+            <WalletThumbnail wallet={transaction.from} size="small" />
           </div>
         ) : null}
         <span className="id">{transaction.id}</span>
@@ -41,7 +41,7 @@ export default function TransactionThumbnail({ transaction }: Props): ReactEleme
 
       {transaction.to && typeof transaction.to === 'object' ? (
         <div className="to">
-          <WalletThumbnail wallet={transaction.to} size="medium" infos="picture-and-name" />
+          <WalletThumbnail wallet={transaction.to} size="medium" />
         </div>
       ) : null}
 

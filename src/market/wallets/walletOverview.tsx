@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 import { Wallet } from '@fridaygame/client';
-import WalletTeam from './walletTeam';
 import WalletMetrics from './walletMetrics';
+import WalletThumbnail from './walletThumbnail';
 
 export type WalletOverviewSize = 'narrow' | 'normal';
 
@@ -14,7 +14,7 @@ export default function WalletOverview({ wallet, size = 'normal' }: Props): Reac
   return (
     <div className={`friday-ui-wallet-overview ${size}`}>
       <div className="team">
-        <WalletTeam wallet={wallet} />
+        <WalletThumbnail wallet={wallet} size="medium" />
       </div>
       <div className="metrics">
         <WalletMetrics wallet={wallet} size={size} />

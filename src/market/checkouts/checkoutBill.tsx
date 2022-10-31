@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { Checkout, formatEuros } from '@fridaygame/client';
+import { Checkout, formatEurosAmount } from '@fridaygame/client';
 
 export interface Props {
   checkout: Checkout;
@@ -11,19 +11,19 @@ export default function CheckoutBill({ checkout }: Props): ReactElement {
       {checkout.items_prices !== undefined ? (
         <div className="line">
           <span>Produits</span>
-          <span className="amount">{formatEuros(checkout.items_prices)}</span>
+          <span className="amount">{formatEurosAmount(checkout.items_prices)}</span>
         </div>
       ) : null}
       {checkout.items_vats ? (
         <div className="line">
           <span>Tva</span>
-          <span className="amount">{formatEuros(checkout.items_vats)}</span>
+          <span className="amount">{formatEurosAmount(checkout.items_vats)}</span>
         </div>
       ) : null}
       {checkout.total_to_pay !== undefined ? (
         <div className="line total">
           <span>Total à payer</span>
-          <span className="amount">{formatEuros(checkout.total_to_pay)}</span>
+          <span className="amount">{formatEurosAmount(checkout.total_to_pay)}</span>
         </div>
       ) : null}
     </div>

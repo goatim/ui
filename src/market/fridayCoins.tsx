@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { formatFridayCoins } from '@fridaygame/client';
+import { formatFridayCoinsAmount } from '@fridaygame/client';
 
 export type FridayCoinsSize = 'small' | 'medium' | 'big' | 'large';
 
@@ -20,7 +20,7 @@ export default function FridayCoins({
 }: Props): ReactElement {
   return (
     <span className={`friday-ui-friday-coins ${size} ${theme}`}>
-      {formatFridayCoins(amount, decimalDigits)}
+      {formatFridayCoinsAmount(amount, decimalDigits)}
     </span>
   );
 }

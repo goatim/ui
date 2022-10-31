@@ -6,65 +6,31 @@
   align-items: center;
   justify-content: flex-start;
 
-  > img {
-    width: 25px;
-    min-width: 25px;
-    height: 25px;
-    min-height: 25px;
-    border-radius: 50%;
-    margin: 0;
-    padding: 0;
-    object-position: center center;
-    object-fit: cover;
-  }
-
-  > .placeholder {
-    width: 25px;
-    min-width: 25px;
-    height: 25px;
-    min-height: 25px;
-    border-radius: 50%;
-    background: rgba(colors.$blue, .2);
-  }
-
   > .name {
     @include fonts.Inter(.8em, colors.$blue, bold);
-    margin-left: .8em;
   }
 
-  &.light {
-    > .placeholder {
-      background: rgba(white, .2);
-    }
-
+  &.show-picture {
     > .name {
-      color: white;
+      margin-left: 10px;
     }
   }
 
   &.medium {
-    > img, > .placeholder {
-      width: 30px;
-      min-width: 30px;
-      height: 30px;
-      min-height: 30px;
-    }
-
     > .name {
       font-size: .9em;
     }
   }
 
   &.big {
-    > img, > .placeholder {
-      width: 35px;
-      min-width: 35px;
-      height: 35px;
-      min-height: 35px;
-    }
-
     > .name {
       font-size: 1em;
+    }
+  }
+
+  &.light {
+    > .name {
+      color: white;
     }
   }
 }

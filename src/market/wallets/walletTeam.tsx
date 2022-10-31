@@ -10,7 +10,7 @@ export default function WalletTeam({ wallet }: Props): ReactElement {
   return (
     <div className="friday-ui-wallet-team">
       {wallet.owner && typeof wallet.owner === 'object' ? (
-        <UserThumbnail user={wallet.owner} infos="picture-and-name" size="medium" />
+        <UserThumbnail user={wallet.owner} size="medium" />
       ) : null}
     </div>
   );

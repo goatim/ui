@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { BoosterItem, formatEuros } from '@fridaygame/client';
+import { BoosterItem, formatEurosAmount } from '@fridaygame/client';
 import Icon from '../../general/icon';
 
 export type BoosterItemThumbnailSize = 'narrow' | 'normal';
@@ -38,7 +38,7 @@ export default function BoosterItemThumbnail({
           <div className="cell">
             <span>Prix</span>
             <div className="content">
-              <span className="price">{formatEuros(boosterItem.total_price)}</span>
+              <span className="price">{formatEurosAmount(boosterItem.total_price)}</span>
             </div>
           </div>
         ) : null}

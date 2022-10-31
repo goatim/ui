@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import { WrapperProps } from '@cezembre/fronts';
-import { formatEuros, PackFactory } from '@fridaygame/client';
+import { formatEurosAmount, PackFactory } from '@fridaygame/client';
 import Button from '../../general/button';
 import FridayCoins from '../../market/fridayCoins';
 
@@ -35,7 +35,9 @@ export default function PackFactoryThumbnail({
 
       <div className="body">
         <span className="title">{packFactory.name}</span>
-        {packFactory.price ? <span className="price">{formatEuros(packFactory.price)}</span> : null}
+        {packFactory.price ? (
+          <span className="price">{formatEurosAmount(packFactory.price)}</span>
+        ) : null}
         {packFactory.description ? (
           <span className="description">{packFactory.description}</span>
         ) : null}

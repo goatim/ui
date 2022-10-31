@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { formatEuros, PackItem } from '@fridaygame/client';
+import { formatEurosAmount, PackItem } from '@fridaygame/client';
 import Icon from '../../general/icon';
 
 export type PackItemThumbnailSize = 'narrow' | 'normal';
@@ -38,7 +38,7 @@ export default function PackItemThumbnail({
           <div className="cell">
             <span>Prix</span>
             <div className="content">
-              <span className="price">{formatEuros(packItem.total_price)}</span>
+              <span className="price">{formatEurosAmount(packItem.total_price)}</span>
             </div>
           </div>
         ) : null}

@@ -1,6 +1,6 @@
 import { ReactElement, useMemo, MouseEvent } from 'react';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
-import { formatEuros } from '@fridaygame/client';
+import { formatEurosAmount } from '@fridaygame/client';
 import Button from '../general/button';
 import Icon from '../general/icon';
 
@@ -67,7 +67,7 @@ export default function SubscriptionThumbnail({
       </div>
       <span className="title">{`Abonnement ${subscription.type}`}</span>
       <div className="monthly-price-container">
-        <span className="monthly-price">{formatEuros(subscription.monthlyPrice)}</span>
+        <span className="monthly-price">{formatEurosAmount(subscription.monthlyPrice)}</span>
         <span className="monthly-price-label">/MOIS</span>
       </div>
       <div className="separator" />

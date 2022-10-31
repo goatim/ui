@@ -1,0 +1,27 @@
+@use '../styles/colors';
+
+.friday-ui-trading-banner {
+  width: 100%;
+  background: colors.$electric-blue;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+
+  > .fdy-rate {
+    padding: 5px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  > .assets {
+    flex: 1;
+  }
+
+  > .wallet {
+    padding: 5px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+}
