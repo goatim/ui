@@ -12,6 +12,7 @@ import Visa from './icons/visa';
 import Mastercard from './icons/mastercard';
 import SoccerBall from './icons/soccerBall';
 import SoccerField from './icons/soccerField';
+import Tiktok from './icons/tiktok';
 
 export type IconName =
   | 'activity'
@@ -309,7 +310,8 @@ export type IconName =
   | 'visa'
   | 'mastercard'
   | 'soccer-ball'
-  | 'soccer-field';
+  | 'soccer-field'
+  | 'tiktok';
 
 export interface Props extends IconProps {
   color?: string;
@@ -915,6 +917,8 @@ export default function Icon({
       return <SoccerBall size={size} />;
     case 'soccer-field':
       return <SoccerField size={size} />;
+    case 'tiktok':
+      return <Tiktok size={size} />;
     default:
       return <Slash size={size} />;
   }
