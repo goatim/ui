@@ -15,6 +15,7 @@ export interface Props extends WrapperProps {
   showPicture?: boolean;
   showName?: boolean;
   showAmount?: boolean;
+  align?: AlignSetting;
 }
 
 export default forwardRef<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement, Props>(
@@ -25,6 +26,7 @@ export default forwardRef<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement
       showPicture = true,
       showName = true,
       showAmount = false,
+      align = 'left',
       theme = 'dark',
       to,
       onClick,
@@ -35,7 +37,7 @@ export default forwardRef<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement
     ref: ForwardedRef<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement>,
   ): ReactElement {
     const className = useMemo<string>(() => {
-      const classNames = ['friday-ui-wallet-thumbnail', size, theme];
+      const classNames = ['friday-ui-wallet-thumbnail', size, theme, align];
 
       if (showPicture) {
         classNames.push('show-picture');

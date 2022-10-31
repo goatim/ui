@@ -53,4 +53,12 @@
       margin-left: 10px;
     }
   }
+
+  &.center {
+    text-align: center;
+  }
+
+  &.end, &.right {
+    text-align: right;
+  }
 }
