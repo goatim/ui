@@ -1,16 +1,7 @@
 @use '../styles/colors';
 @use '../styles/fonts';
 
-button.friday-ui-subscription-thumbnail,
-a.friday-ui-subscription-thumbnail {
-  cursor: pointer;
-  margin: 0;
-  padding: 0;
-  box-shadow: none;
-}
-
 .friday-ui-subscription-thumbnail {
-  box-sizing: border-box;
   border-radius: 18px;
   border: solid rgba(colors.$blue, .1) 1px;
   width: 100%;
@@ -83,7 +74,7 @@ a.friday-ui-subscription-thumbnail {
         @include fonts.Inter(0.7em, colors.$blue, bold);
       }
     }
-  
+
     > .separator {
       border-top:solid 1px rgba(colors.$blue, .1);
     }
@@ -119,7 +110,7 @@ a.friday-ui-subscription-thumbnail {
         }
       }
     }
-  
+
     > .separator {
       border-top:solid 1px #F5F8FF;
     }

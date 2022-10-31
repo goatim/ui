@@ -9,7 +9,6 @@
   justify-content: center;
   background: rgba(colors.$blue, .2);
   padding: 20px;
-  box-sizing: border-box;
 
   > .label {
     @include fonts.Inter(.8em, colors.$blue, bold);

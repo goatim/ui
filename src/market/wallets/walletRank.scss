@@ -1,25 +1,15 @@
 @use '../../styles/colors';
 @use '../../styles/fonts';
 
-button.friday-ui-wallet-rank {
-  cursor: pointer;
-  font-size: 1em;
-}
-
 .friday-ui-wallet-rank {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-sizing: border-box;
   background: none;
   text-decoration: none;
   border: none;
   outline: none;
   border-radius: 0;
-
-  * {
-    box-sizing: border-box;
-  }
 
   > .body {
     display: flex;

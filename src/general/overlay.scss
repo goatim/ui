@@ -15,10 +15,6 @@
   animation-duration: 100ms;
   animation-fill-mode: forwards;
 
-  * {
-    box-sizing: border-box;
-  }
-
   &.visible {
     animation-name: width-in;
   }

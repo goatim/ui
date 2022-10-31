@@ -2,21 +2,16 @@
 @use '../../styles/fonts';
 
 .friday-ui-currencies-rate-thumbnail {
-  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-
-  * {
-    box-sizing: border-box;
-  }
 
   > .rates {
     display: flex;
     flex-direction: column;
 
     > span {
-      @include fonts.Inter(.8em, colors.$blue, 500);
+      @include fonts.Inter(.8em, colors.$blue, 600);
     }
   }
 

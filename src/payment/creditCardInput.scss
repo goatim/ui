@@ -4,12 +4,7 @@
 @use '../styles/forms';
 
 .friday-ui-credit-card-input {
-  box-sizing: border-box;
   display: inline-block;
-
-  * {
-    box-sizing: border-box;
-  }
 
   > label {
     @include forms.label;

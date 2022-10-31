@@ -1,19 +1,10 @@
 @use '../../styles/colors';
 @use '../../styles/fonts';
 
-button.friday-ui-wallet-thumbnail {
-  cursor: pointer;
-  font-size: 1em;
-  outline: none;
-  border: none;
-  box-shadow: none;
-}
-
 .friday-ui-wallet-thumbnail {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  box-sizing: border-box;
   background: none;
   text-decoration: none;
   border: none;
@@ -21,10 +12,6 @@ button.friday-ui-wallet-thumbnail {
   border-radius: 0;
   padding: 0;
   margin: 0;
-
-  * {
-    box-sizing: border-box;
-  }
 
   > .body {
     > .name {

@@ -5,10 +5,6 @@
 .friday-ui-time-picker {
   height: 300px;
 
-  * {
-    box-sizing: border-box;
-  }
-
   > label {
     @include forms.label();
   }

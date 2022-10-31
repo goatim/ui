@@ -6,10 +6,6 @@
 .friday-ui-date-picker {
   position: relative;
 
-  * {
-    box-sizing: border-box;
-  }
-
   > label {
     @include forms.label();
   }

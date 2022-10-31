@@ -1,22 +1,12 @@
 @use '../../styles/fonts';
 @use '../../styles/colors';
 
-a.friday-ui-booster-factory-thumbnail,
-button.friday-ui-booster-factory-thumbnail {
-  cursor: pointer;
-}
-
 .friday-ui-booster-factory-thumbnail {
-  box-sizing: border-box;
   border: none;
   outline: none;
   font-size: 1em;
   background: none;
   display: inline-block;
-
-  * {
-    box-sizing: border-box;
-  }
 
   &.card {
     width: 100%;

@@ -7,10 +7,6 @@
   @include layouts.modal;
   transition: opacity linear 100ms, visibility linear 100ms;
 
-  * {
-    box-sizing: border-box;
-  }
-
   &.pop-up, &.overlay {
     position: fixed;
     width: 100vw;

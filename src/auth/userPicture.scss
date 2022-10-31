@@ -1,14 +1,6 @@
 @use '../styles/colors';
 @use '../styles/fonts';
 
-button.friday-ui-user-picture {
-  cursor: pointer;
-  border: none;
-  outline: none;
-  font-size: 1em;
-  box-shadow: none;
-}
-
 .friday-ui-user-picture {
   display: flex;
   align-items: center;

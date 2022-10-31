@@ -6,10 +6,6 @@
 .friday-ui-textarea {
   width: 100%;
 
-  * {
-    box-sizing: border-box;
-  }
-
   > label {
     @include forms.label;
   }

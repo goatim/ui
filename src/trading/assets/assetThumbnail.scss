@@ -1,12 +1,5 @@
 @use '../../styles/colors';
 
-button.friday-ui-asset-thumbnail,
-a.friday-ui-asset-thumbnail {
-  cursor: pointer;
-  box-shadow: none;
-  font-size: 1em;
-}
-
 .friday-ui-asset-thumbnail {
   width: 100%;
   border-radius: 10px;
@@ -14,17 +7,12 @@ a.friday-ui-asset-thumbnail {
   overflow: hidden;
   text-decoration: none;
   display: block;
-  box-sizing: border-box;
   border: none;
   font-size: 1em;
   background: none;
   outline: none;
   padding: 0;
   margin: 0;
-
-  * {
-    box-sizing: border-box;
-  }
 
   > .quotation {
     width: calc(100% - 200px);
@@ -56,7 +44,6 @@ a.friday-ui-asset-thumbnail {
       }
     }
   }
-
 
   &.narrow {
     &.box {

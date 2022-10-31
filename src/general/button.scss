@@ -18,11 +18,6 @@
   transition: background linear 100ms, opacity linear 100ms;
   overflow: hidden;
   font-size: 1em;
-  box-sizing: border-box;
-
-  * {
-    box-sizing: border-box;
-  }
 
   &.full-width {
     width: 100%;

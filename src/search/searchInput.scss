@@ -6,10 +6,6 @@
 .friday-ui-search-input {
   position: relative;
 
-  * {
-    box-sizing: border-box;
-  }
-
   > .container {
     @include forms.input;
     height: 40px;

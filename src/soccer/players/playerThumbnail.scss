@@ -1,11 +1,6 @@
 @use '../../styles/fonts';
 @use '../../styles/colors';
 
-button.friday-ui-player-thumbnail,
-a.friday-ui-player-thumbnail {
-  cursor: pointer;
-}
-
 .friday-ui-player-thumbnail {
   display: flex;
   justify-content: flex-start;
@@ -14,11 +9,6 @@ a.friday-ui-player-thumbnail {
   border: none;
   font-size: 1em;
   background: none;
-  box-sizing: border-box;
-
-  * {
-    box-sizing: border-box;
-  }
 
   > .infos {
     > .number {

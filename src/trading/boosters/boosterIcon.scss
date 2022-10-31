@@ -1,11 +1,6 @@
 @use '../../styles/fonts';
 @use '../../styles/colors';
 
-a.friday-ui-booster-icon,
-button.friday-ui-booster-icon {
-  cursor: pointer;
-}
-
 .friday-ui-booster-icon {
   border: none;
   outline: none;
@@ -18,10 +13,6 @@ button.friday-ui-booster-icon {
   justify-content: flex-end;
   position: relative;
   background: colors.$blue;
-
-  * {
-    box-sizing: border-box;
-  }
 
   &:after {
     box-sizing: border-box;

@@ -1,16 +1,7 @@
 @use '../../styles/colors';
 @use '../../styles/fonts';
 
-button.friday-ui-pack-factory-thumbnail,
-a.friday-ui-pack-factory-thumbnail {
-  cursor: pointer;
-  margin: 0;
-  padding: 0;
-  box-shadow: none;
-}
-
 .friday-ui-pack-factory-thumbnail {
-  box-sizing: border-box;
   border-radius: 20px;
   background: white;
   border: solid rgba(colors.$blue, .1) 1px;
@@ -18,10 +9,6 @@ a.friday-ui-pack-factory-thumbnail {
   max-width: 280px;
   position: relative;
   overflow: hidden;
-
-  * {
-    box-sizing: border-box;
-  }
 
   > .header {
     display: flex;
