@@ -30,7 +30,7 @@ export default function WalletEditor({
       </div>
 
       <div className="picture">
-        <WalletPicture wallet={picture} size="medium" />
+        <WalletPicture picture={picture} size="medium" />
         {onUploadPicture ? (
           <div className="upload">
             <Upload onUpload={(files) => onUploadPicture(files[0])} theme="transparent-dark">
