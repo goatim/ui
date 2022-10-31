@@ -2,13 +2,14 @@
 
 .friday-ui-trading-banner {
   width: 100%;
+  height: 45px;
   background: colors.$electric-blue;
   display: flex;
   align-items: stretch;
   justify-content: space-between;
 
   > .fdy-rate {
-    padding: 5px 20px;
+    padding: 0 20px;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -19,7 +20,7 @@
   }
 
   > .wallet {
-    padding: 5px 20px;
+    padding: 0 20px;
     display: flex;
     align-items: center;
     justify-content: flex-end;
