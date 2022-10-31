@@ -15,28 +15,34 @@ export interface Props {
 
 export default function UserEditor({ initialValues, onSubmit }: Props): ReactElement {
   return (
-    <Form<UserEditorFields> className="friday-ui-user-editor" onSubmit={onSubmit}>
-      <div className="field">
-        <Field
-          name="first_name"
-          component={Input}
-          label="Prénom"
-          initialValue={initialValues?.first_name}
-        />
+    <div className="friday-ui-user-editor">
+      <div className="header">
+        <h2>Mon profil</h2>
       </div>
 
-      <div className="field">
-        <Field
-          name="last_name"
-          component={Input}
-          label="Nom"
-          initialValue={initialValues?.last_name}
-        />
-      </div>
+      <Form<UserEditorFields> onSubmit={onSubmit}>
+        <div className="field">
+          <Field
+            name="first_name"
+            component={Input}
+            label="Prénom"
+            initialValue={initialValues?.first_name}
+          />
+        </div>
 
-      <div className="submit">
-        <Button type="submit">Enregistrer</Button>
-      </div>
-    </Form>
+        <div className="field">
+          <Field
+            name="last_name"
+            component={Input}
+            label="Nom"
+            initialValue={initialValues?.last_name}
+          />
+        </div>
+
+        <div className="submit">
+          <Button type="submit">Enregistrer</Button>
+        </div>
+      </Form>
+    </div>
   );
 }

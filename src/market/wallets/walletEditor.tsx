@@ -7,7 +7,7 @@ import WalletPicture from './walletPicture';
 import Upload from '../../general/upload';
 
 export interface WalletEditorFields {
-  pseudo?: string;
+  name?: string;
 }
 
 export interface Props {
@@ -24,7 +24,11 @@ export default function WalletEditor({
   onUploadPicture,
 }: Props): ReactElement {
   return (
-    <Form<WalletEditorFields> className="friday-ui-wallet-editor" onSubmit={onSubmit}>
+    <div className="friday-ui-wallet-editor">
+      <div className="header">
+        <h2>Mon portefeuille</h2>
+      </div>
+
       <div className="picture">
         <WalletPicture wallet={picture} size="medium" />
         {onUploadPicture ? (
@@ -36,18 +40,15 @@ export default function WalletEditor({
         ) : null}
       </div>
 
-      <div className="field">
-        <Field
-          name="pseudo"
-          component={Input}
-          label="Pseudo"
-          initialValue={initialValues?.pseudo}
-        />
-      </div>
+      <Form<WalletEditorFields> onSubmit={onSubmit}>
+        <div className="field">
+          <Field name="name" component={Input} label="Pseudo" initialValue={initialValues?.name} />
+        </div>
 
-      <div className="submit">
-        <Button type="submit">Enregistrer</Button>
-      </div>
-    </Form>
+        <div className="submit">
+          <Button type="submit">Enregistrer</Button>
+        </div>
+      </Form>
+    </div>
   );
 }

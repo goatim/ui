@@ -1,5 +1,17 @@
 @use "../../styles/forms";
+@use "../../styles/fonts";
+@use "../../styles/colors";
 
 .friday-ui-user-editor {
-  @include forms.form;
+  > .header {
+    > h2 {
+      @include fonts.Inter(.9em, colors.$blue, bold);
+      margin: 0;
+    }
+  }
+
+  > form {
+    @include forms.form;
+    margin-top: 20px;
+  }
 }
