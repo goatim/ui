@@ -1,0 +1,14 @@
+@use "../../styles/forms";
+
+.friday-ui-wallet-editor {
+  @include forms.form;
+
+  > .picture {
+    display: flex;
+    align-items: center;
+
+    > .upload {
+      margin-left: 20px;
+    }
+  }
+}

@@ -45,8 +45,9 @@ import {
 } from './general/modal';
 import Gutter from './general/gutter';
 import TradingBanner from './navigation/tradingBanner';
-import UserPicture, { UserPictureSize, UserPictureTheme } from './auth/userPicture';
-import UserThumbnail, { UserThumbnailSize, UserThumbnailTheme } from './auth/userThumbnail';
+import UserPicture, { UserPictureSize, UserPictureTheme } from './auth/users/userPicture';
+import UserThumbnail, { UserThumbnailSize, UserThumbnailTheme } from './auth/users/userThumbnail';
+import UserEditor, { UserEditorFields } from './auth/users/userEditor';
 import FridayCoins, { FridayCoinsTheme, FridayCoinsSize } from './market/fridayCoins';
 import FridayCoinsVariation, { FridayCoinsVariationSize } from './market/fridayCoinsVariation';
 import PercentageVariation, {
@@ -61,6 +62,7 @@ import WalletThumbnail, {
   WalletThumbnailSize,
   WalletThumbnailTheme,
 } from './market/wallets/walletThumbnail';
+import WalletEditor, { WalletEditorFields } from './market/wallets/walletEditor';
 import WalletTeam from './market/wallets/walletTeam';
 import WalletMetrics, { WalletMetricsSize } from './market/wallets/walletMetrics';
 import WalletOverview, { WalletOverviewSize } from './market/wallets/walletOverview';
@@ -287,9 +289,15 @@ export { TradingBanner };
  * Auth
  */
 
-export { UserPicture, UserThumbnail };
+export { UserPicture, UserThumbnail, UserEditor };
 
-export type { UserPictureSize, UserPictureTheme, UserThumbnailTheme, UserThumbnailSize };
+export type {
+  UserPictureSize,
+  UserPictureTheme,
+  UserThumbnailTheme,
+  UserThumbnailSize,
+  UserEditorFields,
+};
 
 /**
  * Market
@@ -318,6 +326,7 @@ export {
   WalletRanking,
   WalletTeam,
   WalletThumbnail,
+  WalletEditor,
 };
 
 export type {
@@ -344,6 +353,7 @@ export type {
   WalletThumbnailTheme,
   WalletPictureSize,
   WalletPictureTheme,
+  WalletEditorFields,
 };
 
 /**

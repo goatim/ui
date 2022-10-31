@@ -1,0 +1,5 @@
+@use "../../styles/forms";
+
+.friday-ui-user-editor {
+  @include forms.form;
+}

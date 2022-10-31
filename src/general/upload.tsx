@@ -4,8 +4,8 @@ import Button, { ButtonShape, ButtonSize, ButtonTheme } from './button';
 
 export interface Props {
   multiple?: boolean;
-  onUpload?: (files: FileList) => Promise<void>;
-  onLoad?: (file: string) => void;
+  onUpload?: (files: FileList) => unknown;
+  onLoad?: (file: string) => unknown;
   tabIndex?: number;
   children?: ReactNode;
   size?: ButtonSize;
@@ -74,17 +74,17 @@ export default function Upload({
   }
 
   const className = useMemo<string>(() => {
-    let res = 'friday-ui-upload';
+    const classNames: string[] = ['friday-ui-upload'];
 
     if (error) {
-      res += ' error';
+      classNames.push('error');
     }
 
     if (pending) {
-      res += ' pending';
+      classNames.push('pending');
     }
 
-    return res;
+    return classNames.join(' ');
   }, [error, pending]);
 
   return (

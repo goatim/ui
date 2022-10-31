@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import { Wallet } from '@fridaygame/client';
-import UserThumbnail from '../../auth/userThumbnail';
+import UserThumbnail from '../../auth/users/userThumbnail';
 
 export interface Props {
   wallet: Wallet;
