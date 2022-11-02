@@ -23,7 +23,8 @@ export default function CurrenciesRateThumbnail({
             {formatCurrencyAmount(
               1 / Number(currenciesRate.base_currency.smallest_unit),
               currenciesRate.base_currency.iso,
-            )}
+            )}{' '}
+            /
           </span>
         ) : null}
         {currenciesRate.target_currency && typeof currenciesRate.target_currency === 'object' ? (

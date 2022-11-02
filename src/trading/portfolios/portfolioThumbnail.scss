@@ -12,12 +12,8 @@
   > .header {
     display: flex;
     align-items: flex-start;
-    justify-content: space-between;
+    justify-content: flex-start;
     padding: 15px 20px;
-
-    > .id {
-      @include fonts.Inter(.7em, rgba(colors.$light-blue, .5));
-    }
 
     > .nb_shares {
       display: flex;

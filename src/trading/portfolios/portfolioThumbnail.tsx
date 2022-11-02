@@ -43,10 +43,9 @@ export default function PortfolioThumbnail({
   return (
     <div className={`friday-ui-portfolio-thumbnail ${size}`}>
       <div className="header">
-        <span className="id">{portfolio.id}</span>
         <div className="nb_shares">
           <span className="label">Quantité</span>
-          <span className="value">{portfolio.nb_shares || 1}</span>
+          <span className="value">{portfolio.nb_shares || 0}</span>
         </div>
       </div>
 

@@ -89,6 +89,12 @@ export default function AssetOverview({
 
   return (
     <div className={`friday-ui-asset-overview ${size}`}>
+      {ipo ? (
+        <div className="ipo-banner">
+          <IpoThumbnail ipo={ipo} shape="banner" size={ipoThumbnailSize} />
+        </div>
+      ) : null}
+
       <div className="header">
         <div className="asset">
           <AssetThumbnail
@@ -125,12 +131,6 @@ export default function AssetOverview({
           </Button>
         </div>
       </div>
-
-      {ipo ? (
-        <div className="ipo-banner">
-          <IpoThumbnail ipo={ipo} shape="banner" size={ipoThumbnailSize} />
-        </div>
-      ) : null}
 
       <div className={`item-editor${orderType ? ' active' : ''}`}>
         <ItemEditor
