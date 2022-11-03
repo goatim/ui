@@ -1,8 +1,9 @@
+@use "@cezembre/fronts/dist/layouts";
 @use '../styles/colors';
 
 .friday-ui-notification-modal {
   background: white;
-  width: 280px;
+  width: 290px;
   border-radius: 10px;
   overflow: hidden;
   border: solid rgba(colors.$blue, .2) 1px;
@@ -10,6 +11,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  @include layouts.modal;
 
   > .notification {
     flex: 1;
