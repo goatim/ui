@@ -9,11 +9,15 @@ export interface Props {
 export default function NotificationList({ notifications }: Props): ReactElement {
   return (
     <div className="friday-ui-notification-list">
-      {notifications?.map((notification) => (
-        <div className="notification" key={notification.id}>
-          <NotificationThumbnail notification={notification} />
-        </div>
-      ))}
+      {notifications?.length ? (
+        notifications.map((notification) => (
+          <div className="notification" key={notification.id}>
+            <NotificationThumbnail notification={notification} />
+          </div>
+        ))
+      ) : (
+        <span className="empty">Aucune notification</span>
+      )}
     </div>
   );
 }

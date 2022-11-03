@@ -61,7 +61,7 @@ const notification: Notification<OrderMatchEventPayload> = {
 };
 
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
-  <NotificationList notifications={Array(10).fill(notification)} />
+  <NotificationList notifications={Array(0).fill(notification)} />
 );
 
 export const Default = Template.bind({});
