@@ -3,7 +3,7 @@ import { JSXElementConstructor, ReactElement, useEffect } from 'react';
 import { Notification, OrderMatchEventPayload, Club, Player, Asset } from '@fridaygame/client';
 import NotificationsWindow, {
   useNotificationsContext,
-} from '../../src/notifications/notificationsWindow';
+} from '../../src/notifications/notificationsContext';
 
 interface Props {}
 

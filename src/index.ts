@@ -192,10 +192,10 @@ import StripeCreditCardForm, { NewStripeCard } from './payment/stripeCreditCardF
 import StripePaymentMethodSelector from './payment/stripePaymentMethodSelector';
 import NotificationIcon from './notifications/notificationIcon';
 import NotificationThumbnail from './notifications/notificationThumbnail';
-import NotificationsWindow, {
+import NotificationsContext, {
   useNotificationsContext,
-  NotificationsContext,
-} from './notifications/notificationsWindow';
+  NotificationsContextState,
+} from './notifications/notificationsContext';
 import OnboardingCarousel, {
   OnboardingCarouselSize,
   OnboardingCarouselSlideData,
@@ -487,7 +487,12 @@ export type { CreditCardFields, NewStripeCard };
  * Notifications
  */
 
-export { NotificationIcon, NotificationThumbnail, NotificationsWindow, useNotificationsContext };
+export {
+  NotificationIcon,
+  NotificationThumbnail,
+  NotificationsContextState,
+  useNotificationsContext,
+};
 
 export type { NotificationsContext };
 

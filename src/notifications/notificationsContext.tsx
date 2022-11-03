@@ -23,16 +23,16 @@ export interface PushNotificationOptions extends WrapperProps {
   onDismiss?: () => unknown;
 }
 
-export interface NotificationsContext {
+export interface NotificationsContextState {
   notificationsModals: NotificationModalState[];
   popNotification(id: string): void;
   pushNotification(notification: Notification, options?: PushNotificationOptions): void;
 }
 
-const notificationsContext = createContext<NotificationsContext | undefined>(undefined);
+const notificationsContext = createContext<NotificationsContextState | undefined>(undefined);
 
-export function useNotificationsContext(): NotificationsContext {
-  const context = useContext<NotificationsContext | undefined>(notificationsContext);
+export function useNotificationsContext(): NotificationsContextState {
+  const context = useContext<NotificationsContextState | undefined>(notificationsContext);
   if (!context) {
     throw new Error('Notifications context not found');
   }
@@ -43,7 +43,7 @@ export interface Props {
   children: ReactNode | ReactNode[];
 }
 
-export default function NotificationsWindow({ children }: Props): ReactElement {
+export default function NotificationsContext({ children }: Props): ReactElement {
   const [notificationsModals, setNotificationsModals] = useState<NotificationModalState[]>([]);
 
   const removeNotification = useCallback((id: string) => {
@@ -115,7 +115,7 @@ export default function NotificationsWindow({ children }: Props): ReactElement {
     [popNotification],
   );
 
-  const value = useMemo<NotificationsContext>(
+  const value = useMemo<NotificationsContextState>(
     () => ({
       notificationsModals,
       popNotification,
@@ -126,7 +126,7 @@ export default function NotificationsWindow({ children }: Props): ReactElement {
 
   return (
     <notificationsContext.Provider value={value}>
-      <div className="friday-ui-notifications-window">
+      <div className="friday-ui-notifications-context">
         {children}
         <div className="notifications">
           {notificationsModals?.map((notificationModal) => (
