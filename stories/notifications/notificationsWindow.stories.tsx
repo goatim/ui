@@ -46,12 +46,36 @@ const asset: Asset = {
   slug: 'kylian-mbappe',
   total_shares: 450,
   quotation: 2750,
-  session_variation: 345,
+  day_variation: 0.2,
   player,
 };
 
-const notification: Notification<OrderMatchEventPayload> = {
+const notification1: Notification<OrderMatchEventPayload> = {
   id: 'no_qdqed654q5d61',
+  creation: '2022-06-23T17:31:41.171+02:00',
+  event: 'order_match',
+  payload: {
+    type: 'buy',
+    asset,
+    nb_matched: 45,
+    total: 150,
+  },
+};
+
+const notification2: Notification<OrderMatchEventPayload> = {
+  id: 'no_qdqzdqzd1',
+  creation: '2022-06-23T17:31:41.171+02:00',
+  event: 'order_match',
+  payload: {
+    type: 'sell',
+    asset,
+    nb_matched: 45,
+    total: 150,
+  },
+};
+
+const notification3: Notification<OrderMatchEventPayload> = {
+  id: 'no_qdqvdsvq5d61',
   creation: '2022-06-23T17:31:41.171+02:00',
   event: 'order_match',
   payload: {
@@ -66,7 +90,11 @@ function App(): ReactElement {
   const { pushNotification } = useNotificationsContext();
 
   useEffect(() => {
-    pushNotification(notification);
+    pushNotification(notification1, { onDismiss: () => console.log('Aqui') });
+    pushNotification(notification2);
+    setTimeout(() => {
+      pushNotification(notification3);
+    }, 1000);
   }, [pushNotification]);
 
   return (

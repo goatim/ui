@@ -1,3 +1,25 @@
+@keyframes notification-appear {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes notification-disappear {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}
+
 .friday-ui-notifications-window {
   position: relative;
 
@@ -8,9 +30,14 @@
 
     > .notification {
       margin-top: 10px;
+      animation: notification-appear 400ms forwards;
 
       &:first-of-type {
         margin: 0;
+      }
+
+      &.dismissed {
+        animation: notification-disappear 400ms forwards;
       }
     }
   }
