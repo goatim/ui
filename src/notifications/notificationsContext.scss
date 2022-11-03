@@ -22,26 +22,24 @@
   }
 }
 
-.friday-ui-notifications-context {
-  position: relative;
+.friday-ui-notifications {
+  @include layouts.modal;
+  position: fixed;
+  max-height: 100%;
+  top: 20px;
+  right: 20px;
+  overflow: auto;
 
-  > .notifications {
-    @include layouts.modal;
-    position: absolute;
-    top: 20px;
-    right: 20px;
+  > .notification {
+    margin-top: 10px;
+    animation: notification-appear 400ms forwards;
 
-    > .notification {
-      margin-top: 10px;
-      animation: notification-appear 400ms forwards;
+    &:first-of-type {
+      margin: 0;
+    }
 
-      &:first-of-type {
-        margin: 0;
-      }
-
-      &.hidden {
-        animation: notification-disappear 400ms forwards;
-      }
+    &.hidden {
+      animation: notification-disappear 400ms forwards;
     }
   }
 }
