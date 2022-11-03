@@ -12,6 +12,7 @@ import { WrapperProps } from '@cezembre/fronts';
 import NotificationModal from './notificationModal';
 
 export interface NotificationModalState extends WrapperProps {
+  id: string;
   notification: Notification;
   hidden: boolean;
   timeout?: NodeJS.Timeout | null;
@@ -49,7 +50,7 @@ export default function NotificationsContext({ children }: Props): ReactElement 
   const removeNotification = useCallback((id: string) => {
     setNotificationsModals((prevNotificationModals: NotificationModalState[]) => {
       const cns = [...prevNotificationModals];
-      const i = cns.findIndex((_n) => _n.notification.id === id);
+      const i = cns.findIndex((_n) => _n.id === id);
       if (i !== -1) {
         cns.splice(i, 1);
       }
@@ -61,7 +62,7 @@ export default function NotificationsContext({ children }: Props): ReactElement 
     (id: string, dismissed = false) => {
       setNotificationsModals((prevNotificationsModals: NotificationModalState[]) => {
         const newNotificationsModals = [...prevNotificationsModals];
-        const i = newNotificationsModals.findIndex((_n) => _n.notification.id === id);
+        const i = newNotificationsModals.findIndex((_n) => _n.id === id);
         if (i !== -1) {
           newNotificationsModals[i].hidden = true;
           const { timeout } = newNotificationsModals[i];
@@ -88,12 +89,14 @@ export default function NotificationsContext({ children }: Props): ReactElement 
 
   const pushNotification = useCallback(
     (notification: Notification, options?: PushNotificationOptions) => {
+      const id = Math.random().toString(36).substring(5);
       setNotificationsModals((ns: NotificationModalState[]) => [
         ...ns,
         {
+          id,
           notification,
           hidden: false,
-          timeout: setTimeout(() => popNotification(notification.id), options?.timeout || 5000),
+          timeout: setTimeout(() => popNotification(id), options?.timeout || 5000),
           onDismiss: options?.onDismiss,
           onClick: options?.onClick,
           type: options?.type,
@@ -123,10 +126,10 @@ export default function NotificationsContext({ children }: Props): ReactElement 
           {notificationsModals?.map((notificationModal) => (
             <div
               className={`notification${notificationModal.hidden ? ' hidden' : ''}`}
-              key={notificationModal.notification.id}>
+              key={notificationModal.id}>
               <NotificationModal
                 notification={notificationModal.notification}
-                onDismiss={() => popNotification(notificationModal.notification.id, true)}
+                onDismiss={() => popNotification(notificationModal.id, true)}
                 onClick={notificationModal.onClick}
                 type={notificationModal.type}
                 to={notificationModal.to}
