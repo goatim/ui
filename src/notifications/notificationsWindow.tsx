@@ -1,4 +1,12 @@
-import { ReactElement, useState, createContext, useMemo, useContext, useCallback } from 'react';
+import {
+  ReactElement,
+  useState,
+  createContext,
+  useMemo,
+  useContext,
+  useCallback,
+  ReactNode,
+} from 'react';
 import { Notification } from '@fridaygame/client';
 import { WrapperProps } from '@cezembre/fronts';
 import NotificationModal from './notificationModal';
@@ -32,7 +40,7 @@ export function useNotificationsContext(): NotificationsContext {
 }
 
 export interface Props {
-  children: ReactElement;
+  children: ReactNode | ReactNode[];
 }
 
 export default function NotificationsWindow({ children }: Props): ReactElement {

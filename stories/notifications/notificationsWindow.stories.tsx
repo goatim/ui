@@ -111,6 +111,8 @@ function App(): ReactElement {
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
   <NotificationsWindow>
     <App />
+
+    <p>Hello World!</p>
   </NotificationsWindow>
 );
 
