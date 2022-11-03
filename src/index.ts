@@ -192,6 +192,7 @@ import StripeCreditCardForm, { NewStripeCard } from './payment/stripeCreditCardF
 import StripePaymentMethodSelector from './payment/stripePaymentMethodSelector';
 import NotificationIcon from './notifications/notificationIcon';
 import NotificationThumbnail from './notifications/notificationThumbnail';
+import NotificationList from './notifications/notificationList';
 import NotificationsContext, {
   useNotificationsContext,
   NotificationsContextState,
@@ -487,7 +488,13 @@ export type { CreditCardFields, NewStripeCard };
  * Notifications
  */
 
-export { NotificationIcon, NotificationThumbnail, NotificationsContext, useNotificationsContext };
+export {
+  NotificationIcon,
+  NotificationThumbnail,
+  NotificationList,
+  NotificationsContext,
+  useNotificationsContext,
+};
 
 export type { NotificationsContextState };
 
