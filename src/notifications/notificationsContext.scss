@@ -1,3 +1,5 @@
+@use "~@cezembre/fronts/dist/layouts";
+
 @keyframes notification-appear {
   0% {
     opacity: 0;
@@ -24,6 +26,7 @@
   position: relative;
 
   > .notifications {
+    @include layouts.modal;
     position: absolute;
     top: 20px;
     right: 20px;
