@@ -1,15 +1,15 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor, ReactElement, useEffect } from 'react';
 import { Notification, OrderMatchEventPayload, Club, Player, Asset } from '@fridaygame/client';
-import NotificationsWindow, {
+import NotificationsContext, {
   useNotificationsContext,
 } from '../../src/notifications/notificationsContext';
 
 interface Props {}
 
 export default {
-  title: 'Notifications/NotificationsWindow',
-  component: NotificationsWindow,
+  title: 'Notifications/NotificationsContext',
+  component: NotificationsContext,
 } as ComponentMeta<JSXElementConstructor<Props>>;
 
 const club: Club = {
@@ -93,7 +93,7 @@ function App(): ReactElement {
     pushNotification(notification1, {
       onDismiss: () => console.log('Dismiss !'),
       onClick: () => console.log('Click !'),
-      timeout: 1000000,
+      timeout: 10000,
     });
     pushNotification(notification2);
     setTimeout(() => {
@@ -109,11 +109,11 @@ function App(): ReactElement {
 }
 
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
-  <NotificationsWindow>
+  <NotificationsContext>
     <App />
 
     <p>Hello World!</p>
-  </NotificationsWindow>
+  </NotificationsContext>
 );
 
 export const Default = Template.bind({});

@@ -121,23 +121,25 @@ export default function NotificationsContext({ children }: Props): ReactElement 
   return (
     <notificationsContext.Provider value={value}>
       {children}
-      <div className="friday-ui-notifications">
-        {notificationsModals?.map((notificationModal) => (
-          <div
-            className={`notification${notificationModal.hidden ? ' hidden' : ''}`}
-            key={notificationModal.id}>
-            <NotificationModal
-              notification={notificationModal.notification}
-              onDismiss={() => popNotification(notificationModal.id, true)}
-              onClick={notificationModal.onClick}
-              type={notificationModal.type}
-              to={notificationModal.to}
-              target={notificationModal.target}
-              href={notificationModal.href}
-            />
-          </div>
-        ))}
-      </div>
+      {notificationsModals.length ? (
+        <div className="friday-ui-notifications">
+          {notificationsModals.map((notificationModal) => (
+            <div
+              className={`notification${notificationModal.hidden ? ' hidden' : ''}`}
+              key={notificationModal.id}>
+              <NotificationModal
+                notification={notificationModal.notification}
+                onDismiss={() => popNotification(notificationModal.id, true)}
+                onClick={notificationModal.onClick}
+                type={notificationModal.type}
+                to={notificationModal.to}
+                target={notificationModal.target}
+                href={notificationModal.href}
+              />
+            </div>
+          ))}
+        </div>
+      ) : null}
     </notificationsContext.Provider>
   );
 }
