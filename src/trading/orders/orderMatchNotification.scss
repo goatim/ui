@@ -2,7 +2,7 @@
 @use '../../styles/fonts';
 
 .friday-ui-order-match-notification {
-  > p {
+  > span {
     @include fonts.Inter(.8em, colors.$blue);
     margin: 0;
   }

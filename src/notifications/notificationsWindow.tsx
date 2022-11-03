@@ -1,15 +1,16 @@
 import { ReactElement, useState, createContext, useMemo, useContext, useCallback } from 'react';
 import { Notification } from '@fridaygame/client';
+import { WrapperProps } from '@cezembre/fronts';
 import NotificationModal from './notificationModal';
 
-export interface NotificationModalState {
+export interface NotificationModalState extends WrapperProps {
   notification: Notification;
-  dismissed: boolean;
-  timeout?: NodeJS.Timeout;
+  hidden: boolean;
+  timeout?: NodeJS.Timeout | null;
   onDismiss?: () => unknown;
 }
 
-export interface PushNotificationOptions {
+export interface PushNotificationOptions extends WrapperProps {
   timeout?: number;
   onDismiss?: () => unknown;
 }
@@ -37,7 +38,7 @@ export interface Props {
 export default function NotificationsWindow({ children }: Props): ReactElement {
   const [notificationsModals, setNotificationsModals] = useState<NotificationModalState[]>([]);
 
-  const popNotification = useCallback((id: string) => {
+  const removeNotification = useCallback((id: string) => {
     setNotificationsModals((prevNotificationModals: NotificationModalState[]) => {
       const cns = [...prevNotificationModals];
       const i = cns.findIndex((_n) => _n.notification.id === id);
@@ -48,28 +49,42 @@ export default function NotificationsWindow({ children }: Props): ReactElement {
     });
   }, []);
 
-  const dismissNotification = useCallback(
+  const popNotification = useCallback(
     (id: string) => {
       setNotificationsModals((prevNotificationsModals: NotificationModalState[]) => {
         const newNotificationsModals = [...prevNotificationsModals];
         const i = newNotificationsModals.findIndex((_n) => _n.notification.id === id);
         if (i !== -1) {
-          newNotificationsModals[i].dismissed = true;
-          if (newNotificationsModals[i].timeout) {
-            clearTimeout(newNotificationsModals[i].timeout);
+          newNotificationsModals[i].hidden = true;
+          const { timeout } = newNotificationsModals[i];
+          if (timeout) {
+            clearTimeout(timeout);
+            newNotificationsModals[i].timeout = null;
           }
-          newNotificationsModals[i].timeout = setTimeout(() => popNotification(id), 400);
 
-          const { onDismiss } = newNotificationsModals[i];
-
-          if (onDismiss) {
-            onDismiss();
-          }
+          newNotificationsModals[i].timeout = setTimeout(() => removeNotification(id), 400);
         }
         return newNotificationsModals;
       });
     },
-    [popNotification],
+    [removeNotification],
+  );
+
+  const dismissNotification = useCallback(
+    (id: string) => {
+      popNotification(id);
+
+      const i = notificationsModals.findIndex((_n) => _n.notification.id === id);
+
+      if (i !== -1) {
+        const { onDismiss } = notificationsModals[i];
+
+        if (onDismiss) {
+          onDismiss();
+        }
+      }
+    },
+    [notificationsModals, popNotification],
   );
 
   const pushNotification = useCallback(
@@ -78,13 +93,18 @@ export default function NotificationsWindow({ children }: Props): ReactElement {
         ...ns,
         {
           notification,
-          dismissed: false,
-          timeout: setTimeout(() => dismissNotification(notification.id), options?.timeout || 5000),
+          hidden: false,
+          timeout: setTimeout(() => popNotification(notification.id), options?.timeout || 5000),
           onDismiss: options?.onDismiss,
+          onClick: options?.onClick,
+          type: options?.type,
+          to: options?.to,
+          target: options?.target,
+          href: options?.href,
         },
       ]);
     },
-    [dismissNotification],
+    [popNotification],
   );
 
   const value = useMemo<NotificationsContext>(
@@ -101,12 +121,18 @@ export default function NotificationsWindow({ children }: Props): ReactElement {
       <div className="friday-ui-notifications-window">
         {children}
         <div className="notifications">
-          {notificationsModals?.map(({ notification, dismissed }) => (
-            <div className={`notification${dismissed ? ' dismissed' : ''}`} key={notification.id}>
+          {notificationsModals?.map((notificationModal) => (
+            <div
+              className={`notification${notificationModal.hidden ? ' hidden' : ''}`}
+              key={notificationModal.notification.id}>
               <NotificationModal
-                notification={notification}
-                onDismiss={() => dismissNotification(notification.id)}
-                // on
+                notification={notificationModal.notification}
+                onDismiss={() => dismissNotification(notificationModal.notification.id)}
+                onClick={notificationModal.onClick}
+                type={notificationModal.type}
+                to={notificationModal.to}
+                target={notificationModal.target}
+                href={notificationModal.href}
               />
             </div>
           ))}

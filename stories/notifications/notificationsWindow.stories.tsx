@@ -90,7 +90,11 @@ function App(): ReactElement {
   const { pushNotification } = useNotificationsContext();
 
   useEffect(() => {
-    pushNotification(notification1, { onDismiss: () => console.log('Aqui') });
+    pushNotification(notification1, {
+      onDismiss: () => console.log('Dismiss !'),
+      onClick: () => console.log('Click !'),
+      timeout: 1000000,
+    });
     pushNotification(notification2);
     setTimeout(() => {
       pushNotification(notification3);

@@ -1,25 +1,38 @@
 import { ReactElement, useMemo } from 'react';
 import { Notification, OrderMatchEventPayload } from '@fridaygame/client';
-import { formatRelativeDateTime } from '@cezembre/fronts';
+import { formatRelativeDateTime, Wrapper, WrapperProps } from '@cezembre/fronts';
 import NotificationIcon from './notificationIcon';
 import OrderMatchNotification from '../trading/orders/orderMatchNotification';
 
-export interface Props {
+export interface Props extends WrapperProps {
   notification: Notification;
 }
 
-export default function NotificationThumbnail({ notification }: Props): ReactElement {
+export default function NotificationThumbnail({
+  notification,
+  onClick,
+  type,
+  to,
+  target,
+  href,
+}: Props): ReactElement {
   const body = useMemo<ReactElement>(() => {
     switch (notification.event) {
       case 'order_match':
         return <OrderMatchNotification payload={notification.payload as OrderMatchEventPayload} />;
       default:
-        return <p>...</p>;
+        return <span />;
     }
   }, [notification]);
 
   return (
-    <div className="friday-ui-notification-thumbnail">
+    <Wrapper
+      className="friday-ui-notification-thumbnail"
+      onClick={onClick}
+      type={type}
+      to={to}
+      target={target}
+      href={href}>
       <div className="icon">
         <NotificationIcon event={notification.event} />
       </div>
@@ -29,6 +42,6 @@ export default function NotificationThumbnail({ notification }: Props): ReactEle
           <span className="creation">{formatRelativeDateTime(notification.creation)}</span>
         ) : null}
       </div>
-    </div>
+    </Wrapper>
   );
 }

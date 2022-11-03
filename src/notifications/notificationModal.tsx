@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import { Notification } from '@fridaygame/client';
-import { Wrapper, WrapperProps } from '@cezembre/fronts';
+import { WrapperProps } from '@cezembre/fronts';
 import NotificationThumbnail from './notificationThumbnail';
 import Icon from '../general/icon';
 
@@ -18,20 +18,21 @@ export default function NotificationModal({
   onDismiss,
 }: Props): ReactElement {
   return (
-    <Wrapper
-      className="friday-ui-notification-modal"
-      to={to}
-      onClick={onClick}
-      href={href}
-      target={target}>
+    <div className="friday-ui-notification-modal">
       <div className="notification">
-        <NotificationThumbnail notification={notification} />
+        <NotificationThumbnail
+          notification={notification}
+          to={to}
+          onClick={onClick}
+          href={href}
+          target={target}
+        />
       </div>
       {onDismiss ? (
         <button className="dismiss" onClick={onDismiss}>
           <Icon name="x" />
         </button>
       ) : null}
-    </Wrapper>
+    </div>
   );
 }
