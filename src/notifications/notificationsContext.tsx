@@ -25,7 +25,7 @@ export interface PushNotificationOptions extends WrapperProps {
 
 export interface NotificationsContextState {
   notificationsModals: NotificationModalState[];
-  popNotification(id: string): void;
+  popNotification(id: string, dismissed?: boolean): void;
   pushNotification(notification: Notification, options?: PushNotificationOptions): void;
 }
 
@@ -58,7 +58,7 @@ export default function NotificationsContext({ children }: Props): ReactElement 
   }, []);
 
   const popNotification = useCallback(
-    (id: string) => {
+    (id: string, dismissed = false) => {
       setNotificationsModals((prevNotificationsModals: NotificationModalState[]) => {
         const newNotificationsModals = [...prevNotificationsModals];
         const i = newNotificationsModals.findIndex((_n) => _n.notification.id === id);
@@ -71,28 +71,19 @@ export default function NotificationsContext({ children }: Props): ReactElement 
           }
 
           newNotificationsModals[i].timeout = setTimeout(() => removeNotification(id), 400);
+
+          if (dismissed) {
+            const { onDismiss } = newNotificationsModals[i];
+
+            if (onDismiss) {
+              onDismiss();
+            }
+          }
         }
         return newNotificationsModals;
       });
     },
     [removeNotification],
-  );
-
-  const dismissNotification = useCallback(
-    (id: string) => {
-      popNotification(id);
-
-      const i = notificationsModals.findIndex((_n) => _n.notification.id === id);
-
-      if (i !== -1) {
-        const { onDismiss } = notificationsModals[i];
-
-        if (onDismiss) {
-          onDismiss();
-        }
-      }
-    },
-    [notificationsModals, popNotification],
   );
 
   const pushNotification = useCallback(
@@ -135,7 +126,7 @@ export default function NotificationsContext({ children }: Props): ReactElement 
               key={notificationModal.notification.id}>
               <NotificationModal
                 notification={notificationModal.notification}
-                onDismiss={() => dismissNotification(notificationModal.notification.id)}
+                onDismiss={() => popNotification(notificationModal.notification.id, true)}
                 onClick={notificationModal.onClick}
                 type={notificationModal.type}
                 to={notificationModal.to}
