@@ -487,14 +487,9 @@ export type { CreditCardFields, NewStripeCard };
  * Notifications
  */
 
-export {
-  NotificationIcon,
-  NotificationThumbnail,
-  NotificationsContextState,
-  useNotificationsContext,
-};
+export { NotificationIcon, NotificationThumbnail, NotificationsContext, useNotificationsContext };
 
-export type { NotificationsContext };
+export type { NotificationsContextState };
 
 /**
  * Onboarding
