@@ -1,6 +1,6 @@
 @use "~@cezembre/fronts/dist/layouts";
 
-@keyframes notification-appear {
+@keyframes friday-ui-notification-appear {
   0% {
     opacity: 0;
     transform: translateX(100%);
@@ -11,7 +11,7 @@
   }
 }
 
-@keyframes notification-disappear {
+@keyframes friday-ui-notification-disappear {
   0% {
     opacity: 1;
     transform: translateY(0);
@@ -33,14 +33,14 @@
 
   > .notification {
     margin-top: 10px;
-    animation: notification-appear 400ms forwards;
+    animation: friday-ui-notification-appear 400ms forwards;
 
     &:first-of-type {
       margin: 0;
     }
 
     &.hidden {
-      animation: notification-disappear 400ms forwards;
+      animation: friday-ui-notification-disappear 400ms forwards;
     }
   }
 }

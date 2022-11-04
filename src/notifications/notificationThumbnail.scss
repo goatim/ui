@@ -8,7 +8,15 @@
   border: none;
   outline: none;
   text-align: left;
-  padding: 5px;
+  padding: 10px;
+  background: white;
+  transition: background linear 100ms;
+
+  &.colored {
+    &.unread {
+      background: rgba(colors.$gold, .1);
+    }
+  }
 
   > .container {
     margin-left: 10px;

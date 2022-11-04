@@ -6,10 +6,12 @@ import OrderMatchNotification from '../trading/orders/orderMatchNotification';
 
 export interface Props extends WrapperProps {
   notification: Notification;
+  colored?: boolean;
 }
 
 export default function NotificationThumbnail({
   notification,
+  colored = false,
   onClick,
   type,
   to,
@@ -25,9 +27,27 @@ export default function NotificationThumbnail({
     }
   }, [notification]);
 
+  const className = useMemo<string>(() => {
+    const classNames: string[] = ['friday-ui-notification-thumbnail'];
+
+    if (colored) {
+      classNames.push('colored');
+    }
+
+    if (!notification.is_read) {
+      classNames.push('unread');
+    }
+
+    if (!notification.is_seen) {
+      classNames.push('unseen');
+    }
+
+    return classNames.join(' ');
+  }, [colored, notification.is_read, notification.is_seen]);
+
   return (
     <Wrapper
-      className="friday-ui-notification-thumbnail"
+      className={className}
       onClick={onClick}
       type={type}
       to={to}
