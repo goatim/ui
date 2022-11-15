@@ -1,0 +1,19 @@
+@use '../../styles/fonts';
+@use '../../styles/colors';
+
+.friday-ui-match-live {
+  max-width: 330px;
+  width: 100%;
+  height: 180px;
+  background: colors.$blue-80;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  > .label {
+    @include fonts.Inter(.8em, white, bold);
+    text-transform: uppercase;
+    letter-spacing: .05em;
+  }
+}

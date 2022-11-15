@@ -1,0 +1,10 @@
+@use '../styles/fonts';
+@use '../styles/colors';
+
+.friday-ui-tag {
+  display: inline-block;
+  @include fonts.Inter(.8em, colors.$electric-blue, 600);
+  background: rgba(colors.$electric-blue, .1);
+  padding: 8px 15px;
+  border-radius: 20px;
+}

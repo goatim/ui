@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { ReactElement, useMemo } from 'react';
 import { Club } from '@fridaygame/client';
 import { To } from 'react-router-dom';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
@@ -11,12 +11,15 @@ export type ClubThumbnailTheme = 'dark' | 'light';
 
 export type ClubThumbnailDisposition = 'inline' | 'logo';
 
+export type ClubThumbnailShape = 'text' | 'box';
+
 export interface Props extends WrapperProps {
   club: Club;
   size?: ClubThumbnailSize;
   theme?: ClubThumbnailTheme;
   leagueTo?: To;
   disposition?: ClubThumbnailDisposition;
+  shape?: ClubThumbnailShape;
   title?: boolean;
   showLeague?: boolean;
 }
@@ -31,16 +34,18 @@ export default function ClubThumbnail({
   target,
   leagueTo,
   disposition = 'inline',
+  shape = 'text',
   title = false,
   showLeague = false,
 }: Props): ReactElement {
+  const className = useMemo<string>(() => {
+    const classNames = ['friday-ui-club-thumbnail', size, theme, disposition, shape];
+
+    return classNames.join(' ');
+  }, [disposition, shape, size, theme]);
+
   return (
-    <Wrapper
-      className={`friday-ui-club-thumbnail ${size} ${theme} ${disposition}`}
-      to={to}
-      onClick={onClick}
-      href={href}
-      target={target}>
+    <Wrapper className={className} to={to} onClick={onClick} href={href} target={target}>
       <div className="body">
         <ClubIcon icon={club.icon} size={size} />
         {title ? <h1 className="name">{club.name}</h1> : <span className="name">{club.name}</span>}

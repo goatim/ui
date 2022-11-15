@@ -2,7 +2,11 @@ import { ReactElement, MouseEvent, useMemo } from 'react';
 import { To } from 'react-router';
 import { Club } from '@fridaygame/client';
 import { Property } from 'csstype';
-import ClubThumbnail, { ClubThumbnailDisposition, ClubThumbnailSize } from './clubThumbnail';
+import ClubThumbnail, {
+  ClubThumbnailDisposition,
+  ClubThumbnailShape,
+  ClubThumbnailSize,
+} from './clubThumbnail';
 
 export interface Props {
   clubs?: Club[];
@@ -11,6 +15,7 @@ export interface Props {
   clubTo?: (club: Club) => To;
   size?: ClubThumbnailSize;
   disposition?: ClubThumbnailDisposition;
+  shape?: ClubThumbnailShape;
   showLeagues?: boolean;
 }
 
@@ -21,6 +26,7 @@ export default function ClubList({
   clubTo,
   size = 'medium',
   disposition = 'inline',
+  shape = 'text',
   showLeagues = false,
 }: Props): ReactElement {
   const justifyItems = useMemo<Property.JustifyItems>(() => {
@@ -42,6 +48,7 @@ export default function ClubList({
               to={clubTo ? clubTo(club) : undefined}
               size={size}
               disposition={disposition}
+              shape={shape}
               showLeague={showLeagues}
             />
           </div>

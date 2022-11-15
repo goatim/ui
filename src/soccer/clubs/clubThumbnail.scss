@@ -13,9 +13,15 @@
     justify-content: flex-start;
 
     > .name {
-      @include fonts.Inter(1em, colors.$blue, 500);
+      @include fonts.Inter(.8em, colors.$blue, 900);
       padding: 0;
       margin: 0 0 0 .8em;
+      line-height: 1em;
+      max-height: 2em;
+      overflow: hidden;
+      //white-space: nowrap;
+      text-overflow: ellipsis;
+      width: 100%;
     }
   }
 
@@ -26,7 +32,7 @@
     justify-content: center;
   }
 
-  &.small > .body > .name {
+  &.medium > .body > .name {
     font-size: .9em;
   }
 
@@ -43,11 +49,28 @@
   &.logo {
     > .body {
       flex-direction: column;
+      align-items: center;
+      justify-content: center;
 
       > .name {
         margin: .8em 0 0;
         text-align: center;
       }
+    }
+  }
+
+  &.box {
+    padding: 10px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 2px 0 10px rgba(colors.$blue, .1);
+
+    &.medium {
+      padding: 15px;
+    }
+
+    &.big {
+      padding: 20px;
     }
   }
 }

@@ -6,12 +6,14 @@ import ClubThumbnail, {
   ClubThumbnailDisposition,
   ClubThumbnailSize,
   ClubThumbnailTheme,
+  ClubThumbnailShape,
 } from '../../../src/soccer/clubs/clubThumbnail';
 
 interface Props {
   size?: ClubThumbnailSize;
   theme?: ClubThumbnailTheme;
   disposition?: ClubThumbnailDisposition;
+  shape?: ClubThumbnailShape;
   showLeague?: boolean;
   leagueTo?: string;
 }
@@ -28,6 +30,12 @@ export default {
     },
     disposition: {
       options: ['inline', 'logo'],
+      control: {
+        type: 'select',
+      },
+    },
+    shape: {
+      options: ['text', 'box'],
       control: {
         type: 'select',
       },
@@ -73,8 +81,8 @@ const league: League = {
 const club: Club = {
   id: '1',
   league,
-  name: 'Paris Saint-Germain',
-  slug: 'paris-saint-germain',
+  name: 'Paris',
+  slug: 'paris',
   description: '',
   icon: {
     id: '1',
@@ -90,6 +98,7 @@ const Template: ComponentStory<JSXElementConstructor<Props>> = ({
   size,
   theme,
   disposition,
+  shape,
   showLeague,
   leagueTo,
 }: Props) => (
@@ -99,6 +108,7 @@ const Template: ComponentStory<JSXElementConstructor<Props>> = ({
       size={size}
       theme={theme}
       disposition={disposition}
+      shape={shape}
       showLeague={showLeague}
       leagueTo={leagueTo}
     />

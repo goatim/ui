@@ -3,25 +3,19 @@
 
 .friday-ui-match-creator {
   display: flex;
+  align-items: center;
+  justify-content: flex-start;
 
-  > .body {
+  > span {
+    @include fonts.Inter(.8em, rgba(colors.$blue, .5));
     margin-left: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
 
     > span {
-      @include fonts.Inter(.8em, rgba(colors.$blue, .5));
-
-      &.creator {
-        font-weight: bold;
-      }
+      font-weight: bold;
     }
   }
 
   &.light {
-    > .body > span {
-      color: rgba(white, .5);
-    }
+    color: rgba(white, .5);
   }
 }

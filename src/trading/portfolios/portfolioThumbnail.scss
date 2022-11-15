@@ -2,31 +2,40 @@
 @use '../../styles/colors';
 
 .friday-ui-portfolio-thumbnail {
-  background: colors.$blue;
+  background: colors.$light-blue;
   border-radius: 10px;
-  border: solid rgba(white, .2) 2px;
-  outline-offset: -2px;
-  max-width: 400px;
-  width: 100%;
+  display: inline-block;
+  position: relative;
 
   > .header {
     display: flex;
     align-items: flex-start;
-    justify-content: flex-end;
-    padding: 15px 20px;
+    justify-content: space-between;
+    padding: 10px 20px 0;
 
-    > .nb_shares {
+    > .buy-price {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+
+      > .label {
+        @include fonts.label;
+      }
+    }
+
+    > .nb-shares {
       display: flex;
       flex-direction: column;
       align-items: flex-end;
       justify-content: flex-start;
 
       > .label {
-        @include fonts.label-light;
+        @include fonts.label;
       }
 
       > .value {
-        @include fonts.Inter(.9em, white, bold);
+        @include fonts.Inter(.7em, colors.$blue, bold);
       }
     }
   }
@@ -34,63 +43,87 @@
   > .asset {
     display: block;
     text-decoration: none;
-    padding: 0 10px;
+    padding: 5px 10px;
   }
 
-  > .lines {
-    margin-top: 15px;
+  > .details {
+    visibility: hidden;
+    height: 0;
+    transition: height linear 100ms;
 
-    > .line {
+    > .metrics {
       display: flex;
       align-items: flex-start;
       justify-content: space-between;
-      padding: 10px 20px;
+      padding: 5px 20px;
 
-      > .cell {
+      > .dividends {
         display: flex;
         flex-direction: column;
 
         > .label {
-          @include fonts.label-light;
-        }
-
-        &.amount > .label {
+          @include fonts.label;
           padding-bottom: 5px;
         }
+      }
 
-        &.variation {
-          align-items: flex-end;
+      > .gains {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+
+        > .label {
+          @include fonts.label;
+          padding-bottom: 5px;
         }
       }
     }
+
+    > .actions {
+      margin-top: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      > .action {
+        margin-left: 20px;
+
+        &:first-of-type {
+          margin: 0;
+        }
+      }
+    }
+
+    > .quotation {
+      width: 100%;
+      height: 80px;
+      margin-top: 15px;
+    }
+
+    .quotation-placeholder {
+      height: 20px;
+    }
   }
 
-  > .actions {
-    margin-top: 15px;
+  > .footer {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-bottom: 10px;
+    padding-top: 5px;
+  }
 
-    > .action {
-      margin-left: 20px;
-
-      &:first-of-type {
-        margin: 0;
-      }
+  &.show-details {
+    > .details {
+      visibility: visible;
+      height: auto;
     }
-  }
 
-  > .quotation {
-    width: 100%;
-    height: 80px;
-    margin-top: 15px;
-  }
-
-  .quotation-placeholder {
-    height: 20px;
-  }
-
-  &.narrow {
-    max-width: 300px;
+    > .footer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
   }
 }

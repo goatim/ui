@@ -33,7 +33,9 @@
   }
 
   > .title {
-    @include fonts.Inter(1.5em, colors.$blue, 900);
+    @include fonts.Inter(1.5em, colors.$blue, bold);
+    font-style: italic;
+    text-transform: uppercase;
     margin: 0;
     padding: 0;
   }

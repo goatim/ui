@@ -44,6 +44,7 @@ import {
   PushModalFunction,
 } from './general/modal';
 import Gutter from './general/gutter';
+import Tag from './general/tag';
 import TradingBanner from './navigation/tradingBanner';
 import UserPicture, { UserPictureSize, UserPictureTheme } from './auth/users/userPicture';
 import UserThumbnail, { UserThumbnailSize, UserThumbnailTheme } from './auth/users/userThumbnail';
@@ -115,6 +116,9 @@ import DateTimeThumbnail, { DateTimeThumbnailTheme } from './general/dateTimeThu
 import MatchCreator from './soccer/matches/matchCreator';
 import MatchStatusThumbnail from './soccer/matches/matchStatusThumbnail';
 import MatchIcon from './soccer/matches/matchIcon';
+import MatchParticipants from './soccer/matches/matchParticipants';
+import MatchLive from './soccer/matches/matchLive';
+import MatchAction from './soccer/matches/matchAction';
 import MatchThumbnail from './soccer/matches/matchThumbnail';
 import MatchBoard, { MatchBoardTheme } from './soccer/matches/matchBoard';
 import PositionPlayerSelector from './soccer/compositions/positionPlayerSelector';
@@ -246,6 +250,7 @@ export {
   Upload,
   useModals,
   Gutter,
+  Tag,
 };
 
 export type {
@@ -378,6 +383,9 @@ export {
   MatchStatusThumbnail,
   MatchIcon,
   MatchBoard,
+  MatchParticipants,
+  MatchLive,
+  MatchAction,
   PositionPlayerSelector,
   CompositionPositionMapField,
   CompositionPositionListField,

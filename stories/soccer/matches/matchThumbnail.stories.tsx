@@ -1,14 +1,23 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import { Match, Wallet, User } from '@fridaygame/client';
+import { Match, Wallet, User, MatchStatus } from '@fridaygame/client';
 import MatchThumbnail from '../../../src/soccer/matches/matchThumbnail';
 
-interface Props {}
+interface Props {
+  status?: MatchStatus;
+}
 
 export default {
   title: 'Soccer/MatchThumbnail',
   component: MatchThumbnail,
-  argTypes: {},
+  argTypes: {
+    status: {
+      options: ['planned', 'ongoing', 'passed', 'cancelled'],
+      control: {
+        type: 'select',
+      },
+    },
+  },
 } as ComponentMeta<JSXElementConstructor<Props>>;
 
 const owner: User = {
@@ -37,21 +46,14 @@ const match: Match = {
   creator: wallet,
   title: 'Match de la semaine',
   slug: 'match-de-la-semaine',
-  // icon: {
-  //   id: 'me_ddqHH',
-  //   thumbnail_url: 'https://picsum.photos/200',
-  //   medium_url: 'https://picsum.photos/400',
-  // },
-  beginning: '2022-06-29T09:54:52.696+02:00',
-  end: '2022-06-20T09:54:52.696+02:00',
+  beginning: '2022-10-29T09:54:52.696+02:00',
+  end: '2023-06-20T09:54:52.696+02:00',
   is_public: true,
   nb_participants: 213,
 };
 
-const participants = Array(24).fill(wallet);
-
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
-  <MatchThumbnail match={match} participants={participants} />
+const Template: ComponentStory<JSXElementConstructor<Props>> = ({ status }: Props) => (
+  <MatchThumbnail match={{ ...match, status }} />
 );
 
 export const Default = Template.bind({});

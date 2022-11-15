@@ -1,7 +1,7 @@
 import { MouseEvent, ReactElement } from 'react';
 import { To } from 'react-router';
 import Composition from '@fridaygame/client/dist/soccer/compositions/model';
-import { Match, useMatchLiveStatus } from '@fridaygame/client';
+import { Match } from '@fridaygame/client';
 import CompositionRanking from '../compositions/compositionRanking';
 import Button from '../../general/button';
 
@@ -26,8 +26,6 @@ export default function MatchRanking({
   onClickCurrentComposition,
   theme = 'dark',
 }: Props): ReactElement {
-  const liveStatus = useMatchLiveStatus(match.beginning, match.end, match.status);
-
   return (
     <div className={`friday-ui-match-ranking ${theme}`}>
       <div className="header">
@@ -43,7 +41,7 @@ export default function MatchRanking({
         />
       </div>
 
-      {(toComposition || onClickComposition) && liveStatus === 'planned' ? (
+      {(toComposition || onClickComposition) && match.status === 'planned' ? (
         <div className="action">
           <Button
             to={toCurrentComposition}

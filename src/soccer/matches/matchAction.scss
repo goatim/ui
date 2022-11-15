@@ -1,0 +1,23 @@
+@use '../../styles/fonts';
+@use '../../styles/colors';
+
+.friday-ui-match-action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  > span {
+    @include fonts.Inter(.8em, rgba(colors.$blue, .2), bold);
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  > * {
+    margin-top: 20px;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+}

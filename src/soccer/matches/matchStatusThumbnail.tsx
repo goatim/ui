@@ -1,49 +1,29 @@
-import { ReactElement } from 'react';
-import { DateTime } from 'luxon';
-import { MatchStatus, useMatchLiveStatus } from '@fridaygame/client';
-import DateTimeThumbnail from '../../general/dateTimeThumbnail';
-
-export type MatchStatusThumbnailTheme = 'dark' | 'light';
+import { ReactElement, useMemo } from 'react';
+import { MatchStatus } from '@fridaygame/client';
 
 export interface Props {
   status?: MatchStatus;
-  beginning?: DateTime | string;
-  end?: DateTime | string;
-  theme?: MatchStatusThumbnailTheme;
 }
 
-export default function MatchStatusThumbnail({
-  status,
-  beginning,
-  end,
-  theme = 'dark',
-}: Props): ReactElement {
-  const liveStatus = useMatchLiveStatus(beginning, end, status);
+export default function MatchStatusThumbnail({ status }: Props): ReactElement {
+  const textualStatus = useMemo<string>(() => {
+    switch (status) {
+      case 'planned':
+        return 'Fais ta composition !';
+      case 'ongoing':
+        return 'Match en cours ...';
+      case 'passed':
+        return 'Match terminé';
+      case 'cancelled':
+      default:
+        return 'Match annulé';
+    }
+  }, [status]);
 
   return (
-    <div className={`friday-ui-match-status-thumbnail ${theme}`}>
-      {liveStatus === 'planned' ? (
-        <DateTimeThumbnail
-          theme={theme}
-          label="Coup d'envoi"
-          dateTime={beginning}
-          countdown
-          align="center"
-        />
-      ) : null}
-
-      {liveStatus === 'ongoing' ? (
-        <DateTimeThumbnail
-          theme={theme}
-          label="Coup de sifflet final"
-          dateTime={end}
-          countdown
-          align="center"
-        />
-      ) : null}
-
-      {liveStatus === 'passed' ? <span className="label">Match terminé !</span> : null}
-      {liveStatus === 'cancelled' ? <span className="label">Match annulé !</span> : null}
+    <div className={`friday-ui-match-status-thumbnail ${status}`}>
+      <div className="indicator" />
+      <span>{textualStatus}</span>
     </div>
   );
 }
