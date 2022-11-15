@@ -36,8 +36,11 @@ export default function MatchAction({
             onClick={onCompositionClick}
             href={compositionHref}
             target={compositionTarget}>
-            Compose ton équipe et gagne des dividendes grâce aux performances réelles de tes joueurs
+            Faire ma composition
           </Button>
+          <span>
+            Compose ton équipe et gagne des dividendes grâce aux performances réelles de tes joueurs
+          </span>
         </div>
       );
     case 'ongoing':
