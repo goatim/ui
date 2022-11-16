@@ -16,6 +16,8 @@
   }
 
   &.light {
-    color: rgba(white, .5);
+    > span {
+      color: rgba(white, .5);
+    }
   }
 }
