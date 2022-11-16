@@ -29,7 +29,7 @@ export default function LeagueCarousel({
         <Icon name="soccer-ball" />
       </div>
       <div className="leagues">
-        {leagues?.map((league) => (
+        {leagues?.slice(0, 1).map((league) => (
           <div className="league" key={league.id}>
             <LeagueOverview
               league={league}

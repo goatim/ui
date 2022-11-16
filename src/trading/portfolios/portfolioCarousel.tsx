@@ -13,7 +13,7 @@ export default function PortfolioCarousel({ portfolios, size }: Props): ReactEle
   return (
     <div className={`friday-ui-portfolio-carousel ${size}`}>
       <div className="portfolios">
-        <PortfolioList portfolios={portfolios} />
+        <PortfolioList portfolios={portfolios?.slice(0, 4)} />
       </div>
     </div>
   );

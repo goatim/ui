@@ -38,7 +38,7 @@ export default function LeagueOverview({
       {league.clubs?.length ? (
         <div className="clubs">
           <ClubList
-            clubs={league.clubs}
+            clubs={league.clubs.slice(0, 6)}
             shape="box"
             columns={clubColumns}
             clubTo={clubTo}
