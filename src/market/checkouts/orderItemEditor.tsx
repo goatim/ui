@@ -21,7 +21,7 @@ export interface OrderItemEditorFields extends FormFields {
   order_type?: OrderType;
   price_limit?: number;
   nb_shares?: number;
-  booster?: string;
+  booster_factory?: string;
 }
 
 export type OrderItemEditorSize = 'narrow' | 'big';
@@ -143,7 +143,7 @@ export default function OrderItemEditor({
 
           <div className="boosters">
             <Field
-              name="booster"
+              name="booster_factory"
               component={Radio}
               options={boosterFactories.map((boosterFactory) => ({
                 value: boosterFactory.id,
