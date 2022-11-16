@@ -91,12 +91,9 @@ import LeagueThumbnail, {
   LeagueThumbnailSize,
   LeagueThumbnailTheme,
 } from './soccer/leagues/leagueThumbnail';
+import LeagueCarousel, { LeagueCarouselSize } from './soccer/leagues/leagueCarousel';
 import ClubIcon, { ClubIconSize } from './soccer/clubs/clubIcon';
-import ClubThumbnail, {
-  ClubThumbnailSize,
-  ClubThumbnailTheme,
-  ClubThumbnailDisposition,
-} from './soccer/clubs/clubThumbnail';
+import ClubThumbnail, { ClubThumbnailSize, ClubThumbnailTheme } from './soccer/clubs/clubThumbnail';
 import ClubList from './soccer/clubs/clubList';
 import PlayerThumbnail, {
   PlayerThumbnailSize,
@@ -120,6 +117,7 @@ import MatchParticipants from './soccer/matches/matchParticipants';
 import MatchLive from './soccer/matches/matchLive';
 import MatchAction from './soccer/matches/matchAction';
 import MatchThumbnail from './soccer/matches/matchThumbnail';
+import MatchCarousel, { MatchCarouselSize } from './soccer/matches/matchCarousel';
 import MatchBoard, { MatchBoardTheme } from './soccer/matches/matchBoard';
 import PositionPlayerSelector from './soccer/compositions/positionPlayerSelector';
 import CompositionPositionMapField, {
@@ -174,6 +172,7 @@ import PortfolioThumbnail, {
   PortfolioThumbnailSize,
 } from './trading/portfolios/portfolioThumbnail';
 import PortfolioList from './trading/portfolios/portfolioList';
+import PortfolioCarousel, { PortfolioCarouselSize } from './trading/portfolios/portfolioCarousel';
 import QuotationHistoryGraph, {
   DataPoint,
   QuotationHistoryGraphTheme,
@@ -369,6 +368,7 @@ export type {
 export {
   LeagueIcon,
   LeagueThumbnail,
+  LeagueCarousel,
   ClubIcon,
   ClubThumbnail,
   ClubList,
@@ -379,6 +379,7 @@ export {
   SoccerFieldPosition,
   CompositionPositionMap,
   MatchThumbnail,
+  MatchCarousel,
   MatchCreator,
   MatchStatusThumbnail,
   MatchIcon,
@@ -400,10 +401,10 @@ export type {
   LeagueIconSize,
   LeagueThumbnailSize,
   LeagueThumbnailTheme,
+  LeagueCarouselSize,
   ClubIconSize,
   ClubThumbnailSize,
   ClubThumbnailTheme,
-  ClubThumbnailDisposition,
   PlayerThumbnailSize,
   PlayerThumbnailTheme,
   SoccerFieldTheme,
@@ -418,6 +419,7 @@ export type {
   PhysicalEventThumbnailTheme,
   PhysicalEventTimelineTheme,
   MatchBoardTheme,
+  MatchCarouselSize,
   CompositionRankingTheme,
   SpotlightThumbnailSize,
 };
@@ -444,6 +446,7 @@ export {
   PackModal,
   PortfolioThumbnail,
   PortfolioList,
+  PortfolioCarousel,
   QuotationHistoryGraph,
   TransactionThumbnail,
   AssetList,
@@ -467,6 +470,7 @@ export type {
   IpoThumbnailSize,
   AssetOverviewSize,
   PortfolioThumbnailSize,
+  PortfolioCarouselSize,
   OrderThumbnailSize,
   OrderBookThumbnailSize,
   OrderBookThumbnailTheme,

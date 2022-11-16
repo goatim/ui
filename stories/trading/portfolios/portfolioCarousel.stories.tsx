@@ -1,27 +1,22 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import { Asset, Player, Club, Portfolio } from '@fridaygame/client';
-import PortfolioList from '../../../src/trading/portfolios/portfolioList';
-import { PortfolioThumbnailSize } from '../../../src';
+import { Asset, Club, Player, Portfolio } from '@fridaygame/client';
+import PortfolioCarousel, {
+  PortfolioCarouselSize,
+} from '../../../src/trading/portfolios/portfolioCarousel';
 
 interface Props {
-  length?: number;
-  size?: PortfolioThumbnailSize;
+  size?: PortfolioCarouselSize;
 }
 
 export default {
-  title: 'Trading/PortfolioList',
-  component: PortfolioList,
+  title: 'Trading/PortfolioCarousel',
+  component: PortfolioCarousel,
   argTypes: {
-    length: {
-      control: {
-        type: 'number',
-      },
-    },
     size: {
       control: {
         type: 'select',
-        options: ['narrow', 'normal'],
+        options: ['small', 'medium', 'big'],
       },
     },
   },
@@ -78,12 +73,8 @@ const portfolio: Portfolio = {
   total_variations: 1055,
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ length, size }: Props) => (
-  <PortfolioList portfolios={Array(length).fill(portfolio)} size={size} />
+const Template: ComponentStory<JSXElementConstructor<Props>> = ({ size }: Props) => (
+  <PortfolioCarousel portfolios={[portfolio, portfolio, portfolio, portfolio]} size={size} />
 );
 
 export const Default = Template.bind({});
-
-Default.args = {
-  length: 8,
-};

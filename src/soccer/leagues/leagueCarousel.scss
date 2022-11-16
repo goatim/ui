@@ -1,0 +1,53 @@
+@use '../../styles/colors';
+
+.friday-ui-league-carousel {
+  width: 100%;
+  height: 350px;
+  border-radius: 20px;
+  background: rgba(colors.$electric-blue, .1);
+  position: relative;
+  overflow: hidden;
+
+  > .background {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 400px;
+    width: 400px;
+    z-index: -1;
+    transform: translate3d(-20%, 15%, 0);
+
+    > svg {
+      height: 100%;
+      width: 100%;
+      fill: colors.$electric-blue;
+      opacity: .1;
+    }
+  }
+
+  &.small {
+    height: 500px;
+
+    > .background {
+      height: 550px;
+      width: 550px;
+    }
+  }
+
+  &.big {
+    height: 400px;
+
+    > .background {
+      height: 450px;
+      width: 450px;
+    }
+  }
+
+  > .leagues {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+}

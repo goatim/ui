@@ -3,7 +3,6 @@ import { JSXElementConstructor } from 'react';
 import { Club, League } from '@fridaygame/client';
 import { BrowserRouter } from 'react-router-dom';
 import ClubThumbnail, {
-  ClubThumbnailDisposition,
   ClubThumbnailSize,
   ClubThumbnailTheme,
   ClubThumbnailShape,
@@ -12,7 +11,6 @@ import ClubThumbnail, {
 interface Props {
   size?: ClubThumbnailSize;
   theme?: ClubThumbnailTheme;
-  disposition?: ClubThumbnailDisposition;
   shape?: ClubThumbnailShape;
   showLeague?: boolean;
   leagueTo?: string;
@@ -24,12 +22,6 @@ export default {
   argTypes: {
     size: {
       options: ['small', 'medium', 'big'],
-      control: {
-        type: 'select',
-      },
-    },
-    disposition: {
-      options: ['inline', 'logo'],
       control: {
         type: 'select',
       },
@@ -97,7 +89,6 @@ const club: Club = {
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({
   size,
   theme,
-  disposition,
   shape,
   showLeague,
   leagueTo,
@@ -107,7 +98,6 @@ const Template: ComponentStory<JSXElementConstructor<Props>> = ({
       club={club}
       size={size}
       theme={theme}
-      disposition={disposition}
       shape={shape}
       showLeague={showLeague}
       leagueTo={leagueTo}

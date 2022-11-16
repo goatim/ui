@@ -2,7 +2,7 @@ import { ReactElement } from 'react';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
 import { Image } from '@fridaygame/client';
 
-export type LeagueIconSize = 'small' | 'medium' | 'large';
+export type LeagueIconSize = 'small' | 'medium' | 'big';
 
 export interface Props extends WrapperProps {
   icon?: Image;

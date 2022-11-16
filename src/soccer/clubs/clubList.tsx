@@ -2,11 +2,7 @@ import { ReactElement, MouseEvent, useMemo } from 'react';
 import { To } from 'react-router';
 import { Club } from '@fridaygame/client';
 import { Property } from 'csstype';
-import ClubThumbnail, {
-  ClubThumbnailDisposition,
-  ClubThumbnailShape,
-  ClubThumbnailSize,
-} from './clubThumbnail';
+import ClubThumbnail, { ClubThumbnailShape, ClubThumbnailSize } from './clubThumbnail';
 
 export interface Props {
   clubs?: Club[];
@@ -14,7 +10,6 @@ export interface Props {
   clubOnClick?: (club: Club, event: MouseEvent<HTMLButtonElement>) => unknown;
   clubTo?: (club: Club) => To;
   size?: ClubThumbnailSize;
-  disposition?: ClubThumbnailDisposition;
   shape?: ClubThumbnailShape;
   showLeagues?: boolean;
 }
@@ -25,16 +20,16 @@ export default function ClubList({
   clubOnClick,
   clubTo,
   size = 'medium',
-  disposition = 'inline',
   shape = 'text',
   showLeagues = false,
 }: Props): ReactElement {
   const justifyItems = useMemo<Property.JustifyItems>(() => {
-    if (disposition === 'logo') {
+    if (shape === 'box') {
       return 'center';
     }
     return 'normal';
-  }, [disposition]);
+  }, [shape]);
+
   return (
     <div
       className="friday-ui-club-list"
@@ -47,7 +42,6 @@ export default function ClubList({
               onClick={clubOnClick ? (event) => clubOnClick(club, event) : undefined}
               to={clubTo ? clubTo(club) : undefined}
               size={size}
-              disposition={disposition}
               shape={shape}
               showLeague={showLeagues}
             />

@@ -3,39 +3,34 @@
 
 .friday-ui-league-thumbnail {
   display: flex;
-  justify-content: flex-start;
   align-items: center;
-  text-decoration: none;
-  border: none;
-  font-size: 1em;
+  justify-content: flex-start;
 
-  > h1 {
-    @include fonts.Inter(1.5em, colors.$blue, 900);
-    margin: 15px 0 0;
-    padding: 0;
-  }
-
-  > span {
+  > .name {
     @include fonts.Inter(.8em, colors.$blue, bold);
     margin: 0 0 0 10px;
     padding: 0;
   }
 
-  &.medium > span {
-    font-size: .9em;
+  &.icon {
+    flex-direction: column;
+
+    > .name {
+      margin: 10px 0 0;
+    }
   }
 
-  &.big > span {
+  &.medium > .name {
+    margin-top: 10px;
     font-size: 1em;
   }
 
-  &.full {
-    flex-direction: column;
+  &.big > .name {
+    margin-top: 15px;
+    font-size: 1.5em;
   }
 
-  &.light {
-    > h1, > span {
-      color: white;
-    }
+  &.light > .name {
+    color: white;
   }
 }

@@ -1,21 +1,15 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { Club, League } from '@fridaygame/client';
-import LeagueThumbnail, {
-  LeagueThumbnailShape,
-  LeagueThumbnailSize,
-  LeagueThumbnailTheme,
-} from '../../../src/soccer/leagues/leagueThumbnail';
+import LeagueCarousel, { LeagueCarouselSize } from '../../../src/soccer/leagues/leagueCarousel';
 
 interface Props {
-  size?: LeagueThumbnailSize;
-  shape?: LeagueThumbnailShape;
-  theme?: LeagueThumbnailTheme;
+  size?: LeagueCarouselSize;
 }
 
 export default {
-  title: 'Soccer/LeagueThumbnail',
-  component: LeagueThumbnail,
+  title: 'Soccer/LeagueCarousel',
+  component: LeagueCarousel,
   argTypes: {
     size: {
       options: ['small', 'medium', 'big'],
@@ -23,25 +17,13 @@ export default {
         type: 'select',
       },
     },
-    shape: {
-      options: ['text', 'icon'],
-      control: {
-        type: 'select',
-      },
-    },
-    theme: {
-      options: ['dark', 'light'],
-      control: {
-        type: 'radio',
-      },
-    },
   },
 } as ComponentMeta<JSXElementConstructor<Props>>;
 
 const club: Club = {
   id: '1',
-  name: 'Paris Saint-Germain',
-  slug: 'paris-saint-germain',
+  name: 'Paris',
+  slug: 'paris',
   description: '',
   icon: {
     id: '1',
@@ -73,13 +55,10 @@ const league: League = {
   clubs: new Array(5).fill(club),
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ size, shape, theme }: Props) => (
-  <LeagueThumbnail league={league} size={size} shape={shape} theme={theme} />
+const Template: ComponentStory<JSXElementConstructor<Props>> = ({ size }: Props) => (
+  <LeagueCarousel leagues={[league]} size={size} />
 );
 
 export const Default = Template.bind({});
 
-Default.args = {
-  size: 'small',
-  theme: 'dark',
-};
+Default.args = {};

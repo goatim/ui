@@ -1,41 +1,14 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { Club, League } from '@fridaygame/client';
-import LeagueThumbnail, {
-  LeagueThumbnailShape,
-  LeagueThumbnailSize,
-  LeagueThumbnailTheme,
-} from '../../../src/soccer/leagues/leagueThumbnail';
+import LeagueOverview from '../../../src/soccer/leagues/leagueOverview';
 
-interface Props {
-  size?: LeagueThumbnailSize;
-  shape?: LeagueThumbnailShape;
-  theme?: LeagueThumbnailTheme;
-}
+interface Props {}
 
 export default {
-  title: 'Soccer/LeagueThumbnail',
-  component: LeagueThumbnail,
-  argTypes: {
-    size: {
-      options: ['small', 'medium', 'big'],
-      control: {
-        type: 'select',
-      },
-    },
-    shape: {
-      options: ['text', 'icon'],
-      control: {
-        type: 'select',
-      },
-    },
-    theme: {
-      options: ['dark', 'light'],
-      control: {
-        type: 'radio',
-      },
-    },
-  },
+  title: 'Soccer/LeagueOverview',
+  component: LeagueOverview,
+  argTypes: {},
 } as ComponentMeta<JSXElementConstructor<Props>>;
 
 const club: Club = {
@@ -73,8 +46,8 @@ const league: League = {
   clubs: new Array(5).fill(club),
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ size, shape, theme }: Props) => (
-  <LeagueThumbnail league={league} size={size} shape={shape} theme={theme} />
+const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
+  <LeagueOverview league={league} />
 );
 
 export const Default = Template.bind({});

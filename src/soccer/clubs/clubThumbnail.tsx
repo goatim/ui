@@ -9,8 +9,6 @@ export type ClubThumbnailSize = 'small' | 'medium' | 'big';
 
 export type ClubThumbnailTheme = 'dark' | 'light';
 
-export type ClubThumbnailDisposition = 'inline' | 'logo';
-
 export type ClubThumbnailShape = 'text' | 'box';
 
 export interface Props extends WrapperProps {
@@ -18,7 +16,6 @@ export interface Props extends WrapperProps {
   size?: ClubThumbnailSize;
   theme?: ClubThumbnailTheme;
   leagueTo?: To;
-  disposition?: ClubThumbnailDisposition;
   shape?: ClubThumbnailShape;
   title?: boolean;
   showLeague?: boolean;
@@ -33,16 +30,15 @@ export default function ClubThumbnail({
   href,
   target,
   leagueTo,
-  disposition = 'inline',
   shape = 'text',
   title = false,
   showLeague = false,
 }: Props): ReactElement {
   const className = useMemo<string>(() => {
-    const classNames = ['friday-ui-club-thumbnail', size, theme, disposition, shape];
+    const classNames = ['friday-ui-club-thumbnail', size, theme, shape];
 
     return classNames.join(' ');
-  }, [disposition, shape, size, theme]);
+  }, [shape, size, theme]);
 
   return (
     <Wrapper className={className} to={to} onClick={onClick} href={href} target={target}>
