@@ -30,7 +30,7 @@ export default function MatchCarousel({
         </svg>
       </div>
       <div className="matches">
-        {matches?.map((match) => (
+        {matches?.splice(0, 3).map((match) => (
           <div className="match" key={match.id}>
             <MatchThumbnail
               match={match}

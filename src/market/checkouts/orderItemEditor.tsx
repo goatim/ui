@@ -136,7 +136,7 @@ export default function OrderItemEditor({
         />
       </div>
 
-      {boosterFactories && formState?.values?.order_type === 'buy' ? (
+      {boosterFactories?.length && formState?.values?.order_type === 'buy' ? (
         <div className="booster">
           <h2>Veux-tu ajouter un booster ?</h2>
           <h3>Multiplie tes gains ou tes pertes !</h3>

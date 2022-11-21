@@ -53,7 +53,7 @@ const match: Match = {
 };
 
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({ size }: Props) => (
-  <MatchCarousel matches={[match, match, match]} size={size} />
+  <MatchCarousel matches={[match, match, match, match, match]} size={size} />
 );
 
 export const Default = Template.bind({});
