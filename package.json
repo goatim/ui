@@ -1,7 +1,7 @@
 {
   "name": "@fridaygame/ui",
   "author": "Friday",
-  "version": "0.22.23",
+  "version": "0.22.24",
   "license": "MIT",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
