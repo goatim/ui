@@ -77,7 +77,9 @@ export default function PlayerThumbnail({
         theme={theme}
       />
       <div className="infos">
-        {player.number !== undefined ? <span className="number">{player.number}</span> : null}
+        {player.number !== undefined ? (
+          <span className="position">{player.resolved_short_position}</span>
+        ) : null}
         {player.name ? <span className="name">{player.name}</span> : null}
       </div>
     </Wrapper>

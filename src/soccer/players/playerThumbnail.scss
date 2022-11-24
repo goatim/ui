@@ -11,9 +11,10 @@
   background: none;
 
   > .infos {
-    > .number {
+    > .position {
       @include fonts.Inter(.8em, colors.$blue);
       opacity: .5;
+      text-transform: uppercase;
     }
 
     > .name {
@@ -42,14 +43,10 @@
       margin: 0;
 
       > .number {
+        @include fonts.Inter(.8em, colors.$blue);
+        opacity: .5;
         font-weight: bold;
         margin-right: 5px;
-      }
-
-      > .position {
-        @include fonts.Inter(.7em, colors.$blue, bold);
-        opacity: .5;
-        text-transform: uppercase;
       }
     }
 

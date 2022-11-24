@@ -57,9 +57,10 @@ const player: Player = {
   club,
   name: 'Kylian Mbappé',
   number: 10,
-  position: 'attacking_midfield',
-  side: 'left',
+  position: 'forward',
+  side: 'center',
   resolved_position: 'Attaquant centre',
+  resolved_short_position: 'ATT',
 };
 
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({ size, theme, clubTo }: Props) => (
