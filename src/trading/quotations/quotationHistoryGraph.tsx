@@ -7,7 +7,7 @@ import {
   PointElement,
   LineElement,
   Filler,
-} from 'chart.js';
+} from 'chart.js/auto';
 import 'chartjs-adapter-luxon';
 import { QuotationHistory } from '@fridaygame/client';
 import Icon from '../../general/icon';
