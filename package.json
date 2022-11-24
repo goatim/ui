@@ -107,7 +107,7 @@
   },
   "dependencies": {
     "@stripe/react-stripe-js": "^1.15.0",
-    "chart.js": "^3.9.1",
+    "chart.js": "^4.0.1",
     "chartjs-adapter-luxon": "^1.3.0",
     "csstype": "^3.1.1",
     "lodash": "^4.17.21",
