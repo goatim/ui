@@ -93,7 +93,11 @@ import LeagueThumbnail, {
 } from './soccer/leagues/leagueThumbnail';
 import LeagueCarousel, { LeagueCarouselSize } from './soccer/leagues/leagueCarousel';
 import ClubIcon, { ClubIconSize } from './soccer/clubs/clubIcon';
-import ClubThumbnail, { ClubThumbnailSize, ClubThumbnailTheme } from './soccer/clubs/clubThumbnail';
+import ClubThumbnail, {
+  ClubThumbnailSize,
+  ClubThumbnailTheme,
+  ClubThumbnailShape,
+} from './soccer/clubs/clubThumbnail';
 import ClubList from './soccer/clubs/clubList';
 import PlayerThumbnail, {
   PlayerThumbnailSize,
@@ -118,7 +122,7 @@ import MatchLive from './soccer/matches/matchLive';
 import MatchAction from './soccer/matches/matchAction';
 import MatchThumbnail from './soccer/matches/matchThumbnail';
 import MatchCarousel, { MatchCarouselSize } from './soccer/matches/matchCarousel';
-import MatchBoard, { MatchBoardTheme } from './soccer/matches/matchBoard';
+import MatchBoard, { MatchBoardTheme, MatchBoardSize } from './soccer/matches/matchBoard';
 import PositionPlayerSelector from './soccer/compositions/positionPlayerSelector';
 import CompositionPositionMapField, {
   CompositionPositionMapFieldValue,
@@ -405,6 +409,7 @@ export type {
   ClubIconSize,
   ClubThumbnailSize,
   ClubThumbnailTheme,
+  ClubThumbnailShape,
   PlayerThumbnailSize,
   PlayerThumbnailTheme,
   SoccerFieldTheme,
@@ -419,6 +424,7 @@ export type {
   PhysicalEventThumbnailTheme,
   PhysicalEventTimelineTheme,
   MatchBoardTheme,
+  MatchBoardSize,
   MatchCarouselSize,
   CompositionRankingTheme,
   SpotlightThumbnailSize,

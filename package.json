@@ -14,7 +14,7 @@
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/index.esm.js",
-      "default": "./dist/index.js"
+      "require": "./dist/index.js"
     }
   },
   "keywords": [
