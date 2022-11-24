@@ -10,6 +10,13 @@
   "browser": "dist/index.umd.js",
   "typings": "dist/index.d.ts",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.esm.js",
+      "default": "./dist/index.js"
+    }
+  },
   "keywords": [
     "Friday",
     "React",

@@ -2,7 +2,7 @@
   "include": ["./src/**/*", "./stories/**/*"],
   "exclude": ["dist"],
   "compilerOptions": {
-    "lib": ["esnext"],
+    "lib": ["esnext", "dom", "dom.iterable"],
     "target": "esnext",
     "module": "esnext",
     "moduleResolution": "node",
