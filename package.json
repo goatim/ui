@@ -3,21 +3,28 @@
   "author": "Friday",
   "version": "0.22.26",
   "license": "MIT",
-  "main": "dist/index.esm.js",
-  "module": "dist/index.esm.js",
-  "jsnext:main": "dist/index.esm.js",
-  "browser:min": "dist/index.umd.min.js",
-  "browser": "dist/index.esm.js",
-  "typings": "dist/index.d.ts",
-  "types": "dist/index.d.ts",
   "keywords": [
     "Friday",
     "React",
     "Components"
   ],
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "jsnext:main": "dist/index.esm.js",
+  "browser:min": "dist/index.umd.min.js",
+  "browser": "dist/index.umd.js",
+  "typings": "dist/index.d.ts",
+  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.esm.js",
+      "default": "./dist/index.js"
+    }
+  },
   "engines": {
     "node": ">=10"
   },
