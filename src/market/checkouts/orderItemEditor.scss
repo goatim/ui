@@ -1,6 +1,7 @@
 @use "~@cezembre/fronts/dist/containers";
 @use "../../styles/fonts";
 @use "../../styles/colors";
+@use "../../styles/forms";
 
 .friday-ui-order-item-editor {
   display: flex;
@@ -114,6 +115,14 @@
         margin: 0;
       }
     }
+  }
+
+  > .error {
+    @include forms.error;
+  }
+
+  > .warning {
+    @include forms.warning;
   }
 
   > .bank-proposal {
