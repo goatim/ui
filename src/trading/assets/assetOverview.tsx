@@ -4,7 +4,6 @@ import { To } from 'react-router-dom';
 import QuotationHistoryGraph from '../quotations/quotationHistoryGraph';
 import FridayCoins, { FridayCoinsSize } from '../../market/fridayCoins';
 import PercentageVariation, { PercentageVariationSize } from '../../market/percentageVariation';
-import Button from '../../general/button';
 import ItemEditor, { ItemEditorFields, ItemEditorSize } from '../../market/checkouts/itemEditor';
 import AssetThumbnail, { AssetThumbnailSize } from './assetThumbnail';
 import IpoThumbnail, { IpoThumbnailSize } from '../ipos/ipoThumbnail';
@@ -19,6 +18,8 @@ export interface Props {
   onSubmitItem?: (itemFields: ItemEditorFields) => unknown;
   ipo?: Ipo;
   secondaryTo?: To;
+  bankProposalQuotation?: number;
+  onAcceptBankProposal?: () => unknown;
 }
 
 export default function AssetOverview({
@@ -29,6 +30,8 @@ export default function AssetOverview({
   boosterFactories,
   onSubmitItem,
   ipo,
+  bankProposalQuotation,
+  onAcceptBankProposal,
 }: Props): ReactElement {
   const [orderType, setOrderType] = useState<OrderType | undefined>();
 
@@ -88,7 +91,7 @@ export default function AssetOverview({
   }, [size]);
 
   return (
-    <div className={`friday-ui-asset-overview ${size}`}>
+    <div className={`friday-ui-asset-overview ${size} ${orderType}`}>
       {ipo ? (
         <div className="ipo-banner">
           <IpoThumbnail ipo={ipo} shape="banner" size={ipoThumbnailSize} />
@@ -120,16 +123,20 @@ export default function AssetOverview({
       </div>
 
       <div className="actions">
-        <div className="action">
-          <Button theme="buy" onClick={() => setOrderType('buy')}>
-            Acheter
-          </Button>
-        </div>
-        <div className="action">
-          <Button theme="sell" onClick={() => setOrderType('sell')}>
-            Vendre
-          </Button>
-        </div>
+        <button
+          type="button"
+          onClick={() => setOrderType('buy')}
+          className="buy"
+          id="friday-ui-asset-overview-buy-button">
+          Acheter
+        </button>
+        <button
+          type="button"
+          onClick={() => setOrderType('sell')}
+          className="sell"
+          id="friday-ui-asset-overview-sell-button">
+          Vendre
+        </button>
       </div>
 
       <div className={`item-editor${orderType ? ' active' : ''}`}>
@@ -148,6 +155,8 @@ export default function AssetOverview({
           onSubmit={onSubmitItem}
           onCancel={() => setOrderType(undefined)}
           size={itemEditorSize}
+          bankProposalQuotation={bankProposalQuotation}
+          onAcceptBankProposal={onAcceptBankProposal}
         />
       </div>
     </div>

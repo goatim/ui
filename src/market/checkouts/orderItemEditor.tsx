@@ -15,6 +15,7 @@ import OrderBookThumbnail, {
   OrderBookThumbnailSize,
 } from '../../trading/orders/orderBookThumbnail';
 import BoosterFactoryThumbnail from '../../trading/boosters/boosterFactoryThumbnail';
+import FridayCoins from '../fridayCoins';
 
 export interface OrderItemEditorFields extends FormFields {
   asset?: Asset | string;
@@ -34,6 +35,8 @@ export interface Props {
   onCancel?: () => void;
   label?: string;
   size?: OrderItemEditorSize;
+  bankProposalQuotation?: number;
+  onAcceptBankProposal?: () => unknown;
 }
 
 export default function OrderItemEditor({
@@ -42,8 +45,10 @@ export default function OrderItemEditor({
   boosterFactories,
   onSubmit,
   onCancel,
-  label = 'Continuer',
+  label = 'Valider',
   size = 'big',
+  bankProposalQuotation,
+  onAcceptBankProposal,
 }: Props): ReactElement | null {
   const [formState, setFormState] = useState<FormState<OrderItemEditorFields> | undefined>();
 
@@ -74,18 +79,40 @@ export default function OrderItemEditor({
     }
   }, [size]);
 
+  const className = useMemo<string>(() => {
+    const classNames = ['friday-ui-order-item-editor', size];
+
+    if (formState?.values?.order_type) {
+      classNames.push(formState.values.order_type);
+    }
+
+    return classNames.join(' ');
+  }, [formState?.values?.order_type, size]);
+
   return (
     <Form<OrderItemEditorFields>
       ref={form}
-      className={`friday-ui-order-item-editor ${size}`}
+      className={className}
       onSubmit={onSubmit}
       validate={validate}>
       <h1>
         Placer un ordre
-        {formState?.values?.order_type === 'buy' ? " d'achat" : ' de vente'}
+        <span>{formState?.values?.order_type === 'buy' ? " d'achat" : ' de vente'}</span>
       </h1>
 
-      <h2>C&apos;est l&apos;heure de faire le bon choix !</h2>
+      {formState?.values?.order_type === 'buy' ? (
+        <p>
+          Un ordre d’achat exprime une <b>volonté d’achat</b> d’un certain nombre d’actions à un{' '}
+          <b>prix maximal</b>. Il sera executé entièrement ou en partie lorsqu’un ordre de vente
+          concordant sera placé.
+        </p>
+      ) : (
+        <p>
+          Un ordre de vente exprime une <b>volonté de vente</b> d’un certain nombre d’actions à un{' '}
+          <b>prix minimal</b>. Il sera executé entièrement ou en partie lorsqu’un ordre d’achat
+          concordant sera placé.
+        </p>
+      )}
 
       {initialOrderItem ? (
         <Field
@@ -125,6 +152,14 @@ export default function OrderItemEditor({
             adapter={adaptFridayCoinsAmount}
             increment={100}
           />
+          <div className="total">
+            <span className="label">Total</span>
+            <FridayCoins
+              amount={(formState?.values?.nb_shares || 0) * (formState?.values?.price_limit || 0)}
+              size="medium"
+              theme="darker"
+            />
+          </div>
         </div>
       </div>
 
@@ -135,6 +170,11 @@ export default function OrderItemEditor({
           theme="medium-light"
         />
       </div>
+
+      <p>
+        Le carnet d’ordre t’aide à mesurer <b>l’offre et la demande</b> sur le marché. Il liste les
+        meilleurs ordres d’achat et de vente en attente pour cet actif.
+      </p>
 
       {boosterFactories?.length && formState?.values?.order_type === 'buy' ? (
         <div className="booster">
@@ -157,17 +197,41 @@ export default function OrderItemEditor({
 
       <div className="actions">
         <div className="action">
-          <Button type="button" onClick={onCancel} shape="text">
+          <Button type="button" onClick={onCancel} theme="light">
             Annuler
           </Button>
         </div>
         <div className="action">
-          <Button type="submit">{label}</Button>
+          <Button type="submit" theme={formState?.values?.order_type}>
+            {label}
+          </Button>
         </div>
       </div>
 
       {formState?.error ? <p className="error">{formState.error}</p> : null}
       {formState?.warning ? <p className="warning">{formState.warning}</p> : null}
+
+      {bankProposalQuotation && formState?.values?.nb_shares ? (
+        <div className="bank-proposal">
+          <span className="caption">Sinon Friday t&apos;en propose</span>
+          <div className="quotation">
+            <FridayCoins
+              amount={formState.values.nb_shares * bankProposalQuotation}
+              theme="gold"
+              size="medium"
+            />
+            {formState.values.nb_shares > 1 ? (
+              <span className="multiple">Pour tes {formState.values.nb_shares} actions</span>
+            ) : null}
+          </div>
+          {onAcceptBankProposal ? (
+            <div className="action">
+              <Button theme="gold">Vendre à Friday</Button>
+            </div>
+          ) : null}
+          <p>Besoin d’une vente rapide et assurée ? Friday rachète instantanément tes actions.</p>
+        </div>
+      ) : null}
     </Form>
   );
 }

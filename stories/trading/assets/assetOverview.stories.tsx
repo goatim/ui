@@ -1,6 +1,14 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import { Asset, Player, Club, Booster, Ipo, QuotationHistory } from '@fridaygame/client';
+import {
+  Asset,
+  Player,
+  Club,
+  Booster,
+  Ipo,
+  QuotationHistory,
+  BoosterFactory,
+} from '@fridaygame/client';
 import AssetOverview, { AssetOverviewSize } from '../../../src/trading/assets/assetOverview';
 
 interface Props {
@@ -40,7 +48,7 @@ const player: Player = {
   club,
   name: 'Kylian Mbappé',
   number: 10,
-  position: 'attacking_midfield',
+  position: 'forward',
   side: 'left',
   resolved_position: 'Attaquant centre',
 };
@@ -105,12 +113,12 @@ const asset: Asset = {
   slug: 'kylian-mbappe',
   total_shares: 450,
   quotation: 2750,
-  session_variation: 345,
+  day_variation: 0.123,
   player,
   quotation_history: quotationHistory,
 };
 
-const boosters: Booster[] = [
+const boosterFactories: BoosterFactory[] = [
   {
     id: 'bo_ied5',
     name: 'Pavaaard !',
@@ -144,7 +152,14 @@ const ipo: Ipo = {
 };
 
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({ size }: Props) => (
-  <AssetOverview asset={asset} boosters={boosters} size={size} ipo={ipo} />
+  <AssetOverview
+    asset={asset}
+    boosterFactories={boosterFactories}
+    size={size}
+    ipo={ipo}
+    bankProposalQuotation={5000}
+    onAcceptBankProposal={() => {}}
+  />
 );
 
 export const Default = Template.bind({});

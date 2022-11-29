@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Form, Field } from '@cezembre/forms';
 import { JSXElementConstructor } from 'react';
-import { Booster } from '@fridaygame/client';
+import { BoosterFactory } from '@fridaygame/client';
 import Radio from '../../src/general/radio';
 import BoosterFactoryThumbnail from '../../src/trading/boosters/boosterFactoryThumbnail';
 
@@ -21,7 +21,7 @@ export default {
   },
 } as ComponentMeta<JSXElementConstructor<Props>>;
 
-const boosters: Booster[] = [
+const boosterFactories: BoosterFactory[] = [
   {
     id: 'bo_ied5',
     name: 'Pavaaard !',
@@ -54,9 +54,9 @@ const Template: ComponentStory<JSXElementConstructor<Props>> = ({ label }: Props
       name="radio"
       component={Radio}
       label={label}
-      options={boosters.map((booster: Booster) => ({
-        value: booster.id,
-        element: <BoosterFactoryThumbnail booster={booster} size="medium" />,
+      options={boosterFactories.map((boosterFactory: BoosterFactory) => ({
+        value: boosterFactory.id,
+        element: <BoosterFactoryThumbnail boosterFactory={boosterFactory} size="medium" />,
       }))}
     />
   </Form>

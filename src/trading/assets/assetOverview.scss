@@ -38,17 +38,61 @@
     align-items: center;
     justify-content: flex-end;
 
-    > .action {
-      margin-left: 10px;
+    > button {
+      @include fonts.Inter(.8em, colors.$blue, 600);
+      transition: background linear 100ms;
+      padding: 10px 30px;
+      background: colors.$blue-10;
+      border: solid rgba(colors.$blue, .2) 1px;
+      outline: none;
+      cursor: pointer;
 
-      &:first-of-type {
-        margin: 0;
+      &.buy {
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+        border-right: none;
+      }
+
+      &.sell {
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+      }
+    }
+  }
+
+  &.buy {
+    > .actions {
+      > button {
+        &.buy {
+          background: colors.$green;
+          color: white;
+          border: solid rgba(black, .2) 1px;
+        }
+
+        &.sell {
+          border-left: none;
+        }
+      }
+    }
+  }
+
+  &.sell {
+    > .actions {
+      > button {
+        &.buy {
+          border-right: none;
+        }
+
+        &.sell {
+          background: colors.$red;
+          color: white;
+          border: solid rgba(black, .2) 1px;
+        }
       }
     }
   }
 
   > .item-editor {
-    margin-top: 10px;
     background: white;
     padding: 30px;
     border-radius: 20px;

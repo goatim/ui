@@ -1,4 +1,4 @@
-@use "../../../node_modules/@cezembre/fronts/dist/containers";
+@use "~@cezembre/fronts/dist/containers";
 @use "../../styles/fonts";
 @use "../../styles/colors";
 
@@ -9,15 +9,30 @@
   justify-content: center;
 
   > h1 {
-    @include fonts.Inter(1.1em, colors.$blue, bold);
+    @include fonts.Inter(1.1em, colors.$blue, black);
+    font-style: italic;
+    text-transform: uppercase;
     margin: 0;
     text-align: center;
   }
 
-  > h2 {
-    @include fonts.Inter(.8em, rgba(colors.$blue, .5), bold);
+  &.buy {
+    > h1 > span {
+      color: colors.$green;
+    }
+  }
+
+  &.sell {
+    > h1 > span {
+      color: colors.$red;
+    }
+  }
+
+  > p {
+    @include fonts.Inter(.8em, rgba(colors.$blue, .5));
     text-align: center;
-    margin-top: .5em;
+    margin: 10px 0 0;
+    max-width: 400px;
   }
 
   > .type {
@@ -30,14 +45,30 @@
   > .counters {
     margin-top: 30px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
 
     > .counter {
       margin-left: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
 
       &:first-of-type {
         margin: 0;
+      }
+
+      > .total {
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+
+        > .label {
+          @include fonts.Inter(.8em, colors.$blue-50);
+          margin-right: 5px;
+        }
       }
     }
   }
@@ -48,7 +79,7 @@
   }
 
   > .booster {
-    margin-top: 50px;
+    margin-top: 20px;
 
     > h2 {
       @include fonts.Inter(1.1em, colors.$blue, bold);
@@ -71,7 +102,7 @@
   }
 
   > .actions {
-    margin-top: 50px;
+    margin-top: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -82,6 +113,73 @@
       &:first-of-type {
         margin: 0;
       }
+    }
+  }
+
+  > .bank-proposal {
+    width: 100%;
+    background: rgba(colors.$gold, .1);
+    border: solid rgba(colors.$gold, .2) 1px;
+    border-radius: 10px;
+    margin-top: 30px;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    > .caption {
+      @include fonts.Inter(.8em, colors.$gold, bold);
+      font-style: italic;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:before {
+        content: "";
+        display: block;
+        width: 20px;
+        height: 1px;
+        background: colors.$gold;
+        margin-right: 10px;
+      }
+
+      &:after {
+        content: "";
+        display: block;
+        width: 20px;
+        height: 1px;
+        background: colors.$gold;
+        margin-left: 10px;
+      }
+    }
+
+    > .quotation {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+
+      > .multiple {
+        @include fonts.Inter(.8em, colors.$gold);
+        margin-top: 2px;
+      }
+    }
+
+    > .action {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    > p {
+      @include fonts.Inter(.8em, colors.$gold);
+      margin: 20px 0 0;
+      text-align: center;
+      max-width: 350px;
     }
   }
 

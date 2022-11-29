@@ -17,6 +17,8 @@ export interface Props {
   onSubmit?: (item: ItemEditorFields) => unknown;
   onCancel?: () => void;
   size?: ItemEditorSize;
+  bankProposalQuotation?: number;
+  onAcceptBankProposal?: () => unknown;
 }
 
 export default function ItemEditor({
@@ -26,6 +28,8 @@ export default function ItemEditor({
   onSubmit,
   onCancel,
   size = 'big',
+  bankProposalQuotation,
+  onAcceptBankProposal,
 }: Props): ReactElement | null {
   const onSubmitOrderItem = useCallback(
     async (orderItemFields: OrderItemEditorFields) => {
@@ -66,6 +70,8 @@ export default function ItemEditor({
         onSubmit={onSubmitOrderItem}
         onCancel={onCancel}
         size={orderItemEditorSize}
+        bankProposalQuotation={bankProposalQuotation}
+        onAcceptBankProposal={onAcceptBankProposal}
       />
     );
   }

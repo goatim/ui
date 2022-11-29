@@ -81,20 +81,20 @@ export default function Radio<V = unknown>({
   instructions,
 }: Props<V>): ReactElement {
   const className = useMemo<string>(() => {
-    let res = 'friday-ui-radio';
+    const classNames = ['friday-ui-radio'];
 
     if (isActive) {
-      res += ' active';
+      classNames.push('active');
     }
 
     if (error) {
-      res += ' error';
+      classNames.push('error');
     }
 
     if (warning) {
-      res += ' warning';
+      classNames.push('warning');
     }
-    return res;
+    return classNames.join(' ');
   }, [error, isActive, warning]);
 
   return (

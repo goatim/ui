@@ -23,7 +23,8 @@ export type ButtonTheme =
   | 'transparent-dark'
   | 'transparent-light'
   | 'buy'
-  | 'sell';
+  | 'sell'
+  | 'gold';
 
 export interface Props extends WrapperProps {
   children?: ReactNode;

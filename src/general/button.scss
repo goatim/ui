@@ -181,7 +181,7 @@
       }
 
       &:hover, &.active {
-        background: rgba(colors.$blue, .1);
+        background: colors.$blue-10;
       }
     }
 
@@ -255,6 +255,28 @@
 
     &.sell {
       background: colors.$red;
+
+      > .container {
+        svg[stroke] {
+          stroke: white;
+        }
+
+        svg:not([stroke]) {
+          fill: white;
+        }
+
+        > .label {
+          color: white;
+        }
+      }
+
+      &:hover, &.active {
+        opacity: .7;
+      }
+    }
+
+    &.gold {
+      background: colors.$gold;
 
       > .container {
         svg[stroke] {
@@ -465,6 +487,22 @@
 
         > .label {
           color: colors.$red;
+        }
+      }
+    }
+
+    &.gold {
+      > .container {
+        svg[stroke] {
+          stroke: colors.$gold;
+        }
+
+        svg:not([stroke]) {
+          fill: colors.$gold;
+        }
+
+        > .label {
+          color: colors.$gold;
         }
       }
     }
