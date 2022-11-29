@@ -17,7 +17,8 @@
       align-items: flex-end;
 
       > .total-shares {
-        @include fonts.Inter(.8em, rgba(colors.$blue, .5));
+        font-size: .8em;
+        color: rgba(colors.$blue, .5);
         text-align: right;
       }
     }
@@ -39,7 +40,9 @@
     justify-content: flex-end;
 
     > button {
-      @include fonts.Inter(.8em, colors.$blue, 600);
+      font-size: .8em;
+      color: colors.$blue;
+      font-weight: 600;
       transition: background linear 100ms;
       padding: 10px 30px;
       background: colors.$blue-10;
