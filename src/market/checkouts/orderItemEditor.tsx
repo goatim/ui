@@ -211,7 +211,9 @@ export default function OrderItemEditor({
       {formState?.error ? <p className="error">{formState.error}</p> : null}
       {formState?.warning ? <p className="warning">{formState.warning}</p> : null}
 
-      {bankProposalQuotation && formState?.values?.nb_shares ? (
+      {formState?.values?.order_type === 'sell' &&
+      bankProposalQuotation &&
+      formState?.values?.nb_shares ? (
         <div className="bank-proposal">
           <span className="caption">Sinon Friday t&apos;en propose</span>
           <div className="quotation">
