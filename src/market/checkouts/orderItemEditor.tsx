@@ -4,6 +4,7 @@ import {
   adaptFridayCoinsAmount,
   Asset,
   BoosterFactory,
+  formatFridayCoinsAmount,
   OrderBook,
   OrderType,
   resolveFridayCoinsAmount,
@@ -134,7 +135,7 @@ export default function OrderItemEditor({
         <div className="counter">
           <Field<number | undefined>
             name="nb_shares"
-            label="Quantité"
+            label="Actions"
             component={Counter}
             theme="black"
             initialValue={initialOrderItem?.nb_shares}
@@ -144,12 +145,13 @@ export default function OrderItemEditor({
         <div className="counter">
           <Field<number | undefined>
             name="price_limit"
-            label="Limite (FDY)"
+            label="Limite"
             component={Counter}
             theme="black"
             initialValue={initialOrderItem?.price_limit}
             resolver={resolveFridayCoinsAmount}
             adapter={adaptFridayCoinsAmount}
+            format={formatFridayCoinsAmount}
             increment={100}
           />
           <div className="total">

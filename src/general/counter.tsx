@@ -1,8 +1,16 @@
-import { useCallback, ReactElement, ChangeEvent, useMemo, useState, useEffect } from 'react';
+import {
+  useCallback,
+  ReactElement,
+  ChangeEvent,
+  useMemo,
+  useState,
+  useEffect,
+  HTMLInputTypeAttribute,
+} from 'react';
 import { FieldComponentProps } from '@cezembre/forms';
 import Icon from './icon';
 
-export type CounterTransformationFunction = (value: number | undefined) => number | undefined;
+export type CounterTransformationFunction = (value: number) => number;
 
 export interface Props extends FieldComponentProps<number | undefined> {
   adapter?: CounterTransformationFunction;
@@ -42,44 +50,27 @@ export default function Counter({
   increment = 1,
   step = 1,
 }: Props): ReactElement {
-  const [internalValue, setInternalValue] = useState<string>(value?.toString() || '');
-
   const className = useMemo<string>(() => {
-    let res = 'friday-ui-counter';
+    const classNames = ['friday-ui-counter'];
 
     if (visited) {
-      res += ' visited';
+      classNames.push('visited');
     }
 
     if (isActive) {
-      res += ' active';
+      classNames.push('active');
     }
 
     if ((visited || submitted) && !isActive && error) {
-      res += ' error';
+      classNames.push('error');
     }
 
     if (warning) {
-      res += ' warning';
+      classNames.push('warning');
     }
 
-    return res;
+    return classNames.join(' ');
   }, [visited, isActive, submitted, error, warning]);
-
-  const change = useCallback(
-    (event: ChangeEvent<{ value: string }>) => {
-      setInternalValue(event.target.value);
-      const resolvedValue: number | undefined = event.target.value
-        ? parseFloat(event.target.value)
-        : undefined;
-      if (adapter) {
-        onChange(adapter(resolvedValue));
-      } else {
-        onChange(resolvedValue);
-      }
-    },
-    [adapter, onChange],
-  );
 
   const increase = useCallback(() => {
     const nextValue: number = (value || 0) + (increment || 1);
@@ -95,19 +86,40 @@ export default function Counter({
     }
   }, [min, onChange, increment, value]);
 
+  const [internalValue, setInternalValue] = useState<string>(value?.toString() || '');
+  const [inputType, setInputType] = useState<HTMLInputTypeAttribute>('text');
+
+  const change = useCallback(
+    (event: ChangeEvent<{ value: string }>) => {
+      setInternalValue(event.target.value);
+      const resolvedValue: number | undefined = event.target.value
+        ? Number(event.target.value)
+        : undefined;
+      if (adapter && resolvedValue !== undefined) {
+        onChange(adapter(resolvedValue));
+      } else {
+        onChange(resolvedValue);
+      }
+    },
+    [adapter, onChange],
+  );
+
   useEffect(() => {
-    let nextValue: number | undefined;
-    if (!isActive && format) {
-      nextValue = format(value);
-    } else if (resolver) {
-      nextValue = resolver(value);
-    } else if (value !== undefined) {
-      nextValue = value;
+    if (value !== undefined) {
+      let nextValue: number | undefined = value;
+      if (!isActive && format) {
+        setInputType('text');
+        nextValue = format(nextValue);
+      } else if (resolver) {
+        setInputType('number');
+        nextValue = resolver(nextValue);
+      }
+      setInternalValue(nextValue.toString());
+    } else {
+      setInputType('text');
+      setInternalValue('');
     }
-    if (nextValue !== parseFloat(internalValue)) {
-      setInternalValue(nextValue !== undefined ? nextValue.toString() : '');
-    }
-  }, [format, internalValue, isActive, resolver, value]);
+  }, [format, isActive, resolver, value]);
 
   return (
     <div className={className}>
@@ -120,7 +132,7 @@ export default function Counter({
         <input
           name={name}
           value={internalValue}
-          type="number"
+          type={inputType}
           placeholder={placeholder !== undefined ? placeholder : ''}
           autoComplete="off"
           onFocus={onFocus}
