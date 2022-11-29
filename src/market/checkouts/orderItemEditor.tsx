@@ -102,13 +102,13 @@ export default function OrderItemEditor({
       </h1>
 
       {formState?.values?.order_type === 'buy' ? (
-        <p>
+        <p className="instruction">
           Un ordre d’achat exprime une <b>volonté d’achat</b> d’un certain nombre d’actions à un{' '}
           <b>prix maximal</b>. Il sera executé entièrement ou en partie lorsqu’un ordre de vente
           concordant sera placé.
         </p>
       ) : (
-        <p>
+        <p className="instruction">
           Un ordre de vente exprime une <b>volonté de vente</b> d’un certain nombre d’actions à un{' '}
           <b>prix minimal</b>. Il sera executé entièrement ou en partie lorsqu’un ordre d’achat
           concordant sera placé.
@@ -173,7 +173,7 @@ export default function OrderItemEditor({
         />
       </div>
 
-      <p>
+      <p className="instruction">
         Le carnet d’ordre t’aide à mesurer <b>l’offre et la demande</b> sur le marché. Il liste les
         meilleurs ordres d’achat et de vente en attente pour cet actif.
       </p>

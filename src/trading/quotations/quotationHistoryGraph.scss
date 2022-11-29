@@ -23,6 +23,7 @@
     > span {
       @include fonts.Inter(.9em);
       margin-top: 10px;
+      font-style: italic;
     }
   }
 

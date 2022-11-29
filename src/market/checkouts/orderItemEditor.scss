@@ -28,7 +28,7 @@
     }
   }
 
-  > p {
+  > .instruction {
     @include fonts.Inter(.8em, rgba(colors.$blue, .5));
     text-align: center;
     margin: 10px 0 0;
