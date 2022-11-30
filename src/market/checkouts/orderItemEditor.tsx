@@ -9,6 +9,7 @@ import {
   OrderType,
   resolveFridayCoinsAmount,
 } from '@fridaygame/client';
+import { FormSubmitFunction } from '@cezembre/forms/dist/state';
 import Radio from '../../general/radio';
 import Button from '../../general/button';
 import Counter from '../../general/counter';
@@ -32,12 +33,12 @@ export interface Props {
   initialOrderItem?: OrderItemEditorFields;
   orderBook?: OrderBook;
   boosterFactories?: BoosterFactory[];
-  onSubmit?: (orderItem: OrderItemEditorFields) => unknown;
-  onCancel?: () => void;
+  onSubmit?: FormSubmitFunction<OrderItemEditorFields>;
+  onCancel?: () => unknown;
   label?: string;
   size?: OrderItemEditorSize;
   bankProposalQuotation?: number;
-  onAcceptBankProposal?: () => unknown;
+  onAcceptBankProposal?: (nbShares?: number) => unknown;
 }
 
 export default function OrderItemEditor({
@@ -70,6 +71,28 @@ export default function OrderItemEditor({
 
     return errors;
   }, []);
+
+  const [bankProposalPending, setBankProposalPending] = useState<boolean>(false);
+  const [bankProposalError, setBankProposalError] = useState<string | undefined | null>();
+
+  const acceptBankProposal = useCallback(async () => {
+    setBankProposalError(null);
+    if (onAcceptBankProposal) {
+      setBankProposalPending(true);
+      const res = onAcceptBankProposal(formState?.values?.nb_shares);
+      if (res && typeof res === 'object' && 'then' in res && typeof res.then === 'function') {
+        try {
+          await res;
+        } catch (error) {
+          setBankProposalError((error as Error).message);
+        } finally {
+          setBankProposalPending(false);
+        }
+      } else {
+        setBankProposalPending(false);
+      }
+    }
+  }, [formState?.values?.nb_shares, onAcceptBankProposal]);
 
   const orderBookThumbnailSize = useMemo<OrderBookThumbnailSize>(() => {
     switch (size) {
@@ -230,9 +253,14 @@ export default function OrderItemEditor({
           </div>
           {onAcceptBankProposal ? (
             <div className="action">
-              <Button theme="gold">Vendre à Friday</Button>
+              <Button theme="gold" onClick={acceptBankProposal} pending={bankProposalPending}>
+                Vendre à Friday
+              </Button>
             </div>
           ) : null}
+
+          {bankProposalError ? <p className="error">{bankProposalError}</p> : null}
+
           <p>Besoin d’une vente rapide et assurée ? Friday rachète instantanément tes actions.</p>
         </div>
       ) : null}

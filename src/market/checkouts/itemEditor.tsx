@@ -18,7 +18,7 @@ export interface Props {
   onCancel?: () => void;
   size?: ItemEditorSize;
   bankProposalQuotation?: number;
-  onAcceptBankProposal?: () => unknown;
+  onAcceptBankProposal?: (nbShares?: number) => unknown;
 }
 
 export default function ItemEditor({

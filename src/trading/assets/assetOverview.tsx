@@ -19,7 +19,7 @@ export interface Props {
   ipo?: Ipo;
   secondaryTo?: To;
   bankProposalQuotation?: number;
-  onAcceptBankProposal?: () => unknown;
+  onAcceptBankProposal?: (nbShares?: number) => unknown;
 }
 
 export default function AssetOverview({
