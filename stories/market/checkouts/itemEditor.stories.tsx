@@ -47,7 +47,7 @@ const player: Player = {
   club,
   name: 'Kylian Mbappé',
   number: 10,
-  position: 'attacking_midfield',
+  position: 'forward',
   side: 'left',
   resolved_position: 'Attaquant centre',
 };
