@@ -45,6 +45,9 @@ export default forwardRef<HTMLButtonElement | HTMLAnchorElement, Props>(function
   {
     children,
     href,
+    target,
+    rel,
+    referrerPolicy,
     to,
     onClick,
     type,
@@ -138,6 +141,9 @@ export default forwardRef<HTMLButtonElement | HTMLAnchorElement, Props>(function
     <Wrapper
       ref={ref}
       href={href}
+      target={target}
+      rel={rel}
+      referrerPolicy={referrerPolicy}
       to={to}
       onClick={onClick ? onButtonClick : undefined}
       disabled={disabled || pending || autoPending}
