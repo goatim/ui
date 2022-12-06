@@ -71,6 +71,9 @@ import WalletList from './market/wallets/walletList';
 import WalletRank from './market/wallets/walletRank';
 import WalletRanking, { WalletRankingTheme } from './market/wallets/walletRanking';
 import WalletAmountDetail, { WalletAmountDetailSize } from './market/wallets/walletAmountDetail';
+import CurrenciesRateThumbnail, {
+  CurrenciesRateThumbnailTheme,
+} from './market/currenciesRates/currenciesRateThumbnail';
 import ItemEditor, { ItemEditorFields, ItemEditorSize } from './market/checkouts/itemEditor';
 import OrderItemEditor, {
   OrderItemEditorFields,
@@ -315,6 +318,7 @@ export type {
 export {
   CartOverview,
   CartResume,
+  CurrenciesRateThumbnail,
   CheckoutBill,
   FridayCoins,
   FridayCoinsVariation,
@@ -344,6 +348,7 @@ export type {
   FridayCoinsSize,
   FridayCoinsTheme,
   FridayCoinsVariationSize,
+  CurrenciesRateThumbnailTheme,
   ItemEditorFields,
   ItemEditorSize,
   ItemThumbnailSize,
