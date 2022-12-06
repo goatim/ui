@@ -13,6 +13,12 @@ import Mastercard from './icons/mastercard';
 import SoccerBall from './icons/soccerBall';
 import SoccerField from './icons/soccerField';
 import Tiktok from './icons/tiktok';
+import Coins from './icons/coins';
+import Ether from './icons/ether';
+import Podium from './icons/podium';
+import ReceiveCoin from './icons/receive-coin';
+import SoccerGoal from './icons/soccer-goal';
+import Trading from './icons/trading';
 
 export type IconName =
   | 'activity'
@@ -311,7 +317,13 @@ export type IconName =
   | 'mastercard'
   | 'soccer-ball'
   | 'soccer-field'
-  | 'tiktok';
+  | 'tiktok'
+  | 'coins'
+  | 'ether'
+  | 'podium'
+  | 'receive-coin'
+  | 'soccer-goal'
+  | 'trading';
 
 export interface Props extends IconProps {
   color?: string;
@@ -919,6 +931,18 @@ export default function Icon({
       return <SoccerField size={size} />;
     case 'tiktok':
       return <Tiktok size={size} />;
+    case 'coins':
+      return <Coins size={size} />;
+    case 'ether':
+      return <Ether size={size} />;
+    case 'podium':
+      return <Podium size={size} />;
+    case 'receive-coin':
+      return <ReceiveCoin size={size} />;
+    case 'soccer-goal':
+      return <SoccerGoal size={size} />;
+    case 'trading':
+      return <Trading size={size} />;
     default:
       return <Slash size={size} />;
   }
