@@ -2,7 +2,8 @@
 @use '../styles/colors';
 
 .friday-ui-friday-coins-variation {
-  @include fonts.Inter(.7em, colors.$green, bold);
+  font-size: .7em;
+  font-weight: bold;
 
   &.medium {
     font-size: .8em;
@@ -10,6 +11,10 @@
 
   &.big {
     font-size: .9em;
+  }
+
+  &.large {
+    font-size: 1.2em;
   }
 
   &.positive {
@@ -21,6 +26,10 @@
   }
 
   &.zero {
-    color: rgba(colors.$blue, .2);
+    color: colors.$blue-20;
+  }
+
+  &.gold {
+    color: colors.$gold;
   }
 }

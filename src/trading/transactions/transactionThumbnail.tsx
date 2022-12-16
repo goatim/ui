@@ -1,26 +1,38 @@
-import { ReactElement, useEffect, useState } from 'react';
+import { ReactElement, useMemo } from 'react';
 import { Transaction } from '@fridaygame/client';
 import { DateTime } from 'luxon';
 import WalletThumbnail from '../../market/wallets/walletThumbnail';
-import AssetThumbnail from '../assets/assetThumbnail';
+import AssetThumbnail, { AssetThumbnailSize } from '../assets/assetThumbnail';
 import FridayCoins from '../../market/fridayCoins';
-import FridayCoinsVariation from '../../market/fridayCoinsVariation';
 import PercentageVariation from '../../market/percentageVariation';
+import Icon from '../../general/icon';
+
+export type TransactionThumbnailSize = 'narrow' | 'normal';
 
 export interface Props {
   transaction: Transaction;
+  size?: TransactionThumbnailSize;
 }
 
-export default function TransactionThumbnail({ transaction }: Props): ReactElement {
-  const [creationTime, setCreationTime] = useState<DateTime | undefined>(
-    transaction.creation ? DateTime.fromISO(transaction.creation) : undefined,
-  );
-
-  useEffect(() => {
-    if (transaction.creation) {
-      setCreationTime(DateTime.fromISO(transaction.creation));
+export default function TransactionThumbnail({
+  transaction,
+  size = 'normal',
+}: Props): ReactElement {
+  const resolvedCreation = useMemo<string | undefined>(() => {
+    if (!transaction.creation) {
+      return undefined;
     }
+    return DateTime.fromISO(transaction.creation).toLocaleString(DateTime.DATETIME_MED);
   }, [transaction.creation]);
+
+  const assetThumbnailSize = useMemo<AssetThumbnailSize>(() => {
+    switch (size) {
+      case 'narrow':
+        return 'narrow';
+      default:
+        return 'small';
+    }
+  }, [size]);
 
   return (
     <div className="friday-ui-transaction-thumbnail">
@@ -30,44 +42,38 @@ export default function TransactionThumbnail({ transaction }: Props): ReactEleme
             <WalletThumbnail wallet={transaction.from} size="small" />
           </div>
         ) : null}
-        <span className="id">{transaction.id}</span>
+
+        <div className="arrow">
+          <Icon name="arrow-right" size={15} />
+        </div>
+
+        {transaction.to && typeof transaction.to === 'object' ? (
+          <div className="to">
+            <WalletThumbnail wallet={transaction.to} size="small" />
+          </div>
+        ) : null}
+      </div>
+
+      <div className="resume">
+        <span className="label">Transaction:</span>
+        <span>{transaction.nb_shares || 0}</span>
+        <span className="label">actions pour</span>
+        <FridayCoins amount={transaction.nb_shares} />
       </div>
 
       {transaction.asset && typeof transaction.asset === 'object' ? (
         <div className="asset">
-          <AssetThumbnail asset={transaction.asset} />
+          <AssetThumbnail asset={transaction.asset} size={assetThumbnailSize} />
         </div>
       ) : null}
 
-      {transaction.to && typeof transaction.to === 'object' ? (
-        <div className="to">
-          <WalletThumbnail wallet={transaction.to} size="medium" />
+      <div className="footer">
+        <div className="quotation">
+          <span className="label">Cours</span>
+          <FridayCoins amount={transaction.price} />
+          <PercentageVariation variation={transaction.asset_quotation_variation} />
         </div>
-      ) : null}
-
-      <div className="data-points">
-        {creationTime ? (
-          <div className="data">
-            <span className="label">{creationTime.toLocaleString()}</span>
-            <span className="value">{creationTime.toLocaleString(DateTime.TIME_WITH_SECONDS)}</span>
-          </div>
-        ) : null}
-
-        <div className="data">
-          <span className="label">Quantité</span>
-          <span className="value">{transaction.nb_shares || 1}</span>
-        </div>
-
-        <div className="data">
-          <span className="label">Prix d&apos;achat</span>
-          <FridayCoins amount={transaction.price} size="medium" />
-        </div>
-
-        <div className="data">
-          <span className="label">Variation</span>
-          <FridayCoinsVariation variation={transaction.asset_quotation_gain} size="medium" />
-          <PercentageVariation variation={transaction.asset_quotation_variation} size="medium" />
-        </div>
+        <span className="creation">{resolvedCreation}</span>
       </div>
     </div>
   );

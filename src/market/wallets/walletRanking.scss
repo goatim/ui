@@ -37,6 +37,12 @@
     height: 100%;
     padding: 0 20px 40px;
     overflow: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
 
     > .wallet {
       margin-top: 10px;

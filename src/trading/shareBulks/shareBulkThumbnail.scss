@@ -4,9 +4,14 @@
 .friday-ui-share-bulk-thumbnail {
   display: flex;
   align-items: center;
+  background: rgba(colors.$gold, .1);
+  padding: 10px;
+  border-radius: 10px;
 
   > .nb-shares {
-    @include fonts.Inter(.9em, colors.$blue, bold);
+    font-size: 1.1em;
+    color: colors.$gold;
+    font-weight: bold;
     margin-left: 20px;
   }
 }

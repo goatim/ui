@@ -1,0 +1,39 @@
+@use '../styles/colors';
+
+.friday-ui-wallpaper {
+  width: 100%;
+  max-width: 3000px;
+  height: 100%;
+  background: colors.$gold;
+  overflow: hidden;
+  pointer-events: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  > .container {
+    > .line {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      > span {
+        font-weight: bold;
+        color: white;
+        opacity: .5;
+        text-transform: uppercase;
+        padding: 0 5px;
+        font-style: italic;
+        font-size: 2em;
+        margin: 0;
+
+        &.active {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}

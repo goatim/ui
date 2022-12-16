@@ -1,0 +1,13 @@
+@use '../../styles/colors';
+
+.friday-ui-post-thumbnail {
+  width: 100%;
+  background: white;
+  border-radius: 10px;
+  border: solid colors.$blue-10 1px;
+  overflow: hidden;
+
+  > .header {
+    border-bottom: solid colors.$blue-10 1px;
+  }
+}

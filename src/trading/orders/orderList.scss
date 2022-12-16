@@ -1,15 +1,30 @@
 @use '../../styles/colors';
 
 .friday-ui-order-list {
-  > .order {
-    margin-top: 15px;
-    padding-top: 15px;
-    border-top: solid rgba(colors.$blue, .1) 1px;
+  &.table {
+    > .order {
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: solid rgba(colors.$blue, .1) 1px;
 
-    &:first-of-type {
-      margin: 0;
-      padding: 0;
-      border: none;
+      &:first-of-type {
+        margin: 0;
+        padding: 0;
+        border: none;
+      }
+    }
+  }
+
+  &.boxes {
+    > .order {
+      background: colors.$light-blue;
+      margin-top: 15px;
+      padding: 10px 20px;
+      border-radius: 10px;
+
+      &:first-of-type {
+        margin: 0;
+      }
     }
   }
 }

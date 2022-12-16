@@ -1,32 +1,68 @@
 @use '../../styles/colors';
-@use '../../styles/fonts';
 
 .friday-ui-pack-thumbnail {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-
   > .header {
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
     max-width: 300px;
-    text-align: center;
+    padding: 0 20px;
 
     > h1 {
-      @include fonts.Inter(1.6em, colors.$blue, bold);
-      margin: .6em 0 0;
+      font-size: 2.3em;
+      font-weight: bold;
+      font-style: italic;
+      margin: 0;
+      padding: 20px 0 0;
     }
 
-    > p {
-      @include fonts.Inter(.9em, colors.$blue);
-      margin: 1em 0 0;
+    > .valuation {
+      margin-top: 10px;
     }
   }
 
   > .shares-bulks {
     margin-top: 30px;
+    padding: 0 20px;
+  }
+
+  > .footer {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+
+    > .pack-factory {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+
+      > span {
+        font-size: .8em;
+
+        &.value {
+          margin-left: 5px;
+          font-weight: bold;
+        }
+      }
+    }
+
+    > .valuation {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+
+      > .label {
+        font-size: .8em;
+        margin-right: 5px;
+      }
+    }
+  }
+
+  > .wallpaper {
+    height: 150px;
+    margin-top: 20px;
   }
 }

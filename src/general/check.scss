@@ -1,11 +1,10 @@
 @use '../styles/colors';
-@use '../styles/fonts';
 
 .friday-ui-check {
   width: 30px;
   height: 30px;
   background: white;
-  border: solid rgba(colors.$blue, 0.1) 1px;
+  border: solid colors.$blue-10 1px;
   cursor: pointer;
   outline: none;
   display: flex;
@@ -32,7 +31,8 @@
   }
 
   > span {
-    @include fonts.Inter(.8em, colors.$blue, bold);
+    font-size: .8em;
+    font-weight: bold;
     text-transform: uppercase;
   }
 

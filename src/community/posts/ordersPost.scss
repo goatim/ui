@@ -1,0 +1,23 @@
+@use '../../styles/colors';
+
+.friday-ui-orders-post {
+  > .orders {
+    padding: 10px;
+  }
+
+  > .instructions {
+    font-size: .9em;
+    color: colors.$blue-50;
+    text-align: center;
+    padding: 0 30px;
+    margin-top: 10px;
+  }
+
+  > .action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 10px 20px;
+    margin-top: 10px;
+  }
+}

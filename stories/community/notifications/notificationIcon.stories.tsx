@@ -1,13 +1,13 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import NotificationIcon from '../../src/notifications/notificationIcon';
+import NotificationIcon from '../../../src/community/notifications/notificationIcon';
 
 interface Props {
   event?: string;
 }
 
 export default {
-  title: 'Notifications/NotificationIcon',
+  title: 'Community/NotificationIcon',
   component: NotificationIcon,
   argTypes: {
     name: {

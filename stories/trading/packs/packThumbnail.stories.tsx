@@ -32,7 +32,8 @@ const player: Player = {
   club,
   name: 'Kylian Mbappé',
   number: 10,
-  position: 'attacking_midfield',
+  position: 'forward',
+  resolved_short_position: 'ATT',
   side: 'left',
   resolved_position: 'Attaquant centre',
 };
@@ -46,20 +47,21 @@ const asset: Asset = {
   slug: 'kylian-mbappe',
   total_shares: 450,
   quotation: 2750,
-  session_variation: 345,
+  day_variation: 0.03,
   player,
 };
 
 const factory: PackFactory = {
   id: 'pf_cUkDdk9VW4PwvsF',
   creation: '2021-09-29T16:08:39.129+00:00',
-  // title: 'Fellicitation !',
+  name: 'Gold',
 };
 
 const pack: Pack = {
   id: 'pa_cUkDdk9VW4PwvsF',
   creation: '2021-09-29T16:08:39.129+00:00',
   factory,
+  valuation: 42000,
   share_bulks: [
     {
       asset,

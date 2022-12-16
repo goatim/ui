@@ -27,13 +27,15 @@
   }
 
   > .emoji {
-    @include fonts.Inter(1.5em, colors.$blue, bold);
+    font-size: 1.5em;
+    font-weight: bold;
     margin: 0;
     padding: 0;
   }
 
   > .title {
-    @include fonts.Inter(1.5em, colors.$blue, bold);
+    font-size: 1.5em;
+    font-weight: bold;
     font-style: italic;
     text-transform: uppercase;
     margin: 0;

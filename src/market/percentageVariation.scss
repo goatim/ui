@@ -2,7 +2,8 @@
 @use '../styles/colors';
 
 .friday-ui-percentage-variation {
-  @include fonts.Inter(.7em, colors.$green, bold);
+  font-size: .7em;
+  font-weight: bold;
 
   &.medium {
     font-size: .8em;
@@ -40,11 +41,11 @@
 
   &.zero {
     &.text {
-      color: rgba(colors.$blue, .2);
+      color: colors.$blue-20;
     }
 
     &.filled {
-      background: rgba(colors.$blue, .2);
+      background: colors.$blue-20;
     }
   }
 }

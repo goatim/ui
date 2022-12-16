@@ -21,7 +21,7 @@
   }
 
   > span {
-    @include fonts.Inter(.8em, colors.$blue);
+    font-size: .8em;
 
     &.label {
       @include fonts.label(.8em, colors.$blue);

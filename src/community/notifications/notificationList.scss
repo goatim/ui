@@ -1,5 +1,4 @@
-@use '../styles/colors';
-@use '../styles/fonts';
+@use '../../styles/colors';
 
 .friday-ui-notification-list {
   > .notification {
@@ -11,7 +10,8 @@
   }
 
   > .empty {
-    @include fonts.Inter(.9em, rgba(colors.$blue, .5));
+    font-size: .9em;
+    color: colors.$blue-50;
     text-align: center;
     padding: 20px;
     width: 100%;

@@ -1,0 +1,9 @@
+.friday-ui-post-list {
+  > .post {
+    margin-top: 20px;
+
+    &:first-of-type {
+      margin: 0;
+    }
+  }
+}

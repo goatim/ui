@@ -1,14 +1,14 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor, ReactElement, useEffect } from 'react';
-import { Notification, OrderMatchEventPayload, Club, Player, Asset } from '@fridaygame/client';
+import { Notification, Club, Player, Asset } from '@fridaygame/client';
 import NotificationsContext, {
   useNotificationsContext,
-} from '../../src/notifications/notificationsContext';
+} from '../../../src/community/notifications/notificationsContext';
 
 interface Props {}
 
 export default {
-  title: 'Notifications/NotificationsContext',
+  title: 'Community/NotificationsContext',
   component: NotificationsContext,
 } as ComponentMeta<JSXElementConstructor<Props>>;
 
@@ -32,7 +32,7 @@ const player: Player = {
   club,
   name: 'Kylian Mbappé',
   number: 10,
-  position: 'attacking_midfield',
+  position: 'forward',
   side: 'left',
   resolved_position: 'Attaquant centre',
 };
@@ -50,7 +50,7 @@ const asset: Asset = {
   player,
 };
 
-const notification1: Notification<OrderMatchEventPayload> = {
+const notification1: Notification<'order_match'> = {
   id: 'no_qdqed654q5d61',
   creation: '2022-06-23T17:31:41.171+02:00',
   event: 'order_match',
@@ -62,7 +62,7 @@ const notification1: Notification<OrderMatchEventPayload> = {
   },
 };
 
-const notification2: Notification<OrderMatchEventPayload> = {
+const notification2: Notification<'order_match'> = {
   id: 'no_qdqzdqzd1',
   creation: '2022-06-23T17:31:41.171+02:00',
   event: 'order_match',
@@ -74,7 +74,7 @@ const notification2: Notification<OrderMatchEventPayload> = {
   },
 };
 
-const notification3: Notification<OrderMatchEventPayload> = {
+const notification3: Notification<'order_match'> = {
   id: 'no_qdqvdsvq5d61',
   creation: '2022-06-23T17:31:41.171+02:00',
   event: 'order_match',

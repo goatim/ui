@@ -1,8 +1,8 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
+import { JSXElementConstructor, ReactElement, useCallback } from 'react';
 import { Asset, Club, Player, Pack, PackFactory } from '@fridaygame/client';
-import { BrowserRouter } from 'react-router-dom';
 import PackModal from '../../../src/trading/packs/packModal';
+import { useModals, ModalsContext } from '../../../src';
 
 interface Props {}
 
@@ -32,7 +32,7 @@ const player: Player = {
   club,
   name: 'Kylian Mbappé',
   number: 10,
-  position: 'attacking_midfield',
+  position: 'forward',
   side: 'left',
   resolved_position: 'Attaquant centre',
 };
@@ -46,7 +46,7 @@ const asset: Asset = {
   slug: 'kylian-mbappe',
   total_shares: 450,
   quotation: 2750,
-  session_variation: 345,
+  day_variation: 0.003,
   player,
 };
 
@@ -81,10 +81,28 @@ const pack: Pack = {
   tags: ['starter'],
 };
 
+function App(): ReactElement {
+  const { pushModal } = useModals();
+
+  const openModal = useCallback(() => {
+    pushModal({
+      type: 'overlay',
+      element: <PackModal pack={pack} />,
+    });
+  }, [pushModal]);
+
+  return (
+    <div>
+      <PackModal pack={pack} />
+      <button onClick={openModal}>Open modal</button>
+    </div>
+  );
+}
+
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
-  <BrowserRouter>
-    <PackModal pack={pack} onContinue={() => undefined} />
-  </BrowserRouter>
+  <ModalsContext>
+    <App />
+  </ModalsContext>
 );
 
 export const Default = Template.bind({});

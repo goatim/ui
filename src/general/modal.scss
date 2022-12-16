@@ -75,8 +75,6 @@
   }
 
   &.overlay > .container > .element {
-    min-width: 350px;
-
     @include screens.tablet-S {
       width: 100%;
     }

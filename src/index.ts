@@ -45,12 +45,16 @@ import {
 } from './general/modal';
 import Gutter from './general/gutter';
 import Tag from './general/tag';
+import Wallpaper from './general/wallpaper';
 import TradingBanner from './navigation/tradingBanner';
 import UserPicture, { UserPictureSize, UserPictureTheme } from './auth/users/userPicture';
 import UserThumbnail, { UserThumbnailSize, UserThumbnailTheme } from './auth/users/userThumbnail';
 import UserEditor, { UserEditorFields } from './auth/users/userEditor';
 import FridayCoins, { FridayCoinsTheme, FridayCoinsSize } from './market/fridayCoins';
-import FridayCoinsVariation, { FridayCoinsVariationSize } from './market/fridayCoinsVariation';
+import FridayCoinsVariation, {
+  FridayCoinsVariationSize,
+  FridayCoinsVariationTheme,
+} from './market/fridayCoinsVariation';
 import PercentageVariation, {
   PercentageVariationShape,
   PercentageVariationSize,
@@ -169,10 +173,11 @@ import OrderBookThumbnail, {
   OrderBookThumbnailTheme,
 } from './trading/orders/orderBookThumbnail';
 import OrderList from './trading/orders/orderList';
-import ShareBulkThumbnail from './trading/shareBulks/shareBulkThumbnail';
+import ShareBulkThumbnail, {
+  ShareBulkThumbnailSize,
+} from './trading/shareBulks/shareBulkThumbnail';
 import ShareBulkList from './trading/shareBulks/shareBulkList';
 import PackFactoryThumbnail from './trading/packs/packFactoryThumbnail';
-import PackIcon from './trading/packs/packIcon';
 import PackThumbnail from './trading/packs/packThumbnail';
 import PackModal from './trading/packs/packModal';
 import PortfolioThumbnail, {
@@ -184,7 +189,9 @@ import QuotationHistoryGraph, {
   DataPoint,
   QuotationHistoryGraphTheme,
 } from './trading/quotations/quotationHistoryGraph';
-import TransactionThumbnail from './trading/transactions/transactionThumbnail';
+import TransactionThumbnail, {
+  TransactionThumbnailSize,
+} from './trading/transactions/transactionThumbnail';
 import AssetList from './trading/assets/assetList';
 import RankPosition from './trading/ranks/rankPosition';
 import DividendThumbnail, { DividendThumbnailTheme } from './trading/dividends/dividendThumbnail';
@@ -200,13 +207,19 @@ import PaymentMethodSelector from './payment/paymentMethodSelector';
 import StripeCreditCardInput from './payment/stripeCreditCardInput';
 import StripeCreditCardForm, { NewStripeCard } from './payment/stripeCreditCardForm';
 import StripePaymentMethodSelector from './payment/stripePaymentMethodSelector';
-import NotificationIcon from './notifications/notificationIcon';
-import NotificationThumbnail from './notifications/notificationThumbnail';
-import NotificationList from './notifications/notificationList';
+import NotificationIcon from './community/notifications/notificationIcon';
+import NotificationThumbnail from './community/notifications/notificationThumbnail';
+import NotificationList from './community/notifications/notificationList';
 import NotificationsContext, {
   useNotificationsContext,
   NotificationsContextState,
-} from './notifications/notificationsContext';
+} from './community/notifications/notificationsContext';
+import PostHeader from './community/posts/postHeader';
+import OrdersPost, { OrdersPostSize } from './community/posts/ordersPost';
+import PackPost, { PackPostSize } from './community/posts/packPost';
+import TransactionPost, { TransactionPostSize } from './community/posts/transactionPost';
+import PostThumbnail, { PostThumbnailSize } from './community/posts/postThumbnail';
+import PostList from './community/posts/postList';
 import OnboardingCarousel, {
   OnboardingCarouselSize,
   OnboardingCarouselSlideData,
@@ -257,6 +270,7 @@ export {
   useModals,
   Gutter,
   Tag,
+  Wallpaper,
 };
 
 export type {
@@ -348,6 +362,7 @@ export type {
   FridayCoinsSize,
   FridayCoinsTheme,
   FridayCoinsVariationSize,
+  FridayCoinsVariationTheme,
   CurrenciesRateThumbnailTheme,
   ItemEditorFields,
   ItemEditorSize,
@@ -452,7 +467,6 @@ export {
   ShareBulkThumbnail,
   ShareBulkList,
   PackFactoryThumbnail,
-  PackIcon,
   PackThumbnail,
   PackModal,
   PortfolioThumbnail,
@@ -485,6 +499,8 @@ export type {
   OrderThumbnailSize,
   OrderBookThumbnailSize,
   OrderBookThumbnailTheme,
+  TransactionThumbnailSize,
+  ShareBulkThumbnailSize,
 };
 
 /**
@@ -508,7 +524,7 @@ export {
 export type { CreditCardFields, NewStripeCard };
 
 /**
- * Notifications
+ * Community
  */
 
 export {
@@ -517,9 +533,21 @@ export {
   NotificationList,
   NotificationsContext,
   useNotificationsContext,
+  PostHeader,
+  OrdersPost,
+  PackPost,
+  TransactionPost,
+  PostThumbnail,
+  PostList,
 };
 
-export type { NotificationsContextState };
+export type {
+  NotificationsContextState,
+  OrdersPostSize,
+  PackPostSize,
+  TransactionPostSize,
+  PostThumbnailSize,
+};
 
 /**
  * Onboarding

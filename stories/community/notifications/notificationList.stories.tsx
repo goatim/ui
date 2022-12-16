@@ -1,13 +1,13 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import { Notification, OrderMatchEventPayload, Club, Player, Asset } from '@fridaygame/client';
-import NotificationThumbnail from '../../src/notifications/notificationThumbnail';
+import { Notification, Club, Player, Asset } from '@fridaygame/client';
+import NotificationList from '../../../src/community/notifications/notificationList';
 
 interface Props {}
 
 export default {
-  title: 'Notifications/NotificationThumbnail',
-  component: NotificationThumbnail,
+  title: 'Community/NotificationList',
+  component: NotificationList,
 } as ComponentMeta<JSXElementConstructor<Props>>;
 
 const club: Club = {
@@ -30,7 +30,7 @@ const player: Player = {
   club,
   name: 'Kylian Mbappé',
   number: 10,
-  position: 'attacking_midfield',
+  position: 'forward',
   side: 'left',
   resolved_position: 'Attaquant centre',
 };
@@ -44,11 +44,11 @@ const asset: Asset = {
   slug: 'kylian-mbappe',
   total_shares: 450,
   quotation: 2750,
-  session_variation: 345,
+  day_variation: 345,
   player,
 };
 
-const notification: Notification<OrderMatchEventPayload> = {
+const notification: Notification<'order_match'> = {
   id: 'no_qdqed654q5d61',
   creation: '2022-06-23T17:31:41.171+02:00',
   event: 'order_match',
@@ -61,7 +61,10 @@ const notification: Notification<OrderMatchEventPayload> = {
 };
 
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
-  <NotificationThumbnail notification={notification} />
+  <NotificationList
+    notifications={Array(12).fill(notification)}
+    onNotificationClick={() => () => undefined}
+  />
 );
 
 export const Default = Template.bind({});

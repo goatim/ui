@@ -1,7 +1,6 @@
 @use '~@cezembre/fronts/dist/screens';
 @use '~@cezembre/fronts/dist/layouts';
 @use '../styles/colors';
-@use '../styles/fonts';
 @use '../styles/forms';
 
 .friday-ui-counter {
@@ -68,7 +67,9 @@
   }
 
   > .conversion {
-    @include fonts.Inter(.8em, rgba(colors.$blue, .5), bold);
+    font-size: .8em;
+    color: colors.$blue-50;
+    font-weight: bold;
     margin-top: 10px;
     width: 100%;
   }

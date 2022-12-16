@@ -1,6 +1,5 @@
 @use "~@cezembre/fronts/dist/screens";
 @use "../styles/colors";
-@use "../styles/fonts";
 
 .friday-ui-toggle {
   > .container {
@@ -42,7 +41,7 @@
     }
 
     > label {
-      @include fonts.Inter(.8em);
+      font-size: .8em;
       padding-left: 1em;
       display: inline-block;
     }

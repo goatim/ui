@@ -1,6 +1,5 @@
 @use '~@cezembre/fronts/dist/layouts';
 @use '~@cezembre/fronts/dist/screens';
-@use "../styles/fonts";
 @use "../styles/colors";
 @use "../styles/forms";
 
@@ -41,7 +40,8 @@
         padding: 8px 12px;
 
         > span {
-          @include fonts.Inter(.9em, colors.$blue, 500);
+          font-size: .9em;
+          font-weight: 500;
           white-space: nowrap;
           text-align: left;
           flex: 1;
@@ -105,7 +105,7 @@
           align-items: center;
 
           > input {
-            @include fonts.Inter(.9em, colors.$blue);
+            font-size: .9em;
             flex: 1;
             box-sizing: border-box;
             border: none;
@@ -144,7 +144,8 @@
         }
 
         > span {
-          @include fonts.Inter(.9em, colors.$blue, 500);
+          font-size: .9em;
+          font-weight: 500;
           white-space: nowrap;
           display: block;
           text-align: left;
@@ -199,7 +200,7 @@
   }
 
   > .instructions {
-    @include fonts.Inter(.9em, colors.$blue);
+    font-size: .9em;
     margin-top: 10px;
   }
 

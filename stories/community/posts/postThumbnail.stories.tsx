@@ -1,13 +1,13 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import { Notification, OrderMatchEventPayload, Club, Player, Asset } from '@fridaygame/client';
-import NotificationList from '../../src/notifications/notificationList';
+import { Club, Player, Asset, Post } from '@fridaygame/client';
+import PostThumbnail from '../../../src/community/posts/postThumbnail';
 
 interface Props {}
 
 export default {
-  title: 'Notifications/NotificationList',
-  component: NotificationList,
+  title: 'Community/PostThumbnail',
+  component: PostThumbnail,
 } as ComponentMeta<JSXElementConstructor<Props>>;
 
 const club: Club = {
@@ -30,7 +30,8 @@ const player: Player = {
   club,
   name: 'Kylian Mbappé',
   number: 10,
-  position: 'attacking_midfield',
+  position: 'forward',
+  resolved_short_position: 'ATT',
   side: 'left',
   resolved_position: 'Attaquant centre',
 };
@@ -48,23 +49,31 @@ const asset: Asset = {
   player,
 };
 
-const notification: Notification<OrderMatchEventPayload> = {
-  id: 'no_qdqed654q5d61',
+const newOrderPost: Post<'orders'> = {
+  id: 'ps_qdqed654q5d61',
   creation: '2022-06-23T17:31:41.171+02:00',
-  event: 'order_match',
-  payload: {
-    type: 'buy',
-    asset,
-    nb_matched: 45,
-    total: 150,
-  },
+  publication_date: '2022-06-23T17:31:41.171+02:00',
+  type: 'orders',
+  payload: [
+    {
+      id: '1',
+      type: 'buy',
+      nb_shares: 42,
+      price_limit: 42200,
+      asset,
+    },
+    {
+      id: '2',
+      type: 'sell',
+      nb_shares: 42,
+      price_limit: 42200,
+      asset,
+    },
+  ],
 };
 
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
-  <NotificationList
-    notifications={Array(12).fill(notification)}
-    onNotificationClick={() => () => undefined}
-  />
+  <PostThumbnail post={newOrderPost} />
 );
 
 export const Default = Template.bind({});

@@ -1,9 +1,9 @@
 import { ReactElement } from 'react';
-import { OrderMatchEventPayload } from '@fridaygame/client';
-import AssetThumbnail from '../assets/assetThumbnail';
+import { NotificationOrderMatchPayload } from '@fridaygame/client';
+import AssetThumbnail from '../../trading/assets/assetThumbnail';
 
 export interface Props {
-  payload?: OrderMatchEventPayload;
+  payload?: NotificationOrderMatchPayload;
 }
 
 export default function OrderMatchNotification({ payload }: Props): ReactElement {
@@ -16,7 +16,7 @@ export default function OrderMatchNotification({ payload }: Props): ReactElement
         </b>{' '}
         actions {payload?.type === 'buy' ? 'achetées' : 'vendues'}.
       </span>
-      {payload?.asset ? (
+      {payload?.asset && typeof payload.asset === 'object' ? (
         <div className="payload highlight">
           <AssetThumbnail asset={payload.asset} size="small" shape="text" showQuotation={false} />
         </div>

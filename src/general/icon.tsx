@@ -327,12 +327,12 @@ export type IconName =
 
 export interface Props extends IconProps {
   color?: string;
-  name?: IconName;
+  name: IconName;
 }
 
 export default function Icon({
   color,
-  name = 'activity',
+  name,
   size = 15,
   strokeWidth = 2,
 }: Props): ReactElement<SVGElement> {

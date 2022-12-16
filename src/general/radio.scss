@@ -1,4 +1,3 @@
-@use "../styles/fonts";
 @use "../styles/colors";
 @use "../styles/forms";
 
@@ -22,7 +21,6 @@
   }
 
   > .instructions {
-    @include fonts.Inter;
     margin-top: 10px;
   }
 

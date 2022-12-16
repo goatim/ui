@@ -2,7 +2,8 @@
 @use '../styles/colors';
 
 .friday-ui-friday-coins {
-  @include fonts.Inter(.7em, colors.$blue, bold);
+  font-size: .7em;
+  font-weight: bold;
 
   &.medium {
     font-size: .8em;
@@ -21,10 +22,10 @@
   }
 
   &.darker {
-    color: rgba(colors.$blue, .5);
+    color: colors.$blue-50;
   }
 
   &.gold {
-    color: rgba(colors.$gold, 1);
+    color: colors.$gold
   }
 }

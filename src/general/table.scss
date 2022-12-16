@@ -29,7 +29,8 @@
         justify-content: flex-start;
 
         > .count-selection {
-          @include fonts.Inter(.8em, rgba(colors.$blue, .5));
+          font-size: .8em;
+          color: colors.$blue-50;
         }
 
         > .action {
@@ -60,7 +61,9 @@
         padding: 0;
 
         > th {
-          @include fonts.Inter(.8em, rgba(colors.$blue, .5), bold);
+          font-size: .8em;
+          color: colors.$blue-50;
+          font-weight: bold;
           padding: 10px;
           border: none;
           outline: none;
@@ -121,7 +124,8 @@
           }
 
           > span {
-            @include fonts.Inter(.8em, colors.$blue, 500);
+            font-size: .8em;
+            font-weight: 500;
             text-overflow: ellipsis;
             white-space: nowrap;
             overflow: hidden;

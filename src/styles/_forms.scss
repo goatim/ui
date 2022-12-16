@@ -2,7 +2,7 @@
 @use 'fonts';
 
 @mixin label {
-  @include fonts.label();
+  @include fonts.label;
   padding-bottom: .8em;
   display: inline-block;
 }

@@ -1,4 +1,4 @@
-import { ReactElement, useEffect, useState } from 'react';
+import { ReactElement, useEffect, useMemo, useState } from 'react';
 import { formatPercentageVariation } from '@fridaygame/client';
 
 export type PercentageVariationShape = 'text' | 'filled';
@@ -16,16 +16,11 @@ export default function PercentageVariation({
   shape = 'text',
   size = 'small',
 }: Props): ReactElement {
-  const [sign, setSign] = useState<'positive' | 'negative' | 'zero'>(
-    variation >= 0 ? 'positive' : 'negative',
-  );
-
-  useEffect(() => {
+  const sign = useMemo<'positive' | 'negative' | 'zero'>(() => {
     if (!variation) {
-      setSign('zero');
-    } else {
-      setSign(variation > 0 ? 'positive' : 'negative');
+      return 'zero';
     }
+    return variation > 0 ? 'positive' : 'negative';
   }, [variation]);
 
   return (

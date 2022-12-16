@@ -1,13 +1,13 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import { Notification, OrderMatchEventPayload, Club, Player, Asset } from '@fridaygame/client';
-import NotificationModal from '../../src/notifications/notificationModal';
+import { Notification, Club, Player, Asset } from '@fridaygame/client';
+import NotificationThumbnail from '../../../src/community/notifications/notificationThumbnail';
 
 interface Props {}
 
 export default {
-  title: 'Notifications/NotificationModal',
-  component: NotificationModal,
+  title: 'Community/NotificationThumbnail',
+  component: NotificationThumbnail,
 } as ComponentMeta<JSXElementConstructor<Props>>;
 
 const club: Club = {
@@ -30,7 +30,7 @@ const player: Player = {
   club,
   name: 'Kylian Mbappé',
   number: 10,
-  position: 'attacking_midfield',
+  position: 'forward',
   side: 'left',
   resolved_position: 'Attaquant centre',
 };
@@ -48,7 +48,7 @@ const asset: Asset = {
   player,
 };
 
-const notification: Notification<OrderMatchEventPayload> = {
+const notification: Notification<'order_match'> = {
   id: 'no_qdqed654q5d61',
   creation: '2022-06-23T17:31:41.171+02:00',
   event: 'order_match',
@@ -61,7 +61,7 @@ const notification: Notification<OrderMatchEventPayload> = {
 };
 
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
-  <NotificationModal notification={notification} />
+  <NotificationThumbnail notification={notification} />
 );
 
 export const Default = Template.bind({});

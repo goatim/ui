@@ -2,7 +2,7 @@ import { ReactElement } from 'react';
 import { Notification } from '@fridaygame/client';
 import { WrapperProps } from '@cezembre/fronts';
 import NotificationThumbnail from './notificationThumbnail';
-import Icon from '../general/icon';
+import Icon from '../../general/icon';
 
 export interface Props extends WrapperProps {
   notification: Notification;

@@ -1,5 +1,5 @@
 import { ReactElement, useMemo } from 'react';
-import Icon, { IconName } from '../general/icon';
+import Icon, { IconName } from '../../general/icon';
 
 export interface Props {
   event?: string;

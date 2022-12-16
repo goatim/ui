@@ -1,6 +1,5 @@
 @use '~@cezembre/fronts/dist/screens';
 @use '../styles/colors';
-@use '../styles/fonts';
 
 .friday-ui-button {
   display: inline-block;
@@ -51,7 +50,8 @@
     }
 
     > .label {
-      @include fonts.Inter(.8em, colors.$blue, 600);
+      font-size: .8em;
+      font-weight: 600;
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden;
@@ -72,7 +72,7 @@
     bottom: 0;
     justify-content: center;
     align-items: center;
-    background: rgba(colors.$blue, .5);
+    background: colors.$blue-50;
     display: flex;
     visibility: hidden;
     opacity: 0;
@@ -164,7 +164,7 @@
 
     &.light {
       background: colors.$light-blue;
-      border: solid rgba(colors.$blue, .1) 1px;
+      border: solid colors.$blue-10 1px;
 
       > .container {
         svg[stroke] {

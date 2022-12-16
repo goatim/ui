@@ -1,29 +1,46 @@
 import { ReactElement } from 'react';
 import { Pack } from '@fridaygame/client';
-import PackIcon from './packIcon';
 import ShareBulkList from '../shareBulks/shareBulkList';
+import FridayCoinsVariation from '../../market/fridayCoinsVariation';
+import FridayCoins from '../../market/fridayCoins';
+import Wallpaper from '../../general/wallpaper';
+
+export type PackThumbnailSize = 'narrow' | 'normal';
 
 export interface Props {
   pack: Pack;
+  size?: PackThumbnailSize;
 }
 
-export default function PackThumbnail({ pack }: Props): ReactElement {
+export default function PackThumbnail({ pack, size = 'normal' }: Props): ReactElement {
   return (
     <div className="friday-ui-pack-thumbnail">
       <div className="header">
-        <div className="icon">
-          <PackIcon pack={pack} />
+        <h1>{pack.resolved_title || 'Nouvelles actions !'}</h1>
+        <div className="valuation">
+          <FridayCoinsVariation variation={pack.valuation} size="large" theme="gold" />
         </div>
-        <h1>{pack.resolved_title || 'Félicitations !'}</h1>
-        <p>
-          {pack.resolved_message || 'Voici quelques actions qui te permettront de démarrer le jeu.'}
-        </p>
       </div>
       {pack.share_bulks && Array.isArray(pack.share_bulks) ? (
         <div className="shares-bulks">
-          <ShareBulkList shareBulks={pack.share_bulks} />
+          <ShareBulkList shareBulks={pack.share_bulks} size={size} />
         </div>
       ) : null}
+      <div className="footer">
+        <div className="pack-factory">
+          <span className="label">Pack</span>
+          <span className="value">
+            {typeof pack.factory === 'object' && pack.factory?.name ? pack.factory.name : '--'}
+          </span>
+        </div>
+        <div className="valuation">
+          <span className="label">Valorisation</span>
+          <FridayCoins amount={pack.valuation} />
+        </div>
+      </div>
+      <div className="wallpaper">
+        <Wallpaper>Pack</Wallpaper>
+      </div>
     </div>
   );
 }

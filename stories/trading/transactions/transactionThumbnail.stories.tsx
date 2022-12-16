@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { Asset, Club, Player, Transaction, Wallet } from '@fridaygame/client';
 import { BrowserRouter } from 'react-router-dom';
-import TransactionThumbnail from '../../../src/trading/packs/packThumbnail';
+import TransactionThumbnail from '../../../src/trading/transactions/transactionThumbnail';
 
 interface Props {}
 
@@ -32,7 +32,8 @@ const player: Player = {
   club,
   name: 'Kylian Mbappé',
   number: 10,
-  position: 'attacking_midfield',
+  position: 'forward',
+  resolved_short_position: 'ATT',
   side: 'left',
   resolved_position: 'Attaquant centre',
 };
@@ -46,7 +47,7 @@ const asset: Asset = {
   slug: 'kylian-mbappe',
   total_shares: 450,
   quotation: 2750,
-  session_variation: 345,
+  day_variation: 0.34,
   player,
 };
 
@@ -68,7 +69,7 @@ const to: Wallet = {
   name: 'Lovely Mouse',
 };
 
-const pack: Transaction = {
+const transaction: Transaction = {
   id: 'tr_cUkDdk9VW4PwvsF',
   creation: '2021-09-29T16:08:39.129+00:00',
   asset,
@@ -77,12 +78,12 @@ const pack: Transaction = {
   nb_shares: 42,
   price: 45000,
   asset_quotation_gain: 3500,
-  asset_quotation_variation: 150,
+  asset_quotation_variation: 0.01,
 };
 
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
   <BrowserRouter>
-    <TransactionThumbnail pack={pack} />
+    <TransactionThumbnail transaction={transaction} />
   </BrowserRouter>
 );
 

@@ -1,31 +1,30 @@
-import { ReactElement, useEffect, useState } from 'react';
+import { ReactElement, useMemo } from 'react';
 import { formatFridayCoinsVariation } from '@fridaygame/client';
 
-export type FridayCoinsVariationSize = 'small' | 'medium' | 'big';
+export type FridayCoinsVariationSize = 'small' | 'medium' | 'big' | 'large';
+
+export type FridayCoinsVariationTheme = 'default' | 'gold';
 
 export interface Props {
   variation?: number;
   size?: FridayCoinsVariationSize;
+  theme?: FridayCoinsVariationTheme;
 }
 
 export default function FridayCoinsVariation({
   variation = 0,
   size = 'small',
+  theme = 'default',
 }: Props): ReactElement {
-  const [sign, setSign] = useState<'positive' | 'negative' | 'zero'>(
-    variation >= 0 ? 'positive' : 'negative',
-  );
-
-  useEffect(() => {
+  const sign = useMemo<'positive' | 'negative' | 'zero'>(() => {
     if (!variation) {
-      setSign('zero');
-    } else {
-      setSign(variation > 0 ? 'positive' : 'negative');
+      return 'zero';
     }
+    return variation > 0 ? 'positive' : 'negative';
   }, [variation]);
 
   return (
-    <span className={`friday-ui-friday-coins-variation ${sign} ${size}`}>
+    <span className={`friday-ui-friday-coins-variation ${sign} ${size} ${theme}`}>
       {formatFridayCoinsVariation(variation)}
     </span>
   );
