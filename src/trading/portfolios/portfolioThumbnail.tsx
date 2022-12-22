@@ -121,7 +121,7 @@ export default function PortfolioThumbnail({
           {onBuy ? (
             <div className="action">
               <Button shape="filled" theme="buy" onClick={onBuy}>
-                Acheter
+                Achat
               </Button>
             </div>
           ) : null}

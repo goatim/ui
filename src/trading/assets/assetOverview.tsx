@@ -128,14 +128,14 @@ export default function AssetOverview({
           onClick={() => setOrderType('buy')}
           className="buy"
           id="friday-ui-asset-overview-buy-button">
-          Acheter
+          Achat
         </button>
         <button
           type="button"
           onClick={() => setOrderType('sell')}
           className="sell"
           id="friday-ui-asset-overview-sell-button">
-          Vendre
+          Vente
         </button>
       </div>
 
