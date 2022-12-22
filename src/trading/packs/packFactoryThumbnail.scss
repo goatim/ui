@@ -1,5 +1,4 @@
 @use '../../styles/colors';
-@use '../../styles/fonts';
 
 .friday-ui-pack-factory-thumbnail {
   border-radius: 20px;
@@ -11,28 +10,8 @@
   overflow: hidden;
 
   > .header {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background: colors.$gold;
-    border-bottom: solid rgba(black, .05) 1px;
-    padding: 20px;
-
-    > .label {
-      @include fonts.Inter(0.9em, rgba(white, .5), 600);
-      text-transform: uppercase;
-    }
-
-    > .odds {
-      margin-top: 5px;
-
-      > .odd {
-        > .label {
-          @include fonts.Inter(0.9em, white, 500);
-          margin-right: 5px;
-        }
-      }
-    }
+    width: 100%;
+    height: 80px;
   }
 
   > .body {
@@ -40,23 +19,34 @@
     flex-direction: column;
     padding: 20px;
 
-    > .title {
-      @include fonts.Inter(0.7em, colors.$blue, bold);
-      margin: 0;
-      padding: 0;
+    > .odds {
+      > .odd {
+        > .label {
+          font-size: 0.8em;
+          margin-right: 5px;
+        }
+      }
+    }
+
+    > .name {
+      font-size: 1.8em;
+      font-weight: bold;
+      margin-top: 10px;
     }
 
     > .price {
-      @include fonts.Inter(1.8em, colors.$blue, bold);
-      margin: .1em 0 0;
-      padding: 0;
+      font-size: 1.1em;
+      font-weight: bold;
+      margin-top: 5px;
     }
+  }
 
-    > .description {
-      @include fonts.Inter(0.7em, rgba(colors.$blue, .7), medium);
-      margin: 1em 0 0;
-      padding: 0;
-    }
+  > .random-share-bulks {
+    width: 100%;
+    margin: 0;
+    padding: 0 10px;
+    display: inline-block;
+    object-fit: contain;
   }
 
   > .actions {

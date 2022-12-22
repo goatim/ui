@@ -25,10 +25,11 @@
         color: white;
         opacity: .5;
         text-transform: uppercase;
-        padding: 0 5px;
+        padding: 0 4px;
         font-style: italic;
-        font-size: 2em;
+        font-size: 1em;
         margin: 0;
+        white-space: nowrap;
 
         &.active {
           opacity: 1;

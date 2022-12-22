@@ -8,14 +8,7 @@ interface Props {}
 export default {
   title: 'Trading/PackFactoryThumbnail',
   component: PackFactoryThumbnail,
-  argTypes: {
-    theme: {
-      options: ['light', 'dark'],
-      control: {
-        type: 'select',
-      },
-    },
-  },
+  argTypes: {},
 } as ComponentMeta<JSXElementConstructor<Props>>;
 
 const packFactory: PackFactory = {
@@ -27,13 +20,7 @@ const packFactory: PackFactory = {
 };
 
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
-  <div
-    style={{
-      display: 'flex',
-      justifyContent: 'center',
-    }}>
-    <PackFactoryThumbnail packFactory={packFactory} />
-  </div>
+  <PackFactoryThumbnail packFactory={packFactory} />
 );
 
 export const Default = Template.bind({});

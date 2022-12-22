@@ -93,6 +93,7 @@ import ItemList from './market/checkouts/itemList';
 import CartResume, { CartResumeSize } from './market/cartResume';
 import CartOverview, { CartOverviewSize } from './market/cartOverview';
 import CheckoutBill from './market/checkouts/checkoutBill';
+import ShopBanner from './market/shopBanner';
 import LeagueIcon, { LeagueIconSize } from './soccer/leagues/leagueIcon';
 import LeagueThumbnail, {
   LeagueThumbnailSize,
@@ -178,6 +179,7 @@ import ShareBulkThumbnail, {
 } from './trading/shareBulks/shareBulkThumbnail';
 import ShareBulkList from './trading/shareBulks/shareBulkList';
 import PackFactoryThumbnail from './trading/packs/packFactoryThumbnail';
+import PackFactoryCarousel, { PackFactoryCarouselSize } from './trading/packs/packFactoryCarousel';
 import PackThumbnail from './trading/packs/packThumbnail';
 import PackModal from './trading/packs/packModal';
 import PortfolioThumbnail, {
@@ -334,6 +336,7 @@ export {
   CartResume,
   CurrenciesRateThumbnail,
   CheckoutBill,
+  ShopBanner,
   FridayCoins,
   FridayCoinsVariation,
   ItemEditor,
@@ -467,6 +470,7 @@ export {
   ShareBulkThumbnail,
   ShareBulkList,
   PackFactoryThumbnail,
+  PackFactoryCarousel,
   PackThumbnail,
   PackModal,
   PortfolioThumbnail,
@@ -494,6 +498,7 @@ export type {
   IpoThumbnailShape,
   IpoThumbnailSize,
   AssetOverviewSize,
+  PackFactoryCarouselSize,
   PortfolioThumbnailSize,
   PortfolioCarouselSize,
   OrderThumbnailSize,

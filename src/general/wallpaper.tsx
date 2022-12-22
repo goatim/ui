@@ -6,7 +6,7 @@ export interface Props {
   lineHeight?: number;
 }
 
-export default function Wallpaper({ children, lineHeight = 30 }: Props): ReactElement {
+export default function Wallpaper({ children, lineHeight = 18 }: Props): ReactElement {
   const wallpaper = useRef<HTMLDivElement>(null);
 
   const wallpaperDomRect = useDOMRect(wallpaper);
@@ -24,7 +24,7 @@ export default function Wallpaper({ children, lineHeight = 30 }: Props): ReactEl
     if (!wallpaperDomRect?.width || !children?.length) {
       return [];
     }
-    let nb = Math.ceil(wallpaperDomRect.width / (children.length * 22));
+    let nb = Math.ceil(wallpaperDomRect.width / (children.length * 12));
     nb += nb % 2 ? 0 : 1;
     return new Array(nb).fill('').map(() => Math.random().toString(36).substring(2, 7));
   }, [children?.length, wallpaperDomRect?.width]);

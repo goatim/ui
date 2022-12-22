@@ -17,9 +17,6 @@ export default function PackThumbnail({ pack, size = 'normal' }: Props): ReactEl
     <div className="friday-ui-pack-thumbnail">
       <div className="header">
         <h1>{pack.resolved_title || 'Nouvelles actions !'}</h1>
-        <div className="valuation">
-          <FridayCoinsVariation variation={pack.valuation} size="large" theme="gold" />
-        </div>
       </div>
       {pack.share_bulks && Array.isArray(pack.share_bulks) ? (
         <div className="shares-bulks">
