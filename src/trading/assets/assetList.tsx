@@ -37,7 +37,7 @@ export default function AssetList({
           </div>
         ))
       ) : (
-        <span>Aucun asset</span>
+        <span />
       )}
     </div>
   );

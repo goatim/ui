@@ -73,7 +73,7 @@ const league: League = {
 const club: Club = {
   id: '1',
   league,
-  name: 'Paris',
+  name: 'Manchester United',
   slug: 'paris',
   description: '',
   icon: {
