@@ -27,7 +27,7 @@ export default {
       },
     },
     shape: {
-      options: ['text', 'box'],
+      options: ['text', 'logo', 'box'],
       control: {
         type: 'select',
       },

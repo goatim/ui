@@ -1,4 +1,3 @@
-@use '../../styles/fonts';
 @use '../../styles/colors';
 
 .friday-ui-club-thumbnail {
@@ -11,7 +10,8 @@
     justify-content: flex-start;
 
     > .name {
-      @include fonts.Inter(.8em, colors.$blue, 900);
+      font-size: .8em;
+      font-weight: 900;
       padding: 0;
       margin: 0 0 0 .8em;
       width: 100%;
@@ -39,6 +39,18 @@
     }
   }
 
+  &.logo, &.box {
+    > .body {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      > .name {
+        margin: .8em 0 0;
+        text-align: center;
+      }
+    }
+  }
 
   &.box {
     width: 80px;
@@ -62,14 +74,6 @@
     > .body {
       width: 100%;
       height: 100%;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-
-      > .name {
-        margin: .8em 0 0;
-        text-align: center;
-      }
     }
   }
 }

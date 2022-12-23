@@ -9,7 +9,7 @@ export type ClubThumbnailSize = 'small' | 'medium' | 'big';
 
 export type ClubThumbnailTheme = 'dark' | 'light';
 
-export type ClubThumbnailShape = 'text' | 'box';
+export type ClubThumbnailShape = 'text' | 'logo' | 'box';
 
 export interface Props extends WrapperProps {
   club: Club;
