@@ -41,7 +41,7 @@ export default function MatchRanking({
         />
       </div>
 
-      {(toComposition || onClickComposition) && match.status === 'planned' ? (
+      {(toComposition || onClickComposition) && match.status === 'open' ? (
         <div className="action">
           <Button
             to={toCurrentComposition}
