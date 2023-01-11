@@ -13,12 +13,18 @@
     background: colors.$blue-20;
   }
 
-  &.planned > .indicator {
+  &.open > .indicator {
     background: colors.$green;
   }
 
   &.ongoing > .indicator {
     background: colors.$fushia;
+  }
+
+  &.passed, &.closing {
+    > .indicator {
+      background: colors.$electric-blue;
+    }
   }
 
   > span {

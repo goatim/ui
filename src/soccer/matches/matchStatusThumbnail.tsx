@@ -8,15 +8,20 @@ export interface Props {
 export default function MatchStatusThumbnail({ status }: Props): ReactElement {
   const textualStatus = useMemo<string>(() => {
     switch (status) {
-      case 'planned':
+      case 'open':
         return 'Fais ta composition !';
       case 'ongoing':
         return 'Match en cours ...';
       case 'passed':
+        return 'Coup de sifflet final !';
+      case 'closing':
+        return 'Calcul des gains en cours ...';
+      case 'closed':
         return 'Match terminé';
       case 'cancelled':
-      default:
         return 'Match annulé';
+      default:
+        return 'Match en préparation ...';
     }
   }, [status]);
 

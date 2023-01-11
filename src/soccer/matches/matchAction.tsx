@@ -27,7 +27,7 @@ export default function MatchAction({
   feedTarget,
 }: Props): ReactElement {
   switch (status) {
-    case 'planned':
+    case 'open':
       return (
         <div className="friday-ui-match-action">
           <Button
@@ -58,6 +58,8 @@ export default function MatchAction({
         </div>
       );
     case 'passed':
+    case 'closing':
+    case 'closed':
       return (
         <div className="friday-ui-match-action">
           <Button
@@ -70,10 +72,16 @@ export default function MatchAction({
           </Button>
         </div>
       );
-    default:
+    case 'cancelled':
       return (
         <div className="friday-ui-match-action">
           <span>Le match a été annulé</span>
+        </div>
+      );
+    default:
+      return (
+        <div className="friday-ui-match-action">
+          <span>En préparation ...</span>
         </div>
       );
   }

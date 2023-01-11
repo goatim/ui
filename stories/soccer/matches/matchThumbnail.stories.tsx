@@ -12,7 +12,7 @@ export default {
   component: MatchThumbnail,
   argTypes: {
     status: {
-      options: ['planned', 'ongoing', 'passed', 'cancelled'],
+      options: ['created', 'open', 'ongoing', 'passed', 'closing', 'closed', 'cancelled'],
       control: {
         type: 'select',
       },
