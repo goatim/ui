@@ -5,11 +5,13 @@ import WalletThumbnail, {
   WalletThumbnailSize,
   WalletThumbnailTheme,
 } from '../../../src/market/wallets/walletThumbnail';
+import { WalletPictureOutline } from '../../../src/market/wallets/walletPicture';
 
 interface Props {
   size?: WalletThumbnailSize;
   theme?: WalletThumbnailTheme;
   showPicture?: boolean;
+  pictureOutline?: WalletPictureOutline;
   showName?: boolean;
   showAmount?: boolean;
   is_defined?: boolean;
@@ -33,6 +35,12 @@ export default {
     showName: {
       control: {
         type: 'boolean',
+      },
+    },
+    pictureOutline: {
+      control: {
+        options: ['outline-gold'],
+        type: 'select',
       },
     },
     showAmount: {
@@ -80,6 +88,7 @@ const Template: ComponentStory<JSXElementConstructor<Props>> = ({
   size,
   theme,
   showPicture,
+  pictureOutline,
   showName,
   showAmount,
   is_defined,
@@ -89,6 +98,7 @@ const Template: ComponentStory<JSXElementConstructor<Props>> = ({
     size={size}
     theme={theme}
     showPicture={showPicture}
+    pictureOutline={pictureOutline}
     showName={showName}
     showAmount={showAmount}
   />

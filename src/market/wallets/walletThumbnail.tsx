@@ -2,7 +2,7 @@ import { ReactElement, useMemo, forwardRef, ForwardedRef } from 'react';
 import { Wallet } from '@fridaygame/client';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
 import FridayCoins from '../fridayCoins';
-import WalletPicture from './walletPicture';
+import WalletPicture, { WalletPictureOutline } from './walletPicture';
 
 export type WalletThumbnailSize = 'small' | 'medium' | 'big';
 
@@ -13,6 +13,7 @@ export interface Props extends WrapperProps {
   size?: WalletThumbnailSize;
   theme?: WalletThumbnailTheme;
   showPicture?: boolean;
+  pictureOutline?: WalletPictureOutline;
   showName?: boolean;
   showAmount?: boolean;
   align?: AlignSetting;
@@ -24,6 +25,7 @@ export default forwardRef<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement
       wallet,
       size = 'small',
       showPicture = true,
+      pictureOutline,
       showName = true,
       showAmount = false,
       align = 'left',
@@ -52,7 +54,7 @@ export default forwardRef<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement
       }
 
       return classNames.join(' ');
-    }, [showAmount, showName, showPicture, size, theme]);
+    }, [align, showAmount, showName, showPicture, size, theme]);
 
     return (
       <Wrapper
@@ -63,7 +65,9 @@ export default forwardRef<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement
         href={href}
         target={target}
         ref={ref}>
-        {showPicture ? <WalletPicture wallet={wallet} size={size} theme={theme} /> : null}
+        {showPicture ? (
+          <WalletPicture wallet={wallet} size={size} theme={theme} outline={pictureOutline} />
+        ) : null}
         {showName || showAmount ? (
           <div className="body">
             {showName ? <span className="name">{wallet.name || wallet.slug}</span> : null}

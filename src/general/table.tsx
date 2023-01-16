@@ -170,14 +170,14 @@ export default function Table<M extends Model = Model>({
   itemActions,
 }: Props<M>): ReactElement {
   const className = useMemo<string>(() => {
-    let res = 'friday-ui-table';
+    const classNames = ['friday-ui-table'];
     if (onSelectItem || selectionMode) {
-      res += ' clickable';
+      classNames.push('clickable');
     }
     if (selectionMode) {
-      res += ' selectable';
+      classNames.push('selectable');
     }
-    return res;
+    return classNames.join(' ');
   }, [onSelectItem, selectionMode]);
 
   const [selection, setSelection] = useState<TableSelection>(defaultSelection);
@@ -268,10 +268,10 @@ export default function Table<M extends Model = Model>({
     [data, onSelectItem],
   );
 
-  if (!data || !data.length) {
+  if (!data?.length) {
     return (
       EmptyPlaceholder || (
-        <div className="cezembre-ui-data-empty-table">
+        <div className="friday-ui-data-empty-table">
           <Icon name="inbox" size={50} width={1} />
           <span className="label">{emptyLabel || 'Aucune donnée'}</span>
         </div>

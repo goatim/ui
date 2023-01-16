@@ -1,0 +1,90 @@
+@use '../../styles/colors';
+
+.friday-ui-tournament-banner {
+  background: rgba(colors.$gold, .2);
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+
+  &.small {
+    flex-direction: column;
+  }
+
+  > .podium {
+    flex: 1;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+
+    > span {
+      font-size: .9em;
+      color: colors.$gold;
+      text-transform: uppercase;
+      font-weight: bold;
+      display: inline-block;
+      align-self: flex-end;
+      padding: 10px;
+    }
+  }
+
+  &.small {
+    > .podium > span {
+      display: none;
+    }
+  }
+
+  > .reward {
+    background: white;
+
+    > .timer {
+      text-align: right;
+      width: 100%;
+      display: inline-block;
+      font-size: .8em;
+      color: colors.$gold;
+      padding: 10px 20px;
+    }
+
+    > .body {
+      max-width: 300px;
+      padding: 0 30px;
+      margin-top: 10px;
+
+      > .date {
+        font-weight: bold;
+        text-transform: uppercase;
+        color: colors.$gold;
+        margin: 0;
+        font-size: .8em;
+      }
+
+      > .title {
+        font-weight: 900;
+        font-style: italic;
+        text-transform: uppercase;
+        color: colors.$gold;
+        margin: 5px 0 0;
+        font-size: 1em;
+      }
+
+      > .description {
+        font-size: .9em;
+        color: colors.$blue-50;
+        margin-top: 10px;
+      }
+    }
+
+    > .footer {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      padding: 0 30px 20px;
+
+      > img {
+        height: 45px;
+      }
+    }
+  }
+}

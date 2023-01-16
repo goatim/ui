@@ -62,6 +62,7 @@ import PercentageVariation, {
 import WalletPicture, {
   WalletPictureSize,
   WalletPictureTheme,
+  WalletPictureOutline,
 } from './market/wallets/walletPicture';
 import WalletThumbnail, {
   WalletThumbnailSize,
@@ -121,6 +122,9 @@ import SoccerFieldPosition, {
 import CompositionPositionMap, {
   CompositionPositionMapTheme,
 } from './soccer/compositions/compositionPositionMap';
+import TournamentParticipantThumbnail from './soccer/tournamentParticipants/tournamentParticipantThumbnail';
+import TournamentParticipantPodium from './soccer/tournamentParticipants/tournamentParticipantPodium';
+import TournamentBanner, { TournamentBannerSize } from './soccer/tournaments/tournamentBanner';
 import DateTimeThumbnail, { DateTimeThumbnailTheme } from './general/dateTimeThumbnail';
 import MatchCreator from './soccer/matches/matchCreator';
 import MatchStatusThumbnail from './soccer/matches/matchStatusThumbnail';
@@ -385,6 +389,7 @@ export type {
   WalletThumbnailTheme,
   WalletPictureSize,
   WalletPictureTheme,
+  WalletPictureOutline,
   WalletEditorFields,
 };
 
@@ -422,6 +427,9 @@ export {
   PhysicalEventList,
   CompositionThumbnail,
   CompositionRanking,
+  TournamentParticipantThumbnail,
+  TournamentParticipantPodium,
+  TournamentBanner,
 };
 
 export type {
@@ -451,6 +459,7 @@ export type {
   MatchCarouselSize,
   CompositionRankingTheme,
   SpotlightThumbnailSize,
+  TournamentBannerSize,
 };
 
 /**

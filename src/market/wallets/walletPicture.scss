@@ -48,6 +48,10 @@
     }
   }
 
+  &.outline-gold {
+    border: solid colors.$gold 2px;
+  }
+
   &.medium {
     > img, > .placeholder {
       width: 30px;

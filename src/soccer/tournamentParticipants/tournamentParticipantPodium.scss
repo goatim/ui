@@ -1,0 +1,63 @@
+@use '../../styles/colors';
+
+.friday-ui-tournament-participant-podium {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  > .step {
+    flex: 1;
+    display: flex;
+    align-items: stretch;
+    min-height: 60px;
+
+    > .rank {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px;
+
+      > span {
+        color: white;
+        font-weight: bold;
+      }
+
+      > .score {
+        font-size: .7em;
+      }
+
+      > .position {
+        font-size: .9em;
+      }
+    }
+
+    > .participant {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+    }
+
+    &:first-of-type {
+      > .rank {
+        width: 150px;
+        background: colors.$gold;
+      }
+    }
+
+    &:nth-child(2) {
+      > .rank {
+        width: 130px;
+        background: rgba(colors.$gold, .8);
+      }
+    }
+
+    &:last-of-type {
+      > .rank {
+        width: 110px;
+        background: rgba(colors.$gold, .6);
+      }
+    }
+  }
+}
