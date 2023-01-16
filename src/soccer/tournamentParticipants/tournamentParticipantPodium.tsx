@@ -10,7 +10,7 @@ export default function TournamentParticipantPodium({
 }: Props): ReactElement {
   return (
     <div className="friday-ui-tournament-participant-podium">
-      {tournamentParticipants?.splice(0, 3).map((participant) => (
+      {tournamentParticipants?.slice(0, 3).map((participant) => (
         <div className="step" key={participant.id}>
           <div className="rank">
             <span className="score">{formatScore(participant.score || 0)}</span>

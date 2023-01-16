@@ -82,6 +82,7 @@ const Template: ComponentStory<JSXElementConstructor<Props>> = ({ size }: Props)
       ]}
       onMatchesClick={() => undefined}
       size={size}
+      end="2023-03-01"
     />
   </div>
 );
