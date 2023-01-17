@@ -47,7 +47,7 @@ export default function TournamentBanner({
       <div className="reward">
         <span className="timer">{`Fin dans ${remainingTime?.toFormat('d:hh:mm:ss')}`}</span>
         <div className="body">
-          <h3 className="date">Le 1er mars</h3>
+          <h3 className="date">Le 4 juin</h3>
           <h2 className="title">1 Ether à gagner !</h2>
           <p className="description">
             Participe aux matchs et gagne des points pour te hisser en tête du classement
