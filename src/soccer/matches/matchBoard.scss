@@ -19,6 +19,7 @@
 
   > .ranking {
     border-right: solid rgba(colors.$blue, .1) 1px;
+    overflow: auto;
   }
 
   > .feed {

@@ -2,10 +2,12 @@ import { ReactElement } from 'react';
 import { Wrapper } from '@cezembre/fronts';
 import FridayCoinsVariation from '../fridayCoinsVariation';
 import FridayCoins from '../fridayCoins';
+import Score from '../../general/score';
 import WalletThumbnail, { Props as WalletThumbnailProps } from './walletThumbnail';
 
 export interface Props extends WalletThumbnailProps {
   position?: number;
+  score?: number;
   amount?: number;
   variation?: number;
 }
@@ -22,6 +24,7 @@ export default function WalletRank({
   href,
   target,
   position,
+  score,
   amount,
   variation,
 }: Props): ReactElement {
@@ -47,6 +50,7 @@ export default function WalletRank({
       </div>
 
       <div className="metrics">
+        {score !== undefined ? <Score score={score} theme={theme} /> : null}
         {amount !== undefined ? <FridayCoins amount={amount} theme={theme} size={size} /> : null}
         {variation !== undefined ? (
           <FridayCoinsVariation variation={variation} size={size} />

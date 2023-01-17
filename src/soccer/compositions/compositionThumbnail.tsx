@@ -31,8 +31,9 @@ export default function CompositionThumbnail({
       onClick={onClick}
       href={href}
       target={target}
-      position={composition.rank}
-      variation={composition.score}
+      position={composition.position}
+      score={composition.score}
+      variation={composition.dividends_gains}
     />
   );
 }

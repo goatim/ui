@@ -1,4 +1,4 @@
-import { ReactElement, useEffect, useMemo, useState } from 'react';
+import { ReactElement, useMemo } from 'react';
 import { formatPercentageVariation } from '@fridaygame/client';
 
 export type PercentageVariationShape = 'text' | 'filled';
@@ -6,13 +6,15 @@ export type PercentageVariationShape = 'text' | 'filled';
 export type PercentageVariationSize = 'small' | 'medium' | 'big';
 
 export interface Props {
+  children?: number;
   variation?: number;
   shape?: PercentageVariationShape;
   size?: PercentageVariationSize;
 }
 
 export default function PercentageVariation({
-  variation = 0,
+  children,
+  variation,
   shape = 'text',
   size = 'small',
 }: Props): ReactElement {
@@ -25,7 +27,7 @@ export default function PercentageVariation({
 
   return (
     <span className={`friday-ui-percentage-variation ${sign} ${shape} ${size}`}>
-      {formatPercentageVariation(variation)}
+      {formatPercentageVariation(children || variation || 0)}
     </span>
   );
 }

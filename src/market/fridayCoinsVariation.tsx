@@ -6,13 +6,15 @@ export type FridayCoinsVariationSize = 'small' | 'medium' | 'big' | 'large';
 export type FridayCoinsVariationTheme = 'default' | 'gold';
 
 export interface Props {
+  children?: number;
   variation?: number;
   size?: FridayCoinsVariationSize;
   theme?: FridayCoinsVariationTheme;
 }
 
 export default function FridayCoinsVariation({
-  variation = 0,
+  children,
+  variation,
   size = 'small',
   theme = 'default',
 }: Props): ReactElement {
@@ -25,7 +27,7 @@ export default function FridayCoinsVariation({
 
   return (
     <span className={`friday-ui-friday-coins-variation ${sign} ${size} ${theme}`}>
-      {formatFridayCoinsVariation(variation)}
+      {formatFridayCoinsVariation(children || variation || 0)}
     </span>
   );
 }

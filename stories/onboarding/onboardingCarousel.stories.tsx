@@ -54,7 +54,7 @@ const slides: OnboardingCarouselSlideData[] = [
 ];
 
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({ size }: Props) => (
-  <OnboardingCarousel slides={slides} size={size} />
+  <OnboardingCarousel id="pop" dismissModal={() => undefined} slides={slides} size={size} />
 );
 
 export const Default = Template.bind({});

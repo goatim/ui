@@ -1,0 +1,30 @@
+@use '../styles/colors';
+
+.friday-ui-score {
+  font-size: .7em;
+  font-weight: bold;
+
+  &.medium {
+    font-size: .8em;
+  }
+
+  &.big {
+    font-size: .9em;
+  }
+
+  &.large {
+    font-size: 1.1em;
+  }
+
+  &.light {
+    color: white;
+  }
+
+  &.darker {
+    color: colors.$blue-50;
+  }
+
+  &.gold {
+    color: colors.$gold
+  }
+}

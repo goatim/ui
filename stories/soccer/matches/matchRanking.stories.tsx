@@ -9,31 +9,20 @@ import {
   Player,
   Asset,
   Dividend,
-  Composition,
 } from '@fridaygame/client';
-import MatchBoard, {
-  MatchBoardSize,
-  MatchBoardTheme,
-} from '../../../src/soccer/matches/matchBoard';
+import MatchRanking, { MatchRankingTheme } from '../../../src/soccer/matches/matchRanking';
 
 interface Props {
-  theme?: MatchBoardTheme;
-  size?: MatchBoardSize;
+  theme?: MatchRankingTheme;
 }
 
 export default {
-  title: 'Soccer/MatchBoard',
-  component: MatchBoard,
+  title: 'Soccer/MatchRanking',
+  component: MatchRanking,
   argTypes: {
     theme: {
       control: {
         options: ['dark', 'light'],
-        type: 'select',
-      },
-    },
-    size: {
-      control: {
-        options: ['small', 'big'],
         type: 'select',
       },
     },
@@ -71,16 +60,9 @@ const match: Match = {
   end: '2022-10-20T09:54:52.696+02:00',
   nb_participants: 213,
   is_public: true,
-};
-
-const composition: Composition = {
-  id: 'co_qd54qzd31',
-  match,
-  wallet,
-  score: 4560,
-  dividends_gains: 12000,
-  dividends_percentage: 0.02,
-  position: 1,
+  // participants: Array(24)
+  //   .fill(wallet)
+  //   .map((w, index) => ({ ...w, position: index + 1 })),
 };
 
 const club: Club = {
@@ -165,18 +147,9 @@ const physicalEvents: PhysicalEvent[] = [
   },
 ];
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ theme, size }: Props) => (
+const Template: ComponentStory<JSXElementConstructor<Props>> = ({ theme }: Props) => (
   <div style={{ height: 500 }}>
-    <MatchBoard
-      match={match}
-      compositions={Array(56)
-        .fill(composition)
-        .map((c, i) => ({ ...c, id: c + i, position: i + 1 }))}
-      theme={theme}
-      size={size}
-      onClickComposition={() => undefined}
-      physicalEvents={physicalEvents}
-    />
+    <MatchRanking match={match} theme={theme} onClickComposition={() => undefined} />
   </div>
 );
 
