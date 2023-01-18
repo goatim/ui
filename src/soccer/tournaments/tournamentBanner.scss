@@ -7,6 +7,7 @@
   display: flex;
   align-items: stretch;
   justify-content: space-between;
+  height: 230px;
 
   &.small {
     flex-direction: column;
@@ -23,9 +24,17 @@
       color: colors.$gold;
       text-transform: uppercase;
       font-weight: bold;
-      display: inline-block;
-      align-self: flex-end;
+      align-self: center;
       padding: 10px;
+    }
+
+    > .placeholder {
+      text-align: center;
+      flex: 1;
+    }
+
+    > .title {
+      align-self: flex-end;
     }
   }
 

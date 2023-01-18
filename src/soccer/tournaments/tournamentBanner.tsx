@@ -41,8 +41,14 @@ export default function TournamentBanner({
   return (
     <div className={`friday-ui-tournament-banner ${size}`}>
       <div className="podium">
-        <TournamentParticipantPodium tournamentParticipants={tournamentParticipants} />
-        <span>Friday league</span>
+        {tournamentParticipants?.length ? (
+          <>
+            <TournamentParticipantPodium tournamentParticipants={tournamentParticipants} />
+            <span className="title">Friday league</span>
+          </>
+        ) : (
+          <span className="placeholder">À partir du 20 janvier</span>
+        )}
       </div>
       <div className="reward">
         <span className="timer">{`Fin dans ${remainingTime?.toFormat('d:hh:mm:ss')}`}</span>
