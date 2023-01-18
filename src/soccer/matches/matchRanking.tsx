@@ -47,7 +47,7 @@ export default function MatchRanking({
             to={toCurrentComposition}
             onClick={onClickCurrentComposition}
             shape="filled"
-            theme={theme === 'light' ? 'light' : 'dark'}>
+            theme={theme === 'light' ? 'transparent-light' : 'transparent-dark'}>
             Faire ma composition
           </Button>
         </div>
