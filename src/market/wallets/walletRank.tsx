@@ -36,7 +36,7 @@ export default function WalletRank({
       href={href}
       target={target}>
       <div className="body">
-        {position !== undefined ? <span className="position">{position}</span> : null}
+        {position ? <span className="position">{position}</span> : null}
         <div className="wallet">
           <WalletThumbnail
             wallet={wallet}
@@ -50,9 +50,11 @@ export default function WalletRank({
       </div>
 
       <div className="metrics">
-        {score !== undefined ? <Score score={score} theme={theme} /> : null}
-        {amount !== undefined ? <FridayCoins amount={amount} theme={theme} size={size} /> : null}
-        {variation !== undefined ? (
+        {typeof score === 'number' ? <Score score={score} theme={theme} /> : null}
+        {typeof amount === 'number' ? (
+          <FridayCoins amount={amount} theme={theme} size={size} />
+        ) : null}
+        {typeof variation === 'number' ? (
           <FridayCoinsVariation variation={variation} size={size} />
         ) : null}
       </div>

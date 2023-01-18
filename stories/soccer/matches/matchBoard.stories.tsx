@@ -194,7 +194,7 @@ const Template: ComponentStory<JSXElementConstructor<Props>> = ({ theme, size }:
       match={match}
       compositions={Array(56)
         .fill(composition)
-        .map((c, i) => ({ ...c, id: c + i, position: undefined, wallet: wallets[i % 3] }))}
+        .map((c, i) => ({ ...c, id: c + i, position: null, wallet: wallets[i % 3] }))}
       theme={theme}
       size={size}
       onClickComposition={() => undefined}
