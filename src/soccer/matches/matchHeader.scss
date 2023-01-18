@@ -12,4 +12,10 @@
   > .creator {
     margin-top: 10px;
   }
+
+  &.light {
+    > .title {
+      color: white;
+    }
+  }
 }

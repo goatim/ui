@@ -127,12 +127,14 @@ import TournamentParticipantPodium from './soccer/tournamentParticipants/tournam
 import TournamentBanner, { TournamentBannerSize } from './soccer/tournaments/tournamentBanner';
 import DateTimeThumbnail, { DateTimeThumbnailTheme } from './general/dateTimeThumbnail';
 import MatchCreator from './soccer/matches/matchCreator';
-import MatchStatusThumbnail from './soccer/matches/matchStatusThumbnail';
+import MatchStatusThumbnail, {
+  MatchStatusThumbnailTheme,
+} from './soccer/matches/matchStatusThumbnail';
 import MatchIcon from './soccer/matches/matchIcon';
 import MatchParticipants from './soccer/matches/matchParticipants';
 import MatchLive from './soccer/matches/matchLive';
 import MatchAction from './soccer/matches/matchAction';
-import MatchHeader from './soccer/matches/matchHeader';
+import MatchHeader, { MatchHeaderTheme } from './soccer/matches/matchHeader';
 import MatchThumbnail from './soccer/matches/matchThumbnail';
 import MatchCarousel, { MatchCarouselSize } from './soccer/matches/matchCarousel';
 import MatchBoard, { MatchBoardTheme, MatchBoardSize } from './soccer/matches/matchBoard';
@@ -456,6 +458,8 @@ export type {
   CompositionPositionListFieldValuePosition,
   PhysicalEventThumbnailTheme,
   PhysicalEventTimelineTheme,
+  MatchStatusThumbnailTheme,
+  MatchHeaderTheme,
   MatchBoardTheme,
   MatchBoardSize,
   MatchCarouselSize,

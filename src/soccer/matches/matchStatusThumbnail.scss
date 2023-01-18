@@ -13,6 +13,12 @@
     background: colors.$blue-20;
   }
 
+  &.light {
+    > .indicator {
+      background: rgba(white, .5);
+    }
+  }
+
   &.open > .indicator {
     background: colors.$green;
   }
@@ -28,7 +34,14 @@
   }
 
   > span {
-    @include fonts.Inter(.8em, colors.$blue, bold);
+    font-size: .8em;
+    font-weight: bold;
     margin-left: 10px;
+  }
+
+  &.light {
+    > span {
+      color: white;
+    }
   }
 }

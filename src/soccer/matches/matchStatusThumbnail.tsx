@@ -1,11 +1,14 @@
 import { ReactElement, useMemo } from 'react';
 import { MatchStatus } from '@fridaygame/client';
 
+export type MatchStatusThumbnailTheme = 'dark' | 'light';
+
 export interface Props {
   status?: MatchStatus;
+  theme?: MatchStatusThumbnailTheme;
 }
 
-export default function MatchStatusThumbnail({ status }: Props): ReactElement {
+export default function MatchStatusThumbnail({ status, theme = 'dark' }: Props): ReactElement {
   const textualStatus = useMemo<string>(() => {
     switch (status) {
       case 'open':
@@ -26,7 +29,7 @@ export default function MatchStatusThumbnail({ status }: Props): ReactElement {
   }, [status]);
 
   return (
-    <div className={`friday-ui-match-status-thumbnail ${status}`}>
+    <div className={`friday-ui-match-status-thumbnail ${status} ${theme}`}>
       <div className="indicator" />
       <span>{textualStatus}</span>
     </div>
