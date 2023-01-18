@@ -51,20 +51,44 @@ const owner: User = {
   last_name: 'Perouze',
 };
 
-const wallet: Wallet = {
+const wallet1: Wallet = {
   id: 'wa_sopsaA',
   owner,
   picture: {
     id: 'me_dehHH',
     thumbnail_url: 'https://picsum.photos/200',
   },
-  name: 'Smart Monkey',
+  name: 'Smart Monkey First of choice',
   total_gains: 4555,
 };
 
+const wallet2: Wallet = {
+  id: 'wa_sopsaA',
+  owner,
+  picture: {
+    id: 'me_dehHH',
+    thumbnail_url: 'https://picsum.photos/200',
+  },
+  name: 'Thibz',
+  total_gains: 4555,
+};
+
+const wallet3: Wallet = {
+  id: 'wa_sopsaA',
+  owner,
+  picture: {
+    id: 'me_dehHH',
+    thumbnail_url: 'https://picsum.photos/200',
+  },
+  name: 'Anastasia',
+  total_gains: 4555,
+};
+
+const wallets = [wallet1, wallet2, wallet3];
+
 const match: Match = {
   id: 'ma_hqedh654qed',
-  creator: wallet,
+  creator: wallet1,
   title: 'Match de la semaine',
   slug: 'match-de-la-semaine',
   beginning: '2022-09-29T09:54:52.696+02:00',
@@ -76,7 +100,6 @@ const match: Match = {
 const composition: Composition = {
   id: 'co_qd54qzd31',
   match,
-  wallet,
   score: 4560,
   dividends_gains: 12000,
   dividends_percentage: 0.02,
@@ -171,7 +194,7 @@ const Template: ComponentStory<JSXElementConstructor<Props>> = ({ theme, size }:
       match={match}
       compositions={Array(56)
         .fill(composition)
-        .map((c, i) => ({ ...c, id: c + i, position: i + 1 }))}
+        .map((c, i) => ({ ...c, id: c + i, position: undefined, wallet: wallets[i % 3] }))}
       theme={theme}
       size={size}
       onClickComposition={() => undefined}
