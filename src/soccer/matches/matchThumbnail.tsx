@@ -6,6 +6,7 @@ import MatchStatusThumbnail from './matchStatusThumbnail';
 import MatchLive from './matchLive';
 import MatchParticipants from './matchParticipants';
 import MatchAction, { Props as MatchActionProps } from './matchAction';
+import MatchHeader from './matchHeader';
 
 export interface Props extends Omit<MatchActionProps, 'status'> {
   match: Match;
@@ -25,15 +26,7 @@ export default function MatchThumbnail({
   return (
     <div className="friday-ui-match-thumbnail">
       <div className="header">
-        <div className="status">
-          <MatchStatusThumbnail status={match.status} />
-        </div>
-        <span className="title">{match.title}</span>
-        {match.creator && typeof match.creator === 'object' ? (
-          <div className="creator">
-            <MatchCreator creator={match.creator} />
-          </div>
-        ) : null}
+        <MatchHeader match={match} />
         <div className="period">
           <DateTimeThumbnail label="Début" dateTime={match.beginning} theme="transparent-dark" />
           <DateTimeThumbnail

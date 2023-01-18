@@ -132,6 +132,7 @@ import MatchIcon from './soccer/matches/matchIcon';
 import MatchParticipants from './soccer/matches/matchParticipants';
 import MatchLive from './soccer/matches/matchLive';
 import MatchAction from './soccer/matches/matchAction';
+import MatchHeader from './soccer/matches/matchHeader';
 import MatchThumbnail from './soccer/matches/matchThumbnail';
 import MatchCarousel, { MatchCarouselSize } from './soccer/matches/matchCarousel';
 import MatchBoard, { MatchBoardTheme, MatchBoardSize } from './soccer/matches/matchBoard';
@@ -410,6 +411,7 @@ export {
   SoccerField,
   SoccerFieldPosition,
   CompositionPositionMap,
+  MatchHeader,
   MatchThumbnail,
   MatchCarousel,
   MatchCreator,
