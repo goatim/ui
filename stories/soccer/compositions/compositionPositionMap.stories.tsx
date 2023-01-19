@@ -105,28 +105,11 @@ const club: Club = {
   },
 };
 
-const club_without_icon: Club = {
-  id: '2',
-  name: 'FC Nantes',
-  slug: 'fc-nantes',
-  description: '',
-};
-
 const player: Player = {
   id: '1',
   club,
   first_name: 'Kylian',
-  last_name: 'Mbappé',
-  number: 10,
-  position: 'forward',
-  side: 'left',
-  resolved_position: 'Attaquant centre',
-};
-
-const player_without_icon: Player = {
-  id: '2',
-  club: club_without_icon,
-  name: 'Thibault Hernandez',
+  last_name: 'Mbappé Joshua Méteillé',
   number: 10,
   position: 'forward',
   side: 'left',
@@ -142,8 +125,16 @@ const composition: Composition = {
       player,
     },
     {
+      id: '4',
+      player,
+    },
+    {
+      id: '2',
+      player,
+    },
+    {
       id: '3',
-      player: player_without_icon,
+      player,
     },
   ],
 };

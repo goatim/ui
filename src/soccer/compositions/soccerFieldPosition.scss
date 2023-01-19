@@ -5,10 +5,11 @@
   padding: 0;
   background: none;
   outline: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   > img {
-    width: 100%;
-    height: 100%;
     object-fit: contain;
     object-position: center center;
     margin: 0;
@@ -17,8 +18,6 @@
   }
 
   > .no-icon {
-    width: 100%;
-    height: 100%;
     background: colors.$blue;
     border-radius: 50%;
     display: flex;
@@ -32,13 +31,21 @@
 
   > .placeholder {
     box-sizing: border-box;
-    width: 100%;
-    height: 100%;
     display: block;
     background: rgba(colors.$blue, .5);
     border: solid colors.$blue 1px;
     border-radius: 50%;
     box-shadow: 0 5px 10px rgba(colors.$blue, .2);
+  }
+
+  > span {
+    font-size: .8em;
+    text-align: center;
+    font-weight: 600;
+    white-space: nowrap;
+    margin-top: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   &.light {
@@ -54,32 +61,54 @@
       background: rgba(white, .5);
       border: solid white 1px;
     }
+
+    > span {
+      color: white;
+    }
   }
 
   &.small {
-    width: 25px;
-    height: 25px;
+    > img, > .no-icon, > .placeholder {
+      width: 25px;
+      height: 25px;
+    }
 
     > .placeholder {
       border-width: 1px;
     }
+
+    > span {
+      max-width: 80px;
+    }
   }
 
   &.medium {
-    width: 30px;
-    height: 30px;
+    > img, > .no-icon, > .placeholder {
+      width: 30px;
+      height: 30px;
+    }
 
     > .placeholder {
       border-width: 2px;
     }
+
+    > span {
+      max-width: 100px;
+    }
   }
 
   &.large {
-    width: 60px;
-    height: 60px;
+    > img, > .no-icon, > .placeholder {
+      width: 60px;
+      height: 60px;
+    }
 
     > .placeholder {
       border-width: 3px;
+    }
+
+    > span {
+      max-width: 120px;
     }
   }
 }

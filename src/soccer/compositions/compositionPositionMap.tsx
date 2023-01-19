@@ -33,18 +33,18 @@ function Position({
     if (positionIndex !== -1) {
       const { player } = composition.positions[positionIndex];
 
-      return (
-        <SoccerFieldPosition
-          theme={theme}
-          icon={
-            player && typeof player === 'object' && player.club && typeof player.club === 'object'
-              ? player.club.icon || null
-              : null
-          }
-          size={soccerFieldPositionSize}
-          onClick={onPositionClick}
-        />
-      );
+      if (player && typeof player === 'object') {
+        return (
+          <SoccerFieldPosition
+            theme={theme}
+            icon={player.club && typeof player.club === 'object' ? player.club.icon : null}
+            firstName={player.first_name}
+            lastName={player.last_name}
+            size={soccerFieldPositionSize}
+            onClick={onPositionClick}
+          />
+        );
+      }
     }
   }
 
@@ -84,7 +84,17 @@ export default function CompositionPositionMap({
               typeof composition.goalkeeper === 'object' &&
               composition.goalkeeper.club &&
               typeof composition.goalkeeper.club === 'object'
-                ? composition.goalkeeper.club.icon || null
+                ? composition.goalkeeper.club.icon
+                : undefined
+            }
+            firstName={
+              composition?.goalkeeper && typeof composition.goalkeeper === 'object'
+                ? composition.goalkeeper.first_name
+                : undefined
+            }
+            lastName={
+              composition?.goalkeeper && typeof composition.goalkeeper === 'object'
+                ? composition.goalkeeper.last_name
                 : undefined
             }
           />

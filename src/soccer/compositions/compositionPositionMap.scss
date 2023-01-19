@@ -4,6 +4,7 @@
   background: rgba(colors.$blue, .1);
   padding: 20px 30px;
   border-radius: 20px;
+  overflow: hidden;
 
   &.light {
     background: rgba(white, .1);
@@ -18,7 +19,7 @@
 
     > .position {
       position: absolute;
-      transform: translate3d(-50%, -50%, 0);
+      transform: translate3d(-50%, -75%, 0);
 
       &.goal {
         top: 100%;
