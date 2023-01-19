@@ -81,11 +81,11 @@ export default function CompositionPositionListField({
   );
 
   const onPositionClick = useCallback(
-    async (position: CompositionSettingPosition | string) => {
+    async (position: CompositionSettingPosition | 'goalkeeper') => {
       let players: Player[] | undefined;
 
       if (getPositionPlayers) {
-        const res = getPositionPlayers(typeof position === 'object' ? position.id : position);
+        const res = getPositionPlayers(typeof position === 'object' ? position.only : position);
         if (
           res &&
           typeof res === 'object' &&

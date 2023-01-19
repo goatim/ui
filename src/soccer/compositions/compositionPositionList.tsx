@@ -7,8 +7,8 @@ export type CompositionPositionListTheme = 'dark' | 'light';
 export interface Props {
   theme?: CompositionPositionListTheme;
   composition?: Pick<Composition, 'goalkeeper' | 'positions'>;
-  onPositionClick?: (position: CompositionSettingPosition | string) => void;
-  onPositionDelete?: (position: CompositionSettingPosition | string) => void;
+  onPositionClick?: (position: CompositionSettingPosition | 'goalkeeper') => unknown;
+  onPositionDelete?: (position: CompositionSettingPosition | 'goalkeeper') => unknown;
 }
 
 export default function CompositionPositionList({
