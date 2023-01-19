@@ -1,5 +1,5 @@
 import { ReactElement, useMemo } from 'react';
-import { Player } from '@fridaygame/client';
+import { formatPlayerName, Player } from '@fridaygame/client';
 import { To } from 'react-router-dom';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
 import ClubIcon, { ClubIconSize } from '../clubs/clubIcon';
@@ -59,7 +59,9 @@ export default function PlayerThumbnail({
             <span className="position">{player.resolved_position}</span>
           ) : null}
         </div>
-        {player.name ? <h1 className="name">{player.name}</h1> : null}
+        {player.first_name || player.last_name ? (
+          <h1 className="name">{formatPlayerName(player.first_name, player.last_name, 'full')}</h1>
+        ) : null}
         {player.club && typeof player.club === 'object' ? (
           <div className="club">
             <ClubThumbnail club={player.club} theme={theme} to={clubTo} size="small" />
@@ -80,7 +82,9 @@ export default function PlayerThumbnail({
         {player.resolved_short_position ? (
           <span className="position">{player.resolved_short_position}</span>
         ) : null}
-        {player.name ? <span className="name">{player.name}</span> : null}
+        {player.first_name || player.last_name ? (
+          <span className="name">{formatPlayerName(player.first_name, player.last_name)}</span>
+        ) : null}
       </div>
     </Wrapper>
   );

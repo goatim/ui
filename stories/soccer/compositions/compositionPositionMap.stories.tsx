@@ -115,9 +115,10 @@ const club_without_icon: Club = {
 const player: Player = {
   id: '1',
   club,
-  name: 'Kylian Mbappé',
+  first_name: 'Kylian',
+  last_name: 'Mbappé',
   number: 10,
-  position: 'attacking_midfield',
+  position: 'forward',
   side: 'left',
   resolved_position: 'Attaquant centre',
 };
@@ -127,7 +128,7 @@ const player_without_icon: Player = {
   club: club_without_icon,
   name: 'Thibault Hernandez',
   number: 10,
-  position: 'attacking_midfield',
+  position: 'forward',
   side: 'left',
   resolved_position: 'Attaquant centre',
 };

@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { Asset, BoosterFactory, Club, Item, PackFactory, Player } from '@fridaygame/client';
 import ItemList from '../../../src/market/checkouts/itemList';
-import { ItemThumbnailSize } from '../../../src/market/checkouts/itemThumbnail';
+import { ItemThumbnailSize } from '../../../src';
 
 interface Props {
   size?: ItemThumbnailSize;
@@ -44,9 +44,10 @@ const club: Club = {
 const player: Player = {
   id: '1',
   club,
-  name: 'Kylian Mbappé',
+  first_name: 'Kylian',
+  last_name: 'Mbappé',
   number: 10,
-  position: 'attacking_midfield',
+  position: 'forward',
   side: 'left',
   resolved_position: 'Attaquant centre',
 };

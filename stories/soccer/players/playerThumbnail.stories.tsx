@@ -55,7 +55,8 @@ const club: Club = {
 const player: Player = {
   id: '1',
   club,
-  name: 'Kylian Mbappé',
+  first_name: 'Kylian',
+  last_name: 'Mbappé',
   number: 10,
   position: 'forward',
   side: 'center',

@@ -42,9 +42,10 @@ const club: Club = {
 const player: Player = {
   id: '1',
   club,
-  name: 'Kylian Mbappé',
+  first_name: 'Kylian',
+  last_name: 'Mbappé',
   number: 10,
-  position: 'attacking_midfield',
+  position: 'forward',
   side: 'left',
   resolved_position: 'Attaquant centre',
 };
@@ -104,7 +105,8 @@ const asset: Asset = {
   id: 'as_Ded512',
   entity: 'pl_de45d54DD',
   type: 'player',
-  name: 'Kylian Mbappé',
+  first_name: 'Kylian',
+  last_name: 'Mbappé',
   description: '',
   slug: 'kylian-mbappe',
   total_shares: 450,

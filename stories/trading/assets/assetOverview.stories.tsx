@@ -46,11 +46,13 @@ const club: Club = {
 const player: Player = {
   id: '1',
   club,
-  name: 'Kylian Mbappé',
+  first_name: 'Kylian',
+  last_name: 'Mbappé',
   number: 10,
   position: 'forward',
   side: 'left',
   resolved_position: 'Attaquant centre',
+  resolved_short_position: 'ATT',
 };
 
 const quotationHistory: QuotationHistory = {
