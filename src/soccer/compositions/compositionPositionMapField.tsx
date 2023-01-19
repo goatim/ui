@@ -5,6 +5,7 @@ import {
   Player,
   CompositionSetting,
   CompositionSettingPosition,
+  PlayerPosition,
 } from '@fridaygame/client';
 import CompositionPositionMap, { CompositionPositionMapTheme } from './compositionPositionMap';
 import PositionPlayerSelector from './positionPlayerSelector';
@@ -21,7 +22,7 @@ export interface CompositionPositionMapFieldValue {
 }
 
 export type GetPositionPlayersFunction = (
-  position: string,
+  position?: PlayerPosition[] | PlayerPosition,
 ) => Promise<Player[] | undefined> | Player[] | undefined;
 
 export interface Props extends FieldComponentProps<CompositionPositionMapFieldValue> {
@@ -84,11 +85,11 @@ export default function CompositionPositionMapField({
   );
 
   const onPositionClick = useCallback(
-    async (position: CompositionSettingPosition | string) => {
+    async (position: CompositionSettingPosition | 'goalkeeper') => {
       let players: Player[] | undefined;
 
       if (getPositionPlayers) {
-        const res = getPositionPlayers(typeof position === 'object' ? position.id : position);
+        const res = getPositionPlayers(typeof position === 'object' ? position.only : position);
         if (
           res &&
           typeof res === 'object' &&

@@ -58,7 +58,7 @@ export interface Props {
   compositionSetting?: CompositionSetting;
   composition?: Pick<Composition, 'goalkeeper' | 'positions'>;
   soccerFieldPositionSize?: SoccerFieldPositionSize;
-  onPositionClick?: (position: CompositionSettingPosition | string) => void;
+  onPositionClick?: (position: CompositionSettingPosition | 'goalkeeper') => unknown;
 }
 
 export default function CompositionPositionMap({
