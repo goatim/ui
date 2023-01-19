@@ -1,4 +1,4 @@
-import { MouseEvent, ReactElement } from 'react';
+import { MouseEvent, ReactElement, useMemo } from 'react';
 import { To } from 'react-router';
 import Composition from '@fridaygame/client/dist/soccer/compositions/model';
 import { Match } from '@fridaygame/client';
@@ -26,6 +26,13 @@ export default function MatchRanking({
   onClickCurrentComposition,
   theme = 'dark',
 }: Props): ReactElement {
+  const openCompositions = useMemo<boolean>(() => {
+    return (
+      !!match.status &&
+      ['ongoing', 'passed', 'closing', 'closed', 'cancelled'].includes(match.status)
+    );
+  }, [match.status]);
+
   return (
     <div className={`friday-ui-match-ranking ${theme}`}>
       <div className="header">
@@ -36,8 +43,8 @@ export default function MatchRanking({
         <CompositionRanking
           compositions={compositions}
           theme={theme}
-          toComposition={toComposition}
-          onClickComposition={onClickComposition}
+          toComposition={openCompositions ? toComposition : undefined}
+          onClickComposition={openCompositions ? onClickComposition : undefined}
         />
       </div>
 
