@@ -39,7 +39,7 @@ export default function MatchThumbnail({
       </div>
 
       <div className="live">
-        <MatchLive match={match} podium={podium} />
+        <MatchLive match={match} />
       </div>
 
       <div className="tags">

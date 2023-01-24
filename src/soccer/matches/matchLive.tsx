@@ -9,10 +9,9 @@ import CompositionPodium from '../compositions/compositionPodium';
 
 export interface Props {
   match: Match;
-  podium?: Composition[];
 }
 
-export default function MatchLive({ match, podium }: Props): ReactElement {
+export default function MatchLive({ match }: Props): ReactElement {
   const content = useMemo<ReactElement | null>(() => {
     switch (match.status) {
       case 'created':
@@ -41,13 +40,16 @@ export default function MatchLive({ match, podium }: Props): ReactElement {
       case 'closing':
         return <span className="label">Match terminé !</span>;
       case 'closed':
-        return <CompositionPodium compositions={podium} theme="light" />;
+        if (match.podium) {
+          return <CompositionPodium compositions={match.podium} theme="light" />;
+        }
+        return <span className="label">Match terminé !</span>;
       case 'cancelled':
         return <span className="label">Match annulé !</span>;
       default:
         return null;
     }
-  }, [match.beginning, match.end, match.status, podium]);
+  }, [match.beginning, match.end, match.status, match.podium]);
 
   const backgroundImage = useMemo<Property.BackgroundImage>(() => {
     switch (match.status) {

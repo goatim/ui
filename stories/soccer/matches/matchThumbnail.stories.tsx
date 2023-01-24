@@ -41,17 +41,6 @@ const wallet: Wallet = {
   name: 'Smart Monkey',
 };
 
-const match: Match = {
-  id: 'ma_hqedh654qed',
-  creator: wallet,
-  title: 'Match de la semaine',
-  slug: 'match-de-la-semaine',
-  beginning: '2022-10-29T09:54:52.696+02:00',
-  end: '2023-06-20T09:54:52.696+02:00',
-  is_public: true,
-  nb_participants: 213,
-};
-
 const composition1: Composition = {
   id: 'co_qkuehd456',
   wallet: {
@@ -103,11 +92,20 @@ const composition3: Composition = {
   score: 950,
 };
 
+const match: Match = {
+  id: 'ma_hqedh654qed',
+  creator: wallet,
+  title: 'Match de la semaine',
+  slug: 'match-de-la-semaine',
+  beginning: '2022-10-29T09:54:52.696+02:00',
+  end: '2023-06-20T09:54:52.696+02:00',
+  is_public: true,
+  nb_participants: 213,
+  podium: [composition1, composition2, composition3],
+};
+
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({ status }: Props) => (
-  <MatchThumbnail
-    match={{ ...match, status }}
-    podium={[composition1, composition2, composition3]}
-  />
+  <MatchThumbnail match={{ ...match, status }} />
 );
 
 export const Default = Template.bind({});
