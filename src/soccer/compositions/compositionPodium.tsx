@@ -48,9 +48,6 @@ export default function CompositionPodium({ compositions }: Props): ReactElement
               {composition.score}
             </Score>
           </div>
-          <div>
-            <FridayCoinsVariation size="small">{composition.dividends_gains}</FridayCoinsVariation>
-          </div>
         </div>
       ))}
     </div>

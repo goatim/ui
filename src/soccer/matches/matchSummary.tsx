@@ -27,7 +27,7 @@ export default function MatchSummary({ match, podium, self }: Props): ReactEleme
         <div className="self">
           <span className="label">Ta performance</span>
           <div className="composition">
-            <CompositionThumbnail composition={self} />
+            <CompositionThumbnail composition={self} showScore showDividendsGains />
           </div>
         </div>
       ) : null}

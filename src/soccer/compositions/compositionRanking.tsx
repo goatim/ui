@@ -42,6 +42,7 @@ export default function CompositionRanking({
               onClick={
                 onClickComposition ? (event) => onClickComposition(composition, event) : undefined
               }
+              showScore
             />
           </div>
         ))}
@@ -53,6 +54,8 @@ export default function CompositionRanking({
             theme={theme}
             to={toComposition}
             onClick={onClickComposition ? (event) => onClickComposition(pinned, event) : undefined}
+            showScore
+            showDividendsGains
           />
         </div>
       ) : null}

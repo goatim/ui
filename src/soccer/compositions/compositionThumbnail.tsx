@@ -8,6 +8,8 @@ export interface Props extends WrapperProps {
   composition: Composition;
   size?: WalletThumbnailSize;
   theme?: WalletThumbnailTheme;
+  showScore?: boolean;
+  showDividendsGains?: boolean;
 }
 
 export default function CompositionThumbnail({
@@ -18,6 +20,8 @@ export default function CompositionThumbnail({
   onClick,
   href,
   target,
+  showScore,
+  showDividendsGains,
 }: Props): ReactElement | null {
   if (!composition.wallet || typeof composition.wallet !== 'object') {
     return null;
@@ -32,8 +36,8 @@ export default function CompositionThumbnail({
       href={href}
       target={target}
       position={composition.position}
-      score={composition.score}
-      variation={composition.dividends_gains}
+      score={showScore ? composition.score : undefined}
+      variation={showDividendsGains ? composition.dividends_gains : undefined}
     />
   );
 }
