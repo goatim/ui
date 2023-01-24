@@ -2,13 +2,15 @@ import { ReactElement, useMemo } from 'react';
 import { Composition } from '@fridaygame/client';
 import WalletThumbnail from '../../market/wallets/walletThumbnail';
 import Score from '../../general/score';
-import FridayCoinsVariation from '../../market/fridayCoinsVariation';
+
+export type CompositionPodiumTheme = 'dark' | 'light';
 
 export interface Props {
   compositions?: Composition[];
+  theme?: CompositionPodiumTheme;
 }
 
-export default function CompositionPodium({ compositions }: Props): ReactElement {
+export default function CompositionPodium({ compositions, theme = 'dark' }: Props): ReactElement {
   const sortedCompositions = useMemo<Composition[]>(() => {
     const nextCompositions: Composition[] = [];
 
@@ -29,7 +31,7 @@ export default function CompositionPodium({ compositions }: Props): ReactElement
   }, [compositions]);
 
   return (
-    <div className="friday-ui-composition-podium">
+    <div className={`friday-ui-composition-podium ${theme}`}>
       {sortedCompositions.map((composition, i) => (
         <div className="composition" key={composition.id}>
           <span className="position">{composition.position}</span>
@@ -40,6 +42,7 @@ export default function CompositionPodium({ compositions }: Props): ReactElement
                 shape="logo"
                 pictureOutline="outline-gold"
                 size={i % 2 ? 'big' : 'medium'}
+                theme={theme}
               />
             </div>
           ) : null}

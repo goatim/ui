@@ -1,8 +1,6 @@
 import { ReactElement } from 'react';
-import { Match } from '@fridaygame/client';
+import { Composition, Match } from '@fridaygame/client';
 import DateTimeThumbnail from '../../general/dateTimeThumbnail';
-import MatchCreator from './matchCreator';
-import MatchStatusThumbnail from './matchStatusThumbnail';
 import MatchLive from './matchLive';
 import MatchParticipants from './matchParticipants';
 import MatchAction, { Props as MatchActionProps } from './matchAction';
@@ -10,10 +8,12 @@ import MatchHeader from './matchHeader';
 
 export interface Props extends Omit<MatchActionProps, 'status'> {
   match: Match;
+  podium?: Composition[];
 }
 
 export default function MatchThumbnail({
   match,
+  podium,
   toComposition,
   onCompositionClick,
   compositionHref,
@@ -39,7 +39,7 @@ export default function MatchThumbnail({
       </div>
 
       <div className="live">
-        <MatchLive match={match} />
+        <MatchLive match={match} podium={podium} />
       </div>
 
       <div className="tags">

@@ -1,3 +1,5 @@
+@use '../../styles/colors';
+
 .friday-ui-match-header {
   > .title {
     font-size: 2em;
@@ -7,6 +9,19 @@
     text-transform: uppercase;
     margin-top: 10px;
     max-width: 290px;
+  }
+
+  > .reward {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+
+    > .label {
+      font-size: .8em;
+      margin-right: 5px;
+      font-weight: bold;
+      color: colors.$blue-50;
+    }
   }
 
   > .creator {
