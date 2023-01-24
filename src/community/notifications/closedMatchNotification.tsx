@@ -24,7 +24,7 @@ export default function ClosedMatchNotification({ payload }: Props): ReactElemen
           {payload.composition.position === 1 ? (
             <div className="first">
               <span className="label">Bravo tu es premier !</span>
-              <FridayCoinsVariation variation={3000} />
+              <FridayCoinsVariation variation={30000} />
             </div>
           ) : null}
         </>
