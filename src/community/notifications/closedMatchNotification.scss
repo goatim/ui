@@ -1,15 +1,15 @@
 @use '../../styles/colors';
 
-.friday-ui-order-match-notification {
+.friday-ui-closed-match-notification {
   > span {
     font-size: .8em;
     margin: 0;
   }
 
-  > .payload {
+  > .composition {
     margin-top: 10px;
+    background: rgba(colors.$gold, .2);
     padding: 5px 10px;
-    background: rgba(colors.$blue, .1);
     border-radius: 10px;
   }
 }

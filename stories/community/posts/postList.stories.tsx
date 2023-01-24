@@ -11,7 +11,7 @@ import {
   PackFactory,
 } from '@fridaygame/client';
 import PostList from '../../../src/community/posts/postList';
-import { PostThumbnailSize } from '../../../src/community/posts/postThumbnail';
+import { PostThumbnailSize } from '../../../src';
 
 interface Props {
   size?: PostThumbnailSize;
@@ -61,8 +61,7 @@ const asset: Asset = {
   id: 'as_Ded512',
   entity: 'pl_de45d54DD',
   type: 'player',
-  first_name: 'Kylian',
-  last_name: 'Mbappé',
+  name: 'Kylian Mbappé',
   description: '',
   slug: 'kylian-mbappe',
   total_shares: 450,
@@ -117,7 +116,7 @@ const transactionPost: Post<'transaction'> = {
   },
 };
 
-const factory: PackFactory = {
+const packFactory: PackFactory = {
   id: 'pf_cUkDdk9VW4PwvsF',
   creation: '2021-09-29T16:08:39.129+00:00',
   name: 'Gold',
@@ -126,7 +125,7 @@ const factory: PackFactory = {
 const pack: Pack = {
   id: 'pa_cUkDdk9VW4PwvsF',
   creation: '2021-09-29T16:08:39.129+00:00',
-  factory,
+  factory: packFactory,
   valuation: 42000,
   share_bulks: [
     {

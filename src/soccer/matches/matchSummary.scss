@@ -1,0 +1,53 @@
+@use '../../styles/colors';
+
+.friday-ui-match-summary {
+  > .header {
+    display: flex;
+    flex-direction: column;
+
+    > .subtitle {
+      text-transform: uppercase;
+      color: colors.$gold;
+      font-weight: bold;
+      font-size: .8em;
+    }
+
+    > .title {
+      font-size: 1.2em;
+      text-transform: uppercase;
+      font-style: italic;
+      font-weight: bold;
+      margin-top: 5px;
+    }
+
+    > .status {
+      margin-top: 5px;
+    }
+  }
+
+  > .podium {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  > .self {
+    margin-top: 20px;
+
+    > .label {
+      display: inline-block;
+      color: colors.$gold;
+      padding: 5px 10px;
+      font-weight: bold;
+      font-size: .9em;
+    }
+
+    > .composition {
+      background: rgba(colors.$gold, .2);
+      padding: 10px 20px;
+      border-radius: 10px;
+      margin-top: 5px;
+    }
+  }
+}

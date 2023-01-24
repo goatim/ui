@@ -2,14 +2,16 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { User, Wallet } from '@fridaygame/client';
 import WalletThumbnail, {
+  WalletThumbnailShape,
   WalletThumbnailSize,
   WalletThumbnailTheme,
 } from '../../../src/market/wallets/walletThumbnail';
-import { WalletPictureOutline } from '../../../src/market/wallets/walletPicture';
+import { WalletPictureOutline } from '../../../src';
 
 interface Props {
   size?: WalletThumbnailSize;
   theme?: WalletThumbnailTheme;
+  shape?: WalletThumbnailShape;
   showPicture?: boolean;
   pictureOutline?: WalletPictureOutline;
   showName?: boolean;
@@ -23,29 +25,40 @@ export default {
   argTypes: {
     size: {
       control: {
-        options: ['small', 'medium', 'big'],
+        options: ['small', 'medium', 'big', 'large'],
         type: 'select',
+        defaultValue: 'small',
+      },
+    },
+    shape: {
+      control: {
+        options: ['inline', 'logo'],
+        type: 'select',
+        defaultValue: 'inline',
       },
     },
     showPicture: {
       control: {
         type: 'boolean',
+        defaultValue: true,
       },
     },
     showName: {
       control: {
         type: 'boolean',
+        defaultValue: true,
       },
     },
     pictureOutline: {
       control: {
-        options: ['outline-gold'],
+        options: ['none', 'outline-gold', 'light-blue'],
         type: 'select',
       },
     },
     showAmount: {
       control: {
         type: 'boolean',
+        defaultValue: false,
       },
     },
     theme: {
@@ -57,6 +70,7 @@ export default {
     is_defined: {
       control: {
         type: 'boolean',
+        defaultValue: true,
       },
     },
   },
@@ -87,6 +101,7 @@ const wallet: Wallet = {
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({
   size,
   theme,
+  shape,
   showPicture,
   pictureOutline,
   showName,
@@ -97,6 +112,7 @@ const Template: ComponentStory<JSXElementConstructor<Props>> = ({
     wallet={{ ...wallet, picture: is_defined ? wallet.picture : undefined }}
     size={size}
     theme={theme}
+    shape={shape}
     showPicture={showPicture}
     pictureOutline={pictureOutline}
     showName={showName}
@@ -105,11 +121,3 @@ const Template: ComponentStory<JSXElementConstructor<Props>> = ({
 );
 
 export const Default = Template.bind({});
-
-Default.args = {
-  size: 'small',
-  showPicture: true,
-  showName: true,
-  showAmount: false,
-  theme: 'dark',
-};

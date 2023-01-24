@@ -227,6 +227,7 @@ import PostHeader from './community/posts/postHeader';
 import OrdersPost, { OrdersPostSize } from './community/posts/ordersPost';
 import PackPost, { PackPostSize } from './community/posts/packPost';
 import TransactionPost, { TransactionPostSize } from './community/posts/transactionPost';
+import MatchSummaryPost from './community/posts/matchSummaryPost';
 import PostThumbnail, { PostThumbnailSize } from './community/posts/postThumbnail';
 import PostList from './community/posts/postList';
 import OnboardingCarousel, {
@@ -557,6 +558,7 @@ export {
   OrdersPost,
   PackPost,
   TransactionPost,
+  MatchSummaryPost,
   PostThumbnail,
   PostList,
 };

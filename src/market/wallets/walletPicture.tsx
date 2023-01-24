@@ -3,11 +3,11 @@ import { Image, Wallet } from '@fridaygame/client';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
 import Icon from '../../general/icon';
 
-export type WalletPictureSize = 'small' | 'medium' | 'big';
+export type WalletPictureSize = 'small' | 'medium' | 'big' | 'large';
 
 export type WalletPictureTheme = 'dark' | 'light';
 
-export type WalletPictureOutline = 'outline-gold';
+export type WalletPictureOutline = 'outline-gold' | 'light-blue';
 
 export interface Props extends WrapperProps {
   picture?: Image;

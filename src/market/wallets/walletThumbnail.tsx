@@ -4,14 +4,17 @@ import { Wrapper, WrapperProps } from '@cezembre/fronts';
 import FridayCoins from '../fridayCoins';
 import WalletPicture, { WalletPictureOutline } from './walletPicture';
 
-export type WalletThumbnailSize = 'small' | 'medium' | 'big';
+export type WalletThumbnailSize = 'small' | 'medium' | 'big' | 'large';
 
 export type WalletThumbnailTheme = 'dark' | 'light';
+
+export type WalletThumbnailShape = 'inline' | 'logo';
 
 export interface Props extends WrapperProps {
   wallet: Wallet;
   size?: WalletThumbnailSize;
   theme?: WalletThumbnailTheme;
+  shape?: WalletThumbnailShape;
   showPicture?: boolean;
   pictureOutline?: WalletPictureOutline;
   showName?: boolean;
@@ -30,6 +33,7 @@ export default forwardRef<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement
       showAmount = false,
       align = 'left',
       theme = 'dark',
+      shape = 'inline',
       to,
       onClick,
       type,
@@ -39,7 +43,7 @@ export default forwardRef<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement
     ref: ForwardedRef<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement>,
   ): ReactElement {
     const className = useMemo<string>(() => {
-      const classNames = ['friday-ui-wallet-thumbnail', size, theme, align];
+      const classNames = ['friday-ui-wallet-thumbnail', size, theme, align, shape];
 
       if (showPicture) {
         classNames.push('show-picture');
@@ -54,7 +58,7 @@ export default forwardRef<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement
       }
 
       return classNames.join(' ');
-    }, [align, showAmount, showName, showPicture, size, theme]);
+    }, [align, showAmount, showName, showPicture, size, theme, shape]);
 
     return (
       <Wrapper
@@ -71,7 +75,7 @@ export default forwardRef<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement
         {showName || showAmount ? (
           <div className="body">
             {showName ? <span className="name">{wallet.name || wallet.slug}</span> : null}
-            {showAmount ? <FridayCoins amount={wallet.amount} theme={theme} size={size} /> : null}
+            {showAmount ? <FridayCoins amount={wallet.amount} theme={theme} /> : null}
           </div>
         ) : null}
       </Wrapper>

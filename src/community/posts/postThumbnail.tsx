@@ -4,6 +4,7 @@ import PostHeader from './postHeader';
 import OrdersPost from './ordersPost';
 import TransactionPost from './transactionPost';
 import PackPost from './packPost';
+import MatchSummaryPost from './matchSummaryPost';
 
 export type PostThumbnailSize = 'narrow' | 'normal';
 
@@ -21,10 +22,12 @@ export default function PostThumbnail({ post, size = 'normal' }: Props): ReactEl
         return <TransactionPost post={post as Post<'transaction'>} size={size} />;
       case 'pack':
         return <PackPost post={post as Post<'pack'>} size={size} />;
+      case 'match_summary':
+        return <MatchSummaryPost post={post as Post<'match_summary'>} />;
       default:
         return <p>{post.message}</p>;
     }
-  }, [post]);
+  }, [post, size]);
 
   return (
     <div className="friday-ui-post-thumbnail">

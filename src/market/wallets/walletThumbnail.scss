@@ -13,6 +13,10 @@
   padding: 0;
   margin: 0;
 
+  &.logo {
+    flex-direction: column;
+  }
+
   > .body {
     > .name {
       @include fonts.Inter(.8em, colors.$blue, bold);
@@ -51,6 +55,13 @@
   &.show-picture {
     > .body {
       margin-left: 10px;
+    }
+
+    &.logo {
+      > .body {
+        margin-top: 10px;
+        margin-left: 0;
+      }
     }
   }
 

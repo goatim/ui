@@ -19,11 +19,11 @@ export default function FridayCoinsVariation({
   theme = 'default',
 }: Props): ReactElement {
   const sign = useMemo<'positive' | 'negative' | 'zero'>(() => {
-    if (!variation) {
+    if (!variation && !children) {
       return 'zero';
     }
-    return variation > 0 ? 'positive' : 'negative';
-  }, [variation]);
+    return (variation || children || 0) > 0 ? 'positive' : 'negative';
+  }, [variation, children]);
 
   return (
     <span className={`friday-ui-friday-coins-variation ${sign} ${size} ${theme}`}>
