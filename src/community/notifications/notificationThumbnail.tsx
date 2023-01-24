@@ -1,8 +1,8 @@
 import { ReactElement, useMemo } from 'react';
 import {
   Notification,
-  NotificationOrderMatchPayload,
-  NotificationClosedMatchPayload,
+  OrderMatchNotificationPayload,
+  ClosedMatchNotificationPayload,
 } from '@fridaygame/client';
 import { formatRelativeDateTime, Wrapper, WrapperProps } from '@cezembre/fronts';
 import NotificationIcon from './notificationIcon';
@@ -27,12 +27,12 @@ export default function NotificationThumbnail({
     switch (notification.event) {
       case 'order_match':
         return (
-          <OrderMatchNotification payload={notification.payload as NotificationOrderMatchPayload} />
+          <OrderMatchNotification payload={notification.payload as OrderMatchNotificationPayload} />
         );
       case 'closed_match':
         return (
           <ClosedMatchNotification
-            payload={notification.payload as NotificationClosedMatchPayload}
+            payload={notification.payload as ClosedMatchNotificationPayload}
           />
         );
       default:
