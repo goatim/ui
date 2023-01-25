@@ -1,4 +1,4 @@
-import { ReactElement, useRef, useCallback } from 'react';
+import { ReactElement, useRef, useCallback, useEffect } from 'react';
 import {
   Chart,
   LineController,
@@ -124,16 +124,16 @@ export default function QuotationHistoryGraph({
     [createBackground, onResize, quotationHistory],
   );
 
-  // const destroyChart = useCallback(() => {
-  //   if (chart.current) {
-  //     chart.current.destroy();
-  //     chart.current = null;
-  //   }
-  // }, []);
+  const destroyChart = useCallback(() => {
+    if (chart.current) {
+      chart.current.destroy();
+      chart.current = null;
+    }
+  }, []);
 
-  // useEffect(() => {
-  //   return () => destroyChart();
-  // }, [destroyChart]);
+  useEffect(() => {
+    return () => destroyChart();
+  }, [destroyChart]);
 
   if ((quotationHistory?.data.length || 0) > 1) {
     return (
