@@ -13,6 +13,8 @@ import { QuotationHistory } from '@fridaygame/client';
 import Icon from '../../general/icon';
 import FridayCoins from '../../market/fridayCoins';
 
+Chart.register(LineController, LinearScale, TimeScale, PointElement, LineElement, Filler);
+
 export type QuotationHistoryGraphTheme = 'light' | 'dark';
 
 export interface Props {
@@ -62,67 +64,64 @@ export default function QuotationHistoryGraph({
     [createBackground],
   );
 
-  const loadCanvas = useCallback(
-    (ref?: HTMLCanvasElement | null) => {
-      if (!ref) {
-        return;
-      }
+  const loadCanvas = useCallback((ref?: HTMLCanvasElement | null) => {
+    if (!ref) {
+      return;
+    }
 
-      ctx.current = ref.getContext('2d');
+    ctx.current = ref.getContext('2d');
+  }, []);
 
-      if (!ctx.current || !quotationHistory) {
-        return;
-      }
+  const drawChart = useCallback(() => {
+    if (!ctx.current || !quotationHistory) {
+      return;
+    }
 
-      Chart.register(LineController, LinearScale, TimeScale, PointElement, LineElement, Filler);
-
-      chart.current = new Chart<'line', DataPoint[]>(ctx.current, {
-        type: 'line',
-        data: {
-          datasets: [
-            {
-              data: quotationHistory?.data.map(({ t, a }) => ({
-                x: t,
-                y: a,
-              })),
-              backgroundColor: createBackground(ctx.current, 150),
-              fill: 'origin',
-              borderColor: quotationHistory.variation >= 0 ? '#4EB778' : '#D36767',
-              pointRadius: 0,
-              pointHitRadius: 0,
-              borderWidth: 1,
-              tension: 0,
-            },
-          ],
-        },
-        options: {
-          onResize,
-          scales: {
-            x: {
-              type: 'time',
-              display: false,
-            },
-            y: {
-              type: 'linear',
-              min: 0,
-              display: false,
-            },
+    chart.current = new Chart<'line', DataPoint[]>(ctx.current, {
+      type: 'line',
+      data: {
+        datasets: [
+          {
+            data: quotationHistory?.data.map(({ t, a }) => ({
+              x: t,
+              y: a,
+            })),
+            backgroundColor: createBackground(ctx.current, 150),
+            fill: 'origin',
+            borderColor: quotationHistory.variation >= 0 ? '#4EB778' : '#D36767',
+            pointRadius: 0,
+            pointHitRadius: 0,
+            borderWidth: 1,
+            tension: 0,
           },
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: {
-              display: false,
-            },
+        ],
+      },
+      options: {
+        onResize,
+        scales: {
+          x: {
+            type: 'time',
+            display: false,
           },
-          animation: {
-            duration: 0,
+          y: {
+            type: 'linear',
+            min: 0,
+            display: false,
           },
         },
-      });
-    },
-    [createBackground, onResize, quotationHistory],
-  );
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            display: false,
+          },
+        },
+        animation: {
+          duration: 0,
+        },
+      },
+    });
+  }, [createBackground, onResize, quotationHistory]);
 
   const destroyChart = useCallback(() => {
     if (chart.current) {
@@ -132,8 +131,9 @@ export default function QuotationHistoryGraph({
   }, []);
 
   useEffect(() => {
+    drawChart();
     return () => destroyChart();
-  }, [destroyChart]);
+  }, [destroyChart, drawChart]);
 
   if ((quotationHistory?.data.length || 0) > 1) {
     return (
