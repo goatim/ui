@@ -112,7 +112,7 @@ export default function PortfolioThumbnail({
         <div className="actions">
           {onSell ? (
             <div className="action">
-              <Button shape="filled" theme="dark" onClick={onSell}>
+              <Button shape="filled" onClick={onSell}>
                 Vendre
               </Button>
             </div>

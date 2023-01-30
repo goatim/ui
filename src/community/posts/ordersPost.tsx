@@ -24,9 +24,7 @@ export default function OrdersPost({ post, size = 'normal' }: Props): ReactEleme
         émits et sous réserve de fonds disponibles à ce moment.
       </p>
       <div className="action">
-        <Button shape="text" theme="dark">
-          Voir les ordres en cours
-        </Button>
+        <Button shape="text">Voir les ordres en cours</Button>
       </div>
     </div>
   );

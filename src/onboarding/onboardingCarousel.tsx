@@ -85,12 +85,7 @@ export default function OnboardingCarousel({
       <div className="navigation">
         <div className="previous">
           {slideIndex > 0 ? (
-            <Button
-              onClick={previousSlide}
-              leftIcon="chevron-left"
-              shape="text"
-              theme="dark"
-              size="large">
+            <Button onClick={previousSlide} leftIcon="chevron-left" shape="text" size="large">
               Précédent
             </Button>
           ) : null}
@@ -101,12 +96,7 @@ export default function OnboardingCarousel({
         <div className="next">
           {slides && slideIndex < slides.length - 1 ? (
             <div className="button">
-              <Button
-                onClick={nextSlide}
-                rightIcon="chevron-right"
-                shape="text"
-                theme="dark"
-                size="large">
+              <Button onClick={nextSlide} rightIcon="chevron-right" shape="text" size="large">
                 Suivant
               </Button>
             </div>

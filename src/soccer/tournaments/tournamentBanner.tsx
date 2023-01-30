@@ -61,7 +61,7 @@ export default function TournamentBanner({
         </div>
         <div className="footer">
           {onMatchesClick ? (
-            <Button shape="text" theme="dark" onClick={onMatchesClick}>
+            <Button shape="text" onClick={onMatchesClick}>
               Voir les matchs
             </Button>
           ) : null}

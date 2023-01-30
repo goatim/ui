@@ -17,9 +17,9 @@ export type ButtonSize = 'small' | 'medium' | 'large';
 export type ButtonShape = 'filled' | 'text';
 
 export type ButtonTheme =
-  | 'electric-blue'
   | 'dark'
   | 'light'
+  | 'electric-blue'
   | 'transparent-dark'
   | 'transparent-light'
   | 'buy'
@@ -55,7 +55,7 @@ export default forwardRef<HTMLButtonElement | HTMLAnchorElement, Props>(function
     onBlur,
     size = 'medium',
     shape = 'filled',
-    theme = 'electric-blue',
+    theme = 'dark',
     active,
     pending,
     success,
