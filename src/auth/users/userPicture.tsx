@@ -1,5 +1,5 @@
 import { ForwardedRef, forwardRef, ReactElement } from 'react';
-import { getUserPublicName, Image, User } from '@fridaygame/client';
+import { Image, User } from '@fridaygame/client';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
 import Icon from '../../general/icon';
 
