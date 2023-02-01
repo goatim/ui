@@ -31,28 +31,31 @@ export default function A2HSBanner({
         target={target}>
         <div className="icon">
           <AppIcon />
-          <span>Enregistre l&apos;app sur ton IPhone</span>
         </div>
 
         <div className="body">
-          <div className="step">
-            <Icon name="share" />
-            <span>Partager</span>
-          </div>
-          <div className="arrow">
-            <Icon name="arrow-right" size={20} />
-          </div>
-          <div className="step">
-            <Icon name="plus-square" />
-            <span>Sur l&apos;écran d&apos;accueil</span>
-          </div>
+          <span>Enregistre l&apos;app sur ton IPhone</span>
 
-          {onDismiss ? (
-            <button className="dismiss" type="button" onClick={onDismiss}>
-              <Icon name="x" />
-            </button>
-          ) : null}
+          <div className="steps">
+            <div className="step">
+              <Icon name="share" />
+              <span>Partager</span>
+            </div>
+            <div className="arrow">
+              <Icon name="arrow-right" size={20} />
+            </div>
+            <div className="step">
+              <Icon name="plus-square" />
+              <span>Sur l&apos;écran d&apos;accueil</span>
+            </div>
+          </div>
         </div>
+
+        {onDismiss ? (
+          <button className="dismiss" type="button" onClick={onDismiss}>
+            <Icon name="x" />
+          </button>
+        ) : null}
       </Wrapper>
     );
   }

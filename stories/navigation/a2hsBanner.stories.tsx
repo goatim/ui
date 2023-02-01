@@ -10,7 +10,9 @@ export default {
   argTypes: {},
 } as ComponentMeta<JSXElementConstructor<Props>>;
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => <A2HSBanner />;
+const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
+  <A2HSBanner onDismiss={() => undefined} />
+);
 
 export const Default = Template.bind({});
 
