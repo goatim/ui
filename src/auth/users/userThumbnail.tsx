@@ -1,5 +1,5 @@
 import { ForwardedRef, forwardRef, ReactElement, useMemo } from 'react';
-import { getUserPublicName, User } from '@fridaygame/client';
+import { User } from '@fridaygame/client';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
 import UserPicture from './userPicture';
 
@@ -55,7 +55,7 @@ export default forwardRef<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement
         target={target}
         ref={ref}>
         {showPicture ? <UserPicture user={user} size={size} theme={theme} /> : null}
-        {showName ? <span className="name">{getUserPublicName(user) || user.id}</span> : null}
+        {showName ? <span className="name">{user.pseudo || user.id}</span> : null}
       </Wrapper>
     );
   },

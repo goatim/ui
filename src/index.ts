@@ -47,6 +47,7 @@ import Gutter from './general/gutter';
 import Tag from './general/tag';
 import Wallpaper from './general/wallpaper';
 import TradingBanner from './navigation/tradingBanner';
+import A2HSBanner from './navigation/a2hsBanner';
 import UserPicture, { UserPictureSize, UserPictureTheme } from './auth/users/userPicture';
 import UserThumbnail, { UserThumbnailSize, UserThumbnailTheme } from './auth/users/userThumbnail';
 import UserEditor, { UserEditorFields } from './auth/users/userEditor';
@@ -245,6 +246,7 @@ import {
   usePlaceDetailsGetter,
 } from './utils/googleMaps';
 import Place from './utils/place';
+import Client, { getClient, getBrowser, Browser, Device, getDevice } from './utils/client';
 import ThreeDSecure from './payment/threeDSecure';
 
 /**
@@ -319,7 +321,7 @@ export type {
  * Navigation
  */
 
-export { TradingBanner };
+export { TradingBanner, A2HSBanner };
 
 /**
  * Auth
@@ -606,6 +608,9 @@ export {
   usePlacePredictions,
   usePlaceDetails,
   usePlaceDetailsGetter,
+  getClient,
+  getDevice,
+  getBrowser,
 };
 
-export type { Place, PlacePredictionType };
+export type { Place, PlacePredictionType, Client, Device, Browser };
