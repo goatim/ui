@@ -23,40 +23,38 @@ export default function A2HSBanner({
     ['iphone', 'ipad', 'ipod'].includes(client.device)
   ) {
     return (
-      <Wrapper
-        className="friday-ui-a2hs-banner"
-        onClick={onClick}
-        to={to}
-        href={href}
-        target={target}>
-        <div className="icon">
-          <AppIcon />
-        </div>
+      <div className="friday-ui-a2hs-banner">
+        <Wrapper className="banner" onClick={onClick} to={to} href={href} target={target}>
+          <div className="icon">
+            <AppIcon />
+          </div>
 
-        <div className="body">
-          <span>Enregistre l&apos;app sur ton IPhone</span>
+          <div className="body">
+            <span>Enregistre l&apos;app sur ton IPhone</span>
 
-          <div className="steps">
-            <div className="step">
-              <Icon name="share" />
-              <span>Partager</span>
-            </div>
-            <div className="arrow">
-              <Icon name="arrow-right" size={20} />
-            </div>
-            <div className="step">
-              <Icon name="plus-square" />
-              <span>Sur l&apos;écran d&apos;accueil</span>
+            <div className="steps">
+              <div className="step">
+                <Icon name="share" />
+                <span>Partager</span>
+              </div>
+              <div className="arrow">
+                <Icon name="arrow-right" size={20} />
+              </div>
+              <div className="step">
+                <Icon name="plus-square" />
+                <span>Sur l&apos;écran d&apos;accueil</span>
+              </div>
             </div>
           </div>
-        </div>
 
-        {onDismiss ? (
-          <button className="dismiss" type="button" onClick={onDismiss}>
-            <Icon name="x" />
-          </button>
-        ) : null}
-      </Wrapper>
+          {onDismiss ? (
+            <button className="dismiss" type="button" onClick={onDismiss}>
+              <Icon name="x" />
+            </button>
+          ) : null}
+        </Wrapper>
+        <div className="placeholder" />
+      </div>
     );
   }
 

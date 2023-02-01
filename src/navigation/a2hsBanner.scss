@@ -1,69 +1,81 @@
 @use "../styles/colors";
+@use "~@cezembre/fronts/dist/layouts";
 
 .friday-ui-a2hs-banner {
-  background: white;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  > .icon {
-    padding-left: 10px;
-  }
-
-  > .body {
-    flex: 1;
-    margin-left: 10px;
-
-    > span {
-      display: inline-block;
-      font-size: .8em;
-      color: colors.$blue-50;
-    }
-
-    > .steps {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      margin-top: 2px;
-
-      > .step {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-
-        > span {
-          margin-left: 5px;
-          display: inline-block;
-          font-size: .8em;
-        }
-      }
-
-      > .arrow {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0 10px;
-
-        > svg {
-          stroke: colors.$blue-30;
-        }
-      }
-    }
-  }
-
-  > .dismiss {
-    background: none;
-    border: none;
-    outline: none;
-    text-decoration: none;
-    padding: 10px;
+  > .banner {
+    width: 100%;
+    position: fixed;
+    @include layouts.header;
+    border-bottom: solid colors.$blue-10 1px;
+    background: white;
+    height: 60px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 
-    > svg {
-      stroke: colors.$blue;
+    > .icon {
+      padding-left: 10px;
     }
+
+    > .body {
+      flex: 1;
+      margin-left: 10px;
+
+      > span {
+        display: inline-block;
+        font-size: .8em;
+        color: colors.$blue-50;
+      }
+
+      > .steps {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        margin-top: 2px;
+
+        > .step {
+          display: flex;
+          align-items: center;
+          justify-content: flex-end;
+
+          > span {
+            margin-left: 5px;
+            display: inline-block;
+            font-size: .8em;
+          }
+        }
+
+        > .arrow {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0 10px;
+
+          > svg {
+            stroke: colors.$blue-30;
+          }
+        }
+      }
+    }
+
+    > .dismiss {
+      background: none;
+      border: none;
+      outline: none;
+      text-decoration: none;
+      padding: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      > svg {
+        stroke: colors.$blue;
+      }
+    }
+  }
+
+  > .placeholder {
+    width: 100%;
+    height: 60px;
   }
 }
