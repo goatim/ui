@@ -114,21 +114,19 @@ export default function CompositionPositionListField({
       pushModal({
         type: 'overlay',
         component: ({ dismissModal }) => (
-          <div className="friday-ui-composition-positions-list-field-position-player-selector">
-            <PositionPlayerSelector
-              players={players}
-              value={playerValue}
-              position={typeof position === 'object' ? position.name : 'Gardien'}
-              compositionSetting={compositionSetting?.name}
-              onChange={(player) => {
-                changePositionPlayer(position, player);
-                dismissModal();
-              }}
-              onFocus={() => undefined}
-              onBlur={() => undefined}
-              form={form}
-            />
-          </div>
+          <PositionPlayerSelector
+            players={players}
+            value={playerValue}
+            position={typeof position === 'object' ? position.name : 'Gardien'}
+            compositionSetting={compositionSetting?.name}
+            onChange={(player) => {
+              changePositionPlayer(position, player);
+              dismissModal();
+            }}
+            onFocus={() => undefined}
+            onBlur={() => undefined}
+            form={form}
+          />
         ),
       });
     },
@@ -155,7 +153,7 @@ export default function CompositionPositionListField({
       <CompositionPositionList
         composition={value}
         onPositionClick={!readonly ? onPositionClick : undefined}
-        onPositionDelete={onPositionDelete}
+        onPositionDelete={!readonly ? onPositionDelete : undefined}
         theme={theme}
       />
     </div>

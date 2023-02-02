@@ -1,4 +1,4 @@
-import { MouseEvent, ReactElement, useCallback, useMemo } from 'react';
+import { MouseEvent, ReactElement, useCallback } from 'react';
 import { Player } from '@fridaygame/client';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
 import PlayerThumbnail from '../players/playerThumbnail';

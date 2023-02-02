@@ -2,6 +2,8 @@
 @use "../../styles/colors";
 
 .friday-ui-position-player-selector {
+  width: 100%;
+  min-width: 350px;
   background: white;
   border-radius: 10px;
   overflow: hidden;
