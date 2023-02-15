@@ -49,6 +49,8 @@
       border: solid rgba(colors.$blue, .2) 1px;
       outline: none;
       cursor: pointer;
+      display: inline-block;
+      margin: 0;
 
       &.buy {
         border-top-left-radius: 5px;
