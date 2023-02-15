@@ -1,7 +1,6 @@
 import { ReactElement } from 'react';
 import { Pack } from '@fridaygame/client';
 import ShareBulkList from '../shareBulks/shareBulkList';
-import FridayCoinsVariation from '../../market/fridayCoinsVariation';
 import FridayCoins from '../../market/fridayCoins';
 import Wallpaper from '../../general/wallpaper';
 

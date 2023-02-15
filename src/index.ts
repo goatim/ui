@@ -102,6 +102,7 @@ import LeagueThumbnail, {
   LeagueThumbnailTheme,
 } from './soccer/leagues/leagueThumbnail';
 import LeagueCarousel, { LeagueCarouselSize } from './soccer/leagues/leagueCarousel';
+import LeagueOverview, { LeagueOverviewSize } from './soccer/leagues/leagueOverview';
 import ClubIcon, { ClubIconSize } from './soccer/clubs/clubIcon';
 import ClubThumbnail, {
   ClubThumbnailSize,
@@ -406,6 +407,7 @@ export type {
 export {
   LeagueIcon,
   LeagueThumbnail,
+  LeagueOverview,
   LeagueCarousel,
   ClubIcon,
   ClubThumbnail,
@@ -443,6 +445,7 @@ export type {
   LeagueIconSize,
   LeagueThumbnailSize,
   LeagueThumbnailTheme,
+  LeagueOverviewSize,
   LeagueCarouselSize,
   ClubIconSize,
   ClubThumbnailSize,

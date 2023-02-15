@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { Icon } from '../index';
+import Icon from './icon';
 
 export default function AppIcon(): ReactElement {
   return (
