@@ -20,6 +20,7 @@ export interface Props {
   secondaryTo?: To;
   bankProposalQuotation?: number;
   onAcceptBankProposal?: (nbShares?: number) => unknown;
+  defaultOrderType?: OrderType;
 }
 
 export default function AssetOverview({
@@ -32,8 +33,9 @@ export default function AssetOverview({
   ipo,
   bankProposalQuotation,
   onAcceptBankProposal,
+  defaultOrderType,
 }: Props): ReactElement {
-  const [orderType, setOrderType] = useState<OrderType | undefined>();
+  const [orderType, setOrderType] = useState<OrderType | undefined>(defaultOrderType);
 
   const assetThumbnailSize = useMemo<AssetThumbnailSize>(() => {
     switch (size) {
