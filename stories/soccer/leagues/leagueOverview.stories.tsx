@@ -43,7 +43,7 @@ const league: League = {
     thumbnail_url:
       'https://upload.wikimedia.org/wikipedia/fr/thumb/c/ca/Logo_Ligue_1_Uber_Eats_2020.svg/411px-Logo_Ligue_1_Uber_Eats_2020.svg.png?20200821142847',
   },
-  clubs: new Array(5).fill(club),
+  clubs: new Array(15).fill({ ...club, id: Math.random().toString() }),
 };
 
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
