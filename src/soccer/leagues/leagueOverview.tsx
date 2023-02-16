@@ -38,17 +38,15 @@ export default function LeagueOverview({
   return (
     <div className={`friday-ui-league-overview ${size}`}>
       <LeagueThumbnail league={league} size="medium" to={leagueTo} onClick={leagueOnClick} />
-      {league.clubs?.length ? (
-        <div className="clubs">
-          <ClubCarousel
-            getClubs={getClubs}
-            shape="box"
-            columns={clubColumns}
-            clubTo={clubTo}
-            clubOnClick={clubOnClick}
-          />
-        </div>
-      ) : null}
+      <div className="clubs">
+        <ClubCarousel
+          getClubs={getClubs}
+          shape="box"
+          columns={clubColumns}
+          clubTo={clubTo}
+          clubOnClick={clubOnClick}
+        />
+      </div>
     </div>
   );
 }
