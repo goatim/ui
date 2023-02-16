@@ -5,7 +5,6 @@ import ClubList from './clubList';
 import { ClubThumbnailShape, ClubThumbnailSize } from './clubThumbnail';
 
 export interface Props {
-  initialClubs?: Club[];
   getClubs?: (page: number) => Promise<Club[]> | Club[];
   clubOnClick?: (club: Club, event: MouseEvent<HTMLButtonElement>) => unknown;
   clubTo?: (club: Club) => To;
@@ -15,7 +14,6 @@ export interface Props {
 }
 
 export default function ClubCarousel({
-  initialClubs,
   getClubs,
   size,
   shape,
@@ -26,7 +24,7 @@ export default function ClubCarousel({
   const [page, setPage] = useState<number>(0);
   const [pending, setPending] = useState<boolean>(false);
   const [error, setError] = useState<Error | undefined | null>();
-  const [clubs, setClubs] = useState<Club[] | undefined>(initialClubs);
+  const [clubs, setClubs] = useState<Club[] | undefined>();
 
   useEffect(() => {
     if (getClubs) {

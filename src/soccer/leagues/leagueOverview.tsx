@@ -12,7 +12,6 @@ export interface Props {
   size?: LeagueOverviewSize;
   leagueTo?: To;
   leagueOnClick?: (event: MouseEvent<HTMLButtonElement>) => unknown;
-  initialClubs?: Club[];
   getClubs?: (page: number) => Promise<Club[]> | Club[];
   clubOnClick?: (club: Club, event: MouseEvent<HTMLButtonElement>) => unknown;
   clubTo?: (club: Club) => To;
@@ -23,7 +22,6 @@ export default function LeagueOverview({
   size = 'medium',
   leagueTo,
   leagueOnClick,
-  initialClubs,
   getClubs,
   clubOnClick,
   clubTo,
@@ -43,7 +41,6 @@ export default function LeagueOverview({
       {league.clubs?.length ? (
         <div className="clubs">
           <ClubCarousel
-            initialClubs={initialClubs}
             getClubs={getClubs}
             shape="box"
             columns={clubColumns}
