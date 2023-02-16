@@ -55,8 +55,12 @@ const league: League = {
   clubs: new Array(15).fill(club),
 };
 
+function getClubs(page: number): Club[] {
+  return new Array(6).fill({ ...club, name: `Club ${page + 1}` });
+}
+
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({ size }: Props) => (
-  <LeagueCarousel leagues={[league, league]} size={size} />
+  <LeagueCarousel leagues={[league, league]} size={size} getClubs={getClubs} />
 );
 
 export const Default = Template.bind({});

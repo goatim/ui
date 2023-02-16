@@ -34,8 +34,12 @@ const club: Club = {
   },
 };
 
+function getClubs(page: number): Club[] {
+  return new Array(6).fill({ ...club, name: `Club ${page + 1}` });
+}
+
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({ length }: Props) => (
-  <ClubCarousel />
+  <ClubCarousel getClubs={getClubs} />
 );
 
 export const Default = Template.bind({});

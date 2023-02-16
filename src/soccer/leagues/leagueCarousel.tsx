@@ -13,6 +13,8 @@ export interface Props {
   leagueOnClick?: (league: League, event: MouseEvent<HTMLButtonElement>) => unknown;
   clubTo?: (club: Club) => To;
   clubOnClick?: (club: Club, event: MouseEvent<HTMLButtonElement>) => unknown;
+  initialClubs?: Club[];
+  getClubs?: (page: number) => Promise<Club[]> | Club[];
 }
 
 export default function LeagueCarousel({
@@ -22,6 +24,8 @@ export default function LeagueCarousel({
   leagueOnClick,
   clubTo,
   clubOnClick,
+  initialClubs,
+  getClubs,
 }: Props): ReactElement {
   return (
     <div className={`friday-ui-league-carousel ${size}`}>
@@ -38,6 +42,8 @@ export default function LeagueCarousel({
               clubTo={clubTo}
               clubOnClick={clubOnClick}
               size={size}
+              initialClubs={initialClubs}
+              getClubs={getClubs}
             />
           </div>
         ))}

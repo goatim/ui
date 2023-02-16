@@ -3,6 +3,7 @@ import { Club, League } from '@fridaygame/client';
 import { To } from 'react-router';
 import ClubList from '../clubs/clubList';
 import LeagueThumbnail from './leagueThumbnail';
+import ClubCarousel from '../clubs/clubCarousel';
 
 export type LeagueOverviewSize = 'small' | 'medium' | 'big';
 
@@ -11,6 +12,8 @@ export interface Props {
   size?: LeagueOverviewSize;
   leagueTo?: To;
   leagueOnClick?: (event: MouseEvent<HTMLButtonElement>) => unknown;
+  initialClubs?: Club[];
+  getClubs?: (page: number) => Promise<Club[]> | Club[];
   clubOnClick?: (club: Club, event: MouseEvent<HTMLButtonElement>) => unknown;
   clubTo?: (club: Club) => To;
 }
@@ -20,6 +23,8 @@ export default function LeagueOverview({
   size = 'medium',
   leagueTo,
   leagueOnClick,
+  initialClubs,
+  getClubs,
   clubOnClick,
   clubTo,
 }: Props): ReactElement {
@@ -37,8 +42,9 @@ export default function LeagueOverview({
       <LeagueThumbnail league={league} size="medium" to={leagueTo} onClick={leagueOnClick} />
       {league.clubs?.length ? (
         <div className="clubs">
-          <ClubList
-            clubs={league.clubs}
+          <ClubCarousel
+            initialClubs={initialClubs}
+            getClubs={getClubs}
             shape="box"
             columns={clubColumns}
             clubTo={clubTo}
