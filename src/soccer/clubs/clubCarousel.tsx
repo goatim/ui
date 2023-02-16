@@ -21,7 +21,7 @@ export default function ClubCarousel({
   clubTo,
   clubOnClick,
 }: Props): ReactElement {
-  const [page, setPage] = useState<number>(0);
+  const [page, setPage] = useState<number>(1);
   const [pending, setPending] = useState<boolean>(false);
   const [error, setError] = useState<Error | undefined | null>();
   const [clubs, setClubs] = useState<Club[] | undefined>();
