@@ -1,7 +1,6 @@
 import { MouseEvent, ReactElement, useMemo } from 'react';
 import { To } from 'react-router';
-import Composition from '@fridaygame/client/dist/soccer/compositions/model';
-import { Match } from '@fridaygame/client';
+import { Composition, Match } from '@fridaygame/client';
 import { CompositionRanking } from '../compositions';
 import { Button } from '../../general';
 
