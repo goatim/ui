@@ -1,4 +1,4 @@
-import { MouseEvent, ReactElement, useMemo } from 'react';
+import { MouseEvent, ReactElement } from 'react';
 import { To } from 'react-router';
 import { Composition, Match } from '@fridaygame/client';
 import { CompositionRanking } from '../compositions';
@@ -27,13 +27,6 @@ export function MatchRanking({
   onClickNewComposition,
   theme = 'dark',
 }: MatchRankingProps): ReactElement {
-  const openCompositions = useMemo<boolean>(() => {
-    return (
-      !!match.status &&
-      ['ongoing', 'passed', 'closing', 'closed', 'cancelled'].includes(match.status)
-    );
-  }, [match.status]);
-
   return (
     <div className={`friday-ui-match-ranking ${theme}`}>
       <div className="header">
@@ -44,20 +37,34 @@ export function MatchRanking({
         <CompositionRanking
           compositions={ranking}
           theme={theme}
-          toComposition={openCompositions ? toComposition : undefined}
-          onClickComposition={openCompositions ? onClickComposition : undefined}
+          toComposition={toComposition}
+          onClickComposition={onClickComposition}
         />
       </div>
 
-      {(toComposition || onClickComposition) && match.status === 'open' ? (
+      {match.status === 'open' ? (
         <div className="action">
-          <Button
-            to={toNewComposition}
-            onClick={onClickNewComposition}
-            shape="filled"
-            theme={theme === 'light' ? 'transparent-light' : 'transparent-dark'}>
-            Faire ma composition
-          </Button>
+          {myComposition && (toComposition || onClickComposition) ? (
+            <Button
+              to={toComposition}
+              onClick={
+                onClickComposition ? (event) => onClickComposition(myComposition, event) : undefined
+              }
+              shape="filled"
+              theme={theme === 'light' ? 'transparent-light' : 'transparent-dark'}>
+              Modifier ma composition
+            </Button>
+          ) : null}
+
+          {myComposition && (toNewComposition || onClickNewComposition) ? (
+            <Button
+              to={toNewComposition}
+              onClick={onClickNewComposition}
+              shape="filled"
+              theme={theme === 'light' ? 'transparent-light' : 'transparent-dark'}>
+              Faire ma composition
+            </Button>
+          ) : null}
         </div>
       ) : null}
     </div>
