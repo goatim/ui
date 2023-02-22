@@ -11,25 +11,27 @@ export type MatchBoardTheme = 'dark' | 'light';
 
 export interface MatchBoardProps {
   match: Match;
-  compositions?: Composition[];
+  ranking?: Composition[];
+  myComposition?: Composition;
   size?: MatchBoardSize;
   theme?: MatchBoardTheme;
   toComposition?: To;
   onClickComposition?: (composition: Composition, event: MouseEvent<HTMLButtonElement>) => unknown;
-  toCurrentComposition?: To;
-  onClickCurrentComposition?: (event: MouseEvent<HTMLButtonElement>) => unknown;
+  toNewComposition?: To;
+  onClickNewComposition?: (event: MouseEvent<HTMLButtonElement>) => unknown;
   physicalEvents?: PhysicalEvent[];
 }
 
 export function MatchBoard({
   match,
-  compositions,
+  ranking,
+  myComposition,
   size = 'big',
   theme = 'dark',
   toComposition,
   onClickComposition,
-  toCurrentComposition,
-  onClickCurrentComposition,
+  toNewComposition,
+  onClickNewComposition,
   physicalEvents,
 }: MatchBoardProps): ReactElement {
   const [tab, setTab] = useState<'feed' | 'ranking'>('feed');
@@ -59,11 +61,11 @@ export function MatchBoard({
         <div className="ranking">
           <MatchRanking
             match={match}
-            compositions={compositions}
+            ranking={ranking}
             toComposition={toComposition}
             onClickComposition={onClickComposition}
-            toCurrentComposition={toCurrentComposition}
-            onClickCurrentComposition={onClickCurrentComposition}
+            toNewComposition={toNewComposition}
+            onClickNewComposition={onClickNewComposition}
             theme={theme}
           />
         </div>

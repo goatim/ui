@@ -8,21 +8,23 @@ export type MatchRankingTheme = 'dark' | 'light';
 
 export interface MatchRankingProps {
   match: Match;
-  compositions?: Composition[];
+  ranking?: Composition[];
+  myComposition?: Composition;
   toComposition?: To;
   onClickComposition?: (composition: Composition, event: MouseEvent<HTMLButtonElement>) => unknown;
-  toCurrentComposition?: To;
-  onClickCurrentComposition?: (event: MouseEvent<HTMLButtonElement>) => unknown;
+  toNewComposition?: To;
+  onClickNewComposition?: (event: MouseEvent<HTMLButtonElement>) => unknown;
   theme?: MatchRankingTheme;
 }
 
 export function MatchRanking({
   match,
-  compositions,
+  ranking,
+  myComposition,
   toComposition,
   onClickComposition,
-  toCurrentComposition,
-  onClickCurrentComposition,
+  toNewComposition,
+  onClickNewComposition,
   theme = 'dark',
 }: MatchRankingProps): ReactElement {
   const openCompositions = useMemo<boolean>(() => {
@@ -40,7 +42,7 @@ export function MatchRanking({
 
       <div className="ranking">
         <CompositionRanking
-          compositions={compositions}
+          compositions={ranking}
           theme={theme}
           toComposition={openCompositions ? toComposition : undefined}
           onClickComposition={openCompositions ? onClickComposition : undefined}
@@ -50,8 +52,8 @@ export function MatchRanking({
       {(toComposition || onClickComposition) && match.status === 'open' ? (
         <div className="action">
           <Button
-            to={toCurrentComposition}
-            onClick={onClickCurrentComposition}
+            to={toNewComposition}
+            onClick={onClickNewComposition}
             shape="filled"
             theme={theme === 'light' ? 'transparent-light' : 'transparent-dark'}>
             Faire ma composition
