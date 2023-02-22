@@ -56,7 +56,7 @@ export function MatchRanking({
             </Button>
           ) : null}
 
-          {myComposition && (toNewComposition || onClickNewComposition) ? (
+          {!myComposition && (toNewComposition || onClickNewComposition) ? (
             <Button
               to={toNewComposition}
               onClick={onClickNewComposition}
