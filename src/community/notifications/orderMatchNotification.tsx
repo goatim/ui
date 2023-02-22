@@ -1,12 +1,12 @@
 import { ReactElement } from 'react';
 import { OrderMatchNotificationPayload } from '@fridaygame/client';
-import AssetThumbnail from '../../trading/assets/assetThumbnail';
+import { AssetThumbnail } from '../../trading';
 
-export interface Props {
+export interface OrderMatchNotificationProps {
   payload?: OrderMatchNotificationPayload;
 }
 
-export default function OrderMatchNotification({ payload }: Props): ReactElement {
+export function OrderMatchNotification({ payload }: OrderMatchNotificationProps): ReactElement {
   return (
     <div className="friday-ui-order-match-notification">
       <span>

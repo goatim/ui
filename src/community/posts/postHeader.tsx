@@ -5,10 +5,10 @@ import rocket from '../../general/assets/rocket.png';
 import shakeHands from '../../general/assets/shake-hands.png';
 import gift from '../../general/assets/gift.png';
 
-export interface Props {
+export interface PostHeaderProps {
   post: Post;
 }
-export default function PostHeader({ post }: Props): ReactElement {
+export function PostHeader({ post }: PostHeaderProps): ReactElement {
   const resolvedIcon = useMemo<ReactElement>(() => {
     switch (post.type) {
       case 'orders':

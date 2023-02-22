@@ -1,11 +1,11 @@
 import { ReactElement, useCallback, useEffect, useState } from 'react';
 import { PaymentMethod } from '@fridaygame/client';
 import { PaymentMethod as StripePaymentMethod } from '@stripe/stripe-js';
-import StripeCreditCardForm, { NewStripeCard } from './stripeCreditCardForm';
-import Button from '../general/button';
-import StripePaymentMethodList from './stripePaymentMethodList';
+import { NewStripeCard, StripeCreditCardForm } from './stripeCreditCardForm';
+import { Button } from '../general';
+import { StripePaymentMethodList } from './stripePaymentMethodList';
 
-export interface Props {
+export interface StripePaymentMethodSelectorProps {
   paymentMethods?: (PaymentMethod | StripePaymentMethod)[];
   onSelectPaymentMethod?: (paymentMethod: PaymentMethod | StripePaymentMethod | null) => unknown;
   selectedPaymentMethod?: PaymentMethod | StripePaymentMethod | string | null;
@@ -14,12 +14,12 @@ export interface Props {
   ) => Promise<PaymentMethod | StripePaymentMethod> | PaymentMethod | StripePaymentMethod;
 }
 
-export default function StripePaymentMethodSelector({
+export function StripePaymentMethodSelector({
   paymentMethods,
   onSelectPaymentMethod,
   selectedPaymentMethod,
   onAddCreditCard,
-}: Props): ReactElement {
+}: StripePaymentMethodSelectorProps): ReactElement {
   const [isAdding, setIsAdding] = useState<boolean>(false);
 
   useEffect(() => {

@@ -1,12 +1,12 @@
 import { ReactElement } from 'react';
 import { Composition, Post } from '@fridaygame/client';
-import MatchSummary from '../../soccer/matches/matchSummary';
+import { MatchSummary } from '../../soccer';
 
-export interface Props {
+export interface MatchSummaryPostProps {
   post: Post<'match_summary'>;
 }
 
-export default function MatchSummaryPost({ post }: Props): ReactElement {
+export function MatchSummaryPost({ post }: MatchSummaryPostProps): ReactElement {
   return (
     <div className="friday-ui-match-summary-post">
       {post.payload?.match && typeof post.payload.match === 'object' ? (

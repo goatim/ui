@@ -1,14 +1,14 @@
 import { ReactElement, useMemo } from 'react';
 import { FieldComponentProps } from '@cezembre/forms';
-import Icon from './icon';
-import Check from './check';
+import { Icon } from './icon';
+import { Check } from './check';
 
-export interface Props extends FieldComponentProps<boolean> {
+export interface CheckboxProps extends FieldComponentProps<boolean> {
   label?: string;
   instructions?: string;
 }
 
-export default function Checkbox({
+export function Checkbox({
   value,
   error,
   warning,
@@ -19,7 +19,7 @@ export default function Checkbox({
   onBlur,
   label,
   instructions,
-}: Props): ReactElement {
+}: CheckboxProps): ReactElement {
   const className = useMemo<string>(() => {
     const classNames: string[] = ['friday-ui-checkbox'];
 

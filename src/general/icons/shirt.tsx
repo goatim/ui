@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
-import IconProps from './props';
+import { SvgIconProps } from './props';
 
-export default function Shirt({ size = 15 }: IconProps): ReactElement<SVGElement> {
+export function Shirt({ size = 15 }: SvgIconProps): ReactElement<SVGElement> {
   return (
     <svg viewBox="0 0 122.02 140.92" height={size}>
       <title>Shirt</title>

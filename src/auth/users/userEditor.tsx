@@ -1,19 +1,18 @@
 import { ReactElement } from 'react';
 import { Field, Form, FormSubmitFunction } from '@cezembre/forms';
-import Button from '../../general/button';
-import Input from '../../general/input';
+import { Button, Input } from '../../general';
 
 export interface UserEditorFields {
   first_name?: string;
   last_name?: string;
 }
 
-export interface Props {
+export interface UserEditorProps {
   initialValues?: UserEditorFields;
   onSubmit?: FormSubmitFunction<UserEditorFields>;
 }
 
-export default function UserEditor({ initialValues, onSubmit }: Props): ReactElement {
+export function UserEditor({ initialValues, onSubmit }: UserEditorProps): ReactElement {
   return (
     <div className="friday-ui-user-editor">
       <div className="header">

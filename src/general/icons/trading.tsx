@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
-import IconProps from './props';
+import { SvgIconProps } from './props';
 
-export default function Trading({ size = 15 }: IconProps): ReactElement<SVGElement> {
+export function Trading({ size = 15 }: SvgIconProps): ReactElement<SVGElement> {
   return (
     <svg viewBox="0 0 360.04 355.14" height={size}>
       <title>Trading</title>

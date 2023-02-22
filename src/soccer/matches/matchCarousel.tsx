@@ -1,23 +1,23 @@
 import { ReactElement } from 'react';
 import { To } from 'react-router';
 import { Match } from '@fridaygame/client';
-import MatchThumbnail from './matchThumbnail';
+import { MatchThumbnail } from './matchThumbnail';
 
 export type MatchCarouselSize = 'small' | 'medium' | 'big';
 
-export interface Props {
+export interface MatchCarouselProps {
   matches?: Match[];
   size?: MatchCarouselSize;
   matchToComposition?: (match: Match) => To;
   matchToFeed?: (match: Match) => To;
 }
 
-export default function MatchCarousel({
+export function MatchCarousel({
   matches,
   size = 'big',
   matchToComposition,
   matchToFeed,
-}: Props): ReactElement {
+}: MatchCarouselProps): ReactElement {
   return (
     <div className={`friday-ui-match-carousel ${size}`}>
       <div className="background">

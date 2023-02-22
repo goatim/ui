@@ -2,12 +2,12 @@ import { MouseEvent, ReactElement, useMemo } from 'react';
 import { To } from 'react-router';
 import Composition from '@fridaygame/client/dist/soccer/compositions/model';
 import { Match } from '@fridaygame/client';
-import CompositionRanking from '../compositions/compositionRanking';
-import Button from '../../general/button';
+import { CompositionRanking } from '../compositions';
+import { Button } from '../../general';
 
 export type MatchRankingTheme = 'dark' | 'light';
 
-export interface Props {
+export interface MatchRankingProps {
   match: Match;
   compositions?: Composition[];
   toComposition?: To;
@@ -17,7 +17,7 @@ export interface Props {
   theme?: MatchRankingTheme;
 }
 
-export default function MatchRanking({
+export function MatchRanking({
   match,
   compositions,
   toComposition,
@@ -25,7 +25,7 @@ export default function MatchRanking({
   toCurrentComposition,
   onClickCurrentComposition,
   theme = 'dark',
-}: Props): ReactElement {
+}: MatchRankingProps): ReactElement {
   const openCompositions = useMemo<boolean>(() => {
     return (
       !!match.status &&

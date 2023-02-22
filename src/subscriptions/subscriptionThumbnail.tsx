@@ -1,8 +1,7 @@
-import { ReactElement, useMemo, MouseEvent } from 'react';
+import { MouseEvent, ReactElement, useMemo } from 'react';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
 import { formatEurosAmount } from '@fridaygame/client';
-import Button from '../general/button';
-import Icon from '../general/icon';
+import { Button, Icon } from '../general';
 
 export type SubscriptionType = 'gold' | 'platinium' | 'silver';
 export type SubscriptionThumbnailTheme = 'light' | 'dark';
@@ -12,7 +11,7 @@ export interface Subscription {
   type: SubscriptionType;
 }
 
-export interface Props extends WrapperProps {
+export interface SubscriptionThumbnailProps extends WrapperProps {
   bonusesDescriptions: string[];
   subscription: Subscription;
   isPopular?: boolean;
@@ -20,7 +19,7 @@ export interface Props extends WrapperProps {
   theme: SubscriptionThumbnailTheme;
 }
 
-export default function SubscriptionThumbnail({
+export function SubscriptionThumbnail({
   bonusesDescriptions,
   isPopular = false,
   onBuy,
@@ -30,7 +29,7 @@ export default function SubscriptionThumbnail({
   href,
   target,
   to,
-}: Props): ReactElement {
+}: SubscriptionThumbnailProps): ReactElement {
   const iconColor = useMemo(() => {
     switch (theme) {
       case 'dark':

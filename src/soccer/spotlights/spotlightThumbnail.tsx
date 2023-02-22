@@ -1,24 +1,23 @@
 import { MouseEvent, ReactElement, useMemo } from 'react';
 import { Asset, Spotlight } from '@fridaygame/client';
 import { To } from 'react-router-dom';
-import { AssetThumbnailSize } from '../../trading/assets/assetThumbnail';
-import AssetList from '../../trading/assets/assetList';
+import { AssetList, AssetThumbnailSize } from '../../trading';
 
 export type SpotlightThumbnailSize = 'narrow' | 'small' | 'medium' | 'large';
 
-export interface Props {
+export interface SpotlightThumbnailProps {
   spotlight: Spotlight;
   size?: SpotlightThumbnailSize;
   assetOnClick?: (asset: Asset, event: MouseEvent<HTMLButtonElement>) => unknown;
   assetTo?: (asset: Asset) => To;
 }
 
-export default function SpotlightThumbnail({
+export function SpotlightThumbnail({
   spotlight,
   size = 'large',
   assetOnClick,
   assetTo,
-}: Props): ReactElement {
+}: SpotlightThumbnailProps): ReactElement {
   const assetSize = useMemo<AssetThumbnailSize>(() => {
     switch (size) {
       case 'narrow':

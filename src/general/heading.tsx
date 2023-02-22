@@ -1,5 +1,5 @@
 import { ReactElement, useMemo } from 'react';
-import Icon, { IconName } from './icon';
+import { Icon, IconName } from './icon';
 
 export type HeadingSize = 'small' | 'medium' | 'big';
 
@@ -7,7 +7,7 @@ export type HeadingTheme = 'dark' | 'light' | 'live' | 'live-light';
 
 export type HeadingLevel = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
-export interface Props {
+export interface HeadingProps {
   label?: string;
   icon?: IconName;
   emoji?: string;
@@ -18,7 +18,7 @@ export interface Props {
   align?: AlignSetting;
 }
 
-export default function Heading({
+export function Heading({
   label,
   icon,
   emoji,
@@ -27,7 +27,7 @@ export default function Heading({
   theme = 'dark',
   level = 'h2',
   align = 'left',
-}: Props): ReactElement {
+}: HeadingProps): ReactElement {
   const iconSize = useMemo<number>(() => {
     switch (size) {
       case 'small':

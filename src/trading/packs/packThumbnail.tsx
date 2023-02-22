@@ -1,17 +1,17 @@
 import { ReactElement } from 'react';
 import { Pack } from '@fridaygame/client';
-import ShareBulkList from '../shareBulks/shareBulkList';
-import FridayCoins from '../../market/fridayCoins';
-import Wallpaper from '../../general/wallpaper';
+import { ShareBulkList } from '../shareBulks';
+import { FridayCoins } from '../../market';
+import { Wallpaper } from '../../general';
 
 export type PackThumbnailSize = 'narrow' | 'normal';
 
-export interface Props {
+export interface PackThumbnailProps {
   pack: Pack;
   size?: PackThumbnailSize;
 }
 
-export default function PackThumbnail({ pack, size = 'normal' }: Props): ReactElement {
+export function PackThumbnail({ pack, size = 'normal' }: PackThumbnailProps): ReactElement {
   return (
     <div className="friday-ui-pack-thumbnail">
       <div className="header">

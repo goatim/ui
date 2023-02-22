@@ -1,9 +1,9 @@
 import { ReactElement, useCallback, useState } from 'react';
-import { Form, Field, FormFields, FormState, FormContext } from '@cezembre/forms';
+import { Field, Form, FormContext, FormFields, FormState } from '@cezembre/forms';
 import { FormProps } from '@cezembre/forms/dist/form';
-import CreditCardInput, { CreditCardValue } from './creditCardInput';
-import Checkbox from '../general/checkbox';
-import Button from '../general/button';
+import { CreditCardInput, CreditCardValue } from './creditCardInput';
+import { Checkbox } from '../general/checkbox';
+import { Button } from '../general';
 
 export interface CreditCardFields extends FormFields {
   type: 'card';
@@ -11,11 +11,11 @@ export interface CreditCardFields extends FormFields {
   save_card?: boolean;
 }
 
-export interface Props extends FormProps<CreditCardFields> {
+export interface CreditCardFormProps extends FormProps<CreditCardFields> {
   onCancel?: () => unknown;
 }
 
-export default function CreditCardForm({ onSubmit, onCancel }: Props): ReactElement {
+export function CreditCardForm({ onSubmit, onCancel }: CreditCardFormProps): ReactElement {
   const [formState, setFormState] = useState<FormState<CreditCardFields>>();
 
   const form = useCallback((formContext: FormContext<CreditCardFields>) => {

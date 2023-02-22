@@ -1,11 +1,11 @@
 import { ReactElement } from 'react';
 import { Checkout, formatEurosAmount } from '@fridaygame/client';
 
-export interface Props {
+export interface CheckoutBillProps {
   checkout: Checkout;
 }
 
-export default function CheckoutBill({ checkout }: Props): ReactElement {
+export function CheckoutBill({ checkout }: CheckoutBillProps): ReactElement {
   return (
     <div className="friday-ui-checkout-bill">
       {checkout.items_prices !== undefined ? (

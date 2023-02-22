@@ -1,15 +1,15 @@
 import { ReactElement } from 'react';
 import { Post } from '@fridaygame/client';
-import PackThumbnail from '../../trading/packs/packThumbnail';
+import { PackThumbnail } from '../../trading';
 
 export type PackPostSize = 'narrow' | 'normal';
 
-export interface Props {
+export interface PackPostProps {
   post: Post<'pack'>;
   size?: PackPostSize;
 }
 
-export default function PackPost({ post, size = 'normal' }: Props): ReactElement {
+export function PackPost({ post, size = 'normal' }: PackPostProps): ReactElement {
   return (
     <div className="friday-ui-pack-post">
       {post.payload?.pack && typeof post.payload.pack === 'object' ? (

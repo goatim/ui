@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
-import IconProps from './props';
+import { SvgIconProps } from './props';
 
-export default function Podium({ size = 15 }: IconProps): ReactElement<SVGElement> {
+export function Podium({ size = 15 }: SvgIconProps): ReactElement<SVGElement> {
   return (
     <svg viewBox="0 0 512.83 496.72" height={size}>
       <title>Podium</title>

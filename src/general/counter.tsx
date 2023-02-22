@@ -1,18 +1,18 @@
 import {
-  useCallback,
-  ReactElement,
   ChangeEvent,
+  HTMLInputTypeAttribute,
+  ReactElement,
+  useCallback,
+  useEffect,
   useMemo,
   useState,
-  useEffect,
-  HTMLInputTypeAttribute,
 } from 'react';
 import { FieldComponentProps } from '@cezembre/forms';
-import Icon from './icon';
+import { Icon } from './icon';
 
 export type CounterTransformationFunction = (value: number) => number;
 
-export interface Props extends FieldComponentProps<number | undefined> {
+export interface CounterProps extends FieldComponentProps<number | undefined> {
   adapter?: CounterTransformationFunction;
   resolver?: CounterTransformationFunction;
   format?: CounterTransformationFunction;
@@ -26,7 +26,7 @@ export interface Props extends FieldComponentProps<number | undefined> {
   step?: number;
 }
 
-export default function Counter({
+export function Counter({
   value,
   error,
   warning,
@@ -49,7 +49,7 @@ export default function Counter({
   max,
   increment = 1,
   step = 1,
-}: Props): ReactElement {
+}: CounterProps): ReactElement {
   const className = useMemo<string>(() => {
     const classNames = ['friday-ui-counter'];
 

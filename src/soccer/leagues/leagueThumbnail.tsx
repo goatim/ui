@@ -1,7 +1,7 @@
 import { ReactElement, useMemo } from 'react';
 import { League } from '@fridaygame/client';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
-import LeagueIcon from './leagueIcon';
+import { LeagueIcon } from './leagueIcon';
 
 export type LeagueThumbnailSize = 'small' | 'medium' | 'big';
 
@@ -9,7 +9,7 @@ export type LeagueThumbnailShape = 'text' | 'icon';
 
 export type LeagueThumbnailTheme = 'dark' | 'light';
 
-export interface Props extends WrapperProps {
+export interface LeagueThumbnailProps extends WrapperProps {
   league: League;
   title?: boolean;
   size?: LeagueThumbnailSize;
@@ -17,7 +17,7 @@ export interface Props extends WrapperProps {
   theme?: LeagueThumbnailTheme;
 }
 
-export default function LeagueThumbnail({
+export function LeagueThumbnail({
   league,
   title = false,
   size = 'small',
@@ -27,7 +27,7 @@ export default function LeagueThumbnail({
   onClick,
   href,
   target,
-}: Props): ReactElement {
+}: LeagueThumbnailProps): ReactElement {
   const className = useMemo<string>(() => {
     const classNames = ['friday-ui-league-thumbnail', size, shape, theme];
     return classNames.join(' ');

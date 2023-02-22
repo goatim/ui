@@ -1,19 +1,19 @@
 import {
-  ReactNode,
-  ReactElement,
-  createContext,
-  useState,
-  useContext,
-  useCallback,
-  useRef,
-  FunctionComponent,
-  useMemo,
-  useEffect,
-  createElement,
   cloneElement,
+  createContext,
+  createElement,
+  FunctionComponent,
+  ReactElement,
+  ReactNode,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
 } from 'react';
 import { useClickOutside } from '@cezembre/fronts';
-import Icon from './icon';
+import { Icon } from './icon';
 
 export interface ModalComponentProps {
   id: string;
@@ -122,11 +122,11 @@ function ModalContainer<P extends ModalComponentProps = ModalComponentProps>({
   );
 }
 
-export interface ContextProps {
+export interface ModalsContextProps {
   children?: ReactNode;
 }
 
-export function ModalsContext({ children }: ContextProps): ReactElement {
+export function ModalsContext({ children }: ModalsContextProps): ReactElement {
   const [modals, setModals] = useState<Modal[]>([]);
 
   const pushModal = useCallback(

@@ -1,19 +1,19 @@
 import React, { ReactElement, useCallback, useMemo, useState, useEffect } from 'react';
 import { Property } from 'csstype';
 
-export interface Props {
+export interface GutterProps {
   children?: ReactElement | ReactElement[];
   spacing?: number;
   padding?: number;
   clickThreshold?: number;
 }
 
-export default function Gutter({
+export function Gutter({
   children,
   spacing = 20,
   padding = 20,
   clickThreshold = 10,
-}: Props): ReactElement {
+}: GutterProps): ReactElement {
   const elements = useMemo<ReactElement | ReactElement[]>(() => {
     if (Array.isArray(children)) {
       return children.map((child, index) => (

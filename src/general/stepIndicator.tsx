@@ -1,12 +1,12 @@
 import { ReactElement, useMemo } from 'react';
 
-export interface Props {
+export interface StepIndicatorProps {
   nbSteps?: number;
   step?: number;
   onClickStep?: (step: number) => void;
 }
 
-export default function StepIndicator({ nbSteps, step, onClickStep }: Props): ReactElement {
+export function StepIndicator({ nbSteps, step, onClickStep }: StepIndicatorProps): ReactElement {
   const steps = useMemo<string[]>(
     () => Array(nbSteps).fill((Math.random() + 1).toString(36).substring(4)),
     [nbSteps],

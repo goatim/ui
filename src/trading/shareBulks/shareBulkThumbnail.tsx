@@ -1,15 +1,18 @@
 import { ReactElement, useMemo } from 'react';
 import { ShareBulk } from '@fridaygame/client';
-import AssetThumbnail, { AssetThumbnailSize } from '../assets/assetThumbnail';
+import { AssetThumbnail, AssetThumbnailSize } from '../assets';
 
 export type ShareBulkThumbnailSize = 'narrow' | 'small' | 'normal';
 
-export interface Props {
+export interface ShareBulkThumbnailProps {
   shareBulk: ShareBulk;
   size?: ShareBulkThumbnailSize;
 }
 
-export default function ShareBulkThumbnail({ shareBulk, size = 'normal' }: Props): ReactElement {
+export function ShareBulkThumbnail({
+  shareBulk,
+  size = 'normal',
+}: ShareBulkThumbnailProps): ReactElement {
   const assetThumbnailSize = useMemo<AssetThumbnailSize>(() => {
     switch (size) {
       case 'narrow':

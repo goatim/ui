@@ -1,11 +1,11 @@
 import { ReactElement } from 'react';
 import { Wallet } from '@fridaygame/client';
-import WalletRank from './walletRank';
-import Icon from '../../general/icon';
+import { WalletRank } from './walletRank';
+import { Icon } from '../../general';
 
 export type WalletRankingTheme = 'dark' | 'light';
 
-export interface Props {
+export interface WalletRankingProps {
   wallets?: Wallet[];
   pinned?: Wallet;
   theme?: WalletRankingTheme;
@@ -14,14 +14,14 @@ export interface Props {
   variationExtractor?: (wallet: Wallet) => number;
 }
 
-export default function WalletRanking({
+export function WalletRanking({
   wallets,
   pinned,
   theme = 'dark',
   positionExtractor,
   amountExtractor,
   variationExtractor,
-}: Props): ReactElement {
+}: WalletRankingProps): ReactElement {
   if (!wallets?.length) {
     return (
       <div className={`friday-ui-wallet-ranking-empty ${theme}`}>

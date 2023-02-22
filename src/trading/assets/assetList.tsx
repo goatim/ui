@@ -1,9 +1,9 @@
-import { ReactElement, MouseEvent } from 'react';
+import { MouseEvent, ReactElement } from 'react';
 import { To } from 'react-router';
 import { Asset } from '@fridaygame/client';
-import AssetThumbnail, { AssetThumbnailSize, AssetThumbnailTheme } from './assetThumbnail';
+import { AssetThumbnail, AssetThumbnailSize, AssetThumbnailTheme } from './assetThumbnail';
 
-export interface Props {
+export interface AssetListProps {
   assets?: Asset[];
   size?: AssetThumbnailSize;
   theme?: AssetThumbnailTheme;
@@ -12,14 +12,14 @@ export interface Props {
   columns?: number;
 }
 
-export default function AssetList({
+export function AssetList({
   assets,
   size,
   theme,
   assetOnClick,
   assetTo,
   columns = 1,
-}: Props): ReactElement {
+}: AssetListProps): ReactElement {
   return (
     <div
       className={`friday-ui-asset-list ${size}`}

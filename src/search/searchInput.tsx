@@ -3,12 +3,12 @@ import { SearchResult } from '@fridaygame/client';
 import _ from 'lodash';
 import { To } from 'react-router';
 import { Wrapper } from '@cezembre/fronts';
-import Icon from '../general/icon';
-import AssetThumbnail from '../trading/assets/assetThumbnail';
+import { Icon } from '../general';
+import { AssetThumbnail } from '../trading';
 
 export type SearchInputTheme = 'light' | 'lighter';
 
-export interface Props {
+export interface SearchInputProps {
   onSearch?: (query: string) => unknown;
   results?: SearchResult[];
   onClickResult?: (result: SearchResult) => unknown;
@@ -18,7 +18,7 @@ export interface Props {
   flat?: boolean;
 }
 
-export default function SearchInput({
+export function SearchInput({
   onSearch,
   results,
   onClickResult,
@@ -26,7 +26,7 @@ export default function SearchInput({
   throttle = 1000,
   theme = 'light',
   flat = false,
-}: Props): ReactElement {
+}: SearchInputProps): ReactElement {
   const [query, setQuery] = useState<string>('');
   const [active, setActive] = useState<boolean>(false);
 

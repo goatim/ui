@@ -1,13 +1,12 @@
 import { MouseEvent, ReactElement, useMemo } from 'react';
 import { Club, League } from '@fridaygame/client';
 import { To } from 'react-router';
-import ClubList from '../clubs/clubList';
-import LeagueThumbnail from './leagueThumbnail';
-import ClubCarousel from '../clubs/clubCarousel';
+import { LeagueThumbnail } from './leagueThumbnail';
+import { ClubCarousel } from '../clubs';
 
 export type LeagueOverviewSize = 'small' | 'medium' | 'big';
 
-export interface Props {
+export interface LeagueOverviewProps {
   league: League;
   size?: LeagueOverviewSize;
   leagueTo?: To;
@@ -17,7 +16,7 @@ export interface Props {
   clubTo?: (club: Club) => To;
 }
 
-export default function LeagueOverview({
+export function LeagueOverview({
   league,
   size = 'medium',
   leagueTo,
@@ -25,7 +24,7 @@ export default function LeagueOverview({
   getClubs,
   clubOnClick,
   clubTo,
-}: Props): ReactElement {
+}: LeagueOverviewProps): ReactElement {
   const clubColumns = useMemo<number>(() => {
     switch (size) {
       case 'small':

@@ -1,13 +1,16 @@
 import { ReactElement } from 'react';
 import { PhysicalEvent } from '@fridaygame/client';
-import PhysicalEventThumbnail, { PhysicalEventThumbnailTheme } from './physicalEventThumbnail';
+import { PhysicalEventThumbnail, PhysicalEventThumbnailTheme } from './physicalEventThumbnail';
 
-export interface Props {
+export interface PhysicalEventListProps {
   physicalEvents?: PhysicalEvent[];
   theme?: PhysicalEventThumbnailTheme;
 }
 
-export default function PhysicalEventList({ physicalEvents, theme = 'dark' }: Props): ReactElement {
+export function PhysicalEventList({
+  physicalEvents,
+  theme = 'dark',
+}: PhysicalEventListProps): ReactElement {
   if (!physicalEvents?.length) {
     return <span>Pas d&eapos;événements</span>;
   }

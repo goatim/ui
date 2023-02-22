@@ -1,10 +1,10 @@
 import { MouseEvent, ReactElement, useEffect, useState } from 'react';
 import { Club } from '@fridaygame/client';
 import { To } from 'react-router';
-import ClubList from './clubList';
+import { ClubList } from './clubList';
 import { ClubThumbnailShape, ClubThumbnailSize } from './clubThumbnail';
 
-export interface Props {
+export interface ClubCarouselProps {
   getClubs?: (page: number) => Promise<Club[]> | Club[];
   clubOnClick?: (club: Club, event: MouseEvent<HTMLButtonElement>) => unknown;
   clubTo?: (club: Club) => To;
@@ -13,14 +13,14 @@ export interface Props {
   columns?: number;
 }
 
-export default function ClubCarousel({
+export function ClubCarousel({
   getClubs,
   size,
   shape,
   columns,
   clubTo,
   clubOnClick,
-}: Props): ReactElement {
+}: ClubCarouselProps): ReactElement {
   const [page, setPage] = useState<number>(1);
   const [pending, setPending] = useState<boolean>(false);
   const [error, setError] = useState<Error | undefined | null>();

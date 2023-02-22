@@ -1,19 +1,19 @@
 import { ReactElement } from 'react';
 import { PaymentMethod } from '@fridaygame/client';
 import { PaymentMethod as StripePaymentMethod } from '@stripe/stripe-js';
-import PaymentMethodThumbnail from './paymentMethodThumbnail';
+import { PaymentMethodThumbnail } from './paymentMethodThumbnail';
 
-export interface Props {
+export interface StripePaymentMethodListProps {
   paymentMethods?: (PaymentMethod | StripePaymentMethod)[];
   onSelectPaymentMethod?: (paymentMethod: PaymentMethod | StripePaymentMethod | null) => unknown;
   selectedPaymentMethod?: PaymentMethod | StripePaymentMethod | string | null;
 }
 
-export default function StripePaymentMethodList({
+export function StripePaymentMethodList({
   paymentMethods,
   onSelectPaymentMethod,
   selectedPaymentMethod,
-}: Props): ReactElement {
+}: StripePaymentMethodListProps): ReactElement {
   if (!paymentMethods?.length) {
     return <span>Aucun moyen de paiement</span>;
   }

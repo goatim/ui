@@ -1,17 +1,17 @@
 import { ReactElement, useMemo } from 'react';
-import { Composition, Match } from '@fridaygame/client';
+import { Match } from '@fridaygame/client';
 import { Property } from 'csstype';
-import DateTimeThumbnail from '../../general/dateTimeThumbnail';
+import { DateTimeThumbnail } from '../../general/dateTimeThumbnail';
 import beforeMatch from './assets/before-match.jpg';
 import duringMatch from './assets/during-match.jpg';
 import afterMatch from './assets/after-match.jpg';
-import CompositionPodium from '../compositions/compositionPodium';
+import { CompositionPodium } from '../compositions';
 
-export interface Props {
+export interface MatchLiveProps {
   match: Match;
 }
 
-export default function MatchLive({ match }: Props): ReactElement {
+export function MatchLive({ match }: MatchLiveProps): ReactElement {
   const content = useMemo<ReactElement | null>(() => {
     switch (match.status) {
       case 'created':

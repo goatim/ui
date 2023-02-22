@@ -2,21 +2,20 @@ import { ReactElement, useMemo } from 'react';
 import { formatPlayerName, Player } from '@fridaygame/client';
 import { To } from 'react-router-dom';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
-import ClubIcon, { ClubIconSize } from '../clubs/clubIcon';
-import ClubThumbnail, { ClubThumbnailTheme } from '../clubs/clubThumbnail';
+import { ClubIcon, ClubIconSize, ClubThumbnail, ClubThumbnailTheme } from '../clubs';
 
 export type PlayerThumbnailSize = 'small' | 'medium' | 'big' | 'full';
 
 export type PlayerThumbnailTheme = 'dark' | 'light';
 
-export interface Props extends WrapperProps {
+export interface PlayerThumbnailProps extends WrapperProps {
   player: Player;
   size?: PlayerThumbnailSize;
   theme?: ClubThumbnailTheme;
   clubTo?: To;
 }
 
-export default function PlayerThumbnail({
+export function PlayerThumbnail({
   player,
   size = 'small',
   theme = 'dark',
@@ -25,7 +24,7 @@ export default function PlayerThumbnail({
   href,
   target,
   clubTo,
-}: Props): ReactElement {
+}: PlayerThumbnailProps): ReactElement {
   const clubIconSize = useMemo<ClubIconSize>(() => {
     switch (size) {
       case 'medium':

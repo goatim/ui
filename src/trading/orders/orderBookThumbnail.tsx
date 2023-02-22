@@ -1,22 +1,22 @@
 import { ReactElement } from 'react';
 import { OrderBook } from '@fridaygame/client';
-import FridayCoins from '../../market/fridayCoins';
+import { FridayCoins } from '../../market';
 
 export type OrderBookThumbnailSize = 'narrow' | 'small' | 'medium' | 'big';
 
 export type OrderBookThumbnailTheme = 'light' | 'medium-light';
 
-export interface Props {
+export interface OrderBookThumbnailProps {
   orderBook?: OrderBook;
   size?: OrderBookThumbnailSize;
   theme?: OrderBookThumbnailTheme;
 }
 
-export default function OrderBookThumbnail({
+export function OrderBookThumbnail({
   orderBook,
   size = 'medium',
   theme = 'light',
-}: Props): ReactElement {
+}: OrderBookThumbnailProps): ReactElement {
   return (
     <div className={`friday-ui-order-book-thumbnail ${size} ${theme}`}>
       <div className="aggregated-orders buying">

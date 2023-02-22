@@ -2,7 +2,7 @@ import { GeoLocation } from '@fridaygame/client';
 
 type GeocoderAddressComponent = google.maps.GeocoderAddressComponent;
 
-export default interface Place {
+export interface Place {
   value?: string;
   google_id?: string;
   types?: string[];

@@ -1,11 +1,11 @@
 import { ReactElement, useMemo } from 'react';
-import Icon, { IconName } from '../../general/icon';
+import { Icon, IconName } from '../../general';
 
-export interface Props {
+export interface NotificationIconProps {
   event?: string;
 }
 
-export default function NotificationIcon({ event }: Props): ReactElement {
+export function NotificationIcon({ event }: NotificationIconProps): ReactElement {
   const iconName = useMemo<IconName>(() => {
     switch (event) {
       case 'order_match':

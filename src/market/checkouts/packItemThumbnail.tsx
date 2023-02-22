@@ -1,20 +1,20 @@
 import { ReactElement } from 'react';
 import { formatEurosAmount, PackItem } from '@fridaygame/client';
-import Icon from '../../general/icon';
+import { Icon } from '../../general';
 
 export type PackItemThumbnailSize = 'narrow' | 'normal';
 
-export interface Props {
+export interface PackItemThumbnailProps {
   packItem: PackItem;
   onDelete?: () => unknown;
   size?: PackItemThumbnailSize;
 }
 
-export default function PackItemThumbnail({
+export function PackItemThumbnail({
   packItem,
   onDelete,
   size = 'normal',
-}: Props): ReactElement {
+}: PackItemThumbnailProps): ReactElement {
   return (
     <div className={`friday-ui-pack-item-thumbnail ${size}`}>
       <div className="container">

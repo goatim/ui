@@ -1,24 +1,26 @@
 import { ReactElement } from 'react';
 import * as FeatherIcons from 'react-feather';
 import { Slash } from 'react-feather';
-import IconProps from './icons/props';
-import Friday from './icons/friday';
-import Money from './icons/money';
-import Rocket from './icons/rocket';
-import Shirt from './icons/shirt';
-import Trophy from './icons/trophy';
-import FridayIcon from './icons/fridayIcon';
-import Visa from './icons/visa';
-import Mastercard from './icons/mastercard';
-import SoccerBall from './icons/soccerBall';
-import SoccerField from './icons/soccerField';
-import Tiktok from './icons/tiktok';
-import Coins from './icons/coins';
-import Ether from './icons/ether';
-import Podium from './icons/podium';
-import ReceiveCoin from './icons/receive-coin';
-import SoccerGoal from './icons/soccer-goal';
-import Trading from './icons/trading';
+import {
+  Coins,
+  Ether,
+  Friday,
+  FridayIcon,
+  Mastercard,
+  Money,
+  Podium,
+  ReceiveCoin,
+  Rocket,
+  Shirt,
+  SoccerBall,
+  SoccerField,
+  SoccerGoal,
+  SvgIconProps,
+  Tiktok,
+  Trading,
+  Trophy,
+  Visa,
+} from './icons';
 
 export type IconName =
   | 'activity'
@@ -325,17 +327,17 @@ export type IconName =
   | 'soccer-goal'
   | 'trading';
 
-export interface Props extends IconProps {
+export interface IconProps extends SvgIconProps {
   color?: string;
   name: IconName;
 }
 
-export default function Icon({
+export function Icon({
   color,
   name,
   size = 15,
   strokeWidth = 2,
-}: Props): ReactElement<SVGElement> {
+}: IconProps): ReactElement<SVGElement> {
   switch (name) {
     case 'activity':
       return <FeatherIcons.Activity size={size} strokeWidth={strokeWidth} color={color} />;

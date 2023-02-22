@@ -5,19 +5,19 @@ export type PercentageVariationShape = 'text' | 'filled';
 
 export type PercentageVariationSize = 'small' | 'medium' | 'big';
 
-export interface Props {
+export interface PercentageVariationProps {
   children?: number;
   variation?: number;
   shape?: PercentageVariationShape;
   size?: PercentageVariationSize;
 }
 
-export default function PercentageVariation({
+export function PercentageVariation({
   children,
   variation,
   shape = 'text',
   size = 'small',
-}: Props): ReactElement {
+}: PercentageVariationProps): ReactElement {
   const sign = useMemo<'positive' | 'negative' | 'zero'>(() => {
     if (!variation) {
       return 'zero';

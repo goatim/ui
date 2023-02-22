@@ -1,12 +1,12 @@
 import { MouseEvent, ReactElement } from 'react';
 import { Composition } from '@fridaygame/client';
 import { To } from 'react-router';
-import CompositionThumbnail from './compositionThumbnail';
-import Icon from '../../general/icon';
+import { CompositionThumbnail } from './compositionThumbnail';
+import { Icon } from '../../general';
 
 export type CompositionRankingTheme = 'dark' | 'light';
 
-export interface Props {
+export interface CompositionRankingProps {
   compositions?: Composition[];
   toComposition?: To;
   onClickComposition?: (composition: Composition, event: MouseEvent<HTMLButtonElement>) => unknown;
@@ -14,13 +14,13 @@ export interface Props {
   theme?: CompositionRankingTheme;
 }
 
-export default function CompositionRanking({
+export function CompositionRanking({
   compositions,
   toComposition,
   onClickComposition,
   pinned,
   theme = 'dark',
-}: Props): ReactElement {
+}: CompositionRankingProps): ReactElement {
   if (!compositions?.length) {
     return (
       <div className={`friday-ui-composition-ranking-empty ${theme}`}>

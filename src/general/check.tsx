@@ -1,6 +1,6 @@
 import { ReactNode, FocusEvent, KeyboardEvent, ReactElement, useCallback } from 'react';
 
-export interface Props {
+export interface CheckProps {
   active?: boolean;
   onChange?: (value: boolean) => void;
   onFocus?: (event: FocusEvent<HTMLDivElement>) => void;
@@ -9,14 +9,14 @@ export interface Props {
   children?: ReactNode;
 }
 
-export default function Check({
+export function Check({
   active,
   onChange,
   onFocus,
   onBlur,
   tabIndex = 0,
   children,
-}: Props): ReactElement {
+}: CheckProps): ReactElement {
   const onClick = useCallback(() => {
     if (onChange) {
       onChange(!active);

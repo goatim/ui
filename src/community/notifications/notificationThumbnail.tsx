@@ -1,20 +1,20 @@
 import { ReactElement, useMemo } from 'react';
 import {
+  ClosedMatchNotificationPayload,
   Notification,
   OrderMatchNotificationPayload,
-  ClosedMatchNotificationPayload,
 } from '@fridaygame/client';
 import { formatRelativeDateTime, Wrapper, WrapperProps } from '@cezembre/fronts';
-import NotificationIcon from './notificationIcon';
-import OrderMatchNotification from './orderMatchNotification';
-import ClosedMatchNotification from './closedMatchNotification';
+import { NotificationIcon } from './notificationIcon';
+import { OrderMatchNotification } from './orderMatchNotification';
+import { ClosedMatchNotification } from './closedMatchNotification';
 
-export interface Props extends WrapperProps {
+export interface NotificationThumbnailProps extends WrapperProps {
   notification: Notification;
   colored?: boolean;
 }
 
-export default function NotificationThumbnail({
+export function NotificationThumbnail({
   notification,
   colored = false,
   onClick,
@@ -22,7 +22,7 @@ export default function NotificationThumbnail({
   to,
   target,
   href,
-}: Props): ReactElement {
+}: NotificationThumbnailProps): ReactElement {
   const body = useMemo<ReactElement>(() => {
     switch (notification.event) {
       case 'order_match':

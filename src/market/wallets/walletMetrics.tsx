@@ -1,17 +1,17 @@
 import { ReactElement } from 'react';
 import { Wallet } from '@fridaygame/client';
-import FridayCoins from '../fridayCoins';
-import PercentageVariation from '../percentageVariation';
-import RankPosition from '../../trading/ranks/rankPosition';
+import { FridayCoins } from '../fridayCoins';
+import { PercentageVariation } from '../percentageVariation';
+import { RankPosition } from '../../trading';
 
 export type WalletMetricsSize = 'narrow' | 'normal';
 
-export interface Props {
+export interface WalletMetricsProps {
   wallet: Wallet;
   size?: WalletMetricsSize;
 }
 
-export default function WalletMetrics({ wallet, size = 'normal' }: Props): ReactElement {
+export function WalletMetrics({ wallet, size = 'normal' }: WalletMetricsProps): ReactElement {
   return (
     <div className={`friday-ui-wallet-metrics ${size}`}>
       <div className="metrics">

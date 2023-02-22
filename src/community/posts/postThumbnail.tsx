@@ -1,19 +1,19 @@
 import { ReactElement, useMemo } from 'react';
 import { Post } from '@fridaygame/client';
-import PostHeader from './postHeader';
-import OrdersPost from './ordersPost';
-import TransactionPost from './transactionPost';
-import PackPost from './packPost';
-import MatchSummaryPost from './matchSummaryPost';
+import { PostHeader } from './postHeader';
+import { OrdersPost } from './ordersPost';
+import { TransactionPost } from './transactionPost';
+import { PackPost } from './packPost';
+import { MatchSummaryPost } from './matchSummaryPost';
 
 export type PostThumbnailSize = 'narrow' | 'normal';
 
-export interface Props {
+export interface PostThumbnailProps {
   post: Post;
   size?: PostThumbnailSize;
 }
 
-export default function PostThumbnail({ post, size = 'normal' }: Props): ReactElement {
+export function PostThumbnail({ post, size = 'normal' }: PostThumbnailProps): ReactElement {
   const body = useMemo<ReactElement>(() => {
     switch (post.type) {
       case 'orders':

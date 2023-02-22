@@ -1,5 +1,5 @@
 import { ReactElement, useCallback, useMemo, useState } from 'react';
-import { Form, Field, FormErrors, FormState, FormContext, FormFields } from '@cezembre/forms';
+import { Field, Form, FormContext, FormErrors, FormFields, FormState } from '@cezembre/forms';
 import {
   adaptFridayCoinsAmount,
   Asset,
@@ -10,14 +10,9 @@ import {
   resolveFridayCoinsAmount,
 } from '@fridaygame/client';
 import { FormSubmitFunction } from '@cezembre/forms/dist/state';
-import Radio from '../../general/radio';
-import Button from '../../general/button';
-import Counter from '../../general/counter';
-import OrderBookThumbnail, {
-  OrderBookThumbnailSize,
-} from '../../trading/orders/orderBookThumbnail';
-import BoosterFactoryThumbnail from '../../trading/boosters/boosterFactoryThumbnail';
-import FridayCoins from '../fridayCoins';
+import { Button, Counter, Radio } from '../../general';
+import { BoosterFactoryThumbnail, OrderBookThumbnail, OrderBookThumbnailSize } from '../../trading';
+import { FridayCoins } from '../fridayCoins';
 
 export interface OrderItemEditorFields extends FormFields {
   asset?: Asset | string;
@@ -29,7 +24,7 @@ export interface OrderItemEditorFields extends FormFields {
 
 export type OrderItemEditorSize = 'narrow' | 'big';
 
-export interface Props {
+export interface OrderItemEditorProps {
   initialOrderItem?: OrderItemEditorFields;
   orderBook?: OrderBook;
   boosterFactories?: BoosterFactory[];
@@ -41,7 +36,7 @@ export interface Props {
   onAcceptBankProposal?: (nbShares?: number) => unknown;
 }
 
-export default function OrderItemEditor({
+export function OrderItemEditor({
   initialOrderItem,
   orderBook,
   boosterFactories,
@@ -51,7 +46,7 @@ export default function OrderItemEditor({
   size = 'big',
   bankProposalQuotation,
   onAcceptBankProposal,
-}: Props): ReactElement | null {
+}: OrderItemEditorProps): ReactElement | null {
   const [formState, setFormState] = useState<FormState<OrderItemEditorFields> | undefined>();
 
   const form = useCallback((formContext: FormContext<OrderItemEditorFields> | null) => {

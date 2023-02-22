@@ -1,10 +1,10 @@
 import { ReactElement, useMemo } from 'react';
 import { PhysicalEvent } from '@fridaygame/client';
-import DateTimeThumbnail, { DateTimeThumbnailTheme } from '../../general/dateTimeThumbnail';
+import { DateTimeThumbnail, DateTimeThumbnailTheme } from '../../general/dateTimeThumbnail';
 
 export type PhysicalEventTimelineTheme = 'dark' | 'light';
 
-export interface Props {
+export interface PhysicalEventTimelineProps {
   physicalEvent: PhysicalEvent;
   theme?: PhysicalEventTimelineTheme;
 }
@@ -22,10 +22,10 @@ function Milestone({ children }: MilestoneProps): ReactElement {
   );
 }
 
-export default function PhysicalEventTimeline({
+export function PhysicalEventTimeline({
   physicalEvent,
   theme = 'dark',
-}: Props): ReactElement {
+}: PhysicalEventTimelineProps): ReactElement {
   const dateTimeThumbnailTheme = useMemo<DateTimeThumbnailTheme>(() => {
     switch (theme) {
       case 'dark':

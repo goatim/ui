@@ -1,22 +1,22 @@
 import { ReactElement } from 'react';
 import { Item } from '@fridaygame/client';
-import OrderItemThumbnail from './orderItemThumbnail';
-import PackItemThumbnail from './packItemThumbnail';
-import BoosterItemThumbnail from './boosterItemThumbnail';
+import { OrderItemThumbnail } from './orderItemThumbnail';
+import { PackItemThumbnail } from './packItemThumbnail';
+import { BoosterItemThumbnail } from './boosterItemThumbnail';
 
 export type ItemThumbnailSize = 'narrow' | 'normal';
 
-export interface Props {
+export interface ItemThumbnailProps {
   item: Item;
   onDelete?: () => unknown;
   size?: ItemThumbnailSize;
 }
 
-export default function ItemThumbnail({
+export function ItemThumbnail({
   item,
   onDelete,
   size = 'normal',
-}: Props): ReactElement | null {
+}: ItemThumbnailProps): ReactElement | null {
   switch (item.type) {
     case 'order':
       return item.order ? (

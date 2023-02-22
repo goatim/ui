@@ -1,13 +1,13 @@
 import { ReactElement, useEffect, useState } from 'react';
 import { Booster } from '@fridaygame/client';
-import BoosterThumbnail from './boosterThumbnail';
+import { BoosterThumbnail } from './boosterThumbnail';
 
-export interface Props {
+export interface BoosterStackProps {
   boosters: Booster[];
   onStopBooster?: (booster?: Booster) => unknown;
 }
 
-export default function BoosterStack({ boosters, onStopBooster }: Props): ReactElement {
+export function BoosterStack({ boosters, onStopBooster }: BoosterStackProps): ReactElement {
   const [activeBoosters, setActiveBoosters] = useState<Booster[]>(
     boosters.filter(({ stopped_at }) => !stopped_at),
   );

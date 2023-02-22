@@ -1,16 +1,19 @@
 import { ReactElement, useMemo } from 'react';
 import { Composition } from '@fridaygame/client';
-import WalletThumbnail from '../../market/wallets/walletThumbnail';
-import Score from '../../general/score';
+import { WalletThumbnail } from '../../market';
+import { Score } from '../../general';
 
 export type CompositionPodiumTheme = 'dark' | 'light';
 
-export interface Props {
+export interface CompositionPodiumProps {
   compositions?: Composition[];
   theme?: CompositionPodiumTheme;
 }
 
-export default function CompositionPodium({ compositions, theme = 'dark' }: Props): ReactElement {
+export function CompositionPodium({
+  compositions,
+  theme = 'dark',
+}: CompositionPodiumProps): ReactElement {
   const sortedCompositions = useMemo<Composition[]>(() => {
     const nextCompositions: Composition[] = [];
 

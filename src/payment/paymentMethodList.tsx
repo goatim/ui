@@ -1,19 +1,19 @@
 import { ReactElement, useCallback } from 'react';
 import { PaymentMethod } from '@fridaygame/client';
-import PaymentMethodThumbnail from './paymentMethodThumbnail';
+import { PaymentMethodThumbnail } from './paymentMethodThumbnail';
 import { CreditCardFields } from './creditCardForm';
 
-export interface Props {
+export interface PaymentMethodListProps {
   paymentMethods?: (PaymentMethod | CreditCardFields)[];
   onSelectPaymentMethod?: (paymentMethod: PaymentMethod | CreditCardFields | null) => unknown;
   selectedPaymentMethod?: PaymentMethod | CreditCardFields | string | null;
 }
 
-export default function PaymentMethodList({
+export function PaymentMethodList({
   paymentMethods,
   onSelectPaymentMethod,
   selectedPaymentMethod,
-}: Props): ReactElement {
+}: PaymentMethodListProps): ReactElement {
   const getPaymentMethodKey = useCallback(
     (paymentMethod: PaymentMethod | CreditCardFields | string): string => {
       if (typeof paymentMethod === 'string') {

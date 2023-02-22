@@ -1,15 +1,15 @@
 import { ReactElement } from 'react';
 import { Player } from '@fridaygame/client';
-import Select, { Props as SelectProps } from '../../general/select';
-import PlayerThumbnail from '../players/playerThumbnail';
+import { Select, SelectProps } from '../../general';
+import { PlayerThumbnail } from '../players';
 
-export interface Props extends SelectProps<Player | undefined> {
+export interface PositionPlayerSelectorProps extends SelectProps<Player | undefined> {
   players?: Player[];
   compositionSetting?: string;
   position?: string;
 }
 
-export default function PositionPlayerSelector({
+export function PositionPlayerSelector({
   name,
   value,
   form,
@@ -19,7 +19,7 @@ export default function PositionPlayerSelector({
   players,
   compositionSetting,
   position,
-}: Props): ReactElement {
+}: PositionPlayerSelectorProps): ReactElement {
   return (
     <div className="friday-ui-position-player-selector">
       <div className="header">

@@ -1,14 +1,14 @@
 import { ReactElement } from 'react';
 import { BoosterFactory, formatEurosAmount } from '@fridaygame/client';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
-import BoosterIcon from './boosterIcon';
-import Button from '../../general/button';
+import { BoosterIcon } from './boosterIcon';
+import { Button } from '../../general';
 
 export type BoosterFactoryThumbnailSize = 'small' | 'medium' | 'big';
 
 export type BoosterFactoryThumbnailShape = 'icon' | 'card';
 
-export interface Props extends WrapperProps {
+export interface BoosterFactoryThumbnailProps extends WrapperProps {
   boosterFactory: BoosterFactory;
   size?: BoosterFactoryThumbnailSize;
   shape?: BoosterFactoryThumbnailShape;
@@ -16,7 +16,7 @@ export interface Props extends WrapperProps {
   actionLabel?: string;
 }
 
-export default function BoosterFactoryThumbnail({
+export function BoosterFactoryThumbnail({
   boosterFactory,
   size = 'medium',
   shape = 'icon',
@@ -27,7 +27,7 @@ export default function BoosterFactoryThumbnail({
   type,
   href,
   target,
-}: Props): ReactElement {
+}: BoosterFactoryThumbnailProps): ReactElement {
   if (shape === 'icon') {
     return (
       <Wrapper

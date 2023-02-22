@@ -3,11 +3,10 @@ import { PaymentMethod as StripePaymentMethod } from '@stripe/stripe-js';
 import { Card, CardBrand } from '@fridaygame/client';
 import _ from 'lodash';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
-import Icon, { IconName } from '../general/icon';
-import Check from '../general/check';
+import { Check, Icon, IconName } from '../general';
 import { CreditCardValue } from './creditCardInput';
 
-export interface Props extends WrapperProps {
+export interface CreditCardThumbnailProps extends WrapperProps {
   card: Card | CreditCardValue | StripePaymentMethod.Card;
   selected?: boolean;
 }
@@ -23,7 +22,7 @@ function resolveIcon(brand?: CardBrand | string): IconName {
   }
 }
 
-export default function CreditCardThumbnail({
+export function CreditCardThumbnail({
   card,
   to,
   onClick,
@@ -31,7 +30,7 @@ export default function CreditCardThumbnail({
   href,
   target,
   selected,
-}: Props): ReactElement {
+}: CreditCardThumbnailProps): ReactElement {
   const last4 = useMemo<string>(() => {
     if ('last4' in card && card.last4) {
       return card.last4;

@@ -1,16 +1,16 @@
 import { ReactElement, useMemo } from 'react';
 import { Wallet } from '@fridaygame/client';
-import WalletThumbnail from './walletThumbnail';
+import { WalletThumbnail } from './walletThumbnail';
 
 export type WalletListTheme = 'dark' | 'light';
 
-export interface Props {
+export interface WalletListProps {
   wallets?: Wallet[];
   total?: number;
   theme?: WalletListTheme;
 }
 
-export default function WalletList({ wallets, total, theme }: Props): ReactElement {
+export function WalletList({ wallets, total, theme }: WalletListProps): ReactElement {
   const nbMore = useMemo<number>(
     () => (total || 0) - (wallets?.length || 0),
     [total, wallets?.length],

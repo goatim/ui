@@ -1,16 +1,12 @@
 import { ReactElement, ReactNode, useMemo } from 'react';
 
-export interface Props {
+export interface OverlayProps {
   children?: ReactNode;
   visible?: boolean;
   closed?: boolean;
 }
 
-export default function Overlay({
-  children,
-  visible = false,
-  closed = false,
-}: Props): ReactElement {
+export function Overlay({ children, visible = false, closed = false }: OverlayProps): ReactElement {
   const className = useMemo<string>(() => {
     let res = 'friday-ui-overlay';
 

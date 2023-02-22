@@ -1,9 +1,9 @@
 import { MouseEvent, ReactElement } from 'react';
 import { Notification } from '@fridaygame/client';
 import { To } from 'react-router-dom';
-import NotificationThumbnail from './notificationThumbnail';
+import { NotificationThumbnail } from './notificationThumbnail';
 
-export interface Props {
+export interface NotificationListProps {
   notifications?: Notification[];
   colored?: boolean;
   toNotification?: (notification: Notification) => To;
@@ -14,14 +14,14 @@ export interface Props {
   notificationTarget?: (notification: Notification) => string;
 }
 
-export default function NotificationList({
+export function NotificationList({
   notifications,
   colored = false,
   toNotification,
   onNotificationClick,
   notificationHref,
   notificationTarget,
-}: Props): ReactElement {
+}: NotificationListProps): ReactElement {
   return (
     <div className="friday-ui-notification-list">
       {notifications?.length ? (

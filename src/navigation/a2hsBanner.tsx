@@ -1,20 +1,19 @@
 import { ReactElement } from 'react';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
-import AppIcon from '../general/appIcon';
-import Icon from '../general/icon';
-import { useClient } from '../utils/client';
+import { AppIcon, Icon } from '../general';
+import { useClient } from '../utils';
 
-export interface Props extends WrapperProps {
+export interface A2HSBannerProps extends WrapperProps {
   onDismiss?: () => unknown;
 }
 
-export default function A2HSBanner({
+export function A2HSBanner({
   onClick,
   to,
   href,
   target,
   onDismiss,
-}: Props): ReactElement | null {
+}: A2HSBannerProps): ReactElement | null {
   const client = useClient();
 
   if (

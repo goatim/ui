@@ -1,15 +1,15 @@
 import { MouseEvent, ReactElement, useState } from 'react';
 import { Composition, Match, PhysicalEvent } from '@fridaygame/client';
 import { To } from 'react-router';
-import MatchFeed from './matchFeed';
-import MatchRanking from './matchRanking';
-import Button from '../../general/button';
+import { MatchFeed } from './matchFeed';
+import { MatchRanking } from './matchRanking';
+import { Button } from '../../general';
 
 export type MatchBoardSize = 'small' | 'big';
 
 export type MatchBoardTheme = 'dark' | 'light';
 
-export interface Props {
+export interface MatchBoardProps {
   match: Match;
   compositions?: Composition[];
   size?: MatchBoardSize;
@@ -21,7 +21,7 @@ export interface Props {
   physicalEvents?: PhysicalEvent[];
 }
 
-export default function MatchBoard({
+export function MatchBoard({
   match,
   compositions,
   size = 'big',
@@ -31,7 +31,7 @@ export default function MatchBoard({
   toCurrentComposition,
   onClickCurrentComposition,
   physicalEvents,
-}: Props): ReactElement {
+}: MatchBoardProps): ReactElement {
   const [tab, setTab] = useState<'feed' | 'ranking'>('feed');
 
   return (

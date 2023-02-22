@@ -1,22 +1,22 @@
 import { ReactElement } from 'react';
 import { Composition, CompositionPosition, CompositionSettingPosition } from '@fridaygame/client';
-import CompositionPositionThumbnail from './compositionPositionThumbnail';
+import { CompositionPositionThumbnail } from './compositionPositionThumbnail';
 
 export type CompositionPositionListTheme = 'dark' | 'light';
 
-export interface Props {
+export interface CompositionPositionListProps {
   theme?: CompositionPositionListTheme;
   composition?: Pick<Composition, 'goalkeeper' | 'positions'>;
   onPositionClick?: (position: CompositionSettingPosition | 'goalkeeper') => unknown;
   onPositionDelete?: (position: CompositionSettingPosition | 'goalkeeper') => unknown;
 }
 
-export default function CompositionPositionList({
+export function CompositionPositionList({
   theme,
   composition,
   onPositionClick,
   onPositionDelete,
-}: Props): ReactElement {
+}: CompositionPositionListProps): ReactElement {
   return (
     <div className={`friday-ui-composition-positions-list ${theme}`}>
       {composition?.goalkeeper && typeof composition?.goalkeeper === 'object' ? (

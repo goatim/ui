@@ -1,15 +1,15 @@
 import {
-  ReactElement,
-  useState,
   createContext,
-  useMemo,
-  useContext,
-  useCallback,
+  ReactElement,
   ReactNode,
+  useCallback,
+  useContext,
+  useMemo,
+  useState,
 } from 'react';
 import { Notification } from '@fridaygame/client';
 import { WrapperProps } from '@cezembre/fronts';
-import NotificationModal from './notificationModal';
+import { NotificationModal } from './notificationModal';
 
 export interface NotificationModalState extends WrapperProps {
   id: string;
@@ -26,7 +26,9 @@ export interface PushNotificationOptions extends WrapperProps {
 
 export interface NotificationsContextState {
   notificationsModals: NotificationModalState[];
+
   popNotification(id: string, dismissed?: boolean): void;
+
   pushNotification(notification: Notification, options?: PushNotificationOptions): void;
 }
 
@@ -40,11 +42,11 @@ export function useNotificationsContext(): NotificationsContextState {
   return context;
 }
 
-export interface Props {
+export interface NotificationsContextProps {
   children: ReactNode | ReactNode[];
 }
 
-export default function NotificationsContext({ children }: Props): ReactElement {
+export function NotificationsContext({ children }: NotificationsContextProps): ReactElement {
   const [notificationsModals, setNotificationsModals] = useState<NotificationModalState[]>([]);
 
   const removeNotification = useCallback((id: string) => {

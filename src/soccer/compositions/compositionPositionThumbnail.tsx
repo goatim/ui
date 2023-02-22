@@ -1,24 +1,24 @@
 import { MouseEvent, ReactElement, useCallback } from 'react';
 import { Player } from '@fridaygame/client';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
-import PlayerThumbnail from '../players/playerThumbnail';
-import Icon from '../../general/icon';
+import { PlayerThumbnail } from '../players';
+import { Icon } from '../../general';
 
 export type CompositionPositionThumbnailTheme = 'dark' | 'light';
 
-export interface Props extends WrapperProps {
+export interface CompositionPositionThumbnailProps extends WrapperProps {
   player?: Player;
   theme?: CompositionPositionThumbnailTheme;
   onClick?: (event: MouseEvent<HTMLButtonElement>) => unknown;
   onDelete?: (event: MouseEvent<HTMLButtonElement>) => unknown;
 }
 
-export default function CompositionPositionThumbnail({
+export function CompositionPositionThumbnail({
   player,
   theme,
   onClick,
   onDelete,
-}: Props): ReactElement {
+}: CompositionPositionThumbnailProps): ReactElement {
   const deleteWrapper = useCallback(
     (event: MouseEvent<HTMLButtonElement>) => {
       event.preventDefault();

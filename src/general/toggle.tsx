@@ -1,13 +1,13 @@
-import { ReactElement, useCallback, KeyboardEvent, useMemo } from 'react';
+import { KeyboardEvent, ReactElement, useCallback, useMemo } from 'react';
 import { FieldComponentProps } from '@cezembre/forms';
-import Icon from './icon';
+import { Icon } from './icon';
 
-export interface Props extends FieldComponentProps<boolean> {
+export interface ToggleProps extends FieldComponentProps<boolean> {
   label?: string;
   instructions?: string;
 }
 
-export default function Toggle({
+export function Toggle({
   value,
   error,
   warning,
@@ -18,7 +18,7 @@ export default function Toggle({
   onBlur,
   label,
   instructions,
-}: Props): ReactElement {
+}: ToggleProps): ReactElement {
   const className = useMemo<string>(() => {
     let nextClassName = 'friday-ui-toggle';
 

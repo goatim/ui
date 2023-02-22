@@ -1,11 +1,11 @@
 import { ReactElement, useCallback, useState } from 'react';
 import {
-  Form,
   Field,
+  Form,
+  FormContext,
+  FormFields,
   FormState,
   getDefaultFormState,
-  FormFields,
-  FormContext,
 } from '@cezembre/forms';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import {
@@ -13,8 +13,8 @@ import {
   StripeCardElement,
   StripeCardNumberElement,
 } from '@stripe/stripe-js';
-import StripeCreditCardInput from './stripeCreditCardInput';
-import Button from '../general/button';
+import { StripeCreditCardInput } from './stripeCreditCardInput';
+import { Button } from '../general';
 
 export interface Fields extends FormFields {
   card: StripeCardElement | StripeCardNumberElement | { token: string };
@@ -24,12 +24,15 @@ export interface NewStripeCard {
   payment_method: StripePaymentMethod;
 }
 
-export interface Props {
+export interface StripeCreditCardFormProps {
   onSubmit?: (newStripeCard: NewStripeCard) => unknown;
   onCancel?: () => unknown;
 }
 
-export default function StripeCreditCardForm({ onSubmit, onCancel }: Props): ReactElement {
+export function StripeCreditCardForm({
+  onSubmit,
+  onCancel,
+}: StripeCreditCardFormProps): ReactElement {
   const [formState, setFormState] = useState<FormState<Fields>>(getDefaultFormState<Fields>());
 
   const form = useCallback((formContext: FormContext) => {

@@ -1,25 +1,25 @@
 import { ReactElement, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { TournamentParticipant } from '@fridaygame/client';
 import { DateTime, Duration } from 'luxon';
-import TournamentParticipantPodium from '../tournamentParticipants/tournamentParticipantPodium';
-import Button from '../../general/button';
+import { TournamentParticipantPodium } from '../tournamentParticipants';
+import { Button } from '../../general';
 import trophy from '../../general/assets/trophy.png';
 
 export type TournamentBannerSize = 'small' | 'large';
 
-export interface Props {
+export interface TournamentBannerProps {
   tournamentParticipants?: TournamentParticipant[];
   onMatchesClick?: () => unknown;
   size?: TournamentBannerSize;
   end?: DateTime | string;
 }
 
-export default function TournamentBanner({
+export function TournamentBanner({
   tournamentParticipants,
   onMatchesClick,
   size = 'large',
   end,
-}: Props): ReactElement {
+}: TournamentBannerProps): ReactElement {
   const timeout = useRef<NodeJS.Timeout | null>(null);
 
   const resolvedEnd = useMemo<DateTime | undefined>(

@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
-import Icon from './icon';
+import { Icon } from './icon';
 
-export default function AppIcon(): ReactElement {
+export function AppIcon(): ReactElement {
   return (
     <div className="friday-ui-app-icon">
       <Icon name="friday-icon" />

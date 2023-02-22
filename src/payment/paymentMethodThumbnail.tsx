@@ -2,15 +2,15 @@ import { ReactElement } from 'react';
 import { PaymentMethod as StripePaymentMethod } from '@stripe/stripe-js';
 import { MinifiedPaymentMethod, PaymentMethod } from '@fridaygame/client';
 import { WrapperProps } from '@cezembre/fronts';
-import CreditCardThumbnail from './creditCardThumbnail';
+import { CreditCardThumbnail } from './creditCardThumbnail';
 import { CreditCardFields } from './creditCardForm';
 
-export interface Props extends WrapperProps {
+export interface PaymentMethodThumbnailProps extends WrapperProps {
   paymentMethod: PaymentMethod | MinifiedPaymentMethod | CreditCardFields | StripePaymentMethod;
   selected?: boolean;
 }
 
-export default function PaymentMethodThumbnail({
+export function PaymentMethodThumbnail({
   paymentMethod,
   to,
   onClick,
@@ -18,7 +18,7 @@ export default function PaymentMethodThumbnail({
   href,
   target,
   selected,
-}: Props): ReactElement | null {
+}: PaymentMethodThumbnailProps): ReactElement | null {
   switch (paymentMethod.type) {
     case 'card':
       return paymentMethod.card ? (

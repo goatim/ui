@@ -1,9 +1,9 @@
 import { HTMLAttributeAnchorTarget, ReactElement } from 'react';
 import { To } from 'react-router';
 import { MatchStatus } from '@fridaygame/client';
-import Button from '../../general/button';
+import { Button } from '../../general';
 
-export interface Props {
+export interface MatchActionProps {
   status?: MatchStatus;
   toComposition?: To;
   onCompositionClick?: () => unknown;
@@ -15,7 +15,7 @@ export interface Props {
   feedTarget?: HTMLAttributeAnchorTarget;
 }
 
-export default function MatchAction({
+export function MatchAction({
   status,
   toComposition,
   onCompositionClick,
@@ -25,7 +25,7 @@ export default function MatchAction({
   onFeedClick,
   feedHref,
   feedTarget,
-}: Props): ReactElement {
+}: MatchActionProps): ReactElement {
   switch (status) {
     case 'open':
       return (

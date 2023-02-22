@@ -1,16 +1,16 @@
 import {
-  ReactElement,
+  ForwardedRef,
+  forwardRef,
   MouseEvent,
+  ReactElement,
   ReactNode,
   useCallback,
-  useState,
   useMemo,
-  forwardRef,
-  ForwardedRef,
+  useState,
 } from 'react';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
-import Loader from './loader';
-import Icon, { IconName } from './icon';
+import { Loader } from './loader';
+import { Icon, IconName } from './icon';
 
 export type ButtonSize = 'small' | 'medium' | 'large';
 
@@ -26,7 +26,7 @@ export type ButtonTheme =
   | 'sell'
   | 'gold';
 
-export interface Props extends WrapperProps {
+export interface ButtonProps extends WrapperProps {
   children?: ReactNode;
   size?: ButtonSize;
   shape?: ButtonShape;
@@ -41,139 +41,141 @@ export interface Props extends WrapperProps {
   fullWidth?: boolean;
 }
 
-export default forwardRef<HTMLButtonElement | HTMLAnchorElement, Props>(function Button(
-  {
-    children,
-    href,
-    target,
-    rel,
-    referrerPolicy,
-    to,
-    onClick,
-    type,
-    onFocus,
-    onBlur,
-    size = 'medium',
-    shape = 'filled',
-    theme = 'dark',
-    active,
-    pending,
-    success,
-    errored,
-    disabled,
-    leftIcon,
-    rightIcon,
-    fullWidth,
-  }: Props,
-  ref: ForwardedRef<HTMLButtonElement | HTMLAnchorElement>,
-): ReactElement {
-  const [autoPending, setAutoPending] = useState<boolean>(false);
-  const [autoSuccess, setAutoSuccess] = useState<boolean>(false);
-  const [autoErrored, setAutoErrored] = useState<boolean>(false);
+export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
+  function Button(
+    {
+      children,
+      href,
+      target,
+      rel,
+      referrerPolicy,
+      to,
+      onClick,
+      type,
+      onFocus,
+      onBlur,
+      size = 'medium',
+      shape = 'filled',
+      theme = 'dark',
+      active,
+      pending,
+      success,
+      errored,
+      disabled,
+      leftIcon,
+      rightIcon,
+      fullWidth,
+    }: ButtonProps,
+    ref: ForwardedRef<HTMLButtonElement | HTMLAnchorElement>,
+  ): ReactElement {
+    const [autoPending, setAutoPending] = useState<boolean>(false);
+    const [autoSuccess, setAutoSuccess] = useState<boolean>(false);
+    const [autoErrored, setAutoErrored] = useState<boolean>(false);
 
-  const className = useMemo<string>(() => {
-    const classNames: string[] = ['friday-ui-button', size, shape, theme];
+    const className = useMemo<string>(() => {
+      const classNames: string[] = ['friday-ui-button', size, shape, theme];
 
-    if (active) {
-      classNames.push('active');
-    }
-    if (pending || autoPending) {
-      classNames.push('pending');
-    }
-    if (success || autoSuccess) {
-      classNames.push('success');
-    }
-    if (errored || autoErrored) {
-      classNames.push('errored');
-    }
-    if (disabled) {
-      classNames.push('disabled');
-    }
+      if (active) {
+        classNames.push('active');
+      }
+      if (pending || autoPending) {
+        classNames.push('pending');
+      }
+      if (success || autoSuccess) {
+        classNames.push('success');
+      }
+      if (errored || autoErrored) {
+        classNames.push('errored');
+      }
+      if (disabled) {
+        classNames.push('disabled');
+      }
 
-    if (fullWidth) {
-      classNames.push('full-width');
-    }
+      if (fullWidth) {
+        classNames.push('full-width');
+      }
 
-    return classNames.join(' ');
-  }, [
-    active,
-    autoErrored,
-    autoPending,
-    autoSuccess,
-    disabled,
-    errored,
-    fullWidth,
-    pending,
-    shape,
-    size,
-    success,
-    theme,
-  ]);
+      return classNames.join(' ');
+    }, [
+      active,
+      autoErrored,
+      autoPending,
+      autoSuccess,
+      disabled,
+      errored,
+      fullWidth,
+      pending,
+      shape,
+      size,
+      success,
+      theme,
+    ]);
 
-  const onButtonClick = useCallback(
-    async (event: MouseEvent<HTMLButtonElement>) => {
-      if (onClick) {
-        const response = onClick(event);
+    const onButtonClick = useCallback(
+      async (event: MouseEvent<HTMLButtonElement>) => {
+        if (onClick) {
+          const response = onClick(event);
 
-        if (
-          response &&
-          typeof response === 'object' &&
-          'then' in response &&
-          (response as Promise<unknown>).then &&
-          typeof (response as Promise<unknown>).then === 'function'
-        ) {
-          setAutoPending(true);
-          try {
-            await response;
-            setAutoPending(false);
-            setAutoSuccess(true);
-          } catch (e) {
-            setAutoPending(false);
-            setAutoErrored(true);
+          if (
+            response &&
+            typeof response === 'object' &&
+            'then' in response &&
+            (response as Promise<unknown>).then &&
+            typeof (response as Promise<unknown>).then === 'function'
+          ) {
+            setAutoPending(true);
+            try {
+              await response;
+              setAutoPending(false);
+              setAutoSuccess(true);
+            } catch (e) {
+              setAutoPending(false);
+              setAutoErrored(true);
+            }
           }
         }
-      }
-    },
-    [onClick],
-  );
+      },
+      [onClick],
+    );
 
-  return (
-    <Wrapper
-      ref={ref}
-      href={href}
-      target={target}
-      rel={rel}
-      referrerPolicy={referrerPolicy}
-      to={to}
-      onClick={onClick ? onButtonClick : undefined}
-      disabled={disabled || pending || autoPending}
-      type={type}
-      onFocus={onFocus}
-      onBlur={onBlur}
-      className={className}>
-      <div className="container">
-        {leftIcon ? (
-          <div className="icon left">
-            <Icon name={leftIcon} />
-          </div>
-        ) : null}
+    return (
+      <Wrapper
+        ref={ref}
+        href={href}
+        target={target}
+        rel={rel}
+        referrerPolicy={referrerPolicy}
+        to={to}
+        onClick={onClick ? onButtonClick : undefined}
+        disabled={disabled || pending || autoPending}
+        type={type}
+        onFocus={onFocus}
+        onBlur={onBlur}
+        className={className}>
+        <div className="container">
+          {leftIcon ? (
+            <div className="icon left">
+              <Icon name={leftIcon} />
+            </div>
+          ) : null}
 
-        {typeof children === 'string' ? (
-          <span className="label">{children}</span>
-        ) : (
-          <div className="component">{children}</div>
-        )}
+          {typeof children === 'string' ? (
+            <span className="label">{children}</span>
+          ) : (
+            <div className="component">{children}</div>
+          )}
 
-        {rightIcon ? (
-          <div className="icon right">
-            <Icon name={rightIcon} />
-          </div>
-        ) : null}
-      </div>
+          {rightIcon ? (
+            <div className="icon right">
+              <Icon name={rightIcon} />
+            </div>
+          ) : null}
+        </div>
 
-      <div className="pending">
-        <Loader theme="light" />
-      </div>
-    </Wrapper>
-  );
-});
+        <div className="pending">
+          <Loader theme="light" />
+        </div>
+      </Wrapper>
+    );
+  },
+);

@@ -1,16 +1,20 @@
 import { ReactElement } from 'react';
 import { Item } from '@fridaygame/client';
-import ItemList from './checkouts/itemList';
+import { ItemList } from './checkouts';
 
 export type CartResumeSize = 'narrow' | 'normal';
 
-export interface Props {
+export interface CartResumeProps {
   items?: Item[];
   onDeleteItem?: (item: Item) => unknown;
   size?: CartResumeSize;
 }
 
-export default function CartResume({ items, onDeleteItem, size = 'normal' }: Props): ReactElement {
+export function CartResume({
+  items,
+  onDeleteItem,
+  size = 'normal',
+}: CartResumeProps): ReactElement {
   return (
     <div className={`friday-ui-cart-resume ${size}`}>
       {items?.length ? (

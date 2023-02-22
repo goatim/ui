@@ -1,10 +1,12 @@
 import { ReactElement } from 'react';
 
-export interface Props {
+export interface PlaceholderProps {
   color?: string;
 }
 
-export default function Placeholder({ color = 'rgba(255, 255, 255, 0.3)' }: Props): ReactElement {
+export function Placeholder({
+  color = 'rgba(255, 255, 255, 0.3)',
+}: PlaceholderProps): ReactElement {
   return (
     <div className="friday-ui-placeholder">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400">

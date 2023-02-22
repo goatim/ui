@@ -1,12 +1,12 @@
 import { ReactElement, useCallback, useEffect, useRef } from 'react';
 
-export interface Props {
+export interface ThreeDSecureProps {
   url: string;
   returnUrl?: string;
   onReturn?: () => unknown;
 }
 
-export default function ThreeDSecure({ url, returnUrl, onReturn }: Props): ReactElement {
+export function ThreeDSecure({ url, returnUrl, onReturn }: ThreeDSecureProps): ReactElement {
   const iframe = useRef<HTMLIFrameElement>(null);
 
   const iframeLoad = useCallback(() => {

@@ -1,14 +1,14 @@
 import { ReactElement } from 'react';
 import { Item } from '@fridaygame/client';
-import ItemThumbnail, { ItemThumbnailSize } from './itemThumbnail';
+import { ItemThumbnail, ItemThumbnailSize } from './itemThumbnail';
 
-export interface Props {
+export interface ItemListProps {
   items?: Item[];
   onDeleteItem?: (item: Item) => unknown;
   size?: ItemThumbnailSize;
 }
 
-export default function ItemList({ items, onDeleteItem, size }: Props): ReactElement {
+export function ItemList({ items, onDeleteItem, size }: ItemListProps): ReactElement {
   if (!items?.length) {
     return <span className="empty-list">Aucun item</span>;
   }

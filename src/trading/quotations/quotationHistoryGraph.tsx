@@ -1,33 +1,33 @@
-import { ReactElement, useRef, useCallback, useEffect } from 'react';
+import { ReactElement, useCallback, useEffect, useRef } from 'react';
 import {
   Chart,
-  LineController,
-  LinearScale,
-  TimeScale,
-  PointElement,
-  LineElement,
   Filler,
+  LinearScale,
+  LineController,
+  LineElement,
+  PointElement,
+  TimeScale,
 } from 'chart.js';
 import 'chartjs-adapter-luxon';
 import { QuotationHistory } from '@fridaygame/client';
-import Icon from '../../general/icon';
-import FridayCoins from '../../market/fridayCoins';
+import { Icon } from '../../general';
+import { FridayCoins } from '../../market';
 
 Chart.register(LineController, LinearScale, TimeScale, PointElement, LineElement, Filler);
 
 export type QuotationHistoryGraphTheme = 'light' | 'dark';
 
-export interface Props {
+export interface QuotationHistoryGraphProps {
   quotationHistory?: QuotationHistory;
   theme?: QuotationHistoryGraphTheme;
 }
 
 export type DataPoint = { x: number; y: number };
 
-export default function QuotationHistoryGraph({
+export function QuotationHistoryGraph({
   quotationHistory,
   theme = 'light',
-}: Props): ReactElement {
+}: QuotationHistoryGraphProps): ReactElement {
   const chart = useRef<Chart<'line', DataPoint[]> | null>(null);
   const ctx = useRef<CanvasRenderingContext2D | null>(null);
 

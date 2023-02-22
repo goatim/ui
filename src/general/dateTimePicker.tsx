@@ -1,13 +1,13 @@
 import { ReactElement, useCallback, useMemo, useRef } from 'react';
 import { DateTime } from 'luxon';
 import { formatRelativeDateTime, useClickOutside } from '@cezembre/fronts';
-import DatePicker, { Props as DatePickerProps } from './datePicker';
-import TimePicker from './timePicker';
-import Button from './button';
+import { DatePicker, DatePickerProps } from './datePicker';
+import { TimePicker } from './timePicker';
+import { Button } from './button';
 
-export type Props = DatePickerProps;
+export type DateTimePickerProps = DatePickerProps;
 
-export default function DateTimePicker({
+export function DateTimePicker({
   label,
   value,
   onChange,
@@ -34,7 +34,7 @@ export default function DateTimePicker({
   disableAfter,
   disabledDays,
   disabledPeriods,
-}: Props): ReactElement {
+}: DateTimePickerProps): ReactElement {
   const buttonRef = useRef<HTMLButtonElement>(null);
 
   const pickerRef = useRef<HTMLDivElement>(null);

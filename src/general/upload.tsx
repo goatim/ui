@@ -1,8 +1,8 @@
 import { ChangeEvent, ReactElement, ReactNode, useMemo, useRef, useState } from 'react';
 import { IconName } from './icon';
-import Button, { ButtonShape, ButtonSize, ButtonTheme } from './button';
+import { Button, ButtonShape, ButtonSize, ButtonTheme } from './button';
 
-export interface Props {
+export interface UploadProps {
   multiple?: boolean;
   onUpload?: (files: FileList) => unknown;
   onLoad?: (file: string) => unknown;
@@ -17,7 +17,7 @@ export interface Props {
   instructions?: string;
 }
 
-export default function Upload({
+export function Upload({
   children,
   multiple,
   onUpload,
@@ -30,7 +30,7 @@ export default function Upload({
   rightIcon,
   fullWidth,
   instructions,
-}: Props): ReactElement {
+}: UploadProps): ReactElement {
   const input = useRef<HTMLInputElement>(null);
   const [localSources, setLocalSources] = useState<string[]>([]);
   const [pending, setPending] = useState<boolean>(false);

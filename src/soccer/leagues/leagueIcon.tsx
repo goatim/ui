@@ -4,19 +4,19 @@ import { Image } from '@fridaygame/client';
 
 export type LeagueIconSize = 'small' | 'medium' | 'big';
 
-export interface Props extends WrapperProps {
+export interface LeagueIconProps extends WrapperProps {
   icon?: Image;
   size?: LeagueIconSize;
 }
 
-export default function LeagueIcon({
+export function LeagueIcon({
   icon,
   size = 'small',
   to,
   onClick,
   href,
   target,
-}: Props): ReactElement {
+}: LeagueIconProps): ReactElement {
   return (
     <Wrapper
       className={`friday-ui-league-icon ${size}`}

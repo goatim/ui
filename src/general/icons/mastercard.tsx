@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
-import IconProps from './props';
+import { SvgIconProps } from './props';
 
-export default function Mastercard({ size = 15 }: IconProps): ReactElement<SVGElement> {
+export function Mastercard({ size = 15 }: SvgIconProps): ReactElement<SVGElement> {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

@@ -2,12 +2,12 @@ import { ReactElement, useCallback, useEffect, useMemo, useRef, useState } from 
 import { DateTime } from 'luxon';
 import { FieldComponentProps } from '@cezembre/forms';
 import { formatRelativeDate, useClickOutside } from '@cezembre/fronts';
-import Icon, { IconName } from './icon';
-import Button from './button';
+import { Icon, IconName } from './icon';
+import { Button } from './button';
 
 export type DisabledDay = DateTime | string;
 
-export interface Props extends FieldComponentProps<DateTime | string | null> {
+export interface DatePickerProps extends FieldComponentProps<DateTime | string | null> {
   label?: string;
   placeholder?: string;
   format?: string | ((value?: DateTime | string | null) => string);
@@ -28,7 +28,7 @@ interface Cell {
   disabled?: boolean;
 }
 
-export default function DatePicker({
+export function DatePicker({
   label,
   name,
   value,
@@ -44,7 +44,7 @@ export default function DatePicker({
   disableAfter,
   disabledDays,
   disabledPeriods,
-}: Props): ReactElement {
+}: DatePickerProps): ReactElement {
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
   const picker = useRef<HTMLDivElement>(null);
 
@@ -266,12 +266,12 @@ export default function DatePicker({
         </div>
 
         <div className="days">
-          {cells.map((cell: Cell | null, index) => {
+          {cells.map((cell: Cell | null) => {
             if (cell) {
               return (
                 <button
                   type="button"
-                  key={index}
+                  key={cell.day}
                   onClick={() => selectDay(cell.day)}
                   disabled={cell.disabled}
                   className={`day${cell.selected ? ' selected' : ''}`}>
@@ -279,7 +279,9 @@ export default function DatePicker({
                 </button>
               );
             }
-            return <div className="placeholder" key={index} />;
+            return (
+              <div className="placeholder" key={Math.round(Math.random() * 100).toString(10)} />
+            );
           })}
         </div>
       </div>

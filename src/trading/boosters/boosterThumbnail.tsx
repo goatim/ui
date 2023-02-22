@@ -1,15 +1,14 @@
 import { ReactElement } from 'react';
 import { Booster } from '@fridaygame/client';
-import Icon from '../../general/icon';
-import FridayCoinsVariation from '../../market/fridayCoinsVariation';
-import PercentageVariation from '../../market/percentageVariation';
+import { Icon } from '../../general';
+import { FridayCoinsVariation, PercentageVariation } from '../../market';
 
-export interface Props {
+export interface BoosterThumbnailProps {
   booster: Booster;
   onStop?: () => unknown;
 }
 
-export default function BoosterThumbnail({ booster, onStop }: Props): ReactElement {
+export function BoosterThumbnail({ booster, onStop }: BoosterThumbnailProps): ReactElement {
   return (
     <div className={`friday-ui-booster-thumbnail${!booster.stopped_at ? ' active' : ''}`}>
       <div className="container">

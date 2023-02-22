@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
-import IconProps from './props';
+import { SvgIconProps } from './props';
 
-export default function Rocket({ size = 15 }: IconProps): ReactElement<SVGElement> {
+export function Rocket({ size = 15 }: SvgIconProps): ReactElement<SVGElement> {
   return (
     <svg viewBox="0 0 512 512" height={size}>
       <title>Rocket</title>

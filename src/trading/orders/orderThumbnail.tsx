@@ -1,19 +1,23 @@
 import { ReactElement } from 'react';
 import { Order } from '@fridaygame/client';
-import AssetThumbnail from '../assets/assetThumbnail';
-import FridayCoins from '../../market/fridayCoins';
-import Icon from '../../general/icon';
-import BoosterIcon from '../boosters/boosterIcon';
+import { AssetThumbnail } from '../assets';
+import { FridayCoins } from '../../market';
+import { Icon } from '../../general';
+import { BoosterIcon } from '../boosters';
 
 export type OrderThumbnailSize = 'narrow' | 'normal';
 
-export interface Props {
+export interface OrderThumbnailProps {
   order: Order;
   onCancel?: (() => void) | (() => Promise<void>);
   size?: OrderThumbnailSize;
 }
 
-export default function OrderThumbnail({ order, onCancel, size = 'normal' }: Props): ReactElement {
+export function OrderThumbnail({
+  order,
+  onCancel,
+  size = 'normal',
+}: OrderThumbnailProps): ReactElement {
   return (
     <div className={`friday-ui-order-thumbnail ${size}`}>
       <div className="container">

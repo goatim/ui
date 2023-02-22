@@ -1,18 +1,18 @@
 import {
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-  KeyboardEvent,
-  ReactElement,
   ChangeEvent,
   FC,
-  ReactNode,
-  useMemo,
   HTMLInputTypeAttribute,
+  KeyboardEvent,
+  ReactElement,
+  ReactNode,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
 } from 'react';
 import { FieldComponentProps } from '@cezembre/forms';
-import Icon, { IconName } from './icon';
+import { Icon, IconName } from './icon';
 
 export type AutoComplete =
   | 'off'
@@ -78,20 +78,23 @@ export type InputSize = 'small' | 'medium' | 'big';
 export type InputAdapter<V = string> = (value: string) => V;
 export type InputResolver<V = string> = (value?: V) => string;
 
-export interface Suggestion<V = string> {
+export interface InputSuggestion<V = string> {
   value: V;
 }
 
-export interface SuggestionsNamespace<V = string, S extends Suggestion<V> = Suggestion<V>> {
+export interface SuggestionsNamespace<
+  V = string,
+  S extends InputSuggestion<V> = InputSuggestion<V>,
+> {
   namespace: string;
   suggestions?: S[];
 }
 
-export interface SuggestionProps<V = string, S extends Suggestion<V> = Suggestion<V>> {
+export interface SuggestionProps<V = string, S extends InputSuggestion<V> = InputSuggestion<V>> {
   suggestion: S;
 }
 
-function DefaultSuggestion<V = string, S extends Suggestion<V> = Suggestion<V>>({
+function DefaultSuggestion<V = string, S extends InputSuggestion<V> = InputSuggestion<V>>({
   suggestion,
 }: SuggestionProps<V, S>): ReactElement | null {
   if (
@@ -103,7 +106,7 @@ function DefaultSuggestion<V = string, S extends Suggestion<V> = Suggestion<V>>(
   return null;
 }
 
-export interface Props<V = string, S extends Suggestion<V> = Suggestion<V>>
+export interface InputProps<V = string, S extends InputSuggestion<V> = InputSuggestion<V>>
   extends FieldComponentProps<V> {
   adapter?: InputAdapter<V>;
   resolver?: InputResolver<V>;
@@ -129,7 +132,7 @@ export interface Props<V = string, S extends Suggestion<V> = Suggestion<V>>
   autoCapitalize?: string;
 }
 
-export default function Input<V = string, S extends Suggestion<V> = Suggestion<V>>({
+export function Input<V = string, S extends InputSuggestion<V> = InputSuggestion<V>>({
   value,
   error,
   warning,
@@ -162,7 +165,7 @@ export default function Input<V = string, S extends Suggestion<V> = Suggestion<V
   rightComponent,
   autoCorrect = true,
   autoCapitalize = 'off',
-}: Props<V, S>): ReactElement {
+}: InputProps<V, S>): ReactElement {
   const inputRef = useRef<HTMLInputElement>(null);
 
   const [suggestionsActive, setSuggestionsActive] = useState<boolean>(false);
@@ -353,7 +356,7 @@ export default function Input<V = string, S extends Suggestion<V> = Suggestion<V
           {suggestionsHeader}
           {suggestions?.map((suggestion, index) =>
             typeof suggestion === 'object' && 'namespace' in suggestion ? (
-              <div className="namespace">
+              <div className="namespace" key={suggestion.namespace}>
                 <span className="label">{suggestion.namespace}</span>
                 <div className="suggestions">
                   {suggestion.suggestions?.map((_suggestion) => {

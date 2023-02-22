@@ -1,20 +1,20 @@
 import { ReactElement, useCallback, useEffect, useState } from 'react';
 import { PaymentMethod } from '@fridaygame/client';
-import CreditCardForm, { CreditCardFields } from './creditCardForm';
-import Button from '../general/button';
-import PaymentMethodList from './paymentMethodList';
+import { CreditCardFields, CreditCardForm } from './creditCardForm';
+import { Button } from '../general';
+import { PaymentMethodList } from './paymentMethodList';
 
-export interface Props {
+export interface PaymentMethodSelectorProps {
   paymentMethods?: (PaymentMethod | CreditCardFields)[];
   onSelectPaymentMethod?: (paymentMethod: PaymentMethod | CreditCardFields | null) => unknown;
   selectedPaymentMethod?: PaymentMethod | CreditCardFields | string | null;
 }
 
-export default function PaymentMethodSelector({
+export function PaymentMethodSelector({
   paymentMethods,
   onSelectPaymentMethod,
   selectedPaymentMethod,
-}: Props): ReactElement {
+}: PaymentMethodSelectorProps): ReactElement {
   const [isAdding, setIsAdding] = useState<boolean>(false);
   const [addedPaymentMethods, setAddedPaymentMethods] = useState<CreditCardFields[]>([]);
 

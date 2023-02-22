@@ -2,14 +2,14 @@ import { ChangeEvent, ReactElement, useCallback } from 'react';
 import { FieldComponentProps } from '@cezembre/forms';
 import {
   CompositionPosition,
-  Player,
   CompositionSetting,
   CompositionSettingPosition,
+  Player,
   PlayerPosition,
 } from '@fridaygame/client';
-import CompositionPositionMap, { CompositionPositionMapTheme } from './compositionPositionMap';
-import PositionPlayerSelector from './positionPlayerSelector';
-import { useModals } from '../../general/modal';
+import { CompositionPositionMap, CompositionPositionMapTheme } from './compositionPositionMap';
+import { PositionPlayerSelector } from './positionPlayerSelector';
+import { useModals } from '../../general';
 
 export interface CompositionPositionMapFieldValuePosition {
   id: string;
@@ -25,14 +25,15 @@ export type GetPositionPlayersFunction = (
   position?: PlayerPosition[] | PlayerPosition,
 ) => Promise<Player[] | undefined> | Player[] | undefined;
 
-export interface Props extends FieldComponentProps<CompositionPositionMapFieldValue> {
+export interface CompositionPositionMapFieldProps
+  extends FieldComponentProps<CompositionPositionMapFieldValue> {
   compositionSetting?: CompositionSetting;
   getPositionPlayers?: GetPositionPlayersFunction;
   theme?: CompositionPositionMapTheme;
   readonly?: boolean;
 }
 
-export default function CompositionPositionMapField({
+export function CompositionPositionMapField({
   compositionSetting,
   getPositionPlayers,
   form,
@@ -40,7 +41,7 @@ export default function CompositionPositionMapField({
   value,
   theme,
   readonly = false,
-}: Props): ReactElement {
+}: CompositionPositionMapFieldProps): ReactElement {
   const { pushModal } = useModals();
 
   const changePositionPlayer = useCallback(

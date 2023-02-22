@@ -1,28 +1,26 @@
 import { ReactElement } from 'react';
 import { Field, Form, FormSubmitFunction } from '@cezembre/forms';
 import { Image } from '@fridaygame/client';
-import Button from '../../general/button';
-import Input from '../../general/input';
-import WalletPicture from './walletPicture';
-import Upload from '../../general/upload';
+import { Button, Input, Upload } from '../../general';
+import { WalletPicture } from './walletPicture';
 
 export interface WalletEditorFields {
   name?: string;
 }
 
-export interface Props {
+export interface WalletEditorProps {
   initialValues?: WalletEditorFields;
   onSubmit?: FormSubmitFunction<WalletEditorFields>;
   picture?: Image;
   onUploadPicture?: (icon: File) => unknown;
 }
 
-export default function WalletEditor({
+export function WalletEditor({
   initialValues,
   onSubmit,
   picture,
   onUploadPicture,
-}: Props): ReactElement {
+}: WalletEditorProps): ReactElement {
   return (
     <div className="friday-ui-wallet-editor">
       <div className="header">

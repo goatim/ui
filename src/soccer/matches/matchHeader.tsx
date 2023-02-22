@@ -1,16 +1,16 @@
 import { ReactElement } from 'react';
 import { Match } from '@fridaygame/client';
-import MatchStatusThumbnail from './matchStatusThumbnail';
-import FridayCoinsVariation from '../../market/fridayCoinsVariation';
+import { MatchStatusThumbnail } from './matchStatusThumbnail';
+import { FridayCoinsVariation } from '../../market';
 
 export type MatchHeaderTheme = 'dark' | 'light';
 
-export interface Props {
+export interface MatchHeaderProps {
   match: Match;
   theme?: MatchHeaderTheme;
 }
 
-export default function MatchHeader({ match, theme = 'dark' }: Props): ReactElement {
+export function MatchHeader({ match, theme = 'dark' }: MatchHeaderProps): ReactElement {
   return (
     <div className={`friday-ui-match-header ${theme}`}>
       <div className="status">

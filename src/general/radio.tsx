@@ -1,7 +1,7 @@
-import { ReactElement, cloneElement, FocusEventHandler, MouseEvent, useMemo } from 'react';
+import { cloneElement, FocusEventHandler, MouseEvent, ReactElement, useMemo } from 'react';
 import { FieldComponentProps } from '@cezembre/forms';
-import Icon, { IconName } from './icon';
-import Button, { ButtonSize, ButtonShape, ButtonTheme } from './button';
+import { Icon, IconName } from './icon';
+import { Button, ButtonShape, ButtonSize, ButtonTheme } from './button';
 
 export interface RadioOption<V = unknown> {
   value: V;
@@ -61,14 +61,14 @@ function RadioOptionComponent<V = unknown>({
   return null;
 }
 
-export interface Props<V = unknown> extends FieldComponentProps {
+export interface RadioProps<V = unknown> extends FieldComponentProps {
   label?: string;
   options?: RadioOption<V>[];
   canReset?: boolean;
   instructions?: ReactElement | string;
 }
 
-export default function Radio<V = unknown>({
+export function Radio<V = unknown>({
   value,
   error,
   warning,
@@ -79,7 +79,7 @@ export default function Radio<V = unknown>({
   options = [],
   canReset,
   instructions,
-}: Props<V>): ReactElement {
+}: RadioProps<V>): ReactElement {
   const className = useMemo<string>(() => {
     const classNames = ['friday-ui-radio'];
 

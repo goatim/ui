@@ -2,8 +2,8 @@ import { ReactElement, useMemo } from 'react';
 import { Club } from '@fridaygame/client';
 import { To } from 'react-router-dom';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
-import ClubIcon from './clubIcon';
-import LeagueThumbnail from '../leagues/leagueThumbnail';
+import { ClubIcon } from './clubIcon';
+import { LeagueThumbnail } from '../leagues';
 
 export type ClubThumbnailSize = 'small' | 'medium' | 'big';
 
@@ -11,7 +11,7 @@ export type ClubThumbnailTheme = 'dark' | 'light';
 
 export type ClubThumbnailShape = 'text' | 'logo' | 'box';
 
-export interface Props extends WrapperProps {
+export interface ClubThumbnailProps extends WrapperProps {
   club: Club;
   size?: ClubThumbnailSize;
   theme?: ClubThumbnailTheme;
@@ -21,7 +21,7 @@ export interface Props extends WrapperProps {
   showLeague?: boolean;
 }
 
-export default function ClubThumbnail({
+export function ClubThumbnail({
   club,
   size = 'medium',
   theme = 'dark',
@@ -33,7 +33,7 @@ export default function ClubThumbnail({
   shape = 'text',
   title = false,
   showLeague = false,
-}: Props): ReactElement {
+}: ClubThumbnailProps): ReactElement {
   const className = useMemo<string>(() => {
     const classNames = ['friday-ui-club-thumbnail', size, theme, shape];
 

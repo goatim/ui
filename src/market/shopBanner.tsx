@@ -2,7 +2,7 @@ import { ReactElement } from 'react';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
 import soccerDuel from '../general/assets/soccer-duel.jpg';
 
-export default function ShopBanner({ onClick, to }: WrapperProps): ReactElement {
+export function ShopBanner({ onClick, to }: WrapperProps): ReactElement {
   return (
     <Wrapper className="friday-ui-shop-banner" onClick={onClick} to={to}>
       <img src={soccerDuel} alt="Soccer Duel" />

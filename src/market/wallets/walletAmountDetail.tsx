@@ -1,15 +1,18 @@
 import { ReactElement } from 'react';
 import { Wallet } from '@fridaygame/client';
-import FridayCoins from '../fridayCoins';
+import { FridayCoins } from '../fridayCoins';
 
 export type WalletAmountDetailSize = 'narrow' | 'normal';
 
-export interface Props {
+export interface WalletAmountDetailProps {
   wallet: Wallet;
   size?: WalletAmountDetailSize;
 }
 
-export default function WalletAmountDetail({ wallet, size = 'normal' }: Props): ReactElement {
+export function WalletAmountDetail({
+  wallet,
+  size = 'normal',
+}: WalletAmountDetailProps): ReactElement {
   return (
     <div className={`friday-ui-wallet-amount-detail ${size}`}>
       <div className="section">

@@ -6,13 +6,13 @@ export type ClubIconSize = 'small' | 'medium' | 'big';
 
 export type ClubIconTheme = 'dark' | 'light';
 
-export interface Props extends WrapperProps {
+export interface ClubIconProps extends WrapperProps {
   icon?: Image;
   size?: ClubIconSize;
   theme?: ClubIconTheme;
 }
 
-export default function ClubIcon({
+export function ClubIcon({
   icon,
   size = 'small',
   theme = 'dark',
@@ -20,7 +20,7 @@ export default function ClubIcon({
   onClick,
   href,
   target,
-}: Props): ReactElement {
+}: ClubIconProps): ReactElement {
   return (
     <Wrapper
       className={`friday-ui-club-icon ${size} ${theme}`}

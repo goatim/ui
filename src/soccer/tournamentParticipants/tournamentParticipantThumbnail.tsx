@@ -1,14 +1,14 @@
 import { ReactElement } from 'react';
 import { TournamentParticipant } from '@fridaygame/client';
-import WalletThumbnail from '../../market/wallets/walletThumbnail';
+import { WalletThumbnail } from '../../market';
 
-export interface Props {
+export interface TournamentParticipantThumbnailProps {
   tournamentParticipant?: TournamentParticipant;
 }
 
-export default function TournamentParticipantThumbnail({
+export function TournamentParticipantThumbnail({
   tournamentParticipant,
-}: Props): ReactElement {
+}: TournamentParticipantThumbnailProps): ReactElement {
   return (
     <div className="friday-ui-tournament-participant-thumbnail">
       {tournamentParticipant?.wallet && typeof tournamentParticipant?.wallet === 'object' ? (

@@ -5,7 +5,7 @@ export type DateTimeThumbnailTheme = 'dark' | 'light' | 'transparent-dark' | 'tr
 
 export type DateTimeThumbnailSize = 'small' | 'medium' | 'big';
 
-export interface Props {
+export interface DateTimeThumbnailProps {
   label?: string;
   dateTime?: DateTime | string;
   countdown?: boolean;
@@ -14,14 +14,14 @@ export interface Props {
   size?: DateTimeThumbnailSize;
 }
 
-export default function DateTimeThumbnail({
+export function DateTimeThumbnail({
   label,
   dateTime,
   countdown = false,
   align,
   theme,
   size = 'medium',
-}: Props): ReactElement {
+}: DateTimeThumbnailProps): ReactElement {
   const timeout = useRef<NodeJS.Timeout | null>(null);
 
   const resolvedDateTime = useMemo<DateTime | undefined>(

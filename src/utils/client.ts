@@ -64,7 +64,7 @@ export function getBrowser(): Browser | undefined {
   return undefined;
 }
 
-export default interface Client {
+export interface Client {
   device?: Device;
   browser?: Browser;
 }

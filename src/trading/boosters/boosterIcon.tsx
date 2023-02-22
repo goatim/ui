@@ -3,13 +3,13 @@ import { Wrapper, WrapperProps } from '@cezembre/fronts';
 
 export type BoosterIconSize = 'small' | 'medium' | 'big';
 
-export interface Props extends WrapperProps {
+export interface BoosterIconProps extends WrapperProps {
   leverage?: number;
   size?: BoosterIconSize;
   active?: boolean;
 }
 
-export default function BoosterIcon({
+export function BoosterIcon({
   leverage,
   size = 'small',
   active,
@@ -18,7 +18,7 @@ export default function BoosterIcon({
   type,
   href,
   target,
-}: Props): ReactElement {
+}: BoosterIconProps): ReactElement {
   return (
     <Wrapper
       className={`friday-ui-booster-icon ${size}${active ? ' active' : ''}`}

@@ -1,16 +1,16 @@
 import {
-  ReactElement,
-  useMemo,
-  useCallback,
-  useRef,
-  JSXElementConstructor,
-  useState,
   ChangeEventHandler,
+  JSXElementConstructor,
+  ReactElement,
+  useCallback,
+  useMemo,
+  useRef,
+  useState,
 } from 'react';
 import { FieldComponentProps } from '@cezembre/forms';
 import { useClickOutside } from '@cezembre/fronts';
 import _ from 'lodash';
-import Icon from './icon';
+import { Icon } from './icon';
 
 export interface SelectOption<V = unknown> {
   value: V;
@@ -48,7 +48,7 @@ function SelectOptionComponent<V>({
 
 export type SelectType = 'dark' | 'flat';
 
-export interface Props<V = unknown> extends FieldComponentProps<V | undefined> {
+export interface SelectProps<V = unknown> extends FieldComponentProps<V | undefined> {
   label?: string;
   options?: SelectOption<V>[];
   DefaultComponent?: JSXElementConstructor<{ value: V }>;
@@ -56,10 +56,11 @@ export interface Props<V = unknown> extends FieldComponentProps<V | undefined> {
   type?: SelectType;
   instructions?: ReactElement | string;
   fullWidth?: boolean;
+
   onSearch?(search?: string): unknown;
 }
 
-export default function Select<V = unknown>({
+export function Select<V = unknown>({
   value,
   error,
   warning,
@@ -76,7 +77,7 @@ export default function Select<V = unknown>({
   type = 'dark',
   fullWidth,
   onSearch,
-}: Props<V>): ReactElement {
+}: SelectProps<V>): ReactElement {
   const className = useMemo<string>(() => {
     const classNames: string[] = ['friday-ui-select', type];
 

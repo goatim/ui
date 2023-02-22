@@ -2,16 +2,14 @@ import { MouseEvent, ReactElement, useCallback, useEffect, useMemo, useState } f
 import { Asset, Booster, Portfolio } from '@fridaygame/client';
 import { To } from 'react-router-dom';
 import { Wrapper } from '@cezembre/fronts';
-import AssetThumbnail, { AssetThumbnailSize } from '../assets/assetThumbnail';
-import FridayCoins from '../../market/fridayCoins';
-import FridayCoinsVariation from '../../market/fridayCoinsVariation';
-import PercentageVariation from '../../market/percentageVariation';
-import Button from '../../general/button';
-import QuotationHistoryGraph from '../quotations/quotationHistoryGraph';
+import { AssetThumbnail, AssetThumbnailSize } from '../assets';
+import { FridayCoins, FridayCoinsVariation, PercentageVariation } from '../../market';
+import { Button } from '../../general';
+import { QuotationHistoryGraph } from '../quotations';
 
 export type PortfolioThumbnailSize = 'narrow' | 'medium';
 
-export interface Props {
+export interface PortfolioThumbnailProps {
   portfolio: Portfolio;
   size?: PortfolioThumbnailSize;
   assetOnClick?: (asset: Asset, event: MouseEvent<HTMLButtonElement>) => unknown;
@@ -24,7 +22,7 @@ export interface Props {
   onToggleDetails?: () => unknown;
 }
 
-export default function PortfolioThumbnail({
+export function PortfolioThumbnail({
   portfolio,
   size = 'medium',
   assetTo,
@@ -35,7 +33,7 @@ export default function PortfolioThumbnail({
   onBoost,
   showDetails = false,
   onToggleDetails,
-}: Props): ReactElement {
+}: PortfolioThumbnailProps): ReactElement {
   const assetThumbnailSize = useMemo<AssetThumbnailSize>(() => {
     switch (size) {
       case 'narrow':

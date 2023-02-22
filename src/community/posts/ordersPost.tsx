@@ -1,16 +1,16 @@
 import { ReactElement } from 'react';
 import { Post } from '@fridaygame/client';
-import OrderList from '../../trading/orders/orderList';
-import Button from '../../general/button';
+import { OrderList } from '../../trading';
+import { Button } from '../../general';
 
 export type OrdersPostSize = 'narrow' | 'normal';
 
-export interface Props {
+export interface OrdersPostProps {
   post: Post<'orders'>;
   size?: OrdersPostSize;
 }
 
-export default function OrdersPost({ post, size = 'normal' }: Props): ReactElement {
+export function OrdersPost({ post, size = 'normal' }: OrdersPostProps): ReactElement {
   if (!post.payload) {
     return <span>Aucun ordre</span>;
   }

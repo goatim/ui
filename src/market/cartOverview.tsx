@@ -1,21 +1,21 @@
 import { ReactElement } from 'react';
 import { Item } from '@fridaygame/client';
-import CartResume from './cartResume';
-import Heading from '../general/heading';
+import { CartResume } from './cartResume';
+import { Heading } from '../general';
 
 export type CartOverviewSize = 'narrow' | 'normal';
 
-export interface Props {
+export interface CartOverviewProps {
   items?: Item[];
   onDeleteItem?: (item: Item) => unknown;
   size?: CartOverviewSize;
 }
 
-export default function CartOverview({
+export function CartOverview({
   items,
   onDeleteItem,
   size = 'normal',
-}: Props): ReactElement {
+}: CartOverviewProps): ReactElement {
   return (
     <div className={`friday-ui-cart-overview ${size}`}>
       <Heading emoji="🛒" align="center">

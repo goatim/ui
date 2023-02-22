@@ -1,22 +1,23 @@
 import { ReactElement } from 'react';
 import { Notification } from '@fridaygame/client';
 import { WrapperProps } from '@cezembre/fronts';
-import NotificationThumbnail from './notificationThumbnail';
-import Icon from '../../general/icon';
+import { NotificationThumbnail } from './notificationThumbnail';
+import { Icon } from '../../general';
 
-export interface Props extends WrapperProps {
+export interface NotificationModalProps extends WrapperProps {
   notification: Notification;
+
   onDismiss?(): void;
 }
 
-export default function NotificationModal({
+export function NotificationModal({
   notification,
   to,
   onClick,
   href,
   target,
   onDismiss,
-}: Props): ReactElement {
+}: NotificationModalProps): ReactElement {
   return (
     <div className="friday-ui-notification-modal">
       <div className="notification">

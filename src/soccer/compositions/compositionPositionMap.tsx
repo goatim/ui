@@ -5,8 +5,8 @@ import {
   CompositionSetting,
   CompositionSettingPosition,
 } from '@fridaygame/client';
-import SoccerField from './soccerField';
-import SoccerFieldPosition, { SoccerFieldPositionSize } from './soccerFieldPosition';
+import { SoccerField } from './soccerField';
+import { SoccerFieldPosition, SoccerFieldPositionSize } from './soccerFieldPosition';
 
 export type CompositionPositionMapTheme = 'dark' | 'light';
 
@@ -53,7 +53,7 @@ function Position({
   );
 }
 
-export interface Props {
+export interface CompositionPositionMapProps {
   theme?: CompositionPositionMapTheme;
   compositionSetting?: CompositionSetting;
   composition?: Pick<Composition, 'goalkeeper' | 'positions'>;
@@ -61,13 +61,13 @@ export interface Props {
   onPositionClick?: (position: CompositionSettingPosition | 'goalkeeper') => unknown;
 }
 
-export default function CompositionPositionMap({
+export function CompositionPositionMap({
   theme,
   compositionSetting,
   composition,
   soccerFieldPositionSize = 'medium',
   onPositionClick,
-}: Props): ReactElement {
+}: CompositionPositionMapProps): ReactElement {
   return (
     <div className={`friday-ui-composition-positions-map ${theme}`}>
       <div className="container">

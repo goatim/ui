@@ -1,15 +1,15 @@
 import { ReactElement, useMemo } from 'react';
 import { FieldComponentProps } from '@cezembre/forms';
-import Icon from './icon';
+import { Icon } from './icon';
 
-export interface Props extends FieldComponentProps<string | number | null> {
+export interface TextareaProps extends FieldComponentProps<string | number | null> {
   label?: string;
   placeholder?: string;
   instructions?: string;
   spellCheck?: boolean;
 }
 
-export default function Textarea({
+export function Textarea({
   value,
   error,
   warning,
@@ -24,7 +24,7 @@ export default function Textarea({
   placeholder,
   instructions,
   spellCheck = true,
-}: Props): ReactElement {
+}: TextareaProps): ReactElement {
   const classNames = useMemo<string>(() => {
     let nextClassName = 'friday-ui-textarea';
 

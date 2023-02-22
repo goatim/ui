@@ -5,19 +5,19 @@ export type FridayCoinsVariationSize = 'small' | 'medium' | 'big' | 'large';
 
 export type FridayCoinsVariationTheme = 'default' | 'gold';
 
-export interface Props {
+export interface FridayCoinsVariationProps {
   children?: number;
   variation?: number;
   size?: FridayCoinsVariationSize;
   theme?: FridayCoinsVariationTheme;
 }
 
-export default function FridayCoinsVariation({
+export function FridayCoinsVariation({
   children,
   variation,
   size = 'small',
   theme = 'default',
-}: Props): ReactElement {
+}: FridayCoinsVariationProps): ReactElement {
   const sign = useMemo<'positive' | 'negative' | 'zero'>(() => {
     if (!variation && !children) {
       return 'zero';

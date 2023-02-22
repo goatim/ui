@@ -1,13 +1,13 @@
 import { ReactElement } from 'react';
 import { ClosedMatchNotificationPayload } from '@fridaygame/client/dist/community/notifications/model';
-import CompositionThumbnail from '../../soccer/compositions/compositionThumbnail';
-import FridayCoinsVariation from '../../market/fridayCoinsVariation';
+import { CompositionThumbnail } from '../../soccer';
+import { FridayCoinsVariation } from '../../market';
 
-export interface Props {
+export interface ClosedMatchNotificationProps {
   payload: ClosedMatchNotificationPayload;
 }
 
-export default function ClosedMatchNotification({ payload }: Props): ReactElement {
+export function ClosedMatchNotification({ payload }: ClosedMatchNotificationProps): ReactElement {
   return (
     <div className="friday-ui-closed-match-notification">
       <span>

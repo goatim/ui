@@ -1,12 +1,12 @@
 import { ReactElement } from 'react';
 import { Wallet } from '@fridaygame/client';
-import UserThumbnail from '../../auth/users/userThumbnail';
+import { UserThumbnail } from '../../auth';
 
-export interface Props {
+export interface WalletTeamProps {
   wallet: Wallet;
 }
 
-export default function WalletTeam({ wallet }: Props): ReactElement {
+export function WalletTeam({ wallet }: WalletTeamProps): ReactElement {
   return (
     <div className="friday-ui-wallet-team">
       {wallet.owner && typeof wallet.owner === 'object' ? (

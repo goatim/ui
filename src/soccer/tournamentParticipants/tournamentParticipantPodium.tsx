@@ -1,13 +1,14 @@
 import { ReactElement } from 'react';
 import { formatScore, TournamentParticipant } from '@fridaygame/client';
-import TournamentParticipantThumbnail from './tournamentParticipantThumbnail';
+import { TournamentParticipantThumbnail } from './tournamentParticipantThumbnail';
 
-export interface Props {
+export interface TournamentParticipantPodiumProps {
   tournamentParticipants?: TournamentParticipant[];
 }
-export default function TournamentParticipantPodium({
+
+export function TournamentParticipantPodium({
   tournamentParticipants,
-}: Props): ReactElement {
+}: TournamentParticipantPodiumProps): ReactElement {
   return (
     <div className="friday-ui-tournament-participant-podium">
       {tournamentParticipants?.slice(0, 3).map((participant) => (

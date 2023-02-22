@@ -1,17 +1,17 @@
 import { ReactElement } from 'react';
 import { Composition, Match } from '@fridaygame/client';
-import DateTimeThumbnail from '../../general/dateTimeThumbnail';
-import MatchLive from './matchLive';
-import MatchParticipants from './matchParticipants';
-import MatchAction, { Props as MatchActionProps } from './matchAction';
-import MatchHeader from './matchHeader';
+import { DateTimeThumbnail } from '../../general/dateTimeThumbnail';
+import { MatchLive } from './matchLive';
+import { MatchParticipants } from './matchParticipants';
+import { MatchAction, MatchActionProps } from './matchAction';
+import { MatchHeader } from './matchHeader';
 
-export interface Props extends Omit<MatchActionProps, 'status'> {
+export interface MatchThumbnailProps extends Omit<MatchActionProps, 'status'> {
   match: Match;
   podium?: Composition[];
 }
 
-export default function MatchThumbnail({
+export function MatchThumbnail({
   match,
   podium,
   toComposition,
@@ -22,7 +22,7 @@ export default function MatchThumbnail({
   onFeedClick,
   feedHref,
   feedTarget,
-}: Props): ReactElement {
+}: MatchThumbnailProps): ReactElement {
   return (
     <div className="friday-ui-match-thumbnail">
       <div className="header">

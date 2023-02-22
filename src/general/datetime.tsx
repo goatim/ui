@@ -1,19 +1,19 @@
 import { ReactElement } from 'react';
 import { DateTime } from 'luxon';
 
-export interface Props {
+export interface DatetimeProps {
   value: DateTime;
   date?: boolean;
   time?: boolean;
   relative?: boolean;
 }
 
-export default function Datetime({
+export function Datetime({
   value,
   date = true,
   time = false,
   relative = false,
-}: Props): ReactElement {
+}: DatetimeProps): ReactElement {
   return (
     <span className="friday-ui-datetime">
       {date ? value.toLocaleString(DateTime.DATE_MED) : null}

@@ -1,7 +1,5 @@
 import { ReactElement, useCallback, useState } from 'react';
-import Button from '../general/button';
-import StepIndicator from '../general/stepIndicator';
-import { ModalComponentProps } from '../general/modal';
+import { Button, ModalComponentProps, StepIndicator } from '../general';
 
 export interface OnboardingCarouselSlideData {
   image?: string;
@@ -9,11 +7,11 @@ export interface OnboardingCarouselSlideData {
   description?: string;
 }
 
-export interface OnboardingCarouselProps {
+export interface OnboardingCarouselSlideProps {
   slide: OnboardingCarouselSlideData;
 }
 
-export function OnboardingCarouselSlide({ slide }: OnboardingCarouselProps): ReactElement {
+export function OnboardingCarouselSlide({ slide }: OnboardingCarouselSlideProps): ReactElement {
   return (
     <div className="friday-ui-onboarding-carousel-slide">
       {slide.image ? (
@@ -31,16 +29,16 @@ export function OnboardingCarouselSlide({ slide }: OnboardingCarouselProps): Rea
 
 export type OnboardingCarouselSize = 'narrow' | 'big';
 
-export interface Props extends ModalComponentProps {
+export interface OnboardingCarouselProps extends ModalComponentProps {
   slides?: OnboardingCarouselSlideData[];
   size?: OnboardingCarouselSize;
 }
 
-export default function OnboardingCarousel({
+export function OnboardingCarousel({
   slides,
   size = 'big',
   dismissModal,
-}: Props): ReactElement {
+}: OnboardingCarouselProps): ReactElement {
   const [slideIndex, setSlideIndex] = useState<number>(0);
 
   const previousSlide = useCallback(() => {

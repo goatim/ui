@@ -1,21 +1,21 @@
 import { MouseEvent, ReactElement } from 'react';
 import { Player } from '@fridaygame/client';
 import { To } from 'react-router';
-import PlayerThumbnail, { PlayerThumbnailSize } from './playerThumbnail';
+import { PlayerThumbnail, PlayerThumbnailSize } from './playerThumbnail';
 
-export interface Props {
+export interface PlayerListProps {
   players?: Player[];
   size?: PlayerThumbnailSize;
   playerOnClick?: (player: Player, event: MouseEvent<HTMLButtonElement>) => unknown;
   playerTo?: (player: Player) => To;
 }
 
-export default function PlayerList({
+export function PlayerList({
   players,
   size,
   playerOnClick,
   playerTo,
-}: Props): ReactElement {
+}: PlayerListProps): ReactElement {
   if (!players?.length) {
     return <span>Aucun joueur</span>;
   }

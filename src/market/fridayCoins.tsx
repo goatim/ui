@@ -5,7 +5,7 @@ export type FridayCoinsSize = 'small' | 'medium' | 'big' | 'large';
 
 export type FridayCoinsTheme = 'dark' | 'light' | 'darker' | 'gold';
 
-export interface Props {
+export interface FridayCoinsProps {
   children?: number;
   amount?: number;
   decimalDigits?: number;
@@ -13,13 +13,13 @@ export interface Props {
   theme?: FridayCoinsTheme;
 }
 
-export default function FridayCoins({
+export function FridayCoins({
   children,
   amount,
   decimalDigits = 2,
   size = 'small',
   theme = 'dark',
-}: Props): ReactElement {
+}: FridayCoinsProps): ReactElement {
   return (
     <span className={`friday-ui-friday-coins ${size} ${theme}`}>
       {formatFridayCoinsAmount(children || amount || 0, decimalDigits)}

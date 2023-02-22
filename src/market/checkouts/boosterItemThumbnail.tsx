@@ -1,20 +1,20 @@
 import { ReactElement } from 'react';
 import { BoosterItem, formatEurosAmount } from '@fridaygame/client';
-import Icon from '../../general/icon';
+import { Icon } from '../../general';
 
 export type BoosterItemThumbnailSize = 'narrow' | 'normal';
 
-export interface Props {
+export interface BoosterItemThumbnailProps {
   boosterItem: BoosterItem;
   onDelete?: () => unknown;
   size?: BoosterItemThumbnailSize;
 }
 
-export default function BoosterItemThumbnail({
+export function BoosterItemThumbnail({
   boosterItem,
   onDelete,
   size = 'normal',
-}: Props): ReactElement {
+}: BoosterItemThumbnailProps): ReactElement {
   return (
     <div className={`friday-ui-booster-item-thumbnail ${size}`}>
       <div className="container">

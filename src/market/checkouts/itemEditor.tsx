@@ -1,7 +1,7 @@
 import { ReactElement, useCallback, useMemo } from 'react';
 import { BoosterFactory, ItemType, OrderBook } from '@fridaygame/client';
 import { FormFields } from '@cezembre/forms';
-import OrderItemEditor, { OrderItemEditorFields, OrderItemEditorSize } from './orderItemEditor';
+import { OrderItemEditor, OrderItemEditorFields, OrderItemEditorSize } from './orderItemEditor';
 
 export interface ItemEditorFields extends FormFields {
   type?: ItemType;
@@ -10,7 +10,7 @@ export interface ItemEditorFields extends FormFields {
 
 export type ItemEditorSize = 'narrow' | 'small' | 'medium' | 'big';
 
-export interface Props {
+export interface ItemEditorProps {
   initialItem?: ItemEditorFields;
   orderBook?: OrderBook;
   boosterFactories?: BoosterFactory[];
@@ -21,7 +21,7 @@ export interface Props {
   onAcceptBankProposal?: (nbShares?: number) => unknown;
 }
 
-export default function ItemEditor({
+export function ItemEditor({
   initialItem,
   orderBook,
   boosterFactories,
@@ -30,7 +30,7 @@ export default function ItemEditor({
   size = 'big',
   bankProposalQuotation,
   onAcceptBankProposal,
-}: Props): ReactElement | null {
+}: ItemEditorProps): ReactElement | null {
   const onSubmitOrderItem = useCallback(
     async (orderItemFields: OrderItemEditorFields) => {
       if (onSubmit) {

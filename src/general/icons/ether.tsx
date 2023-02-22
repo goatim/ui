@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
-import IconProps from './props';
+import { SvgIconProps } from './props';
 
-export default function Ether({ size = 15 }: IconProps): ReactElement<SVGElement> {
+export function Ether({ size = 15 }: SvgIconProps): ReactElement<SVGElement> {
   return (
     <svg viewBox="0 0 459.03 509.12" height={size}>
       <title>Ether</title>

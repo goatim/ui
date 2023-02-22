@@ -1,10 +1,10 @@
 import { ReactElement, useCallback, useEffect, useMemo, useState } from 'react';
 import { DateTime } from 'luxon';
 import { Model } from '@fridaygame/client';
-import Icon from './icon';
-import Check from './check';
-import Button, { Props as ButtonProps } from './button';
-import Datetime from './datetime';
+import { Icon } from './icon';
+import { Check } from './check';
+import { Button, ButtonProps } from './button';
+import { Datetime } from './datetime';
 
 export type TableCellType =
   | 'auto'
@@ -148,7 +148,7 @@ export interface TableItemAction extends ButtonProps {
   onlySingle?: boolean;
 }
 
-export interface Props<M extends Model = Model> {
+export interface TableProps<M extends Model = Model> {
   columns: TableColumn<M>[];
   data?: M[];
   EmptyPlaceholder?: ReactElement;
@@ -159,7 +159,7 @@ export interface Props<M extends Model = Model> {
   itemActions?: TableItemAction[];
 }
 
-export default function Table<M extends Model = Model>({
+export function Table<M extends Model = Model>({
   columns,
   data = [],
   EmptyPlaceholder,
@@ -168,7 +168,7 @@ export default function Table<M extends Model = Model>({
   selectionMode,
   defaultSelection,
   itemActions,
-}: Props<M>): ReactElement {
+}: TableProps<M>): ReactElement {
   const className = useMemo<string>(() => {
     const classNames = ['friday-ui-table'];
     if (onSelectItem || selectionMode) {

@@ -1,12 +1,12 @@
 import { ReactElement, useMemo, useRef } from 'react';
 import { useDOMRect } from '@cezembre/fronts';
 
-export interface Props {
+export interface WallpaperProps {
   children?: string;
   lineHeight?: number;
 }
 
-export default function Wallpaper({ children, lineHeight = 18 }: Props): ReactElement {
+export function Wallpaper({ children, lineHeight = 18 }: WallpaperProps): ReactElement {
   const wallpaper = useRef<HTMLDivElement>(null);
 
   const wallpaperDomRect = useDOMRect(wallpaper);

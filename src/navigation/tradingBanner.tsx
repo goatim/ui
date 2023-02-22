@@ -1,14 +1,13 @@
 import { ReactElement } from 'react';
 import { CurrenciesRate, Wallet } from '@fridaygame/client';
-import CurrenciesRateThumbnail from '../market/currenciesRates/currenciesRateThumbnail';
-import WalletThumbnail from '../market/wallets/walletThumbnail';
+import { CurrenciesRateThumbnail, WalletThumbnail } from '../market';
 
-export interface Props {
+export interface TradingBannerProps {
   fridayCoinsRate?: CurrenciesRate;
   wallet?: Wallet;
 }
 
-export default function TradingBanner({ fridayCoinsRate, wallet }: Props): ReactElement {
+export function TradingBanner({ fridayCoinsRate, wallet }: TradingBannerProps): ReactElement {
   return (
     <div className="friday-ui-trading-banner">
       <div className="fdy-rate">

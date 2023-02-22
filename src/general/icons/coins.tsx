@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
-import IconProps from './props';
+import { SvgIconProps } from './props';
 
-export default function Coins({ size = 15 }: IconProps): ReactElement<SVGElement> {
+export function Coins({ size = 15 }: SvgIconProps): ReactElement<SVGElement> {
   return (
     <svg viewBox="0 0 487.6 256.76" height={size}>
       <title>Coins</title>

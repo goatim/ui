@@ -1,9 +1,9 @@
 import { ReactElement, ReactNode } from 'react';
 
-export interface Props {
+export interface TagProps {
   children?: ReactNode;
 }
 
-export default function Tag({ children }: Props): ReactElement {
+export function Tag({ children }: TagProps): ReactElement {
   return <span className="friday-ui-tag">{children}</span>;
 }

@@ -1,23 +1,21 @@
 import { ReactElement, useMemo } from 'react';
 import { Transaction } from '@fridaygame/client';
 import { DateTime } from 'luxon';
-import WalletThumbnail from '../../market/wallets/walletThumbnail';
-import AssetThumbnail, { AssetThumbnailSize } from '../assets/assetThumbnail';
-import FridayCoins from '../../market/fridayCoins';
-import PercentageVariation from '../../market/percentageVariation';
-import Icon from '../../general/icon';
+import { FridayCoins, PercentageVariation, WalletThumbnail } from '../../market';
+import { AssetThumbnail, AssetThumbnailSize } from '../assets';
+import { Icon } from '../../general';
 
 export type TransactionThumbnailSize = 'narrow' | 'normal';
 
-export interface Props {
+export interface TransactionThumbnailProps {
   transaction: Transaction;
   size?: TransactionThumbnailSize;
 }
 
-export default function TransactionThumbnail({
+export function TransactionThumbnail({
   transaction,
   size = 'normal',
-}: Props): ReactElement {
+}: TransactionThumbnailProps): ReactElement {
   const resolvedCreation = useMemo<string | undefined>(() => {
     if (!transaction.creation) {
       return undefined;

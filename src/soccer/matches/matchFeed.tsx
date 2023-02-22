@@ -1,18 +1,18 @@
 import { ReactElement } from 'react';
 import { Match, PhysicalEvent } from '@fridaygame/client';
-import PhysicalEventList from '../physicalEvents/physicalEventList';
-import DateTimeThumbnail from '../../general/dateTimeThumbnail';
-import Icon from '../../general/icon';
+import { PhysicalEventList } from '../physicalEvents';
+import { DateTimeThumbnail } from '../../general/dateTimeThumbnail';
+import { Icon } from '../../general';
 
 export type MatchFeedTheme = 'dark' | 'light';
 
-export interface Props {
+export interface MatchFeedProps {
   match: Match;
   physicalEvents?: PhysicalEvent[];
   theme?: MatchFeedTheme;
 }
 
-export default function MatchFeed({ match, physicalEvents, theme = 'dark' }: Props): ReactElement {
+export function MatchFeed({ match, physicalEvents, theme = 'dark' }: MatchFeedProps): ReactElement {
   return (
     <div className={`friday-ui-match-feed ${theme}`}>
       <div className="beginning">

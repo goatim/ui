@@ -1,11 +1,11 @@
 import { ReactElement, useMemo } from 'react';
-import Tag from '../../general/tag';
+import { Tag } from '../../general';
 
-export interface Props {
+export interface MatchParticipantsProps {
   nb_participants?: number;
 }
 
-export default function MatchParticipants({ nb_participants }: Props): ReactElement {
+export function MatchParticipants({ nb_participants }: MatchParticipantsProps): ReactElement {
   const tag = useMemo<string>(() => {
     if (!nb_participants) {
       return 'Aucun participant';

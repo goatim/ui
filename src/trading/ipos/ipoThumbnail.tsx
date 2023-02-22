@@ -1,21 +1,21 @@
 import { ReactElement, useMemo } from 'react';
 import { Ipo } from '@fridaygame/client';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
-import FridayCoins, { FridayCoinsSize } from '../../market/fridayCoins';
-import AssetThumbnail, { AssetThumbnailSize } from '../assets/assetThumbnail';
-import DateTimeThumbnail from '../../general/dateTimeThumbnail';
+import { FridayCoins, FridayCoinsSize } from '../../market';
+import { AssetThumbnail, AssetThumbnailSize } from '../assets';
+import { DateTimeThumbnail } from '../../general/dateTimeThumbnail';
 
 export type IpoThumbnailSize = 'narrow' | 'small' | 'big';
 
 export type IpoThumbnailShape = 'box' | 'banner';
 
-export interface Props extends WrapperProps {
+export interface IpoThumbnailProps extends WrapperProps {
   ipo: Ipo;
   size?: IpoThumbnailSize;
   shape?: IpoThumbnailShape;
 }
 
-export default function IpoThumbnail({
+export function IpoThumbnail({
   ipo,
   size = 'big',
   shape = 'box',
@@ -23,7 +23,7 @@ export default function IpoThumbnail({
   onClick,
   href,
   target,
-}: Props): ReactElement {
+}: IpoThumbnailProps): ReactElement {
   const assetThumbnailSize = useMemo<AssetThumbnailSize>(() => {
     switch (size) {
       case 'narrow':

@@ -1,13 +1,13 @@
 import { ReactElement } from 'react';
 import { Post } from '@fridaygame/client';
-import PostThumbnail, { PostThumbnailSize } from './postThumbnail';
+import { PostThumbnail, PostThumbnailSize } from './postThumbnail';
 
-export interface Props {
+export interface PostListProps {
   posts?: Post[];
   size?: PostThumbnailSize;
 }
 
-export default function PostList({ posts, size = 'normal' }: Props): ReactElement {
+export function PostList({ posts, size = 'normal' }: PostListProps): ReactElement {
   return (
     <div className="friday-ui-post-list">
       {posts?.map((post) => (

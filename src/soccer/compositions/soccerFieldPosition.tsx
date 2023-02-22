@@ -1,13 +1,13 @@
 import { ReactElement } from 'react';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
 import { formatPlayerName, Image } from '@fridaygame/client';
-import Icon from '../../general/icon';
+import { Icon } from '../../general';
 
 export type SoccerFieldPositionSize = 'small' | 'medium' | 'large';
 
 export type SoccerFieldPositionTheme = 'dark' | 'light';
 
-export interface Props extends WrapperProps {
+export interface SoccerFieldPositionProps extends WrapperProps {
   icon?: Image | null;
   firstName?: string;
   lastName?: string;
@@ -15,7 +15,7 @@ export interface Props extends WrapperProps {
   theme?: SoccerFieldPositionTheme;
 }
 
-export default function SoccerFieldPosition({
+export function SoccerFieldPosition({
   icon,
   firstName,
   lastName,
@@ -25,7 +25,7 @@ export default function SoccerFieldPosition({
   onClick,
   href,
   target,
-}: Props): ReactElement {
+}: SoccerFieldPositionProps): ReactElement {
   return (
     <Wrapper
       className={`friday-ui-soccer-field-position ${size} ${theme}`}

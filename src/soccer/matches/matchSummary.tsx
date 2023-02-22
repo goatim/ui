@@ -1,16 +1,15 @@
 import { ReactElement } from 'react';
 import { Composition, Match } from '@fridaygame/client';
-import CompositionPodium from '../compositions/compositionPodium';
-import MatchStatusThumbnail from './matchStatusThumbnail';
-import CompositionThumbnail from '../compositions/compositionThumbnail';
+import { CompositionPodium, CompositionThumbnail } from '../compositions';
+import { MatchStatusThumbnail } from './matchStatusThumbnail';
 
-export interface Props {
+export interface MatchSummaryProps {
   match: Match;
   podium?: Composition[];
   self?: Composition;
 }
 
-export default function MatchSummary({ match, podium, self }: Props): ReactElement {
+export function MatchSummary({ match, podium, self }: MatchSummaryProps): ReactElement {
   return (
     <div className="friday-ui-match-summary">
       <div className="header">

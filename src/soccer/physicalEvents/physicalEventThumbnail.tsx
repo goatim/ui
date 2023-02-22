@@ -1,19 +1,19 @@
 import { ReactElement, useMemo } from 'react';
 import { PhysicalEvent } from '@fridaygame/client';
-import PhysicalEventTimeline from './physicalEventTimeline';
-import DividendList from '../../trading/dividends/dividendList';
+import { PhysicalEventTimeline } from './physicalEventTimeline';
+import { DividendList } from '../../trading';
 
 export type PhysicalEventThumbnailTheme = 'dark' | 'light';
 
-export interface Props {
+export interface PhysicalEventThumbnailProps {
   physicalEvent: PhysicalEvent;
   theme?: PhysicalEventThumbnailTheme;
 }
 
-export default function PhysicalEventThumbnail({
+export function PhysicalEventThumbnail({
   physicalEvent,
   theme = 'dark',
-}: Props): ReactElement {
+}: PhysicalEventThumbnailProps): ReactElement {
   const resolvedType = useMemo<string>(() => {
     switch (physicalEvent.type) {
       case 'goal':

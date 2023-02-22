@@ -1,22 +1,22 @@
 import { ReactElement } from 'react';
 import { PackFactory } from '@fridaygame/client';
-import PackFactoryThumbnail from './packFactoryThumbnail';
+import { PackFactoryThumbnail } from './packFactoryThumbnail';
 
 export type PackFactoryCarouselSize = 'small' | 'medium' | 'big';
 
-export interface Props {
+export interface PackFactoryCarouselProps {
   packFactories: PackFactory[];
   size?: PackFactoryCarouselSize;
   actionLabel?: string;
   onPackFactoryClick?: (packFactory: PackFactory) => unknown;
 }
 
-export default function PackFactoryCarousel({
+export function PackFactoryCarousel({
   packFactories,
   size = 'big',
   actionLabel = 'Ajouter au panier',
   onPackFactoryClick,
-}: Props): ReactElement {
+}: PackFactoryCarouselProps): ReactElement {
   return (
     <div className={`friday-ui-pack-factory-carousel ${size}`}>
       <div className="background">

@@ -1,13 +1,13 @@
 import { ReactElement } from 'react';
 import { ShareBulk } from '@fridaygame/client';
-import ShareBulkThumbnail, { ShareBulkThumbnailSize } from './shareBulkThumbnail';
+import { ShareBulkThumbnail, ShareBulkThumbnailSize } from './shareBulkThumbnail';
 
-export interface Props {
+export interface ShareBulkListProps {
   shareBulks: ShareBulk[];
   size?: ShareBulkThumbnailSize;
 }
 
-export default function ShareBulkList({ shareBulks, size = 'normal' }: Props): ReactElement {
+export function ShareBulkList({ shareBulks, size = 'normal' }: ShareBulkListProps): ReactElement {
   return (
     <div className="friday-ui-share-bulk-list">
       {shareBulks.map((shareBulk) => (

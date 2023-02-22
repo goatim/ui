@@ -1,14 +1,14 @@
 import { ReactElement, useMemo } from 'react';
 import { CardElement } from '@stripe/react-stripe-js';
 import { FieldComponentProps } from '@cezembre/forms';
-import Icon from '../general/icon';
+import { Icon } from '../general';
 
-export interface Props extends FieldComponentProps {
+export interface StripeCreditCardInputProps extends FieldComponentProps {
   label?: string | null;
   instructions?: string | null;
 }
 
-export default function StripeCreditCardInput({
+export function StripeCreditCardInput({
   visited,
   error,
   submitted,
@@ -20,7 +20,7 @@ export default function StripeCreditCardInput({
   onChange,
   label = null,
   instructions = null,
-}: Props): ReactElement {
+}: StripeCreditCardInputProps): ReactElement {
   const className = useMemo<string>(() => {
     const classNames = ['friday-ui-stripe-credit-card-input'];
     if (visited) {

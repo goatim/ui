@@ -1,15 +1,15 @@
 import { ReactElement, useMemo } from 'react';
 import { Image } from '@fridaygame/client';
-import Icon from '../../general/icon';
+import { Icon } from '../../general';
 
 export type MatchIconSize = 'small' | 'medium' | 'big';
 
-export interface Props {
+export interface MatchIconProps {
   icon?: Image;
   size?: MatchIconSize;
 }
 
-export default function MatchIcon({ icon, size = 'medium' }: Props): ReactElement {
+export function MatchIcon({ icon, size = 'medium' }: MatchIconProps): ReactElement {
   const iconSize = useMemo<number>(() => {
     switch (size) {
       case 'small':

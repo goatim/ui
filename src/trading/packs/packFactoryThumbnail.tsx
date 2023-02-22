@@ -1,24 +1,23 @@
 import { ReactElement } from 'react';
 import { WrapperProps } from '@cezembre/fronts';
 import { formatEurosAmount, PackFactory } from '@fridaygame/client';
-import Button from '../../general/button';
-import FridayCoins from '../../market/fridayCoins';
-import Wallpaper from '../../general/wallpaper';
+import { Button, Wallpaper } from '../../general';
+import { FridayCoins } from '../../market';
 import randomShareBulks from './assets/random-share-bulks.png';
 
-export interface Props extends WrapperProps {
+export interface PackFactoryThumbnailProps extends WrapperProps {
   packFactory: PackFactory;
   actionLabel?: string;
 }
 
-export default function PackFactoryThumbnail({
+export function PackFactoryThumbnail({
   packFactory,
   actionLabel = 'Ajouter au panier',
   onClick,
   href,
   target,
   to,
-}: Props): ReactElement {
+}: PackFactoryThumbnailProps): ReactElement {
   return (
     <div className="friday-ui-pack-factory-thumbnail">
       <div className="header">

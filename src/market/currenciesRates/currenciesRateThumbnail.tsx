@@ -1,20 +1,20 @@
 import { ReactElement } from 'react';
 import { CurrenciesRate, formatCurrencyAmount } from '@fridaygame/client';
-import PercentageVariation from '../percentageVariation';
+import { PercentageVariation } from '../percentageVariation';
 
 export type CurrenciesRateThumbnailTheme = 'dark' | 'light';
 
-export interface Props {
+export interface CurrenciesRateThumbnailProps {
   currenciesRate: CurrenciesRate;
   theme?: CurrenciesRateThumbnailTheme;
   variation?: number;
 }
 
-export default function CurrenciesRateThumbnail({
+export function CurrenciesRateThumbnail({
   currenciesRate,
   theme = 'dark',
   variation,
-}: Props): ReactElement {
+}: CurrenciesRateThumbnailProps): ReactElement {
   return (
     <div className={`friday-ui-currencies-rate-thumbnail ${theme}`}>
       <div className="rates">

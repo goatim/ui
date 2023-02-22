@@ -1,11 +1,11 @@
 import { ReactElement, ReactNode, useCallback, useEffect, useState } from 'react';
 
-export interface Props {
+export interface SelectionProps {
   children?: ReactNode;
   filter?: (anchor: Node) => boolean;
 }
 
-export default function Selection({ children, filter }: Props): ReactElement {
+export function Selection({ children, filter }: SelectionProps): ReactElement {
   const [isActive, setIsActive] = useState<boolean>(false);
   const [position, setPosition] = useState<{ left?: number; top?: number }>({});
 

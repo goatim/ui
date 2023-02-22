@@ -1,12 +1,12 @@
 import { MouseEvent, ReactElement } from 'react';
 import { Club, League } from '@fridaygame/client';
 import { To } from 'react-router';
-import LeagueOverview from './leagueOverview';
-import Icon from '../../general/icon';
+import { LeagueOverview } from './leagueOverview';
+import { Icon } from '../../general';
 
 export type LeagueCarouselSize = 'small' | 'medium' | 'big';
 
-export interface Props {
+export interface LeagueCarouselProps {
   leagues?: League[];
   size?: LeagueCarouselSize;
   leagueTo?: (league: League) => To;
@@ -16,7 +16,7 @@ export interface Props {
   getLeagueClubs?: (leagueId: string, page: number) => Promise<Club[]> | Club[];
 }
 
-export default function LeagueCarousel({
+export function LeagueCarousel({
   leagues,
   size = 'medium',
   leagueTo,
@@ -24,7 +24,7 @@ export default function LeagueCarousel({
   clubTo,
   clubOnClick,
   getLeagueClubs,
-}: Props): ReactElement {
+}: LeagueCarouselProps): ReactElement {
   return (
     <div className={`friday-ui-league-carousel ${size}`}>
       <div className="background">

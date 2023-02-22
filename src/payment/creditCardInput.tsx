@@ -12,7 +12,7 @@ import {
 } from 'react';
 import { FieldComponentProps } from '@cezembre/forms';
 import { CardBrand } from '@fridaygame/client';
-import Icon from '../general/icon';
+import { Icon } from '../general';
 
 export interface CreditCardValue {
   number: string;
@@ -24,12 +24,12 @@ export interface CreditCardValue {
   isValid: boolean;
 }
 
-export interface Props extends FieldComponentProps<CreditCardValue> {
+export interface CreditCardInputProps extends FieldComponentProps<CreditCardValue> {
   label?: string | null;
   instructions?: string | null;
 }
 
-export default function CreditCardInput({
+export function CreditCardInput({
   visited,
   error,
   submitted,
@@ -41,7 +41,7 @@ export default function CreditCardInput({
   onChange,
   label = null,
   instructions = null,
-}: Props): ReactElement {
+}: CreditCardInputProps): ReactElement {
   const className = useMemo<string>(() => {
     const classNames = ['friday-ui-credit-card-input'];
     if (visited) {

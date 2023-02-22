@@ -5,19 +5,19 @@ export type ScoreSize = 'small' | 'medium' | 'big' | 'large';
 
 export type ScoreTheme = 'dark' | 'light' | 'darker' | 'gold';
 
-export interface Props {
+export interface ScoreProps {
   children?: number;
   score?: number;
   size?: ScoreSize;
   theme?: ScoreTheme;
 }
 
-export default function Score({
+export function Score({
   children,
   score,
   size = 'small',
   theme = 'dark',
-}: Props): ReactElement {
+}: ScoreProps): ReactElement {
   return (
     <span className={`friday-ui-score ${size} ${theme}`}>
       {formatScore(children || score || 0)}

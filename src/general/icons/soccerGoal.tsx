@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
-import IconProps from './props';
+import { SvgIconProps } from './props';
 
-export default function SoccerGoal({ size = 15 }: IconProps): ReactElement<SVGElement> {
+export function SoccerGoal({ size = 15 }: SvgIconProps): ReactElement<SVGElement> {
   return (
     <svg viewBox="0 0 700 379.32" height={size}>
       <title>Soccer Goal</title>

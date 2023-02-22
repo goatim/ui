@@ -1,10 +1,9 @@
 import { ReactElement } from 'react';
 import { Composition } from '@fridaygame/client';
 import { WrapperProps } from '@cezembre/fronts';
-import WalletRank from '../../market/wallets/walletRank';
-import { WalletThumbnailSize, WalletThumbnailTheme } from '../../market/wallets/walletThumbnail';
+import { WalletRank, WalletThumbnailSize, WalletThumbnailTheme } from '../../market';
 
-export interface Props extends WrapperProps {
+export interface CompositionThumbnailProps extends WrapperProps {
   composition: Composition;
   size?: WalletThumbnailSize;
   theme?: WalletThumbnailTheme;
@@ -12,7 +11,7 @@ export interface Props extends WrapperProps {
   showDividendsGains?: boolean;
 }
 
-export default function CompositionThumbnail({
+export function CompositionThumbnail({
   composition,
   size = 'small',
   theme = 'dark',
@@ -22,7 +21,7 @@ export default function CompositionThumbnail({
   target,
   showScore,
   showDividendsGains,
-}: Props): ReactElement | null {
+}: CompositionThumbnailProps): ReactElement | null {
   if (!composition.wallet || typeof composition.wallet !== 'object') {
     return null;
   }

@@ -1,17 +1,25 @@
 import { ReactElement, useMemo, useState } from 'react';
 import { Asset, BoosterFactory, Ipo, OrderBook, OrderType } from '@fridaygame/client';
 import { To } from 'react-router-dom';
-import QuotationHistoryGraph from '../quotations/quotationHistoryGraph';
-import FridayCoins, { FridayCoinsSize } from '../../market/fridayCoins';
-import PercentageVariation, { PercentageVariationSize } from '../../market/percentageVariation';
-import ItemEditor, { ItemEditorFields, ItemEditorSize } from '../../market/checkouts/itemEditor';
-import AssetThumbnail, { AssetThumbnailSize } from './assetThumbnail';
-import IpoThumbnail, { IpoThumbnailSize } from '../ipos/ipoThumbnail';
+import { QuotationHistory } from '@fridaygame/client/dist/trading/quotations/model';
+import { QuotationHistoryGraph } from '../quotations';
+import {
+  FridayCoins,
+  FridayCoinsSize,
+  ItemEditor,
+  ItemEditorFields,
+  ItemEditorSize,
+  PercentageVariation,
+  PercentageVariationSize,
+} from '../../market';
+import { AssetThumbnail, AssetThumbnailSize } from './assetThumbnail';
+import { IpoThumbnail, IpoThumbnailSize } from '../ipos';
 
 export type AssetOverviewSize = 'small' | 'medium' | 'full';
 
-export interface Props {
+export interface AssetOverviewProps {
   asset: Asset;
+  quotationHistory?: QuotationHistory;
   size?: AssetOverviewSize;
   orderBook?: OrderBook;
   boosterFactories?: BoosterFactory[];
@@ -23,8 +31,9 @@ export interface Props {
   defaultOrderType?: OrderType;
 }
 
-export default function AssetOverview({
+export function AssetOverview({
   asset,
+  quotationHistory,
   size = 'full',
   secondaryTo,
   orderBook,
@@ -34,7 +43,7 @@ export default function AssetOverview({
   bankProposalQuotation,
   onAcceptBankProposal,
   defaultOrderType,
-}: Props): ReactElement {
+}: AssetOverviewProps): ReactElement {
   const [orderType, setOrderType] = useState<OrderType | undefined>(defaultOrderType);
 
   const assetThumbnailSize = useMemo<AssetThumbnailSize>(() => {
@@ -121,7 +130,7 @@ export default function AssetOverview({
       </div>
 
       <div className="quotation">
-        <QuotationHistoryGraph quotationHistory={asset.quotation_history} />
+        <QuotationHistoryGraph quotationHistory={quotationHistory} />
       </div>
 
       <div className="actions">
