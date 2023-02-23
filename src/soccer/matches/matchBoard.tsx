@@ -62,6 +62,7 @@ export function MatchBoard({
           <MatchRanking
             match={match}
             ranking={ranking}
+            myComposition={myComposition}
             toComposition={toComposition}
             onClickComposition={onClickComposition}
             toNewComposition={toNewComposition}
