@@ -1,6 +1,7 @@
 export * from './appIcon';
 export * from './button';
 export * from './check';
+export * from './checkbox';
 export * from './counter';
 export * from './datePicker';
 export * from './datetime';
