@@ -106,7 +106,7 @@ const Template: ComponentStory<JSXElementConstructor<Props>> = ({ theme }: Props
     pinned={pinned}
     theme={theme}
     positionExtractor={(wallet) => wallet.rank_position || 0}
-    variationExtractor={(wallet) => wallet.total_gains || 0}
+    gainsExtractor={(wallet) => wallet.total_gains || 0}
   />
 );
 
