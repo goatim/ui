@@ -4,6 +4,6 @@ export * from './wallets';
 export * from './cartOverview';
 export * from './cartResume';
 export * from './fridayCoins';
-export * from './fridayCoinsVariation';
+export * from './fridayCoinsGains';
 export * from './percentageVariation';
 export * from './shopBanner';

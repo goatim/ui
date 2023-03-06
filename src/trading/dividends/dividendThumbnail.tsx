@@ -1,7 +1,7 @@
 import { ReactElement, useMemo } from 'react';
 import { Dividend } from '@fridaygame/client';
 import { AssetThumbnail, AssetThumbnailTheme } from '../assets';
-import { FridayCoinsVariation } from '../../market';
+import { FridayCoinsGains } from '../../market';
 
 export type DividendThumbnailTheme = 'dark' | 'light';
 
@@ -37,7 +37,7 @@ export function DividendThumbnail({
         </div>
       ) : null}
       <div className="amount">
-        <FridayCoinsVariation variation={dividend.amount} />
+        <FridayCoinsGains variation={dividend.amount} />
       </div>
     </div>
   );

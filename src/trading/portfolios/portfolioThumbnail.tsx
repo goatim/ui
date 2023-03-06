@@ -3,7 +3,7 @@ import { Asset, Booster, Portfolio } from '@fridaygame/client';
 import { To } from 'react-router-dom';
 import { Wrapper } from '@cezembre/fronts';
 import { AssetThumbnail, AssetThumbnailSize } from '../assets';
-import { FridayCoins, FridayCoinsVariation, PercentageVariation } from '../../market';
+import { FridayCoins, FridayCoinsGains, PercentageVariation } from '../../market';
 import { Button } from '../../general';
 import { QuotationHistoryGraph } from '../quotations';
 
@@ -102,7 +102,7 @@ export function PortfolioThumbnail({
 
           <div className="gains">
             <span className="label">+/- values</span>
-            <FridayCoinsVariation variation={portfolio.total_gains} size="medium" />
+            <FridayCoinsGains variation={portfolio.total_gains} size="medium" />
             <PercentageVariation variation={portfolio.total_variations} size="small" />
           </div>
         </div>

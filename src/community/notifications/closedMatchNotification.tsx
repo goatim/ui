@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 import { ClosedMatchNotificationPayload } from '@fridaygame/client/dist/community/notifications/model';
 import { CompositionThumbnail } from '../../soccer';
-import { FridayCoinsVariation } from '../../market';
+import { FridayCoinsGains } from '../../market';
 
 export interface ClosedMatchNotificationProps {
   payload: ClosedMatchNotificationPayload;
@@ -24,7 +24,7 @@ export function ClosedMatchNotification({ payload }: ClosedMatchNotificationProp
           {payload.composition.position === 1 ? (
             <div className="first">
               <span className="label">Bravo tu es premier !</span>
-              <FridayCoinsVariation variation={30000} />
+              <FridayCoinsGains variation={30000} />
             </div>
           ) : null}
         </>

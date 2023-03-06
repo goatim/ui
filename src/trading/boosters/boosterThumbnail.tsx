@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 import { Booster } from '@fridaygame/client';
 import { Icon } from '../../general';
-import { FridayCoinsVariation, PercentageVariation } from '../../market';
+import { FridayCoinsGains, PercentageVariation } from '../../market';
 
 export interface BoosterThumbnailProps {
   booster: Booster;
@@ -25,7 +25,7 @@ export function BoosterThumbnail({ booster, onStop }: BoosterThumbnailProps): Re
         </div>
 
         <div className="variations">
-          <FridayCoinsVariation variation={booster.gains} size="medium" />
+          <FridayCoinsGains variation={booster.gains} size="medium" />
           <PercentageVariation variation={booster.variation} />
         </div>
       </div>

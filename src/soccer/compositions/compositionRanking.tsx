@@ -55,7 +55,7 @@ export function CompositionRanking({
             to={toComposition}
             onClick={onClickComposition ? (event) => onClickComposition(pinned, event) : undefined}
             showScore
-            showDividendsGains
+            showGains
           />
         </div>
       ) : null}

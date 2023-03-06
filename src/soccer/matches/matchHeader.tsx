@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 import { Match } from '@fridaygame/client';
 import { MatchStatusThumbnail } from './matchStatusThumbnail';
-import { FridayCoinsVariation } from '../../market';
+import { FridayCoinsGains } from '../../market';
 
 export type MatchHeaderTheme = 'dark' | 'light';
 
@@ -19,7 +19,7 @@ export function MatchHeader({ match, theme = 'dark' }: MatchHeaderProps): ReactE
       <span className="title">{match.title}</span>
       <div className="reward">
         <span className="label">Gain 1er:</span>
-        <FridayCoinsVariation variation={30000} />
+        <FridayCoinsGains variation={30000} />
       </div>
       {/* {match.creator && typeof match.creator === 'object' ? ( */}
       {/*  <div className="creator"> */}

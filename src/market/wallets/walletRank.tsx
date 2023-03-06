@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import { Wrapper } from '@cezembre/fronts';
-import { FridayCoinsVariation } from '../fridayCoinsVariation';
+import { FridayCoinsGains } from '../fridayCoinsGains';
 import { FridayCoins } from '../fridayCoins';
 import { Score } from '../../general';
 import { WalletThumbnail, WalletThumbnailProps } from './walletThumbnail';
@@ -9,7 +9,7 @@ export interface WalletRankProps extends WalletThumbnailProps {
   position?: number;
   score?: number;
   amount?: number;
-  variation?: number;
+  gains?: number;
 }
 
 export function WalletRank({
@@ -26,7 +26,7 @@ export function WalletRank({
   position,
   score,
   amount,
-  variation,
+  gains,
 }: WalletRankProps): ReactElement {
   return (
     <Wrapper
@@ -54,9 +54,7 @@ export function WalletRank({
         {typeof amount === 'number' ? (
           <FridayCoins amount={amount} theme={theme} size={size} />
         ) : null}
-        {typeof variation === 'number' ? (
-          <FridayCoinsVariation variation={variation} size={size} />
-        ) : null}
+        {typeof gains === 'number' ? <FridayCoinsGains variation={gains} size={size} /> : null}
       </div>
     </Wrapper>
   );

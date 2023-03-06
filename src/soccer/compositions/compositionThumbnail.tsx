@@ -7,8 +7,8 @@ export interface CompositionThumbnailProps extends WrapperProps {
   composition: Composition;
   size?: WalletThumbnailSize;
   theme?: WalletThumbnailTheme;
+  showGains?: boolean;
   showScore?: boolean;
-  showDividendsGains?: boolean;
 }
 
 export function CompositionThumbnail({
@@ -19,8 +19,8 @@ export function CompositionThumbnail({
   onClick,
   href,
   target,
+  showGains,
   showScore,
-  showDividendsGains,
 }: CompositionThumbnailProps): ReactElement | null {
   if (!composition.wallet || typeof composition.wallet !== 'object') {
     return null;
@@ -35,8 +35,8 @@ export function CompositionThumbnail({
       href={href}
       target={target}
       position={composition.position}
+      gains={showGains ? composition.gains : undefined}
       score={showScore ? composition.score : undefined}
-      variation={showDividendsGains ? composition.dividends_gains : undefined}
     />
   );
 }

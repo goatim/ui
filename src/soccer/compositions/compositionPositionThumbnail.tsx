@@ -3,7 +3,7 @@ import { Player } from '@fridaygame/client';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
 import { PlayerThumbnail } from '../players';
 import { Icon, Score, Tag, TagTheme } from '../../general';
-import { FridayCoinsVariation } from '../../market';
+import { FridayCoinsGains } from '../../market';
 
 export type CompositionPositionThumbnailTheme = 'dark' | 'light';
 
@@ -78,7 +78,7 @@ export function CompositionPositionThumbnail({
             {gains ? (
               <div className="metric">
                 <Tag theme={tagTheme}>
-                  <FridayCoinsVariation>{gains}</FridayCoinsVariation>
+                  <FridayCoinsGains>{gains}</FridayCoinsGains>
                 </Tag>
               </div>
             ) : null}
