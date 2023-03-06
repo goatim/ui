@@ -1,9 +1,7 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import { Club, Composition, CompositionSetting, Player } from '@fridaygame/client';
-import CompositionPositionList, {
-  CompositionPositionListTheme,
-} from '../../../src/soccer/compositions/compositionPositionList';
+import { Club, CompositionPosition, Player } from '@fridaygame/client';
+import { CompositionPositionList, CompositionPositionListTheme } from '../../../src';
 
 interface Props {
   theme?: CompositionPositionListTheme;
@@ -48,28 +46,24 @@ const player: Player = {
   resolved_position: 'Attaquant centre',
 };
 
-const composition: Composition = {
-  id: 'co_qkuehd456',
-  goalkeeper: player,
-  positions: [
-    {
-      id: '5',
-      player,
-    },
-    {
-      id: '3',
-      player,
-    },
-  ],
-};
+const positions: CompositionPosition[] = [
+  {
+    id: '5',
+    player,
+    nb_shares: 3,
+    leverage: 1,
+  },
+  {
+    id: '3',
+    player,
+    nb_shares: 4,
+    leverage: 2,
+  },
+];
 
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({ theme }: Props) => (
   <div style={{ width: 400 }}>
-    <CompositionPositionList
-      theme={theme}
-      composition={composition}
-      onPositionClick={console.log}
-    />
+    <CompositionPositionList theme={theme} positions={positions} onPositionClick={console.log} />
   </div>
 );
 

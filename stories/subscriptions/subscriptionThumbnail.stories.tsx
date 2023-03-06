@@ -1,9 +1,11 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import SubscriptionThumbnail, {
+import {
   Subscription,
+  SubscriptionThumbnail,
   SubscriptionThumbnailTheme,
-} from '../../src/subscriptions/subscriptionThumbnail';
+} from '../../src';
+
 // import { Subscription } from '@fridaygame/client';
 
 interface Props {

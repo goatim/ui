@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import Upload from '../../src/general/upload';
+import { Upload } from '../../src';
 
 interface Props {
   label?: string;

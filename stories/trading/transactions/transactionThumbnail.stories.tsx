@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { Asset, Club, Player, Transaction, Wallet } from '@fridaygame/client';
 import { BrowserRouter } from 'react-router-dom';
-import TransactionThumbnail from '../../../src/trading/transactions/transactionThumbnail';
+import { TransactionThumbnail } from '../../../src';
 
 interface Props {}
 

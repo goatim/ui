@@ -1,16 +1,16 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import {
-  Match,
-  Wallet,
-  User,
-  PhysicalEvent,
-  Club,
-  Player,
   Asset,
+  Club,
   Dividend,
+  Match,
+  PhysicalEvent,
+  Player,
+  User,
+  Wallet,
 } from '@fridaygame/client';
-import MatchFeed, { MatchFeedTheme } from '../../../src/soccer/matches/matchFeed';
+import { MatchFeed, MatchFeedTheme } from '../../../src';
 
 interface Props {
   theme?: MatchFeedTheme;

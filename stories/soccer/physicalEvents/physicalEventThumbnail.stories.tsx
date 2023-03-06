@@ -1,9 +1,10 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { Asset, Club, Dividend, PhysicalEvent, Player } from '@fridaygame/client';
-import PhysicalEventThumbnail, {
+import {
+  PhysicalEventThumbnail,
   PhysicalEventThumbnailTheme,
-} from '../../../src/soccer/physicalEvents/physicalEventThumbnail';
+} from '../../../src';
 
 interface Props {
   theme?: PhysicalEventThumbnailTheme;

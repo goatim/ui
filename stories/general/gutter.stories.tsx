@@ -1,6 +1,6 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ReactElement, useEffect, useState } from 'react';
-import Gutter, { Props } from '../../src/general/gutter';
+import { Gutter, Props } from '../../src';
 
 export default {
   title: 'General/Gutter',

@@ -1,9 +1,11 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor, useCallback } from 'react';
-import { useModals, ModalsContext } from '../../src';
-import OnboardingCarousel, {
+import {
+  ModalsContext,
+  OnboardingCarousel,
   OnboardingCarouselSlideData,
-} from '../../src/onboarding/onboardingCarousel';
+  useModals,
+} from '../../src';
 import onboarding1 from '../onboarding/assets/onboarding1.jpg';
 import onboarding2 from '../onboarding/assets/onboarding2.jpg';
 import onboarding3 from '../onboarding/assets/onboarding3.jpg';

@@ -1,7 +1,7 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { Model } from '@fridaygame/client';
-import Table, { TableColumn } from '../../src/general/table';
+import { Table, TableColumn } from '../../src';
 
 interface Props {
   active?: boolean;

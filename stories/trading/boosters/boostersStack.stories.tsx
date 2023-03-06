@@ -1,15 +1,13 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { Booster } from '@fridaygame/client';
-import BoosterStack from '../../../src/trading/boosters/boosterStack';
-
-interface Props {}
+import { BoosterStack } from '../../../src';
 
 export default {
   title: 'Trading/BoosterStack',
   component: BoosterStack,
   argTypes: {},
-} as ComponentMeta<JSXElementConstructor<Props>>;
+} as ComponentMeta<JSXElementConstructor<unknown>>;
 
 const activeBooster: Booster = {
   id: 'bi_dqqzjkoid55',
@@ -43,7 +41,7 @@ const inactiveBooster2: Booster = {
   stopped_at: '2021-11-04 14:07:26.679000 +00:00',
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
+const Template: ComponentStory<JSXElementConstructor<unknown>> = () => (
   <BoosterStack
     boosters={[activeBooster, inactiveBooster1, inactiveBooster2]}
     onStopBooster={() => undefined}

@@ -1,9 +1,10 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { PackFactory } from '@fridaygame/client';
-import PackFactoryCarousel, {
+import {
+  PackFactoryCarousel,
   PackFactoryCarouselSize,
-} from '../../../src/trading/packs/packFactoryCarousel';
+} from '../../../src';
 
 interface Props {
   size?: PackFactoryCarouselSize;

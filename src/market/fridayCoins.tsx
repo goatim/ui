@@ -1,5 +1,6 @@
 import { ReactElement } from 'react';
 import { formatFridayCoinsAmount } from '@fridaygame/client';
+import { Icon } from '../general';
 
 export type FridayCoinsSize = 'small' | 'medium' | 'big' | 'large';
 
@@ -21,8 +22,11 @@ export function FridayCoins({
   theme = 'dark',
 }: FridayCoinsProps): ReactElement {
   return (
-    <span className={`friday-ui-friday-coins ${size} ${theme}`}>
-      {formatFridayCoinsAmount(children || amount || 0, decimalDigits)}
-    </span>
+    <div className={`friday-ui-friday-coins ${size} ${theme}`}>
+      <div className="container">
+        <span>{formatFridayCoinsAmount(children || amount || 0, decimalDigits, false)}</span>
+        <Icon name="friday-coin" />
+      </div>
+    </div>
   );
 }

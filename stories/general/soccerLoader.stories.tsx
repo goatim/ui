@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import SoccerLoader from '../../src/general/soccerLoader';
+import { SoccerLoader } from '../../src';
 
 interface Props {}
 

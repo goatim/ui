@@ -1,12 +1,13 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { User, Wallet } from '@fridaygame/client';
-import WalletThumbnail, {
+import {
+  WalletPictureOutline,
+  WalletThumbnail,
   WalletThumbnailShape,
   WalletThumbnailSize,
   WalletThumbnailTheme,
-} from '../../../src/market/wallets/walletThumbnail';
-import { WalletPictureOutline } from '../../../src';
+} from '../../../src';
 
 interface Props {
   size?: WalletThumbnailSize;

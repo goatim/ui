@@ -1,10 +1,11 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { User, Wallet } from '@fridaygame/client';
-import WalletRank, {
+import {
+  WalletRank,
   WalletThumbnailSize,
   WalletThumbnailTheme,
-} from '../../../src/market/wallets/walletRank';
+} from '../../../src';
 
 interface Props {
   size?: WalletThumbnailSize;

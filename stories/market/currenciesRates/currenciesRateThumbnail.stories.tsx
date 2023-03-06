@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { CurrenciesRate, Currency } from '@fridaygame/client';
-import CurrenciesRateThumbnail from '../../../src/market/currenciesRates/currenciesRateThumbnail';
+import { CurrenciesRateThumbnail } from '../../../src';
 
 interface Props {}
 

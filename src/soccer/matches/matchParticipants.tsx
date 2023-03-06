@@ -6,7 +6,7 @@ export interface MatchParticipantsProps {
 }
 
 export function MatchParticipants({ nb_participants }: MatchParticipantsProps): ReactElement {
-  const tag = useMemo<string>(() => {
+  const label = useMemo<string>(() => {
     if (!nb_participants) {
       return 'Aucun participant';
     }
@@ -15,5 +15,5 @@ export function MatchParticipants({ nb_participants }: MatchParticipantsProps): 
     }
     return `${nb_participants} participants`;
   }, [nb_participants]);
-  return <Tag>{tag}</Tag>;
+  return <Tag size="medium" theme="full-electric-blue" label={label} />;
 }

@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Form, Field } from '@cezembre/forms';
 import { JSXElementConstructor } from 'react';
 import { adaptFridayCoins, resolveFridayCoins } from '@fridaygame/client';
-import Counter from '../../src/general/counter';
+import { Counter } from '../../src';
 
 interface Props {
   label?: string;

@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { Asset, Player, Club, Order, Booster, OrderType } from '@fridaygame/client';
-import OrderList from '../../../src/trading/orders/orderList';
+import { OrderList } from '../../../src';
 
 interface Props {
   type?: OrderType;

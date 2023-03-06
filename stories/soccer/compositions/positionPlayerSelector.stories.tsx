@@ -1,8 +1,8 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Form, Field } from '@cezembre/forms';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Field, Form } from '@cezembre/forms';
 import { JSXElementConstructor } from 'react';
 import { Club, CompositionSetting, Player } from '@fridaygame/client';
-import PositionPlayerSelector from '../../../src/soccer/compositions/positionPlayerSelector';
+import { PositionPlayerSelector } from '../../../src';
 
 interface Props {}
 

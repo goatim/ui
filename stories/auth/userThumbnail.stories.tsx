@@ -1,7 +1,7 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { User } from '@fridaygame/client';
-import UserThumbnail, { UserThumbnailSize } from '../../src/auth/users/userThumbnail';
+import { UserThumbnail, UserThumbnailSize } from '../../src';
 
 interface Props {
   size?: UserThumbnailSize;

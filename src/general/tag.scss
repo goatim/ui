@@ -2,10 +2,117 @@
 
 .friday-ui-tag {
   display: inline-block;
-  font-size: .8em;
-  color: colors.$electric-blue;
-  font-weight: 600;
-  background: rgba(colors.$electric-blue, .1);
-  padding: 8px 15px;
-  border-radius: 20px;
+  margin: 0;
+  padding: 0;
+  background: white;
+
+  > .container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    > .label {
+      font-size: .7em;
+      font-weight: bold;
+    }
+
+    > svg {
+      margin-right: 5px;
+    }
+  }
+
+  &.small {
+    padding: 4px 8px;
+    border-radius: 4px;
+  }
+
+  &.medium {
+    padding: 8px 15px;
+    border-radius: 20px;
+
+    > .container {
+      > .label {
+        font-size: .8em;
+      }
+
+      > svg {
+        margin-right: 6px;
+      }
+    }
+  }
+
+  &.big {
+    padding: 10px 15px;
+    border-radius: 20px;
+
+    > .container {
+      > .label {
+        font-size: .9em;
+      }
+
+      > svg {
+        margin-right: 8px;
+      }
+    }
+  }
+
+  &.light-medium-blue {
+    > .container > .label {
+      color: colors.$blue-50;
+    }
+
+    > .container > svg[stroke] {
+      stroke: colors.$blue-50;
+    }
+
+    > .container > svg:not([stroke]) {
+      fill: colors.$blue-50;
+    }
+  }
+
+  &.light-fushia {
+    > .container > .label {
+      color: colors.$fushia;
+    }
+
+    > .container > svg[stroke] {
+      stroke: colors.$fushia;
+    }
+
+    > .container > svg:not([stroke]) {
+      fill: colors.$fushia;
+    }
+  }
+
+  &.dark-white {
+    background: colors.$blue-80;
+
+    > .container > .label {
+      color: white;
+    }
+
+    > .container > svg[stroke] {
+      color: white;
+    }
+
+    > .container > svg:not([stroke]) {
+      fill: white;
+    }
+  }
+
+  &.full-electric-blue {
+    background: rgba(colors.$electric-blue, .1);
+
+    > .container > .label {
+      color: colors.$electric-blue;
+    }
+
+    > .container > svg[stroke] {
+      stroke: colors.$electric-blue;
+    }
+
+    > .container > svg:not([stroke]) {
+      fill: colors.$electric-blue;
+    }
+  }
 }

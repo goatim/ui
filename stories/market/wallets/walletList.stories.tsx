@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { User, Wallet } from '@fridaygame/client';
-import WalletList from '../../../src/market/wallets/walletList';
+import { WalletList } from '../../../src';
 
 interface Props {
   length?: number;

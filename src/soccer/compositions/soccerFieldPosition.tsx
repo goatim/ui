@@ -19,7 +19,7 @@ export function SoccerFieldPosition({
   icon,
   firstName,
   lastName,
-  size = 'small',
+  size = 'medium',
   theme,
   to,
   onClick,
@@ -33,13 +33,15 @@ export function SoccerFieldPosition({
       onClick={onClick}
       href={href}
       target={target}>
-      {icon === null ? (
-        <div className="no-icon">
-          <Icon name="user" />
-        </div>
-      ) : null}
-      {icon?.thumbnail_url ? <img src={icon.thumbnail_url} alt="Soccer Field Position" /> : null}
-      {icon === undefined ? <div className="placeholder" /> : null}
+      <div className="icon">
+        {icon === null ? (
+          <div className="no-icon">
+            <Icon name="user" />
+          </div>
+        ) : null}
+        {icon?.thumbnail_url ? <img src={icon.thumbnail_url} alt="Soccer Field Position" /> : null}
+        {icon === undefined ? <div className="placeholder" /> : null}
+      </div>
       <span>{formatPlayerName(firstName, lastName)}</span>
     </Wrapper>
   );

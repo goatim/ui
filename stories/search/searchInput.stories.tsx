@@ -1,7 +1,7 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { Asset, Club, Player, SearchResult } from '@fridaygame/client';
-import SearchInput, { SearchInputTheme } from '../../src/search/searchInput';
+import { SearchInput, SearchInputTheme } from '../../src';
 
 interface Props {
   theme?: SearchInputTheme;

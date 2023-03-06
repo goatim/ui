@@ -5,7 +5,7 @@
   align-items: center;
   justify-content: space-between;
 
-  > .player {
+  > .container {
     background: none;
     border: none;
     outline: none;
@@ -17,10 +17,25 @@
     flex: 1;
     -webkit-touch-callout: none;
     user-select: none;
+
+    > .metrics {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin-top: 5px;
+
+      > .metric {
+        margin-left: 5px;
+
+        &:first-of-type {
+          margin: 0;
+        }
+      }
+    }
   }
 
-  > button.player,
-  > a.player {
+  > button.container,
+  > a.container {
     cursor: pointer;
 
     &:hover {
@@ -47,8 +62,8 @@
   }
 
   &.light {
-    > button.player,
-    > a.player {
+    > button.container,
+    > a.container {
       &:hover {
         background: rgba(white, .1);
       }

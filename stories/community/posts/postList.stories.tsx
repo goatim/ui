@@ -1,16 +1,16 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import {
-  Club,
-  Player,
   Asset,
+  Club,
+  Pack,
+  PackFactory,
+  Player,
   Post,
   Transaction,
   Wallet,
-  Pack,
-  PackFactory,
 } from '@fridaygame/client';
-import PostList from '../../../src/community/posts/postList';
+import { PostList } from '../../../src';
 import { PostThumbnailSize } from '../../../src';
 
 interface Props {

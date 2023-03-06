@@ -1,13 +1,14 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Form, Field } from '@cezembre/forms';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Field, Form } from '@cezembre/forms';
 import { JSXElementConstructor } from 'react';
-import Input, {
+import {
+  Input,
   InputShape,
   InputSize,
   InputTheme,
   Suggestion,
   SuggestionsNamespace,
-} from '../../src/general/input';
+} from '../../src';
 
 interface Props {
   label?: string;

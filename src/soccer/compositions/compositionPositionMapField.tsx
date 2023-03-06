@@ -16,17 +16,12 @@ export interface CompositionPositionMapFieldValuePosition {
   player: Player;
 }
 
-export interface CompositionPositionMapFieldValue {
-  goalkeeper?: Player;
-  positions?: CompositionPositionMapFieldValuePosition[];
-}
-
 export type GetPositionPlayersFunction = (
   position?: PlayerPosition[] | PlayerPosition,
 ) => Promise<Player[] | undefined> | Player[] | undefined;
 
 export interface CompositionPositionMapFieldProps
-  extends FieldComponentProps<CompositionPositionMapFieldValue> {
+  extends FieldComponentProps<CompositionPositionMapFieldValuePosition[]> {
   compositionSetting?: CompositionSetting;
   getPositionPlayers?: GetPositionPlayersFunction;
   theme?: CompositionPositionMapTheme;
@@ -56,27 +51,25 @@ export function CompositionPositionMapField({
 
       const resolvedPosition: string = typeof position === 'object' ? position.id : position;
 
-      const nextValue: CompositionPositionMapFieldValue = value
+      let nextValue: CompositionPositionMapFieldValuePosition[] = value
         ? JSON.parse(JSON.stringify(value))
-        : {};
+        : [];
 
-      if (position === 'goalkeeper') {
-        nextValue.goalkeeper = resolvedPlayer;
-      } else if (!nextValue.positions && resolvedPlayer) {
-        nextValue.positions = [{ id: resolvedPosition, player: resolvedPlayer }];
-      } else if (nextValue.positions) {
-        const index = nextValue.positions.findIndex(
+      if (!nextValue && resolvedPlayer) {
+        nextValue = [{ id: resolvedPosition, player: resolvedPlayer }];
+      } else if (nextValue) {
+        const index = nextValue.findIndex(
           (_position: CompositionPosition) => _position.id === resolvedPosition,
         );
 
         if (index !== -1) {
           if (resolvedPlayer) {
-            nextValue.positions[index] = { id: resolvedPosition, player: resolvedPlayer };
+            nextValue[index] = { id: resolvedPosition, player: resolvedPlayer };
           } else {
-            nextValue.positions.splice(index, 1);
+            nextValue.splice(index, 1);
           }
         } else if (resolvedPlayer) {
-          nextValue.positions.push({ id: resolvedPosition, player: resolvedPlayer });
+          nextValue.push({ id: resolvedPosition, player: resolvedPlayer });
         }
       }
 
@@ -104,17 +97,9 @@ export function CompositionPositionMapField({
         }
       }
 
-      let playerValue: Player | undefined;
-
       const resolvedPosition: string = typeof position === 'object' ? position.id : position;
 
-      if (resolvedPosition === 'goalkeeper') {
-        playerValue = value?.goalkeeper;
-      } else {
-        playerValue = value?.positions?.find(
-          (_position) => _position.id === resolvedPosition,
-        )?.player;
-      }
+      const playerValue = value?.find((_position) => _position.id === resolvedPosition)?.player;
 
       pushModal({
         type: 'overlay',
@@ -135,22 +120,14 @@ export function CompositionPositionMapField({
         ),
       });
     },
-    [
-      changePositionPlayer,
-      compositionSetting?.name,
-      form,
-      getPositionPlayers,
-      pushModal,
-      value?.goalkeeper,
-      value?.positions,
-    ],
+    [changePositionPlayer, compositionSetting?.name, form, getPositionPlayers, pushModal, value],
   );
 
   return (
     <div className="friday-ui-composition-positions-map-field">
       <CompositionPositionMap
         compositionSetting={compositionSetting}
-        composition={value}
+        positions={value}
         onPositionClick={!readonly ? onPositionClick : undefined}
         theme={theme}
       />

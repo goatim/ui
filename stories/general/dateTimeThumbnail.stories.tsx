@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import DateTimeThumbnail from '../../src/general/dateTimeThumbnail';
+import { DateTimeThumbnail } from '../../src/general/dateTimeThumbnail';
 
 interface Props {}
 

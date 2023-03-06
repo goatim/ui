@@ -5,6 +5,7 @@ import {
   Coins,
   Ether,
   Friday,
+  FridayCoin,
   FridayIcon,
   Mastercard,
   Money,
@@ -325,6 +326,7 @@ export type IconName =
   | 'podium'
   | 'receive-coin'
   | 'soccer-goal'
+  | 'friday-coin'
   | 'trading';
 
 export interface IconProps extends SvgIconProps {
@@ -945,6 +947,8 @@ export function Icon({
       return <SoccerGoal size={size} />;
     case 'trading':
       return <Trading size={size} />;
+    case 'friday-coin':
+      return <FridayCoin size={size} />;
     default:
       return <Slash size={size} />;
   }

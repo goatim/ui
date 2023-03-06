@@ -13,7 +13,7 @@ import {
   Match,
   Composition,
 } from '@fridaygame/client';
-import PostThumbnail from '../../../src/community/posts/postThumbnail';
+import { PostThumbnail } from '../../../src';
 
 interface Props {
   type?: keyof PostTypeMap;

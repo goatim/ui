@@ -1,22 +1,25 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Form, Field } from '@cezembre/forms';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Field, Form } from '@cezembre/forms';
 import { JSXElementConstructor } from 'react';
-import { Club, CompositionSetting, Player, CompositionSettingPosition } from '@fridaygame/client';
-import CompositionPositionMapField from '../../../src/soccer/compositions/compositionPositionMapField';
-import { ModalsContext } from '../../../src';
-
-interface Props {}
+import { Club, CompositionSetting, CompositionSettingPosition, Player } from '@fridaygame/client';
+import { CompositionPositionMapField, ModalsContext } from '../../../src';
 
 export default {
   title: 'Soccer/CompositionPositionMapField',
   component: CompositionPositionMapField,
   decorators: [(story) => <ModalsContext>{story()}</ModalsContext>],
-} as ComponentMeta<JSXElementConstructor<Props>>;
+} as ComponentMeta<JSXElementConstructor<unknown>>;
 
 const compositionSetting: CompositionSetting = {
   id: 'cs_edsefqed',
   name: '4-3-3 Classique',
   positions: [
+    {
+      id: '0',
+      name: 'Gardien',
+      x: 0.5,
+      y: 1,
+    },
     {
       id: '1',
       name: 'Arrière gauche',
@@ -110,7 +113,8 @@ const players: Player[] = [
   {
     id: 'pl_qefs33354',
     club,
-    name: 'Lionel Messi',
+    first_name: 'Kylian',
+    last_name: 'Mbappé',
     number: 10,
     position: 'forward',
     side: 'left',
@@ -119,7 +123,8 @@ const players: Player[] = [
   {
     id: 'pl_qe84fs54',
     club,
-    name: 'Lionel Messi',
+    first_name: 'Kylian',
+    last_name: 'Mbappé',
     number: 10,
     position: 'forward',
     side: 'left',
@@ -128,7 +133,8 @@ const players: Player[] = [
   {
     id: 'pl_qe524fs54',
     club,
-    name: 'Lionel Messi',
+    first_name: 'Kylian',
+    last_name: 'Mbappé',
     number: 10,
     position: 'forward',
     side: 'left',
@@ -137,7 +143,8 @@ const players: Player[] = [
   {
     id: 'pl_qedcwefs54',
     club,
-    name: 'Lionel Messi',
+    first_name: 'Kylian',
+    last_name: 'Mbappé',
     number: 10,
     position: 'forward',
     side: 'left',
@@ -146,7 +153,8 @@ const players: Player[] = [
   {
     id: 'pl_qkhikefs54',
     club,
-    name: 'Lionel Messi',
+    first_name: 'Kylian',
+    last_name: 'Mbappé',
     number: 10,
     position: 'forward',
     side: 'left',
@@ -155,7 +163,8 @@ const players: Player[] = [
   {
     id: 'pl_qeqzdcfs54',
     club,
-    name: 'Lionel Messi',
+    first_name: 'Kylian',
+    last_name: 'Mbappé',
     number: 10,
     position: 'forward',
     side: 'left',
@@ -164,7 +173,8 @@ const players: Player[] = [
   {
     id: 'pl_qefqzds54',
     club,
-    name: 'Lionel Messi',
+    first_name: 'Kylian',
+    last_name: 'Mbappé',
     number: 10,
     position: 'forward',
     side: 'left',
@@ -173,7 +183,8 @@ const players: Player[] = [
   {
     id: 'pl_qtfhefs54',
     club,
-    name: 'Lionel Messi',
+    first_name: 'Kylian',
+    last_name: 'Mbappé',
     number: 10,
     position: 'forward',
     side: 'left',
@@ -189,7 +200,7 @@ function getPositionPlayers(position: CompositionSettingPosition): Promise<Playe
   });
 }
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
+const Template: ComponentStory<JSXElementConstructor<unknown>> = () => (
   <div style={{ width: 400 }}>
     <Form>
       <Field

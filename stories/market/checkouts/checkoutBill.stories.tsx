@@ -1,15 +1,13 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { Checkout } from '@fridaygame/client';
-import CheckoutBill from '../../../src/market/checkouts/checkoutBill';
-
-interface Props {}
+import { CheckoutBill } from '../../../src';
 
 export default {
   title: 'Market/CheckoutBill',
   component: CheckoutBill,
   argTypes: {},
-} as ComponentMeta<JSXElementConstructor<Props>>;
+} as ComponentMeta<JSXElementConstructor<unknown>>;
 
 const checkout: Checkout = {
   id: 'ch_dzqed546',
@@ -18,7 +16,7 @@ const checkout: Checkout = {
   total_to_pay: 4200,
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
+const Template: ComponentStory<JSXElementConstructor<unknown>> = () => (
   <CheckoutBill checkout={checkout} />
 );
 

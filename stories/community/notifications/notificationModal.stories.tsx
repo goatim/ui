@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { Notification, Club, Player, Asset } from '@fridaygame/client';
-import NotificationModal from '../../../src/community/notifications/notificationModal';
+import { NotificationModal } from '../../../src';
 
 interface Props {}
 

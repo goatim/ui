@@ -1,9 +1,10 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { Asset, Club, Player, Portfolio } from '@fridaygame/client';
-import PortfolioCarousel, {
+import {
+  PortfolioCarousel,
   PortfolioCarouselSize,
-} from '../../../src/trading/portfolios/portfolioCarousel';
+} from '../../../src';
 
 interface Props {
   size?: PortfolioCarouselSize;

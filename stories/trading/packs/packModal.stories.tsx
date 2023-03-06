@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor, ReactElement, useCallback } from 'react';
 import { Asset, Club, Player, Pack, PackFactory } from '@fridaygame/client';
-import PackModal from '../../../src/trading/packs/packModal';
+import { PackModal } from '../../../src';
 import { useModals, ModalsContext } from '../../../src';
 
 interface Props {}

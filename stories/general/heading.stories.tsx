@@ -1,6 +1,6 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import Heading, { HeadingTheme, HeadingLevel, HeadingSize } from '../../src/general/heading';
+import { Heading, HeadingLevel, HeadingSize, HeadingTheme } from '../../src';
 
 interface Props {
   label?: string;

@@ -1,9 +1,7 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import { Club, Composition, CompositionSetting, Player } from '@fridaygame/client';
-import CompositionPositionMap, {
-  CompositionPositionMapTheme,
-} from '../../../src/soccer/compositions/compositionPositionMap';
+import { Club, CompositionPosition, CompositionSetting, Player } from '@fridaygame/client';
+import { CompositionPositionMap, CompositionPositionMapTheme } from '../../../src';
 
 interface Props {
   theme?: CompositionPositionMapTheme;
@@ -109,42 +107,38 @@ const player: Player = {
   id: '1',
   club,
   first_name: 'Kylian',
-  last_name: 'Mbappé Joshua Méteillé',
+  last_name: 'Mbappé',
   number: 10,
   position: 'forward',
   side: 'left',
   resolved_position: 'Attaquant centre',
 };
 
-const composition: Composition = {
-  id: 'co_qkuehd456',
-  goalkeeper: player,
-  positions: [
-    {
-      id: '5',
-      player,
-    },
-    {
-      id: '4',
-      player,
-    },
-    {
-      id: '2',
-      player,
-    },
-    {
-      id: '3',
-      player,
-    },
-  ],
-};
+const positions: CompositionPosition[] = [
+  {
+    id: '5',
+    player,
+  },
+  {
+    id: '4',
+    player,
+  },
+  {
+    id: '2',
+    player,
+  },
+  {
+    id: '3',
+    player,
+  },
+];
 
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({ theme }: Props) => (
   <div style={{ width: 400 }}>
     <CompositionPositionMap
       theme={theme}
       compositionSetting={compositionSetting}
-      composition={composition}
+      positions={positions}
       onPositionClick={console.log}
     />
   </div>

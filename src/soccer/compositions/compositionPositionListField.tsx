@@ -16,13 +16,8 @@ export interface CompositionPositionListFieldValuePosition {
   player: Player;
 }
 
-export interface CompositionPositionListFieldValue {
-  goalkeeper?: Player;
-  positions?: CompositionPositionListFieldValuePosition[];
-}
-
 export interface CompositionPositionListFieldProps
-  extends FieldComponentProps<CompositionPositionListFieldValue> {
+  extends FieldComponentProps<CompositionPositionListFieldValuePosition[]> {
   compositionSetting?: CompositionSetting;
   getPositionPlayers?: GetPositionPlayersFunction;
   theme?: CompositionPositionListTheme;
@@ -52,27 +47,25 @@ export function CompositionPositionListField({
 
       const resolvedPosition: string = typeof position === 'object' ? position.id : position;
 
-      const nextValue: CompositionPositionListFieldValue = value
+      let nextValue: CompositionPositionListFieldValuePosition[] = value
         ? JSON.parse(JSON.stringify(value))
-        : {};
+        : [];
 
-      if (position === 'goalkeeper') {
-        nextValue.goalkeeper = resolvedPlayer;
-      } else if (!nextValue.positions && resolvedPlayer) {
-        nextValue.positions = [{ id: resolvedPosition, player: resolvedPlayer }];
-      } else if (nextValue.positions) {
-        const index = nextValue.positions.findIndex(
+      if (!nextValue && resolvedPlayer) {
+        nextValue = [{ id: resolvedPosition, player: resolvedPlayer }];
+      } else if (nextValue) {
+        const index = nextValue.findIndex(
           (_position: CompositionPosition) => _position.id === resolvedPosition,
         );
 
         if (index !== -1) {
           if (resolvedPlayer) {
-            nextValue.positions[index] = { id: resolvedPosition, player: resolvedPlayer };
+            nextValue[index] = { id: resolvedPosition, player: resolvedPlayer };
           } else {
-            nextValue.positions.splice(index, 1);
+            nextValue.splice(index, 1);
           }
         } else if (resolvedPlayer) {
-          nextValue.positions.push({ id: resolvedPosition, player: resolvedPlayer });
+          nextValue.push({ id: resolvedPosition, player: resolvedPlayer });
         }
       }
 
@@ -82,7 +75,7 @@ export function CompositionPositionListField({
   );
 
   const onPositionClick = useCallback(
-    async (position: CompositionSettingPosition | 'goalkeeper') => {
+    async (position: CompositionSettingPosition) => {
       let players: Player[] | undefined;
 
       if (getPositionPlayers) {
@@ -100,17 +93,9 @@ export function CompositionPositionListField({
         }
       }
 
-      let playerValue: Player | undefined;
-
       const resolvedPosition: string = typeof position === 'object' ? position.id : position;
 
-      if (resolvedPosition === 'goalkeeper') {
-        playerValue = value?.goalkeeper;
-      } else {
-        playerValue = value?.positions?.find(
-          (_position) => _position.id === resolvedPosition,
-        )?.player;
-      }
+      const playerValue = value?.find((_position) => _position.id === resolvedPosition)?.player;
 
       pushModal({
         type: 'overlay',
@@ -118,7 +103,7 @@ export function CompositionPositionListField({
           <PositionPlayerSelector
             players={players}
             value={playerValue}
-            position={typeof position === 'object' ? position.name : 'Gardien'}
+            position={position.name}
             compositionSetting={compositionSetting?.name}
             onChange={(player) => {
               changePositionPlayer(position, player);
@@ -131,15 +116,7 @@ export function CompositionPositionListField({
         ),
       });
     },
-    [
-      changePositionPlayer,
-      compositionSetting?.name,
-      form,
-      getPositionPlayers,
-      pushModal,
-      value?.goalkeeper,
-      value?.positions,
-    ],
+    [changePositionPlayer, compositionSetting?.name, form, getPositionPlayers, pushModal, value],
   );
 
   const onPositionDelete = useCallback(
@@ -152,7 +129,7 @@ export function CompositionPositionListField({
   return (
     <div className="friday-ui-composition-positions-list-field">
       <CompositionPositionList
-        composition={value}
+        positions={value}
         onPositionClick={!readonly ? onPositionClick : undefined}
         onPositionDelete={!readonly ? onPositionDelete : undefined}
         theme={theme}

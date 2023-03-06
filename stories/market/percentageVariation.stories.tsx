@@ -1,9 +1,10 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import PercentageVariation, {
+import {
+  PercentageVariation,
   PercentageVariationShape,
   PercentageVariationSize,
-} from '../../src/market/percentageVariation';
+} from '../../src';
 
 interface Props {
   variation?: number;

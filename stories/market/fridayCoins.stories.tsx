@@ -1,6 +1,6 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import FridayCoins, { FridayCoinsSize, FridayCoinsTheme } from '../../src/market/fridayCoins';
+import { FridayCoins, FridayCoinsSize, FridayCoinsTheme } from '../../src';
 
 interface Props {
   amount?: number;

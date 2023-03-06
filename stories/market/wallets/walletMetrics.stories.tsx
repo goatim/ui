@@ -1,7 +1,7 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { User, Wallet } from '@fridaygame/client';
-import WalletMetrics, { WalletMetricsSize } from '../../../src/market/wallets/walletMetrics';
+import { WalletMetrics, WalletMetricsSize } from '../../../src';
 
 interface Props {
   size?: WalletMetricsSize;

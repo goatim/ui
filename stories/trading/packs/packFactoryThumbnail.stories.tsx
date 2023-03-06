@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { PackFactory } from '@fridaygame/client';
-import PackFactoryThumbnail from '../../../src/trading/packs/packFactoryThumbnail';
+import { PackFactoryThumbnail } from '../../../src';
 
 interface Props {}
 

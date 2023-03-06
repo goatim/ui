@@ -1,12 +1,13 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { Club, League } from '@fridaygame/client';
 import { BrowserRouter } from 'react-router-dom';
-import ClubThumbnail, {
+import {
+  ClubThumbnail,
+  ClubThumbnailShape,
   ClubThumbnailSize,
   ClubThumbnailTheme,
-  ClubThumbnailShape,
-} from '../../../src/soccer/clubs/clubThumbnail';
+} from '../../../src';
 
 interface Props {
   size?: ClubThumbnailSize;

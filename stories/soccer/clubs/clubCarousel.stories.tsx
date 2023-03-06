@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { Club } from '@fridaygame/client';
-import ClubCarousel from '../../../src/soccer/clubs/clubCarousel';
+import { ClubCarousel } from '../../../src';
 
 interface Props {
   length?: number;

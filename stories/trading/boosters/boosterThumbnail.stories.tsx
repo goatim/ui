@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { Booster } from '@fridaygame/client';
-import BoosterThumbnail from '../../../src/trading/boosters/boosterThumbnail';
+import { BoosterThumbnail } from '../../../src';
 
 interface Props {
   active?: boolean;

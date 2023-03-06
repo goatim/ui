@@ -16,3 +16,4 @@ export * from './tiktok';
 export * from './trading';
 export * from './trophy';
 export * from './visa';
+export * from './fridayCoin';

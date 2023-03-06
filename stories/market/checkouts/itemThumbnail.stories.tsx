@@ -1,7 +1,7 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import { Asset, Player, Club, BoosterFactory, Item } from '@fridaygame/client';
-import ItemThumbnail, { ItemThumbnailSize } from '../../../src/market/checkouts/itemThumbnail';
+import { Asset, BoosterFactory, Club, Item, Player } from '@fridaygame/client';
+import { ItemThumbnail, ItemThumbnailSize } from '../../../src';
 
 interface Props {
   size?: ItemThumbnailSize;

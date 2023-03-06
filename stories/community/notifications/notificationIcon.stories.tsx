@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import NotificationIcon from '../../../src/community/notifications/notificationIcon';
+import { NotificationIcon } from '../../../src';
 
 interface Props {
   event?: string;

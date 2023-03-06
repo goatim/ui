@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { Club, League } from '@fridaygame/client';
-import LeagueOverview from '../../../src/soccer/leagues/leagueOverview';
+import { LeagueOverview } from '../../../src';
 
 interface Props {}
 

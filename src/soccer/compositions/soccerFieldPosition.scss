@@ -9,33 +9,37 @@
   flex-direction: column;
   align-items: center;
 
-  > img {
-    object-fit: contain;
-    object-position: center center;
-    margin: 0;
-    padding: 0;
-    display: inline-block;
-  }
+  > .icon {
+    position: relative;
 
-  > .no-icon {
-    background: colors.$blue;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    > svg {
-      stroke: white;
+    > img {
+      object-fit: contain;
+      object-position: center center;
+      margin: 0;
+      padding: 0;
+      display: block;
     }
-  }
 
-  > .placeholder {
-    box-sizing: border-box;
-    display: block;
-    background: rgba(colors.$blue, .5);
-    border: solid colors.$blue 1px;
-    border-radius: 50%;
-    box-shadow: 0 5px 10px rgba(colors.$blue, .2);
+    > .no-icon {
+      background: colors.$blue;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      > svg {
+        stroke: white;
+      }
+    }
+
+    > .placeholder {
+      box-sizing: border-box;
+      display: block;
+      background: rgba(colors.$blue, .5);
+      border: solid colors.$blue 1px;
+      border-radius: 50%;
+      box-shadow: 0 5px 10px rgba(colors.$blue, .2);
+    }
   }
 
   > span {
@@ -43,23 +47,25 @@
     text-align: center;
     font-weight: 600;
     white-space: nowrap;
-    margin-top: 5px;
+    margin-top: 8px;
     overflow: hidden;
     text-overflow: ellipsis;
   }
 
   &.light {
-    > .no-icon {
-      background: white;
+    > .icon {
+      > .no-icon {
+        background: white;
 
-      > svg {
-        stroke: colors.$blue;
+        > svg {
+          stroke: colors.$blue;
+        }
       }
-    }
 
-    > .placeholder {
-      background: rgba(white, .5);
-      border: solid white 1px;
+      > .placeholder {
+        background: rgba(white, .5);
+        border: solid white 1px;
+      }
     }
 
     > span {
@@ -68,13 +74,15 @@
   }
 
   &.small {
-    > img, > .no-icon, > .placeholder {
-      width: 25px;
-      height: 25px;
-    }
+    > .icon {
+      > img, > .no-icon, > .placeholder {
+        width: 25px;
+        height: 25px;
+      }
 
-    > .placeholder {
-      border-width: 1px;
+      > .placeholder {
+        border-width: 1px;
+      }
     }
 
     > span {
@@ -83,13 +91,15 @@
   }
 
   &.medium {
-    > img, > .no-icon, > .placeholder {
-      width: 30px;
-      height: 30px;
-    }
+    > .icon {
+      > img, > .no-icon, > .placeholder {
+        width: 30px;
+        height: 30px;
+      }
 
-    > .placeholder {
-      border-width: 2px;
+      > .placeholder {
+        border-width: 2px;
+      }
     }
 
     > span {
@@ -98,13 +108,15 @@
   }
 
   &.large {
-    > img, > .no-icon, > .placeholder {
-      width: 60px;
-      height: 60px;
-    }
+    > .icon {
+      > img, > .no-icon, > .placeholder {
+        width: 60px;
+        height: 60px;
+      }
 
-    > .placeholder {
-      border-width: 3px;
+      > .placeholder {
+        border-width: 3px;
+      }
     }
 
     > span {

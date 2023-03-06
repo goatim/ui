@@ -1,7 +1,7 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import { Match, Wallet, User } from '@fridaygame/client';
-import MatchCarousel, { MatchCarouselSize } from '../../../src/soccer/matches/matchCarousel';
+import { Match, User, Wallet } from '@fridaygame/client';
+import { MatchCarousel, MatchCarouselSize } from '../../../src';
 
 interface Props {
   size?: MatchCarouselSize;

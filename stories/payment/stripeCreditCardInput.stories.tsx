@@ -3,7 +3,7 @@ import { Form, Field } from '@cezembre/forms';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 import { JSXElementConstructor } from 'react';
-import StripeCreditCardInput from '../../src/payment/stripeCreditCardInput';
+import { StripeCreditCardInput } from '../../src';
 
 interface Props {
   label?: string;

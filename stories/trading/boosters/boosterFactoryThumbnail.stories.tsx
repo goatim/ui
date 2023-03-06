@@ -1,10 +1,11 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { BoosterFactory } from '@fridaygame/client';
-import BoosterFactoryThumbnail, {
+import {
+  BoosterFactoryThumbnail,
   BoosterFactoryThumbnailShape,
   BoosterFactoryThumbnailSize,
-} from '../../../src/trading/boosters/boosterFactoryThumbnail';
+} from '../../../src';
 
 interface Props {
   size?: BoosterFactoryThumbnailSize;

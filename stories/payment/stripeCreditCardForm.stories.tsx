@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 import { JSXElementConstructor } from 'react';
-import StripeCreditCardForm from '../../src/payment/stripeCreditCardForm';
+import { StripeCreditCardForm } from '../../src';
 
 interface Props {}
 

@@ -11,7 +11,7 @@ import {
   Match,
   Composition,
 } from '@fridaygame/client';
-import NotificationThumbnail from '../../../src/community/notifications/notificationThumbnail';
+import { NotificationThumbnail } from '../../../src';
 
 interface Props {
   event: keyof NotificationEventMap;

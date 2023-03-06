@@ -2,30 +2,75 @@
 @use '../styles/colors';
 
 .friday-ui-friday-coins {
-  font-size: .7em;
-  font-weight: bold;
+  display: inline-block;
+
+  > .container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    > span {
+      font-size: .7em;
+      font-weight: bold;
+    }
+
+    > svg {
+      fill: colors.$blue;
+      margin-left: 5px;
+    }
+  }
 
   &.medium {
-    font-size: .8em;
+    > .container > span {
+      font-size: .8em;
+    }
   }
 
   &.big {
-    font-size: .9em;
+    > .container > span {
+      font-size: .9em;
+    }
   }
 
   &.large {
-    font-size: 1.1em;
+    > .container > span {
+      font-size: 1.1em;
+    }
   }
 
   &.light {
-    color: white;
+    > .container {
+      > span {
+        color: white;
+      }
+
+      > svg {
+        fill: white;
+      }
+    }
   }
 
   &.darker {
-    color: colors.$blue-50;
+    > .container {
+      > span {
+        color: colors.$blue-50;
+      }
+
+      > svg {
+        fill: colors.$blue-50;
+      }
+    }
   }
 
   &.gold {
-    color: colors.$gold
+    > .container {
+      > span {
+        color: colors.$gold;
+      }
+
+      > svg {
+        fill: colors.$gold;
+      }
+    }
   }
 }

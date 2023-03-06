@@ -4,12 +4,11 @@ import {
   Asset,
   Player,
   Club,
-  Booster,
   Ipo,
   QuotationHistory,
   BoosterFactory,
 } from '@fridaygame/client';
-import AssetOverview, { AssetOverviewSize } from '../../../src/trading/assets/assetOverview';
+import { AssetOverview, AssetOverviewSize } from '../../../src';
 
 interface Props {
   size: AssetOverviewSize;

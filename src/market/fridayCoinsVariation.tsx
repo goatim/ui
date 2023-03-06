@@ -1,5 +1,6 @@
 import { ReactElement, useMemo } from 'react';
 import { formatFridayCoinsVariation } from '@fridaygame/client';
+import { Icon } from '../general';
 
 export type FridayCoinsVariationSize = 'small' | 'medium' | 'big' | 'large';
 
@@ -26,8 +27,11 @@ export function FridayCoinsVariation({
   }, [variation, children]);
 
   return (
-    <span className={`friday-ui-friday-coins-variation ${sign} ${size} ${theme}`}>
-      {formatFridayCoinsVariation(children || variation || 0)}
-    </span>
+    <div className={`friday-ui-friday-coins-variation ${sign} ${size} ${theme}`}>
+      <div className="container">
+        <span>{formatFridayCoinsVariation(children || variation || 0, 2, false)}</span>
+        <Icon name="friday-coin" />
+      </div>
+    </div>
   );
 }

@@ -1,16 +1,14 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import A2HSBanner from '../../src/navigation/a2hsBanner';
-
-interface Props {}
+import { A2HSBanner } from '../../src';
 
 export default {
   title: 'Navigation/A2HSBanner',
   component: A2HSBanner,
   argTypes: {},
-} as ComponentMeta<JSXElementConstructor<Props>>;
+} as ComponentMeta<JSXElementConstructor<unknown>>;
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
+const Template: ComponentStory<JSXElementConstructor<unknown>> = () => (
   <A2HSBanner onDismiss={() => undefined} />
 );
 

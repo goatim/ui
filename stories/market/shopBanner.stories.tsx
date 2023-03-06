@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import ShopBanner from '../../src/market/shopBanner';
+import { ShopBanner } from '../../src';
 
 interface Props {}
 

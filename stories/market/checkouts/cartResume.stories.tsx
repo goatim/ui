@@ -1,7 +1,7 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { Asset, BoosterFactory, Club, Item, Player } from '@fridaygame/client';
-import CartResume, { CartResumeSize } from '../../../src/market/cartResume';
+import { CartResume, CartResumeSize } from '../../../src';
 
 interface Props {
   length?: number;

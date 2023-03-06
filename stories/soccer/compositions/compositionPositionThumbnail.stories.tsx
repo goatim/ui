@@ -1,9 +1,7 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { Club, Player } from '@fridaygame/client';
-import CompositionPositionThumbnail, {
-  CompositionPositionThumbnailTheme,
-} from '../../../src/soccer/compositions/compositionPositionThumbnail';
+import { CompositionPositionThumbnail, CompositionPositionThumbnailTheme } from '../../../src';
 
 interface Props {
   theme?: CompositionPositionThumbnailTheme;

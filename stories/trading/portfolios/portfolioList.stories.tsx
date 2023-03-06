@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { Asset, Player, Club, Portfolio } from '@fridaygame/client';
-import PortfolioList from '../../../src/trading/portfolios/portfolioList';
+import { PortfolioList } from '../../../src';
 import { PortfolioThumbnailSize } from '../../../src';
 
 interface Props {

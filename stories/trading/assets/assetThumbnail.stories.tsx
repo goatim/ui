@@ -1,11 +1,12 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { Asset, Player, Club, QuotationHistory } from '@fridaygame/client';
-import AssetThumbnail, {
+import {
+  AssetThumbnail,
   AssetThumbnailShape,
   AssetThumbnailSize,
   AssetThumbnailTheme,
-} from '../../../src/trading/assets/assetThumbnail';
+} from '../../../src';
 
 interface Props {
   shape?: AssetThumbnailShape;

@@ -1,7 +1,7 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { Club, League } from '@fridaygame/client';
-import LeagueCarousel, { LeagueCarouselSize } from '../../../src/soccer/leagues/leagueCarousel';
+import { LeagueCarousel, LeagueCarouselSize } from '../../../src';
 
 interface Props {
   size?: LeagueCarouselSize;

@@ -1,7 +1,7 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import { Asset, Player, Club, Order, Booster, OrderType } from '@fridaygame/client';
-import OrderThumbnail, { OrderThumbnailSize } from '../../../src/trading/orders/orderThumbnail';
+import { Asset, Booster, Club, Order, OrderType, Player } from '@fridaygame/client';
+import { OrderThumbnail, OrderThumbnailSize } from '../../../src';
 
 interface Props {
   type?: OrderType;

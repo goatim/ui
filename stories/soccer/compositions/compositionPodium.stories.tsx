@@ -1,9 +1,7 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { Composition } from '@fridaygame/client';
-import CompositionPodium from '../../../src/soccer/compositions/compositionPodium';
-
-interface Props {}
+import { CompositionPodium } from '../../../src';
 
 export default {
   title: 'Soccer/CompositionPodium',
@@ -16,7 +14,7 @@ export default {
       },
     },
   },
-} as ComponentMeta<JSXElementConstructor<Props>>;
+} as ComponentMeta<JSXElementConstructor<unknown>>;
 
 const composition1: Composition = {
   id: 'co_qkuehd456',
@@ -69,7 +67,7 @@ const composition3: Composition = {
   score: 950,
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
+const Template: ComponentStory<JSXElementConstructor<unknown>> = () => (
   <CompositionPodium compositions={[composition1, composition2, composition3]} />
 );
 

@@ -1,10 +1,11 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import { Image } from '@cezembre/fronts';
-import SoccerFieldPosition, {
+import { Image } from '@fridaygame/client';
+import {
+  SoccerFieldPosition,
   SoccerFieldPositionSize,
   SoccerFieldPositionTheme,
-} from '../../../src/soccer/compositions/soccerFieldPosition';
+} from '../../../src';
 
 interface Props {
   size?: SoccerFieldPositionSize;
@@ -49,7 +50,15 @@ const Template: ComponentStory<JSXElementConstructor<Props>> = ({
   is_defined,
   size,
   theme,
-}: Props) => <SoccerFieldPosition size={size} theme={theme} icon={is_defined ? icon : undefined} />;
+}: Props) => (
+  <SoccerFieldPosition
+    size={size}
+    theme={theme}
+    icon={is_defined ? icon : undefined}
+    firstName="Kylian"
+    lastName="Mbappé"
+  />
+);
 
 export const Default = Template.bind({});
 

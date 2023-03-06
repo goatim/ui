@@ -1,7 +1,7 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { Image } from '@fridaygame/client';
-import ClubIcon, { ClubIconSize } from '../../../src/soccer/clubs/clubIcon';
+import { ClubIcon, ClubIconSize } from '../../../src';
 
 interface Props {
   size?: ClubIconSize;

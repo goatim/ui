@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { QuotationHistory } from '@fridaygame/client';
-import QuotationHistoryGraph from '../../../src/trading/quotations/quotationHistoryGraph';
+import { QuotationHistoryGraph } from '../../../src';
 
 interface Props {
   height?: number;

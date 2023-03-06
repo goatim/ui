@@ -1,8 +1,8 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Form, Field } from '@cezembre/forms';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Field, Form } from '@cezembre/forms';
 import { JSXElementConstructor, useCallback, useEffect, useState } from 'react';
 import { Club, Player } from '@fridaygame/client';
-import Select, { SelectOption, SelectType } from '../../src/general/select';
+import { Select, SelectOption, SelectType } from '../../src';
 import { PlayerThumbnail } from '../../src';
 
 interface Props {

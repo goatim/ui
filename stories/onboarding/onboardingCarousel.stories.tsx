@@ -1,9 +1,6 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import OnboardingCarousel, {
-  OnboardingCarouselSize,
-  OnboardingCarouselSlideData,
-} from '../../src/onboarding/onboardingCarousel';
+import { OnboardingCarousel, OnboardingCarouselSize, OnboardingCarouselSlideData } from '../../src';
 import onboarding1 from './assets/onboarding1.jpg';
 import onboarding2 from './assets/onboarding2.jpg';
 import onboarding3 from './assets/onboarding3.jpg';

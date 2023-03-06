@@ -1,8 +1,9 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import FridayCoinsVariation, {
+import {
+  FridayCoinsVariation,
   FridayCoinsVariationSize,
-} from '../../src/market/fridayCoinsVariation';
+} from '../../src';
 
 interface Props {
   variation?: number;

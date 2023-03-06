@@ -1,6 +1,6 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import CreditCardForm from '../../src/payment/creditCardForm';
+import { CreditCardForm } from '../../src';
 
 interface Props {}
 

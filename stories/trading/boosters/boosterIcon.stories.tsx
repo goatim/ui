@@ -1,6 +1,6 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import BoosterIcon, { BoosterIconSize } from '../../../src/trading/boosters/boosterIcon';
+import { BoosterIcon, BoosterIconSize } from '../../../src';
 
 interface Props {
   size?: BoosterIconSize;

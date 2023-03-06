@@ -1,6 +1,6 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import SoccerField, { SoccerFieldTheme } from '../../../src/soccer/compositions/soccerField';
+import { SoccerField, SoccerFieldTheme } from '../../../src';
 
 interface Props {
   theme?: SoccerFieldTheme;

@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { Match, Wallet, User, MatchStatus, Composition } from '@fridaygame/client';
-import MatchThumbnail from '../../../src/soccer/matches/matchThumbnail';
+import { MatchThumbnail } from '../../../src';
 
 interface Props {
   status?: MatchStatus;

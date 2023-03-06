@@ -1,7 +1,7 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { User, Wallet } from '@fridaygame/client';
-import WalletTeam from '../../../src/market/wallets/walletTeam';
+import { WalletTeam } from '../../../src';
 
 interface Props {}
 

@@ -1,9 +1,10 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor, ReactElement, useEffect } from 'react';
-import { Notification, Club, Player, Asset } from '@fridaygame/client';
-import NotificationsContext, {
+import { Asset, Club, Notification, Player } from '@fridaygame/client';
+import {
+  NotificationsContext,
   useNotificationsContext,
-} from '../../../src/community/notifications/notificationsContext';
+} from '../../../src';
 
 interface Props {}
 

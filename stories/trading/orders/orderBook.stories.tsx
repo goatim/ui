@@ -1,9 +1,10 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { OrderBook } from '@fridaygame/client';
-import OrderBookThumbnail, {
+import {
+  OrderBookThumbnail,
   OrderBookThumbnailSize,
-} from '../../../src/trading/orders/orderBookThumbnail';
+} from '../../../src';
 
 interface Props {
   size?: OrderBookThumbnailSize;

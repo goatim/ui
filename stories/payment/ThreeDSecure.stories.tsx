@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import ThreeDSecure from '../../src/payment/threeDSecure';
+import { ThreeDSecure } from '../../src';
 
 interface Props {}
 

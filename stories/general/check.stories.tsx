@@ -1,6 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import Check from '../../src/general/check';
+import { Check } from '../../src';
 
 interface Props {
   active?: boolean;
