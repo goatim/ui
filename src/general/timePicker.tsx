@@ -6,12 +6,19 @@ export interface TimePickerProps extends FieldComponentProps<DateTime | string |
   label?: string;
 }
 
-const hours = Array<null>(24).fill(null);
-const minutes = Array<null>(60).fill(null);
-
-// const seconds = Array<null>(60).fill(null);
-
 export function TimePicker({ label, name, value, onChange }: TimePickerProps): ReactElement {
+  const hours = useMemo<string[]>(() => {
+    return Array<null>(24)
+      .fill(null)
+      .map(() => Math.random().toString(36).substring(2, 7));
+  }, []);
+
+  const minutes = useMemo<string[]>(() => {
+    return Array<null>(60)
+      .fill(null)
+      .map(() => Math.random().toString(36).substring(2, 7));
+  }, []);
+
   const resolvedValue = useMemo<DateTime | null | undefined>(() => {
     return typeof value === 'string' ? DateTime.fromISO(value) : value;
   }, [value]);
@@ -64,11 +71,11 @@ export function TimePicker({ label, name, value, onChange }: TimePickerProps): R
 
       <div className="container">
         <ul>
-          {hours.map((_, hour: number) => {
+          {hours.map((key, hour: number) => {
             const selected = resolvedValue && resolvedValue.hour === hour;
 
             return (
-              <li key={hour.toString()}>
+              <li key={key}>
                 <button
                   onClick={() => selectHour(hour)}
                   className={selected ? ' selected' : ''}
@@ -81,11 +88,11 @@ export function TimePicker({ label, name, value, onChange }: TimePickerProps): R
         </ul>
 
         <ul>
-          {minutes.map((_, minute: number) => {
+          {minutes.map((key, minute: number) => {
             const selected = resolvedValue && resolvedValue.minute === minute;
 
             return (
-              <li key={minute.toString()}>
+              <li key={key}>
                 <button
                   onClick={() => selectMinute(minute)}
                   className={selected ? 'selected' : ''}

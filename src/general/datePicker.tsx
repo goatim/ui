@@ -23,7 +23,8 @@ export interface DatePickerProps extends FieldComponentProps<DateTime | string |
 }
 
 interface Cell {
-  day: number;
+  key: string;
+  day: number | null;
   selected?: boolean;
   disabled?: boolean;
 }
@@ -112,12 +113,16 @@ export function DatePicker({
     [disabledDays],
   );
 
-  const cells = useMemo<(Cell | null)[]>(() => {
-    return new Array(42).fill(null).map((cell: Cell | null, index) => {
+  const cells = useMemo<Cell[]>(() => {
+    return new Array(42).fill(null).map((cell: Cell, index) => {
+      const key = Math.random().toString(36).substring(2, 7);
       const day = index - weekOffset + 1;
 
       if (day <= 0 || day > daysInMonth) {
-        return null;
+        return {
+          key,
+          day: null,
+        };
       }
 
       const selected = !!(
@@ -202,7 +207,7 @@ export function DatePicker({
         });
       }
 
-      return { day, selected, disabled };
+      return { key, day, selected, disabled };
     });
   }, [
     daysInMonth,
@@ -266,22 +271,20 @@ export function DatePicker({
         </div>
 
         <div className="days">
-          {cells.map((cell: Cell | null) => {
-            if (cell) {
+          {cells.map((cell: Cell) => {
+            if (cell.day) {
               return (
                 <button
                   type="button"
-                  key={cell.day}
-                  onClick={() => selectDay(cell.day)}
+                  key={cell.key}
+                  onClick={() => (cell.day ? selectDay(cell.day) : undefined)}
                   disabled={cell.disabled}
                   className={`day${cell.selected ? ' selected' : ''}`}>
                   {cell.day}
                 </button>
               );
             }
-            return (
-              <div className="placeholder" key={Math.round(Math.random() * 100).toString(10)} />
-            );
+            return <div className="placeholder" key={cell.key} />;
           })}
         </div>
       </div>
