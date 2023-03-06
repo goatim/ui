@@ -26,7 +26,7 @@ export function MatchSummary({ match, podium, self }: MatchSummaryProps): ReactE
         <div className="self">
           <span className="label">Ta performance</span>
           <div className="composition">
-            <CompositionThumbnail composition={self} showScore showDividendsGains />
+            <CompositionThumbnail composition={self} showScore showGains />
           </div>
         </div>
       ) : null}

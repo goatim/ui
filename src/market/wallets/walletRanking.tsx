@@ -11,7 +11,7 @@ export interface WalletRankingProps {
   theme?: WalletRankingTheme;
   positionExtractor?: (wallet: Wallet) => number;
   amountExtractor?: (wallet: Wallet) => number;
-  variationExtractor?: (wallet: Wallet) => number;
+  gainsExtractor?: (wallet: Wallet) => number;
 }
 
 export function WalletRanking({
@@ -20,7 +20,7 @@ export function WalletRanking({
   theme = 'dark',
   positionExtractor,
   amountExtractor,
-  variationExtractor,
+  gainsExtractor,
 }: WalletRankingProps): ReactElement {
   if (!wallets?.length) {
     return (
@@ -41,7 +41,7 @@ export function WalletRanking({
               theme={theme}
               position={positionExtractor ? positionExtractor(wallet) : undefined}
               amount={amountExtractor ? amountExtractor(wallet) : undefined}
-              variation={variationExtractor ? variationExtractor(wallet) : undefined}
+              gains={gainsExtractor ? gainsExtractor(wallet) : undefined}
             />
           </div>
         ))}
@@ -53,7 +53,7 @@ export function WalletRanking({
             theme={theme}
             position={positionExtractor ? positionExtractor(pinned) : undefined}
             amount={amountExtractor ? amountExtractor(pinned) : undefined}
-            variation={variationExtractor ? variationExtractor(pinned) : undefined}
+            gains={gainsExtractor ? gainsExtractor(pinned) : undefined}
           />
         </div>
       ) : null}

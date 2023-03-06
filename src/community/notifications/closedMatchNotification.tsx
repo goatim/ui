@@ -19,7 +19,7 @@ export function ClosedMatchNotification({ payload }: ClosedMatchNotificationProp
       {payload.composition && typeof payload.composition === 'object' ? (
         <>
           <div className="composition">
-            <CompositionThumbnail composition={payload.composition} showScore showDividendsGains />
+            <CompositionThumbnail composition={payload.composition} showScore showGains />
           </div>
           {payload.composition.position === 1 ? (
             <div className="first">
