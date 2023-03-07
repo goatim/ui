@@ -1,5 +1,5 @@
 import { ReactElement, useMemo } from 'react';
-import { PhysicalEvent } from '@fridaygame/client';
+import { PhysicalEvent } from '@goatim/client';
 import { DateTimeThumbnail, DateTimeThumbnailTheme } from '../../general/dateTimeThumbnail';
 
 export type PhysicalEventTimelineTheme = 'dark' | 'light';
@@ -36,7 +36,7 @@ export function PhysicalEventTimeline({
   }, [theme]);
 
   return (
-    <div className={`friday-ui-physical-event-timeline ${theme}`}>
+    <div className={`goatim-ui-physical-event-timeline ${theme}`}>
       <Milestone>
         <DateTimeThumbnail
           dateTime={physicalEvent.beginning}

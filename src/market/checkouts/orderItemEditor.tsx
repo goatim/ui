@@ -1,18 +1,18 @@
 import { ReactElement, useCallback, useMemo, useState } from 'react';
 import { Field, Form, FormContext, FormErrors, FormFields, FormState } from '@cezembre/forms';
 import {
-  adaptFridayCoinsAmount,
+  adaptGoatimCoinsAmount,
   Asset,
   BoosterFactory,
-  formatFridayCoinsAmount,
+  formatGoatimCoinsAmount,
   OrderBook,
   OrderType,
-  resolveFridayCoinsAmount,
-} from '@fridaygame/client';
+  resolveGoatimCoinsAmount,
+} from '@goatim/client';
 import { FormSubmitFunction } from '@cezembre/forms/dist/state';
 import { Button, Counter, Radio } from '../../general';
 import { BoosterFactoryThumbnail, OrderBookThumbnail, OrderBookThumbnailSize } from '../../trading';
-import { FridayCoins } from '../fridayCoins';
+import { GoatimCoins } from '../goatimCoins';
 
 export interface OrderItemEditorFields extends FormFields {
   asset?: Asset | string;
@@ -99,7 +99,7 @@ export function OrderItemEditor({
   }, [size]);
 
   const className = useMemo<string>(() => {
-    const classNames = ['friday-ui-order-item-editor', size];
+    const classNames = ['goatim-ui-order-item-editor', size];
 
     if (formState?.values?.order_type) {
       classNames.push(formState.values.order_type);
@@ -167,14 +167,14 @@ export function OrderItemEditor({
             component={Counter}
             theme="black"
             initialValue={initialOrderItem?.price_limit}
-            resolver={resolveFridayCoinsAmount}
-            adapter={adaptFridayCoinsAmount}
-            format={formatFridayCoinsAmount}
+            resolver={resolveGoatimCoinsAmount}
+            adapter={adaptGoatimCoinsAmount}
+            format={formatGoatimCoinsAmount}
             increment={100}
           />
           <div className="total">
             <span className="label">Total</span>
-            <FridayCoins
+            <GoatimCoins
               amount={(formState?.values?.nb_shares || 0) * (formState?.values?.price_limit || 0)}
               size="medium"
               theme="darker"
@@ -235,9 +235,9 @@ export function OrderItemEditor({
       bankProposalQuotation &&
       formState?.values?.nb_shares ? (
         <div className="bank-proposal">
-          <span className="caption">Sinon Friday t&apos;en propose</span>
+          <span className="caption">Sinon Goatim t&apos;en propose</span>
           <div className="quotation">
-            <FridayCoins
+            <GoatimCoins
               amount={formState.values.nb_shares * bankProposalQuotation}
               theme="gold"
               size="medium"
@@ -249,14 +249,14 @@ export function OrderItemEditor({
           {onAcceptBankProposal ? (
             <div className="action">
               <Button theme="gold" onClick={acceptBankProposal} pending={bankProposalPending}>
-                Vendre à Friday
+                Vendre à Goatim
               </Button>
             </div>
           ) : null}
 
           {bankProposalError ? <p className="error">{bankProposalError}</p> : null}
 
-          <p>Besoin d’une vente rapide et assurée ? Friday rachète instantanément tes actions.</p>
+          <p>Besoin d’une vente rapide et assurée ? Goatim rachète instantanément tes actions.</p>
         </div>
       ) : null}
     </Form>

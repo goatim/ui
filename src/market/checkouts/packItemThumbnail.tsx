@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { formatEurosAmount, PackItem } from '@fridaygame/client';
+import { formatEurosAmount, PackItem } from '@goatim/client';
 import { Icon } from '../../general';
 
 export type PackItemThumbnailSize = 'narrow' | 'normal';
@@ -16,7 +16,7 @@ export function PackItemThumbnail({
   size = 'normal',
 }: PackItemThumbnailProps): ReactElement {
   return (
-    <div className={`friday-ui-pack-item-thumbnail ${size}`}>
+    <div className={`goatim-ui-pack-item-thumbnail ${size}`}>
       <div className="container">
         {packItem.pack_factory && typeof packItem.pack_factory === 'object' ? (
           <div className="cell">

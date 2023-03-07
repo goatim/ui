@@ -1,18 +1,18 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import {
-  Club,
-  Player,
   Asset,
+  Club,
+  Composition,
+  Match,
+  Pack,
+  PackFactory,
+  Player,
   Post,
   PostTypeMap,
-  Wallet,
   Transaction,
-  PackFactory,
-  Pack,
-  Match,
-  Composition,
-} from '@fridaygame/client';
+  Wallet,
+} from '@goatim/client';
 import { PostThumbnail } from '../../../src';
 
 interface Props {

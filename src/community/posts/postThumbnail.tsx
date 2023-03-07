@@ -1,5 +1,5 @@
 import { ReactElement, useMemo } from 'react';
-import { Post } from '@fridaygame/client';
+import { Post } from '@goatim/client';
 import { PostHeader } from './postHeader';
 import { OrdersPost } from './ordersPost';
 import { TransactionPost } from './transactionPost';
@@ -30,7 +30,7 @@ export function PostThumbnail({ post, size = 'normal' }: PostThumbnailProps): Re
   }, [post, size]);
 
   return (
-    <div className="friday-ui-post-thumbnail">
+    <div className="goatim-ui-post-thumbnail">
       <div className="header">
         <PostHeader post={post} />
       </div>

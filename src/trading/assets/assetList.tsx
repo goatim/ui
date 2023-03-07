@@ -1,6 +1,6 @@
 import { MouseEvent, ReactElement } from 'react';
 import { To } from 'react-router';
-import { Asset } from '@fridaygame/client';
+import { Asset } from '@goatim/client';
 import { AssetThumbnail, AssetThumbnailSize, AssetThumbnailTheme } from './assetThumbnail';
 
 export interface AssetListProps {
@@ -22,7 +22,7 @@ export function AssetList({
 }: AssetListProps): ReactElement {
   return (
     <div
-      className={`friday-ui-asset-list ${size}`}
+      className={`goatim-ui-asset-list ${size}`}
       style={{ gridTemplateColumns: `repeat(${columns}, 1fr)` }}>
       {assets ? (
         assets.map((asset) => (

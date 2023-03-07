@@ -76,7 +76,7 @@ export function StripeCreditCardForm({
   }, [elements, onSubmit, stripe]);
 
   return (
-    <Form<Fields> className="friday-ui-stripe-credit-card-form" ref={form} onSubmit={submit}>
+    <Form<Fields> className="goatim-ui-stripe-credit-card-form" ref={form} onSubmit={submit}>
       <div className="field">
         <Field
           label="Carte de crédit"

@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { Notification } from '@fridaygame/client';
+import { Notification } from '@goatim/client';
 import { WrapperProps } from '@cezembre/fronts';
 import { NotificationThumbnail } from './notificationThumbnail';
 import { Icon } from '../../general';
@@ -19,7 +19,7 @@ export function NotificationModal({
   onDismiss,
 }: NotificationModalProps): ReactElement {
   return (
-    <div className="friday-ui-notification-modal">
+    <div className="goatim-ui-notification-modal">
       <div className="notification">
         <NotificationThumbnail
           notification={notification}

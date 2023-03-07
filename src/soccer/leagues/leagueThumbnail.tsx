@@ -1,5 +1,5 @@
 import { ReactElement, useMemo } from 'react';
-import { League } from '@fridaygame/client';
+import { League } from '@goatim/client';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
 import { LeagueIcon } from './leagueIcon';
 
@@ -29,7 +29,7 @@ export function LeagueThumbnail({
   target,
 }: LeagueThumbnailProps): ReactElement {
   const className = useMemo<string>(() => {
-    const classNames = ['friday-ui-league-thumbnail', size, shape, theme];
+    const classNames = ['goatim-ui-league-thumbnail', size, shape, theme];
     return classNames.join(' ');
   }, [size, theme, shape]);
 

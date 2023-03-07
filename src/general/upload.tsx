@@ -74,7 +74,7 @@ export function Upload({
   }
 
   const className = useMemo<string>(() => {
-    const classNames: string[] = ['friday-ui-upload'];
+    const classNames: string[] = ['goatim-ui-upload'];
 
     if (error) {
       classNames.push('error');

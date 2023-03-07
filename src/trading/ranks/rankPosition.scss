@@ -1,7 +1,7 @@
 @use '../../styles/fonts';
 @use '../../styles/colors';
 
-.friday-ui-rank-position {
+.goatim-ui-rank-position {
   @include fonts.Inter(.7em, colors.$blue, bold);
 
   &.medium {

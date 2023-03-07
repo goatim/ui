@@ -3,7 +3,7 @@ import {
   ClosedMatchNotificationPayload,
   Notification,
   OrderMatchNotificationPayload,
-} from '@fridaygame/client';
+} from '@goatim/client';
 import { formatRelativeDateTime, Wrapper, WrapperProps } from '@cezembre/fronts';
 import { NotificationIcon } from './notificationIcon';
 import { OrderMatchNotification } from './orderMatchNotification';
@@ -41,7 +41,7 @@ export function NotificationThumbnail({
   }, [notification]);
 
   const className = useMemo<string>(() => {
-    const classNames: string[] = ['friday-ui-notification-thumbnail'];
+    const classNames: string[] = ['goatim-ui-notification-thumbnail'];
 
     if (colored) {
       classNames.push('colored');

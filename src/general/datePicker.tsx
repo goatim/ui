@@ -114,7 +114,7 @@ export function DatePicker({
   );
 
   const cells = useMemo<Cell[]>(() => {
-    return new Array(42).fill(null).map((cell: Cell, index) => {
+    return new Array(42).fill(null).map((_null, index) => {
       const key = Math.random().toString(36).substring(2, 7);
       const day = index - weekOffset + 1;
 
@@ -238,7 +238,7 @@ export function DatePicker({
   }, [format, placeholder, resolvedValue]);
 
   return (
-    <div ref={picker} className="friday-ui-date-picker">
+    <div ref={picker} className="goatim-ui-date-picker">
       {label ? <label htmlFor={name}>{label}</label> : null}
 
       {!expanded ? (

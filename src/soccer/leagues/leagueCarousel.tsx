@@ -1,5 +1,5 @@
 import { MouseEvent, ReactElement } from 'react';
-import { Club, League } from '@fridaygame/client';
+import { Club, League } from '@goatim/client';
 import { To } from 'react-router';
 import { LeagueOverview } from './leagueOverview';
 import { Icon } from '../../general';
@@ -26,7 +26,7 @@ export function LeagueCarousel({
   getLeagueClubs,
 }: LeagueCarouselProps): ReactElement {
   return (
-    <div className={`friday-ui-league-carousel ${size}`}>
+    <div className={`goatim-ui-league-carousel ${size}`}>
       <div className="background">
         <Icon name="soccer-ball" />
       </div>

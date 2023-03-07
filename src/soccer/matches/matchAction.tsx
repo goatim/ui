@@ -1,6 +1,6 @@
 import { HTMLAttributeAnchorTarget, ReactElement } from 'react';
 import { To } from 'react-router';
-import { MatchStatus } from '@fridaygame/client';
+import { MatchStatus } from '@goatim/client';
 import { Button } from '../../general';
 
 export interface MatchActionProps {
@@ -29,7 +29,7 @@ export function MatchAction({
   switch (status) {
     case 'open':
       return (
-        <div className="friday-ui-match-action">
+        <div className="goatim-ui-match-action">
           <Button
             theme="buy"
             to={toComposition}
@@ -45,7 +45,7 @@ export function MatchAction({
       );
     case 'ongoing':
       return (
-        <div className="friday-ui-match-action">
+        <div className="goatim-ui-match-action">
           <Button
             theme="sell"
             to={toFeed}
@@ -61,7 +61,7 @@ export function MatchAction({
     case 'closing':
     case 'closed':
       return (
-        <div className="friday-ui-match-action">
+        <div className="goatim-ui-match-action">
           <Button
             theme="light"
             to={toFeed}
@@ -74,13 +74,13 @@ export function MatchAction({
       );
     case 'cancelled':
       return (
-        <div className="friday-ui-match-action">
+        <div className="goatim-ui-match-action">
           <span>Le match a été annulé</span>
         </div>
       );
     default:
       return (
-        <div className="friday-ui-match-action">
+        <div className="goatim-ui-match-action">
           <span>En préparation ...</span>
         </div>
       );

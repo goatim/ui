@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { Composition, Post } from '@fridaygame/client';
+import { Composition, Post } from '@goatim/client';
 import { MatchSummary } from '../../soccer';
 
 export interface MatchSummaryPostProps {
@@ -8,7 +8,7 @@ export interface MatchSummaryPostProps {
 
 export function MatchSummaryPost({ post }: MatchSummaryPostProps): ReactElement {
   return (
-    <div className="friday-ui-match-summary-post">
+    <div className="goatim-ui-match-summary-post">
       {post.payload?.match && typeof post.payload.match === 'object' ? (
         <div className="match-summary">
           <MatchSummary

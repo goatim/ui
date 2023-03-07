@@ -1,8 +1,7 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor, useState } from 'react';
-import { PaymentMethod } from '@fridaygame/client';
-import { PaymentMethodSelector } from '../../src';
-import { CreditCardFields } from '../../src';
+import { PaymentMethod } from '@goatim/client';
+import { CreditCardFields, PaymentMethodSelector } from '../../src';
 
 interface Props {}
 

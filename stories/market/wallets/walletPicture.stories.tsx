@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import { Image } from '@fridaygame/client/dist/medias/image';
+import { Image } from '@goatim/client/dist/medias/image';
 import {
   WalletPicture,
   WalletPictureOutline,

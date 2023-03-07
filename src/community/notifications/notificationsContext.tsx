@@ -7,7 +7,7 @@ import {
   useMemo,
   useState,
 } from 'react';
-import { Notification } from '@fridaygame/client';
+import { Notification } from '@goatim/client';
 import { WrapperProps } from '@cezembre/fronts';
 import { NotificationModal } from './notificationModal';
 
@@ -124,7 +124,7 @@ export function NotificationsContext({ children }: NotificationsContextProps): R
     <notificationsContext.Provider value={value}>
       {children}
       {notificationsModals.length ? (
-        <div className="friday-ui-notifications">
+        <div className="goatim-ui-notifications">
           {notificationsModals.map((notificationModal) => (
             <div
               className={`notification${notificationModal.hidden ? ' hidden' : ''}`}

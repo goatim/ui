@@ -25,7 +25,7 @@ export function CreditCardForm({ onSubmit, onCancel }: CreditCardFormProps): Rea
   }, []);
 
   return (
-    <Form<CreditCardFields> className="friday-ui-credit-card-form" ref={form} onSubmit={onSubmit}>
+    <Form<CreditCardFields> className="goatim-ui-credit-card-form" ref={form} onSubmit={onSubmit}>
       <Field name="type" initialValue="card" type="hidden" />
 
       <div className="field">

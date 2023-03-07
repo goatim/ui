@@ -1,5 +1,5 @@
 import { ChangeEvent, ReactElement, useCallback, useMemo, useState } from 'react';
-import { SearchResult } from '@fridaygame/client';
+import { SearchResult } from '@goatim/client';
 import _ from 'lodash';
 import { To } from 'react-router';
 import { Wrapper } from '@cezembre/fronts';
@@ -63,7 +63,7 @@ export function SearchInput({
   }, []);
 
   const className = useMemo<string>(() => {
-    const nextClassNames: string[] = ['friday-ui-search-input', theme];
+    const nextClassNames: string[] = ['goatim-ui-search-input', theme];
 
     if (flat) {
       nextClassNames.push('flat');

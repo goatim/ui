@@ -2,7 +2,7 @@
 @use "../styles/forms";
 @use "../styles/colors";
 
-.friday-ui-textarea {
+.goatim-ui-textarea {
   width: 100%;
 
   > label {
@@ -32,7 +32,7 @@
     @include forms.instructions;
   }
 
-  >.error {
+  > .error {
     @include forms.error;
   }
 

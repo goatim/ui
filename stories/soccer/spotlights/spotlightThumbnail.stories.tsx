@@ -1,10 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor, ReactElement } from 'react';
-import { Asset, Club, Player, Spotlight, SpotlightType } from '@fridaygame/client';
-import {
-  SpotlightThumbnail,
-  SpotlightThumbnailSize,
-} from '../../../src';
+import { Asset, Club, Player, Spotlight, SpotlightType } from '@goatim/client';
+import { SpotlightThumbnail, SpotlightThumbnailSize } from '../../../src';
 
 interface Props {
   type?: SpotlightType;

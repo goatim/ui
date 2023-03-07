@@ -1,6 +1,6 @@
 @use "~@cezembre/fronts/dist/layouts";
 
-@keyframes friday-ui-notification-appear {
+@keyframes goatim-ui-notification-appear {
   0% {
     opacity: 0;
     transform: translateX(100%);
@@ -11,7 +11,7 @@
   }
 }
 
-@keyframes friday-ui-notification-disappear {
+@keyframes goatim-ui-notification-disappear {
   0% {
     opacity: 1;
     transform: translateY(0);
@@ -22,7 +22,7 @@
   }
 }
 
-.friday-ui-notifications {
+.goatim-ui-notifications {
   @include layouts.modal;
   position: fixed;
   max-height: 100%;
@@ -33,14 +33,14 @@
 
   > .notification {
     margin-top: 10px;
-    animation: friday-ui-notification-appear 400ms forwards;
+    animation: goatim-ui-notification-appear 400ms forwards;
 
     &:first-of-type {
       margin: 0;
     }
 
     &.hidden {
-      animation: friday-ui-notification-disappear 400ms forwards;
+      animation: goatim-ui-notification-disappear 400ms forwards;
     }
   }
 }

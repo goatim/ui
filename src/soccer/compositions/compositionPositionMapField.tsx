@@ -6,7 +6,7 @@ import {
   CompositionSettingPosition,
   Player,
   PlayerPosition,
-} from '@fridaygame/client';
+} from '@goatim/client';
 import { CompositionPositionMap, CompositionPositionMapTheme } from './compositionPositionMap';
 import { PositionPlayerSelector } from './positionPlayerSelector';
 import { useModals } from '../../general';
@@ -124,7 +124,7 @@ export function CompositionPositionMapField({
   );
 
   return (
-    <div className="friday-ui-composition-positions-map-field">
+    <div className="goatim-ui-composition-positions-map-field">
       <CompositionPositionMap
         compositionSetting={compositionSetting}
         positions={value}

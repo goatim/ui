@@ -1,10 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import { TournamentParticipant, User, Wallet } from '@fridaygame/client';
-import {
-  TournamentBanner,
-  TournamentBannerSize,
-} from '../../../src';
+import { TournamentParticipant, User, Wallet } from '@goatim/client';
+import { TournamentBanner, TournamentBannerSize } from '../../../src';
 
 interface Props {
   size: TournamentBannerSize;

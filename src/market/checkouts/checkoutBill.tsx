@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { Checkout, formatEurosAmount } from '@fridaygame/client';
+import { Checkout, formatEurosAmount } from '@goatim/client';
 
 export interface CheckoutBillProps {
   checkout: Checkout;
@@ -7,7 +7,7 @@ export interface CheckoutBillProps {
 
 export function CheckoutBill({ checkout }: CheckoutBillProps): ReactElement {
   return (
-    <div className="friday-ui-checkout-bill">
+    <div className="goatim-ui-checkout-bill">
       {checkout.items_prices !== undefined ? (
         <div className="line">
           <span>Produits</span>

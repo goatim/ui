@@ -1,7 +1,7 @@
 @use '../../styles/colors';
 @use '../../styles/fonts';
 
-.friday-ui-physical-event-thumbnail {
+.goatim-ui-physical-event-thumbnail {
   > .header {
     display: flex;
     flex-direction: column;
@@ -31,6 +31,7 @@
       > .type {
         @include fonts.label-light;
       }
+
       > .name {
         color: white;
       }

@@ -1,6 +1,6 @@
 import { ReactElement, useMemo } from 'react';
 import { PaymentMethod as StripePaymentMethod } from '@stripe/stripe-js';
-import { Card, CardBrand } from '@fridaygame/client';
+import { Card, CardBrand } from '@goatim/client';
 import _ from 'lodash';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
 import { Check, Icon, IconName } from '../general';
@@ -43,7 +43,7 @@ export function CreditCardThumbnail({
 
   return (
     <Wrapper
-      className={`friday-ui-credit-card-thumbnail${selected ? ' selected' : ''}`}
+      className={`goatim-ui-credit-card-thumbnail${selected ? ' selected' : ''}`}
       to={to}
       onClick={onClick}
       type={type}

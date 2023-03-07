@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import { Field, Form, FormSubmitFunction } from '@cezembre/forms';
-import { Image } from '@fridaygame/client';
+import { Image } from '@goatim/client';
 import { Button, Input, Upload } from '../../general';
 import { WalletPicture } from './walletPicture';
 
@@ -22,7 +22,7 @@ export function WalletEditor({
   onUploadPicture,
 }: WalletEditorProps): ReactElement {
   return (
-    <div className="friday-ui-wallet-editor">
+    <div className="goatim-ui-wallet-editor">
       <div className="header">
         <h2>Mon portefeuille</h2>
       </div>

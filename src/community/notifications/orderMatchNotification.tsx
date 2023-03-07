@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { OrderMatchNotificationPayload } from '@fridaygame/client';
+import { OrderMatchNotificationPayload } from '@goatim/client';
 import { AssetThumbnail } from '../../trading';
 
 export interface OrderMatchNotificationProps {
@@ -8,7 +8,7 @@ export interface OrderMatchNotificationProps {
 
 export function OrderMatchNotification({ payload }: OrderMatchNotificationProps): ReactElement {
   return (
-    <div className="friday-ui-order-match-notification">
+    <div className="goatim-ui-order-match-notification">
       <span>
         Ton <b>{payload?.type === 'buy' ? "ordre d'achat" : 'ordre de vente'}</b> a matché !<br />
         <b>

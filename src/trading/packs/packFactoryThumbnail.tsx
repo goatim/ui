@@ -1,8 +1,8 @@
 import { ReactElement } from 'react';
 import { WrapperProps } from '@cezembre/fronts';
-import { formatEurosAmount, PackFactory } from '@fridaygame/client';
+import { formatEurosAmount, PackFactory } from '@goatim/client';
 import { Button, Wallpaper } from '../../general';
-import { FridayCoins } from '../../market';
+import { GoatimCoins } from '../../market';
 import randomShareBulks from './assets/random-share-bulks.png';
 
 export interface PackFactoryThumbnailProps extends WrapperProps {
@@ -19,7 +19,7 @@ export function PackFactoryThumbnail({
   to,
 }: PackFactoryThumbnailProps): ReactElement {
   return (
-    <div className="friday-ui-pack-factory-thumbnail">
+    <div className="goatim-ui-pack-factory-thumbnail">
       <div className="header">
         <Wallpaper>Pack actions</Wallpaper>
       </div>
@@ -30,7 +30,7 @@ export function PackFactoryThumbnail({
             {Object.entries(packFactory.odds).map(([value]) => (
               <div key={value} className="odd">
                 <span className="label">Valeur</span>
-                <FridayCoins amount={Number(value)} size="medium" />
+                <GoatimCoins amount={Number(value)} size="medium" />
               </div>
             ))}
           </div>

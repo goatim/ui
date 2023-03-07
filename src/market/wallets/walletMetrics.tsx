@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
-import { Wallet } from '@fridaygame/client';
-import { FridayCoins } from '../fridayCoins';
+import { Wallet } from '@goatim/client';
+import { GoatimCoins } from '../goatimCoins';
 import { PercentageVariation } from '../percentageVariation';
 import { RankPosition } from '../../trading';
 
@@ -13,7 +13,7 @@ export interface WalletMetricsProps {
 
 export function WalletMetrics({ wallet, size = 'normal' }: WalletMetricsProps): ReactElement {
   return (
-    <div className={`friday-ui-wallet-metrics ${size}`}>
+    <div className={`goatim-ui-wallet-metrics ${size}`}>
       <div className="metrics">
         <div className="metric">
           <span className="label">Classement</span>
@@ -28,13 +28,13 @@ export function WalletMetrics({ wallet, size = 'normal' }: WalletMetricsProps): 
         </div>
 
         <div className={`metric${size !== 'narrow' ? ' center' : ''}`}>
-          <span className="label">Solde FDY</span>
-          <FridayCoins amount={wallet.amount} theme="light" size="medium" />
+          <span className="label">Solde GTC</span>
+          <GoatimCoins amount={wallet.amount} theme="light" size="medium" />
         </div>
 
         <div className={`metric${size !== 'narrow' ? ' right' : ''}`}>
           <span className="label">Évaluation équipe</span>
-          <FridayCoins amount={wallet.portfolios_quotation} theme="light" size="medium" />
+          <GoatimCoins amount={wallet.portfolios_quotation} theme="light" size="medium" />
           <PercentageVariation variation={wallet.portfolios_session_variation} size="medium" />
         </div>
       </div>

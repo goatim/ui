@@ -5,7 +5,7 @@ import {
   CompositionSetting,
   CompositionSettingPosition,
   Player,
-} from '@fridaygame/client';
+} from '@goatim/client';
 import { CompositionPositionList, CompositionPositionListTheme } from './compositionPositionList';
 import { PositionPlayerSelector } from './positionPlayerSelector';
 import { GetPositionPlayersFunction } from './compositionPositionMapField';
@@ -127,7 +127,7 @@ export function CompositionPositionListField({
   );
 
   return (
-    <div className="friday-ui-composition-positions-list-field">
+    <div className="goatim-ui-composition-positions-list-field">
       <CompositionPositionList
         positions={value}
         onPositionClick={!readonly ? onPositionClick : undefined}

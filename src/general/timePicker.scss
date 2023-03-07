@@ -1,7 +1,7 @@
 @use "../styles/colors";
 @use "../styles/forms";
 
-.friday-ui-time-picker {
+.goatim-ui-time-picker {
   height: 300px;
 
   > label {
@@ -12,7 +12,7 @@
     display: flex;
     height: 100%;
 
-    > ul  {
+    > ul {
       border-left: solid rgba(colors.$blue, .1) 1px;
       height: 100%;
       margin: 0;
@@ -58,7 +58,7 @@
     }
   }
 
-  >.error {
+  > .error {
     @include forms.error;
   }
 

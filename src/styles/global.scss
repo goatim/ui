@@ -1,6 +1,6 @@
 @use "fonts";
 
-*[class^="friday-ui"] {
+*[class^="goatim-ui"] {
   @include fonts.Inter(1rem);
   text-decoration: none;
   box-sizing: border-box;
@@ -26,7 +26,7 @@
   }
 }
 
-button[class^="friday-ui"] {
+button[class^="goatim-ui"] {
   font-size: 1em;
   cursor: pointer;
   outline: none;

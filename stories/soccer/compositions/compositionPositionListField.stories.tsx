@@ -1,7 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Field, Form } from '@cezembre/forms';
 import { JSXElementConstructor } from 'react';
-import { Club, CompositionSetting, CompositionSettingPosition, Player } from '@fridaygame/client';
+import { Club, CompositionSetting, CompositionSettingPosition, Player } from '@goatim/client';
 import {
   CompositionPositionListField,
   CompositionPositionListFieldValuePosition,

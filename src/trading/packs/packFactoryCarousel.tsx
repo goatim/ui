@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { PackFactory } from '@fridaygame/client';
+import { PackFactory } from '@goatim/client';
 import { PackFactoryThumbnail } from './packFactoryThumbnail';
 
 export type PackFactoryCarouselSize = 'small' | 'medium' | 'big';
@@ -18,7 +18,7 @@ export function PackFactoryCarousel({
   onPackFactoryClick,
 }: PackFactoryCarouselProps): ReactElement {
   return (
-    <div className={`friday-ui-pack-factory-carousel ${size}`}>
+    <div className={`goatim-ui-pack-factory-carousel ${size}`}>
       <div className="background">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 721.41 721.41">
           <path

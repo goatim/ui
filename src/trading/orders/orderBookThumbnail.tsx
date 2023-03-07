@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
-import { OrderBook } from '@fridaygame/client';
-import { FridayCoins } from '../../market';
+import { OrderBook } from '@goatim/client';
+import { GoatimCoins } from '../../market';
 
 export type OrderBookThumbnailSize = 'narrow' | 'small' | 'medium' | 'big';
 
@@ -18,7 +18,7 @@ export function OrderBookThumbnail({
   theme = 'light',
 }: OrderBookThumbnailProps): ReactElement {
   return (
-    <div className={`friday-ui-order-book-thumbnail ${size} ${theme}`}>
+    <div className={`goatim-ui-order-book-thumbnail ${size} ${theme}`}>
       <div className="aggregated-orders buying">
         {orderBook?.buying?.length ? (
           <table>
@@ -40,7 +40,7 @@ export function OrderBookThumbnail({
                     <span className="data">{order.total_shares}</span>
                   </td>
                   <td>
-                    <FridayCoins amount={order.price_limit} size="small" />
+                    <GoatimCoins amount={order.price_limit} size="small" />
                   </td>
                 </tr>
               ))}
@@ -68,7 +68,7 @@ export function OrderBookThumbnail({
                 <tr key={order.price_limit}>
                   <td>
                     {size !== 'narrow' ? (
-                      <FridayCoins amount={order.price_limit} size="small" />
+                      <GoatimCoins amount={order.price_limit} size="small" />
                     ) : (
                       <span className="data">{order.nb_orders}</span>
                     )}
@@ -80,7 +80,7 @@ export function OrderBookThumbnail({
                     {size !== 'narrow' ? (
                       <span className="data">{order.nb_orders}</span>
                     ) : (
-                      <FridayCoins amount={order.price_limit} size="small" />
+                      <GoatimCoins amount={order.price_limit} size="small" />
                     )}
                   </td>
                 </tr>

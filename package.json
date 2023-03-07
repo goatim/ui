@@ -1,10 +1,11 @@
 {
-  "name": "@fridaygame/ui",
-  "author": "Friday",
+  "name": "@goatim/ui",
+  "author": "Goatim",
   "version": "0.26.8",
   "license": "MIT",
+  "repository": "git@github.com:goatim/ui.git",
   "keywords": [
-    "Friday",
+    "Goatim",
     "React",
     "Components"
   ],
@@ -42,7 +43,7 @@
   "peerDependencies": {
     "@cezembre/forms": ">=1.7.1",
     "@cezembre/fronts": ">=0.11.4",
-    "@fridaygame/client": ">=0.15.0",
+    "@goatim/client": ">=0.16.0",
     "draft-js": ">=0.11.7",
     "luxon": ">=2.0.0",
     "react": ">=16.8",
@@ -57,6 +58,7 @@
     "@cezembre/forms": "^1.7.6",
     "@cezembre/fronts": "^0.11.15",
     "@fridaygame/client": "^0.15.23",
+    "@goatim/client": "^0.16.0",
     "@release-it/conventional-changelog": "^5.1.1",
     "@rollup/plugin-babel": "^6.0.3",
     "@rollup/plugin-commonjs": "^24.0.1",

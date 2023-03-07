@@ -30,7 +30,7 @@ export function Wallpaper({ children, lineHeight = 18 }: WallpaperProps): ReactE
   }, [children?.length, wallpaperDomRect?.width]);
 
   return (
-    <div ref={wallpaper} className="friday-ui-wallpaper">
+    <div ref={wallpaper} className="goatim-ui-wallpaper">
       <div className="container">
         {lines.map((line, lineIndex) => (
           <div key={line} className="line">

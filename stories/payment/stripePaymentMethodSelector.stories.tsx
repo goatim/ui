@@ -2,7 +2,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { loadStripe, PaymentMethod as StripePaymentMethod } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 import { JSXElementConstructor, useState } from 'react';
-import { PaymentMethod } from '@fridaygame/client';
+import { PaymentMethod } from '@goatim/client';
 import { StripePaymentMethodSelector } from '../../src';
 
 interface Props {}

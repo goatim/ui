@@ -79,7 +79,7 @@ export function Select<V = unknown>({
   onSearch,
 }: SelectProps<V>): ReactElement {
   const className = useMemo<string>(() => {
-    const classNames: string[] = ['friday-ui-select', type];
+    const classNames: string[] = ['goatim-ui-select', type];
 
     if (isActive) {
       classNames.push('active');

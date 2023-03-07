@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import { Rank, User, Wallet } from '@fridaygame/client';
+import { Rank, User, Wallet } from '@goatim/client';
 import { WalletRanking, WalletRankingTheme } from '../../../src';
 
 interface Props {

@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import { Checkout } from '@fridaygame/client';
+import { Checkout } from '@goatim/client';
 import { CheckoutBill } from '../../../src';
 
 export default {

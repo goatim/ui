@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import { User } from '@fridaygame/client';
+import { User } from '@goatim/client';
 import { UserThumbnail, UserThumbnailSize } from '../../src';
 
 interface Props {

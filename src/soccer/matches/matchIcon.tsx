@@ -1,5 +1,5 @@
 import { ReactElement, useMemo } from 'react';
-import { Image } from '@fridaygame/client';
+import { Image } from '@goatim/client';
 import { Icon } from '../../general';
 
 export type MatchIconSize = 'small' | 'medium' | 'big';
@@ -22,7 +22,7 @@ export function MatchIcon({ icon, size = 'medium' }: MatchIconProps): ReactEleme
   }, [size]);
 
   return (
-    <div className={`friday-ui-match-icon ${size}`}>
+    <div className={`goatim-ui-match-icon ${size}`}>
       {icon ? (
         <img src={icon.medium_url} alt="Match icon" />
       ) : (

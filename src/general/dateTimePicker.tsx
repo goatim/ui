@@ -73,7 +73,7 @@ export function DateTimePicker({
   }, [format, placeholder, resolvedValue]);
 
   return (
-    <div className="friday-ui-date-time-picker">
+    <div className="goatim-ui-date-time-picker">
       {label ? <label htmlFor={name}>{label}</label> : null}
 
       {!expanded ? (

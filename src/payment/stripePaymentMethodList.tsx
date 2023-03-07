@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { PaymentMethod } from '@fridaygame/client';
+import { PaymentMethod } from '@goatim/client';
 import { PaymentMethod as StripePaymentMethod } from '@stripe/stripe-js';
 import { PaymentMethodThumbnail } from './paymentMethodThumbnail';
 
@@ -19,7 +19,7 @@ export function StripePaymentMethodList({
   }
 
   return (
-    <div className="friday-ui-stripe-payment-method-list">
+    <div className="goatim-ui-stripe-payment-method-list">
       {paymentMethods.map((paymentMethod: PaymentMethod | StripePaymentMethod) => {
         const selected =
           typeof selectedPaymentMethod === 'object'

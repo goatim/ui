@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
-import { Image } from '@fridaygame/client';
+import { Image } from '@goatim/client';
 
 export type ClubIconSize = 'small' | 'medium' | 'big';
 
@@ -23,7 +23,7 @@ export function ClubIcon({
 }: ClubIconProps): ReactElement {
   return (
     <Wrapper
-      className={`friday-ui-club-icon ${size} ${theme}`}
+      className={`goatim-ui-club-icon ${size} ${theme}`}
       to={to}
       onClick={onClick}
       href={href}

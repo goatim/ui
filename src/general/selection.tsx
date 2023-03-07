@@ -51,7 +51,7 @@ export function Selection({ children, filter }: SelectionProps): ReactElement {
   }, [positionModal]);
 
   return (
-    <div className={`friday-ui-selection${isActive ? ' active' : ''}`} style={position}>
+    <div className={`goatim-ui-selection${isActive ? ' active' : ''}`} style={position}>
       {children}
     </div>
   );

@@ -1,5 +1,5 @@
 import { ReactElement, useCallback } from 'react';
-import { PaymentMethod } from '@fridaygame/client';
+import { PaymentMethod } from '@goatim/client';
 import { PaymentMethodThumbnail } from './paymentMethodThumbnail';
 import { CreditCardFields } from './creditCardForm';
 
@@ -50,7 +50,7 @@ export function PaymentMethodList({
   }
 
   return (
-    <div className="friday-ui-payment-method-list">
+    <div className="goatim-ui-payment-method-list">
       {paymentMethods.map((paymentMethod: PaymentMethod | CreditCardFields) => {
         const selected = isSelected(paymentMethod);
 

@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import { To } from 'react-router';
-import { Match } from '@fridaygame/client';
+import { Match } from '@goatim/client';
 import { MatchThumbnail } from './matchThumbnail';
 
 export type MatchCarouselSize = 'small' | 'medium' | 'big';
@@ -19,7 +19,7 @@ export function MatchCarousel({
   matchToFeed,
 }: MatchCarouselProps): ReactElement {
   return (
-    <div className={`friday-ui-match-carousel ${size}`}>
+    <div className={`goatim-ui-match-carousel ${size}`}>
       <div className="background">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 721.41 721.41">
           <path

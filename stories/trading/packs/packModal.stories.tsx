@@ -1,8 +1,7 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor, ReactElement, useCallback } from 'react';
-import { Asset, Club, Player, Pack, PackFactory } from '@fridaygame/client';
-import { PackModal } from '../../../src';
-import { useModals, ModalsContext } from '../../../src';
+import { Asset, Club, Pack, PackFactory, Player } from '@goatim/client';
+import { ModalsContext, PackModal, useModals } from '../../../src';
 
 interface Props {}
 

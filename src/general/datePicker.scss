@@ -2,7 +2,7 @@
 @use '../styles/colors';
 @use "../styles/forms";
 
-.friday-ui-date-picker {
+.goatim-ui-date-picker {
   position: relative;
 
   > label {
@@ -121,7 +121,7 @@
     }
   }
 
-  >.error {
+  > .error {
     @include forms.error();
   }
 

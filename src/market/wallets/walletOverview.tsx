@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { Wallet } from '@fridaygame/client';
+import { Wallet } from '@goatim/client';
 import { WalletMetrics } from './walletMetrics';
 import { WalletThumbnail } from './walletThumbnail';
 
@@ -12,7 +12,7 @@ export interface WalletOverviewProps {
 
 export function WalletOverview({ wallet, size = 'normal' }: WalletOverviewProps): ReactElement {
   return (
-    <div className={`friday-ui-wallet-overview ${size}`}>
+    <div className={`goatim-ui-wallet-overview ${size}`}>
       <div className="team">
         <WalletThumbnail wallet={wallet} size="medium" />
       </div>

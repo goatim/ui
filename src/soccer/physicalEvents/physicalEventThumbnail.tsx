@@ -1,5 +1,5 @@
 import { ReactElement, useMemo } from 'react';
-import { PhysicalEvent } from '@fridaygame/client';
+import { PhysicalEvent } from '@goatim/client';
 import { PhysicalEventTimeline } from './physicalEventTimeline';
 import { DividendList } from '../../trading';
 
@@ -25,7 +25,7 @@ export function PhysicalEventThumbnail({
   }, [physicalEvent.type]);
 
   return (
-    <div className={`friday-ui-physical-event-thumbnail ${theme} ${physicalEvent.type || 'match'}`}>
+    <div className={`goatim-ui-physical-event-thumbnail ${theme} ${physicalEvent.type || 'match'}`}>
       <div className="header">
         <span className="type">{resolvedType}</span>
         <span className="name">{physicalEvent.name}</span>

@@ -1,7 +1,7 @@
 @use "../styles/colors";
 @use "../styles/forms";
 
-.friday-ui-radio {
+.goatim-ui-radio {
   > label {
     @include forms.label;
   }
@@ -24,7 +24,7 @@
     margin-top: 10px;
   }
 
-  >.error {
+  > .error {
     @include forms.error;
   }
 

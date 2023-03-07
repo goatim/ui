@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { Item } from '@fridaygame/client';
+import { Item } from '@goatim/client';
 import { ItemThumbnail, ItemThumbnailSize } from './itemThumbnail';
 
 export interface ItemListProps {
@@ -13,7 +13,7 @@ export function ItemList({ items, onDeleteItem, size }: ItemListProps): ReactEle
     return <span className="empty-list">Aucun item</span>;
   }
   return (
-    <div className={`friday-ui-item-list ${size}`}>
+    <div className={`goatim-ui-item-list ${size}`}>
       {items.map((item: Item) => (
         <div key={item.id} className="item">
           <ItemThumbnail

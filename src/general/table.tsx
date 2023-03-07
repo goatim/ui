@@ -1,6 +1,6 @@
 import { ReactElement, useCallback, useEffect, useMemo, useState } from 'react';
 import { DateTime } from 'luxon';
-import { Model } from '@fridaygame/client';
+import { Model } from '@goatim/client';
 import { Icon } from './icon';
 import { Check } from './check';
 import { Button, ButtonProps } from './button';
@@ -170,7 +170,7 @@ export function Table<M extends Model = Model>({
   itemActions,
 }: TableProps<M>): ReactElement {
   const className = useMemo<string>(() => {
-    const classNames = ['friday-ui-table'];
+    const classNames = ['goatim-ui-table'];
     if (onSelectItem || selectionMode) {
       classNames.push('clickable');
     }
@@ -271,7 +271,7 @@ export function Table<M extends Model = Model>({
   if (!data?.length) {
     return (
       EmptyPlaceholder || (
-        <div className="friday-ui-data-empty-table">
+        <div className="goatim-ui-data-empty-table">
           <Icon name="inbox" size={50} width={1} />
           <span className="label">{emptyLabel || 'Aucune donnée'}</span>
         </div>

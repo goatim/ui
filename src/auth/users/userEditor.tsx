@@ -14,7 +14,7 @@ export interface UserEditorProps {
 
 export function UserEditor({ initialValues, onSubmit }: UserEditorProps): ReactElement {
   return (
-    <div className="friday-ui-user-editor">
+    <div className="goatim-ui-user-editor">
       <div className="header">
         <h2>Mon profil</h2>
       </div>

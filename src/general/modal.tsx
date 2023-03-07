@@ -109,7 +109,7 @@ function ModalContainer<P extends ModalComponentProps = ModalComponentProps>({
   }, [delayedDismissModal, modal]);
 
   return (
-    <div className={`friday-ui-modal ${modal.type || 'pop-up'}`} id={id}>
+    <div className={`goatim-ui-modal ${modal.type || 'pop-up'}`} id={id}>
       <div className="container">
         <div className="element" ref={modalElement}>
           {element}

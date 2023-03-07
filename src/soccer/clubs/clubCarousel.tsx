@@ -1,5 +1,5 @@
 import { MouseEvent, ReactElement, useEffect, useState } from 'react';
-import { Club } from '@fridaygame/client';
+import { Club } from '@goatim/client';
 import { To } from 'react-router';
 import { ClubList } from './clubList';
 import { ClubThumbnailShape, ClubThumbnailSize } from './clubThumbnail';
@@ -49,7 +49,7 @@ export function ClubCarousel({
   }, [getClubs, page]);
 
   return (
-    <div className="friday-ui-club-carousel">
+    <div className="goatim-ui-club-carousel">
       <ClubList
         clubs={clubs}
         shape={shape}

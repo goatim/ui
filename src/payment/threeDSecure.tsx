@@ -29,7 +29,7 @@ export function ThreeDSecure({ url, returnUrl, onReturn }: ThreeDSecureProps): R
   }, [iframeLoad]);
 
   return (
-    <div className="friday-ui-three-d-secure">
+    <div className="goatim-ui-three-d-secure">
       <iframe ref={iframe} src={url} title="3DSecure" width="100%" height={500} />
     </div>
   );

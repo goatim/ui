@@ -1,9 +1,9 @@
 import { MouseEvent, ReactElement, useCallback, useEffect, useMemo, useState } from 'react';
-import { Asset, Booster, Portfolio } from '@fridaygame/client';
+import { Asset, Booster, Portfolio } from '@goatim/client';
 import { To } from 'react-router-dom';
 import { Wrapper } from '@cezembre/fronts';
 import { AssetThumbnail, AssetThumbnailSize } from '../assets';
-import { FridayCoins, FridayCoinsGains, PercentageVariation } from '../../market';
+import { GoatimCoins, GoatimCoinsGains, PercentageVariation } from '../../market';
 import { Button } from '../../general';
 import { QuotationHistoryGraph } from '../quotations';
 
@@ -58,7 +58,7 @@ export function PortfolioThumbnail({
   }, [showDetails]);
 
   const className = useMemo<string>(() => {
-    const classNames = ['friday-ui-portfolio-thumbnail', size];
+    const classNames = ['goatim-ui-portfolio-thumbnail', size];
 
     if (internalShowDetails) {
       classNames.push('show-details');
@@ -72,7 +72,7 @@ export function PortfolioThumbnail({
       <div className="header">
         <div className="buy-price">
           <span className="label">Prix d&apos;achat</span>
-          <FridayCoins amount={portfolio.buy_price} size="small" />
+          <GoatimCoins amount={portfolio.buy_price} size="small" />
         </div>
         <div className="nb-shares">
           <span className="label">Quantité</span>
@@ -97,12 +97,12 @@ export function PortfolioThumbnail({
         <div className="metrics">
           <div className="dividends">
             <span className="label">Dividendes</span>
-            <FridayCoins amount={portfolio.dividends_gains} size="medium" />
+            <GoatimCoins amount={portfolio.dividends_gains} size="medium" />
           </div>
 
           <div className="gains">
             <span className="label">+/- values</span>
-            <FridayCoinsGains variation={portfolio.total_gains} size="medium" />
+            <GoatimCoinsGains variation={portfolio.total_gains} size="medium" />
             <PercentageVariation variation={portfolio.total_variations} size="small" />
           </div>
         </div>

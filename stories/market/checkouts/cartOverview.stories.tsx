@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import { Asset, BoosterFactory, Club, Item, Player } from '@fridaygame/client';
+import { Asset, BoosterFactory, Club, Item, Player } from '@goatim/client';
 import { CartOverview, CartOverviewSize } from '../../../src';
 
 interface Props {

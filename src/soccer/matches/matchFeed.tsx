@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { Match, PhysicalEvent } from '@fridaygame/client';
+import { Match, PhysicalEvent } from '@goatim/client';
 import { PhysicalEventList } from '../physicalEvents';
 import { DateTimeThumbnail } from '../../general/dateTimeThumbnail';
 import { Icon } from '../../general';
@@ -14,7 +14,7 @@ export interface MatchFeedProps {
 
 export function MatchFeed({ match, physicalEvents, theme = 'dark' }: MatchFeedProps): ReactElement {
   return (
-    <div className={`friday-ui-match-feed ${theme}`}>
+    <div className={`goatim-ui-match-feed ${theme}`}>
       <div className="beginning">
         <DateTimeThumbnail
           label="Coup d'envoi"

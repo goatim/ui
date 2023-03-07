@@ -1,5 +1,5 @@
 import { ReactElement, useMemo } from 'react';
-import { ShareBulk } from '@fridaygame/client';
+import { ShareBulk } from '@goatim/client';
 import { AssetThumbnail, AssetThumbnailSize } from '../assets';
 
 export type ShareBulkThumbnailSize = 'narrow' | 'small' | 'normal';
@@ -34,7 +34,7 @@ export function ShareBulkThumbnail({
   }, [size]);
 
   return (
-    <div className="friday-ui-share-bulk-thumbnail">
+    <div className="goatim-ui-share-bulk-thumbnail">
       {typeof shareBulk.asset === 'object' ? (
         <AssetThumbnail
           asset={shareBulk.asset}

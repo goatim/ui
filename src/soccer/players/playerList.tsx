@@ -1,5 +1,5 @@
 import { MouseEvent, ReactElement } from 'react';
-import { Player } from '@fridaygame/client';
+import { Player } from '@goatim/client';
 import { To } from 'react-router';
 import { PlayerThumbnail, PlayerThumbnailSize } from './playerThumbnail';
 
@@ -21,7 +21,7 @@ export function PlayerList({
   }
 
   return (
-    <div className="friday-ui-player-list">
+    <div className="goatim-ui-player-list">
       {players.map((player) => (
         <div className="player" key={player.id}>
           <PlayerThumbnail

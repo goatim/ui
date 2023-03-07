@@ -1,9 +1,9 @@
 import { MouseEvent, ReactElement, useCallback, useMemo } from 'react';
-import { Player } from '@fridaygame/client';
+import { Player } from '@goatim/client';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
 import { PlayerThumbnail } from '../players';
 import { Icon, Score, Tag, TagTheme } from '../../general';
-import { FridayCoinsGains } from '../../market';
+import { GoatimCoinsGains } from '../../market';
 
 export type CompositionPositionThumbnailTheme = 'dark' | 'light';
 
@@ -49,7 +49,7 @@ export function CompositionPositionThumbnail({
   }, [theme]);
 
   return (
-    <div className={`friday-ui-composition-position-thumbnail ${theme}`}>
+    <div className={`goatim-ui-composition-position-thumbnail ${theme}`}>
       <Wrapper className="container" onClick={onClick}>
         {player ? <PlayerThumbnail player={player} theme={theme} /> : null}
         {leverage || score || nbShares || gains ? (
@@ -69,7 +69,7 @@ export function CompositionPositionThumbnail({
             {nbShares ? (
               <div className="metric">
                 <Tag
-                  leftIcon="friday-coin"
+                  leftIcon="goatim-coin"
                   theme={tagTheme}
                   label={`x${nbShares * (leverage || 1)}`}
                 />
@@ -78,7 +78,7 @@ export function CompositionPositionThumbnail({
             {gains ? (
               <div className="metric">
                 <Tag theme={tagTheme}>
-                  <FridayCoinsGains>{gains}</FridayCoinsGains>
+                  <GoatimCoinsGains>{gains}</GoatimCoinsGains>
                 </Tag>
               </div>
             ) : null}

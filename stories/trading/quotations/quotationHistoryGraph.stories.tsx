@@ -1,6 +1,6 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import { QuotationHistory } from '@fridaygame/client';
+import { QuotationHistory } from '@goatim/client';
 import { QuotationHistoryGraph } from '../../../src';
 
 interface Props {

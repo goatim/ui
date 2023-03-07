@@ -51,7 +51,7 @@ export function Counter({
   step = 1,
 }: CounterProps): ReactElement {
   const className = useMemo<string>(() => {
-    const classNames = ['friday-ui-counter'];
+    const classNames = ['goatim-ui-counter'];
 
     if (visited) {
       classNames.push('visited');

@@ -1,5 +1,5 @@
 import { ReactElement, useMemo } from 'react';
-import { MatchStatus } from '@fridaygame/client';
+import { MatchStatus } from '@goatim/client';
 
 export type MatchStatusThumbnailTheme = 'dark' | 'light';
 
@@ -32,7 +32,7 @@ export function MatchStatusThumbnail({
   }, [status]);
 
   return (
-    <div className={`friday-ui-match-status-thumbnail ${status} ${theme}`}>
+    <div className={`goatim-ui-match-status-thumbnail ${status} ${theme}`}>
       <div className="indicator" />
       <span>{textualStatus}</span>
     </div>

@@ -10,7 +10,7 @@ export interface LoaderProps {
 
 export function Loader({ theme = 'dark', size = 20, thickness = 3 }: LoaderProps): ReactElement {
   return (
-    <div className={`friday-ui-loader ${theme}`} style={{ width: size, height: size }}>
+    <div className={`goatim-ui-loader ${theme}`} style={{ width: size, height: size }}>
       <div style={{ borderWidth: thickness }} />
     </div>
   );

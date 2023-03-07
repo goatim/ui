@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { Player } from '@fridaygame/client';
+import { Player } from '@goatim/client';
 import { Select, SelectProps } from '../../general';
 import { PlayerThumbnail } from '../players';
 
@@ -21,7 +21,7 @@ export function PositionPlayerSelector({
   position,
 }: PositionPlayerSelectorProps): ReactElement {
   return (
-    <div className="friday-ui-position-player-selector">
+    <div className="goatim-ui-position-player-selector">
       <div className="header">
         <span className="composition-setting">{compositionSetting || 'Joueur'}</span>
         <span className="position">{position || 'Sélectionne un joueur'}</span>

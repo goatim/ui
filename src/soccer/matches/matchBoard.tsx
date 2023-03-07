@@ -1,5 +1,5 @@
 import { MouseEvent, ReactElement, useState } from 'react';
-import { Composition, Match, PhysicalEvent } from '@fridaygame/client';
+import { Composition, Match, PhysicalEvent } from '@goatim/client';
 import { To } from 'react-router';
 import { MatchFeed } from './matchFeed';
 import { MatchRanking } from './matchRanking';
@@ -37,7 +37,7 @@ export function MatchBoard({
   const [tab, setTab] = useState<'feed' | 'ranking'>('feed');
 
   return (
-    <div className={`friday-ui-match-board ${size} ${theme}`}>
+    <div className={`goatim-ui-match-board ${size} ${theme}`}>
       {size === 'small' ? (
         <div className="tab-menu">
           <Button

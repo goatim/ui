@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { Composition } from '@fridaygame/client';
+import { Composition } from '@goatim/client';
 import { WrapperProps } from '@cezembre/fronts';
 import { WalletRank, WalletThumbnailSize, WalletThumbnailTheme } from '../../market';
 

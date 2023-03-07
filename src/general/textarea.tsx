@@ -26,7 +26,7 @@ export function Textarea({
   spellCheck = true,
 }: TextareaProps): ReactElement {
   const classNames = useMemo<string>(() => {
-    let nextClassName = 'friday-ui-textarea';
+    let nextClassName = 'goatim-ui-textarea';
 
     if (visited) {
       nextClassName += ' visited';

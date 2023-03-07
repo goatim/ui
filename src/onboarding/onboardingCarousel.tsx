@@ -13,7 +13,7 @@ export interface OnboardingCarouselSlideProps {
 
 export function OnboardingCarouselSlide({ slide }: OnboardingCarouselSlideProps): ReactElement {
   return (
-    <div className="friday-ui-onboarding-carousel-slide">
+    <div className="goatim-ui-onboarding-carousel-slide">
       {slide.image ? (
         <div className="header">
           <img src={slide.image} alt={`onboarding ${slide.title}`} />
@@ -70,7 +70,7 @@ export function OnboardingCarousel({
   );
 
   return (
-    <div className={`friday-ui-onboarding-carousel ${size}`}>
+    <div className={`goatim-ui-onboarding-carousel ${size}`}>
       <div
         className="slides"
         style={{ transform: `translateX(-${slideIndex * 100}%)`, height: slideHeight }}>

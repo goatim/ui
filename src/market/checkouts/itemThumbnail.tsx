@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { Item } from '@fridaygame/client';
+import { Item } from '@goatim/client';
 import { OrderItemThumbnail } from './orderItemThumbnail';
 import { PackItemThumbnail } from './packItemThumbnail';
 import { BoosterItemThumbnail } from './boosterItemThumbnail';

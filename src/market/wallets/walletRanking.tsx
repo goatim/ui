@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { Wallet } from '@fridaygame/client';
+import { Wallet } from '@goatim/client';
 import { WalletRank } from './walletRank';
 import { Icon } from '../../general';
 
@@ -24,7 +24,7 @@ export function WalletRanking({
 }: WalletRankingProps): ReactElement {
   if (!wallets?.length) {
     return (
-      <div className={`friday-ui-wallet-ranking-empty ${theme}`}>
+      <div className={`goatim-ui-wallet-ranking-empty ${theme}`}>
         <Icon name="meh" size={25} />
         <span>Personne</span>
       </div>
@@ -32,7 +32,7 @@ export function WalletRanking({
   }
 
   return (
-    <div className={`friday-ui-wallet-ranking ${theme}`}>
+    <div className={`goatim-ui-wallet-ranking ${theme}`}>
       <div className="wallets">
         {wallets.map((wallet) => (
           <div className="wallet" key={wallet.id}>

@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { ShareBulk } from '@fridaygame/client';
+import { ShareBulk } from '@goatim/client';
 import { ShareBulkThumbnail, ShareBulkThumbnailSize } from './shareBulkThumbnail';
 
 export interface ShareBulkListProps {
@@ -9,7 +9,7 @@ export interface ShareBulkListProps {
 
 export function ShareBulkList({ shareBulks, size = 'normal' }: ShareBulkListProps): ReactElement {
   return (
-    <div className="friday-ui-share-bulk-list">
+    <div className="goatim-ui-share-bulk-list">
       {shareBulks.map((shareBulk) => (
         <div
           className="share-bulk"

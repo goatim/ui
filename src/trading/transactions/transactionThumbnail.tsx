@@ -1,7 +1,7 @@
 import { ReactElement, useMemo } from 'react';
-import { Transaction } from '@fridaygame/client';
+import { Transaction } from '@goatim/client';
 import { DateTime } from 'luxon';
-import { FridayCoins, PercentageVariation, WalletThumbnail } from '../../market';
+import { GoatimCoins, PercentageVariation, WalletThumbnail } from '../../market';
 import { AssetThumbnail, AssetThumbnailSize } from '../assets';
 import { Icon } from '../../general';
 
@@ -33,7 +33,7 @@ export function TransactionThumbnail({
   }, [size]);
 
   return (
-    <div className="friday-ui-transaction-thumbnail">
+    <div className="goatim-ui-transaction-thumbnail">
       <div className="header">
         {transaction.from && typeof transaction.from === 'object' ? (
           <div className="from">
@@ -56,7 +56,7 @@ export function TransactionThumbnail({
         <span className="label">Transaction:</span>
         <span>{transaction.nb_shares || 0}</span>
         <span className="label">actions pour</span>
-        <FridayCoins amount={transaction.nb_shares} />
+        <GoatimCoins amount={transaction.nb_shares} />
       </div>
 
       {transaction.asset && typeof transaction.asset === 'object' ? (
@@ -68,7 +68,7 @@ export function TransactionThumbnail({
       <div className="footer">
         <div className="quotation">
           <span className="label">Cours</span>
-          <FridayCoins amount={transaction.price} />
+          <GoatimCoins amount={transaction.price} />
           <PercentageVariation variation={transaction.asset_quotation_variation} />
         </div>
         <span className="creation">{resolvedCreation}</span>

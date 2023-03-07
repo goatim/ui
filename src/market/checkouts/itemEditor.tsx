@@ -1,5 +1,5 @@
 import { ReactElement, useCallback, useMemo } from 'react';
-import { BoosterFactory, ItemType, OrderBook } from '@fridaygame/client';
+import { BoosterFactory, ItemType, OrderBook } from '@goatim/client';
 import { FormFields } from '@cezembre/forms';
 import { OrderItemEditor, OrderItemEditorFields, OrderItemEditorSize } from './orderItemEditor';
 

@@ -1,8 +1,7 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import { Asset, BoosterFactory, Club, Item, PackFactory, Player } from '@fridaygame/client';
-import { ItemList } from '../../../src';
-import { ItemThumbnailSize } from '../../../src';
+import { Asset, BoosterFactory, Club, Item, PackFactory, Player } from '@goatim/client';
+import { ItemList, ItemThumbnailSize } from '../../../src';
 
 interface Props {
   size?: ItemThumbnailSize;
@@ -93,7 +92,7 @@ const orderItem: Item = {
 const packFactory: PackFactory = {
   id: 'silver',
   name: 'Silver',
-  description: 'De pur produit du centre de formation de Friday.',
+  description: 'De pur produit du centre de formation de Goatim.',
   price: 399,
   odds: { '100000': 1 },
 };

@@ -101,7 +101,7 @@ function DefaultSuggestion<V = string, S extends InputSuggestion<V> = InputSugge
     suggestion?.value &&
     (typeof suggestion.value === 'string' || typeof suggestion.value === 'number')
   ) {
-    return <span className="friday-ui-input-suggestion">{suggestion.value}</span>;
+    return <span className="goatim-ui-input-suggestion">{suggestion.value}</span>;
   }
   return null;
 }
@@ -171,7 +171,7 @@ export function Input<V = string, S extends InputSuggestion<V> = InputSuggestion
   const [suggestionsActive, setSuggestionsActive] = useState<boolean>(false);
 
   const className = useMemo<string>(() => {
-    const classNames: string[] = ['friday-ui-input', shape, theme, size];
+    const classNames: string[] = ['goatim-ui-input', shape, theme, size];
 
     if (visited) {
       classNames.push('visited');

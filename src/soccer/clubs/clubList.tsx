@@ -1,6 +1,6 @@
 import { MouseEvent, ReactElement, useMemo } from 'react';
 import { To } from 'react-router';
-import { Club } from '@fridaygame/client';
+import { Club } from '@goatim/client';
 import { Property } from 'csstype';
 import { ClubThumbnail, ClubThumbnailShape, ClubThumbnailSize } from './clubThumbnail';
 
@@ -32,7 +32,7 @@ export function ClubList({
 
   return (
     <div
-      className="friday-ui-club-list"
+      className="goatim-ui-club-list"
       style={{ gridTemplateColumns: `repeat(${columns}, auto)`, justifyItems }}>
       {clubs ? (
         clubs.map((club) => (

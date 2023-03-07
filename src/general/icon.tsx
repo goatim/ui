@@ -4,9 +4,9 @@ import { Slash } from 'react-feather';
 import {
   Coins,
   Ether,
-  Friday,
-  FridayCoin,
-  FridayIcon,
+  Goatim,
+  GoatimCoin,
+  GoatimIcon,
   Mastercard,
   Money,
   Podium,
@@ -310,8 +310,8 @@ export type IconName =
   | 'zap-off'
   | 'zoom-in'
   | 'zoom-out'
-  | 'friday'
-  | 'friday-icon'
+  | 'goatim'
+  | 'goatim-icon'
   | 'money'
   | 'rocket'
   | 'shirt'
@@ -326,7 +326,7 @@ export type IconName =
   | 'podium'
   | 'receive-coin'
   | 'soccer-goal'
-  | 'friday-coin'
+  | 'goatim-coin'
   | 'trading';
 
 export interface IconProps extends SvgIconProps {
@@ -913,10 +913,10 @@ export function Icon({
       return <FeatherIcons.ZoomIn size={size} strokeWidth={strokeWidth} color={color} />;
     case 'zoom-out':
       return <FeatherIcons.ZoomOut size={size} strokeWidth={strokeWidth} color={color} />;
-    case 'friday':
-      return <Friday size={size} />;
-    case 'friday-icon':
-      return <FridayIcon size={size} />;
+    case 'goatim':
+      return <Goatim size={size} />;
+    case 'goatim-icon':
+      return <GoatimIcon size={size} />;
     case 'money':
       return <Money size={size} />;
     case 'rocket':
@@ -947,8 +947,8 @@ export function Icon({
       return <SoccerGoal size={size} />;
     case 'trading':
       return <Trading size={size} />;
-    case 'friday-coin':
-      return <FridayCoin size={size} />;
+    case 'goatim-coin':
+      return <GoatimCoin size={size} />;
     default:
       return <Slash size={size} />;
   }

@@ -1,4 +1,4 @@
-import React, { ReactElement, useCallback, useMemo, useState, useEffect } from 'react';
+import React, { ReactElement, useCallback, useEffect, useMemo, useState } from 'react';
 import { Property } from 'csstype';
 
 export interface GutterProps {
@@ -143,7 +143,7 @@ export function Gutter({
   }, [moving]);
 
   return (
-    <div className="friday-ui-gutter" ref={gutterRef}>
+    <div className="goatim-ui-gutter" ref={gutterRef}>
       {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
       <div
         role="list"

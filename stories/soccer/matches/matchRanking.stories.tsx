@@ -1,15 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import {
-  Asset,
-  Club,
-  Dividend,
-  Match,
-  PhysicalEvent,
-  Player,
-  User,
-  Wallet,
-} from '@fridaygame/client';
+import { Asset, Club, Dividend, Match, PhysicalEvent, Player, User, Wallet } from '@goatim/client';
 import { MatchRanking, MatchRankingTheme } from '../../../src';
 
 interface Props {

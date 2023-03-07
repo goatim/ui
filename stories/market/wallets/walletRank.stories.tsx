@@ -1,11 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import { User, Wallet } from '@fridaygame/client';
-import {
-  WalletRank,
-  WalletThumbnailSize,
-  WalletThumbnailTheme,
-} from '../../../src';
+import { User, Wallet } from '@goatim/client';
+import { WalletRank, WalletThumbnailSize, WalletThumbnailTheme } from '../../../src';
 
 interface Props {
   size?: WalletThumbnailSize;

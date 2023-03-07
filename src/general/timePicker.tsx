@@ -66,7 +66,7 @@ export function TimePicker({ label, name, value, onChange }: TimePickerProps): R
   );
 
   return (
-    <div className="friday-ui-time-picker">
+    <div className="goatim-ui-time-picker">
       {label ? <label htmlFor={name}>{label}</label> : null}
 
       <div className="container">

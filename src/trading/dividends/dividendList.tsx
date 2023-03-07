@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { Dividend } from '@fridaygame/client';
+import { Dividend } from '@goatim/client';
 import { DividendThumbnail, DividendThumbnailTheme } from './dividendThumbnail';
 
 export interface DividendListProps {
@@ -12,7 +12,7 @@ export function DividendList({ dividends, theme = 'dark' }: DividendListProps): 
     return <span>Aucun dividende</span>;
   }
   return (
-    <div className="friday-ui-dividend-list">
+    <div className="goatim-ui-dividend-list">
       {dividends.map((dividend) => (
         <div key={dividend.id} className="dividend">
           <DividendThumbnail dividend={dividend} theme={theme} />

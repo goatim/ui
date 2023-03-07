@@ -1,5 +1,5 @@
 import { ReactElement, useMemo } from 'react';
-import { Wallet } from '@fridaygame/client';
+import { Wallet } from '@goatim/client';
 import { WalletThumbnail } from './walletThumbnail';
 
 export type WalletListTheme = 'dark' | 'light';
@@ -18,14 +18,14 @@ export function WalletList({ wallets, total, theme }: WalletListProps): ReactEle
 
   if (!wallets?.length) {
     return (
-      <div className={`friday-ui-wallet-list-empty ${theme}`}>
+      <div className={`goatim-ui-wallet-list-empty ${theme}`}>
         <span>Aucun portefeuille</span>
       </div>
     );
   }
 
   return (
-    <div className={`friday-ui-wallet-list ${theme}`}>
+    <div className={`goatim-ui-wallet-list ${theme}`}>
       {wallets.map((wallet) => (
         <div key={wallet.id} className="wallet">
           <WalletThumbnail wallet={wallet} showName={false} theme={theme} />

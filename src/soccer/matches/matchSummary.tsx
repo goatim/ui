@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { Composition, Match } from '@fridaygame/client';
+import { Composition, Match } from '@goatim/client';
 import { CompositionPodium, CompositionThumbnail } from '../compositions';
 import { MatchStatusThumbnail } from './matchStatusThumbnail';
 
@@ -11,7 +11,7 @@ export interface MatchSummaryProps {
 
 export function MatchSummary({ match, podium, self }: MatchSummaryProps): ReactElement {
   return (
-    <div className="friday-ui-match-summary">
+    <div className="goatim-ui-match-summary">
       <div className="header">
         <span className="subtitle">Résultats</span>
         <span className="title">{match.title}</span>

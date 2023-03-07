@@ -21,7 +21,7 @@ export function BoosterIcon({
 }: BoosterIconProps): ReactElement {
   return (
     <Wrapper
-      className={`friday-ui-booster-icon ${size}${active ? ' active' : ''}`}
+      className={`goatim-ui-booster-icon ${size}${active ? ' active' : ''}`}
       to={to}
       onClick={onClick}
       type={type}

@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import { Image } from '@fridaygame/client';
+import { Image } from '@goatim/client';
 import {
   SoccerFieldPosition,
   SoccerFieldPositionSize,

@@ -3,7 +3,7 @@
 @use '~@cezembre/fronts/dist/screens';
 @use '../styles/colors';
 
-.friday-ui-modal {
+.goatim-ui-modal {
   @include layouts.modal;
   transition: opacity linear 100ms, visibility linear 100ms;
 

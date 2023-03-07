@@ -9,9 +9,9 @@ import {
   TimeScale,
 } from 'chart.js';
 import 'chartjs-adapter-luxon';
-import { QuotationHistory } from '@fridaygame/client';
+import { QuotationHistory } from '@goatim/client';
 import { Icon } from '../../general';
-import { FridayCoins } from '../../market';
+import { GoatimCoins } from '../../market';
 
 Chart.register(LineController, LinearScale, TimeScale, PointElement, LineElement, Filler);
 
@@ -137,18 +137,18 @@ export function QuotationHistoryGraph({
 
   if ((quotationHistory?.data.length || 0) > 1) {
     return (
-      <div className={`friday-ui-quotation-history-graph ${theme}`}>
+      <div className={`goatim-ui-quotation-history-graph ${theme}`}>
         <canvas ref={loadCanvas} />
       </div>
     );
   }
 
   return (
-    <div className={`friday-ui-quotation-history-graph ${theme}`}>
+    <div className={`goatim-ui-quotation-history-graph ${theme}`}>
       {quotationHistory?.data.length === 1 ? (
         <div className="placeholder">
           <Icon name="git-commit" size={20} />
-          <FridayCoins amount={quotationHistory.data[0].a} />
+          <GoatimCoins amount={quotationHistory.data[0].a} />
         </div>
       ) : (
         <div className="placeholder">

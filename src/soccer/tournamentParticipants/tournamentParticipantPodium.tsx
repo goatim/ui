@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { formatScore, TournamentParticipant } from '@fridaygame/client';
+import { formatScore, TournamentParticipant } from '@goatim/client';
 import { TournamentParticipantThumbnail } from './tournamentParticipantThumbnail';
 
 export interface TournamentParticipantPodiumProps {
@@ -10,7 +10,7 @@ export function TournamentParticipantPodium({
   tournamentParticipants,
 }: TournamentParticipantPodiumProps): ReactElement {
   return (
-    <div className="friday-ui-tournament-participant-podium">
+    <div className="goatim-ui-tournament-participant-podium">
       {tournamentParticipants?.slice(0, 3).map((participant) => (
         <div className="step" key={participant.id}>
           <div className="rank">

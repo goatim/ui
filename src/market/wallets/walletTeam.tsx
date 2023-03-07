@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { Wallet } from '@fridaygame/client';
+import { Wallet } from '@goatim/client';
 import { UserThumbnail } from '../../auth';
 
 export interface WalletTeamProps {
@@ -8,7 +8,7 @@ export interface WalletTeamProps {
 
 export function WalletTeam({ wallet }: WalletTeamProps): ReactElement {
   return (
-    <div className="friday-ui-wallet-team">
+    <div className="goatim-ui-wallet-team">
       {wallet.owner && typeof wallet.owner === 'object' ? (
         <UserThumbnail user={wallet.owner} size="medium" />
       ) : null}

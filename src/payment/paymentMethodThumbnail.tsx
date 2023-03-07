@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import { PaymentMethod as StripePaymentMethod } from '@stripe/stripe-js';
-import { MinifiedPaymentMethod, PaymentMethod } from '@fridaygame/client';
+import { MinifiedPaymentMethod, PaymentMethod } from '@goatim/client';
 import { WrapperProps } from '@cezembre/fronts';
 import { CreditCardThumbnail } from './creditCardThumbnail';
 import { CreditCardFields } from './creditCardForm';

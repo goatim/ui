@@ -22,7 +22,7 @@ export function A2HSBanner({
     ['iphone', 'ipad', 'ipod'].includes(client.device)
   ) {
     return (
-      <div className="friday-ui-a2hs-banner">
+      <div className="goatim-ui-a2hs-banner">
         <Wrapper className="banner" onClick={onClick} to={to} href={href} target={target}>
           <div className="icon">
             <AppIcon />

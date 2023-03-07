@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { PhysicalEvent } from '@fridaygame/client';
+import { PhysicalEvent } from '@goatim/client';
 import { PhysicalEventThumbnail, PhysicalEventThumbnailTheme } from './physicalEventThumbnail';
 
 export interface PhysicalEventListProps {
@@ -15,7 +15,7 @@ export function PhysicalEventList({
     return <span>Pas d&eapos;événements</span>;
   }
   return (
-    <div className="friday-ui-physical-event-list">
+    <div className="goatim-ui-physical-event-list">
       {physicalEvents.map((physicalEvent) => (
         <div className="physical-event" key={physicalEvent.id}>
           <PhysicalEventThumbnail physicalEvent={physicalEvent} theme={theme} />

@@ -22,7 +22,7 @@ export function StripeCreditCardInput({
   instructions = null,
 }: StripeCreditCardInputProps): ReactElement {
   const className = useMemo<string>(() => {
-    const classNames = ['friday-ui-stripe-credit-card-input'];
+    const classNames = ['goatim-ui-stripe-credit-card-input'];
     if (visited) {
       classNames.push('visited');
     }

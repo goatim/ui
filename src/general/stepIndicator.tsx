@@ -13,7 +13,7 @@ export function StepIndicator({ nbSteps, step, onClickStep }: StepIndicatorProps
   );
 
   return (
-    <div className="friday-ui-step-indicator">
+    <div className="goatim-ui-step-indicator">
       {nbSteps
         ? steps.map((key, i: number) =>
             onClickStep ? (

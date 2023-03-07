@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { BoosterFactory, formatEurosAmount } from '@fridaygame/client';
+import { BoosterFactory, formatEurosAmount } from '@goatim/client';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
 import { BoosterIcon } from './boosterIcon';
 import { Button } from '../../general';
@@ -31,7 +31,7 @@ export function BoosterFactoryThumbnail({
   if (shape === 'icon') {
     return (
       <Wrapper
-        className={`friday-ui-booster-factory-thumbnail ${size} ${shape}${active ? ' active' : ''}`}
+        className={`goatim-ui-booster-factory-thumbnail ${size} ${shape}${active ? ' active' : ''}`}
         to={to}
         onClick={onClick}
         type={type}
@@ -48,7 +48,7 @@ export function BoosterFactoryThumbnail({
   }
   return (
     <div
-      className={`friday-ui-booster-factory-thumbnail ${size} ${shape}${active ? ' active' : ''}`}>
+      className={`goatim-ui-booster-factory-thumbnail ${size} ${shape}${active ? ' active' : ''}`}>
       <div className="header">
         <span className="title">Booster</span>
         <span className="leverage">x{boosterFactory.leverage || 0}</span>

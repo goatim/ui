@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { BoosterItem, formatEurosAmount } from '@fridaygame/client';
+import { BoosterItem, formatEurosAmount } from '@goatim/client';
 import { Icon } from '../../general';
 
 export type BoosterItemThumbnailSize = 'narrow' | 'normal';
@@ -16,7 +16,7 @@ export function BoosterItemThumbnail({
   size = 'normal',
 }: BoosterItemThumbnailProps): ReactElement {
   return (
-    <div className={`friday-ui-booster-item-thumbnail ${size}`}>
+    <div className={`goatim-ui-booster-item-thumbnail ${size}`}>
       <div className="container">
         {boosterItem.booster_factory && typeof boosterItem.booster_factory === 'object' ? (
           <div className="cell">

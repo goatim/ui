@@ -1,5 +1,5 @@
 import { ForwardedRef, forwardRef, ReactElement } from 'react';
-import { Image, User } from '@fridaygame/client';
+import { Image, User } from '@goatim/client';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
 import { Icon } from '../../general';
 
@@ -33,7 +33,7 @@ export const UserPicture = forwardRef<
 ): ReactElement {
   return (
     <Wrapper
-      className={`friday-ui-user-picture ${size} ${theme}`}
+      className={`goatim-ui-user-picture ${size} ${theme}`}
       to={to}
       onClick={onClick}
       type={type}

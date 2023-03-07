@@ -3,8 +3,8 @@ import { Icon } from './icon';
 
 export function AppIcon(): ReactElement {
   return (
-    <div className="friday-ui-app-icon">
-      <Icon name="friday-icon" />
+    <div className="goatim-ui-app-icon">
+      <Icon name="goatim-icon" />
     </div>
   );
 }

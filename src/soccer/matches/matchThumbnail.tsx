@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { Composition, Match } from '@fridaygame/client';
+import { Composition, Match } from '@goatim/client';
 import { DateTimeThumbnail } from '../../general/dateTimeThumbnail';
 import { MatchLive } from './matchLive';
 import { MatchParticipants } from './matchParticipants';
@@ -24,7 +24,7 @@ export function MatchThumbnail({
   feedTarget,
 }: MatchThumbnailProps): ReactElement {
   return (
-    <div className="friday-ui-match-thumbnail">
+    <div className="goatim-ui-match-thumbnail">
       <div className="header">
         <MatchHeader match={match} />
         <div className="period">

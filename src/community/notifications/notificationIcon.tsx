@@ -17,7 +17,7 @@ export function NotificationIcon({ event }: NotificationIconProps): ReactElement
     }
   }, [event]);
   return (
-    <div className={`friday-ui-notification-icon ${event}`}>
+    <div className={`goatim-ui-notification-icon ${event}`}>
       <Icon name={iconName} size={17} />
     </div>
   );

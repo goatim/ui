@@ -33,7 +33,7 @@ export function Tag({
   }, [size]);
 
   return (
-    <div className={`friday-ui-tag ${size} ${theme}`}>
+    <div className={`goatim-ui-tag ${size} ${theme}`}>
       <div className="container">
         {leftIcon ? <Icon name={leftIcon} size={iconSize} /> : null}
         {label ? <span className="label">{label}</span> : children}

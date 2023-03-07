@@ -1,7 +1,7 @@
 @use '../../styles/colors';
 @use '../../styles/fonts';
 
-.friday-ui-wallet-ranking-empty {
+.goatim-ui-wallet-ranking-empty {
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -29,7 +29,7 @@
   }
 }
 
-.friday-ui-wallet-ranking {
+.goatim-ui-wallet-ranking {
   height: 100%;
 
   > .wallets {

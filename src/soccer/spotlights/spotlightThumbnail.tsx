@@ -1,5 +1,5 @@
 import { MouseEvent, ReactElement, useMemo } from 'react';
-import { Asset, Spotlight } from '@fridaygame/client';
+import { Asset, Spotlight } from '@goatim/client';
 import { To } from 'react-router-dom';
 import { AssetList, AssetThumbnailSize } from '../../trading';
 
@@ -33,7 +33,7 @@ export function SpotlightThumbnail({
 
   return (
     <div
-      className={`friday-ui-spotlight-thumbnail ${spotlight.type || 'simple'} ${size}`}
+      className={`goatim-ui-spotlight-thumbnail ${spotlight.type || 'simple'} ${size}`}
       style={{
         background: spotlight.resolved_primary_color,
       }}>

@@ -1,11 +1,8 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import { Asset, BoosterInUse, Club, Player, Portfolio, QuotationHistory } from '@fridaygame/client';
+import { Asset, BoosterInUse, Club, Player, Portfolio, QuotationHistory } from '@goatim/client';
 import { BrowserRouter } from 'react-router-dom';
-import {
-  PortfolioThumbnail,
-  PortfolioThumbnailSize,
-} from '../../../src';
+import { PortfolioThumbnail, PortfolioThumbnailSize } from '../../../src';
 
 interface Props {
   size: PortfolioThumbnailSize;

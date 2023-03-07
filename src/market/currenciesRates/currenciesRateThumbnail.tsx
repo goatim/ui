@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { CurrenciesRate, formatCurrencyAmount } from '@fridaygame/client';
+import { CurrenciesRate, formatCurrencyAmount } from '@goatim/client';
 import { PercentageVariation } from '../percentageVariation';
 
 export type CurrenciesRateThumbnailTheme = 'dark' | 'light';
@@ -16,7 +16,7 @@ export function CurrenciesRateThumbnail({
   variation,
 }: CurrenciesRateThumbnailProps): ReactElement {
   return (
-    <div className={`friday-ui-currencies-rate-thumbnail ${theme}`}>
+    <div className={`goatim-ui-currencies-rate-thumbnail ${theme}`}>
       <div className="rates">
         {currenciesRate.base_currency && typeof currenciesRate.base_currency === 'object' ? (
           <span className="base-currency">

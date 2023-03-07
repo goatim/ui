@@ -15,7 +15,7 @@ export function Datetime({
   relative = false,
 }: DatetimeProps): ReactElement {
   return (
-    <span className="friday-ui-datetime">
+    <span className="goatim-ui-datetime">
       {date ? value.toLocaleString(DateTime.DATE_MED) : null}
       {date && time ? <br /> : null}
       {time ? <span className="time">{value.toLocaleString(DateTime.TIME_SIMPLE)}</span> : null}

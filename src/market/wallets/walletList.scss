@@ -1,7 +1,7 @@
 @use '../../styles/fonts';
 @use '../../styles/colors';
 
-.friday-ui-wallet-list-empty {
+.goatim-ui-wallet-list-empty {
   > span {
     @include fonts.Inter(.9em, colors.$blue, bold);
   }
@@ -13,7 +13,7 @@
   }
 }
 
-.friday-ui-wallet-list {
+.goatim-ui-wallet-list {
   display: grid;
   grid-template-columns: repeat(auto-fit, 25px);
   grid-gap: 10px;

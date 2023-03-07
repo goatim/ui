@@ -1,9 +1,8 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Form, Field } from '@cezembre/forms';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { Field, Form } from '@cezembre/forms';
 import { JSXElementConstructor } from 'react';
-import { BoosterFactory } from '@fridaygame/client';
-import { Radio } from '../../src';
-import { BoosterFactoryThumbnail } from '../../src';
+import { BoosterFactory } from '@goatim/client';
+import { BoosterFactoryThumbnail, Radio } from '../../src';
 
 interface Props {
   label?: string;

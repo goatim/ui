@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import { Asset, Club, Player, SearchResult } from '@fridaygame/client';
+import { Asset, Club, Player, SearchResult } from '@goatim/client';
 import { SearchInput, SearchInputTheme } from '../../src';
 
 interface Props {

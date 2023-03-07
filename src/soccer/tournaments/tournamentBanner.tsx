@@ -1,5 +1,5 @@
 import { ReactElement, useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { TournamentParticipant } from '@fridaygame/client';
+import { TournamentParticipant } from '@goatim/client';
 import { DateTime, Duration } from 'luxon';
 import { TournamentParticipantPodium } from '../tournamentParticipants';
 import { Button } from '../../general';
@@ -39,12 +39,12 @@ export function TournamentBanner({
     return () => (timeout.current ? clearTimeout(timeout.current) : undefined);
   }, [resolveRemainingTime]);
   return (
-    <div className={`friday-ui-tournament-banner ${size}`}>
+    <div className={`goatim-ui-tournament-banner ${size}`}>
       <div className="podium">
         {tournamentParticipants?.length ? (
           <>
             <TournamentParticipantPodium tournamentParticipants={tournamentParticipants} />
-            <span className="title">Friday league</span>
+            <span className="title">Goatim league</span>
           </>
         ) : (
           <span className="placeholder">À partir du 20 janvier</span>

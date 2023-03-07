@@ -1,4 +1,4 @@
-import { ReactNode, FocusEvent, KeyboardEvent, ReactElement, useCallback } from 'react';
+import { FocusEvent, KeyboardEvent, ReactElement, ReactNode, useCallback } from 'react';
 
 export interface CheckProps {
   active?: boolean;
@@ -34,7 +34,7 @@ export function Check({
 
   return (
     <div
-      className={`friday-ui-check${children ? ' tag' : ''}`}
+      className={`goatim-ui-check${children ? ' tag' : ''}`}
       role="button"
       aria-pressed={active}
       onKeyDown={onKeyDown}

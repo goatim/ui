@@ -1,5 +1,5 @@
 import { ReactElement, useMemo } from 'react';
-import { formatPercentageVariation } from '@fridaygame/client';
+import { formatPercentageVariation } from '@goatim/client';
 
 export type PercentageVariationShape = 'text' | 'filled';
 
@@ -26,7 +26,7 @@ export function PercentageVariation({
   }, [variation]);
 
   return (
-    <span className={`friday-ui-percentage-variation ${sign} ${shape} ${size}`}>
+    <span className={`goatim-ui-percentage-variation ${sign} ${shape} ${size}`}>
       {formatPercentageVariation(children || variation || 0)}
     </span>
   );

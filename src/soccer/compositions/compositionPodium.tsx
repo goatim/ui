@@ -1,5 +1,5 @@
 import { ReactElement, useMemo } from 'react';
-import { Composition } from '@fridaygame/client';
+import { Composition } from '@goatim/client';
 import { WalletThumbnail } from '../../market';
 import { Score } from '../../general';
 
@@ -34,7 +34,7 @@ export function CompositionPodium({
   }, [compositions]);
 
   return (
-    <div className={`friday-ui-composition-podium ${theme}`}>
+    <div className={`goatim-ui-composition-podium ${theme}`}>
       {sortedCompositions.map((composition, i) => (
         <div className="composition" key={composition.id}>
           <span className="position">{composition.position}</span>

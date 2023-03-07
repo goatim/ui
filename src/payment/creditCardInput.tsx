@@ -11,7 +11,7 @@ import {
   useState,
 } from 'react';
 import { FieldComponentProps } from '@cezembre/forms';
-import { CardBrand } from '@fridaygame/client';
+import { CardBrand } from '@goatim/client';
 import { Icon } from '../general';
 
 export interface CreditCardValue {
@@ -43,7 +43,7 @@ export function CreditCardInput({
   instructions = null,
 }: CreditCardInputProps): ReactElement {
   const className = useMemo<string>(() => {
-    const classNames = ['friday-ui-credit-card-input'];
+    const classNames = ['goatim-ui-credit-card-input'];
     if (visited) {
       classNames.push('visited');
     }

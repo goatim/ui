@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { Post } from '@fridaygame/client';
+import { Post } from '@goatim/client';
 import { OrderList } from '../../trading';
 import { Button } from '../../general';
 
@@ -15,7 +15,7 @@ export function OrdersPost({ post, size = 'normal' }: OrdersPostProps): ReactEle
     return <span>Aucun ordre</span>;
   }
   return (
-    <div className="friday-ui-orders-post">
+    <div className="goatim-ui-orders-post">
       <div className="orders">
         <OrderList orders={post.payload} shape="boxes" size={size} />
       </div>

@@ -1,5 +1,5 @@
 import { ReactElement, useMemo } from 'react';
-import { formatPlayerName, Player } from '@fridaygame/client';
+import { formatPlayerName, Player } from '@goatim/client';
 import { To } from 'react-router-dom';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
 import { ClubIcon, ClubIconSize, ClubThumbnail, ClubThumbnailTheme } from '../clubs';
@@ -36,7 +36,7 @@ export function PlayerThumbnail({
   }, [size]);
 
   const className = useMemo<string>(() => {
-    let nextClassName = 'friday-ui-player-thumbnail';
+    let nextClassName = 'goatim-ui-player-thumbnail';
 
     if (size) {
       nextClassName += ` ${size}`;

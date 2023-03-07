@@ -1,5 +1,5 @@
 import { ReactElement, useCallback, useEffect, useState } from 'react';
-import { PaymentMethod } from '@fridaygame/client';
+import { PaymentMethod } from '@goatim/client';
 import { CreditCardFields, CreditCardForm } from './creditCardForm';
 import { Button } from '../general';
 import { PaymentMethodList } from './paymentMethodList';
@@ -45,7 +45,7 @@ export function PaymentMethodSelector({
   );
 
   return (
-    <div className="friday-ui-payment-method-selector">
+    <div className="goatim-ui-payment-method-selector">
       {paymentMethods?.length || addedPaymentMethods.length ? (
         <div className="payment-methods">
           <PaymentMethodList

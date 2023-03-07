@@ -21,7 +21,7 @@ export function Checkbox({
   instructions,
 }: CheckboxProps): ReactElement {
   const className = useMemo<string>(() => {
-    const classNames: string[] = ['friday-ui-checkbox'];
+    const classNames: string[] = ['goatim-ui-checkbox'];
 
     if (isActive) {
       classNames.push('active');

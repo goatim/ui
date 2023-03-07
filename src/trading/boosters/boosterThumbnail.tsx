@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
-import { Booster } from '@fridaygame/client';
+import { Booster } from '@goatim/client';
 import { Icon } from '../../general';
-import { FridayCoinsGains, PercentageVariation } from '../../market';
+import { GoatimCoinsGains, PercentageVariation } from '../../market';
 
 export interface BoosterThumbnailProps {
   booster: Booster;
@@ -10,7 +10,7 @@ export interface BoosterThumbnailProps {
 
 export function BoosterThumbnail({ booster, onStop }: BoosterThumbnailProps): ReactElement {
   return (
-    <div className={`friday-ui-booster-thumbnail${!booster.stopped_at ? ' active' : ''}`}>
+    <div className={`goatim-ui-booster-thumbnail${!booster.stopped_at ? ' active' : ''}`}>
       <div className="container">
         <div className="infos">
           <span className="label">Booster</span>
@@ -25,7 +25,7 @@ export function BoosterThumbnail({ booster, onStop }: BoosterThumbnailProps): Re
         </div>
 
         <div className="variations">
-          <FridayCoinsGains variation={booster.gains} size="medium" />
+          <GoatimCoinsGains variation={booster.gains} size="medium" />
           <PercentageVariation variation={booster.variation} />
         </div>
       </div>

@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
-import { Order } from '@fridaygame/client';
+import { Order } from '@goatim/client';
 import { AssetThumbnail } from '../assets';
-import { FridayCoins } from '../../market';
+import { GoatimCoins } from '../../market';
 import { Icon } from '../../general';
 import { BoosterIcon } from '../boosters';
 
@@ -19,7 +19,7 @@ export function OrderThumbnail({
   size = 'normal',
 }: OrderThumbnailProps): ReactElement {
   return (
-    <div className={`friday-ui-order-thumbnail ${size}`}>
+    <div className={`goatim-ui-order-thumbnail ${size}`}>
       <div className="container">
         {order.asset && typeof order.asset === 'object' ? (
           <div className="cell">
@@ -41,9 +41,9 @@ export function OrderThumbnail({
           <span>Limite</span>
           <div className="content">
             <div>
-              <FridayCoins amount={order.price_limit} size="medium" />
+              <GoatimCoins amount={order.price_limit} size="medium" />
               <br />
-              <FridayCoins
+              <GoatimCoins
                 amount={(order.price_limit || 0) * (order.nb_shares || 1)}
                 size="medium"
                 theme="darker"

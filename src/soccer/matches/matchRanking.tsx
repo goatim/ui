@@ -1,6 +1,6 @@
 import { MouseEvent, ReactElement } from 'react';
 import { To } from 'react-router';
-import { Composition, Match } from '@fridaygame/client';
+import { Composition, Match } from '@goatim/client';
 import { CompositionRanking } from '../compositions';
 import { Button } from '../../general';
 
@@ -28,7 +28,7 @@ export function MatchRanking({
   theme = 'dark',
 }: MatchRankingProps): ReactElement {
   return (
-    <div className={`friday-ui-match-ranking ${theme}`}>
+    <div className={`goatim-ui-match-ranking ${theme}`}>
       <div className="header">
         <span className="title">Classement</span>
       </div>

@@ -1,6 +1,6 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import { Asset, Club, Player, Transaction, Wallet } from '@fridaygame/client';
+import { Asset, Club, Player, Transaction, Wallet } from '@goatim/client';
 import { BrowserRouter } from 'react-router-dom';
 import { TransactionThumbnail } from '../../../src';
 

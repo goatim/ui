@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import { Model } from '@fridaygame/client';
+import { Model } from '@goatim/client';
 import { Table, TableColumn } from '../../src';
 
 interface Props {

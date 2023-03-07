@@ -2,7 +2,7 @@
 @use '../styles/fonts';
 @use '../styles/colors';
 
-.friday-ui-credit-card-thumbnail {
+.goatim-ui-credit-card-thumbnail {
   width: 260px;
   display: flex;
   justify-content: space-between;
@@ -66,6 +66,7 @@
       > .digits {
         color: colors.$blue;
       }
+
       > .expiration {
         color: rgba(colors.$blue, .5);
       }

@@ -1,11 +1,11 @@
 import { ReactElement, useMemo, useState } from 'react';
-import { Asset, BoosterFactory, Ipo, OrderBook, OrderType } from '@fridaygame/client';
+import { Asset, BoosterFactory, Ipo, OrderBook, OrderType } from '@goatim/client';
 import { To } from 'react-router-dom';
-import { QuotationHistory } from '@fridaygame/client/dist/trading/quotations/model';
+import { QuotationHistory } from '@goatim/client/dist/trading/quotations/model';
 import { QuotationHistoryGraph } from '../quotations';
 import {
-  FridayCoins,
-  FridayCoinsSize,
+  GoatimCoins,
+  GoatimCoinsSize,
   ItemEditor,
   ItemEditorFields,
   ItemEditorSize,
@@ -57,7 +57,7 @@ export function AssetOverview({
     }
   }, [size]);
 
-  const fridayCoinsSize = useMemo<FridayCoinsSize>(() => {
+  const goatimCoinsSize = useMemo<GoatimCoinsSize>(() => {
     switch (size) {
       case 'full':
         return 'large';
@@ -102,7 +102,7 @@ export function AssetOverview({
   }, [size]);
 
   return (
-    <div className={`friday-ui-asset-overview ${size} ${orderType}`}>
+    <div className={`goatim-ui-asset-overview ${size} ${orderType}`}>
       {ipo ? (
         <div className="ipo-banner">
           <IpoThumbnail ipo={ipo} shape="banner" size={ipoThumbnailSize} />
@@ -124,7 +124,7 @@ export function AssetOverview({
           <span className="total-shares">
             {asset.total_shares || 0} action{asset.total_shares || 0 > 1 ? 's' : null}
           </span>
-          <FridayCoins amount={asset.quotation} size={fridayCoinsSize} />
+          <GoatimCoins amount={asset.quotation} size={goatimCoinsSize} />
           <PercentageVariation variation={asset.day_variation} size={percentageVariationSize} />
         </div>
       </div>
@@ -138,14 +138,14 @@ export function AssetOverview({
           type="button"
           onClick={() => setOrderType('buy')}
           className="buy"
-          id="friday-ui-asset-overview-buy-button">
+          id="goatim-ui-asset-overview-buy-button">
           Achat
         </button>
         <button
           type="button"
           onClick={() => setOrderType('sell')}
           className="sell"
-          id="friday-ui-asset-overview-sell-button">
+          id="goatim-ui-asset-overview-sell-button">
           Vente
         </button>
       </div>

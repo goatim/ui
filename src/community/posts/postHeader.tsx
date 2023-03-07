@@ -1,5 +1,5 @@
 import { ReactElement, useMemo } from 'react';
-import { Post } from '@fridaygame/client';
+import { Post } from '@goatim/client';
 import { DateTime } from 'luxon';
 import rocket from '../../general/assets/rocket.png';
 import shakeHands from '../../general/assets/shake-hands.png';
@@ -8,6 +8,7 @@ import gift from '../../general/assets/gift.png';
 export interface PostHeaderProps {
   post: Post;
 }
+
 export function PostHeader({ post }: PostHeaderProps): ReactElement {
   const resolvedIcon = useMemo<ReactElement>(() => {
     switch (post.type) {
@@ -46,7 +47,7 @@ export function PostHeader({ post }: PostHeaderProps): ReactElement {
   }, [post.publication_date]);
 
   return (
-    <div className="friday-ui-post-header">
+    <div className="goatim-ui-post-header">
       <div className="icon">{resolvedIcon}</div>
       <div className="content">
         <span className="title">{resolvedTitle}</span>

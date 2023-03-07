@@ -10,7 +10,7 @@ export interface SoccerLoaderProps {
 
 export function SoccerLoader({ theme = 'dark', size = 40 }: SoccerLoaderProps): ReactElement {
   return (
-    <div className={`friday-ui-soccer-loader ${theme}`} style={{ width: size, height: size }}>
+    <div className={`goatim-ui-soccer-loader ${theme}`} style={{ width: size, height: size }}>
       <Icon name="soccer-ball" size={size} />
     </div>
   );

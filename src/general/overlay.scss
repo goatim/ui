@@ -1,6 +1,6 @@
 @use '~@cezembre/fronts/dist/layouts';
 
-.friday-ui-overlay {
+.goatim-ui-overlay {
   @include layouts.modal();
   position: fixed;
   top: 0;

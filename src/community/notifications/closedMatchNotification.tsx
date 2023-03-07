@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
-import { ClosedMatchNotificationPayload } from '@fridaygame/client/dist/community/notifications/model';
+import { ClosedMatchNotificationPayload } from '@goatim/client/dist/community/notifications/model';
 import { CompositionThumbnail } from '../../soccer';
-import { FridayCoinsGains } from '../../market';
+import { GoatimCoinsGains } from '../../market';
 
 export interface ClosedMatchNotificationProps {
   payload: ClosedMatchNotificationPayload;
@@ -9,7 +9,7 @@ export interface ClosedMatchNotificationProps {
 
 export function ClosedMatchNotification({ payload }: ClosedMatchNotificationProps): ReactElement {
   return (
-    <div className="friday-ui-closed-match-notification">
+    <div className="goatim-ui-closed-match-notification">
       <span>
         {payload.match ? (
           <b>{typeof payload?.match === 'object' ? payload.match.title : 'untitled'}</b>
@@ -24,7 +24,7 @@ export function ClosedMatchNotification({ payload }: ClosedMatchNotificationProp
           {payload.composition.position === 1 ? (
             <div className="first">
               <span className="label">Bravo tu es premier !</span>
-              <FridayCoinsGains variation={30000} />
+              <GoatimCoinsGains variation={30000} />
             </div>
           ) : null}
         </>

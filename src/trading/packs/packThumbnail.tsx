@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
-import { Pack } from '@fridaygame/client';
+import { Pack } from '@goatim/client';
 import { ShareBulkList } from '../shareBulks';
-import { FridayCoins } from '../../market';
+import { GoatimCoins } from '../../market';
 import { Wallpaper } from '../../general';
 
 export type PackThumbnailSize = 'narrow' | 'normal';
@@ -13,7 +13,7 @@ export interface PackThumbnailProps {
 
 export function PackThumbnail({ pack, size = 'normal' }: PackThumbnailProps): ReactElement {
   return (
-    <div className="friday-ui-pack-thumbnail">
+    <div className="goatim-ui-pack-thumbnail">
       <div className="header">
         <h1>{pack.resolved_title || 'Nouvelles actions !'}</h1>
       </div>
@@ -31,7 +31,7 @@ export function PackThumbnail({ pack, size = 'normal' }: PackThumbnailProps): Re
         </div>
         <div className="valuation">
           <span className="label">Valorisation</span>
-          <FridayCoins amount={pack.valuation} />
+          <GoatimCoins amount={pack.valuation} />
         </div>
       </div>
       <div className="wallpaper">

@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { Order } from '@fridaygame/client';
+import { Order } from '@goatim/client';
 import { OrderThumbnail, OrderThumbnailSize } from './orderThumbnail';
 
 export type OrderListShape = 'table' | 'boxes';
@@ -22,7 +22,7 @@ export function OrderList({
   }
 
   return (
-    <div className={`friday-ui-order-list ${shape}`}>
+    <div className={`goatim-ui-order-list ${shape}`}>
       {orders.map((order: Order) => (
         <div key={order.id} className="order">
           <OrderThumbnail

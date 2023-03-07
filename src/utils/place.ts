@@ -1,4 +1,4 @@
-import { GeoLocation } from '@fridaygame/client';
+import { GeoLocation } from '@goatim/client';
 
 type GeocoderAddressComponent = google.maps.GeocoderAddressComponent;
 

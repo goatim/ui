@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import { Composition } from '@fridaygame/client';
+import { Composition } from '@goatim/client';
 import { CompositionPodium } from '../../../src';
 
 export default {

@@ -1,5 +1,5 @@
 import { ReactElement, useCallback, useEffect, useState } from 'react';
-import { PaymentMethod } from '@fridaygame/client';
+import { PaymentMethod } from '@goatim/client';
 import { PaymentMethod as StripePaymentMethod } from '@stripe/stripe-js';
 import { NewStripeCard, StripeCreditCardForm } from './stripeCreditCardForm';
 import { Button } from '../general';
@@ -54,7 +54,7 @@ export function StripePaymentMethodSelector({
   );
 
   return (
-    <div className="friday-ui-stripe-payment-method-selector">
+    <div className="goatim-ui-stripe-payment-method-selector">
       {paymentMethods?.length ? (
         <div className="payment-methods">
           <StripePaymentMethodList

@@ -81,7 +81,7 @@ export function Radio<V = unknown>({
   instructions,
 }: RadioProps<V>): ReactElement {
   const className = useMemo<string>(() => {
-    const classNames = ['friday-ui-radio'];
+    const classNames = ['goatim-ui-radio'];
 
     if (isActive) {
       classNames.push('active');

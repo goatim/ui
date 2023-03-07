@@ -10,12 +10,8 @@ import {
   Player,
   User,
   Wallet,
-} from '@fridaygame/client';
-import {
-  MatchBoard,
-  MatchBoardSize,
-  MatchBoardTheme,
-} from '../../../src';
+} from '@goatim/client';
+import { MatchBoard, MatchBoardSize, MatchBoardTheme } from '../../../src';
 
 interface Props {
   theme?: MatchBoardTheme;

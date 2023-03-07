@@ -1,5 +1,5 @@
 import { MouseEvent, ReactElement, useMemo } from 'react';
-import { Club, League } from '@fridaygame/client';
+import { Club, League } from '@goatim/client';
 import { To } from 'react-router';
 import { LeagueThumbnail } from './leagueThumbnail';
 import { ClubCarousel } from '../clubs';
@@ -35,7 +35,7 @@ export function LeagueOverview({
   }, [size]);
 
   return (
-    <div className={`friday-ui-league-overview ${size}`}>
+    <div className={`goatim-ui-league-overview ${size}`}>
       <LeagueThumbnail league={league} size="medium" to={leagueTo} onClick={leagueOnClick} />
       <div className="clubs">
         <ClubCarousel

@@ -1,18 +1,18 @@
 import { ReactElement } from 'react';
-import { CurrenciesRate, Wallet } from '@fridaygame/client';
+import { CurrenciesRate, Wallet } from '@goatim/client';
 import { CurrenciesRateThumbnail, WalletThumbnail } from '../market';
 
 export interface TradingBannerProps {
-  fridayCoinsRate?: CurrenciesRate;
+  goatimCoinsRate?: CurrenciesRate;
   wallet?: Wallet;
 }
 
-export function TradingBanner({ fridayCoinsRate, wallet }: TradingBannerProps): ReactElement {
+export function TradingBanner({ goatimCoinsRate, wallet }: TradingBannerProps): ReactElement {
   return (
-    <div className="friday-ui-trading-banner">
+    <div className="goatim-ui-trading-banner">
       <div className="fdy-rate">
-        {fridayCoinsRate ? (
-          <CurrenciesRateThumbnail currenciesRate={fridayCoinsRate} theme="light" />
+        {goatimCoinsRate ? (
+          <CurrenciesRateThumbnail currenciesRate={goatimCoinsRate} theme="light" />
         ) : null}
       </div>
       <div className="assets" />

@@ -73,7 +73,7 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
     const [autoErrored, setAutoErrored] = useState<boolean>(false);
 
     const className = useMemo<string>(() => {
-      const classNames: string[] = ['friday-ui-button', size, shape, theme];
+      const classNames: string[] = ['goatim-ui-button', size, shape, theme];
 
       if (active) {
         classNames.push('active');

@@ -1,5 +1,5 @@
 import { MouseEvent, ReactElement } from 'react';
-import { Asset, Portfolio } from '@fridaygame/client';
+import { Asset, Portfolio } from '@goatim/client';
 import { To } from 'react-router-dom';
 import { PortfolioThumbnail, PortfolioThumbnailSize } from './portfolioThumbnail';
 
@@ -21,7 +21,7 @@ export function PortfolioList({
   }
 
   return (
-    <div className={`friday-ui-portfolio-list ${size}`}>
+    <div className={`goatim-ui-portfolio-list ${size}`}>
       {portfolios.map((portfolio) => (
         <div key={portfolio.id} className="portfolio">
           <PortfolioThumbnail

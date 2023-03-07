@@ -1,13 +1,13 @@
 import { ForwardedRef, forwardRef, ReactElement, useMemo } from 'react';
-import { Asset } from '@fridaygame/client';
+import { Asset } from '@goatim/client';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
 import { To } from 'react-router-dom';
-import { QuotationHistory } from '@fridaygame/client/dist/trading/quotations/model';
+import { QuotationHistory } from '@goatim/client/dist/trading/quotations/model';
 import { PlayerThumbnail, PlayerThumbnailSize, PlayerThumbnailTheme } from '../../soccer';
 import {
-  FridayCoins,
-  FridayCoinsSize,
-  FridayCoinsTheme,
+  GoatimCoins,
+  GoatimCoinsSize,
+  GoatimCoinsTheme,
   PercentageVariation,
   PercentageVariationSize,
 } from '../../market';
@@ -86,7 +86,7 @@ export const AssetThumbnail = forwardRef<
     }
   }, [size]);
 
-  const quotationSize = useMemo<FridayCoinsSize>(() => {
+  const quotationSize = useMemo<GoatimCoinsSize>(() => {
     switch (size) {
       case 'narrow':
       case 'small':
@@ -100,7 +100,7 @@ export const AssetThumbnail = forwardRef<
     }
   }, [size]);
 
-  const quotationTheme = useMemo<FridayCoinsTheme>(() => {
+  const quotationTheme = useMemo<GoatimCoinsTheme>(() => {
     if (theme === 'default') {
       return 'dark';
     }
@@ -110,7 +110,7 @@ export const AssetThumbnail = forwardRef<
   return (
     <Wrapper
       ref={ref}
-      className={`friday-ui-asset-thumbnail ${shape} ${size} ${theme}`}
+      className={`goatim-ui-asset-thumbnail ${shape} ${size} ${theme}`}
       to={to}
       onClick={onClick}
       type={type}
@@ -145,7 +145,7 @@ export const AssetThumbnail = forwardRef<
               />
             </div>
             <div className="quotation">
-              <FridayCoins amount={asset.quotation} size={quotationSize} theme={quotationTheme} />
+              <GoatimCoins amount={asset.quotation} size={quotationSize} theme={quotationTheme} />
             </div>
           </div>
         ) : null}

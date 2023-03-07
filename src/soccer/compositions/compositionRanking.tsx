@@ -1,5 +1,5 @@
 import { MouseEvent, ReactElement } from 'react';
-import { Composition } from '@fridaygame/client';
+import { Composition } from '@goatim/client';
 import { To } from 'react-router';
 import { CompositionThumbnail } from './compositionThumbnail';
 import { Icon } from '../../general';
@@ -23,7 +23,7 @@ export function CompositionRanking({
 }: CompositionRankingProps): ReactElement {
   if (!compositions?.length) {
     return (
-      <div className={`friday-ui-composition-ranking-empty ${theme}`}>
+      <div className={`goatim-ui-composition-ranking-empty ${theme}`}>
         <Icon name="meh" size={25} />
         <span>Aucun participant</span>
       </div>
@@ -31,7 +31,7 @@ export function CompositionRanking({
   }
 
   return (
-    <div className={`friday-ui-composition-ranking ${theme}`}>
+    <div className={`goatim-ui-composition-ranking ${theme}`}>
       <div className="compositions">
         {compositions.map((composition) => (
           <div className="composition" key={composition.id}>

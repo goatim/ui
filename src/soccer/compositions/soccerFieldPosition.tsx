@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
-import { formatPlayerName, Image } from '@fridaygame/client';
+import { formatPlayerName, Image } from '@goatim/client';
 import { Icon } from '../../general';
 
 export type SoccerFieldPositionSize = 'small' | 'medium' | 'large';
@@ -28,7 +28,7 @@ export function SoccerFieldPosition({
 }: SoccerFieldPositionProps): ReactElement {
   return (
     <Wrapper
-      className={`friday-ui-soccer-field-position ${size} ${theme}`}
+      className={`goatim-ui-soccer-field-position ${size} ${theme}`}
       to={to}
       onClick={onClick}
       href={href}

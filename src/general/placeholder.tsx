@@ -8,7 +8,7 @@ export function Placeholder({
   color = 'rgba(255, 255, 255, 0.3)',
 }: PlaceholderProps): ReactElement {
   return (
-    <div className="friday-ui-placeholder">
+    <div className="goatim-ui-placeholder">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400">
         <defs>
           <filter id="blur">

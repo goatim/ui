@@ -1,7 +1,7 @@
 import { ForwardedRef, forwardRef, ReactElement, useMemo } from 'react';
-import { Wallet } from '@fridaygame/client';
+import { Wallet } from '@goatim/client';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
-import { FridayCoins } from '../fridayCoins';
+import { GoatimCoins } from '../goatimCoins';
 import { WalletPicture, WalletPictureOutline } from './walletPicture';
 
 export type WalletThumbnailSize = 'small' | 'medium' | 'big' | 'large';
@@ -45,7 +45,7 @@ export const WalletThumbnail = forwardRef<
   ref: ForwardedRef<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement>,
 ): ReactElement {
   const className = useMemo<string>(() => {
-    const classNames = ['friday-ui-wallet-thumbnail', size, theme, align, shape];
+    const classNames = ['goatim-ui-wallet-thumbnail', size, theme, align, shape];
 
     if (showPicture) {
       classNames.push('show-picture');
@@ -77,7 +77,7 @@ export const WalletThumbnail = forwardRef<
       {showName || showAmount ? (
         <div className="body">
           {showName ? <span className="name">{wallet.name || wallet.slug}</span> : null}
-          {showAmount ? <FridayCoins amount={wallet.amount} theme={theme} /> : null}
+          {showAmount ? <GoatimCoins amount={wallet.amount} theme={theme} /> : null}
         </div>
       ) : null}
     </Wrapper>

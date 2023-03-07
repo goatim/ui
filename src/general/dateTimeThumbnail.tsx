@@ -52,7 +52,7 @@ export function DateTimeThumbnail({
   }, [remainingTime]);
 
   return (
-    <div className={`friday-ui-date-time-thumbnail ${align} ${theme} ${size}`}>
+    <div className={`goatim-ui-date-time-thumbnail ${align} ${theme} ${size}`}>
       <span className="label">{label}</span>
       {countdown && !isPast ? (
         <span className="countdown">{remainingTime?.toFormat('d:hh:mm:ss')}</span>

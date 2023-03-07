@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { CompositionPosition, CompositionSettingPosition } from '@fridaygame/client';
+import { CompositionPosition, CompositionSettingPosition } from '@goatim/client';
 import { CompositionPositionThumbnail } from './compositionPositionThumbnail';
 
 export type CompositionPositionListTheme = 'dark' | 'light';
@@ -18,7 +18,7 @@ export function CompositionPositionList({
   onPositionDelete,
 }: CompositionPositionListProps): ReactElement {
   return (
-    <div className={`friday-ui-composition-positions-list ${theme}`}>
+    <div className={`goatim-ui-composition-positions-list ${theme}`}>
       {positions?.map((position: CompositionPosition) => (
         <div className="position" key={position.id}>
           {typeof position.player === 'object' ? (

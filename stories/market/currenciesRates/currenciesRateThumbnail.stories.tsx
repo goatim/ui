@@ -1,6 +1,6 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import { CurrenciesRate, Currency } from '@fridaygame/client';
+import { CurrenciesRate, Currency } from '@goatim/client';
 import { CurrenciesRateThumbnail } from '../../../src';
 
 interface Props {}
@@ -11,11 +11,11 @@ export default {
   argTypes: {},
 } as ComponentMeta<JSXElementConstructor<Props>>;
 
-const fridayCoin: Currency = {
+const goatimCoin: Currency = {
   id: 'cu_RO0C0',
-  name: 'Friday coin',
-  iso: 'FDY',
-  symbol: 'FDY',
+  name: 'Goatim coin',
+  iso: 'GTC',
+  symbol: 'GTC',
   smallest_unit: '0.001',
 };
 
@@ -30,7 +30,7 @@ const ether: Currency = {
 const currenciesRate: CurrenciesRate = {
   id: 'cr_2szb4',
   rate: 0.0000066049107511435,
-  base_currency: fridayCoin,
+  base_currency: goatimCoin,
   target_currency: ether,
 };
 

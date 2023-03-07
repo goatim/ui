@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import { Club, Player } from '@fridaygame/client';
+import { Club, Player } from '@goatim/client';
 import { CompositionPositionThumbnail, CompositionPositionThumbnailTheme } from '../../../src';
 
 interface Props {

@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { formatScore } from '@fridaygame/client';
+import { formatScore } from '@goatim/client';
 
 export type ScoreSize = 'small' | 'medium' | 'big' | 'large';
 
@@ -19,7 +19,7 @@ export function Score({
   theme = 'dark',
 }: ScoreProps): ReactElement {
   return (
-    <span className={`friday-ui-score ${size} ${theme}`}>
+    <span className={`goatim-ui-score ${size} ${theme}`}>
       {formatScore(children || score || 0)}
     </span>
   );

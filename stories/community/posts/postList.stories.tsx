@@ -1,17 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import {
-  Asset,
-  Club,
-  Pack,
-  PackFactory,
-  Player,
-  Post,
-  Transaction,
-  Wallet,
-} from '@fridaygame/client';
-import { PostList } from '../../../src';
-import { PostThumbnailSize } from '../../../src';
+import { Asset, Club, Pack, PackFactory, Player, Post, Transaction, Wallet } from '@goatim/client';
+import { PostList, PostThumbnailSize } from '../../../src';
 
 interface Props {
   size?: PostThumbnailSize;

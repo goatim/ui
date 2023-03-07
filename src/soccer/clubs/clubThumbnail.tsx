@@ -1,5 +1,5 @@
 import { ReactElement, useMemo } from 'react';
-import { Club } from '@fridaygame/client';
+import { Club } from '@goatim/client';
 import { To } from 'react-router-dom';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
 import { ClubIcon } from './clubIcon';
@@ -35,7 +35,7 @@ export function ClubThumbnail({
   showLeague = false,
 }: ClubThumbnailProps): ReactElement {
   const className = useMemo<string>(() => {
-    const classNames = ['friday-ui-club-thumbnail', size, theme, shape];
+    const classNames = ['goatim-ui-club-thumbnail', size, theme, shape];
 
     return classNames.join(' ');
   }, [shape, size, theme]);

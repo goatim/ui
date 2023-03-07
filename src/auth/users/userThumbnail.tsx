@@ -1,5 +1,5 @@
 import { ForwardedRef, forwardRef, ReactElement, useMemo } from 'react';
-import { User } from '@fridaygame/client';
+import { User } from '@goatim/client';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
 import { UserPicture } from './userPicture';
 
@@ -34,7 +34,7 @@ export const UserThumbnail = forwardRef<
   ref: ForwardedRef<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement>,
 ): ReactElement {
   const className = useMemo<string>(() => {
-    const classNames = ['friday-ui-user-thumbnail', size, theme];
+    const classNames = ['goatim-ui-user-thumbnail', size, theme];
 
     if (showPicture) {
       classNames.push('show-picture');

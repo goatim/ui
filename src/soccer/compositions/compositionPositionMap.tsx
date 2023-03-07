@@ -3,7 +3,7 @@ import {
   CompositionPosition,
   CompositionSetting,
   CompositionSettingPosition,
-} from '@fridaygame/client';
+} from '@goatim/client';
 import { SoccerField } from './soccerField';
 import { SoccerFieldPosition, SoccerFieldPositionSize } from './soccerFieldPosition';
 
@@ -68,7 +68,7 @@ export function CompositionPositionMap({
   onPositionClick,
 }: CompositionPositionMapProps): ReactElement {
   return (
-    <div className={`friday-ui-composition-positions-map ${theme}`}>
+    <div className={`goatim-ui-composition-positions-map ${theme}`}>
       <div className="container">
         <div className="field">
           <SoccerField theme={theme} />

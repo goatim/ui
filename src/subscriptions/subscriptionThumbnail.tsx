@@ -1,6 +1,6 @@
 import { MouseEvent, ReactElement, useMemo } from 'react';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
-import { formatEurosAmount } from '@fridaygame/client';
+import { formatEurosAmount } from '@goatim/client';
 import { Button, Icon } from '../general';
 
 export type SubscriptionType = 'gold' | 'platinium' | 'silver';
@@ -56,7 +56,7 @@ export function SubscriptionThumbnail({
   };
   return (
     <Wrapper
-      className={`friday-ui-subscription-thumbnail ${theme}`}
+      className={`goatim-ui-subscription-thumbnail ${theme}`}
       to={to}
       onClick={onClick}
       href={href}

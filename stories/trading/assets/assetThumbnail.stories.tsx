@@ -1,6 +1,6 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import { Asset, Player, Club, QuotationHistory } from '@fridaygame/client';
+import { Asset, Club, Player, QuotationHistory } from '@goatim/client';
 import {
   AssetThumbnail,
   AssetThumbnailShape,

@@ -1,5 +1,5 @@
 import { ForwardedRef, forwardRef, ReactElement, useMemo } from 'react';
-import { Image, Wallet } from '@fridaygame/client';
+import { Image, Wallet } from '@goatim/client';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
 import { Icon } from '../../general';
 
@@ -36,7 +36,7 @@ export const WalletPicture = forwardRef<
   ref: ForwardedRef<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement>,
 ): ReactElement {
   const className = useMemo<string>(() => {
-    const classNames: string[] = ['friday-ui-wallet-picture', size, theme];
+    const classNames: string[] = ['goatim-ui-wallet-picture', size, theme];
 
     if (outline) {
       classNames.push(outline);

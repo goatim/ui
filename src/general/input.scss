@@ -2,7 +2,7 @@
 @use '../styles/colors';
 @use '../styles/forms';
 
-.friday-ui-input {
+.goatim-ui-input {
 
   > label {
     @include forms.label;
@@ -114,7 +114,7 @@
           background: rgba(colors.$blue, .05);
         }
 
-        > span.friday-ui-input-suggestion {
+        > span.goatim-ui-input-suggestion {
           font-weight: 500;
           margin: 0;
           padding: 5px 15px;
@@ -124,7 +124,7 @@
     }
   }
 
-  &.small >.container {
+  &.small > .container {
     height: 35px;
 
     > input {
@@ -132,7 +132,7 @@
     }
   }
 
-  &.big >.container {
+  &.big > .container {
     height: 45px;
 
     > input {
@@ -148,6 +148,7 @@
     > label {
       color: rgba(white, .5);
     }
+
     > .container {
       background: rgba(white, .5);
     }

@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
-import { Image } from '@fridaygame/client';
+import { Image } from '@goatim/client';
 
 export type LeagueIconSize = 'small' | 'medium' | 'big';
 
@@ -19,7 +19,7 @@ export function LeagueIcon({
 }: LeagueIconProps): ReactElement {
   return (
     <Wrapper
-      className={`friday-ui-league-icon ${size}`}
+      className={`goatim-ui-league-icon ${size}`}
       to={to}
       onClick={onClick}
       href={href}

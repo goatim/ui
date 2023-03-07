@@ -1,6 +1,6 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import { BoosterFactory } from '@fridaygame/client';
+import { BoosterFactory } from '@goatim/client';
 import {
   BoosterFactoryThumbnail,
   BoosterFactoryThumbnailShape,

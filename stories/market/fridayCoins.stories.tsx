@@ -1,17 +1,17 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import { FridayCoins, FridayCoinsSize, FridayCoinsTheme } from '../../src';
+import { GoatimCoins, GoatimCoinsSize, GoatimCoinsTheme } from '../../src';
 
 interface Props {
   amount?: number;
-  size?: FridayCoinsSize;
-  theme?: FridayCoinsTheme;
+  size?: GoatimCoinsSize;
+  theme?: GoatimCoinsTheme;
   decimalDigits?: number;
 }
 
 export default {
-  title: 'Market/FridayCoins',
-  component: FridayCoins,
+  title: 'Market/GoatimCoins',
+  component: GoatimCoins,
   argTypes: {
     amount: {
       control: {
@@ -46,7 +46,7 @@ const Template: ComponentStory<JSXElementConstructor<Props>> = ({
   size,
   theme,
 }: Props) => (
-  <FridayCoins amount={amount} decimalDigits={decimalDigits} size={size} theme={theme} />
+  <GoatimCoins amount={amount} decimalDigits={decimalDigits} size={size} theme={theme} />
 );
 
 export const Default = Template.bind({});

@@ -1,6 +1,6 @@
 @use "../../styles/colors";
 
-.friday-ui-physical-event-timeline {
+.goatim-ui-physical-event-timeline {
   > .milestone {
     display: flex;
     align-items: stretch;
@@ -56,6 +56,7 @@
           height: 5px;
         }
       }
+
       > .content {
         padding-bottom: 0;
       }

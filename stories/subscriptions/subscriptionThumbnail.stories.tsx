@@ -1,12 +1,8 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import {
-  Subscription,
-  SubscriptionThumbnail,
-  SubscriptionThumbnailTheme,
-} from '../../src';
+import { Subscription, SubscriptionThumbnail, SubscriptionThumbnailTheme } from '../../src';
 
-// import { Subscription } from '@fridaygame/client';
+// import { Subscription } from '@goatim/client';
 
 interface Props {
   isPopular: boolean;
@@ -38,7 +34,7 @@ const subscription: Subscription = {
 };
 
 const bonusesDescriptions = [
-  "Reçois 2 packs actions / mois d'une valeur de 500 FDY",
+  "Reçois 2 packs actions / mois d'une valeur de 500 GTC",
   'Reçois 2 boosters / mois',
   "Bénéficie d'un accès privilégié aux pré-ventes des nouveaux joueurs",
 ];

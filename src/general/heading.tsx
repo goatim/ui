@@ -39,7 +39,7 @@ export function Heading({
     }
   }, [size]);
   return (
-    <div className={`friday-ui-heading ${size} ${theme} ${align}`}>
+    <div className={`goatim-ui-heading ${size} ${theme} ${align}`}>
       {label ? <span className="label">{label}</span> : null}
       {icon ? <Icon name={icon} size={iconSize} /> : null}
       {emoji ? <span className="emoji">{emoji}</span> : null}

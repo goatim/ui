@@ -16,10 +16,10 @@ export function RankPosition({
   theme = 'dark',
 }: RankPositionProps): ReactElement {
   if (position <= 0) {
-    return <span className={`friday-ui-rank-position ${size} ${theme}`}>0</span>;
+    return <span className={`goatim-ui-rank-position ${size} ${theme}`}>0</span>;
   }
   if (position === 1) {
-    return <span className={`friday-ui-rank-position ${size} ${theme}`}>1er</span>;
+    return <span className={`goatim-ui-rank-position ${size} ${theme}`}>1er</span>;
   }
-  return <span className={`friday-ui-rank-position ${size} ${theme}`}>{position} ème</span>;
+  return <span className={`goatim-ui-rank-position ${size} ${theme}`}>{position} ème</span>;
 }

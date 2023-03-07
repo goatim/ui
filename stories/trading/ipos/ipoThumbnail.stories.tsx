@@ -1,11 +1,7 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import { Asset, Club, Ipo, Player } from '@fridaygame/client';
-import {
-  IpoThumbnail,
-  IpoThumbnailShape,
-  IpoThumbnailSize,
-} from '../../../src';
+import { Asset, Club, Ipo, Player } from '@goatim/client';
+import { IpoThumbnail, IpoThumbnailShape, IpoThumbnailSize } from '../../../src';
 
 interface Props {
   size?: IpoThumbnailSize;

@@ -1,7 +1,7 @@
 export * from './coins';
 export * from './ether';
-export * from './friday';
-export * from './fridayIcon';
+export * from './goatim';
+export * from './goatimIcon';
 export * from './mastercard';
 export * from './money';
 export * from './podium';
@@ -16,4 +16,4 @@ export * from './tiktok';
 export * from './trading';
 export * from './trophy';
 export * from './visa';
-export * from './fridayCoin';
+export * from './goatimCoin';

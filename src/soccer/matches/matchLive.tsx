@@ -1,5 +1,5 @@
 import { ReactElement, useMemo } from 'react';
-import { Match } from '@fridaygame/client';
+import { Match } from '@goatim/client';
 import { Property } from 'csstype';
 import { DateTimeThumbnail } from '../../general/dateTimeThumbnail';
 import beforeMatch from './assets/before-match.jpg';
@@ -69,7 +69,7 @@ export function MatchLive({ match }: MatchLiveProps): ReactElement {
   }, [match.status]);
 
   return (
-    <div className={`friday-ui-match-live ${match.status}`} style={{ backgroundImage }}>
+    <div className={`goatim-ui-match-live ${match.status}`} style={{ backgroundImage }}>
       {content}
     </div>
   );

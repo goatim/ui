@@ -1,5 +1,5 @@
 import { ReactElement, useEffect, useState } from 'react';
-import { Booster } from '@fridaygame/client';
+import { Booster } from '@goatim/client';
 import { BoosterThumbnail } from './boosterThumbnail';
 
 export interface BoosterStackProps {
@@ -23,7 +23,7 @@ export function BoosterStack({ boosters, onStopBooster }: BoosterStackProps): Re
   // TODO : Collapse boosters if > 1
 
   return (
-    <div className="friday-ui-booster-stack">
+    <div className="goatim-ui-booster-stack">
       {inactiveBoosters.map((booster) => (
         <div className="booster" key={booster.id}>
           <BoosterThumbnail booster={booster} />

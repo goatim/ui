@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { Pack } from '@fridaygame/client';
+import { Pack } from '@goatim/client';
 import { PackThumbnail } from './packThumbnail';
 
 export interface PackModalProps {
@@ -8,7 +8,7 @@ export interface PackModalProps {
 
 export function PackModal({ pack }: PackModalProps): ReactElement {
   return (
-    <div className="friday-ui-pack-modal">
+    <div className="goatim-ui-pack-modal">
       <PackThumbnail pack={pack} />
     </div>
   );

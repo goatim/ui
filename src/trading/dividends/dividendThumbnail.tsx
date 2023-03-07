@@ -1,7 +1,7 @@
 import { ReactElement, useMemo } from 'react';
-import { Dividend } from '@fridaygame/client';
+import { Dividend } from '@goatim/client';
 import { AssetThumbnail, AssetThumbnailTheme } from '../assets';
-import { FridayCoinsGains } from '../../market';
+import { GoatimCoinsGains } from '../../market';
 
 export type DividendThumbnailTheme = 'dark' | 'light';
 
@@ -24,7 +24,7 @@ export function DividendThumbnail({
   }, [theme]);
 
   return (
-    <div className="friday-ui-dividend-thumbnail">
+    <div className="goatim-ui-dividend-thumbnail">
       {dividend.asset && typeof dividend.asset === 'object' ? (
         <div className="asset">
           <AssetThumbnail
@@ -37,7 +37,7 @@ export function DividendThumbnail({
         </div>
       ) : null}
       <div className="amount">
-        <FridayCoinsGains variation={dividend.amount} />
+        <GoatimCoinsGains variation={dividend.amount} />
       </div>
     </div>
   );

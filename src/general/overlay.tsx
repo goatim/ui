@@ -8,7 +8,7 @@ export interface OverlayProps {
 
 export function Overlay({ children, visible = false, closed = false }: OverlayProps): ReactElement {
   const className = useMemo<string>(() => {
-    let res = 'friday-ui-overlay';
+    let res = 'goatim-ui-overlay';
 
     if (visible) {
       res += ' visible';

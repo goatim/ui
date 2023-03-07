@@ -1,5 +1,5 @@
 import { MouseEvent, ReactElement } from 'react';
-import { Notification } from '@fridaygame/client';
+import { Notification } from '@goatim/client';
 import { To } from 'react-router-dom';
 import { NotificationThumbnail } from './notificationThumbnail';
 
@@ -23,7 +23,7 @@ export function NotificationList({
   notificationTarget,
 }: NotificationListProps): ReactElement {
   return (
-    <div className="friday-ui-notification-list">
+    <div className="goatim-ui-notification-list">
       {notifications?.length ? (
         notifications.map((notification) => (
           <div className="notification" key={notification.id}>

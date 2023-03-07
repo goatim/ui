@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import { Booster } from '@fridaygame/client';
+import { Booster } from '@goatim/client';
 import { BoosterStack } from '../../../src';
 
 export default {

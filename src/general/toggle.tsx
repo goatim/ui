@@ -20,7 +20,7 @@ export function Toggle({
   instructions,
 }: ToggleProps): ReactElement {
   const className = useMemo<string>(() => {
-    let nextClassName = 'friday-ui-toggle';
+    let nextClassName = 'goatim-ui-toggle';
 
     if (isActive) {
       nextClassName += ' active';

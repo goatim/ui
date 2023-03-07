@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { Item } from '@fridaygame/client';
+import { Item } from '@goatim/client';
 import { ItemList } from './checkouts';
 
 export type CartResumeSize = 'narrow' | 'normal';
@@ -16,7 +16,7 @@ export function CartResume({
   size = 'normal',
 }: CartResumeProps): ReactElement {
   return (
-    <div className={`friday-ui-cart-resume ${size}`}>
+    <div className={`goatim-ui-cart-resume ${size}`}>
       {items?.length ? (
         <ItemList items={items} onDeleteItem={onDeleteItem} size={size} />
       ) : (

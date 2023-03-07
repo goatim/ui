@@ -1,5 +1,5 @@
 import { MouseEvent, ReactElement, useMemo } from 'react';
-import { Asset, Portfolio } from '@fridaygame/client';
+import { Asset, Portfolio } from '@goatim/client';
 import { To } from 'react-router-dom';
 import { PortfolioList } from './portfolioList';
 import { PortfolioThumbnailSize } from './portfolioThumbnail';
@@ -29,7 +29,7 @@ export function PortfolioCarousel({
   }, [size]);
 
   return (
-    <div className={`friday-ui-portfolio-carousel ${size}`}>
+    <div className={`goatim-ui-portfolio-carousel ${size}`}>
       <div className="portfolios">
         <PortfolioList
           portfolios={portfolios?.slice(0, 4)}

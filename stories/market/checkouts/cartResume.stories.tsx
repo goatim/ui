@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import { Asset, BoosterFactory, Club, Item, Player } from '@fridaygame/client';
+import { Asset, BoosterFactory, Club, Item, Player } from '@goatim/client';
 import { CartResume, CartResumeSize } from '../../../src';
 
 interface Props {
@@ -56,8 +56,7 @@ const asset: Asset = {
   id: 'as_Ded512',
   entity: 'pl_de45d54DD',
   type: 'player',
-  first_name: 'Kylian',
-  last_name: 'Mbappé',
+  name: 'Kylian Mbappé',
   description: '',
   slug: 'kylian-mbappe',
   total_shares: 450,

@@ -1,7 +1,7 @@
 import { ReactElement, useMemo } from 'react';
-import { Ipo } from '@fridaygame/client';
+import { Ipo } from '@goatim/client';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
-import { FridayCoins, FridayCoinsSize } from '../../market';
+import { GoatimCoins, GoatimCoinsSize } from '../../market';
 import { AssetThumbnail, AssetThumbnailSize } from '../assets';
 import { DateTimeThumbnail } from '../../general/dateTimeThumbnail';
 
@@ -35,7 +35,7 @@ export function IpoThumbnail({
     }
   }, [size]);
 
-  const quotationSize = useMemo<FridayCoinsSize>(() => {
+  const quotationSize = useMemo<GoatimCoinsSize>(() => {
     switch (size) {
       case 'narrow':
       case 'small':
@@ -47,7 +47,7 @@ export function IpoThumbnail({
 
   return (
     <Wrapper
-      className={`friday-ui-ipo-thumbnail ${size} ${shape}`}
+      className={`goatim-ui-ipo-thumbnail ${size} ${shape}`}
       to={to}
       onClick={onClick}
       href={href}
@@ -67,7 +67,7 @@ export function IpoThumbnail({
             />
           </div>
           <div className="quotation">
-            <FridayCoins amount={ipo.asset.quotation} size={quotationSize} />
+            <GoatimCoins amount={ipo.asset.quotation} size={quotationSize} />
           </div>
         </div>
       ) : null}

@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { Item } from '@fridaygame/client';
+import { Item } from '@goatim/client';
 import { CartResume } from './cartResume';
 import { Heading } from '../general';
 
@@ -17,7 +17,7 @@ export function CartOverview({
   size = 'normal',
 }: CartOverviewProps): ReactElement {
   return (
-    <div className={`friday-ui-cart-overview ${size}`}>
+    <div className={`goatim-ui-cart-overview ${size}`}>
       <Heading emoji="🛒" align="center">
         Panier
       </Heading>
