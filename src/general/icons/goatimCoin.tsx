@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 import { SvgIconProps } from './props';
 
-export function GoatimCoins({ size = 15 }: SvgIconProps): ReactElement<SVGElement> {
+export function GoatimCoin({ size = 15 }: SvgIconProps): ReactElement<SVGElement> {
   return (
     <svg viewBox="0 0 500 500" height={size}>
       <title>Goatim Coins</title>
