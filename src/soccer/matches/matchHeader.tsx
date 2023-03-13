@@ -19,7 +19,7 @@ export function MatchHeader({ match, theme = 'dark' }: MatchHeaderProps): ReactE
       <span className="title">{match.title}</span>
       <div className="reward">
         <span className="label">Gain 1er:</span>
-        <GoatimCoinsGains variation={30000} />
+        <GoatimCoinsGains gains={30000} />
       </div>
       {/* {match.creator && typeof match.creator === 'object' ? ( */}
       {/*  <div className="creator"> */}

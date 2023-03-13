@@ -54,7 +54,7 @@ export function WalletRank({
         {typeof amount === 'number' ? (
           <GoatimCoins amount={amount} theme={theme} size={size} />
         ) : null}
-        {typeof gains === 'number' ? <GoatimCoinsGains variation={gains} size={size} /> : null}
+        {typeof gains === 'number' ? <GoatimCoinsGains gains={gains} size={size} /> : null}
       </div>
     </Wrapper>
   );

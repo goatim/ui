@@ -24,7 +24,7 @@ export function ClosedMatchNotification({ payload }: ClosedMatchNotificationProp
           {payload.composition.position === 1 ? (
             <div className="first">
               <span className="label">Bravo tu es premier !</span>
-              <GoatimCoinsGains variation={30000} />
+              <GoatimCoinsGains gains={30000} />
             </div>
           ) : null}
         </>
