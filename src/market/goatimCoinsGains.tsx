@@ -8,28 +8,28 @@ export type GoatimCoinsGainsTheme = 'default' | 'gold';
 
 export interface GoatimCoinsGainsProps {
   children?: number;
-  variation?: number;
+  gains?: number;
   size?: GoatimCoinsGainsSize;
   theme?: GoatimCoinsGainsTheme;
 }
 
 export function GoatimCoinsGains({
   children,
-  variation,
+  gains,
   size = 'small',
   theme = 'default',
 }: GoatimCoinsGainsProps): ReactElement {
   const sign = useMemo<'positive' | 'negative' | 'zero'>(() => {
-    if (!variation && !children) {
+    if (!gains && !children) {
       return 'zero';
     }
-    return (variation || children || 0) > 0 ? 'positive' : 'negative';
-  }, [variation, children]);
+    return (gains || children || 0) > 0 ? 'positive' : 'negative';
+  }, [gains, children]);
 
   return (
     <div className={`goatim-ui-goatim-coins-gains ${sign} ${size} ${theme}`}>
       <div className="container">
-        <span>{formatGoatimCoinsGains(children || variation || 0, 2, false)}</span>
+        <span>{formatGoatimCoinsGains(children || gains || 0, 2, false)}</span>
         <Icon name="goatim-coin" />
       </div>
     </div>

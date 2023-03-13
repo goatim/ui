@@ -112,8 +112,8 @@ const composition: Composition = {
     amount: 40000000,
   },
   position: 1,
-  dividends_percentage: 1.23,
-  dividends_gains: 45000,
+  variation: 1.23,
+  gains: 45000,
   score: 1230,
 };
 

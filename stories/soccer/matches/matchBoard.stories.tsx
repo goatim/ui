@@ -98,8 +98,8 @@ const composition: Composition = {
   id: 'co_qd54qzd31',
   match,
   score: 4560,
-  dividends_gains: 12000,
-  dividends_percentage: 0.02,
+  gains: 12000,
+  variation: 0.02,
   position: 1,
 };
 
@@ -133,8 +133,7 @@ const asset: Asset = {
   id: 'as_Ded512',
   entity: 'pl_de45d54DD',
   type: 'player',
-  first_name: 'Kylian',
-  last_name: 'Mbappé',
+  name: 'Kylian Mbappé',
   description: '',
   slug: 'kylian-mbappe',
   total_shares: 450,
@@ -191,7 +190,7 @@ const Template: ComponentStory<JSXElementConstructor<Props>> = ({ theme, size }:
   <div style={{ height: 500 }}>
     <MatchBoard
       match={match}
-      compositions={Array(56)
+      ranking={Array(56)
         .fill(composition)
         .map((c, i) => ({ ...c, id: c + i, position: null, wallet: wallets[i % 3] }))}
       theme={theme}

@@ -25,7 +25,7 @@ export function BoosterThumbnail({ booster, onStop }: BoosterThumbnailProps): Re
         </div>
 
         <div className="variations">
-          <GoatimCoinsGains variation={booster.gains} size="medium" />
+          <GoatimCoinsGains gains={booster.gains} size="medium" />
           <PercentageVariation variation={booster.variation} />
         </div>
       </div>

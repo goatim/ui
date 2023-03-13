@@ -102,7 +102,7 @@ export function PortfolioThumbnail({
 
           <div className="gains">
             <span className="label">+/- values</span>
-            <GoatimCoinsGains variation={portfolio.total_gains} size="medium" />
+            <GoatimCoinsGains gains={portfolio.total_gains} size="medium" />
             <PercentageVariation variation={portfolio.total_variations} size="small" />
           </div>
         </div>

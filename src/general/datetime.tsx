@@ -1,8 +1,8 @@
-import { ReactElement } from 'react';
+import { ReactElement, useMemo } from 'react';
 import { DateTime } from 'luxon';
 
 export interface DatetimeProps {
-  value: DateTime;
+  value: DateTime | string;
   date?: boolean;
   time?: boolean;
   relative?: boolean;
@@ -14,11 +14,20 @@ export function Datetime({
   time = false,
   relative = false,
 }: DatetimeProps): ReactElement {
+  const resolvedValue = useMemo<DateTime>(() => {
+    if (typeof value === 'string') {
+      return DateTime.fromISO(value);
+    }
+    return value;
+  }, [value]);
+
   return (
     <span className="goatim-ui-datetime">
-      {date ? value.toLocaleString(DateTime.DATE_MED) : null}
+      {date ? resolvedValue.toLocaleString(DateTime.DATE_MED) : null}
       {date && time ? <br /> : null}
-      {time ? <span className="time">{value.toLocaleString(DateTime.TIME_SIMPLE)}</span> : null}
+      {time ? (
+        <span className="time">{resolvedValue.toLocaleString(DateTime.TIME_SIMPLE)}</span>
+      ) : null}
     </span>
   );
 }
