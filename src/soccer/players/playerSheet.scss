@@ -1,0 +1,102 @@
+@use '../../styles/fonts';
+@use '../../styles/colors';
+
+.goatim-ui-player-sheet {
+  background: colors.$blue;
+  border-radius: 20px;
+  color: white;
+  padding: 20px;
+  min-height: 400px;
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(0, 0, 0, .4) 60%, rgba(0, 0, 0, 0));
+    z-index: 0;
+  }
+
+  > .body {
+    max-width: 400px;
+    opacity: 1;
+    z-index: 1;
+
+    > h2 {
+      @include fonts.label-light;
+    }
+
+    > h1 {
+      font-size: 1.8em;
+      margin: 0;
+      padding: 0;
+      font-weight: 800;
+    }
+
+    > .metrics {
+      margin-top: 30px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+
+      > .metric {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        margin-left: 30px;
+
+        &:first-of-type {
+          margin: 0;
+        }
+
+        > .label {
+          @include fonts.label-light;
+        }
+
+        > .data {
+          font-size: 1em;
+          margin-top: 5px;
+        }
+      }
+    }
+
+    > .description {
+      margin-top: 30px;
+
+      > .label {
+        @include fonts.label-light;
+      }
+
+      > p {
+        font-size: .9em;
+        font-weight: 500;
+        white-space: pre-wrap;
+      }
+    }
+  }
+
+  > img {
+    position: absolute;
+    height: 100%;
+    right: 0;
+    top: 0;
+    transform: translate3d(30%, -10%, 0);
+    opacity: .5;
+  }
+
+  &.small {
+    > img {
+      display: none;
+    }
+  }
+}

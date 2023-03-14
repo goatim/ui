@@ -122,14 +122,14 @@ export function OrderItemEditor({
       {formState?.values?.order_type === 'buy' ? (
         <p className="instruction">
           Un ordre d’achat exprime une <b>volonté d’achat</b> d’un certain nombre d’actions à un{' '}
-          <b>prix maximal</b>. Il sera executé entièrement ou en partie lorsqu’un ordre de vente
-          concordant sera placé.
+          <b>prix maximal</b>. Il sera executé entièrement ou en partie lorsqu’il rencontrera un
+          ordre de vente concordant.
         </p>
       ) : (
         <p className="instruction">
           Un ordre de vente exprime une <b>volonté de vente</b> d’un certain nombre d’actions à un{' '}
-          <b>prix minimal</b>. Il sera executé entièrement ou en partie lorsqu’un ordre d’achat
-          concordant sera placé.
+          <b>prix minimal</b>. Il sera executé entièrement ou en partie lorsqu’il rencontrera un
+          ordre d’achat concordant.
         </p>
       )}
 
