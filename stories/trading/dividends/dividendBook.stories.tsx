@@ -52,7 +52,7 @@ const dividends: Dividend[] = [
 ];
 
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
-  <DividendBook dividends={dividends} />
+  <DividendBook dividends={dividends} averagePercentage={0.06} averageGains={5000} />
 );
 
 export const Default = Template.bind({});

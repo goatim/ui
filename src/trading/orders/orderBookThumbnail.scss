@@ -2,105 +2,73 @@
 @use '../../styles/fonts';
 
 .goatim-ui-order-book-thumbnail {
-  display: flex;
-  align-items: stretch;
-  justify-content: stretch;
-  background: white;
-  border-radius: 20px;
-  border: solid rgba(colors.$blue, .1) 1px;
-  min-height: 80px;
-  height: 100%;
-
-  > .aggregated-orders {
-    flex: 1;
-    padding: 20px;
-
-    > table {
+  > .header {
+    > .title {
+      @include fonts.label;
+      text-align: center;
       width: 100%;
-      border-collapse: collapse;
-
-      th {
-        @include fonts.label;
-        padding-bottom: 10px;
-      }
-
-      > tbody {
-        > tr {
-          > td {
-            padding-top: 5px;
-            opacity: .5;
-
-            > .data {
-              @include fonts.Inter(.7em, colors.$blue, bold);
-            }
-          }
-
-          &:first-of-type {
-            > td {
-              opacity: 1;
-            }
-          }
-        }
-      }
-    }
-
-    > .no-order {
-      height: 100%;
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      > span {
-        @include fonts.Inter(.8em, rgba(colors.$blue, .5));
-        font-style: italic;
-      }
-    }
-
-    &.buying {
-      > table {
-        th, td {
-          text-align: left;
-
-          &:last-of-type {
-            text-align: right;
-          }
-        }
-      }
-    }
-
-    &.selling {
-      border-left: solid rgba(colors.$blue, .1) 1px;
-
-      > table {
-        th, td {
-          text-align: right;
-
-          &:first-of-type {
-            text-align: left;
-          }
-        }
-      }
+      display: inline-block;
     }
   }
 
-  &.narrow {
-    flex-direction: column;
-    border-radius: 10px;
+  > .body {
+    margin-top: 10px;
+    overflow: auto;
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
+    background: white;
+    border-radius: 20px;
+    border: solid rgba(colors.$blue, .1) 1px;
+    height: 200px;
 
     > .aggregated-orders {
-      padding: 10px;
+      flex: 1;
+      padding: 20px;
 
       > table {
+        width: 100%;
+        border-collapse: collapse;
+
         th {
-          padding-bottom: 5px;
+          @include fonts.label;
+          padding-bottom: 10px;
+        }
+
+        > tbody {
+          > tr {
+            > td {
+              padding-top: 5px;
+              opacity: .5;
+
+              > .data {
+                @include fonts.Inter(.7em, colors.$blue, bold);
+              }
+            }
+
+            &:first-of-type {
+              > td {
+                opacity: 1;
+              }
+            }
+          }
         }
       }
 
-      &.selling {
-        border-left: none;
-        border-top: solid rgba(colors.$blue, .1) 1px;
+      > .no-order {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
+        > span {
+          @include fonts.Inter(.8em, rgba(colors.$blue, .5));
+          font-style: italic;
+        }
+      }
+
+      &.buying {
         > table {
           th, td {
             text-align: left;
@@ -111,24 +79,74 @@
           }
         }
       }
+
+      &.selling {
+        border-left: solid rgba(colors.$blue, .1) 1px;
+
+        > table {
+          th, td {
+            text-align: right;
+
+            &:first-of-type {
+              text-align: left;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.narrow {
+    > .body {
+      flex-direction: column;
+      border-radius: 10px;
+
+      > .aggregated-orders {
+        padding: 10px;
+
+        > table {
+          th {
+            padding-bottom: 5px;
+          }
+        }
+
+        &.selling {
+          border-left: none;
+          border-top: solid rgba(colors.$blue, .1) 1px;
+
+          > table {
+            th, td {
+              text-align: left;
+
+              &:last-of-type {
+                text-align: right;
+              }
+            }
+          }
+        }
+      }
     }
   }
 
   &.small {
-    border-radius: 15px;
+    > .body {
+      border-radius: 15px;
 
-    > .aggregated-orders {
-      padding: 15px;
+      > .aggregated-orders {
+        padding: 15px;
 
-      > table {
-        th {
-          padding-bottom: 10px;
+        > table {
+          th {
+            padding-bottom: 10px;
+          }
         }
       }
     }
   }
 
   &.medium-light {
-    background: colors.$light-blue;
+    > .body {
+      background: colors.$light-blue;
+    }
   }
 }
