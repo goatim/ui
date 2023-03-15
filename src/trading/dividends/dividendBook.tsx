@@ -18,6 +18,13 @@ export function DividendBook({
     <div className="goatim-ui-dividend-book">
       <div className="header">
         <span className="title">Dividendes</span>
+        {averagePercentage !== undefined || averageGains !== undefined ? (
+          <div className="average">
+            <span>Moy.</span>
+            <PercentageVariation variation={averagePercentage} />
+            <GoatimCoinsGains gains={averageGains} />
+          </div>
+        ) : null}
       </div>
       <div className="body">
         {dividends?.length ? (
@@ -51,15 +58,6 @@ export function DividendBook({
             <span>Aucun dividende</span>
           </div>
         )}
-      </div>
-      <div className="footer">
-        {averagePercentage !== undefined || averageGains !== undefined ? (
-          <div className="average">
-            <span>Moyenne</span>
-            <PercentageVariation variation={averagePercentage} />
-            <GoatimCoinsGains gains={averageGains} />
-          </div>
-        ) : null}
       </div>
     </div>
   );

@@ -3,11 +3,29 @@
 
 .goatim-ui-dividend-book {
   > .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+
     > .title {
       @include fonts.label;
-      text-align: center;
-      width: 100%;
-      display: inline-block;
+    }
+
+    > .average {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+
+      > span {
+        margin-right: 5px;
+
+        &:first-of-type {
+          color: colors.$blue-50;
+          font-size: .8em;
+          font-weight: 600;
+        }
+      }
     }
   }
 
@@ -71,27 +89,6 @@
       > span {
         @include fonts.Inter(.8em, rgba(colors.$blue, .5));
         font-style: italic;
-      }
-    }
-  }
-
-  > .footer {
-    margin-top: 10px;
-    padding: 0 20px;
-
-    > .average {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-
-      > span {
-        margin-right: 5px;
-
-        &:first-of-type {
-          color: colors.$blue-50;
-          font-size: .8em;
-          font-weight: 600;
-        }
       }
     }
   }

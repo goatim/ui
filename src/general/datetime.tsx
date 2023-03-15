@@ -23,7 +23,7 @@ export function Datetime({
 
   return (
     <span className="goatim-ui-datetime">
-      {date ? resolvedValue.toLocaleString(DateTime.DATE_MED) : null}
+      {date ? resolvedValue.toLocaleString(DateTime.DATE_SHORT) : null}
       {date && time ? <br /> : null}
       {time ? (
         <span className="time">{resolvedValue.toLocaleString(DateTime.TIME_SIMPLE)}</span>
