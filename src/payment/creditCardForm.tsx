@@ -2,8 +2,7 @@ import { ReactElement, useCallback, useState } from 'react';
 import { Field, Form, FormContext, FormFields, FormState } from '@cezembre/forms';
 import { FormProps } from '@cezembre/forms/dist/form';
 import { CreditCardInput, CreditCardValue } from './creditCardInput';
-import { Checkbox } from '../general/checkbox';
-import { Button } from '../general';
+import { Button, Checkbox } from '../general';
 
 export interface CreditCardFields extends FormFields {
   type: 'card';

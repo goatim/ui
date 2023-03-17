@@ -3,30 +3,29 @@ import { ReactElement, useCallback, useEffect, useRef } from 'react';
 export interface ThreeDSecureProps {
   url: string;
   returnUrl?: string;
-  onReturn?: () => unknown;
+  onDone?: () => unknown;
 }
 
-export function ThreeDSecure({ url, returnUrl, onReturn }: ThreeDSecureProps): ReactElement {
+export function ThreeDSecure({ url, returnUrl, onDone }: ThreeDSecureProps): ReactElement {
   const iframe = useRef<HTMLIFrameElement>(null);
 
-  const iframeLoad = useCallback(() => {
-    if (iframe.current && onReturn && returnUrl) {
-      try {
-        if (iframe.current.contentWindow?.location.href === returnUrl) {
-          onReturn();
-        }
-      } catch (error) {
-        // Silence is golden
+  const handleMessage = useCallback(
+    (event: MessageEvent) => {
+      if (event.data === 'done' && onDone) {
+        onDone();
       }
-    }
-  }, [onReturn, returnUrl]);
+    },
+    [onDone],
+  );
 
   useEffect(() => {
     if (iframe.current) {
-      iframe.current.addEventListener('load', iframeLoad);
+      iframe.current.contentWindow?.addEventListener('message', handleMessage);
     }
-    return iframe.current ? iframe.current.removeEventListener('load', iframeLoad) : undefined;
-  }, [iframeLoad]);
+    return iframe.current
+      ? iframe.current.contentWindow?.removeEventListener('message', handleMessage)
+      : undefined;
+  }, [handleMessage]);
 
   return (
     <div className="goatim-ui-three-d-secure">
