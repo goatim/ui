@@ -27,3 +27,4 @@ export * from './timePicker';
 export * from './toggle';
 export * from './upload';
 export * from './wallpaper';
+export * from './breadcrumb';
