@@ -18,6 +18,8 @@ import { Icon } from './icon';
 export interface ModalComponentProps {
   id: string;
   dismissModal: () => unknown;
+
+  [key: string]: unknown;
 }
 
 export type ModalType = 'pop-up' | 'overlay' | 'banner' | 'message';
