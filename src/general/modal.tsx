@@ -32,7 +32,7 @@ export interface Modal<P extends ModalComponentProps = ModalComponentProps> {
   isActive?: boolean;
 }
 
-export interface PushModalParams<P extends Partial<ModalComponentProps> = ModalComponentProps> {
+export interface PushModalParams<P extends ModalComponentProps = ModalComponentProps> {
   component?: FunctionComponent<P>;
   props?: P;
   element?: ReactElement<P>;
@@ -40,13 +40,13 @@ export interface PushModalParams<P extends Partial<ModalComponentProps> = ModalC
   onDismiss?: () => unknown;
 }
 
-export type PushModalFunction<P extends Partial<ModalComponentProps> = ModalComponentProps> = (
+export type PushModalFunction<P extends ModalComponentProps = ModalComponentProps> = (
   params: PushModalParams<P>,
 ) => string | undefined;
 
 export interface ModalsState {
   modals: Modal[];
-  pushModal: PushModalFunction<Partial<ModalComponentProps>>;
+  pushModal: PushModalFunction;
   dismissModal: (id: string) => unknown;
 }
 
@@ -168,7 +168,7 @@ export function ModalsContext({ children }: ModalsContextProps): ReactElement {
   const value = useMemo<ModalsState>(
     () => ({
       modals,
-      pushModal: pushModal as PushModalFunction<Partial<ModalComponentProps>>,
+      pushModal: pushModal as PushModalFunction<ModalComponentProps>,
       dismissModal,
     }),
     [modals, pushModal, dismissModal],
