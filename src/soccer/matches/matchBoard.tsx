@@ -1,4 +1,4 @@
-import { MouseEvent, ReactElement, useCallback, useState } from 'react';
+import { MouseEvent, ReactElement, useCallback, useMemo, useState } from 'react';
 import {
   Composition,
   CompositionList,
@@ -43,11 +43,12 @@ export function MatchBoard({
 }: MatchBoardProps): ReactElement {
   const [tab, setTab] = useState<'feed' | 'ranking'>('feed');
 
-  const [compositionsPage, setCompositionsPage] = useState<number>(1);
-  const [compositions, setCompositions] = useState<CompositionList[]>(
-    firstCompositions ? [firstCompositions] : [],
-  );
-  const [getCompositionsPending, setGetCompositionsPending] = useState<boolean>(compositionPending);
+  const [loadedCompositions, setLoadedCompositions] = useState<CompositionList[]>([]);
+  const [loadingCompositions, setLoadingCompositions] = useState<boolean>(compositionPending);
+
+  const compositions = useMemo<CompositionList[]>(() => {
+    return firstCompositions ? [firstCompositions, ...loadedCompositions] : loadedCompositions;
+  }, [firstCompositions, loadedCompositions]);
 
   const loadNextCompositionsPage = useCallback(async () => {
     if (compositions.length && getCompositions) {
@@ -62,16 +63,16 @@ export function MatchBoard({
           typeof res.then === 'function'
         ) {
           try {
-            setGetCompositionsPending(true);
+            setLoadingCompositions(true);
             const nextCompositions = await res;
-            setCompositions((c) => [...c, nextCompositions]);
+            setLoadedCompositions((c) => [...c, nextCompositions]);
           } catch (error) {
             // TODO : Handle
           } finally {
-            setGetCompositionsPending(false);
+            setLoadingCompositions(false);
           }
         } else {
-          setCompositions((c) => [...c, res as CompositionList]);
+          setLoadedCompositions((c) => [...c, res as CompositionList]);
         }
       }
     }
