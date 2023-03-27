@@ -18,13 +18,11 @@ import { Icon } from './icon';
 export interface ModalComponentProps {
   id: string;
   dismissModal: () => unknown;
-
-  [key: string]: unknown;
 }
 
 export type ModalType = 'pop-up' | 'overlay' | 'banner' | 'message';
 
-export interface Modal<P extends ModalComponentProps = ModalComponentProps> {
+export interface Modal<P extends ModalComponentProps = any> {
   id: string;
   type?: ModalType;
   component?: FunctionComponent<P>;
@@ -34,7 +32,7 @@ export interface Modal<P extends ModalComponentProps = ModalComponentProps> {
   isActive?: boolean;
 }
 
-export interface PushModalParams<P extends ModalComponentProps = ModalComponentProps> {
+export interface PushModalParams<P extends ModalComponentProps = any> {
   component?: FunctionComponent<P>;
   props?: P;
   element?: ReactElement<P>;
@@ -42,7 +40,7 @@ export interface PushModalParams<P extends ModalComponentProps = ModalComponentP
   onDismiss?: () => unknown;
 }
 
-export type PushModalFunction<P extends ModalComponentProps = ModalComponentProps> = (
+export type PushModalFunction<P extends ModalComponentProps = any> = (
   params: PushModalParams<P>,
 ) => string | undefined;
 
@@ -62,12 +60,12 @@ export function useModals(): ModalsState {
   return modals;
 }
 
-export interface ModalContainerProps<P extends ModalComponentProps = ModalComponentProps>
+export interface ModalContainerProps<P extends ModalComponentProps = any>
   extends ModalComponentProps {
   modal: Modal<P>;
 }
 
-function ModalContainer<P extends ModalComponentProps = ModalComponentProps>({
+function ModalContainer<P extends ModalComponentProps = any>({
   id,
   modal,
   dismissModal,
