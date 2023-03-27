@@ -1,9 +1,16 @@
-import { MouseEvent, ReactElement, useState } from 'react';
-import { Composition, Match, PhysicalEvent } from '@goatim/client';
+import { MouseEvent, ReactElement, useCallback, useState } from 'react';
+import {
+  Composition,
+  CompositionList,
+  GetCompositionsQuery,
+  Match,
+  PhysicalEvent,
+} from '@goatim/client';
 import { To } from 'react-router';
+import { useInfiniteScroll } from '@cezembre/fronts';
 import { MatchFeed } from './matchFeed';
-import { MatchRanking } from './matchRanking';
 import { Button } from '../../general';
+import { CompositionRanking } from '../compositions';
 
 export type MatchBoardSize = 'small' | 'big';
 
@@ -11,30 +18,68 @@ export type MatchBoardTheme = 'dark' | 'light';
 
 export interface MatchBoardProps {
   match: Match;
-  ranking?: Composition[];
+  firstCompositions?: CompositionList;
+  compositionPending?: boolean;
+  getCompositions?: (query?: GetCompositionsQuery) => CompositionList | Promise<CompositionList>;
   myComposition?: Composition;
   size?: MatchBoardSize;
   theme?: MatchBoardTheme;
   toComposition?: To;
   onClickComposition?: (composition: Composition, event: MouseEvent<HTMLButtonElement>) => unknown;
-  toNewComposition?: To;
-  onClickNewComposition?: (event: MouseEvent<HTMLButtonElement>) => unknown;
   physicalEvents?: PhysicalEvent[];
 }
 
 export function MatchBoard({
   match,
-  ranking,
+  firstCompositions,
+  compositionPending = false,
+  getCompositions,
   myComposition,
   size = 'big',
   theme = 'dark',
   toComposition,
   onClickComposition,
-  toNewComposition,
-  onClickNewComposition,
   physicalEvents,
 }: MatchBoardProps): ReactElement {
   const [tab, setTab] = useState<'feed' | 'ranking'>('feed');
+
+  const [compositionsPage, setCompositionsPage] = useState<number>(1);
+  const [compositions, setCompositions] = useState<CompositionList[]>(
+    firstCompositions ? [firstCompositions] : [],
+  );
+  const [getCompositionsPending, setGetCompositionsPending] = useState<boolean>(compositionPending);
+
+  const loadNextCompositionsPage = useCallback(async () => {
+    if (compositions.length && getCompositions) {
+      const { next_page: nextPage } = compositions[compositions.length - 1];
+      if (nextPage) {
+        const res = getCompositions({ page: nextPage });
+        if (
+          res &&
+          typeof res === 'object' &&
+          'then' in res &&
+          res.then &&
+          typeof res.then === 'function'
+        ) {
+          try {
+            setGetCompositionsPending(true);
+            const nextCompositions = await res;
+            setCompositions((c) => [...c, nextCompositions]);
+          } catch (error) {
+            // TODO : Handle
+          } finally {
+            setGetCompositionsPending(false);
+          }
+        } else {
+          setCompositions((c) => [...c, res as CompositionList]);
+        }
+      }
+    }
+  }, [compositions, getCompositions]);
+
+  const { ref: rankingContainer } = useInfiniteScroll<HTMLDivElement>({
+    loadNextPage: loadNextCompositionsPage,
+  });
 
   return (
     <div className={`goatim-ui-match-board ${size} ${theme}`}>
@@ -58,17 +103,25 @@ export function MatchBoard({
       ) : null}
 
       {size === 'big' || tab === 'ranking' ? (
-        <div className="ranking">
-          <MatchRanking
-            match={match}
-            ranking={ranking}
-            myComposition={myComposition}
-            toComposition={toComposition}
-            onClickComposition={onClickComposition}
-            toNewComposition={toNewComposition}
-            onClickNewComposition={onClickNewComposition}
-            theme={theme}
-          />
+        <div className="ranking" ref={rankingContainer}>
+          <div className="header">
+            <span className="title">Classement</span>
+          </div>
+
+          {compositions.length ? (
+            <div className="compositions">
+              {compositions.map((compositionList) => (
+                <div key={compositionList.page} className="composition-list">
+                  <CompositionRanking
+                    compositions={compositionList.compositions}
+                    theme={theme}
+                    toComposition={toComposition}
+                    onClickComposition={onClickComposition}
+                  />
+                </div>
+              ))}
+            </div>
+          ) : null}
         </div>
       ) : null}
 

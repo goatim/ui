@@ -7,7 +7,6 @@ export * from './matchHeader';
 export * from './matchIcon';
 export * from './matchLive';
 export * from './matchParticipants';
-export * from './matchRanking';
 export * from './matchStatusThumbnail';
 export * from './matchSummary';
 export * from './matchThumbnail';

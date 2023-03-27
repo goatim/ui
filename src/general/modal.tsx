@@ -32,9 +32,7 @@ export interface Modal<P extends ModalComponentProps = ModalComponentProps> {
   isActive?: boolean;
 }
 
-export interface PushModalParams<
-  P extends Partial<ModalComponentProps> = Partial<ModalComponentProps>,
-> {
+export interface PushModalParams<P extends Partial<ModalComponentProps> = ModalComponentProps> {
   component?: FunctionComponent<P>;
   props?: P;
   element?: ReactElement<P>;
@@ -42,20 +40,20 @@ export interface PushModalParams<
   onDismiss?: () => unknown;
 }
 
-export type PushModalFunction<
-  P extends Partial<ModalComponentProps> = Partial<ModalComponentProps>,
-> = (params: PushModalParams<P>) => string | undefined;
+export type PushModalFunction<P extends Partial<ModalComponentProps> = ModalComponentProps> = (
+  params: PushModalParams<P>,
+) => string | undefined;
 
-export interface ModalsState<P extends Partial<ModalComponentProps> = any> {
+export interface ModalsState {
   modals: Modal[];
-  pushModal: PushModalFunction<P>;
+  pushModal: PushModalFunction<Partial<ModalComponentProps>>;
   dismissModal: (id: string) => unknown;
 }
 
 const Context = createContext<ModalsState | undefined>(undefined);
 
-export function useModals<P extends Partial<ModalComponentProps> = any>(): ModalsState<P> {
-  const modals = useContext<ModalsState<P> | undefined>(Context);
+export function useModals(): ModalsState {
+  const modals = useContext<ModalsState | undefined>(Context);
   if (!modals) {
     throw new Error('useModals() should be used inside <ModalContext> component');
   }
@@ -130,7 +128,7 @@ export function ModalsContext({ children }: ModalsContextProps): ReactElement {
   const [modals, setModals] = useState<Modal[]>([]);
 
   const pushModal = useCallback(
-    (params: PushModalParams<any>) => {
+    (params: PushModalParams) => {
       const modal: Modal = {
         ...params,
         id: Math.random().toString(36).substring(5),
@@ -149,29 +147,30 @@ export function ModalsContext({ children }: ModalsContextProps): ReactElement {
     [setModals],
   );
 
-  const dismissModal = useCallback(
-    (id: string) => {
-      setModals((_modals) => {
-        const nextModals = [..._modals];
-        const index = nextModals.findIndex((modal) => modal.id === id);
-        if (index !== -1) {
-          const { onDismiss } = _modals[index];
-          if (onDismiss) {
-            onDismiss();
-          }
-          nextModals.splice(index, 1);
-          if (nextModals.length) {
-            nextModals[nextModals.length - 1].isActive = true;
-          }
+  const dismissModal = useCallback((id: string) => {
+    setModals((_modals) => {
+      const nextModals = [..._modals];
+      const index = nextModals.findIndex((modal) => modal.id === id);
+      if (index !== -1) {
+        const { onDismiss } = _modals[index];
+        if (onDismiss) {
+          onDismiss();
         }
-        return nextModals;
-      });
-    },
-    [setModals],
-  );
+        nextModals.splice(index, 1);
+        if (nextModals.length) {
+          nextModals[nextModals.length - 1].isActive = true;
+        }
+      }
+      return nextModals;
+    });
+  }, []);
 
-  const value = useMemo(
-    () => ({ modals, pushModal, dismissModal }),
+  const value = useMemo<ModalsState>(
+    () => ({
+      modals,
+      pushModal: pushModal as PushModalFunction<Partial<ModalComponentProps>>,
+      dismissModal,
+    }),
     [modals, pushModal, dismissModal],
   );
 

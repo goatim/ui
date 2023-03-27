@@ -4,7 +4,9 @@ import {
   Asset,
   Club,
   Composition,
+  CompositionList,
   Dividend,
+  GetCompositionsQuery,
   Match,
   PhysicalEvent,
   Player,
@@ -186,13 +188,28 @@ const physicalEvents: PhysicalEvent[] = [
   },
 ];
 
+const compositions: CompositionList = {
+  compositions: new Array(50)
+    .fill(composition)
+    .map((c, i) => ({ ...c, id: c + i, position: null, wallet: wallets[i % 3] })),
+  total: 600,
+  page: 1,
+};
+
+function getCompositions(query?: GetCompositionsQuery): Promise<CompositionList> {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve({ ...compositions, page: query?.page || 0, next_page: (query?.page || 0) + 1 });
+    }, 500);
+  });
+}
+
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({ theme, size }: Props) => (
   <div style={{ height: 500 }}>
     <MatchBoard
       match={match}
-      ranking={Array(56)
-        .fill(composition)
-        .map((c, i) => ({ ...c, id: c + i, position: null, wallet: wallets[i % 3] }))}
+      firstCompositions={{ ...compositions, next_page: 2 }}
+      getCompositions={getCompositions}
       theme={theme}
       size={size}
       onClickComposition={() => undefined}
