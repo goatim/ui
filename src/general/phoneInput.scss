@@ -14,7 +14,7 @@
     position: relative;
 
     > .region-code-selector {
-      > button {
+      > .selector {
         @include forms.input;
         -webkit-touch-callout: none;
         -webkit-user-select: none;
