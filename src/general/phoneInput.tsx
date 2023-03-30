@@ -25,8 +25,8 @@ export function PhoneInput({
 }: PhoneInputProps): ReactElement {
   const onChangeInput = useCallback(
     (input: ChangeEvent<HTMLInputElement>) => {
-      const { value: inputValue } = input.target;
-      onChange((oldValue) => ({ ...oldValue, number: inputValue }));
+      const { value: number } = input.target;
+      onChange((oldValue) => ({ ...oldValue, number }));
     },
     [onChange],
   );

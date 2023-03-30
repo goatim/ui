@@ -14,7 +14,7 @@ const Template: ComponentStory<JSXElementConstructor<unknown>> = () => (
       name="input"
       component={PhoneInput}
       label="Téléphone"
-      initialValue={{ number: '', country_code: '+33' }}
+      initialValue={{ number: '', region_code: 'FRA' }}
     />
   </Form>
 );
