@@ -44,7 +44,7 @@ export function PhoneInput({
 
       <div className="body">
         <div className="region-code-selector">
-          <span className="selector">{value?.region_code}</span>
+          <button className="selector">+33</button>
         </div>
         <input
           type="tel"
