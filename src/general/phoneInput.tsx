@@ -3,7 +3,7 @@ import { FieldComponentProps } from '@cezembre/forms';
 import { Icon } from './icon';
 
 export interface PhoneInputValue {
-  country_code?: string;
+  region_code?: string;
   number?: string;
 }
 
@@ -43,8 +43,8 @@ export function PhoneInput({
       {label ? <label htmlFor={name}>{label}</label> : null}
 
       <div className="body">
-        <div className="country-code-selector">
-          <button type="button">{value?.country_code}</button>
+        <div className="region-code-selector">
+          <button type="button">{value?.region_code}</button>
         </div>
         <input
           type="tel"

@@ -13,7 +13,7 @@
     justify-content: space-between;
     position: relative;
 
-    > .country-code-selector {
+    > .region-code-selector {
       > button {
         @include forms.input;
         -webkit-touch-callout: none;
