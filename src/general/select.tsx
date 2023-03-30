@@ -46,13 +46,16 @@ function SelectOptionComponent<V>({
   return <span className="placeholder">{placeholder || 'Selectioner une option'}</span>;
 }
 
-export type SelectType = 'dark' | 'flat';
+export type SelectTheme = 'default' | 'borderless';
+
+export type SelectType = 'dropdown' | 'flat';
 
 export interface SelectProps<V = unknown> extends FieldComponentProps<V | undefined> {
   label?: string;
   options?: SelectOption<V>[];
   DefaultComponent?: JSXElementConstructor<{ value: V }>;
   canCancel?: boolean;
+  theme?: SelectTheme;
   type?: SelectType;
   instructions?: ReactElement | string;
   fullWidth?: boolean;
@@ -74,12 +77,13 @@ export function Select<V = unknown>({
   DefaultComponent,
   canCancel,
   instructions,
-  type = 'dark',
+  theme = 'default',
+  type = 'dropdown',
   fullWidth,
   onSearch,
 }: SelectProps<V>): ReactElement {
   const className = useMemo<string>(() => {
-    const classNames: string[] = ['goatim-ui-select', type];
+    const classNames: string[] = ['goatim-ui-select', theme, type];
 
     if (isActive) {
       classNames.push('active');
@@ -98,7 +102,7 @@ export function Select<V = unknown>({
     }
 
     return classNames.join(' ');
-  }, [error, fullWidth, isActive, type, warning]);
+  }, [error, fullWidth, isActive, theme, type, warning]);
 
   const toggleFocus = useCallback(() => {
     if (!isActive) {
@@ -158,15 +162,15 @@ export function Select<V = unknown>({
     <div className={className}>
       {label && <label htmlFor={name}>{label}</label>}
 
-      <div className="container">
-        {selectedOption || type === 'dark' ? (
+      <div className="body">
+        {selectedOption || type === 'dropdown' ? (
           <div className="selector">
             <button ref={selectButtonRef} onClick={toggleFocus} type="button" className="main">
               <SelectOptionComponent<V>
                 option={selectedOption}
                 DefaultComponent={DefaultComponent}
               />
-              {type === 'dark' ? <Icon name="chevron-down" /> : null}
+              {type === 'dropdown' ? <Icon name="chevron-down" /> : null}
             </button>
             {selectedOption && canCancel ? (
               <button type="button" className="cancel" onClick={() => onChange(undefined)}>
@@ -179,7 +183,7 @@ export function Select<V = unknown>({
         <div className="options" ref={optionsRef}>
           {onSearch ? (
             <div className="search">
-              <div className={`container${searchActive ? ' active' : ''}`}>
+              <div className={`body${searchActive ? ' active' : ''}`}>
                 <input
                   type="text"
                   value={search}

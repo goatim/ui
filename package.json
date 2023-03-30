@@ -55,7 +55,7 @@
     "@babel/core": "^7.21.3",
     "@babel/preset-env": "^7.20.2",
     "@babel/preset-react": "^7.18.6",
-    "@cezembre/forms": "^1.7.6",
+    "@cezembre/forms": "^1.7.8",
     "@cezembre/fronts": "^0.11.17",
     "@fridaygame/client": "^0.15.23",
     "@goatim/client": "^0.17.0",

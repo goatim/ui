@@ -331,7 +331,7 @@ export function Input<V = string, S extends InputSuggestion<V> = InputSuggestion
     <div className={className}>
       {label ? <label htmlFor={name}>{label}</label> : null}
 
-      <div className={`container ${isActive ? ' active' : ''}`}>
+      <div className={`body ${isActive ? ' active' : ''}`}>
         {leftComponent ? <div className="left-component">{leftComponent}</div> : null}
 
         <input

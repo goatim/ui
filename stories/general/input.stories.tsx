@@ -5,8 +5,8 @@ import {
   Input,
   InputShape,
   InputSize,
+  InputSuggestion,
   InputTheme,
-  Suggestion,
   SuggestionsNamespace,
 } from '../../src';
 
@@ -64,12 +64,12 @@ export default {
   },
 } as ComponentMeta<JSXElementConstructor<Props>>;
 
-const playersSuggestions: Suggestion[] = [
+const playersSuggestions: InputSuggestion[] = [
   { value: 'Kylian Mbappé' },
   { value: 'Lionel Messi' },
   { value: 'Neymar JR.' },
 ];
-const clubsSuggestions: Suggestion[] = [
+const clubsSuggestions: InputSuggestion[] = [
   { value: 'PSG' },
   { value: 'Real Madrid' },
   { value: 'FC Nantes' },

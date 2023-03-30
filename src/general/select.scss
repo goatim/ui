@@ -4,7 +4,6 @@
 @use "../styles/forms";
 
 .goatim-ui-select {
-
   &.full-width {
     width: 100%;
   }
@@ -13,7 +12,7 @@
     @include forms.label;
   }
 
-  > .container {
+  > .body {
     position: relative;
 
     > .selector {
@@ -99,7 +98,7 @@
       > .search {
         padding: 10px;
 
-        > .container {
+        > .body {
           @include forms.input;
           display: flex;
           align-items: center;
@@ -154,12 +153,19 @@
     }
   }
 
-  &.active > .container > .options {
+  &.active > .body > .options {
     visibility: visible;
     opacity: 1;
   }
 
-  &.flat > .container {
+  &.borderless {
+    > .body > .selector > button.main {
+      border: none;
+      border-radius: 0;
+    }
+  }
+
+  &.flat > .body {
     > .selector {
       border-bottom: solid rgba(colors.$blue, .1) 1px;
 
