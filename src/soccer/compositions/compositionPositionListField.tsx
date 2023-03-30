@@ -106,8 +106,10 @@ export function CompositionPositionListField({
             position={position.name}
             compositionSetting={compositionSetting?.name}
             onChange={(player) => {
-              changePositionPlayer(position, player);
-              dismissModal();
+              if (typeof player === 'object') {
+                changePositionPlayer(position, player);
+                dismissModal();
+              }
             }}
             onFocus={() => undefined}
             onBlur={() => undefined}

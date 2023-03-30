@@ -1,10 +1,10 @@
 import { ReactElement } from 'react';
-import { Field, Form, FormSubmitFunction } from '@cezembre/forms';
+import { Field, Form, FormFields, FormSubmitFunction } from '@cezembre/forms';
 import { Image } from '@goatim/client';
 import { Button, Input, Upload } from '../../general';
 import { WalletPicture } from './walletPicture';
 
-export interface WalletEditorFields {
+export interface WalletEditorFields extends FormFields {
   name?: string;
 }
 

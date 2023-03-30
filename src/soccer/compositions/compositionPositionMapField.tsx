@@ -110,8 +110,10 @@ export function CompositionPositionMapField({
             position={typeof position === 'object' ? position.name : 'Gardien'}
             compositionSetting={compositionSetting?.name}
             onChange={(player) => {
-              changePositionPlayer(position, player);
-              dismissModal();
+              if (typeof player === 'object') {
+                changePositionPlayer(position, player);
+                dismissModal();
+              }
             }}
             onFocus={() => undefined}
             onBlur={() => undefined}
