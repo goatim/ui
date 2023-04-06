@@ -25,7 +25,7 @@ function PlayerSelectorOption({ value }: PlayerSelectorOptionProps): ReactElemen
 export interface CompositionPositionEditorFields extends FormFields {
   id: string;
   player?: Player;
-  booster_factory?: BoosterFactory;
+  booster_factory?: BoosterFactory | string;
 }
 
 export type GetPositionPlayersFunction = (
@@ -81,6 +81,18 @@ export function CompositionPositionEditor({
     })();
   }, [getPositionPlayers, compositionSettingPosition?.only]);
 
+  const boosterFactoriesComparisonFn = useCallback(
+    (a: BoosterFactory | string | undefined, b: BoosterFactory | string | undefined) => {
+      if (!a || !b) {
+        return false;
+      }
+      const aId = typeof a === 'object' ? a.id : a;
+      const bId = typeof b === 'object' ? b.id : b;
+      return aId === bId;
+    },
+    [],
+  );
+
   return (
     <Form<CompositionPositionEditorFields>
       className="goatim-ui-composition-position-editor"
@@ -120,18 +132,16 @@ export function CompositionPositionEditor({
           <span>Multiplie tes gains de points et de coins.</span>
 
           <div className="select-booster">
-            <Field<BoosterFactory | undefined>
+            <Field<BoosterFactory | string | undefined>
               name="booster_factory"
-              component={Radio<BoosterFactory | undefined>}
+              component={Radio<BoosterFactory | string | undefined>}
               options={boosterFactories.map((boosterFactory) => ({
                 value: boosterFactory,
                 element: <BoosterFactoryThumbnail boosterFactory={boosterFactory} />,
               }))}
               initialValue={initialValues?.booster_factory}
               orientation="vertical"
-              comparisonFn={(a: BoosterFactory | undefined, b: BoosterFactory | undefined) =>
-                !!(a && b && a.id === b.id)
-              }
+              comparisonFn={boosterFactoriesComparisonFn}
             />
           </div>
         </div>
