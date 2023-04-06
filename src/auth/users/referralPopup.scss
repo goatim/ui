@@ -1,0 +1,65 @@
+@use "../../styles/colors";
+
+.goatim-ui-referral-popup {
+  width: 100%;
+  max-width: 400px;
+  background: white;
+  border-radius: 10px;
+
+  > .header {
+    padding: 10px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+
+    > .dismiss {
+      > svg {
+        stroke: colors.$blue;
+      }
+    }
+  }
+
+  > .body {
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    > .gift {
+      width: 80px;
+    }
+
+    > h1 {
+      margin: 10px 0 0;
+      padding: 0;
+      font-size: 1.5em;
+      font-weight: bold;
+      font-style: italic;
+    }
+
+    > p {
+      font-size: .9em;
+      font-weight: 500;
+      padding: 0;
+      margin: 10px 0 0;
+      color: colors.$blue-50;
+      text-align: center;
+    }
+
+    > .referral-code {
+      background: rgba(colors.$gold, .1);
+      color: colors.$gold;
+      font-weight: 800;
+      padding: 5px 10px;
+      border-radius: 5px;
+      margin-top: 20px;
+    }
+  }
+
+  > .actions {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
