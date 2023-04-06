@@ -25,7 +25,7 @@ export function CompositionPositionList({
             <CompositionPositionThumbnail
               player={position.player}
               nbShares={position.nb_shares}
-              leverage={position.leverage}
+              leverage={position.booster_leverage}
               gains={position.gains}
               score={position.score}
               theme={theme}

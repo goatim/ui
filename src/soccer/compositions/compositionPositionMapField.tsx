@@ -1,29 +1,28 @@
-import { ChangeEvent, ReactElement, useCallback } from 'react';
+import { ReactElement, useCallback } from 'react';
 import { FieldComponentProps } from '@cezembre/forms';
 import {
-  CompositionPosition,
+  BoosterFactory,
   CompositionSetting,
   CompositionSettingPosition,
   Player,
-  PlayerPosition,
 } from '@goatim/client';
 import { CompositionPositionMap, CompositionPositionMapTheme } from './compositionPositionMap';
-import { PositionPlayerSelector } from './positionPlayerSelector';
+import {
+  CompositionPositionEditor,
+  CompositionPositionEditorFields,
+  GetPositionPlayersFunction,
+} from './compositionPositionEditor';
 import { useModals } from '../../general';
 
-export interface CompositionPositionMapFieldValuePosition {
-  id: string;
+export interface CompositionPositionMapFieldValuePosition extends CompositionPositionEditorFields {
   player: Player;
 }
-
-export type GetPositionPlayersFunction = (
-  position?: PlayerPosition[] | PlayerPosition,
-) => Promise<Player[] | undefined> | Player[] | undefined;
 
 export interface CompositionPositionMapFieldProps
   extends FieldComponentProps<CompositionPositionMapFieldValuePosition[]> {
   compositionSetting?: CompositionSetting;
   getPositionPlayers?: GetPositionPlayersFunction;
+  boosterFactories?: BoosterFactory[];
   theme?: CompositionPositionMapTheme;
   readonly?: boolean;
 }
@@ -31,7 +30,7 @@ export interface CompositionPositionMapFieldProps
 export function CompositionPositionMapField({
   compositionSetting,
   getPositionPlayers,
-  form,
+  boosterFactories,
   onChange,
   value,
   theme,
@@ -39,37 +38,27 @@ export function CompositionPositionMapField({
 }: CompositionPositionMapFieldProps): ReactElement {
   const { pushModal } = useModals();
 
-  const changePositionPlayer = useCallback(
-    (
-      position: CompositionSettingPosition | string,
-      player?: ChangeEvent<{ value: Player | undefined }> | Player,
-    ) => {
-      const resolvedPlayer: Player | undefined =
-        typeof player === 'object' && 'target' in player && player?.target
-          ? (player as ChangeEvent<{ value: Player | undefined }>).target.value
-          : (player as Player | undefined);
-
-      const resolvedPosition: string = typeof position === 'object' ? position.id : position;
-
+  const changePosition = useCallback(
+    (position: CompositionPositionEditorFields) => {
       let nextValue: CompositionPositionMapFieldValuePosition[] = value
         ? JSON.parse(JSON.stringify(value))
         : [];
 
-      if (!nextValue && resolvedPlayer) {
-        nextValue = [{ id: resolvedPosition, player: resolvedPlayer }];
+      if (!nextValue && position.player) {
+        nextValue = [position as CompositionPositionMapFieldValuePosition];
       } else if (nextValue) {
         const index = nextValue.findIndex(
-          (_position: CompositionPosition) => _position.id === resolvedPosition,
+          (_position: CompositionPositionMapFieldValuePosition) => _position.id === position.id,
         );
 
         if (index !== -1) {
-          if (resolvedPlayer) {
-            nextValue[index] = { id: resolvedPosition, player: resolvedPlayer };
+          if (position.player) {
+            nextValue[index] = position as CompositionPositionMapFieldValuePosition;
           } else {
             nextValue.splice(index, 1);
           }
-        } else if (resolvedPlayer) {
-          nextValue.push({ id: resolvedPosition, player: resolvedPlayer });
+        } else if (position.player) {
+          nextValue.push(position as CompositionPositionMapFieldValuePosition);
         }
       }
 
@@ -79,50 +68,27 @@ export function CompositionPositionMapField({
   );
 
   const onPositionClick = useCallback(
-    async (position: CompositionSettingPosition | 'goalkeeper') => {
-      let players: Player[] | undefined;
-
-      if (getPositionPlayers) {
-        const res = getPositionPlayers(typeof position === 'object' ? position.only : position);
-        if (
-          res &&
-          typeof res === 'object' &&
-          'then' in res &&
-          res.then &&
-          typeof res.then === 'function'
-        ) {
-          players = await res;
-        } else {
-          players = res as Player[];
-        }
-      }
-
-      const resolvedPosition: string = typeof position === 'object' ? position.id : position;
-
-      const playerValue = value?.find((_position) => _position.id === resolvedPosition)?.player;
+    async (position: CompositionSettingPosition) => {
+      const positionValue = value?.find((_position) => _position.id === position.id);
 
       pushModal({
         type: 'overlay',
         component: ({ dismissModal }) => (
-          <PositionPlayerSelector
-            players={players}
-            value={playerValue}
-            position={typeof position === 'object' ? position.name : 'Gardien'}
-            compositionSetting={compositionSetting?.name}
-            onChange={(player) => {
-              if (typeof player === 'object') {
-                changePositionPlayer(position, player);
-                dismissModal();
-              }
+          <CompositionPositionEditor
+            initialValues={{ id: position.id, ...positionValue }}
+            getPositionPlayers={getPositionPlayers}
+            compositionSettingPosition={position}
+            compositionSetting={compositionSetting}
+            boosterFactories={boosterFactories}
+            onSubmit={(_position) => {
+              changePosition(_position);
+              dismissModal();
             }}
-            onFocus={() => undefined}
-            onBlur={() => undefined}
-            form={form}
           />
         ),
       });
     },
-    [changePositionPlayer, compositionSetting?.name, form, getPositionPlayers, pushModal, value],
+    [boosterFactories, changePosition, compositionSetting, getPositionPlayers, pushModal, value],
   );
 
   return (

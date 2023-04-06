@@ -6,6 +6,6 @@ export * from './compositionPositionMapField';
 export * from './compositionPositionThumbnail';
 export * from './compositionRanking';
 export * from './compositionThumbnail';
-export * from './positionPlayerSelector';
+export * from './compositionPositionEditor';
 export * from './soccerField';
 export * from './soccerFieldPosition';

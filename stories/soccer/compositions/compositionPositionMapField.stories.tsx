@@ -1,7 +1,13 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Field, Form } from '@cezembre/forms';
 import { JSXElementConstructor } from 'react';
-import { Club, CompositionSetting, CompositionSettingPosition, Player } from '@goatim/client';
+import {
+  BoosterFactory,
+  Club,
+  CompositionSetting,
+  CompositionSettingPosition,
+  Player,
+} from '@goatim/client';
 import { CompositionPositionMapField, ModalsContext } from '../../../src';
 
 export default {
@@ -192,6 +198,27 @@ const players: Player[] = [
   },
 ];
 
+const boosterFactories: BoosterFactory[] = [
+  {
+    id: 'bf_dsfedqe',
+    name: 'Lucarne',
+    leverage: 2,
+    price: 99,
+  },
+  {
+    id: 'bf_dsqzqzddqe',
+    name: 'Panenka',
+    leverage: 4,
+    price: 199,
+  },
+  {
+    id: 'bf_zszdq6',
+    name: 'Pavaaard !',
+    leverage: 8,
+    price: 299,
+  },
+];
+
 function getPositionPlayers(position: CompositionSettingPosition): Promise<Player[]> {
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -208,6 +235,7 @@ const Template: ComponentStory<JSXElementConstructor<unknown>> = () => (
         component={CompositionPositionMapField}
         compositionSetting={compositionSetting}
         getPositionPlayers={getPositionPlayers}
+        boosterFactories={boosterFactories}
       />
     </Form>
   </div>

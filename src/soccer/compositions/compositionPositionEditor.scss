@@ -1,0 +1,80 @@
+@use "../../styles/fonts";
+@use "../../styles/colors";
+
+.goatim-ui-composition-position-editor {
+  width: 100%;
+  min-width: 350px;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+
+  > .header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px 15px;
+    border-bottom: solid colors.$blue-10 1px;
+
+    > .icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: colors.$blue-10;
+    }
+
+    > .body {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      margin-left: 15px;
+
+      > .composition-setting {
+        @include fonts.label;
+      }
+
+      > .position {
+        font-weight: bold;
+        font-size: .9em;
+        margin-top: 5px;
+      }
+    }
+  }
+
+  > .player {
+
+  }
+
+  > .player-search {
+  }
+
+  > .boosters {
+    border-top: solid colors.$blue-10 1px;
+    padding: 15px;
+
+    > h2 {
+      font-weight: bold;
+      font-size: .9em;
+      margin: 5px 0 0;
+      padding: 0;
+    }
+
+    > span {
+      font-size: .8em;
+      color: colors.$blue-50;
+      margin-top: 5px;
+    }
+
+    > .select-booster {
+      margin-top: 10px;
+    }
+  }
+
+  > .actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 15px;
+    border-top: solid colors.$blue-10 1px;
+  }
+}

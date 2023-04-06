@@ -10,7 +10,7 @@ import { SoccerFieldPosition, SoccerFieldPositionSize } from './soccerFieldPosit
 export type CompositionPositionMapTheme = 'dark' | 'light';
 
 export interface PositionProps {
-  id?: string;
+  id: string;
   theme?: CompositionPositionMapTheme;
   positions?: CompositionPosition[];
   soccerFieldPositionSize?: SoccerFieldPositionSize;
@@ -57,7 +57,7 @@ export interface CompositionPositionMapProps {
   compositionSetting?: CompositionSetting;
   positions?: CompositionPosition[];
   soccerFieldPositionSize?: SoccerFieldPositionSize;
-  onPositionClick?: (position: CompositionSettingPosition | 'goalkeeper') => unknown;
+  onPositionClick?: (position: CompositionSettingPosition) => unknown;
 }
 
 export function CompositionPositionMap({
