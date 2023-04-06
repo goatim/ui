@@ -1,20 +1,37 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { Field, Form } from '@cezembre/forms';
 import { JSXElementConstructor } from 'react';
-import { Club, CompositionSetting, Player } from '@goatim/client';
-import { PositionPlayerSelector } from '../../../src';
-
-interface Props {}
+import {
+  BoosterFactory,
+  Club,
+  CompositionSetting,
+  CompositionSettingPosition,
+  Player,
+  PlayerPosition,
+} from '@goatim/client';
+import { CompositionPositionEditor } from '../../../src';
 
 export default {
-  title: 'Soccer/PositionPlayerSelector',
-  component: PositionPlayerSelector,
-} as ComponentMeta<JSXElementConstructor<Props>>;
+  title: 'Soccer/CompositionPositionEditor',
+  component: CompositionPositionEditor,
+} as ComponentMeta<JSXElementConstructor<unknown>>;
+
+const compositonSettingPosition: CompositionSettingPosition = {
+  id: '0',
+  name: 'Gardien',
+  x: 0.5,
+  y: 1,
+};
 
 const compositionSetting: CompositionSetting = {
   id: 'cs_edsefqed',
-  name: '4-3-3',
+  name: '4-3-3 Classique',
   positions: [
+    {
+      id: '0',
+      name: 'Gardien',
+      x: 0.5,
+      y: 1,
+    },
     {
       id: '1',
       name: 'Arrière gauche',
@@ -84,14 +101,14 @@ const club: Club = {
   name: 'Paris Saint-Germain',
   slug: 'paris-saint-germain',
   description: '',
-  icon: {
-    id: '1',
-    url: 'https://www.psg.fr/img/logos/psg-logo.png',
-    large_url: 'https://upload.wikimedia.org/wikipedia/fr/7/76/Paris_Saint-Germain_logo.png',
-    medium_url: 'https://upload.wikimedia.org/wikipedia/fr/7/76/Paris_Saint-Germain_logo.png',
-    small_url: 'https://www.psg.fr/img/logos/psg-logo.png',
-    thumbnail_url: 'https://www.psg.fr/img/logos/psg-logo.png',
-  },
+  // icon: {
+  //   id: '1',
+  //   url: 'https://www.psg.fr/img/logos/psg-logo.png',
+  //   large_url: 'https://upload.wikimedia.org/wikipedia/fr/7/76/Paris_Saint-Germain_logo.png',
+  //   medium_url: 'https://upload.wikimedia.org/wikipedia/fr/7/76/Paris_Saint-Germain_logo.png',
+  //   small_url: 'https://www.psg.fr/img/logos/psg-logo.png',
+  //   thumbnail_url: 'https://www.psg.fr/img/logos/psg-logo.png',
+  // },
 };
 
 const players: Player[] = [
@@ -108,7 +125,8 @@ const players: Player[] = [
   {
     id: 'pl_qefs33354',
     club,
-    name: 'Lionel Messi',
+    first_name: 'Kylian',
+    last_name: 'Mbappé',
     number: 10,
     position: 'forward',
     side: 'left',
@@ -117,7 +135,8 @@ const players: Player[] = [
   {
     id: 'pl_qe84fs54',
     club,
-    name: 'Lionel Messi',
+    first_name: 'Kylian',
+    last_name: 'Mbappé',
     number: 10,
     position: 'forward',
     side: 'left',
@@ -126,7 +145,8 @@ const players: Player[] = [
   {
     id: 'pl_qe524fs54',
     club,
-    name: 'Lionel Messi',
+    first_name: 'Kylian',
+    last_name: 'Mbappé',
     number: 10,
     position: 'forward',
     side: 'left',
@@ -135,7 +155,8 @@ const players: Player[] = [
   {
     id: 'pl_qedcwefs54',
     club,
-    name: 'Lionel Messi',
+    first_name: 'Kylian',
+    last_name: 'Mbappé',
     number: 10,
     position: 'forward',
     side: 'left',
@@ -144,7 +165,8 @@ const players: Player[] = [
   {
     id: 'pl_qkhikefs54',
     club,
-    name: 'Lionel Messi',
+    first_name: 'Kylian',
+    last_name: 'Mbappé',
     number: 10,
     position: 'forward',
     side: 'left',
@@ -153,7 +175,8 @@ const players: Player[] = [
   {
     id: 'pl_qeqzdcfs54',
     club,
-    name: 'Lionel Messi',
+    first_name: 'Kylian',
+    last_name: 'Mbappé',
     number: 10,
     position: 'forward',
     side: 'left',
@@ -162,7 +185,8 @@ const players: Player[] = [
   {
     id: 'pl_qefqzds54',
     club,
-    name: 'Lionel Messi',
+    first_name: 'Kylian',
+    last_name: 'Mbappé',
     number: 10,
     position: 'forward',
     side: 'left',
@@ -171,7 +195,8 @@ const players: Player[] = [
   {
     id: 'pl_qtfhefs54',
     club,
-    name: 'Lionel Messi',
+    first_name: 'Kylian',
+    last_name: 'Mbappé',
     number: 10,
     position: 'forward',
     side: 'left',
@@ -179,17 +204,44 @@ const players: Player[] = [
   },
 ];
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
+const boosterFactories: BoosterFactory[] = [
+  {
+    id: 'bf_dsfedqe',
+    name: 'Lucarne',
+    leverage: 2,
+    price: 99,
+  },
+  {
+    id: 'bf_dsqzqzddqe',
+    name: 'Panenka',
+    leverage: 4,
+    price: 199,
+  },
+  {
+    id: 'bf_zszdq6',
+    name: 'Pavaaard !',
+    leverage: 8,
+    price: 299,
+  },
+];
+
+function getPositionPlayers(position?: PlayerPosition[] | PlayerPosition): Promise<Player[]> {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(players);
+    }, 100);
+  });
+}
+
+const Template: ComponentStory<JSXElementConstructor<unknown>> = () => (
   <div style={{ width: 400 }}>
-    <Form>
-      <Field<Player | undefined>
-        name="player"
-        component={PositionPlayerSelector}
-        players={players}
-        compositionSetting={compositionSetting.name}
-        position="Attaquant"
-      />
-    </Form>
+    <CompositionPositionEditor
+      getPositionPlayers={getPositionPlayers}
+      compositionSetting={compositionSetting}
+      compositionSettingPosition={compositonSettingPosition}
+      boosterFactories={boosterFactories}
+      onCancel={() => undefined}
+    />
   </div>
 );
 

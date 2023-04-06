@@ -61,11 +61,14 @@ function RadioOptionComponent<V = unknown>({
   return null;
 }
 
-export interface RadioProps<V = unknown> extends FieldComponentProps {
+export type RadioOrientation = 'horizontal' | 'vertical';
+
+export interface RadioProps<V = unknown> extends FieldComponentProps<V | undefined> {
   label?: string;
   options?: RadioOption<V>[];
   canReset?: boolean;
   instructions?: ReactElement | string;
+  orientation?: RadioOrientation;
 }
 
 export function Radio<V = unknown>({
@@ -79,9 +82,10 @@ export function Radio<V = unknown>({
   options = [],
   canReset,
   instructions,
+  orientation = 'horizontal',
 }: RadioProps<V>): ReactElement {
   const className = useMemo<string>(() => {
-    const classNames = ['goatim-ui-radio'];
+    const classNames = ['goatim-ui-radio', orientation];
 
     if (isActive) {
       classNames.push('active');
@@ -95,7 +99,7 @@ export function Radio<V = unknown>({
       classNames.push('warning');
     }
     return classNames.join(' ');
-  }, [error, isActive, warning]);
+  }, [error, isActive, orientation, warning]);
 
   return (
     <div className={className}>

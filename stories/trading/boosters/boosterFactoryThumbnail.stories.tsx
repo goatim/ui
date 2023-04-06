@@ -24,7 +24,7 @@ export default {
       },
     },
     shape: {
-      options: ['icon', 'card'],
+      options: ['list', 'card'],
       control: {
         type: 'select',
       },
