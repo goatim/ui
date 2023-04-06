@@ -9,7 +9,7 @@
     @include layouts.header;
     width: 100%;
     position: fixed;
-    background: rgba(colors.$gold, .1);
+    background: colors.$gold;
     height: 40px;
     display: flex;
     align-items: center;
@@ -28,17 +28,13 @@
       > span {
         display: inline-block;
         font-size: .8em;
-        font-weight: 500;
-
-        &.label {
-          color: colors.$gold;
-        }
+        font-weight: 600;
+        color: white;
 
         &.code {
-          background: colors.$gold;
+          background: rgba(white, .1);
           padding: 3px 5px;
           border-radius: 2px;
-          color: white;
           margin-left: 5px;
           font-weight: bold;
         }
@@ -55,7 +51,7 @@
       justify-content: center;
 
       > svg {
-        stroke: colors.$gold;
+        stroke: white;
       }
     }
   }
