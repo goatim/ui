@@ -1,27 +1,16 @@
 import { ReactElement } from 'react';
 import { formatReferralCode } from '@goatim/client';
-import { Button, Icon } from '../../general';
+import { Button } from '../../general';
 import gift from '../../general/assets/gift.png';
 
 export interface ReferralPopupProps {
   referralCode?: string;
-  onDismiss?: () => unknown;
   onInviteFriends?: () => unknown;
 }
 
-export function ReferralPopup({
-  referralCode,
-  onDismiss,
-  onInviteFriends,
-}: ReferralPopupProps): ReactElement {
+export function ReferralPopup({ referralCode, onInviteFriends }: ReferralPopupProps): ReactElement {
   return (
     <div className="goatim-ui-referral-popup">
-      <div className="header">
-        <button className="dismiss" onClick={onDismiss}>
-          <Icon name="x" size={20} />
-        </button>
-      </div>
-
       <div className="body">
         <img src={gift} alt="gift" className="gift" />
         <h1>Invite tes amis !</h1>

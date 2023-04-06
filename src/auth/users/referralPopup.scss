@@ -6,19 +6,6 @@
   background: white;
   border-radius: 10px;
 
-  > .header {
-    padding: 10px;
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-end;
-
-    > .dismiss {
-      > svg {
-        stroke: colors.$blue;
-      }
-    }
-  }
-
   > .body {
     padding: 0 20px;
     display: flex;
