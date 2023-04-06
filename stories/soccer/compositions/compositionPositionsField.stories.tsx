@@ -9,16 +9,27 @@ import {
   Player,
 } from '@goatim/client';
 import {
-  CompositionPositionListField,
-  CompositionPositionListFieldValuePosition,
+  CompositionPositionsField,
+  CompositionPositionsFieldType,
+  CompositionPositionValue,
   ModalsContext,
 } from '../../../src';
 
+export interface Props {
+  type?: CompositionPositionsFieldType;
+}
+
 export default {
-  title: 'Soccer/CompositionPositionListField',
-  component: CompositionPositionListField,
+  title: 'Soccer/CompositionPositionsField',
+  component: CompositionPositionsField,
   decorators: [(story) => <ModalsContext>{story()}</ModalsContext>],
-} as ComponentMeta<JSXElementConstructor<unknown>>;
+  argTypes: {
+    type: {
+      control: 'radio',
+      options: ['map', 'list'],
+    },
+  },
+} as ComponentMeta<JSXElementConstructor<Props>>;
 
 const compositionSetting: CompositionSetting = {
   id: 'cs_edsefqed',
@@ -196,7 +207,7 @@ const players: Player[] = [
   },
 ];
 
-const initialValue: CompositionPositionListFieldValuePosition[] = [
+const initialValue: CompositionPositionValue[] = [
   {
     id: '1',
     player: players[1],
@@ -236,13 +247,14 @@ function getPositionPlayers(position: CompositionSettingPosition): Player[] {
   return players;
 }
 
-const Template: ComponentStory<JSXElementConstructor<unknown>> = () => (
+const Template: ComponentStory<JSXElementConstructor<Props>> = ({ type }: Props) => (
   <div style={{ width: 400 }}>
     <Form>
-      <Field<CompositionPositionListFieldValuePosition[]>
+      <Field<CompositionPositionValue[]>
         initialValue={initialValue}
+        type={type}
         name="positions"
-        component={CompositionPositionListField}
+        component={CompositionPositionsField}
         compositionSetting={compositionSetting}
         getPositionPlayers={getPositionPlayers}
         boosterFactories={boosterFactories}

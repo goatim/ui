@@ -69,6 +69,7 @@ export interface RadioProps<V = unknown> extends FieldComponentProps<V | undefin
   canReset?: boolean;
   instructions?: ReactElement | string;
   orientation?: RadioOrientation;
+  comparisonFn?: (a: V, b?: V) => boolean;
 }
 
 export function Radio<V = unknown>({
@@ -83,6 +84,7 @@ export function Radio<V = unknown>({
   canReset,
   instructions,
   orientation = 'horizontal',
+  comparisonFn,
 }: RadioProps<V>): ReactElement {
   const className = useMemo<string>(() => {
     const classNames = ['goatim-ui-radio', orientation];
@@ -117,7 +119,7 @@ export function Radio<V = unknown>({
             <RadioOptionComponent<V>
               option={option}
               onClick={() => onChange(option.value)}
-              active={option.value === value}
+              active={comparisonFn ? comparisonFn(option.value, value) : option.value === value}
             />
           </div>
         ))}

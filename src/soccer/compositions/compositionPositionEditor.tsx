@@ -25,7 +25,7 @@ function PlayerSelectorOption({ value }: PlayerSelectorOptionProps): ReactElemen
 export interface CompositionPositionEditorFields extends FormFields {
   id: string;
   player?: Player;
-  booster_factory?: string;
+  booster_factory?: BoosterFactory;
 }
 
 export type GetPositionPlayersFunction = (
@@ -120,15 +120,18 @@ export function CompositionPositionEditor({
           <span>Multiplie tes gains de points et de coins.</span>
 
           <div className="select-booster">
-            <Field<string | undefined>
+            <Field<BoosterFactory | undefined>
               name="booster_factory"
-              component={Radio<string | undefined>}
+              component={Radio<BoosterFactory | undefined>}
               options={boosterFactories.map((boosterFactory) => ({
-                value: boosterFactory.id,
+                value: boosterFactory,
                 element: <BoosterFactoryThumbnail boosterFactory={boosterFactory} />,
               }))}
               initialValue={initialValues?.booster_factory}
               orientation="vertical"
+              comparisonFn={(a: BoosterFactory | undefined, b: BoosterFactory | undefined) =>
+                !!(a && b && a.id === b.id)
+              }
             />
           </div>
         </div>

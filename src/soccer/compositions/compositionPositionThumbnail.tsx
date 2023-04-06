@@ -1,6 +1,6 @@
 import { MouseEvent, ReactElement, useCallback, useMemo } from 'react';
-import { Player } from '@goatim/client';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
+import { CompositionPosition } from '@goatim/client/dist/soccer/compositions/model';
 import { PlayerThumbnail } from '../players';
 import { Icon, Score, Tag, TagTheme } from '../../general';
 import { GoatimCoinsGains } from '../../market';
@@ -8,22 +8,14 @@ import { GoatimCoinsGains } from '../../market';
 export type CompositionPositionThumbnailTheme = 'dark' | 'light';
 
 export interface CompositionPositionThumbnailProps extends WrapperProps {
-  player?: Player;
-  nbShares?: number;
-  leverage?: number;
-  score?: number;
-  gains?: number;
+  compositionPosition: CompositionPosition;
   theme?: CompositionPositionThumbnailTheme;
   onClick?: (event: MouseEvent<HTMLButtonElement>) => unknown;
   onDelete?: (event: MouseEvent<HTMLButtonElement>) => unknown;
 }
 
 export function CompositionPositionThumbnail({
-  player,
-  nbShares,
-  leverage,
-  score,
-  gains,
+  compositionPosition,
   theme,
   onClick,
   onDelete,
@@ -48,37 +40,52 @@ export function CompositionPositionThumbnail({
     }
   }, [theme]);
 
+  const boosterLeverage = useMemo<number | undefined>(() => {
+    if (compositionPosition.booster_leverage) {
+      return compositionPosition.booster_leverage;
+    }
+    if (typeof compositionPosition.booster_factory === 'object') {
+      return compositionPosition.booster_factory.leverage;
+    }
+    return undefined;
+  }, [compositionPosition.booster_factory, compositionPosition.booster_leverage]);
+
   return (
     <div className={`goatim-ui-composition-position-thumbnail ${theme}`}>
       <Wrapper className="container" onClick={onClick}>
-        {player ? <PlayerThumbnail player={player} theme={theme} /> : null}
-        {leverage || score || nbShares || gains ? (
+        {compositionPosition.player && typeof compositionPosition.player === 'object' ? (
+          <PlayerThumbnail player={compositionPosition.player} theme={theme} />
+        ) : null}
+        {boosterLeverage ||
+        compositionPosition.score ||
+        compositionPosition.nb_shares ||
+        compositionPosition.gains ? (
           <div className="metrics">
-            {leverage ? (
+            {boosterLeverage ? (
               <div className="metric">
-                <Tag theme={tagTheme} label={`pts x${leverage}`} />
+                <Tag theme={tagTheme} label={`pts x${boosterLeverage}`} />
               </div>
             ) : null}
-            {score ? (
+            {compositionPosition.score ? (
               <div className="metric">
                 <Tag theme={tagTheme}>
-                  <Score theme={theme}>{score}</Score>
+                  <Score theme={theme}>{compositionPosition.score}</Score>
                 </Tag>
               </div>
             ) : null}
-            {nbShares ? (
+            {compositionPosition.nb_shares ? (
               <div className="metric">
                 <Tag
                   leftIcon="goatim-coin"
                   theme={tagTheme}
-                  label={`x${nbShares * (leverage || 1)}`}
+                  label={`x${compositionPosition.nb_shares * (boosterLeverage || 1)}`}
                 />
               </div>
             ) : null}
-            {gains ? (
+            {compositionPosition.gains ? (
               <div className="metric">
                 <Tag theme={tagTheme}>
-                  <GoatimCoinsGains>{gains}</GoatimCoinsGains>
+                  <GoatimCoinsGains>{compositionPosition.gains}</GoatimCoinsGains>
                 </Tag>
               </div>
             ) : null}

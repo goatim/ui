@@ -51,19 +51,23 @@ const positions: CompositionPosition[] = [
     id: '5',
     player,
     nb_shares: 3,
-    leverage: 1,
+    booster_leverage: 1,
   },
   {
     id: '3',
     player,
     nb_shares: 4,
-    leverage: 2,
+    booster_leverage: 2,
   },
 ];
 
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({ theme }: Props) => (
   <div style={{ width: 400 }}>
-    <CompositionPositionList theme={theme} positions={positions} onPositionClick={console.log} />
+    <CompositionPositionList
+      theme={theme}
+      compositionPositions={positions}
+      onPositionClick={console.log}
+    />
   </div>
 );
 
