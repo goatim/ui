@@ -14,7 +14,10 @@ export function ReferralPopup({ referralCode, onInviteFriends }: ReferralPopupPr
       <div className="body">
         <img src={gift} alt="gift" className="gift" />
         <h1>Invite tes amis !</h1>
-        <p>Gagne des joueurs et des coins en invitant tes amis avec ton code de parrainage :</p>
+        <p>
+          Gagne un pack contenant des actions de joueurs et 30 GTCoins en invitant tes amis avec ton
+          code de parrainage :
+        </p>
         {referralCode ? (
           <span className="referral-code">{formatReferralCode(referralCode)}</span>
         ) : null}

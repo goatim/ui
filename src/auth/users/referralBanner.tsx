@@ -1,0 +1,36 @@
+import { ReactElement } from 'react';
+import { Wrapper, WrapperProps } from '@cezembre/fronts';
+import { formatReferralCode } from '@goatim/client';
+import { Icon } from '../../general';
+
+export interface ReferralBannerProps extends WrapperProps {
+  referralCode?: string;
+  onDismiss?: () => unknown;
+}
+
+export function ReferralBanner({
+  onClick,
+  to,
+  href,
+  target,
+  referralCode,
+  onDismiss,
+}: ReferralBannerProps): ReactElement | null {
+  return (
+    <div className="goatim-ui-referral-banner">
+      <Wrapper className="banner" onClick={onClick} to={to} href={href} target={target}>
+        <div className="body">
+          <span className="label">Invite tes amis avec ton code promo :</span>
+          {referralCode ? <span className="code">{formatReferralCode(referralCode)}</span> : null}
+        </div>
+
+        {onDismiss ? (
+          <button className="dismiss" type="button" onClick={onDismiss}>
+            <Icon name="x" />
+          </button>
+        ) : null}
+      </Wrapper>
+      <div className="placeholder" />
+    </div>
+  );
+}
