@@ -54,7 +54,7 @@ export interface SelectProps<V = unknown> extends FieldComponentProps<V | undefi
   label?: string;
   options?: SelectOption<V>[];
   DefaultComponent?: JSXElementConstructor<{ value: V }>;
-  canCancel?: boolean;
+  canReset?: boolean;
   theme?: SelectTheme;
   type?: SelectType;
   instructions?: ReactElement | string;
@@ -75,7 +75,7 @@ export function Select<V = unknown>({
   label,
   options = [],
   DefaultComponent,
-  canCancel,
+  canReset,
   instructions,
   theme = 'default',
   type = 'dropdown',
@@ -158,6 +158,12 @@ export function Select<V = unknown>({
     [onSearchDebounced],
   );
 
+  const reset = useCallback(() => {
+    setTimeout(() => {
+      onChange(undefined);
+    }, 5);
+  }, [onChange]);
+
   return (
     <div className={className}>
       {label && <label htmlFor={name}>{label}</label>}
@@ -172,8 +178,8 @@ export function Select<V = unknown>({
               />
               {type === 'dropdown' ? <Icon name="chevron-down" /> : null}
             </button>
-            {selectedOption && canCancel ? (
-              <button type="button" className="cancel" onClick={() => onChange(undefined)}>
+            {selectedOption && canReset ? (
+              <button type="button" className="reset" onClick={reset}>
                 <Icon name="x" />
               </button>
             ) : null}

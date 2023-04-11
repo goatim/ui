@@ -82,7 +82,7 @@ export function CompositionPositionEditor({
   }, [getPositionPlayers, compositionSettingPosition?.only]);
 
   const boosterFactoriesComparisonFn = useCallback(
-    (a: BoosterFactory | string | undefined, b: BoosterFactory | string | undefined) => {
+    (a?: BoosterFactory | string, b?: BoosterFactory | string) => {
       if (!a || !b) {
         return false;
       }
@@ -120,7 +120,7 @@ export function CompositionPositionEditor({
           }))}
           DefaultComponent={PlayerSelectorOption}
           component={Select}
-          canCancel
+          canReset
           fullWidth
           type="flat"
         />
