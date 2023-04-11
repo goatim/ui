@@ -70,6 +70,22 @@
     }
   }
 
+  &.fushia {
+    background: colors.$fushia;
+
+    > .container > .label {
+      color: white;
+    }
+
+    > .container > svg[stroke] {
+      stroke: white;
+    }
+
+    > .container > svg:not([stroke]) {
+      fill: white;
+    }
+  }
+
   &.light-fushia {
     > .container > .label {
       color: colors.$fushia;

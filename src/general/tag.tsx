@@ -3,7 +3,12 @@ import { Icon, IconName } from './icon';
 
 export type TagSize = 'small' | 'medium' | 'big';
 
-export type TagTheme = 'light-medium-blue' | 'light-fushia' | 'dark-white' | 'full-electric-blue';
+export type TagTheme =
+  | 'light-medium-blue'
+  | 'fushia'
+  | 'light-fushia'
+  | 'dark-white'
+  | 'full-electric-blue';
 
 export interface TagProps {
   label?: string;

@@ -33,12 +33,12 @@ export function CompositionPositionThumbnail({
   const tagTheme = useMemo<TagTheme>(() => {
     switch (theme) {
       case 'dark':
-        return 'light-medium-blue';
+        return compositionPosition.booster_leverage ? 'fushia' : 'light-medium-blue';
       case 'light':
       default:
-        return 'dark-white';
+        return compositionPosition.booster_leverage ? 'fushia' : 'dark-white';
     }
-  }, [theme]);
+  }, [compositionPosition.booster_leverage, theme]);
 
   const boosterLeverage = useMemo<number | undefined>(() => {
     if (compositionPosition.booster_leverage) {
