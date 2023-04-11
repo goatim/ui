@@ -12,11 +12,13 @@
     > span {
       font-size: .7em;
       font-weight: bold;
+      margin: 0;
+      padding: 0;
     }
 
     > svg {
       fill: colors.$blue;
-      margin-left: 5px;
+      margin: 0 0 0 4px;
     }
   }
 

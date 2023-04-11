@@ -25,7 +25,7 @@ export function GoatimCoins({
     <div className={`goatim-ui-goatim-coins ${size} ${theme}`}>
       <div className="container">
         <span>{formatGoatimCoinsAmount(children || amount || 0, decimalDigits, false)}</span>
-        <Icon name="goatim-coin" />
+        <Icon size={12} name="goatim-coin" />
       </div>
     </div>
   );
