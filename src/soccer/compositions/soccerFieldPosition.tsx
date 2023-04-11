@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { ReactElement, useMemo } from 'react';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
 import { formatPlayerName, Image } from '@goatim/client';
 import { Icon } from '../../general';
@@ -13,6 +13,7 @@ export interface SoccerFieldPositionProps extends WrapperProps {
   lastName?: string;
   size?: SoccerFieldPositionSize;
   theme?: SoccerFieldPositionTheme;
+  boosted?: boolean;
 }
 
 export function SoccerFieldPosition({
@@ -20,19 +21,23 @@ export function SoccerFieldPosition({
   firstName,
   lastName,
   size = 'medium',
-  theme,
+  theme = 'dark',
+  boosted = false,
   to,
   onClick,
   href,
   target,
 }: SoccerFieldPositionProps): ReactElement {
+  const className = useMemo<string>(() => {
+    const classNames: string[] = ['goatim-ui-soccer-field-position', size, theme];
+    if (boosted) {
+      classNames.push('boosted');
+    }
+    return classNames.join(' ');
+  }, [boosted, size, theme]);
+
   return (
-    <Wrapper
-      className={`goatim-ui-soccer-field-position ${size} ${theme}`}
-      to={to}
-      onClick={onClick}
-      href={href}
-      target={target}>
+    <Wrapper className={className} to={to} onClick={onClick} href={href} target={target}>
       <div className="icon">
         {icon === null ? (
           <div className="no-icon">

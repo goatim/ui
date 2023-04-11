@@ -30,7 +30,7 @@ function Position({
     );
 
     if (positionIndex !== -1) {
-      const { player } = positions[positionIndex];
+      const { player, booster_leverage: boosterLeverage } = positions[positionIndex];
 
       if (player && typeof player === 'object') {
         return (
@@ -41,6 +41,7 @@ function Position({
             lastName={player.last_name}
             size={soccerFieldPositionSize}
             onClick={onPositionClick}
+            boosted={!!boosterLeverage}
           />
         );
       }

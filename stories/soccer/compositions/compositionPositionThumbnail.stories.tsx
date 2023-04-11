@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import { Club, Player } from '@goatim/client';
+import { Club, CompositionPosition, Player } from '@goatim/client';
 import { CompositionPositionThumbnail, CompositionPositionThumbnailTheme } from '../../../src';
 
 interface Props {
@@ -46,8 +46,18 @@ const player: Player = {
   resolved_position: 'Attaquant centre',
 };
 
+const compositionPosition: CompositionPosition = {
+  id: 'cp_xxxx',
+  player,
+  nb_shares: 4,
+};
+
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({ theme }: Props) => (
-  <CompositionPositionThumbnail player={player} theme={theme} onDelete={() => undefined} />
+  <CompositionPositionThumbnail
+    compositionPosition={compositionPosition}
+    theme={theme}
+    onDelete={() => undefined}
+  />
 );
 
 export const Default = Template.bind({});

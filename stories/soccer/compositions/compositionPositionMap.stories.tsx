@@ -130,6 +130,7 @@ const positions: CompositionPosition[] = [
   {
     id: '3',
     player,
+    booster_leverage: 2,
   },
 ];
 

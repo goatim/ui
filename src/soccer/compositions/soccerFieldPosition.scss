@@ -73,6 +73,12 @@
     }
   }
 
+  &.boosted {
+    > span {
+      color: colors.$fushia;
+    }
+  }
+
   &.small {
     > .icon {
       > img, > .no-icon, > .placeholder {
