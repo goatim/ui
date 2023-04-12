@@ -56,7 +56,10 @@ export function CompositionPositionsField({
 
         if (index !== -1) {
           if (compositionPosition.player) {
-            nextValue[index] = compositionPosition as CompositionPositionValue;
+            nextValue[index] = {
+              ...nextValue[index],
+              ...compositionPosition,
+            } as CompositionPositionValue;
           } else {
             nextValue.splice(index, 1);
           }
