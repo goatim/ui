@@ -30,21 +30,16 @@ function Position({
     );
 
     if (positionIndex !== -1) {
-      const { player, booster_leverage: boosterLeverage } = positions[positionIndex];
+      const position = positions[positionIndex];
 
-      if (player && typeof player === 'object') {
-        return (
-          <SoccerFieldPosition
-            theme={theme}
-            icon={player.club && typeof player.club === 'object' ? player.club.icon : null}
-            firstName={player.first_name}
-            lastName={player.last_name}
-            size={soccerFieldPositionSize}
-            onClick={onPositionClick}
-            boosterLeverage={boosterLeverage}
-          />
-        );
-      }
+      return (
+        <SoccerFieldPosition
+          position={position}
+          theme={theme}
+          size={soccerFieldPositionSize}
+          onClick={onPositionClick}
+        />
+      );
     }
   }
 

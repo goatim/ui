@@ -1,6 +1,6 @@
 import { ReactElement, useMemo } from 'react';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
-import { formatPlayerName, Image } from '@goatim/client';
+import { CompositionPosition, formatPlayerName } from '@goatim/client';
 import { Icon } from '../../general';
 
 export type SoccerFieldPositionSize = 'small' | 'medium' | 'large';
@@ -8,21 +8,15 @@ export type SoccerFieldPositionSize = 'small' | 'medium' | 'large';
 export type SoccerFieldPositionTheme = 'dark' | 'light';
 
 export interface SoccerFieldPositionProps extends WrapperProps {
-  icon?: Image | null;
-  firstName?: string;
-  lastName?: string;
+  position?: CompositionPosition;
   size?: SoccerFieldPositionSize;
   theme?: SoccerFieldPositionTheme;
-  boosterLeverage?: number;
 }
 
 export function SoccerFieldPosition({
-  icon,
-  firstName,
-  lastName,
+  position,
   size = 'medium',
   theme = 'dark',
-  boosterLeverage,
   to,
   onClick,
   href,
@@ -30,24 +24,47 @@ export function SoccerFieldPosition({
 }: SoccerFieldPositionProps): ReactElement {
   const className = useMemo<string>(() => {
     const classNames: string[] = ['goatim-ui-soccer-field-position', size, theme];
-    if (boosterLeverage) {
+    if (position?.booster_factory || position?.booster) {
       classNames.push('boosted');
     }
     return classNames.join(' ');
-  }, [boosterLeverage, size, theme]);
+  }, [position?.booster, position?.booster_factory, size, theme]);
+
+  const icon = useMemo<string | undefined>(() => {
+    if (
+      position?.player &&
+      typeof position.player === 'object' &&
+      position.player.club &&
+      typeof position.player.club === 'object' &&
+      position.player.club.icon?.thumbnail_url
+    ) {
+      return position.player.club.icon.thumbnail_url;
+    }
+    return undefined;
+  }, [position?.player]);
+
+  const name = useMemo<string | undefined>(() => {
+    if (position?.player && typeof position.player === 'object') {
+      return formatPlayerName(position.player.first_name, position.player.last_name);
+    }
+    return undefined;
+  }, [position?.player]);
 
   return (
     <Wrapper className={className} to={to} onClick={onClick} href={href} target={target}>
       <div className="icon">
-        {icon === null ? (
+        {/* eslint-disable-next-line no-nested-ternary */}
+        {icon ? (
+          <img src={icon} alt="Soccer Field Position" />
+        ) : position ? (
           <div className="no-icon">
             <Icon name="user" />
           </div>
-        ) : null}
-        {icon?.thumbnail_url ? <img src={icon.thumbnail_url} alt="Soccer Field Position" /> : null}
-        {icon === undefined ? <div className="placeholder" /> : null}
+        ) : (
+          <div className="placeholder" />
+        )}
       </div>
-      <span>{formatPlayerName(firstName, lastName)}</span>
+      <span>{name}</span>
     </Wrapper>
   );
 }

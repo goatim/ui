@@ -25,8 +25,7 @@ function PlayerSelectorOption({ value }: PlayerSelectorOptionProps): ReactElemen
 export interface CompositionPositionEditorFields extends FormFields {
   id: string;
   player?: Player;
-  booster_factory?: BoosterFactory | string;
-  booster_leverage?: number;
+  booster_factory?: BoosterFactory;
 }
 
 export type GetPositionPlayersFunction = (
@@ -52,17 +51,13 @@ export function CompositionPositionEditor({
   boosterFactories,
   onCancel,
 }: PositionPlayerSelectorProps): ReactElement {
-  const [formContext, setFormContext] = useState<
-    FormContext<CompositionPositionEditorFields> | undefined
-  >();
   const [formState, setFormState] = useState<
     FormState<CompositionPositionEditorFields> | undefined
   >();
 
-  const form = useCallback((_formContext: FormContext<CompositionPositionEditorFields> | null) => {
-    if (_formContext) {
-      setFormContext(_formContext);
-      setFormState(_formContext.formState);
+  const form = useCallback((formContext: FormContext<CompositionPositionEditorFields> | null) => {
+    if (formContext) {
+      setFormState(formContext.formState);
     }
   }, []);
 
@@ -96,15 +91,6 @@ export function CompositionPositionEditor({
       return aId === bId;
     },
     [],
-  );
-
-  const selectBoosterFactory = useCallback(
-    (boosterFactory?: BoosterFactory | string) => {
-      if (boosterFactory && typeof boosterFactory === 'object') {
-        formContext?.changeField('booster_leverage', boosterFactory.leverage);
-      }
-    },
-    [formContext],
   );
 
   return (
@@ -146,9 +132,9 @@ export function CompositionPositionEditor({
           <span>Multiplie tes gains de points et de coins.</span>
 
           <div className="select-booster">
-            <Field<BoosterFactory | string | undefined>
+            <Field<BoosterFactory | undefined>
               name="booster_factory"
-              component={Radio<BoosterFactory | string | undefined>}
+              component={Radio<BoosterFactory | undefined>}
               options={boosterFactories.map((boosterFactory) => ({
                 value: boosterFactory,
                 element: <BoosterFactoryThumbnail boosterFactory={boosterFactory} />,
@@ -156,17 +142,6 @@ export function CompositionPositionEditor({
               initialValue={initialValues?.booster_factory}
               orientation="vertical"
               comparisonFn={boosterFactoriesComparisonFn}
-              onChange={selectBoosterFactory}
-            />
-
-            <Field<number | undefined>
-              name="booster_leverage"
-              type="hidden"
-              initialValue={
-                typeof initialValues?.booster_factory === 'object'
-                  ? initialValues.booster_factory.leverage
-                  : undefined
-              }
             />
           </div>
         </div>
