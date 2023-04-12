@@ -33,22 +33,29 @@ export function CompositionPositionThumbnail({
   const tagTheme = useMemo<TagTheme>(() => {
     switch (theme) {
       case 'dark':
-        return compositionPosition.booster_leverage ? 'fushia' : 'light-medium-blue';
+        return compositionPosition.booster_factory || compositionPosition.booster
+          ? 'fushia'
+          : 'light-medium-blue';
       case 'light':
       default:
-        return compositionPosition.booster_leverage ? 'fushia' : 'dark-white';
+        return compositionPosition.booster_factory || compositionPosition.booster
+          ? 'fushia'
+          : 'dark-white';
     }
-  }, [compositionPosition.booster_leverage, theme]);
+  }, [compositionPosition.booster, compositionPosition.booster_factory, theme]);
 
   const boosterLeverage = useMemo<number | undefined>(() => {
-    if (compositionPosition.booster_leverage) {
-      return compositionPosition.booster_leverage;
-    }
-    if (typeof compositionPosition.booster_factory === 'object') {
+    if (
+      compositionPosition.booster_factory &&
+      typeof compositionPosition.booster_factory === 'object'
+    ) {
       return compositionPosition.booster_factory.leverage;
     }
+    if (compositionPosition.booster && typeof compositionPosition.booster === 'object') {
+      return compositionPosition.booster.leverage;
+    }
     return undefined;
-  }, [compositionPosition.booster_factory, compositionPosition.booster_leverage]);
+  }, [compositionPosition.booster_factory, compositionPosition.booster]);
 
   return (
     <div className={`goatim-ui-composition-position-thumbnail ${theme}`}>
