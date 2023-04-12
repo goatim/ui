@@ -47,9 +47,7 @@ export function SoccerFieldPosition({
         {icon?.thumbnail_url ? <img src={icon.thumbnail_url} alt="Soccer Field Position" /> : null}
         {icon === undefined ? <div className="placeholder" /> : null}
       </div>
-      <span>
-        {formatPlayerName(firstName, lastName)} x{boosterLeverage}
-      </span>
+      {firstName || lastName ? <span>{formatPlayerName(firstName, lastName)}</span> : null}
     </Wrapper>
   );
 }
