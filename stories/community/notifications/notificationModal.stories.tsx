@@ -3,12 +3,10 @@ import { JSXElementConstructor } from 'react';
 import { Asset, Club, Notification, Player } from '@goatim/client';
 import { NotificationModal } from '../../../src';
 
-interface Props {}
-
 export default {
   title: 'Community/NotificationModal',
   component: NotificationModal,
-} as ComponentMeta<JSXElementConstructor<Props>>;
+} as ComponentMeta<JSXElementConstructor<unknown>>;
 
 const club: Club = {
   id: '1',
@@ -40,8 +38,7 @@ const asset: Asset = {
   id: 'as_Ded512',
   entity: 'pl_de45d54DD',
   type: 'player',
-  first_name: 'Kylian',
-  last_name: 'Mbappé',
+  name: 'Kylian Mabappé',
   description: '',
   slug: 'kylian-mbappe',
   total_shares: 450,
@@ -62,7 +59,7 @@ const notification: Notification<'order_match'> = {
   },
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
+const Template: ComponentStory<JSXElementConstructor<unknown>> = () => (
   <NotificationModal notification={notification} />
 );
 

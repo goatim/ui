@@ -1,5 +1,5 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { Button, Props } from '../../src';
+import { Button, ButtonProps } from '../../src';
 
 export default {
   title: 'General/Button',
@@ -81,7 +81,7 @@ const Template: ComponentStory<typeof Button> = ({
   leftIcon,
   rightIcon,
   fullWidth,
-}: Props) => (
+}: ButtonProps) => (
   <Button
     size={size}
     shape={shape}

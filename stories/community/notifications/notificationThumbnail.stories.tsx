@@ -115,6 +115,7 @@ const composition: Composition = {
   variation: 1.23,
   gains: 45000,
   score: 1230,
+  status: 'requires_checkout',
 };
 
 const orderMatch: Notification<'order_match'> = {
