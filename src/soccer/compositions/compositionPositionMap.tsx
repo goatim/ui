@@ -41,7 +41,7 @@ function Position({
             lastName={player.last_name}
             size={soccerFieldPositionSize}
             onClick={onPositionClick}
-            boosted={!!boosterLeverage}
+            boosterLeverage={boosterLeverage}
           />
         );
       }

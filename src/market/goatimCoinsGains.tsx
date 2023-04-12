@@ -30,7 +30,7 @@ export function GoatimCoinsGains({
     <div className={`goatim-ui-goatim-coins-gains ${sign} ${size} ${theme}`}>
       <div className="container">
         <span>{formatGoatimCoinsGains(children || gains || 0, 2, false)}</span>
-        <Icon name="goatim-coin" />
+        <Icon size={12} name="goatim-coin" />
       </div>
     </div>
   );

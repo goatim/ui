@@ -13,7 +13,7 @@ export interface SoccerFieldPositionProps extends WrapperProps {
   lastName?: string;
   size?: SoccerFieldPositionSize;
   theme?: SoccerFieldPositionTheme;
-  boosted?: boolean;
+  boosterLeverage?: number;
 }
 
 export function SoccerFieldPosition({
@@ -22,7 +22,7 @@ export function SoccerFieldPosition({
   lastName,
   size = 'medium',
   theme = 'dark',
-  boosted = false,
+  boosterLeverage,
   to,
   onClick,
   href,
@@ -30,11 +30,11 @@ export function SoccerFieldPosition({
 }: SoccerFieldPositionProps): ReactElement {
   const className = useMemo<string>(() => {
     const classNames: string[] = ['goatim-ui-soccer-field-position', size, theme];
-    if (boosted) {
+    if (boosterLeverage) {
       classNames.push('boosted');
     }
     return classNames.join(' ');
-  }, [boosted, size, theme]);
+  }, [boosterLeverage, size, theme]);
 
   return (
     <Wrapper className={className} to={to} onClick={onClick} href={href} target={target}>
@@ -47,7 +47,9 @@ export function SoccerFieldPosition({
         {icon?.thumbnail_url ? <img src={icon.thumbnail_url} alt="Soccer Field Position" /> : null}
         {icon === undefined ? <div className="placeholder" /> : null}
       </div>
-      <span>{formatPlayerName(firstName, lastName)}</span>
+      <span>
+        {formatPlayerName(firstName, lastName)} x{boosterLeverage}
+      </span>
     </Wrapper>
   );
 }

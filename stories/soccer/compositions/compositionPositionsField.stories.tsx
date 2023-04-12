@@ -1,9 +1,10 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { Field, Form } from '@cezembre/forms';
+import { Field, Form, FormFields } from '@cezembre/forms';
 import { JSXElementConstructor } from 'react';
 import {
   BoosterFactory,
   Club,
+  CompositionPosition,
   CompositionSetting,
   CompositionSettingPosition,
   Player,
@@ -247,9 +248,17 @@ function getPositionPlayers(position: CompositionSettingPosition): Player[] {
   return players;
 }
 
+interface Fields extends FormFields {
+  positions?: CompositionPosition[];
+}
+
+function submit(fields: Fields) {
+  console.log(fields);
+}
+
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({ type }: Props) => (
   <div style={{ width: 400 }}>
-    <Form>
+    <Form<Fields> onSubmit={submit}>
       <Field<CompositionPositionValue[]>
         initialValue={initialValue}
         type={type}
