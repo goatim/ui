@@ -59,10 +59,10 @@ export function CompositionPositionEditor({
     FormState<CompositionPositionEditorFields> | undefined
   >();
 
-  const form = useCallback((formContext: FormContext<CompositionPositionEditorFields> | null) => {
-    if (formContext) {
-      setFormContext(formContext);
-      setFormState(formContext.formState);
+  const form = useCallback((_formContext: FormContext<CompositionPositionEditorFields> | null) => {
+    if (_formContext) {
+      setFormContext(_formContext);
+      setFormState(_formContext.formState);
     }
   }, []);
 
