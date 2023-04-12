@@ -1,6 +1,6 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
-import { ThreeDSecure } from '../../src';
+import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { JSXElementConstructor, ReactElement, useCallback } from 'react';
+import { ModalsContext, ThreeDSecure, useModals } from '../../src';
 
 interface Props {}
 
@@ -10,13 +10,46 @@ export default {
   argTypes: {},
 } as ComponentMeta<JSXElementConstructor<Props>>;
 
+function App(): ReactElement {
+  const { pushModal } = useModals();
+  const openModal = useCallback(() => {
+    pushModal({
+      type: 'overlay',
+      disableDismiss: true,
+      element: (
+        <ThreeDSecure
+          url="https://app.goatim.com/end-3d-secure"
+          onDone={() => console.log('Returned !')}
+        />
+      ),
+    });
+  }, [pushModal]);
+  return (
+    <div>
+      {Array(10).fill(
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. A alias aliquid aut error esse,
+          et hic illo illum molestias, natus nemo quasi qui quisquam ratione saepe sequi soluta
+          tenetur voluptates!
+        </p>,
+      )}
+      <button onClick={openModal}>Open 3DSecure</button>
+      {Array(10).fill(
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. A alias aliquid aut error esse,
+          et hic illo illum molestias, natus nemo quasi qui quisquam ratione saepe sequi soluta
+          tenetur voluptates!
+        </p>,
+      )}
+    </div>
+  );
+}
+
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => {
   return (
-    <ThreeDSecure
-      url="https://gateway.dimoco-payments.eu/test/acs/b5bfb83f892ee6c45ab6"
-      returnUrl="https://www.google.fr/"
-      onReturn={() => console.log('Returned !')}
-    />
+    <ModalsContext>
+      <App />
+    </ModalsContext>
   );
 };
 

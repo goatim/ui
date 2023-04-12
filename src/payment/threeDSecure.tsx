@@ -10,7 +10,7 @@ export function ThreeDSecure({ url, onDone }: ThreeDSecureProps): ReactElement {
 
   const handleMessage = useCallback(
     (event: MessageEvent) => {
-      if (event.data === 'done' && onDone) {
+      if (event.data === '3DSecureCompleted' && onDone) {
         onDone();
       }
     },

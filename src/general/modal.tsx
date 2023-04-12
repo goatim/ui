@@ -30,6 +30,7 @@ export interface Modal<P extends ModalComponentProps = any> {
   element?: ReactElement<P>;
   onDismiss?: () => unknown;
   isActive?: boolean;
+  disableDismiss?: boolean;
 }
 
 export interface PushModalParams<P extends ModalComponentProps = any> {
@@ -38,6 +39,7 @@ export interface PushModalParams<P extends ModalComponentProps = any> {
   element?: ReactElement<P>;
   type?: ModalType;
   onDismiss?: () => unknown;
+  disableDismiss?: boolean;
 }
 
 export type PushModalFunction<P extends ModalComponentProps = any> = (
@@ -73,10 +75,10 @@ function ModalContainer<P extends ModalComponentProps = any>({
   const modalElement = useRef<HTMLDivElement>(null);
 
   const onClickOutside = useCallback(() => {
-    if (modal.isActive) {
+    if (modal.isActive && !modal.disableDismiss) {
       dismissModal();
     }
-  }, [dismissModal, modal.isActive]);
+  }, [dismissModal, modal.disableDismiss, modal.isActive]);
 
   useClickOutside(modalElement, onClickOutside);
 
@@ -111,9 +113,11 @@ function ModalContainer<P extends ModalComponentProps = any>({
       <div className="container">
         <div className="element" ref={modalElement}>
           {element}
-          <button className="dismiss" type="button" onClick={delayedDismissModal}>
-            <Icon name="x" size={20} />
-          </button>
+          {!modal.disableDismiss ? (
+            <button className="dismiss" type="button" onClick={delayedDismissModal}>
+              <Icon name="x" size={20} />
+            </button>
+          ) : null}
         </div>
       </div>
     </div>
