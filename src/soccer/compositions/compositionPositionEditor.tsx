@@ -129,7 +129,7 @@ export function CompositionPositionEditor({
       {formState?.values?.player && boosterFactories?.length ? (
         <div className="boosters">
           <h2>Booste tes chances !</h2>
-          <span>Multiplie tes gains de points et de coins.</span>
+          <span>Multiplie tes gains de GTCoins.</span>
 
           <div className="select-booster">
             <Field<BoosterFactory | undefined>

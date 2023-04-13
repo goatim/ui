@@ -33,6 +33,16 @@ export function CompositionPositionThumbnail({
   const tagTheme = useMemo<TagTheme>(() => {
     switch (theme) {
       case 'dark':
+        return 'light-medium-blue';
+      case 'light':
+      default:
+        return 'dark-white';
+    }
+  }, [theme]);
+
+  const boostedTagTheme = useMemo<TagTheme>(() => {
+    switch (theme) {
+      case 'dark':
         return compositionPosition.booster_factory || compositionPosition.booster
           ? 'fushia'
           : 'light-medium-blue';
@@ -68,11 +78,9 @@ export function CompositionPositionThumbnail({
         compositionPosition.nb_shares ||
         compositionPosition.gains ? (
           <div className="metrics">
-            {boosterLeverage ? (
-              <div className="metric">
-                <Tag theme={tagTheme} label={`pts x${boosterLeverage}`} />
-              </div>
-            ) : null}
+            <div className="metric">
+              <Tag theme={tagTheme} label="pts x1" />
+            </div>
             {compositionPosition.score ? (
               <div className="metric">
                 <Tag theme={tagTheme}>
@@ -84,14 +92,14 @@ export function CompositionPositionThumbnail({
               <div className="metric">
                 <Tag
                   leftIcon="goatim-coin"
-                  theme={tagTheme}
+                  theme={boostedTagTheme}
                   label={`x${compositionPosition.nb_shares * (boosterLeverage || 1)}`}
                 />
               </div>
             ) : null}
             {compositionPosition.gains ? (
               <div className="metric">
-                <Tag theme={tagTheme}>
+                <Tag theme={boostedTagTheme}>
                   <GoatimCoinsGains>{compositionPosition.gains}</GoatimCoinsGains>
                 </Tag>
               </div>
