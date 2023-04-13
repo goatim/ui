@@ -75,7 +75,7 @@ export function DatePicker({
     return typeof value === 'string' ? DateTime.fromISO(value) : value;
   }, [value]);
 
-  const daysInMonth = useMemo<number>(() => month.daysInMonth, [month.daysInMonth]);
+  const daysInMonth = useMemo<number>(() => month.daysInMonth || 31, [month.daysInMonth]);
   const weekOffset = useMemo<number>(() => month.startOf('month').weekday - 1, [month]);
 
   const selectDay = useCallback(
