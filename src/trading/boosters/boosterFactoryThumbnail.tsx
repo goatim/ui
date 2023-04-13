@@ -12,7 +12,6 @@ export interface BoosterFactoryThumbnailProps extends WrapperProps {
   size?: BoosterFactoryThumbnailSize;
   shape?: BoosterFactoryThumbnailShape;
   active?: boolean;
-  actionLabel?: string;
 }
 
 export function BoosterFactoryThumbnail({
@@ -20,7 +19,6 @@ export function BoosterFactoryThumbnail({
   size = 'medium',
   shape = 'list',
   active,
-  actionLabel = 'Ajouter au panier',
   to,
   onClick,
   type,
@@ -45,11 +43,11 @@ export function BoosterFactoryThumbnail({
             <span className="leverage">x{boosterFactory.leverage || 0}</span>
           </div>
         </div>
-        <span className="price">
-          {boosterFactory.price ? (
-            <span className="price">{formatEurosAmount(boosterFactory.price)}</span>
-          ) : null}
-        </span>
+        {boosterFactory.nb_in_wallet ? (
+          <span className="nb-in-wallet">{boosterFactory.nb_in_wallet}</span>
+        ) : (
+          <span className="price">{formatEurosAmount(boosterFactory.price || 0)}</span>
+        )}
       </div>
     </Wrapper>
   );
