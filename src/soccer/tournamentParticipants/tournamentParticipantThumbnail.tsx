@@ -13,7 +13,7 @@ export function TournamentParticipantThumbnail({
 }: TournamentParticipantThumbnailProps): ReactElement {
   return (
     <div className="goatim-ui-tournament-participant-thumbnail">
-      {showPosition ? <span className="position">1</span> : null}
+      {showPosition ? <span className="position">{tournamentParticipant?.position}</span> : null}
       {tournamentParticipant?.wallet && typeof tournamentParticipant.wallet === 'object' ? (
         <div className="wallet">
           <WalletThumbnail wallet={tournamentParticipant.wallet} pictureOutline="outline-gold" />
