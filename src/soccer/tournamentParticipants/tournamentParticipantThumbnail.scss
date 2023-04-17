@@ -1,3 +1,13 @@
-.goatim-ui-tournament-participant-thumbnail {
+@use '../../styles/colors';
 
+.goatim-ui-tournament-participant-thumbnail {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  > .position {
+    font-weight: bold;
+    margin-right: 10px;
+    color: colors.$blue-50;
+  }
 }

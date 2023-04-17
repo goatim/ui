@@ -18,7 +18,10 @@ export function TournamentParticipantPodium({
             <span className="position">{participant.position}</span>
           </div>
           <div className="participant">
-            <TournamentParticipantThumbnail tournamentParticipant={participant} />
+            <TournamentParticipantThumbnail
+              tournamentParticipant={participant}
+              showPosition={false}
+            />
           </div>
         </div>
       ))}
