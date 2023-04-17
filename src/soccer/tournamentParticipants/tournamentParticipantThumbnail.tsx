@@ -4,21 +4,26 @@ import { WalletThumbnail } from '../../market';
 
 export interface TournamentParticipantThumbnailProps {
   tournamentParticipant?: TournamentParticipant;
-  showPosition?: boolean;
+  showOnlyWallet?: boolean;
 }
 
 export function TournamentParticipantThumbnail({
   tournamentParticipant,
-  showPosition = true,
+  showOnlyWallet = false,
 }: TournamentParticipantThumbnailProps): ReactElement {
   return (
     <div className="goatim-ui-tournament-participant-thumbnail">
-      {showPosition ? <span className="position">{tournamentParticipant?.position}</span> : null}
-      {tournamentParticipant?.wallet && typeof tournamentParticipant.wallet === 'object' ? (
-        <div className="wallet">
-          <WalletThumbnail wallet={tournamentParticipant.wallet} pictureOutline="outline-gold" />
-        </div>
-      ) : null}
+      {!showOnlyWallet ? <span className="position">{tournamentParticipant?.position}</span> : null}
+      <div className="body">
+        {tournamentParticipant?.wallet && typeof tournamentParticipant.wallet === 'object' ? (
+          <div className="wallet">
+            <WalletThumbnail wallet={tournamentParticipant.wallet} pictureOutline="outline-gold" />
+          </div>
+        ) : null}
+        {!showOnlyWallet && tournamentParticipant?.score !== undefined ? (
+          <span className="score">{tournamentParticipant.score} pts</span>
+        ) : null}
+      </div>
     </div>
   );
 }

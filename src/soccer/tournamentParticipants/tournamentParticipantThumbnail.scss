@@ -8,6 +8,18 @@
   > .position {
     font-weight: bold;
     margin-right: 10px;
-    color: colors.$blue-50;
+    font-size: .9em;
+  }
+
+  > .body {
+    display: flex;
+    align-items: center;
+
+    > .score {
+      font-size: .8em;
+      margin-left: 10px;
+      font-weight: 500;
+      color: colors.$blue-50;
+    }
   }
 }

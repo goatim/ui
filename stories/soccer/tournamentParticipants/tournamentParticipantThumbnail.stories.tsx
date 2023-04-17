@@ -36,9 +36,10 @@ const wallet: Wallet = {
 const tournamentParticipant: TournamentParticipant = {
   id: 'tp_qedfz489',
   wallet,
-  dividends_gains: 5000,
-  dividends_percentage: 0.23,
+  gains: 5000,
+  variation: 0.23,
   position: 4,
+  score: 4500,
   last_position: 5,
 };
 

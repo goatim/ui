@@ -36,8 +36,8 @@ const wallet: Wallet = {
 const tournamentParticipant1: TournamentParticipant = {
   id: 'tp_qedfz489',
   wallet,
-  dividends_gains: 5000,
-  dividends_percentage: 0.353,
+  gains: 5000,
+  variation: 0.353,
   position: 1,
   last_position: 2,
   score: 250,
@@ -46,8 +46,8 @@ const tournamentParticipant1: TournamentParticipant = {
 const tournamentParticipant2: TournamentParticipant = {
   id: 'tp_qezdqft4a9',
   wallet,
-  dividends_gains: 5000,
-  dividends_percentage: 0.23,
+  gains: 5000,
+  variation: 0.23,
   position: 2,
   last_position: 1,
   score: 30,
@@ -56,8 +56,8 @@ const tournamentParticipant2: TournamentParticipant = {
 const tournamentParticipant3: TournamentParticipant = {
   id: 'tp_zdsz5489',
   wallet,
-  dividends_gains: 5000,
-  dividends_percentage: 0.013,
+  gains: 5000,
+  variation: 0.013,
   position: 3,
   last_position: 4,
   score: 25,
