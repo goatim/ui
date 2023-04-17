@@ -7,7 +7,7 @@ import {
   PhysicalEvent,
 } from '@goatim/client';
 import { To } from 'react-router';
-import { useInfiniteScroll } from '@cezembre/fronts';
+import { useElementInfiniteScroll } from '@cezembre/fronts';
 import { MatchFeed } from './matchFeed';
 import { Button } from '../../general';
 import { CompositionRanking } from '../compositions';
@@ -78,7 +78,7 @@ export function MatchBoard({
     }
   }, [compositions, getCompositions]);
 
-  const { ref: rankingContainer } = useInfiniteScroll<HTMLDivElement>({
+  const { ref: rankingContainer } = useElementInfiniteScroll<HTMLDivElement>({
     loadNextPage: loadNextCompositionsPage,
   });
 
