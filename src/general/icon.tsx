@@ -3,6 +3,7 @@ import * as FeatherIcons from 'react-feather';
 import { Slash } from 'react-feather';
 import {
   Coins,
+  Discord,
   Ether,
   Goatim,
   GoatimCoin,
@@ -327,7 +328,8 @@ export type IconName =
   | 'receive-coin'
   | 'soccer-goal'
   | 'goatim-coin'
-  | 'trading';
+  | 'trading'
+  | 'discord';
 
 export interface IconProps extends SvgIconProps {
   color?: string;
@@ -949,6 +951,8 @@ export function Icon({
       return <Trading size={size} />;
     case 'goatim-coin':
       return <GoatimCoin size={size} />;
+    case 'discord':
+      return <Discord size={size} />;
     default:
       return <Slash size={size} />;
   }
