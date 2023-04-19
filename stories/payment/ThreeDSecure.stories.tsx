@@ -18,8 +18,8 @@ function App(): ReactElement {
       disableDismiss: true,
       element: (
         <ThreeDSecure
-          url="https://app.goatim.com/end-3d-secure"
-          onDone={() => console.log('Returned !')}
+          url="https://app.demo.goatim.com/end-3d-secure"
+          onDone={() => console.log('3DSecure ended !')}
         />
       ),
     });

@@ -1,4 +1,4 @@
-import { ReactElement, useCallback, useEffect, useRef } from 'react';
+import { ReactElement, useCallback, useEffect } from 'react';
 
 export interface ThreeDSecureProps {
   url: string;
@@ -6,8 +6,6 @@ export interface ThreeDSecureProps {
 }
 
 export function ThreeDSecure({ url, onDone }: ThreeDSecureProps): ReactElement {
-  const iframe = useRef<HTMLIFrameElement>(null);
-
   const handleMessage = useCallback(
     (event: MessageEvent) => {
       if (event.data === '3DSecureCompleted' && onDone) {
@@ -18,32 +16,15 @@ export function ThreeDSecure({ url, onDone }: ThreeDSecureProps): ReactElement {
   );
 
   useEffect(() => {
-    const currentIframe = iframe.current;
-    if (currentIframe) {
-      try {
-        currentIframe.contentWindow?.addEventListener('message', handleMessage);
-      } catch (error) {
-        if (onDone) {
-          onDone();
-        }
-      }
-    }
+    window.addEventListener('message', handleMessage);
     return () => {
-      if (currentIframe) {
-        try {
-          currentIframe.contentWindow?.removeEventListener('message', handleMessage);
-        } catch (error) {
-          if (onDone) {
-            onDone();
-          }
-        }
-      }
+      window.removeEventListener('message', handleMessage);
     };
-  }, [handleMessage, onDone]);
+  }, [handleMessage]);
 
   return (
     <div className="goatim-ui-three-d-secure">
-      <iframe ref={iframe} src={url} title="3DSecure" width="100%" height={500} />
+      <iframe src={url} title="3DSecure" width="100%" height="100%" />
     </div>
   );
 }

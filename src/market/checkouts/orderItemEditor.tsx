@@ -18,7 +18,6 @@ export interface OrderItemEditorFields extends FormFields {
   order_type?: OrderType;
   price_limit?: number;
   nb_shares?: number;
-  booster_factory?: string;
 }
 
 export type OrderItemEditorSize = 'narrow' | 'big';
