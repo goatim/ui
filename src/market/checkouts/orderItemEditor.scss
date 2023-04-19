@@ -79,29 +79,6 @@
     margin-top: 50px;
   }
 
-  > .booster {
-    margin-top: 20px;
-
-    > h2 {
-      @include fonts.Inter(1.1em, colors.$blue, bold);
-      margin: 0;
-      text-align: center;
-    }
-
-    > h3 {
-      @include fonts.Inter(.8em, rgba(colors.$blue, .5), bold);
-      text-align: center;
-      margin-top: .5em;
-    }
-
-    > .boosters {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 30px;
-    }
-  }
-
   > .actions {
     margin-top: 30px;
     display: flex;
