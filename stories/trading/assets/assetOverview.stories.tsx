@@ -1,6 +1,6 @@
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
-import { Asset, BoosterFactory, Club, Ipo, Player, QuotationHistory } from '@goatim/client';
+import { Asset, Club, Ipo, Player, QuotationHistory } from '@goatim/client';
 import { AssetOverview, AssetOverviewSize } from '../../../src';
 
 interface Props {
@@ -112,33 +112,6 @@ const asset: Asset = {
   quotation_history: quotationHistory,
 };
 
-const boosterFactories: BoosterFactory[] = [
-  {
-    id: 'bo_ied5',
-    name: 'Pavaaard !',
-    slug: 'pavaaard',
-    price: 100,
-    leverage: 2,
-    nb_in_wallet: 10,
-  },
-  {
-    id: 'bo_iqzd',
-    name: 'Charo',
-    slug: 'charo',
-    price: 150,
-    leverage: 5,
-    nb_in_wallet: 0,
-  },
-  {
-    id: 'bo_qzdi',
-    name: 'Zizou',
-    slug: 'zizou',
-    price: 2,
-    leverage: 10,
-    nb_in_wallet: 0,
-  },
-];
-
 const ipo: Ipo = {
   id: 'ip_qd54zd321d3',
   // beginning: '2022-10-23T17:31:41.171+02:00',
@@ -148,7 +121,6 @@ const ipo: Ipo = {
 const Template: ComponentStory<JSXElementConstructor<Props>> = ({ size }: Props) => (
   <AssetOverview
     asset={asset}
-    boosterFactories={boosterFactories}
     size={size}
     ipo={ipo}
     bankProposalQuotation={5000}

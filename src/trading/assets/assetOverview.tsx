@@ -1,5 +1,5 @@
 import { ReactElement, useMemo, useState } from 'react';
-import { Asset, BoosterFactory, Ipo, OrderBook, OrderType } from '@goatim/client';
+import { Asset, Ipo, OrderBook, OrderType } from '@goatim/client';
 import { To } from 'react-router-dom';
 import { QuotationHistory } from '@goatim/client/dist/trading/quotations/model';
 import { QuotationHistoryGraph } from '../quotations';
@@ -22,7 +22,6 @@ export interface AssetOverviewProps {
   quotationHistory?: QuotationHistory;
   size?: AssetOverviewSize;
   orderBook?: OrderBook;
-  boosterFactories?: BoosterFactory[];
   onSubmitItem?: (itemFields: ItemEditorFields) => unknown;
   ipo?: Ipo;
   secondaryTo?: To;
@@ -37,7 +36,6 @@ export function AssetOverview({
   size = 'full',
   secondaryTo,
   orderBook,
-  boosterFactories,
   onSubmitItem,
   ipo,
   bankProposalQuotation,
@@ -162,7 +160,6 @@ export function AssetOverview({
             },
           }}
           orderBook={orderBook}
-          boosterFactories={boosterFactories}
           onSubmit={onSubmitItem}
           onCancel={() => setOrderType(undefined)}
           size={itemEditorSize}

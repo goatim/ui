@@ -3,15 +3,14 @@ import { Field, Form, FormContext, FormErrors, FormFields, FormState } from '@ce
 import {
   adaptGoatimCoinsAmount,
   Asset,
-  BoosterFactory,
   formatGoatimCoinsAmount,
   OrderBook,
   OrderType,
   resolveGoatimCoinsAmount,
 } from '@goatim/client';
 import { FormSubmitFunction } from '@cezembre/forms/dist/state';
-import { Button, Counter, Radio } from '../../general';
-import { BoosterFactoryThumbnail, OrderBookThumbnail, OrderBookThumbnailSize } from '../../trading';
+import { Button, Counter } from '../../general';
+import { OrderBookThumbnail, OrderBookThumbnailSize } from '../../trading';
 import { GoatimCoins } from '../goatimCoins';
 
 export interface OrderItemEditorFields extends FormFields {
@@ -27,7 +26,6 @@ export type OrderItemEditorSize = 'narrow' | 'big';
 export interface OrderItemEditorProps {
   initialOrderItem?: OrderItemEditorFields;
   orderBook?: OrderBook;
-  boosterFactories?: BoosterFactory[];
   onSubmit?: FormSubmitFunction<OrderItemEditorFields>;
   onCancel?: () => unknown;
   label?: string;
@@ -39,7 +37,6 @@ export interface OrderItemEditorProps {
 export function OrderItemEditor({
   initialOrderItem,
   orderBook,
-  boosterFactories,
   onSubmit,
   onCancel,
   label = 'Valider',
@@ -195,25 +192,6 @@ export function OrderItemEditor({
         Le carnet d’ordre t’aide à mesurer <b>l’offre et la demande</b> sur le marché. Il liste les
         meilleurs ordres d’achat et de vente en attente pour cet actif.
       </p>
-
-      {boosterFactories?.length && formState?.values?.order_type === 'buy' ? (
-        <div className="booster">
-          <h2>Veux-tu ajouter un booster ?</h2>
-          <h3>Multiplie tes gains ou tes pertes !</h3>
-
-          <div className="boosters">
-            <Field
-              name="booster_factory"
-              component={Radio}
-              options={boosterFactories.map((boosterFactory) => ({
-                value: boosterFactory.id,
-                element: <BoosterFactoryThumbnail boosterFactory={boosterFactory} size="medium" />,
-              }))}
-              initialValue={initialOrderItem?.booster}
-            />
-          </div>
-        </div>
-      ) : null}
 
       <div className="actions">
         <div className="action">

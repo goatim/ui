@@ -1,5 +1,5 @@
 import { ReactElement, useCallback, useMemo } from 'react';
-import { BoosterFactory, ItemType, OrderBook } from '@goatim/client';
+import { ItemType, OrderBook } from '@goatim/client';
 import { FormFields } from '@cezembre/forms';
 import { OrderItemEditor, OrderItemEditorFields, OrderItemEditorSize } from './orderItemEditor';
 
@@ -13,7 +13,6 @@ export type ItemEditorSize = 'narrow' | 'small' | 'medium' | 'big';
 export interface ItemEditorProps {
   initialItem?: ItemEditorFields;
   orderBook?: OrderBook;
-  boosterFactories?: BoosterFactory[];
   onSubmit?: (item: ItemEditorFields) => unknown;
   onCancel?: () => void;
   size?: ItemEditorSize;
@@ -24,7 +23,6 @@ export interface ItemEditorProps {
 export function ItemEditor({
   initialItem,
   orderBook,
-  boosterFactories,
   onSubmit,
   onCancel,
   size = 'big',
@@ -66,7 +64,6 @@ export function ItemEditor({
           price_limit: initialItem.order.price_limit,
         }}
         orderBook={orderBook}
-        boosterFactories={boosterFactories}
         onSubmit={onSubmitOrderItem}
         onCancel={onCancel}
         size={orderItemEditorSize}
