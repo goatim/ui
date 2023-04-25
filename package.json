@@ -11,6 +11,7 @@
     "Components"
   ],
   "main": "dist/index.js",
+  "main:min": "dist/index.js",
   "cjs": "dist/index.cjs",
   "umd": "dist/index.umd.js",
   "types": "dist/index.d.ts",
