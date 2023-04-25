@@ -1,5 +1,6 @@
 {
   "name": "@goatim/ui",
+  "type": "module",
   "author": "Goatim",
   "version": "0.31.1",
   "license": "MIT",
