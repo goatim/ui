@@ -12,7 +12,6 @@ export interface LeagueIconProps extends WrapperProps {
 export function LeagueIcon({
   icon,
   size = 'small',
-  to,
   onClick,
   href,
   target,
@@ -20,7 +19,6 @@ export function LeagueIcon({
   return (
     <Wrapper
       className={`goatim-ui-league-icon ${size}`}
-      to={to}
       onClick={onClick}
       href={href}
       target={target}>

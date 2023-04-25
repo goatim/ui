@@ -27,7 +27,7 @@ export function PortfolioList({
           <PortfolioThumbnail
             portfolio={portfolio}
             assetOnClick={assetOnClick}
-            assetTo={assetHref}
+            assetHref={assetHref}
             size={size}
           />
         </div>
