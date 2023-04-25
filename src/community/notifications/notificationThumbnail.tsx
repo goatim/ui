@@ -19,7 +19,6 @@ export function NotificationThumbnail({
   colored = false,
   onClick,
   type,
-  to,
   target,
   href,
 }: NotificationThumbnailProps): ReactElement {
@@ -59,13 +58,7 @@ export function NotificationThumbnail({
   }, [colored, notification.is_read, notification.is_seen]);
 
   return (
-    <Wrapper
-      className={className}
-      onClick={onClick}
-      type={type}
-      to={to}
-      target={target}
-      href={href}>
+    <Wrapper className={className} onClick={onClick} type={type} target={target} href={href}>
       <div className="icon">
         <NotificationIcon event={notification.event} />
       </div>

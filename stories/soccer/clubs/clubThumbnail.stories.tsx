@@ -1,7 +1,4 @@
-import { StoryFn } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import { Club, League } from '@goatim/client';
-import { BrowserRouter } from 'react-router-dom';
 import {
   ClubThumbnail,
   ClubThumbnailShape,
@@ -14,7 +11,7 @@ interface Props {
   theme?: ClubThumbnailTheme;
   shape?: ClubThumbnailShape;
   showLeague?: boolean;
-  leagueTo?: string;
+  leagueHref?: string;
 }
 
 export default {
@@ -44,7 +41,7 @@ export default {
         type: 'radio',
       },
     },
-    leagueTo: {
+    leagueHref: {
       control: {
         type: 'text',
       },
@@ -87,28 +84,17 @@ const club: Club = {
   },
 };
 
-const Template: StoryFn<JSXElementConstructor<Props>> = ({
-  size,
-  theme,
-  shape,
-  showLeague,
-  leagueTo,
-}: Props) => (
-  <BrowserRouter>
+function Template({ size, theme, shape, showLeague, leagueHref }: Props) {
+  return (
     <ClubThumbnail
       club={club}
       size={size}
       theme={theme}
       shape={shape}
       showLeague={showLeague}
-      leagueTo={leagueTo}
+      leagueHref={leagueHref}
     />
-  </BrowserRouter>
-);
+  );
+}
 
 export const Default = Template.bind({});
-
-Default.args = {
-  size: 'small',
-  theme: 'dark',
-};

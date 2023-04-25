@@ -9,7 +9,6 @@ export interface A2HSBannerProps extends WrapperProps {
 
 export function A2HSBanner({
   onClick,
-  to,
   href,
   target,
   onDismiss,
@@ -23,7 +22,7 @@ export function A2HSBanner({
   ) {
     return (
       <div className="goatim-ui-a2hs-banner">
-        <Wrapper className="banner" onClick={onClick} to={to} href={href} target={target}>
+        <Wrapper className="banner" onClick={onClick} href={href} target={target}>
           <div className="icon">
             <AppIcon />
           </div>

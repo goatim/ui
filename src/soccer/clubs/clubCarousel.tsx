@@ -1,13 +1,13 @@
 import { MouseEvent, ReactElement, useEffect, useState } from 'react';
 import { Club } from '@goatim/client';
-import { To } from 'react-router';
+import { UrlObject } from 'url';
 import { ClubList } from './clubList';
 import { ClubThumbnailShape, ClubThumbnailSize } from './clubThumbnail';
 
 export interface ClubCarouselProps {
   getClubs?: (page: number) => Promise<Club[]> | Club[];
   clubOnClick?: (club: Club, event: MouseEvent<HTMLButtonElement>) => unknown;
-  clubTo?: (club: Club) => To;
+  clubHref?: (club: Club) => string | UrlObject;
   size?: ClubThumbnailSize;
   shape?: ClubThumbnailShape;
   columns?: number;
@@ -18,7 +18,7 @@ export function ClubCarousel({
   size,
   shape,
   columns,
-  clubTo,
+  clubHref,
   clubOnClick,
 }: ClubCarouselProps): ReactElement {
   const [page, setPage] = useState<number>(1);
@@ -55,7 +55,7 @@ export function ClubCarousel({
         shape={shape}
         columns={columns}
         size={size}
-        clubTo={clubTo}
+        clubHref={clubHref}
         clubOnClick={clubOnClick}
       />
     </div>

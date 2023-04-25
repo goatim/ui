@@ -1,6 +1,6 @@
 import { MouseEvent, ReactElement } from 'react';
 import { Composition } from '@goatim/client';
-import { To } from 'react-router';
+import { UrlObject } from 'url';
 import { CompositionThumbnail } from './compositionThumbnail';
 import { Icon } from '../../general';
 
@@ -8,7 +8,7 @@ export type CompositionRankingTheme = 'dark' | 'light';
 
 export interface CompositionRankingProps {
   compositions?: Composition[];
-  toComposition?: To;
+  compositionHref?: string | UrlObject;
   onClickComposition?: (composition: Composition, event: MouseEvent<HTMLButtonElement>) => unknown;
   pinned?: Composition;
   theme?: CompositionRankingTheme;
@@ -16,7 +16,7 @@ export interface CompositionRankingProps {
 
 export function CompositionRanking({
   compositions,
-  toComposition,
+  compositionHref,
   onClickComposition,
   pinned,
   theme = 'dark',
@@ -38,7 +38,7 @@ export function CompositionRanking({
             <CompositionThumbnail
               composition={composition}
               theme={theme}
-              to={toComposition}
+              href={compositionHref}
               onClick={
                 onClickComposition ? (event) => onClickComposition(composition, event) : undefined
               }
@@ -52,7 +52,7 @@ export function CompositionRanking({
           <CompositionThumbnail
             composition={pinned}
             theme={theme}
-            to={toComposition}
+            href={compositionHref}
             onClick={onClickComposition ? (event) => onClickComposition(pinned, event) : undefined}
             showScore
             showGains

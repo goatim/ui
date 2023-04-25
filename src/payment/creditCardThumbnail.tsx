@@ -24,7 +24,6 @@ function resolveIcon(brand?: CardBrand | string): IconName {
 
 export function CreditCardThumbnail({
   card,
-  to,
   onClick,
   type,
   href,
@@ -44,7 +43,6 @@ export function CreditCardThumbnail({
   return (
     <Wrapper
       className={`goatim-ui-credit-card-thumbnail${selected ? ' selected' : ''}`}
-      to={to}
       onClick={onClick}
       type={type}
       href={href}

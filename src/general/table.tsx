@@ -295,7 +295,6 @@ export function Table<M extends Model = Model>({
                   <div key={action.key} className="action">
                     <Button
                       href={action.href}
-                      to={action.to}
                       onClick={action.onClick}
                       onFocus={action.onFocus}
                       type={action.type}

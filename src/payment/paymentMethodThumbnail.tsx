@@ -12,7 +12,6 @@ export interface PaymentMethodThumbnailProps extends WrapperProps {
 
 export function PaymentMethodThumbnail({
   paymentMethod,
-  to,
   onClick,
   type,
   href,
@@ -24,7 +23,6 @@ export function PaymentMethodThumbnail({
       return paymentMethod.card ? (
         <CreditCardThumbnail
           card={paymentMethod.card}
-          to={to}
           onClick={onClick}
           type={type}
           href={href}

@@ -10,7 +10,6 @@ export interface ReferralBannerProps extends WrapperProps {
 
 export function ReferralBanner({
   onClick,
-  to,
   href,
   target,
   referralCode,
@@ -18,7 +17,7 @@ export function ReferralBanner({
 }: ReferralBannerProps): ReactElement | null {
   return (
     <div className="goatim-ui-referral-banner">
-      <Wrapper className="banner" onClick={onClick} to={to} href={href} target={target}>
+      <Wrapper className="banner" onClick={onClick} href={href} target={target}>
         <div className="body">
           <span className="label">Parraine tes amis et reçois 1 pack + 30GTC</span>
           {referralCode ? <span className="code">{formatReferralCode(referralCode)}</span> : null}

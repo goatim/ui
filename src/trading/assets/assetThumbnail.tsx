@@ -1,8 +1,8 @@
 import { ForwardedRef, forwardRef, ReactElement, useMemo } from 'react';
 import { Asset } from '@goatim/client';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
-import { To } from 'react-router-dom';
 import { QuotationHistory } from '@goatim/client/dist/trading/quotations/model';
+import { UrlObject } from 'url';
 import { PlayerThumbnail, PlayerThumbnailSize, PlayerThumbnailTheme } from '../../soccer';
 import {
   GoatimCoins,
@@ -26,7 +26,7 @@ export interface AssetThumbnailProps extends WrapperProps {
   size?: AssetThumbnailSize;
   theme?: AssetThumbnailTheme;
   showQuotation?: boolean;
-  secondaryTo?: To;
+  secondaryHref?: string | UrlObject;
 }
 
 export const AssetThumbnail = forwardRef<
@@ -40,12 +40,11 @@ export const AssetThumbnail = forwardRef<
     size = 'small',
     theme = 'default',
     showQuotation = true,
-    to,
     onClick,
     type,
     href,
     target,
-    secondaryTo,
+    secondaryHref,
   }: AssetThumbnailProps,
   ref: ForwardedRef<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement>,
 ): ReactElement {
@@ -111,7 +110,6 @@ export const AssetThumbnail = forwardRef<
     <Wrapper
       ref={ref}
       className={`goatim-ui-asset-thumbnail ${shape} ${size} ${theme}`}
-      to={to}
       onClick={onClick}
       type={type}
       href={href}
@@ -131,7 +129,7 @@ export const AssetThumbnail = forwardRef<
             player={asset.player}
             size={playerThumbnailSize}
             theme={playerThumbnailTheme}
-            clubTo={secondaryTo}
+            clubHref={secondaryHref}
           />
         ) : null}
 

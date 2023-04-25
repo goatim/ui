@@ -1,14 +1,14 @@
 import { MouseEvent, ReactElement, useMemo } from 'react';
-import { To } from 'react-router';
 import { Club } from '@goatim/client';
 import { Property } from 'csstype';
+import { UrlObject } from 'url';
 import { ClubThumbnail, ClubThumbnailShape, ClubThumbnailSize } from './clubThumbnail';
 
 export interface ClubListProps {
   clubs?: Club[];
   columns?: number;
   clubOnClick?: (club: Club, event: MouseEvent<HTMLButtonElement>) => unknown;
-  clubTo?: (club: Club) => To;
+  clubHref?: (club: Club) => string | UrlObject;
   size?: ClubThumbnailSize;
   shape?: ClubThumbnailShape;
   showLeagues?: boolean;
@@ -18,7 +18,7 @@ export function ClubList({
   clubs,
   columns = 3,
   clubOnClick,
-  clubTo,
+  clubHref,
   size = 'medium',
   shape = 'text',
   showLeagues = false,
@@ -40,7 +40,7 @@ export function ClubList({
             <ClubThumbnail
               club={club}
               onClick={clubOnClick ? (event) => clubOnClick(club, event) : undefined}
-              to={clubTo ? clubTo(club) : undefined}
+              href={clubHref ? clubHref(club) : undefined}
               size={size}
               shape={shape}
               showLeague={showLeagues}

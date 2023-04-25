@@ -12,7 +12,6 @@ export interface NotificationModalProps extends WrapperProps {
 
 export function NotificationModal({
   notification,
-  to,
   onClick,
   href,
   target,
@@ -23,7 +22,6 @@ export function NotificationModal({
       <div className="notification">
         <NotificationThumbnail
           notification={notification}
-          to={to}
           onClick={onClick}
           href={href}
           target={target}

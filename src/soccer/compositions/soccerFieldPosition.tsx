@@ -17,7 +17,6 @@ export function SoccerFieldPosition({
   position,
   size = 'medium',
   theme = 'dark',
-  to,
   onClick,
   href,
   target,
@@ -51,7 +50,7 @@ export function SoccerFieldPosition({
   }, [position?.player]);
 
   return (
-    <Wrapper className={className} to={to} onClick={onClick} href={href} target={target}>
+    <Wrapper className={className} onClick={onClick} href={href} target={target}>
       <div className="icon">
         {/* eslint-disable-next-line no-nested-ternary */}
         {icon ? (

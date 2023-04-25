@@ -1,7 +1,7 @@
 import { MouseEvent, ReactElement, useCallback, useEffect, useMemo, useState } from 'react';
 import { Asset, Booster, Portfolio } from '@goatim/client';
-import { To } from 'react-router-dom';
 import { Wrapper } from '@cezembre/fronts';
+import { UrlObject } from 'url';
 import { AssetThumbnail, AssetThumbnailSize } from '../assets';
 import { GoatimCoins, GoatimCoinsGains, PercentageVariation } from '../../market';
 import { Button } from '../../general';
@@ -13,7 +13,7 @@ export interface PortfolioThumbnailProps {
   portfolio: Portfolio;
   size?: PortfolioThumbnailSize;
   assetOnClick?: (asset: Asset, event: MouseEvent<HTMLButtonElement>) => unknown;
-  assetTo?: (asset: Asset) => To;
+  assetHref?: (asset: Asset) => string | UrlObject;
   onStopBooster?: (booster?: Booster) => unknown;
   onSell?: () => unknown;
   onBuy?: () => unknown;
@@ -25,7 +25,7 @@ export interface PortfolioThumbnailProps {
 export function PortfolioThumbnail({
   portfolio,
   size = 'medium',
-  assetTo,
+  assetHref,
   assetOnClick,
   onStopBooster,
   onSell,
@@ -88,7 +88,7 @@ export function PortfolioThumbnail({
             onClick={
               assetOnClick ? (event) => assetOnClick(portfolio.asset as Asset, event) : undefined
             }
-            to={assetTo ? assetTo(portfolio.asset) : undefined}
+            href={assetHref ? assetHref(portfolio.asset) : undefined}
           />
         </div>
       ) : null}

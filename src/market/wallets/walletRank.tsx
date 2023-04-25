@@ -19,7 +19,6 @@ export function WalletRank({
   showPicture,
   showName,
   showAmount,
-  to,
   onClick,
   href,
   target,
@@ -31,7 +30,6 @@ export function WalletRank({
   return (
     <Wrapper
       className={`goatim-ui-wallet-rank ${size} ${theme}`}
-      to={to}
       onClick={onClick}
       href={href}
       target={target}>

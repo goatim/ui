@@ -16,7 +16,6 @@ export function PackFactoryThumbnail({
   onClick,
   href,
   target,
-  to,
 }: PackFactoryThumbnailProps): ReactElement {
   return (
     <div className="goatim-ui-pack-factory-thumbnail">
@@ -48,7 +47,6 @@ export function PackFactoryThumbnail({
           shape="filled"
           size="small"
           theme="gold"
-          to={to}
           onClick={onClick}
           href={href}
           target={target}>

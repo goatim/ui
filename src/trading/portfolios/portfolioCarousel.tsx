@@ -1,6 +1,6 @@
 import { MouseEvent, ReactElement, useMemo } from 'react';
 import { Asset, Portfolio } from '@goatim/client';
-import { To } from 'react-router-dom';
+import { UrlObject } from 'url';
 import { PortfolioList } from './portfolioList';
 import { PortfolioThumbnailSize } from './portfolioThumbnail';
 
@@ -10,14 +10,14 @@ export interface PortfolioCarouselProps {
   portfolios?: Portfolio[];
   size?: PortfolioCarouselSize;
   assetOnClick?: (asset: Asset, event: MouseEvent<HTMLButtonElement>) => unknown;
-  assetTo?: (asset: Asset) => To;
+  assetHref?: (asset: Asset) => string | UrlObject;
 }
 
 export function PortfolioCarousel({
   portfolios,
   size,
   assetOnClick,
-  assetTo,
+  assetHref,
 }: PortfolioCarouselProps): ReactElement {
   const portfolioSize = useMemo<PortfolioThumbnailSize>(() => {
     switch (size) {
@@ -35,7 +35,7 @@ export function PortfolioCarousel({
           portfolios={portfolios?.slice(0, 4)}
           size={portfolioSize}
           assetOnClick={assetOnClick}
-          assetTo={assetTo}
+          assetHref={assetHref}
         />
       </div>
     </div>

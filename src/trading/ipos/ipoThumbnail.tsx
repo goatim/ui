@@ -19,7 +19,6 @@ export function IpoThumbnail({
   ipo,
   size = 'big',
   shape = 'box',
-  to,
   onClick,
   href,
   target,
@@ -48,7 +47,6 @@ export function IpoThumbnail({
   return (
     <Wrapper
       className={`goatim-ui-ipo-thumbnail ${size} ${shape}`}
-      to={to}
       onClick={onClick}
       href={href}
       target={target}>

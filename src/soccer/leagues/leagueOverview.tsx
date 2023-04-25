@@ -1,6 +1,6 @@
 import { MouseEvent, ReactElement, useMemo } from 'react';
 import { Club, League } from '@goatim/client';
-import { To } from 'react-router';
+import { UrlObject } from 'url';
 import { LeagueThumbnail } from './leagueThumbnail';
 import { ClubCarousel } from '../clubs';
 
@@ -9,21 +9,21 @@ export type LeagueOverviewSize = 'small' | 'medium' | 'big';
 export interface LeagueOverviewProps {
   league: League;
   size?: LeagueOverviewSize;
-  leagueTo?: To;
+  leagueHref?: string | UrlObject;
   leagueOnClick?: (event: MouseEvent<HTMLButtonElement>) => unknown;
   getClubs?: (page: number) => Promise<Club[]> | Club[];
   clubOnClick?: (club: Club, event: MouseEvent<HTMLButtonElement>) => unknown;
-  clubTo?: (club: Club) => To;
+  clubHref?: (club: Club) => string | UrlObject;
 }
 
 export function LeagueOverview({
   league,
   size = 'medium',
-  leagueTo,
+  leagueHref,
   leagueOnClick,
   getClubs,
   clubOnClick,
-  clubTo,
+  clubHref,
 }: LeagueOverviewProps): ReactElement {
   const clubColumns = useMemo<number>(() => {
     switch (size) {
@@ -36,13 +36,13 @@ export function LeagueOverview({
 
   return (
     <div className={`goatim-ui-league-overview ${size}`}>
-      <LeagueThumbnail league={league} size="medium" to={leagueTo} onClick={leagueOnClick} />
+      <LeagueThumbnail league={league} size="medium" href={leagueHref} onClick={leagueOnClick} />
       <div className="clubs">
         <ClubCarousel
           getClubs={getClubs}
           shape="box"
           columns={clubColumns}
-          clubTo={clubTo}
+          clubHref={clubHref}
           clubOnClick={clubOnClick}
         />
       </div>

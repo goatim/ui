@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
-import { To } from 'react-router';
 import { Match } from '@goatim/client';
+import { UrlObject } from 'url';
 import { MatchThumbnail } from './matchThumbnail';
 
 export type MatchCarouselSize = 'small' | 'medium' | 'big';
@@ -8,15 +8,15 @@ export type MatchCarouselSize = 'small' | 'medium' | 'big';
 export interface MatchCarouselProps {
   matches?: Match[];
   size?: MatchCarouselSize;
-  matchToComposition?: (match: Match) => To;
-  matchToFeed?: (match: Match) => To;
+  matchCompositionHref?: (match: Match) => string | UrlObject;
+  matchFeedHref?: (match: Match) => string | UrlObject;
 }
 
 export function MatchCarousel({
   matches,
   size = 'big',
-  matchToComposition,
-  matchToFeed,
+  matchCompositionHref,
+  matchFeedHref,
 }: MatchCarouselProps): ReactElement {
   return (
     <div className={`goatim-ui-match-carousel ${size}`}>
@@ -34,8 +34,8 @@ export function MatchCarousel({
           <div className="match" key={match.id}>
             <MatchThumbnail
               match={match}
-              toComposition={matchToComposition ? matchToComposition(match) : undefined}
-              toFeed={matchToFeed ? matchToFeed(match) : undefined}
+              compositionHref={matchCompositionHref ? matchCompositionHref(match) : undefined}
+              feedHref={matchFeedHref ? matchFeedHref(match) : undefined}
             />
           </div>
         ))}

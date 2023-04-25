@@ -1,20 +1,20 @@
 import { MouseEvent, ReactElement } from 'react';
 import { Player } from '@goatim/client';
-import { To } from 'react-router';
+import { UrlObject } from 'url';
 import { PlayerThumbnail, PlayerThumbnailSize } from './playerThumbnail';
 
 export interface PlayerListProps {
   players?: Player[];
   size?: PlayerThumbnailSize;
   playerOnClick?: (player: Player, event: MouseEvent<HTMLButtonElement>) => unknown;
-  playerTo?: (player: Player) => To;
+  playerHref?: (player: Player) => string | UrlObject;
 }
 
 export function PlayerList({
   players,
   size,
   playerOnClick,
-  playerTo,
+  playerHref,
 }: PlayerListProps): ReactElement {
   if (!players?.length) {
     return <span>Aucun joueur</span>;
@@ -28,7 +28,7 @@ export function PlayerList({
             player={player}
             size={size}
             onClick={playerOnClick ? (event) => playerOnClick(player, event) : undefined}
-            to={playerTo ? playerTo(player) : undefined}
+            href={playerHref ? playerHref(player) : undefined}
           />
         </div>
       ))}

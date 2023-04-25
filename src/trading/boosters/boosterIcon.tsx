@@ -13,7 +13,6 @@ export function BoosterIcon({
   leverage,
   size = 'small',
   active,
-  to,
   onClick,
   type,
   href,
@@ -22,7 +21,6 @@ export function BoosterIcon({
   return (
     <Wrapper
       className={`goatim-ui-booster-icon ${size}${active ? ' active' : ''}`}
-      to={to}
       onClick={onClick}
       type={type}
       href={href}

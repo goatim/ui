@@ -1,5 +1,4 @@
 import { Asset, Club, Pack, PackFactory, Player } from '@goatim/client';
-import { BrowserRouter } from 'react-router-dom';
 import { PackThumbnail } from '../../../src';
 
 export default {
@@ -81,11 +80,7 @@ const pack: Pack = {
 };
 
 function Template() {
-  return (
-    <BrowserRouter>
-      <PackThumbnail pack={pack} />
-    </BrowserRouter>
-  );
+  return <PackThumbnail pack={pack} />;
 }
 
 export const Default = Template.bind({});

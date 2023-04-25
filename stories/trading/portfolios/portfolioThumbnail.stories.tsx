@@ -1,5 +1,4 @@
 import { Asset, Club, Player, Portfolio, QuotationHistory } from '@goatim/client';
-import { BrowserRouter } from 'react-router-dom';
 import { PortfolioThumbnail, PortfolioThumbnailSize } from '../../../src';
 
 interface Props {
@@ -124,18 +123,16 @@ const portfolio: Portfolio = {
 
 function Template({ size }: Props) {
   return (
-    <BrowserRouter>
-      <PortfolioThumbnail
-        portfolio={portfolio}
-        size={size}
-        assetOnClick={(_asset) => {
-          console.log(_asset.id);
-        }}
-        onStopBooster={() => undefined}
-        onSell={() => undefined}
-        onBoost={() => undefined}
-      />
-    </BrowserRouter>
+    <PortfolioThumbnail
+      portfolio={portfolio}
+      size={size}
+      assetOnClick={(_asset) => {
+        console.log(_asset.id);
+      }}
+      onStopBooster={() => undefined}
+      onSell={() => undefined}
+      onBoost={() => undefined}
+    />
   );
 }
 

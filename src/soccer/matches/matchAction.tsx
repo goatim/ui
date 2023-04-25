@@ -1,27 +1,23 @@
 import { HTMLAttributeAnchorTarget, ReactElement } from 'react';
-import { To } from 'react-router';
 import { MatchStatus } from '@goatim/client';
+import { UrlObject } from 'url';
 import { Button } from '../../general';
 
 export interface MatchActionProps {
   status?: MatchStatus;
-  toComposition?: To;
   onCompositionClick?: () => unknown;
-  compositionHref?: string;
+  compositionHref?: string | UrlObject;
   compositionTarget?: HTMLAttributeAnchorTarget;
-  toFeed?: To;
   onFeedClick?: () => unknown;
-  feedHref?: string;
+  feedHref?: string | UrlObject;
   feedTarget?: HTMLAttributeAnchorTarget;
 }
 
 export function MatchAction({
   status,
-  toComposition,
   onCompositionClick,
   compositionHref,
   compositionTarget,
-  toFeed,
   onFeedClick,
   feedHref,
   feedTarget,
@@ -32,7 +28,6 @@ export function MatchAction({
         <div className="goatim-ui-match-action">
           <Button
             theme="buy"
-            to={toComposition}
             onClick={onCompositionClick}
             href={compositionHref}
             target={compositionTarget}>
@@ -46,12 +41,7 @@ export function MatchAction({
     case 'ongoing':
       return (
         <div className="goatim-ui-match-action">
-          <Button
-            theme="sell"
-            to={toFeed}
-            onClick={onFeedClick}
-            href={feedHref}
-            target={feedTarget}>
+          <Button theme="sell" onClick={onFeedClick} href={feedHref} target={feedTarget}>
             Suivre le match
           </Button>
           <span>Suis les performances réelles des joueurs sélectionnés sur le terrain.</span>
@@ -62,12 +52,7 @@ export function MatchAction({
     case 'closed':
       return (
         <div className="goatim-ui-match-action">
-          <Button
-            theme="light"
-            to={toFeed}
-            onClick={onFeedClick}
-            href={feedHref}
-            target={feedTarget}>
+          <Button theme="light" onClick={onFeedClick} href={feedHref} target={feedTarget}>
             Voir le résumé
           </Button>
         </div>

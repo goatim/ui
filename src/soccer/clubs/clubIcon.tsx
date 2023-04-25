@@ -16,7 +16,6 @@ export function ClubIcon({
   icon,
   size = 'small',
   theme = 'dark',
-  to,
   onClick,
   href,
   target,
@@ -24,7 +23,6 @@ export function ClubIcon({
   return (
     <Wrapper
       className={`goatim-ui-club-icon ${size} ${theme}`}
-      to={to}
       onClick={onClick}
       href={href}
       target={target}>

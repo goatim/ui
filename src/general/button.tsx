@@ -49,7 +49,6 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
       target,
       rel,
       referrerPolicy,
-      to,
       onClick,
       type,
       onFocus,
@@ -145,7 +144,6 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
         target={target}
         rel={rel}
         referrerPolicy={referrerPolicy}
-        to={to}
         onClick={onClick ? onButtonClick : undefined}
         disabled={disabled || pending || autoPending}
         type={type}

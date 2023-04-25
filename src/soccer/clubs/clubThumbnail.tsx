@@ -1,7 +1,7 @@
 import { ReactElement, useMemo } from 'react';
 import { Club } from '@goatim/client';
-import { To } from 'react-router-dom';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
+import { UrlObject } from 'url';
 import { ClubIcon } from './clubIcon';
 import { LeagueThumbnail } from '../leagues';
 
@@ -15,7 +15,7 @@ export interface ClubThumbnailProps extends WrapperProps {
   club: Club;
   size?: ClubThumbnailSize;
   theme?: ClubThumbnailTheme;
-  leagueTo?: To;
+  leagueHref?: string | UrlObject;
   shape?: ClubThumbnailShape;
   title?: boolean;
   showLeague?: boolean;
@@ -25,11 +25,10 @@ export function ClubThumbnail({
   club,
   size = 'medium',
   theme = 'dark',
-  to,
   onClick,
   href,
   target,
-  leagueTo,
+  leagueHref,
   shape = 'text',
   title = false,
   showLeague = false,
@@ -41,14 +40,14 @@ export function ClubThumbnail({
   }, [shape, size, theme]);
 
   return (
-    <Wrapper className={className} to={to} onClick={onClick} href={href} target={target}>
+    <Wrapper className={className} onClick={onClick} href={href} target={target}>
       <div className="body">
         <ClubIcon icon={club.icon} size={size} />
         {title ? <h1 className="name">{club.name}</h1> : <span className="name">{club.name}</span>}
       </div>
       {showLeague && club.league && typeof club.league === 'object' ? (
         <div className="league">
-          <LeagueThumbnail league={club.league} theme={theme} to={leagueTo} />
+          <LeagueThumbnail league={club.league} theme={theme} href={leagueHref} />
         </div>
       ) : null}
     </Wrapper>

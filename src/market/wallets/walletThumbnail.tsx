@@ -36,7 +36,6 @@ export const WalletThumbnail = forwardRef<
     align = 'left',
     theme = 'dark',
     shape = 'inline',
-    to,
     onClick,
     type,
     href,
@@ -65,7 +64,6 @@ export const WalletThumbnail = forwardRef<
   return (
     <Wrapper
       className={className}
-      to={to}
       onClick={onClick}
       type={type}
       href={href}

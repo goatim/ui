@@ -6,8 +6,8 @@ import {
   Match,
   PhysicalEvent,
 } from '@goatim/client';
-import { To } from 'react-router';
 import { useElementInfiniteScroll } from '@cezembre/fronts';
+import { UrlObject } from 'url';
 import { MatchFeed } from './matchFeed';
 import { Button } from '../../general';
 import { CompositionRanking } from '../compositions';
@@ -24,7 +24,7 @@ export interface MatchBoardProps {
   myComposition?: Composition;
   size?: MatchBoardSize;
   theme?: MatchBoardTheme;
-  toComposition?: To;
+  compositionHref?: string | UrlObject;
   onClickComposition?: (composition: Composition, event: MouseEvent<HTMLButtonElement>) => unknown;
   physicalEvents?: PhysicalEvent[];
 }
@@ -37,7 +37,7 @@ export function MatchBoard({
   myComposition,
   size = 'big',
   theme = 'dark',
-  toComposition,
+  compositionHref,
   onClickComposition,
   physicalEvents,
 }: MatchBoardProps): ReactElement {
@@ -116,7 +116,7 @@ export function MatchBoard({
                   <CompositionRanking
                     compositions={compositionList.compositions}
                     theme={theme}
-                    toComposition={toComposition}
+                    compositionHref={compositionHref}
                     onClickComposition={onClickComposition}
                   />
                 </div>

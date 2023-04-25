@@ -1,8 +1,8 @@
 import { ChangeEvent, ReactElement, useCallback, useMemo, useState } from 'react';
 import { SearchResult } from '@goatim/client';
 import _ from 'lodash';
-import { To } from 'react-router';
 import { Wrapper } from '@cezembre/fronts';
+import { UrlObject } from 'url';
 import { Icon } from '../general';
 import { AssetThumbnail } from '../trading';
 
@@ -12,7 +12,7 @@ export interface SearchInputProps {
   onSearch?: (query: string) => unknown;
   results?: SearchResult[];
   onClickResult?: (result: SearchResult) => unknown;
-  toResult?: (result: SearchResult) => To;
+  resultHref?: (result: SearchResult) => string | UrlObject;
   throttle?: number;
   theme?: SearchInputTheme;
   flat?: boolean;
@@ -22,7 +22,7 @@ export function SearchInput({
   onSearch,
   results,
   onClickResult,
-  toResult,
+  resultHref,
   throttle = 1000,
   theme = 'light',
   flat = false,
@@ -92,7 +92,7 @@ export function SearchInput({
               className="result"
               key={result.id}
               onClick={onClickResult ? () => onClickResult(result) : undefined}
-              to={toResult ? toResult(result) : undefined}>
+              href={resultHref ? resultHref(result) : undefined}>
               {result.asset ? (
                 <AssetThumbnail
                   asset={result.asset}

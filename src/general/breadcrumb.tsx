@@ -52,7 +52,6 @@ export function Breadcrumb({ crumbs, theme }: BreadcrumbProps): ReactElement {
             <Button
               shape="text"
               theme={index === (crumbs?.length || 0) - 1 ? currentButtonTheme : discreetButtonTheme}
-              to={crumb.to}
               href={crumb.href}
               target={crumb.target}
               onClick={crumb.onClick}

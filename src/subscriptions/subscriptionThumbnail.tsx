@@ -28,7 +28,6 @@ export function SubscriptionThumbnail({
   onClick,
   href,
   target,
-  to,
 }: SubscriptionThumbnailProps): ReactElement {
   const iconColor = useMemo(() => {
     switch (theme) {
@@ -57,7 +56,6 @@ export function SubscriptionThumbnail({
   return (
     <Wrapper
       className={`goatim-ui-subscription-thumbnail ${theme}`}
-      to={to}
       onClick={onClick}
       href={href}
       target={target}>

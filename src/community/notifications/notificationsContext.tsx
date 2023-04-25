@@ -102,7 +102,6 @@ export function NotificationsContext({ children }: NotificationsContextProps): R
           onDismiss: options?.onDismiss,
           onClick: options?.onClick,
           type: options?.type,
-          to: options?.to,
           target: options?.target,
           href: options?.href,
         },
@@ -134,7 +133,6 @@ export function NotificationsContext({ children }: NotificationsContextProps): R
                 onDismiss={() => popNotification(notificationModal.id, true)}
                 onClick={notificationModal.onClick}
                 type={notificationModal.type}
-                to={notificationModal.to}
                 target={notificationModal.target}
                 href={notificationModal.href}
               />

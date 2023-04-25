@@ -14,11 +14,9 @@ export interface MatchThumbnailProps extends Omit<MatchActionProps, 'status'> {
 export function MatchThumbnail({
   match,
   podium,
-  toComposition,
   onCompositionClick,
   compositionHref,
   compositionTarget,
-  toFeed,
   onFeedClick,
   feedHref,
   feedTarget,
@@ -49,11 +47,9 @@ export function MatchThumbnail({
       <div className="action">
         <MatchAction
           status={match.status}
-          toComposition={toComposition}
           onCompositionClick={onCompositionClick}
           compositionHref={compositionHref}
           compositionTarget={compositionTarget}
-          toFeed={toFeed}
           onFeedClick={onFeedClick}
           feedHref={feedHref}
           feedTarget={feedTarget}

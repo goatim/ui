@@ -1,6 +1,6 @@
 import { MouseEvent, ReactElement } from 'react';
-import { To } from 'react-router';
 import { Asset } from '@goatim/client';
+import { UrlObject } from 'url';
 import { AssetThumbnail, AssetThumbnailSize, AssetThumbnailTheme } from './assetThumbnail';
 
 export interface AssetListProps {
@@ -8,7 +8,7 @@ export interface AssetListProps {
   size?: AssetThumbnailSize;
   theme?: AssetThumbnailTheme;
   assetOnClick?: (asset: Asset, event: MouseEvent<HTMLButtonElement>) => unknown;
-  assetTo?: (asset: Asset) => To;
+  assetHref?: (asset: Asset) => string | UrlObject;
   columns?: number;
 }
 
@@ -17,7 +17,7 @@ export function AssetList({
   size,
   theme,
   assetOnClick,
-  assetTo,
+  assetHref,
   columns = 1,
 }: AssetListProps): ReactElement {
   return (
@@ -32,7 +32,7 @@ export function AssetList({
               size={size}
               theme={theme}
               onClick={assetOnClick ? (event) => assetOnClick(asset, event) : undefined}
-              to={assetTo ? assetTo(asset) : undefined}
+              href={assetHref ? assetHref(asset) : undefined}
             />
           </div>
         ))

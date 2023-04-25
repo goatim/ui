@@ -1,7 +1,7 @@
 import { ReactElement, useMemo } from 'react';
 import { formatPlayerName, Player } from '@goatim/client';
-import { To } from 'react-router-dom';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
+import { UrlObject } from 'url';
 import { ClubIcon, ClubIconSize, ClubThumbnail, ClubThumbnailTheme } from '../clubs';
 
 export type PlayerThumbnailSize = 'small' | 'medium' | 'big' | 'full';
@@ -12,18 +12,17 @@ export interface PlayerThumbnailProps extends WrapperProps {
   player: Player;
   size?: PlayerThumbnailSize;
   theme?: ClubThumbnailTheme;
-  clubTo?: To;
+  clubHref?: string | UrlObject;
 }
 
 export function PlayerThumbnail({
   player,
   size = 'small',
   theme = 'dark',
-  to,
   onClick,
   href,
   target,
-  clubTo,
+  clubHref,
 }: PlayerThumbnailProps): ReactElement {
   const clubIconSize = useMemo<ClubIconSize>(() => {
     switch (size) {
@@ -51,7 +50,7 @@ export function PlayerThumbnail({
 
   if (size === 'full') {
     return (
-      <Wrapper className={className} to={to} onClick={onClick} href={href} target={target}>
+      <Wrapper className={className} onClick={onClick} href={href} target={target}>
         <div className="infos">
           {player.number !== undefined ? <span className="number">{player.number}</span> : null}
           {player.resolved_position ? (
@@ -63,7 +62,7 @@ export function PlayerThumbnail({
         ) : null}
         {player.club && typeof player.club === 'object' ? (
           <div className="club">
-            <ClubThumbnail club={player.club} theme={theme} to={clubTo} size="small" />
+            <ClubThumbnail club={player.club} theme={theme} href={clubHref} size="small" />
           </div>
         ) : null}
       </Wrapper>
@@ -71,7 +70,7 @@ export function PlayerThumbnail({
   }
 
   return (
-    <Wrapper className={className} to={to} onClick={onClick} href={href} target={target}>
+    <Wrapper className={className} onClick={onClick} href={href} target={target}>
       <ClubIcon
         icon={player.club && typeof player.club === 'object' ? player.club.icon : undefined}
         size={clubIconSize}

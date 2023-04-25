@@ -27,7 +27,6 @@ export const WalletPicture = forwardRef<
     size = 'medium',
     theme = 'dark',
     outline,
-    to,
     type,
     onClick,
     href,
@@ -48,7 +47,6 @@ export const WalletPicture = forwardRef<
   return (
     <Wrapper
       className={className}
-      to={to}
       onClick={onClick}
       type={type}
       href={href}

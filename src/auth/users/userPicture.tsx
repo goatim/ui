@@ -18,23 +18,12 @@ export const UserPicture = forwardRef<
   HTMLAnchorElement | HTMLButtonElement | HTMLDivElement,
   UserPictureProps
 >(function UserPicture(
-  {
-    picture,
-    user,
-    size = 'small',
-    theme = 'dark',
-    to,
-    onClick,
-    type,
-    href,
-    target,
-  }: UserPictureProps,
+  { picture, user, size = 'small', theme = 'dark', onClick, type, href, target }: UserPictureProps,
   ref: ForwardedRef<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement>,
 ): ReactElement {
   return (
     <Wrapper
       className={`goatim-ui-user-picture ${size} ${theme}`}
-      to={to}
       onClick={onClick}
       type={type}
       href={href}

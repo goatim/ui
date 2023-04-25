@@ -1,6 +1,6 @@
 import { MouseEvent, ReactElement, useMemo } from 'react';
 import { Asset, Spotlight } from '@goatim/client';
-import { To } from 'react-router-dom';
+import { UrlObject } from 'url';
 import { AssetList, AssetThumbnailSize } from '../../trading';
 
 export type SpotlightThumbnailSize = 'narrow' | 'small' | 'medium' | 'large';
@@ -9,14 +9,14 @@ export interface SpotlightThumbnailProps {
   spotlight: Spotlight;
   size?: SpotlightThumbnailSize;
   assetOnClick?: (asset: Asset, event: MouseEvent<HTMLButtonElement>) => unknown;
-  assetTo?: (asset: Asset) => To;
+  assetHref?: (asset: Asset) => string | UrlObject;
 }
 
 export function SpotlightThumbnail({
   spotlight,
   size = 'large',
   assetOnClick,
-  assetTo,
+  assetHref,
 }: SpotlightThumbnailProps): ReactElement {
   const assetSize = useMemo<AssetThumbnailSize>(() => {
     switch (size) {
@@ -60,7 +60,7 @@ export function SpotlightThumbnail({
                   size={assetSize}
                   theme="lighter"
                   assetOnClick={assetOnClick}
-                  assetTo={assetTo}
+                  assetHref={assetHref}
                 />
               </div>
             ) : null}
@@ -76,7 +76,7 @@ export function SpotlightThumbnail({
                   size={assetSize}
                   theme="lighter"
                   assetOnClick={assetOnClick}
-                  assetTo={assetTo}
+                  assetHref={assetHref}
                 />
               </div>
             ) : null}

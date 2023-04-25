@@ -1,6 +1,6 @@
 import { MouseEvent, ReactElement } from 'react';
 import { Club, League } from '@goatim/client';
-import { To } from 'react-router';
+import { UrlObject } from 'url';
 import { LeagueOverview } from './leagueOverview';
 import { Icon } from '../../general';
 
@@ -9,9 +9,9 @@ export type LeagueCarouselSize = 'small' | 'medium' | 'big';
 export interface LeagueCarouselProps {
   leagues?: League[];
   size?: LeagueCarouselSize;
-  leagueTo?: (league: League) => To;
+  leagueHref?: (league: League) => string | UrlObject;
   leagueOnClick?: (league: League, event: MouseEvent<HTMLButtonElement>) => unknown;
-  clubTo?: (club: Club) => To;
+  clubHref?: (club: Club) => string | UrlObject;
   clubOnClick?: (club: Club, event: MouseEvent<HTMLButtonElement>) => unknown;
   getLeagueClubs?: (leagueId: string, page: number) => Promise<Club[]> | Club[];
 }
@@ -19,9 +19,9 @@ export interface LeagueCarouselProps {
 export function LeagueCarousel({
   leagues,
   size = 'medium',
-  leagueTo,
+  leagueHref,
   leagueOnClick,
-  clubTo,
+  clubHref,
   clubOnClick,
   getLeagueClubs,
 }: LeagueCarouselProps): ReactElement {
@@ -35,9 +35,9 @@ export function LeagueCarousel({
           <div className="league" key={league.id}>
             <LeagueOverview
               league={league}
-              leagueTo={leagueTo ? leagueTo(league) : undefined}
+              leagueHref={leagueHref ? leagueHref(league) : undefined}
               leagueOnClick={leagueOnClick ? (event) => leagueOnClick(league, event) : undefined}
-              clubTo={clubTo}
+              clubHref={clubHref}
               clubOnClick={clubOnClick}
               size={size}
               getClubs={

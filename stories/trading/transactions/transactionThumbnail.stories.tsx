@@ -1,5 +1,4 @@
 import { Asset, Club, Player, Transaction, Wallet } from '@goatim/client';
-import { BrowserRouter } from 'react-router-dom';
 import { TransactionThumbnail } from '../../../src';
 
 export default {
@@ -57,7 +56,7 @@ const from: Wallet = {
   name: 'Smart Monkey',
 };
 
-const to: Wallet = {
+const wallet: Wallet = {
   id: 'wa_sopsaA',
   picture: {
     id: 'me_dehHH',
@@ -71,7 +70,7 @@ const transaction: Transaction = {
   creation: '2021-09-29T16:08:39.129+00:00',
   asset,
   from,
-  to,
+  to: wallet,
   nb_shares: 42,
   price: 45000,
   asset_quotation_gain: 3500,
@@ -79,11 +78,7 @@ const transaction: Transaction = {
 };
 
 function Template() {
-  return (
-    <BrowserRouter>
-      <TransactionThumbnail transaction={transaction} />
-    </BrowserRouter>
-  );
+  return <TransactionThumbnail transaction={transaction} />;
 }
 
 export const Default = Template.bind({});

@@ -24,7 +24,6 @@ export const UserThumbnail = forwardRef<
     size = 'small',
     showPicture = true,
     showName = true,
-    to,
     onClick,
     type,
     href,
@@ -50,7 +49,6 @@ export const UserThumbnail = forwardRef<
   return (
     <Wrapper
       className={className}
-      to={to}
       onClick={onClick}
       type={type}
       href={href}

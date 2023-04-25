@@ -15,7 +15,6 @@ export function CompositionThumbnail({
   composition,
   size = 'small',
   theme = 'dark',
-  to,
   onClick,
   href,
   target,
@@ -30,7 +29,6 @@ export function CompositionThumbnail({
       wallet={composition.wallet}
       size={size}
       theme={theme}
-      to={to}
       onClick={onClick}
       href={href}
       target={target}

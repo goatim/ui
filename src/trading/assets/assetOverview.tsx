@@ -1,7 +1,7 @@
 import { ReactElement, useMemo, useState } from 'react';
 import { Asset, Ipo, OrderBook, OrderType } from '@goatim/client';
-import { To } from 'react-router-dom';
 import { QuotationHistory } from '@goatim/client/dist/trading/quotations/model';
+import { UrlObject } from 'url';
 import { QuotationHistoryGraph } from '../quotations';
 import {
   GoatimCoins,
@@ -24,7 +24,7 @@ export interface AssetOverviewProps {
   orderBook?: OrderBook;
   onSubmitItem?: (itemFields: ItemEditorFields) => unknown;
   ipo?: Ipo;
-  secondaryTo?: To;
+  secondaryHref?: string | UrlObject;
   bankProposalQuotation?: number;
   onAcceptBankProposal?: (nbShares?: number) => unknown;
   defaultOrderType?: OrderType;
@@ -34,7 +34,7 @@ export function AssetOverview({
   asset,
   quotationHistory,
   size = 'full',
-  secondaryTo,
+  secondaryHref,
   orderBook,
   onSubmitItem,
   ipo,
@@ -113,7 +113,7 @@ export function AssetOverview({
             asset={asset}
             shape="text"
             size={assetThumbnailSize}
-            secondaryTo={secondaryTo}
+            secondaryHref={secondaryHref}
             showQuotation={false}
           />
         </div>

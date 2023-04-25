@@ -19,7 +19,6 @@ export function BoosterFactoryThumbnail({
   size = 'medium',
   shape = 'list',
   active,
-  to,
   onClick,
   type,
   href,
@@ -28,7 +27,6 @@ export function BoosterFactoryThumbnail({
   return (
     <Wrapper
       className={`goatim-ui-booster-factory-thumbnail ${size} ${shape}${active ? ' active' : ''}`}
-      to={to}
       onClick={onClick}
       type={type}
       href={href}

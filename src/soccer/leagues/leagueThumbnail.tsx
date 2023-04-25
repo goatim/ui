@@ -23,7 +23,6 @@ export function LeagueThumbnail({
   size = 'small',
   shape = 'text',
   theme = 'dark',
-  to,
   onClick,
   href,
   target,
@@ -34,7 +33,7 @@ export function LeagueThumbnail({
   }, [size, theme, shape]);
 
   return (
-    <Wrapper className={className} to={to} onClick={onClick} href={href} target={target}>
+    <Wrapper className={className} onClick={onClick} href={href} target={target}>
       <LeagueIcon icon={league.icon} size={size} />
       {title ? (
         <h1 className="name">{league.name}</h1>

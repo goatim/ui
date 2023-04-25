@@ -1,12 +1,10 @@
 import { MouseEvent, ReactElement } from 'react';
 import { Notification } from '@goatim/client';
-import { To } from 'react-router-dom';
 import { NotificationThumbnail } from './notificationThumbnail';
 
 export interface NotificationListProps {
   notifications?: Notification[];
   colored?: boolean;
-  toNotification?: (notification: Notification) => To;
   onNotificationClick?: (
     notification: Notification,
   ) => (event: MouseEvent<HTMLButtonElement>) => unknown;
@@ -17,7 +15,6 @@ export interface NotificationListProps {
 export function NotificationList({
   notifications,
   colored = false,
-  toNotification,
   onNotificationClick,
   notificationHref,
   notificationTarget,
@@ -30,7 +27,6 @@ export function NotificationList({
             <NotificationThumbnail
               notification={notification}
               colored={colored}
-              to={toNotification ? toNotification(notification) : undefined}
               onClick={onNotificationClick ? onNotificationClick(notification) : undefined}
               href={notificationHref ? notificationHref(notification) : undefined}
               target={notificationTarget ? notificationTarget(notification) : undefined}

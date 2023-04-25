@@ -1,11 +1,10 @@
 import { Club, Player } from '@goatim/client';
-import { BrowserRouter } from 'react-router-dom';
 import { PlayerThumbnail, PlayerThumbnailSize, PlayerThumbnailTheme } from '../../../src';
 
 interface Props {
   size?: PlayerThumbnailSize;
   theme?: PlayerThumbnailTheme;
-  clubTo?: string;
+  clubHref?: string;
 }
 
 export default {
@@ -24,7 +23,7 @@ export default {
         type: 'radio',
       },
     },
-    clubTo: {
+    clubHref: {
       control: {
         type: 'text',
       },
@@ -59,12 +58,8 @@ const player: Player = {
   resolved_short_position: 'ATT',
 };
 
-function Template({ size, theme, clubTo }: Props) {
-  return (
-    <BrowserRouter>
-      <PlayerThumbnail player={player} size={size} theme={theme} clubTo={clubTo} />
-    </BrowserRouter>
-  );
+function Template({ size, theme, clubHref }: Props) {
+  return <PlayerThumbnail player={player} size={size} theme={theme} clubHref={clubHref} />;
 }
 
 export const Default = Template.bind({});
