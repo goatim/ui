@@ -1,4 +1,4 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { StoryFn } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { GoatimCoins, GoatimCoinsSize, GoatimCoinsTheme } from '../../src';
 
@@ -38,9 +38,9 @@ export default {
       },
     },
   },
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({
+const Template: StoryFn<JSXElementConstructor<Props>> = ({
   amount,
   decimalDigits,
   size,

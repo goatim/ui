@@ -1,15 +1,11 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import { User, Wallet } from '@goatim/client';
 import { WalletTeam } from '../../../src';
-
-interface Props {}
 
 export default {
   title: 'Market/WalletTeam',
   component: WalletTeam,
   argTypes: {},
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const owner: User = {
   id: 'us_sopsaA',
@@ -32,10 +28,8 @@ const wallet: Wallet = {
   name: 'Smart Monkey',
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
-  <WalletTeam wallet={wallet} />
-);
+function Template() {
+  return <WalletTeam wallet={wallet} />;
+}
 
 export const Default = Template.bind({});
-
-Default.args = {};

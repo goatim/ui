@@ -1,5 +1,3 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import { Image } from '@goatim/client';
 import { LeagueIcon, LeagueIconSize } from '../../../src';
 
@@ -24,7 +22,7 @@ export default {
       },
     },
   },
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const icon: Image = {
   id: '1',
@@ -39,13 +37,8 @@ const icon: Image = {
     'https://upload.wikimedia.org/wikipedia/fr/thumb/c/ca/Logo_Ligue_1_Uber_Eats_2020.svg/411px-Logo_Ligue_1_Uber_Eats_2020.svg.png?20200821142847',
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ size, defined }: Props) => (
-  <LeagueIcon icon={defined ? icon : undefined} size={size} />
-);
+function Template({ defined, size }: Props) {
+  return <LeagueIcon icon={defined ? icon : undefined} size={size} />;
+}
 
 export const Default = Template.bind({});
-
-Default.args = {
-  size: 'small',
-  defined: true,
-};

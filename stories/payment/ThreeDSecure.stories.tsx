@@ -1,14 +1,11 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor, ReactElement, useCallback } from 'react';
+import { ReactElement, useCallback } from 'react';
 import { ModalsContext, ThreeDSecure, useModals } from '../../src';
-
-interface Props {}
 
 export default {
   title: 'Payment/ThreeDSecure',
   component: ThreeDSecure,
   argTypes: {},
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 function App(): ReactElement {
   const { pushModal } = useModals();
@@ -45,14 +42,12 @@ function App(): ReactElement {
   );
 }
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => {
+function Template() {
   return (
     <ModalsContext>
       <App />
     </ModalsContext>
   );
-};
+}
 
 export const Default = Template.bind({});
-
-Default.args = {};

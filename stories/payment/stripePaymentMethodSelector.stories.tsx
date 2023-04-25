@@ -1,17 +1,14 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { loadStripe, PaymentMethod as StripePaymentMethod } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
-import { JSXElementConstructor, useState } from 'react';
+import { useState } from 'react';
 import { PaymentMethod } from '@goatim/client';
 import { StripePaymentMethodSelector } from '../../src';
-
-interface Props {}
 
 export default {
   title: 'Payment/StripePaymentMethodSelector',
   component: StripePaymentMethodSelector,
   argTypes: {},
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const loadedStripe = loadStripe(process.env.STORYBOOK_STRIPE_PUBLIC_API_KEY || '');
 
@@ -39,7 +36,7 @@ const paymentMethod2: PaymentMethod = {
   },
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => {
+function Template() {
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<
     PaymentMethod | StripePaymentMethod | null | undefined
   >();
@@ -52,8 +49,6 @@ const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => {
       />
     </Elements>
   );
-};
+}
 
 export const Default = Template.bind({});
-
-Default.args = {};

@@ -1,14 +1,10 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import { Asset, Club, Notification, Player } from '@goatim/client';
 import { NotificationList } from '../../../src';
-
-interface Props {}
 
 export default {
   title: 'Community/NotificationList',
   component: NotificationList,
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const club: Club = {
   id: '1',
@@ -61,11 +57,13 @@ const notification: Notification<'order_match'> = {
   },
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
-  <NotificationList
-    notifications={Array(12).fill(notification)}
-    onNotificationClick={() => () => undefined}
-  />
-);
+function Template() {
+  return (
+    <NotificationList
+      notifications={Array(12).fill(notification)}
+      onNotificationClick={() => () => undefined}
+    />
+  );
+}
 
 export const Default = Template.bind({});

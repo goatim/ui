@@ -1,5 +1,3 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import { QuotationHistory } from '@goatim/client';
 import { QuotationHistoryGraph } from '../../../src';
 
@@ -18,7 +16,7 @@ export default {
       },
     },
   },
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const quotationHistory: QuotationHistory = {
   data: [
@@ -71,14 +69,12 @@ const quotationHistory: QuotationHistory = {
   variation: 0.25,
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ height }: Props) => (
-  <div style={{ width: 600, height }}>
-    <QuotationHistoryGraph quotationHistory={quotationHistory} />
-  </div>
-);
+function Template({ height }: Props) {
+  return (
+    <div style={{ width: 600, height }}>
+      <QuotationHistoryGraph quotationHistory={quotationHistory} />
+    </div>
+  );
+}
 
 export const Default = Template.bind({});
-
-Default.args = {
-  height: 45,
-};

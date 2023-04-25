@@ -1,15 +1,12 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor, ReactElement, useCallback } from 'react';
+import { ReactElement, useCallback } from 'react';
 import { Asset, Club, Pack, PackFactory, Player } from '@goatim/client';
 import { ModalsContext, PackModal, useModals } from '../../../src';
-
-interface Props {}
 
 export default {
   title: 'Trading/PackModal',
   component: PackModal,
   argTypes: {},
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const club: Club = {
   id: '1',
@@ -41,8 +38,7 @@ const asset: Asset = {
   id: 'as_Ded512',
   entity: 'pl_de45d54DD',
   type: 'player',
-  first_name: 'Kylian',
-  last_name: 'Mbappé',
+  name: 'Kylian Mbappé',
   description: '',
   slug: 'kylian-mbappe',
   total_shares: 450,
@@ -100,12 +96,12 @@ function App(): ReactElement {
   );
 }
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
-  <ModalsContext>
-    <App />
-  </ModalsContext>
-);
+function Template() {
+  return (
+    <ModalsContext>
+      <App />
+    </ModalsContext>
+  );
+}
 
 export const Default = Template.bind({});
-
-Default.args = {};

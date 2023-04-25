@@ -1,15 +1,12 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor, useState } from 'react';
+import { useState } from 'react';
 import { PaymentMethod } from '@goatim/client';
 import { CreditCardFields, PaymentMethodSelector } from '../../src';
-
-interface Props {}
 
 export default {
   title: 'Payment/PaymentMethodSelector',
   component: PaymentMethodSelector,
   argTypes: {},
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const paymentMethod1: PaymentMethod = {
   id: 'pm_edsefsef',
@@ -35,7 +32,7 @@ const paymentMethod2: PaymentMethod = {
   },
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => {
+function Template() {
   const [paymentMethods, setPaymentMethods] = useState<(PaymentMethod | CreditCardFields)[]>([
     paymentMethod1,
     paymentMethod2,
@@ -51,8 +48,6 @@ const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => {
       onSelectPaymentMethod={setSelectedPaymentMethod}
     />
   );
-};
+}
 
 export const Default = Template.bind({});
-
-Default.args = {};

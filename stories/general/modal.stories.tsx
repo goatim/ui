@@ -1,5 +1,4 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor, useCallback } from 'react';
+import { useCallback } from 'react';
 import {
   ModalsContext,
   OnboardingCarousel,
@@ -75,12 +74,14 @@ function App() {
 export default {
   title: 'General/Modal',
   component: App,
-} as ComponentMeta<JSXElementConstructor<unknown>>;
+};
 
-const Template: ComponentStory<JSXElementConstructor<unknown>> = () => (
-  <ModalsContext>
-    <App />
-  </ModalsContext>
-);
+function Template() {
+  return (
+    <ModalsContext>
+      <App />
+    </ModalsContext>
+  );
+}
 
 export const Default = Template.bind({});

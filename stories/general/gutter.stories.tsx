@@ -1,6 +1,5 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ReactElement, useEffect, useState } from 'react';
-import { Gutter, Props } from '../../src';
+import { Gutter } from '../../src';
 
 export default {
   title: 'General/Gutter',
@@ -14,7 +13,7 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof Gutter>;
+};
 
 const content: ReactElement[] = [
   <a key="1" href="https://www.google.com/" target="_blank" rel="noreferrer">
@@ -84,7 +83,7 @@ const content: ReactElement[] = [
   </a>,
 ];
 
-function App(): ReactElement {
+function Template() {
   const [delayedContent, setDelayedContent] = useState<ReactElement[] | undefined>();
 
   useEffect(() => {
@@ -99,7 +98,5 @@ function App(): ReactElement {
     </div>
   );
 }
-
-const Template: ComponentStory<typeof Gutter> = ({}: Props) => <App />;
 
 export const Default = Template.bind({});

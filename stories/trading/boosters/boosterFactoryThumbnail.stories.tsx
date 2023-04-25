@@ -1,5 +1,3 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import { BoosterFactory } from '@goatim/client';
 import {
   BoosterFactoryThumbnail,
@@ -35,7 +33,7 @@ export default {
       },
     },
   },
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const boosterFactory: BoosterFactory = {
   id: 'bo_ied5',
@@ -47,19 +45,15 @@ const boosterFactory: BoosterFactory = {
   nb_in_wallet: 10,
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ size, shape, active }: Props) => (
-  <BoosterFactoryThumbnail
-    boosterFactory={boosterFactory}
-    size={size}
-    shape={shape}
-    active={active}
-  />
-);
+function Template({ size, shape, active }: Props) {
+  return (
+    <BoosterFactoryThumbnail
+      boosterFactory={boosterFactory}
+      size={size}
+      shape={shape}
+      active={active}
+    />
+  );
+}
 
 export const Default = Template.bind({});
-
-Default.args = {
-  size: 'small',
-  shape: 'card',
-  active: false,
-};

@@ -1,5 +1,3 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import { Club, League } from '@goatim/client';
 import { LeagueCarousel, LeagueCarouselSize } from '../../../src';
 
@@ -18,7 +16,7 @@ export default {
       },
     },
   },
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const club: Club = {
   id: '1',
@@ -55,14 +53,12 @@ const league: League = {
   clubs: new Array(15).fill(club),
 };
 
-function getClubs(page: number): Club[] {
+function getClubs(leagueId: string, page: number): Club[] {
   return new Array(6).fill({ ...club, name: `Club ${page + 1}` });
 }
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ size }: Props) => (
-  <LeagueCarousel leagues={[league, league]} size={size} getClubs={getClubs} />
-);
+function Template({ size }: Props) {
+  return <LeagueCarousel leagues={[league, league]} size={size} getLeagueClubs={getClubs} />;
+}
 
 export const Default = Template.bind({});
-
-Default.args = {};

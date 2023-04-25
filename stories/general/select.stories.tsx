@@ -1,6 +1,5 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Field, Form } from '@cezembre/forms';
-import { JSXElementConstructor, useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Club, Player } from '@goatim/client';
 import { PlayerThumbnail, Select, SelectOption, SelectType } from '../../src';
 
@@ -25,8 +24,7 @@ export default {
       },
     },
   },
-  decorators: [(story) => <Form>{story()}</Form>],
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const club: Club = {
   id: '1',
@@ -57,7 +55,8 @@ const allPlayers: Player[] = [
   {
     id: 'pl_qgypp54',
     club,
-    name: 'Lionel Messi',
+    first_name: 'Lionel',
+    last_name: 'Messi',
     number: 10,
     position: 'forward',
     side: 'left',
@@ -66,7 +65,8 @@ const allPlayers: Player[] = [
   {
     id: 'pl_qesfggy54',
     club,
-    name: 'Lionel Messi',
+    first_name: 'Lionel',
+    last_name: 'Messi',
     number: 10,
     position: 'forward',
     side: 'left',
@@ -75,7 +75,8 @@ const allPlayers: Player[] = [
   {
     id: 'pl_qeqzd4',
     club,
-    name: 'Lionel Messi',
+    first_name: 'Lionel',
+    last_name: 'Messi',
     number: 10,
     position: 'forward',
     side: 'left',
@@ -84,7 +85,8 @@ const allPlayers: Player[] = [
   {
     id: 'pl_qrgs54',
     club,
-    name: 'Lionel Messi',
+    first_name: 'Lionel',
+    last_name: 'Messi',
     number: 10,
     position: 'forward',
     side: 'left',
@@ -93,7 +95,8 @@ const allPlayers: Player[] = [
   {
     id: 'pl_qeflzs54',
     club,
-    name: 'Lionel Messi',
+    first_name: 'Lionel',
+    last_name: 'Messi',
     number: 10,
     position: 'forward',
     side: 'left',
@@ -115,7 +118,8 @@ const filteredPlayers: Player[] = [
   {
     id: 'pl_qgypp54',
     club,
-    name: 'Lionel Messi',
+    first_name: 'Lionel',
+    last_name: 'Messi',
     number: 10,
     position: 'forward',
     side: 'left',
@@ -123,7 +127,7 @@ const filteredPlayers: Player[] = [
   },
 ];
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ label, selectType }: Props) => {
+function Template({ label, selectType }: Props) {
   const [options, setOptions] = useState<SelectOption<string>[]>([]);
 
   useEffect(() => {
@@ -154,16 +158,18 @@ const Template: ComponentStory<JSXElementConstructor<Props>> = ({ label, selectT
   }, []);
 
   return (
-    <Field
-      name="test"
-      component={Select}
-      type={selectType}
-      label={label}
-      canCancel
-      options={options}
-      onSearch={onSearch}
-    />
+    <Form>
+      <Field
+        name="test"
+        component={Select}
+        type={selectType}
+        label={label}
+        canCancel
+        options={options}
+        onSearch={onSearch}
+      />
+    </Form>
   );
-};
+}
 
 export const Default = Template.bind({});

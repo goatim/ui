@@ -1,5 +1,3 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import {
   Asset,
   Club,
@@ -37,7 +35,7 @@ export default {
       },
     },
   },
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const owner: User = {
   id: 'us_sopsaA',
@@ -98,6 +96,7 @@ const match: Match = {
 
 const composition: Composition = {
   id: 'co_qd54qzd31',
+  status: 'valid',
   match,
   score: 4560,
   gains: 12000,
@@ -204,20 +203,20 @@ function getCompositions(query?: GetCompositionsQuery): Promise<CompositionList>
   });
 }
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ theme, size }: Props) => (
-  <div style={{ height: 500 }}>
-    <MatchBoard
-      match={match}
-      firstCompositions={{ ...compositions, next_page: 2 }}
-      getCompositions={getCompositions}
-      theme={theme}
-      size={size}
-      onClickComposition={() => undefined}
-      physicalEvents={physicalEvents}
-    />
-  </div>
-);
+function Template({ theme, size }: Props) {
+  return (
+    <div style={{ height: 500 }}>
+      <MatchBoard
+        match={match}
+        firstCompositions={{ ...compositions, next_page: 2 }}
+        getCompositions={getCompositions}
+        theme={theme}
+        size={size}
+        onClickComposition={() => undefined}
+        physicalEvents={physicalEvents}
+      />
+    </div>
+  );
+}
 
 export const Default = Template.bind({});
-
-Default.args = {};

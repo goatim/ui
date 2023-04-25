@@ -1,5 +1,3 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import { Club } from '@goatim/client';
 import { ClubList } from '../../../src';
 
@@ -17,7 +15,7 @@ export default {
       },
     },
   },
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const club: Club = {
   id: '1',
@@ -34,12 +32,8 @@ const club: Club = {
   },
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ length }: Props) => (
-  <ClubList clubs={Array(length).fill(club)} columns={3} size="big" shape="box" />
-);
+function Template({ length }: Props) {
+  return <ClubList clubs={Array(length).fill(club)} columns={3} size="big" shape="box" />;
+}
 
 export const Default = Template.bind({});
-
-Default.args = {
-  length: 8,
-};

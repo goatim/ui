@@ -1,5 +1,3 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import { Check } from '../../src';
 
 interface Props {
@@ -16,12 +14,10 @@ export default {
       },
     },
   },
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ active }: Props) => (
-  <Check active={active} />
-);
+function Template({ active }: Props) {
+  return <Check active={active} />;
+}
 
 export const Default = Template.bind({});
-
-Default.args = {};

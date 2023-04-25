@@ -1,5 +1,3 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import { BoosterIcon, BoosterIconSize } from '../../../src';
 
 interface Props {
@@ -23,15 +21,10 @@ export default {
       },
     },
   },
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ size, active }: Props) => (
-  <BoosterIcon leverage={5} size={size} active={active} />
-);
+function Template({ size, active }: Props) {
+  return <BoosterIcon leverage={5} size={size} active={active} />;
+}
 
 export const Default = Template.bind({});
-
-Default.args = {
-  size: 'small',
-  active: false,
-};

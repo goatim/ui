@@ -1,5 +1,3 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import { Heading, HeadingLevel, HeadingSize, HeadingTheme } from '../../src';
 
 interface Props {
@@ -56,28 +54,20 @@ export default {
       },
     },
   },
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({
-  title,
-  label,
-  size,
-  theme,
-  level,
-  align,
-}: Props) => (
-  <Heading label={label} size={size} theme={theme} level={level} align={align} icon="soccer-field">
-    {title}
-  </Heading>
-);
+function Template({ title, label, size, theme, level, align }: Props) {
+  return (
+    <Heading
+      label={label}
+      size={size}
+      theme={theme}
+      level={level}
+      align={align}
+      icon="soccer-field">
+      {title}
+    </Heading>
+  );
+}
 
 export const Default = Template.bind({});
-
-Default.args = {
-  label: 'label',
-  title: 'Title',
-  size: 'medium',
-  theme: 'dark',
-  level: 'h2',
-  align: 'left',
-};

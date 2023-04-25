@@ -1,24 +1,7 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { StoryFn } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { User, Wallet } from '@goatim/client';
-import {
-  WalletPictureOutline,
-  WalletThumbnail,
-  WalletThumbnailShape,
-  WalletThumbnailSize,
-  WalletThumbnailTheme,
-} from '../../../src';
-
-interface Props {
-  size?: WalletThumbnailSize;
-  theme?: WalletThumbnailTheme;
-  shape?: WalletThumbnailShape;
-  showPicture?: boolean;
-  pictureOutline?: WalletPictureOutline;
-  showName?: boolean;
-  showAmount?: boolean;
-  is_defined?: boolean;
-}
+import { WalletThumbnail, WalletThumbnailProps } from '../../../src';
 
 export default {
   title: 'Market/WalletThumbnail',
@@ -75,7 +58,7 @@ export default {
       },
     },
   },
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const owner: User = {
   id: 'us_sopsaA',
@@ -99,7 +82,7 @@ const wallet: Wallet = {
   amount: 40000000,
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({
+const Template: StoryFn<JSXElementConstructor<WalletThumbnailProps>> = ({
   size,
   theme,
   shape,
@@ -107,10 +90,9 @@ const Template: ComponentStory<JSXElementConstructor<Props>> = ({
   pictureOutline,
   showName,
   showAmount,
-  is_defined,
-}: Props) => (
+}: WalletThumbnailProps) => (
   <WalletThumbnail
-    wallet={{ ...wallet, picture: is_defined ? wallet.picture : undefined }}
+    wallet={wallet}
     size={size}
     theme={theme}
     shape={shape}

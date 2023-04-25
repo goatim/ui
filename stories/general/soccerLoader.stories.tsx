@@ -1,15 +1,13 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import { SoccerLoader } from '../../src';
-
-interface Props {}
 
 export default {
   title: 'General/SoccerLoader',
   component: SoccerLoader,
   argTypes: {},
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => <SoccerLoader />;
+function Template() {
+  return <SoccerLoader />;
+}
 
 export const Default = Template.bind({});

@@ -1,11 +1,8 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import { Image } from '@goatim/client';
 import { ClubIcon, ClubIconSize } from '../../../src';
 
 interface Props {
   size?: ClubIconSize;
-  defined?: boolean;
 }
 
 export default {
@@ -18,13 +15,8 @@ export default {
         type: 'select',
       },
     },
-    defined: {
-      control: {
-        type: 'boolean',
-      },
-    },
   },
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const icon: Image = {
   id: '1',
@@ -35,13 +27,8 @@ const icon: Image = {
   thumbnail_url: 'https://www.psg.fr/img/logos/psg-logo.png',
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ size, defined }: Props) => (
-  <ClubIcon icon={defined ? icon : undefined} size={size} />
-);
+function Template({ size }: Props) {
+  return <ClubIcon icon={icon} size={size} />;
+}
 
 export const Default = Template.bind({});
-
-Default.args = {
-  size: 'small',
-  defined: true,
-};

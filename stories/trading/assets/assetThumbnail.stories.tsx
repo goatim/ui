@@ -1,4 +1,4 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { StoryFn } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { Asset, Club, Player, QuotationHistory } from '@goatim/client';
 import {
@@ -43,7 +43,7 @@ export default {
       },
     },
   },
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const club: Club = {
   id: '1',
@@ -137,7 +137,7 @@ const asset: Asset = {
   quotation_history: quotationHistory,
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({
+const Template: StoryFn<JSXElementConstructor<Props>> = ({
   shape,
   size,
   theme,

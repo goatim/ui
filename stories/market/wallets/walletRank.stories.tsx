@@ -1,4 +1,4 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { StoryFn } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { User, Wallet } from '@goatim/client';
 import { WalletRank, WalletThumbnailSize, WalletThumbnailTheme } from '../../../src';
@@ -49,7 +49,7 @@ export default {
       },
     },
   },
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const owner: User = {
   id: 'us_sopsaA',
@@ -73,7 +73,7 @@ const wallet: Wallet = {
   amount: 40000000,
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({
+const Template: StoryFn<JSXElementConstructor<Props>> = ({
   size,
   theme,
   showPicture,
@@ -90,7 +90,6 @@ const Template: ComponentStory<JSXElementConstructor<Props>> = ({
     showAmount={showAmount}
     position={4}
     amount={4000}
-    variation={2000}
   />
 );
 

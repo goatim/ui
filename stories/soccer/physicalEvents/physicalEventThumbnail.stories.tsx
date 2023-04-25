@@ -1,5 +1,3 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import { Asset, Club, Dividend, PhysicalEvent, Player } from '@goatim/client';
 import { PhysicalEventThumbnail, PhysicalEventThumbnailTheme } from '../../../src';
 
@@ -18,7 +16,7 @@ export default {
       },
     },
   },
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const club: Club = {
   id: '1',
@@ -50,13 +48,12 @@ const asset: Asset = {
   id: 'as_Ded512',
   entity: 'pl_de45d54DD',
   type: 'player',
-  first_name: 'Kylian',
-  last_name: 'Mbappé',
+  name: 'Kylian Mbappé',
   description: '',
   slug: 'kylian-mbappe',
   total_shares: 450,
   quotation: 2750,
-  session_variation: 345,
+  day_variation: 345,
   player,
 };
 
@@ -86,12 +83,8 @@ const physicalEvent: PhysicalEvent = {
   dividends,
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ theme }: Props) => (
-  <PhysicalEventThumbnail physicalEvent={physicalEvent} theme={theme} />
-);
+function Template({ theme }: Props) {
+  return <PhysicalEventThumbnail physicalEvent={physicalEvent} theme={theme} />;
+}
 
 export const Default = Template.bind({});
-
-Default.args = {
-  theme: 'dark',
-};

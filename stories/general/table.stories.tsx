@@ -1,5 +1,3 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import { Model } from '@goatim/client';
 import { Table, TableColumn } from '../../src';
 
@@ -17,7 +15,7 @@ export default {
       },
     },
   },
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 interface Data extends Model {
   name?: string;
@@ -62,10 +60,8 @@ const data: Data[] = [
   },
 ];
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ active }: Props) => (
-  <Table<Data> columns={columns} data={data} />
-);
+function Template() {
+  return <Table<Data> columns={columns} data={data} />;
+}
 
 export const Default = Template.bind({});
-
-Default.args = {};

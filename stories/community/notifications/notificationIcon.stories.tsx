@@ -1,5 +1,3 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import { NotificationIcon } from '../../../src';
 
 interface Props {
@@ -17,10 +15,10 @@ export default {
       },
     },
   },
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ event }: Props) => (
-  <NotificationIcon event={event} />
-);
+function Template({ event }: Props) {
+  return <NotificationIcon event={event} />;
+}
 
 export const Default = Template.bind({});

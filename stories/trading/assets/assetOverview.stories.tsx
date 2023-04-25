@@ -1,5 +1,3 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import { Asset, Club, Ipo, Player, QuotationHistory } from '@goatim/client';
 import { AssetOverview, AssetOverviewSize } from '../../../src';
 
@@ -18,7 +16,7 @@ export default {
       },
     },
   },
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const club: Club = {
   id: '1',
@@ -118,16 +116,16 @@ const ipo: Ipo = {
   asset,
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ size }: Props) => (
-  <AssetOverview
-    asset={asset}
-    size={size}
-    ipo={ipo}
-    bankProposalQuotation={5000}
-    onAcceptBankProposal={() => {}}
-  />
-);
+function Template({ size }: Props) {
+  return (
+    <AssetOverview
+      asset={asset}
+      size={size}
+      ipo={ipo}
+      bankProposalQuotation={5000}
+      onAcceptBankProposal={() => {}}
+    />
+  );
+}
 
 export const Default = Template.bind({});
-
-Default.args = {};

@@ -1,6 +1,4 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Field, Form } from '@cezembre/forms';
-import { JSXElementConstructor } from 'react';
 import { BoosterFactory } from '@goatim/client';
 import { BoosterFactoryThumbnail, Radio } from '../../src';
 
@@ -18,7 +16,7 @@ export default {
       },
     },
   },
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const boosterFactories: BoosterFactory[] = [
   {
@@ -47,20 +45,20 @@ const boosterFactories: BoosterFactory[] = [
   },
 ];
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ label }: Props) => (
-  <Form>
-    <Field
-      name="radio"
-      component={Radio}
-      label={label}
-      options={boosterFactories.map((boosterFactory: BoosterFactory) => ({
-        value: boosterFactory.id,
-        element: <BoosterFactoryThumbnail boosterFactory={boosterFactory} size="medium" />,
-      }))}
-    />
-  </Form>
-);
+function Template({ label }: Props) {
+  return (
+    <Form>
+      <Field
+        name="radio"
+        component={Radio}
+        label={label}
+        options={boosterFactories.map((boosterFactory: BoosterFactory) => ({
+          value: boosterFactory.id,
+          element: <BoosterFactoryThumbnail boosterFactory={boosterFactory} size="medium" />,
+        }))}
+      />
+    </Form>
+  );
+}
 
 export const Default = Template.bind({});
-
-Default.args = {};

@@ -1,15 +1,11 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import { TournamentParticipant, User, Wallet } from '@goatim/client';
 import { TournamentParticipantPodium } from '../../../src';
-
-interface Props {}
 
 export default {
   title: 'Soccer/TournamentParticipantPodium',
   component: TournamentParticipantPodium,
   argTypes: {},
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const owner: User = {
   id: 'us_sopsaA',
@@ -63,16 +59,18 @@ const tournamentParticipant3: TournamentParticipant = {
   score: 25,
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
-  <div style={{ height: 190 }}>
-    <TournamentParticipantPodium
-      tournamentParticipants={[
-        tournamentParticipant1,
-        tournamentParticipant2,
-        tournamentParticipant3,
-      ]}
-    />
-  </div>
-);
+function Template() {
+  return (
+    <div style={{ height: 190 }}>
+      <TournamentParticipantPodium
+        tournamentParticipants={[
+          tournamentParticipant1,
+          tournamentParticipant2,
+          tournamentParticipant3,
+        ]}
+      />
+    </div>
+  );
+}
 
 export const Default = Template.bind({});

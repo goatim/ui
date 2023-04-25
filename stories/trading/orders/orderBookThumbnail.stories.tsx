@@ -1,5 +1,3 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import { OrderBook } from '@goatim/client';
 import { OrderBookThumbnail, OrderBookThumbnailSize } from '../../../src';
 
@@ -18,7 +16,7 @@ export default {
       },
     },
   },
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const orderBook: OrderBook = {
   buying: [
@@ -77,8 +75,8 @@ const orderBook: OrderBook = {
   ],
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ size }: Props) => (
-  <OrderBookThumbnail orderBook={orderBook} size={size} />
-);
+function Template({ size }: Props) {
+  return <OrderBookThumbnail orderBook={orderBook} size={size} />;
+}
 
 export const Default = Template.bind({});

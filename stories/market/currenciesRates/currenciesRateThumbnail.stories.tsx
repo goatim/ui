@@ -1,15 +1,11 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import { CurrenciesRate, Currency } from '@goatim/client';
 import { CurrenciesRateThumbnail } from '../../../src';
-
-interface Props {}
 
 export default {
   title: 'Market/CurrenciesRateThumbnail',
   component: CurrenciesRateThumbnail,
   argTypes: {},
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const goatimCoin: Currency = {
   id: 'cu_RO0C0',
@@ -34,10 +30,8 @@ const currenciesRate: CurrenciesRate = {
   target_currency: ether,
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
-  <CurrenciesRateThumbnail currenciesRate={currenciesRate} />
-);
+function Template() {
+  return <CurrenciesRateThumbnail currenciesRate={currenciesRate} />;
+}
 
 export const Default = Template.bind({});
-
-Default.args = {};

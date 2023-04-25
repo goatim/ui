@@ -1,5 +1,3 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import { Club, CompositionPosition, Player } from '@goatim/client';
 import { CompositionPositionThumbnail, CompositionPositionThumbnailTheme } from '../../../src';
 
@@ -18,7 +16,7 @@ export default {
       },
     },
   },
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const club: Club = {
   id: '1',
@@ -52,16 +50,14 @@ const compositionPosition: CompositionPosition = {
   nb_shares: 4,
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ theme }: Props) => (
-  <CompositionPositionThumbnail
-    compositionPosition={compositionPosition}
-    theme={theme}
-    onDelete={() => undefined}
-  />
-);
+function Template({ theme }: Props) {
+  return (
+    <CompositionPositionThumbnail
+      compositionPosition={compositionPosition}
+      theme={theme}
+      onDelete={() => undefined}
+    />
+  );
+}
 
 export const Default = Template.bind({});
-
-Default.args = {
-  theme: 'dark',
-};

@@ -1,5 +1,3 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import { Composition, Match, MatchStatus, User, Wallet } from '@goatim/client';
 import { MatchThumbnail } from '../../../src';
 
@@ -18,7 +16,7 @@ export default {
       },
     },
   },
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const owner: User = {
   id: 'us_sopsaA',
@@ -43,6 +41,7 @@ const wallet: Wallet = {
 
 const composition1: Composition = {
   id: 'co_qkuehd456',
+  status: 'valid',
   wallet: {
     id: 'wa_sopsaA',
     picture: {
@@ -53,13 +52,14 @@ const composition1: Composition = {
     amount: 40000000,
   },
   position: 1,
-  dividends_percentage: 1.23,
-  dividends_gains: 45000,
+  variation: 1.23,
+  gains: 45000,
   score: 1230,
 };
 
 const composition2: Composition = {
   id: 'co_qkqzdqzd56',
+  status: 'valid',
   wallet: {
     id: 'wa_sopsaA',
     picture: {
@@ -70,13 +70,14 @@ const composition2: Composition = {
     amount: 40000000,
   },
   position: 2,
-  dividends_percentage: 1.02,
-  dividends_gains: 41000,
+  variation: 1.23,
+  gains: 45000,
   score: 1100,
 };
 
 const composition3: Composition = {
   id: 'co_qefahd456',
+  status: 'valid',
   wallet: {
     id: 'wa_sopsaA',
     picture: {
@@ -87,8 +88,8 @@ const composition3: Composition = {
     amount: 40000000,
   },
   position: 3,
-  dividends_percentage: 0.95,
-  dividends_gains: 25000,
+  variation: 1.23,
+  gains: 45000,
   score: 950,
 };
 
@@ -104,10 +105,8 @@ const match: Match = {
   podium: [composition1, composition2, composition3],
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ status }: Props) => (
-  <MatchThumbnail match={{ ...match, status }} />
-);
+function Template({ status }: Props) {
+  return <MatchThumbnail match={{ ...match, status }} />;
+}
 
 export const Default = Template.bind({});
-
-Default.args = {};

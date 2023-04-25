@@ -1,5 +1,3 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import { Rank, User, Wallet } from '@goatim/client';
 import { WalletRanking, WalletRankingTheme } from '../../../src';
 
@@ -18,7 +16,7 @@ export default {
       },
     },
   },
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const owner: User = {
   id: 'us_sopsaA',
@@ -100,16 +98,16 @@ const pinned: Wallet = {
   rank_position: 12,
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ theme }: Props) => (
-  <WalletRanking
-    wallets={wallets}
-    pinned={pinned}
-    theme={theme}
-    positionExtractor={(wallet) => wallet.rank_position || 0}
-    gainsExtractor={(wallet) => wallet.total_gains || 0}
-  />
-);
+function Template({ theme }: Props) {
+  return (
+    <WalletRanking
+      wallets={wallets}
+      pinned={pinned}
+      theme={theme}
+      positionExtractor={(wallet) => wallet.rank_position || 0}
+      gainsExtractor={(wallet) => wallet.total_gains || 0}
+    />
+  );
+}
 
 export const Default = Template.bind({});
-
-Default.args = {};

@@ -1,5 +1,3 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import { OnboardingCarousel, OnboardingCarouselSize, OnboardingCarouselSlideData } from '../../src';
 import onboarding1 from './assets/onboarding1.jpg';
 import onboarding2 from './assets/onboarding2.jpg';
@@ -21,7 +19,7 @@ export default {
       },
     },
   },
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const slides: OnboardingCarouselSlideData[] = [
   {
@@ -50,8 +48,8 @@ const slides: OnboardingCarouselSlideData[] = [
   },
 ];
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ size }: Props) => (
-  <OnboardingCarousel id="pop" dismissModal={() => undefined} slides={slides} size={size} />
-);
+function Template({ size }: Props) {
+  return <OnboardingCarousel id="pop" dismissModal={() => undefined} slides={slides} size={size} />;
+}
 
 export const Default = Template.bind({});

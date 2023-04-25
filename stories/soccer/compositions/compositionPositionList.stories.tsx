@@ -1,5 +1,3 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import { Club, CompositionPosition, Player } from '@goatim/client';
 import { CompositionPositionList, CompositionPositionListTheme } from '../../../src';
 
@@ -18,7 +16,7 @@ export default {
       },
     },
   },
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const club: Club = {
   id: '1',
@@ -51,28 +49,24 @@ const positions: CompositionPosition[] = [
     id: '5',
     player,
     nb_shares: 3,
-    booster_leverage: 1,
   },
   {
     id: '3',
     player,
     nb_shares: 4,
-    booster_leverage: 2,
   },
 ];
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ theme }: Props) => (
-  <div style={{ width: 400 }}>
-    <CompositionPositionList
-      theme={theme}
-      compositionPositions={positions}
-      onPositionClick={console.log}
-    />
-  </div>
-);
+function Template({ theme }: Props) {
+  return (
+    <div style={{ width: 400 }}>
+      <CompositionPositionList
+        theme={theme}
+        compositionPositions={positions}
+        onPositionClick={console.log}
+      />
+    </div>
+  );
+}
 
 export const Default = Template.bind({});
-
-Default.args = {
-  theme: 'dark',
-};

@@ -1,15 +1,11 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import { CurrenciesRate, Currency, User, Wallet } from '@goatim/client';
 import { TradingBanner } from '../../src';
-
-interface Props {}
 
 export default {
   title: 'Navigation/TradingBanner',
   component: TradingBanner,
   argTypes: {},
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const goatimCoin: Currency = {
   id: 'cu_RO0C0',
@@ -56,10 +52,8 @@ const wallet: Wallet = {
   amount: 42000,
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
-  <TradingBanner goatimCoinsRate={currenciesRate} wallet={wallet} />
-);
+function Template() {
+  return <TradingBanner goatimCoinsRate={currenciesRate} wallet={wallet} />;
+}
 
 export const Default = Template.bind({});
-
-Default.args = {};

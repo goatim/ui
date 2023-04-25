@@ -1,7 +1,5 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Field, Form } from '@cezembre/forms';
-import { JSXElementConstructor } from 'react';
-import { adaptGoatimCoins, resolveGoatimCoins } from '@goatim/client';
+import { adaptGoatimCoinsAmount, resolveGoatimCoinsAmount } from '@goatim/client';
 import { Counter } from '../../src';
 
 interface Props {
@@ -18,23 +16,23 @@ export default {
       },
     },
   },
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ label }: Props) => (
-  <Form>
-    <Field<number | undefined>
-      name="counter"
-      component={Counter}
-      label={label || 'Montant (GTC)'}
-      resolver={resolveGoatimCoins}
-      adapter={adaptGoatimCoins}
-      increment={100}
-      initialValue={42000}
-      conversion="0.002 ETH"
-    />
-  </Form>
-);
+function Template({ label }: Props) {
+  return (
+    <Form>
+      <Field<number | undefined>
+        name="counter"
+        component={Counter}
+        label={label || 'Montant (GTC)'}
+        resolver={resolveGoatimCoinsAmount}
+        adapter={adaptGoatimCoinsAmount}
+        increment={100}
+        initialValue={42000}
+        conversion="0.002 ETH"
+      />
+    </Form>
+  );
+}
 
 export const Default = Template.bind({});
-
-Default.args = {};

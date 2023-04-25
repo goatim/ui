@@ -1,14 +1,11 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor, ReactElement, useEffect } from 'react';
+import { ReactElement, useEffect } from 'react';
 import { Asset, Club, Notification, Player } from '@goatim/client';
 import { NotificationsContext, useNotificationsContext } from '../../../src';
-
-interface Props {}
 
 export default {
   title: 'Community/NotificationsContext',
   component: NotificationsContext,
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const club: Club = {
   id: '1',
@@ -107,12 +104,14 @@ function App(): ReactElement {
   );
 }
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
-  <NotificationsContext>
-    <App />
+function Template() {
+  return (
+    <NotificationsContext>
+      <App />
 
-    <p>Hello World!</p>
-  </NotificationsContext>
-);
+      <p>Hello World!</p>
+    </NotificationsContext>
+  );
+}
 
 export const Default = Template.bind({});

@@ -1,5 +1,3 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import { Club, Player } from '@goatim/client';
 import { BrowserRouter } from 'react-router-dom';
 import { PlayerThumbnail, PlayerThumbnailSize, PlayerThumbnailTheme } from '../../../src';
@@ -32,7 +30,7 @@ export default {
       },
     },
   },
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const club: Club = {
   id: '1',
@@ -61,10 +59,12 @@ const player: Player = {
   resolved_short_position: 'ATT',
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ size, theme, clubTo }: Props) => (
-  <BrowserRouter>
-    <PlayerThumbnail player={player} size={size} theme={theme} clubTo={clubTo} />
-  </BrowserRouter>
-);
+function Template({ size, theme, clubTo }: Props) {
+  return (
+    <BrowserRouter>
+      <PlayerThumbnail player={player} size={size} theme={theme} clubTo={clubTo} />
+    </BrowserRouter>
+  );
+}
 
 export const Default = Template.bind({});

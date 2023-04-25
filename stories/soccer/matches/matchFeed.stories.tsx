@@ -1,5 +1,3 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import { Asset, Club, Dividend, Match, PhysicalEvent, Player, User, Wallet } from '@goatim/client';
 import { MatchFeed, MatchFeedTheme } from '../../../src';
 
@@ -24,7 +22,7 @@ export default {
       },
     },
   },
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const owner: User = {
   id: 'us_sopsaA',
@@ -53,18 +51,10 @@ const match: Match = {
   creator: wallet,
   title: 'Match de la semaine',
   slug: 'match-de-la-semaine',
-  icon: {
-    id: 'me_ddqHH',
-    thumbnail_url: 'https://picsum.photos/200',
-    medium_url: 'https://picsum.photos/400',
-  },
   beginning: '2022-10-29T09:54:52.696+02:00',
   end: '2022-11-20T09:54:52.696+02:00',
   nb_participants: 213,
   is_public: true,
-  // participants: Array(24)
-  //   .fill(wallet)
-  //   .map((w, index) => ({ ...w, position: index + 1 })),
 };
 
 const club: Club = {
@@ -97,13 +87,12 @@ const asset: Asset = {
   id: 'as_Ded512',
   entity: 'pl_de45d54DD',
   type: 'player',
-  first_name: 'Kylian',
-  last_name: 'Mbappé',
+  name: 'Kylian Mbappé',
   description: '',
   slug: 'kylian-mbappe',
   total_shares: 450,
   quotation: 2750,
-  session_variation: 345,
+  day_variation: 345,
   player,
 };
 
@@ -151,10 +140,8 @@ const physicalEvents: PhysicalEvent[] = [
   },
 ];
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ theme }: Props) => (
-  <MatchFeed match={match} theme={theme} physicalEvents={physicalEvents} />
-);
+function Template({ theme }: Props) {
+  return <MatchFeed match={match} theme={theme} physicalEvents={physicalEvents} />;
+}
 
 export const Default = Template.bind({});
-
-Default.args = {};

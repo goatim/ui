@@ -1,6 +1,4 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Field, Form } from '@cezembre/forms';
-import { JSXElementConstructor } from 'react';
 import {
   Input,
   InputShape,
@@ -62,7 +60,7 @@ export default {
       },
     },
   },
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const playersSuggestions: InputSuggestion[] = [
   { value: 'Kylian Mbappé' },
@@ -80,29 +78,22 @@ const suggestionsNamespaces: SuggestionsNamespace[] = [
   { namespace: 'Clubs', suggestions: clubsSuggestions },
 ];
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({
-  label,
-  shape,
-  theme,
-  size,
-  placeholder,
-  show_suggestions,
-}: Props) => (
-  <Form>
-    <Field
-      name="input"
-      type="email"
-      component={Input}
-      label={label}
-      shape={shape}
-      theme={theme}
-      size={size}
-      placeholder={placeholder}
-      suggestions={show_suggestions ? suggestionsNamespaces : undefined}
-    />
-  </Form>
-);
+function Template({ label, shape, theme, size, placeholder, show_suggestions }: Props) {
+  return (
+    <Form>
+      <Field
+        name="input"
+        type="email"
+        component={Input}
+        label={label}
+        shape={shape}
+        theme={theme}
+        size={size}
+        placeholder={placeholder}
+        suggestions={show_suggestions ? suggestionsNamespaces : undefined}
+      />
+    </Form>
+  );
+}
 
 export const Default = Template.bind({});
-
-Default.args = {};

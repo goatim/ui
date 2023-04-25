@@ -1,15 +1,11 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import { Club, League } from '@goatim/client';
 import { LeagueOverview } from '../../../src';
-
-interface Props {}
 
 export default {
   title: 'Soccer/LeagueOverview',
   component: LeagueOverview,
   argTypes: {},
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const club: Club = {
   id: '1',
@@ -46,13 +42,8 @@ const league: League = {
   clubs: new Array(15).fill({ ...club, id: Math.random().toString() }),
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
-  <LeagueOverview league={league} />
-);
+function Template() {
+  return <LeagueOverview league={league} />;
+}
 
 export const Default = Template.bind({});
-
-Default.args = {
-  size: 'small',
-  theme: 'dark',
-};

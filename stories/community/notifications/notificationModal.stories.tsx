@@ -1,12 +1,10 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import { Asset, Club, Notification, Player } from '@goatim/client';
 import { NotificationModal } from '../../../src';
 
 export default {
   title: 'Community/NotificationModal',
   component: NotificationModal,
-} as ComponentMeta<JSXElementConstructor<unknown>>;
+};
 
 const club: Club = {
   id: '1',
@@ -59,8 +57,8 @@ const notification: Notification<'order_match'> = {
   },
 };
 
-const Template: ComponentStory<JSXElementConstructor<unknown>> = () => (
-  <NotificationModal notification={notification} />
-);
+function Template() {
+  return <NotificationModal notification={notification} />;
+}
 
 export const Default = Template.bind({});

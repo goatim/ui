@@ -1,5 +1,3 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import { Booster } from '@goatim/client';
 import { BoosterThumbnail } from '../../../src';
 
@@ -23,7 +21,7 @@ export default {
       },
     },
   },
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const booster: Booster = {
   id: 'bi_cUkDdk9VW4PwvsF',
@@ -32,21 +30,18 @@ const booster: Booster = {
   stop_quotation: 422200,
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ active, positive }: Props) => (
-  <BoosterThumbnail
-    booster={{
-      ...booster,
-      stopped_at: !active ? '2021-11-04 14:07:26.679000 +00:00' : undefined,
-      gains: positive ? 42000 : -42000,
-      variation: positive ? 3200 : -3200,
-    }}
-    onStop={() => undefined}
-  />
-);
+function Template({ active, positive }: Props) {
+  return (
+    <BoosterThumbnail
+      booster={{
+        ...booster,
+        stopped_at: !active ? '2021-11-04 14:07:26.679000 +00:00' : undefined,
+        gains: positive ? 42000 : -42000,
+        variation: positive ? 3200 : -3200,
+      }}
+      onStop={() => undefined}
+    />
+  );
+}
 
 export const Default = Template.bind({});
-
-Default.args = {
-  active: true,
-  positive: true,
-};

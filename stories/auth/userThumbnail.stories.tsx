@@ -1,12 +1,5 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import { User } from '@goatim/client';
-import { UserThumbnail, UserThumbnailSize } from '../../src';
-
-interface Props {
-  size?: UserThumbnailSize;
-  is_defined?: boolean;
-}
+import { UserThumbnail, UserThumbnailProps } from '../../src';
 
 export default {
   title: 'Auth/UserThumbnail',
@@ -30,7 +23,7 @@ export default {
       },
     },
   },
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const user: User = {
   id: 'us_sopsaA',
@@ -43,12 +36,8 @@ const user: User = {
   last_name: 'Perouze',
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ size, is_defined }: Props) => (
-  <UserThumbnail user={{ ...user, picture: is_defined ? user.picture : undefined }} size={size} />
-);
+function Template({ size }: UserThumbnailProps) {
+  return <UserThumbnail user={user} size={size} />;
+}
 
 export const Default = Template.bind({});
-
-Default.args = {
-  size: 'small',
-};

@@ -1,5 +1,3 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import { User, Wallet } from '@goatim/client';
 import { WalletList } from '../../../src';
 
@@ -17,7 +15,7 @@ export default {
       },
     },
   },
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const owner: User = {
   id: 'us_sopsaA',
@@ -40,12 +38,8 @@ const wallet: Wallet = {
   name: 'Smart Monkey',
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ length }: Props) => (
-  <WalletList wallets={Array(length).fill(wallet)} total={35} />
-);
+function Template({ length }: Props) {
+  return <WalletList wallets={Array(length).fill(wallet)} total={35} />;
+}
 
 export const Default = Template.bind({});
-
-Default.args = {
-  length: 8,
-};

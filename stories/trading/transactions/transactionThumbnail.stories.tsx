@@ -1,16 +1,12 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import { Asset, Club, Player, Transaction, Wallet } from '@goatim/client';
 import { BrowserRouter } from 'react-router-dom';
 import { TransactionThumbnail } from '../../../src';
-
-interface Props {}
 
 export default {
   title: 'Trading/TransactionThumbnail',
   component: TransactionThumbnail,
   argTypes: {},
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const club: Club = {
   id: '1',
@@ -43,8 +39,7 @@ const asset: Asset = {
   id: 'as_Ded512',
   entity: 'pl_de45d54DD',
   type: 'player',
-  first_name: 'Kylian',
-  last_name: 'Mbappé',
+  name: 'Kylian Mbappé',
   description: '',
   slug: 'kylian-mbappe',
   total_shares: 450,
@@ -83,12 +78,12 @@ const transaction: Transaction = {
   asset_quotation_variation: 0.01,
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
-  <BrowserRouter>
-    <TransactionThumbnail transaction={transaction} />
-  </BrowserRouter>
-);
+function Template() {
+  return (
+    <BrowserRouter>
+      <TransactionThumbnail transaction={transaction} />
+    </BrowserRouter>
+  );
+}
 
 export const Default = Template.bind({});
-
-Default.args = {};

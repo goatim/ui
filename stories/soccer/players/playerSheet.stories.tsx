@@ -1,4 +1,4 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { StoryFn } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { Club, Player } from '@goatim/client';
 import { PlayerSheet, PlayerSheetProps } from '../../../src';
@@ -12,7 +12,7 @@ export default {
       options: ['small', 'big'],
     },
   },
-} as ComponentMeta<JSXElementConstructor<PlayerSheetProps>>;
+};
 
 const club: Club = {
   id: '1',
@@ -50,8 +50,8 @@ const player: Player = {
     "Fin 2018, il remporte le trophée Kopa du meilleur joueur mondial de l'année de moins de 21 ans. Le 11 juin 2019, il est le plus jeune joueur à inscrire 100 buts en professionnel, à 20 ans et 5 mois, et également en 2021, à 22 ans et 291 jours, à atteindre les 50 sélections avec le maillot Bleu. Le 13 novembre 2021, lors du match qui donne la qualification aux Bleus pour la Coupe du monde 2022 face au Kazakhstan (8-0), il inscrit le premier quadruplé d'un joueur français en compétition depuis Just Fontaine, lors de la Coupe du monde 1958.",
 };
 
-const Template: ComponentStory<JSXElementConstructor<PlayerSheetProps>> = ({
-  size,
-}: PlayerSheetProps) => <PlayerSheet player={player} size={size} />;
+const Template: StoryFn<JSXElementConstructor<PlayerSheetProps>> = ({ size }: PlayerSheetProps) => (
+  <PlayerSheet player={player} size={size} />
+);
 
 export const Default = Template.bind({});

@@ -1,15 +1,11 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import { Match, User, Wallet } from '@goatim/client';
 import { MatchStatusThumbnail } from '../../../src';
-
-interface Props {}
 
 export default {
   title: 'Soccer/MatchStatusThumbnail',
   component: MatchStatusThumbnail,
   argTypes: {},
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const owner: User = {
   id: 'us_sopsaA',
@@ -37,27 +33,14 @@ const match: Match = {
   creator: wallet,
   title: 'Match de la semaine',
   slug: 'match-de-la-semaine',
-  icon: {
-    id: 'me_ddqHH',
-    thumbnail_url: 'https://picsum.photos/200',
-    medium_url: 'https://picsum.photos/400',
-  },
   beginning: '2022-08-29T09:54:52.696+02:00',
   end: '2022-08-20T09:54:52.696+02:00',
   nb_participants: 213,
   is_public: true,
-  participants: Array(24).fill(wallet),
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
-  <MatchStatusThumbnail
-    status={match.status}
-    beginning={match.beginning}
-    end={match.end}
-    theme="light"
-  />
-);
+function Template() {
+  return <MatchStatusThumbnail status={match.status} theme="light" />;
+}
 
 export const Default = Template.bind({});
-
-Default.args = {};

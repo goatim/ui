@@ -1,15 +1,11 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import { TournamentParticipant, User, Wallet } from '@goatim/client';
 import { TournamentParticipantThumbnail } from '../../../src';
-
-interface Props {}
 
 export default {
   title: 'Soccer/TournamentParticipantThumbnail',
   component: TournamentParticipantThumbnail,
   argTypes: {},
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const owner: User = {
   id: 'us_sopsaA',
@@ -43,8 +39,8 @@ const tournamentParticipant: TournamentParticipant = {
   last_position: 5,
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
-  <TournamentParticipantThumbnail tournamentParticipant={tournamentParticipant} />
-);
+function Template() {
+  return <TournamentParticipantThumbnail tournamentParticipant={tournamentParticipant} />;
+}
 
 export const Default = Template.bind({});

@@ -1,6 +1,4 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
-import { Asset, Booster, Club, Order, OrderType, Player } from '@goatim/client';
+import { Asset, Club, Order, OrderType, Player } from '@goatim/client';
 import { OrderList } from '../../../src';
 
 interface Props {
@@ -14,7 +12,7 @@ export default {
   title: 'Trading/OrderList',
   component: OrderList,
   argTypes: {},
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const club: Club = {
   id: '1',
@@ -46,23 +44,13 @@ const asset: Asset = {
   id: 'as_Ded512',
   entity: 'pl_de45d54DD',
   type: 'player',
-  first_name: 'Kylian',
-  last_name: 'Mbappé',
+  name: 'Kylian Mbappé',
   description: '',
   slug: 'kylian-mbappe',
   total_shares: 450,
   quotation: 2750,
-  session_variation: 345,
+  day_variation: 345,
   player,
-};
-
-const booster: Booster = {
-  id: 'bo_ied5',
-  name: 'Pavaaard !',
-  slug: 'pavaaard',
-  price: 200,
-  leverage: 2,
-  nb_in_wallet: 0,
 };
 
 const order: Order = {
@@ -71,18 +59,10 @@ const order: Order = {
   asset,
   nb_shares: 2,
   price_limit: 75000,
-  booster,
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
-  <OrderList orders={Array(8).fill(order)} />
-);
+function Template() {
+  return <OrderList orders={Array(8).fill(order)} />;
+}
 
 export const Default = Template.bind({});
-
-Default.args = {
-  type: 'buy',
-  booster_selected: true,
-  has_booster_in_wallet: false,
-  on_cancel_defined: false,
-};

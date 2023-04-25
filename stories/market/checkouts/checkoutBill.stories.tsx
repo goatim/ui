@@ -1,5 +1,3 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import { Checkout } from '@goatim/client';
 import { CheckoutBill } from '../../../src';
 
@@ -7,7 +5,7 @@ export default {
   title: 'Market/CheckoutBill',
   component: CheckoutBill,
   argTypes: {},
-} as ComponentMeta<JSXElementConstructor<unknown>>;
+};
 
 const checkout: Checkout = {
   id: 'ch_dzqed546',
@@ -16,10 +14,8 @@ const checkout: Checkout = {
   total_to_pay: 4200,
 };
 
-const Template: ComponentStory<JSXElementConstructor<unknown>> = () => (
-  <CheckoutBill checkout={checkout} />
-);
+function Template() {
+  return <CheckoutBill checkout={checkout} />;
+}
 
 export const Default = Template.bind({});
-
-Default.args = {};

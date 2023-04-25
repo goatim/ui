@@ -1,2 +1,3 @@
-# Friday Game UI
+# Goatim UI
+
 A ui library for react

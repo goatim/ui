@@ -1,5 +1,3 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import { GoatimCoinsGains, GoatimCoinsGainsSize } from '../../src';
 
 interface Props {
@@ -24,15 +22,10 @@ export default {
       },
     },
   },
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ variation, size }: Props) => (
-  <GoatimCoinsGains variation={variation} size={size} />
-);
+function Template({ variation, size }: Props) {
+  return <GoatimCoinsGains gains={variation} size={size} />;
+}
 
 export const Default = Template.bind({});
-
-Default.args = {
-  variation: 50,
-  size: 'small',
-};

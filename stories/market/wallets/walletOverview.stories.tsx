@@ -1,11 +1,7 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { StoryFn } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { Rank, User, Wallet } from '@goatim/client';
-import { WalletOverview, WalletOverviewSize } from '../../../src';
-
-interface Props {
-  size?: WalletOverviewSize;
-}
+import { WalletOverview, WalletOverviewProps } from '../../../src';
 
 export default {
   title: 'Market/WalletOverview',
@@ -18,7 +14,7 @@ export default {
       },
     },
   },
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const owner: User = {
   id: 'us_sopsaA',
@@ -52,8 +48,8 @@ const wallet: Wallet = {
   rank_position: 12,
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ size }: Props) => (
-  <WalletOverview wallet={wallet} size={size} />
-);
+const Template: StoryFn<JSXElementConstructor<WalletOverviewProps>> = ({
+  size,
+}: WalletOverviewProps) => <WalletOverview wallet={wallet} size={size} />;
 
 export const Default = Template.bind({});

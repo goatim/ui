@@ -1,5 +1,3 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import { Subscription, SubscriptionThumbnail, SubscriptionThumbnailTheme } from '../../src';
 
 // import { Subscription } from '@goatim/client';
@@ -26,7 +24,7 @@ export default {
       },
     },
   },
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const subscription: Subscription = {
   monthlyPrice: 1499,
@@ -39,20 +37,22 @@ const bonusesDescriptions = [
   "Bénéficie d'un accès privilégié aux pré-ventes des nouveaux joueurs",
 ];
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ isPopular, theme }: Props) => (
-  <div
-    style={{
-      display: 'flex',
-      justifyContent: 'center',
-    }}>
-    <SubscriptionThumbnail
-      bonusesDescriptions={bonusesDescriptions}
-      subscription={subscription}
-      isPopular={isPopular}
-      onBuy={() => console.log('onBuy')}
-      theme={theme}
-    />
-  </div>
-);
+function Template({ isPopular, theme }: Props) {
+  return (
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+      }}>
+      <SubscriptionThumbnail
+        bonusesDescriptions={bonusesDescriptions}
+        subscription={subscription}
+        isPopular={isPopular}
+        onBuy={() => console.log('onBuy')}
+        theme={theme}
+      />
+    </div>
+  );
+}
 
 export const Default = Template.bind({});

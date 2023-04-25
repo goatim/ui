@@ -1,5 +1,3 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import { Breadcrumb, BreadcrumbTheme, Crumb } from '../../src';
 
 interface Props {
@@ -15,7 +13,7 @@ export default {
       options: ['dark', 'light'],
     },
   },
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const crumbs: Crumb[] = [
   {
@@ -30,10 +28,8 @@ const crumbs: Crumb[] = [
   },
 ];
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ theme }: Props) => (
-  <Breadcrumb crumbs={crumbs} theme={theme} />
-);
+function Template({ theme }: Props) {
+  return <Breadcrumb crumbs={crumbs} theme={theme} />;
+}
 
 export const Default = Template.bind({});
-
-Default.args = {};

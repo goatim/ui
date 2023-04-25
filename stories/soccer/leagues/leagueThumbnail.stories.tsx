@@ -1,5 +1,3 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import { Club, League } from '@goatim/client';
 import {
   LeagueThumbnail,
@@ -37,7 +35,7 @@ export default {
       },
     },
   },
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const club: Club = {
   id: '1',
@@ -74,13 +72,8 @@ const league: League = {
   clubs: new Array(5).fill(club),
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ size, shape, theme }: Props) => (
-  <LeagueThumbnail league={league} size={size} shape={shape} theme={theme} />
-);
+function Template({ size, shape, theme }: Props) {
+  return <LeagueThumbnail league={league} size={size} shape={shape} theme={theme} />;
+}
 
 export const Default = Template.bind({});
-
-Default.args = {
-  size: 'small',
-  theme: 'dark',
-};

@@ -1,10 +1,4 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
-import {
-  PercentageVariation,
-  PercentageVariationShape,
-  PercentageVariationSize,
-} from '../../src';
+import { PercentageVariation, PercentageVariationShape, PercentageVariationSize } from '../../src';
 
 interface Props {
   variation?: number;
@@ -35,18 +29,10 @@ export default {
       },
     },
   },
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({
-  variation,
-  size,
-  shape,
-}: Props) => <PercentageVariation variation={variation} size={size} shape={shape} />;
+function Template({ variation, size, shape }: Props) {
+  return <PercentageVariation variation={variation} size={size} shape={shape} />;
+}
 
 export const Default = Template.bind({});
-
-Default.args = {
-  variation: 50,
-  size: 'small',
-  shape: 'text',
-};

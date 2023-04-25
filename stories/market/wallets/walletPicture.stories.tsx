@@ -1,5 +1,3 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import { Image } from '@goatim/client/dist/medias/image';
 import {
   WalletPicture,
@@ -40,17 +38,15 @@ export default {
       },
     },
   },
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const picture: Image = {
   id: 'me_dehHH',
   thumbnail_url: 'https://picsum.photos/200',
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({
-  size,
-  theme,
-  outline,
-}: Props) => <WalletPicture picture={picture} size={size} theme={theme} outline={outline} />;
+function Template({ size, theme, outline }: Props) {
+  return <WalletPicture picture={picture} size={size} theme={theme} outline={outline} />;
+}
 
 export const Default = Template.bind({});

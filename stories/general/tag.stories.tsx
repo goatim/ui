@@ -1,5 +1,3 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import { Tag, TagSize, TagTheme } from '../../src';
 
 interface Props {
@@ -26,12 +24,14 @@ export default {
       },
     },
   },
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ size, theme }: Props) => (
-  <Tag size={size} theme={theme} leftIcon="trophy">
-    x3
-  </Tag>
-);
+function Template({ size, theme }: Props) {
+  return (
+    <Tag size={size} theme={theme} leftIcon="trophy">
+      x3
+    </Tag>
+  );
+}
 
 export const Default = Template.bind({});

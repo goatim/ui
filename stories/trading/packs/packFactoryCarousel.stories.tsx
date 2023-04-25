@@ -1,5 +1,3 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import { PackFactory } from '@goatim/client';
 import { PackFactoryCarousel, PackFactoryCarouselSize } from '../../../src';
 
@@ -18,7 +16,7 @@ export default {
       },
     },
   },
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const packFactory: PackFactory = {
   id: 'silver',
@@ -28,8 +26,10 @@ const packFactory: PackFactory = {
   odds: { '100000': 1 },
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ size }: Props) => (
-  <PackFactoryCarousel packFactories={[packFactory, packFactory, packFactory]} size={size} />
-);
+function Template({ size }: Props) {
+  return (
+    <PackFactoryCarousel packFactories={[packFactory, packFactory, packFactory]} size={size} />
+  );
+}
 
 export const Default = Template.bind({});

@@ -1,5 +1,3 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import { Asset, BoosterFactory, Club, OrderBook, OrderType, Player } from '@goatim/client';
 import { ItemEditor, ItemEditorSize } from '../../../src';
 
@@ -25,7 +23,7 @@ export default {
       },
     },
   },
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const club: Club = {
   id: '1',
@@ -150,25 +148,24 @@ const orderBook: OrderBook = {
   ],
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ size, orderType }: Props) => (
-  <ItemEditor
-    initialItem={{
-      type: 'order',
-      order: {
-        asset,
-        order_type: orderType,
-        price_limit: asset.quotation,
-        nb_shares: 1,
-      },
-    }}
-    orderBook={orderBook}
-    boosterFactories={boosterFactories}
-    onSubmit={(item) => console.log(item)}
-    onCancel={() => undefined}
-    size={size}
-  />
-);
+function Template({ size, orderType }: Props) {
+  return (
+    <ItemEditor
+      initialItem={{
+        type: 'order',
+        order: {
+          asset,
+          order_type: orderType,
+          price_limit: asset.quotation,
+          nb_shares: 1,
+        },
+      }}
+      orderBook={orderBook}
+      onSubmit={(item) => console.log(item)}
+      onCancel={() => undefined}
+      size={size}
+    />
+  );
+}
 
 export const Default = Template.bind({});
-
-Default.args = {};

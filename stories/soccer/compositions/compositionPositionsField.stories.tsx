@@ -1,6 +1,4 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { Field, Form, FormFields } from '@cezembre/forms';
-import { JSXElementConstructor } from 'react';
 import {
   BoosterFactory,
   Club,
@@ -23,14 +21,13 @@ export interface Props {
 export default {
   title: 'Soccer/CompositionPositionsField',
   component: CompositionPositionsField,
-  decorators: [(story) => <ModalsContext>{story()}</ModalsContext>],
   argTypes: {
     type: {
       control: 'radio',
       options: ['map', 'list'],
     },
   },
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const compositionSetting: CompositionSetting = {
   id: 'cs_edsefqed',
@@ -256,22 +253,24 @@ function submit(fields: Fields) {
   console.log(fields);
 }
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ type }: Props) => (
-  <div style={{ width: 400 }}>
-    <Form<Fields> onSubmit={submit}>
-      <Field<CompositionPositionValue[]>
-        initialValue={initialValue}
-        type={type}
-        name="positions"
-        component={CompositionPositionsField}
-        compositionSetting={compositionSetting}
-        getPositionPlayers={getPositionPlayers}
-        boosterFactories={boosterFactories}
-      />
-    </Form>
-  </div>
-);
+function Template({ type }: Props) {
+  return (
+    <ModalsContext>
+      <div style={{ width: 400 }}>
+        <Form<Fields> onSubmit={submit}>
+          <Field<CompositionPositionValue[]>
+            initialValue={initialValue}
+            type={type}
+            name="positions"
+            component={CompositionPositionsField}
+            compositionSetting={compositionSetting}
+            getPositionPlayers={getPositionPlayers}
+            boosterFactories={boosterFactories}
+          />
+        </Form>
+      </div>
+    </ModalsContext>
+  );
+}
 
 export const Default = Template.bind({});
-
-Default.args = {};

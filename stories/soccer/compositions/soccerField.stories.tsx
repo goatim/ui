@@ -1,5 +1,3 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import { SoccerField, SoccerFieldTheme } from '../../../src';
 
 interface Props {
@@ -17,14 +15,10 @@ export default {
       },
     },
   },
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ theme }: Props) => (
-  <SoccerField theme={theme} />
-);
+function Template({ theme }: Props) {
+  return <SoccerField theme={theme} />;
+}
 
 export const Default = Template.bind({});
-
-Default.args = {
-  theme: 'dark',
-};

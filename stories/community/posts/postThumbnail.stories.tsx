@@ -1,5 +1,3 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import {
   Asset,
   Club,
@@ -16,7 +14,7 @@ import {
 import { PostThumbnail } from '../../../src';
 
 interface Props {
-  type?: keyof PostTypeMap;
+  type: keyof PostTypeMap;
 }
 
 export default {
@@ -28,7 +26,7 @@ export default {
       options: ['orders', 'transaction', 'pack', 'match_summary'],
     },
   },
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const club: Club = {
   id: '1',
@@ -128,6 +126,7 @@ const match: Match = {
 
 const composition: Composition = {
   id: 'co_qkuehd456',
+  status: 'valid',
   wallet: {
     id: 'wa_sopsaA',
     picture: {
@@ -138,8 +137,8 @@ const composition: Composition = {
     amount: 40000000,
   },
   position: 1,
-  dividends_percentage: 1.23,
-  dividends_gains: 45000,
+  variation: 1.23,
+  gains: 45000,
   score: 1230,
 };
 
@@ -210,8 +209,8 @@ const posts = {
   match_summary: matchSummaryPost,
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ type = 'orders' }: Props) => (
-  <PostThumbnail post={posts[type]} />
-);
+function Template({ type }: Props) {
+  return <PostThumbnail post={posts[type]} />;
+}
 
 export const Default = Template.bind({});

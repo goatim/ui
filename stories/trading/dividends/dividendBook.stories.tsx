@@ -1,9 +1,5 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import { Dividend } from '@goatim/client';
 import { DividendBook } from '../../../src';
-
-interface Props {}
 
 export default {
   title: 'Trading/DividendBook',
@@ -16,7 +12,7 @@ export default {
       },
     },
   },
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const dividends: Dividend[] = [
   {
@@ -51,8 +47,8 @@ const dividends: Dividend[] = [
   },
 ];
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({}: Props) => (
-  <DividendBook dividends={dividends} averagePercentage={0.06} averageGains={5000} />
-);
+function Template() {
+  return <DividendBook dividends={dividends} averagePercentage={0.06} averageGains={5000} />;
+}
 
 export const Default = Template.bind({});

@@ -1,6 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Form, Field } from '@cezembre/forms';
-import { JSXElementConstructor } from 'react';
+import { Field, Form } from '@cezembre/forms';
 import { DateTimePicker } from '../../src';
 
 interface Props {
@@ -17,11 +15,14 @@ export default {
       },
     },
   },
-  decorators: [(story) => <Form>{story()}</Form>],
-} as ComponentMeta<JSXElementConstructor<Props>>;
-
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ label }: Props) => {
-  return <Field name="test" component={DateTimePicker} label={label} />;
 };
+
+function Template({ label }: Props) {
+  return (
+    <Form>
+      <Field name="test" component={DateTimePicker} label={label} />
+    </Form>
+  );
+}
 
 export const Default = Template.bind({});

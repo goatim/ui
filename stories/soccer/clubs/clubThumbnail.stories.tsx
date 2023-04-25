@@ -1,4 +1,4 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
+import { StoryFn } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { Club, League } from '@goatim/client';
 import { BrowserRouter } from 'react-router-dom';
@@ -50,7 +50,7 @@ export default {
       },
     },
   },
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const league: League = {
   id: '1',
@@ -87,7 +87,7 @@ const club: Club = {
   },
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({
+const Template: StoryFn<JSXElementConstructor<Props>> = ({
   size,
   theme,
   shape,

@@ -1,5 +1,3 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import {
   BoosterFactory,
   Club,
@@ -13,7 +11,7 @@ import { CompositionPositionEditor } from '../../../src';
 export default {
   title: 'Soccer/CompositionPositionEditor',
   component: CompositionPositionEditor,
-} as ComponentMeta<JSXElementConstructor<unknown>>;
+};
 
 const compositonSettingPosition: CompositionSettingPosition = {
   id: '0',
@@ -233,18 +231,18 @@ function getPositionPlayers(position?: PlayerPosition[] | PlayerPosition): Promi
   });
 }
 
-const Template: ComponentStory<JSXElementConstructor<unknown>> = () => (
-  <div style={{ width: 400 }}>
-    <CompositionPositionEditor
-      getPositionPlayers={getPositionPlayers}
-      compositionSetting={compositionSetting}
-      compositionSettingPosition={compositonSettingPosition}
-      boosterFactories={boosterFactories}
-      onCancel={() => undefined}
-    />
-  </div>
-);
+function Template() {
+  return (
+    <div style={{ width: 400 }}>
+      <CompositionPositionEditor
+        getPositionPlayers={getPositionPlayers}
+        compositionSetting={compositionSetting}
+        compositionSettingPosition={compositonSettingPosition}
+        boosterFactories={boosterFactories}
+        onCancel={() => undefined}
+      />
+    </div>
+  );
+}
 
 export const Default = Template.bind({});
-
-Default.args = {};

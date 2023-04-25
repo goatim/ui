@@ -1,5 +1,3 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import { Asset, Club, Player, SearchResult } from '@goatim/client';
 import { SearchInput, SearchInputTheme } from '../../src';
 
@@ -18,7 +16,7 @@ export default {
       },
     },
   },
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const club: Club = {
   id: '1',
@@ -77,13 +75,15 @@ const results: SearchResult[] = [
   },
 ];
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ theme }: Props) => (
-  <SearchInput
-    flat
-    results={results}
-    onClickResult={(result) => console.log(result.id)}
-    theme={theme}
-  />
-);
+function Template({ theme }: Props) {
+  return (
+    <SearchInput
+      flat
+      results={results}
+      onClickResult={(result) => console.log(result.id)}
+      theme={theme}
+    />
+  );
+}
 
 export const Default = Template.bind({});

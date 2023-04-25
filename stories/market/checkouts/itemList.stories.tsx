@@ -1,5 +1,3 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import { Asset, BoosterFactory, Club, Item, PackFactory, Player } from '@goatim/client';
 import { ItemList, ItemThumbnailSize } from '../../../src';
 
@@ -23,7 +21,7 @@ export default {
       },
     },
   },
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const club: Club = {
   id: '1',
@@ -123,10 +121,8 @@ const boosterItem: Item = {
   },
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ size }: Props) => (
-  <ItemList items={[orderItem, packItem, boosterItem]} size={size} />
-);
+function Template({ size }: Props) {
+  return <ItemList items={[orderItem, packItem, boosterItem]} size={size} />;
+}
 
 export const Default = Template.bind({});
-
-Default.args = {};

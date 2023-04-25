@@ -1,5 +1,3 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import { Club, Player } from '@goatim/client';
 import { PlayerList } from '../../../src';
 
@@ -17,7 +15,7 @@ export default {
       },
     },
   },
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const club: Club = {
   id: '1',
@@ -45,12 +43,8 @@ const player: Player = {
   resolved_position: 'Attaquant centre',
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ length }: Props) => (
-  <PlayerList players={Array(length).fill(player)} playerOnClick={() => undefined} />
-);
+function Template({ length }: Props) {
+  return <PlayerList players={Array(length).fill(player)} playerOnClick={() => undefined} />;
+}
 
 export const Default = Template.bind({});
-
-Default.args = {
-  length: 8,
-};

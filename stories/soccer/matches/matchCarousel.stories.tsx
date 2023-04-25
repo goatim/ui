@@ -1,5 +1,3 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import { Match, User, Wallet } from '@goatim/client';
 import { MatchCarousel, MatchCarouselSize } from '../../../src';
 
@@ -18,7 +16,7 @@ export default {
       },
     },
   },
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const owner: User = {
   id: 'us_sopsaA',
@@ -52,10 +50,8 @@ const match: Match = {
   nb_participants: 213,
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ size }: Props) => (
-  <MatchCarousel matches={[match, match, match, match, match]} size={size} />
-);
+function Template({ size }: Props) {
+  return <MatchCarousel matches={[match, match, match, match, match]} size={size} />;
+}
 
 export const Default = Template.bind({});
-
-Default.args = {};

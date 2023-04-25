@@ -1,5 +1,3 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import { Asset, BoosterFactory, Club, Item, Player } from '@goatim/client';
 import { CartResume, CartResumeSize } from '../../../src';
 
@@ -24,7 +22,7 @@ export default {
       },
     },
   },
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const club: Club = {
   id: '1',
@@ -90,12 +88,8 @@ const item: Item = {
   },
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({ length, size }: Props) => (
-  <CartResume items={Array(length).fill(item)} size={size} />
-);
+function Template({ length, size }: Props) {
+  return <CartResume items={Array(length).fill(item)} size={size} />;
+}
 
 export const Default = Template.bind({});
-
-Default.args = {
-  length: 2,
-};

@@ -1,5 +1,3 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react';
-import { JSXElementConstructor } from 'react';
 import {
   Asset,
   Club,
@@ -27,7 +25,7 @@ export default {
       defaultValue: 'order_match',
     },
   },
-} as ComponentMeta<JSXElementConstructor<Props>>;
+};
 
 const club: Club = {
   id: '1',
@@ -145,8 +143,8 @@ const notifications = {
   closed_match: closedMatch,
 };
 
-const Template: ComponentStory<JSXElementConstructor<Props>> = ({
-  event = 'order_match',
-}: Props) => <NotificationThumbnail notification={notifications[event]} />;
+function Template({ event }: Props) {
+  return <NotificationThumbnail notification={notifications[event]} />;
+}
 
 export const Default = Template.bind({});
