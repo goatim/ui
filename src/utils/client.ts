@@ -10,6 +10,10 @@ export type Device =
   | 'webos';
 
 export function getDevice(): Device | undefined {
+  if (typeof navigator === 'undefined') {
+    return undefined;
+  }
+
   if (navigator.userAgent.match(/iPhone/i)) {
     return 'iphone';
   }
@@ -37,6 +41,10 @@ export function getDevice(): Device | undefined {
 export type Browser = 'safari' | 'chrome' | 'firefox' | 'edge' | 'ie' | 'opera';
 
 export function getBrowser(): Browser | undefined {
+  if (typeof navigator === 'undefined') {
+    return undefined;
+  }
+
   if (navigator.userAgent.match(/Safari/i)) {
     return 'safari';
   }
