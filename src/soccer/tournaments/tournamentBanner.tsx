@@ -1,6 +1,6 @@
 import { ReactElement, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { TournamentParticipant } from '@goatim/client';
-import { DateTime, Duration } from 'luxon';
+import { DateTime } from 'luxon';
 import { TournamentParticipantPodium } from '../tournamentParticipants';
 import { Button } from '../../general';
 import trophy from '../../general/assets/trophy.png';
@@ -27,21 +27,21 @@ export function TournamentBanner({
     [end],
   );
 
-  const [remainingTime, setRemainingTime] = useState<Duration | undefined>(resolvedEnd?.diffNow());
+  const [remainingTime, setRemainingTime] = useState<string | undefined>();
 
   const resolveRemainingTime = useCallback(() => {
-    setRemainingTime(resolvedEnd?.diffNow());
-    timeout.current = setTimeout(resolveRemainingTime, 1000);
+    if (resolvedEnd) {
+      setRemainingTime(`Fin dans ${resolvedEnd.diffNow().toFormat('d:hh:mm:ss')}`);
+      timeout.current = setTimeout(resolveRemainingTime, 1000);
+    }
   }, [resolvedEnd]);
 
   useEffect(() => {
-    resolveRemainingTime();
+    if (resolvedEnd) {
+      resolveRemainingTime();
+    }
     return () => (timeout.current ? clearTimeout(timeout.current) : undefined);
-  }, [resolveRemainingTime]);
-
-  const timer = useMemo(() => {
-    return `Fin dans ${remainingTime?.toFormat('d:hh:mm:ss')}`;
-  }, [remainingTime]);
+  }, [resolveRemainingTime, resolvedEnd]);
 
   return (
     <div className={`goatim-ui-tournament-banner ${size}`}>
@@ -56,7 +56,7 @@ export function TournamentBanner({
         )}
       </div>
       <div className="reward">
-        <span className="timer">{timer}</span>
+        {remainingTime ? <span className="timer">{remainingTime}</span> : null}
         <div className="body">
           <h3 className="date">Le 4 juin</h3>
           <h2 className="title">1 Ether à gagner !</h2>
