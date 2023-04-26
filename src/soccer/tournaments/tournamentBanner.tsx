@@ -38,6 +38,11 @@ export function TournamentBanner({
     resolveRemainingTime();
     return () => (timeout.current ? clearTimeout(timeout.current) : undefined);
   }, [resolveRemainingTime]);
+
+  const timer = useMemo(() => {
+    return `Fin dans ${remainingTime?.toFormat('d:hh:mm:ss')}`;
+  }, []);
+
   return (
     <div className={`goatim-ui-tournament-banner ${size}`}>
       <div className="podium">
@@ -51,7 +56,7 @@ export function TournamentBanner({
         )}
       </div>
       <div className="reward">
-        <span className="timer">{`Fin dans ${remainingTime?.toFormat('d:hh:mm:ss')}`}</span>
+        <span className="timer">{timer}</span>
         <div className="body">
           <h3 className="date">Le 4 juin</h3>
           <h2 className="title">1 Ether à gagner !</h2>
