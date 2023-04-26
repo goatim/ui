@@ -41,7 +41,7 @@ export function TournamentBanner({
 
   const timer = useMemo(() => {
     return `Fin dans ${remainingTime?.toFormat('d:hh:mm:ss')}`;
-  }, []);
+  }, [remainingTime]);
 
   return (
     <div className={`goatim-ui-tournament-banner ${size}`}>
