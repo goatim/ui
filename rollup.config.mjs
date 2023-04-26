@@ -6,6 +6,7 @@ import postcss from 'rollup-plugin-postcss';
 import typescript from '@rollup/plugin-typescript';
 import image from '@rollup/plugin-image';
 import json from '@rollup/plugin-json';
+import terser from '@rollup/plugin-terser';
 import copy from 'rollup-plugin-copy';
 import autoprefixer from 'autoprefixer';
 import postcssUrl from 'postcss-url';
