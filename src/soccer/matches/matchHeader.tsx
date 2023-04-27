@@ -17,15 +17,20 @@ export function MatchHeader({ match, theme = 'dark' }: MatchHeaderProps): ReactE
         <MatchStatusThumbnail status={match.status} theme={theme} />
       </div>
       <span className="title">{match.title}</span>
-      <div className="reward">
-        <span className="label">Gain 1er:</span>
-        <GoatimCoinsGains gains={30000} />
+      <div className="rewards">
+        <div className="reward">
+          <span className="label">Gain 1er:</span>
+          <span className="amount">+0.003 ETH</span>
+        </div>
+        <div className="reward">
+          <span className="label">Gain 2ème:</span>
+          <GoatimCoinsGains gains={30000} />
+        </div>
+        <div className="reward">
+          <span className="label">Gain 3ème:</span>
+          <GoatimCoinsGains gains={10000} />
+        </div>
       </div>
-      {/* {match.creator && typeof match.creator === 'object' ? ( */}
-      {/*  <div className="creator"> */}
-      {/*    <MatchCreator creator={match.creator} theme={theme} /> */}
-      {/*  </div> */}
-      {/* ) : null} */}
     </div>
   );
 }

@@ -10,48 +10,14 @@
     height: 40px;
     display: flex;
     align-items: stretch;
-    justify-content: space-between;
+    justify-content: flex-start;
     position: relative;
 
     > .region-code-selector {
-      > .selector {
-        @include forms.input;
-        -webkit-touch-callout: none;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-        box-sizing: border-box;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        cursor: pointer;
-        text-decoration: none;
-        flex-shrink: 0;
-        margin: 0;
-        position: relative;
-        padding: 0 15px;
-        height: 100%;
-        background: white;
-        font-size: .9em;
-        color: colors.$blue;
-        font-weight: 600;
-        border-right: none;
-        border-radius: 5px 0 0 5px;
-      }
     }
 
-    > input {
-      @include forms.input;
-      border-radius: 0 5px 5px 0;
-      flex: 1;
-      font-size: .9em;
-      padding: 0 12px;
-
-      &::placeholder {
-        color: rgba(colors.$blue, .5);
-        font-style: italic;
-      }
+    > .number {
+      margin-left: 10px;
     }
   }
 
