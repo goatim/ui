@@ -1,6 +1,6 @@
 import { RefObject, useCallback, useEffect, useRef, useState } from 'react';
 import _ from 'lodash';
-import { useScript, ScriptStatus } from '@cezembre/fronts';
+import { ScriptStatus, useScript } from '@cezembre/fronts';
 
 type AutocompleteService = google.maps.places.AutocompleteService;
 type PlacesService = google.maps.places.PlacesService;
@@ -18,7 +18,7 @@ export function useAutocompleteService(): RefObject<AutocompleteService | undefi
   const autocompleteService = useRef<AutocompleteService | undefined>();
 
   function loadService() {
-    if (window.google) {
+    if (typeof window !== 'undefined' && window.google) {
       autocompleteService.current = new window.google.maps.places.AutocompleteService();
       return true;
     }
@@ -26,7 +26,7 @@ export function useAutocompleteService(): RefObject<AutocompleteService | undefi
   }
 
   useEffect(() => {
-    if (!loadService()) {
+    if (!loadService() && typeof document !== 'undefined') {
       document.addEventListener('script-loaded', loadService);
       return () => {
         document.removeEventListener('script-loaded', loadService);
@@ -42,7 +42,7 @@ export function usePlacesService(): RefObject<PlacesService | undefined> {
   const placesService = useRef<PlacesService | undefined>();
 
   function loadService(): boolean {
-    if (window.google) {
+    if (typeof window !== 'undefined' && window.google && typeof document !== 'undefined') {
       placesService.current = new window.google.maps.places.PlacesService(
         document.createElement('div'),
       );
@@ -52,7 +52,7 @@ export function usePlacesService(): RefObject<PlacesService | undefined> {
   }
 
   useEffect(() => {
-    if (!loadService()) {
+    if (!loadService() && typeof document !== 'undefined') {
       document.addEventListener('script-loaded', loadService);
       return () => {
         document.removeEventListener('script-loaded', loadService);

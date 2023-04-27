@@ -42,11 +42,15 @@ export function Selection({ children, filter }: SelectionProps): ReactElement {
   }, [filter]);
 
   useEffect(() => {
-    document.addEventListener('mouseup', positionModal);
-    document.addEventListener('keyup', positionModal);
+    if (typeof document !== 'undefined') {
+      document.addEventListener('mouseup', positionModal);
+      document.addEventListener('keyup', positionModal);
+    }
     return () => {
-      document.removeEventListener('mouseup', positionModal);
-      document.removeEventListener('keyup', positionModal);
+      if (typeof document !== 'undefined') {
+        document.removeEventListener('mouseup', positionModal);
+        document.removeEventListener('keyup', positionModal);
+      }
     };
   }, [positionModal]);
 

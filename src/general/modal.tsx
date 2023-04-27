@@ -179,18 +179,22 @@ export function ModalsContext({ children }: ModalsContextProps): ReactElement {
   );
 
   useEffect(() => {
-    const { height, overflow } = document.body.style;
-    if (modals.length) {
-      document.body.style.height = '100vh';
-      document.body.style.overflowY = 'hidden';
-    } else {
-      document.body.style.height = height;
-      document.body.style.overflowY = overflow;
+    if (typeof document !== 'undefined') {
+      const { height, overflow } = document.body.style;
+      if (modals.length) {
+        document.body.style.height = '100vh';
+        document.body.style.overflowY = 'hidden';
+      } else {
+        document.body.style.height = height;
+        document.body.style.overflowY = overflow;
+      }
+
+      return () => {
+        document.body.style.height = height;
+        document.body.style.overflowY = overflow;
+      };
     }
-    return () => {
-      document.body.style.height = height;
-      document.body.style.overflowY = overflow;
-    };
+    return () => {};
   }, [modals.length]);
 
   return (

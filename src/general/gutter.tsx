@@ -94,11 +94,15 @@ export function Gutter({
   }, [moving, pointerStartPosition, translation]);
 
   useEffect(() => {
-    window.addEventListener('pointerup', pointerUp);
-    window.addEventListener('pointermove', pointerMove);
+    if (typeof window !== 'undefined') {
+      window.addEventListener('pointerup', pointerUp);
+      window.addEventListener('pointermove', pointerMove);
+    }
     return () => {
-      window.removeEventListener('pointerup', pointerUp);
-      window.removeEventListener('pointermove', pointerMove);
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('pointerup', pointerUp);
+        window.removeEventListener('pointermove', pointerMove);
+      }
     };
   }, [pointerMove, pointerUp]);
 

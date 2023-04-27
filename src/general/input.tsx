@@ -203,7 +203,12 @@ export function Input<V = string, S extends InputSuggestion<V> = InputSuggestion
   ]);
 
   useEffect(() => {
-    if (autoComplete === 'off' && window.MutationObserver && inputRef.current) {
+    if (
+      autoComplete === 'off' &&
+      typeof window !== 'undefined' &&
+      window.MutationObserver &&
+      inputRef.current
+    ) {
       const observerHack = new MutationObserver(() => {
         observerHack.disconnect();
         if (inputRef.current) {

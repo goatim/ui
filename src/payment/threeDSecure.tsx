@@ -16,9 +16,13 @@ export function ThreeDSecure({ url, onDone }: ThreeDSecureProps): ReactElement {
   );
 
   useEffect(() => {
-    window.addEventListener('message', handleMessage);
+    if (typeof window !== 'undefined') {
+      window.addEventListener('message', handleMessage);
+    }
     return () => {
-      window.removeEventListener('message', handleMessage);
+      if (typeof window !== undefined) {
+        window.removeEventListener('message', handleMessage);
+      }
     };
   }, [handleMessage]);
 
