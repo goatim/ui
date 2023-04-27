@@ -8,7 +8,7 @@ import {
   PointElement,
   TimeScale,
 } from 'chart.js';
-import 'chartjs-adapter-luxon';
+// import 'chartjs-adapter-luxon';
 import { QuotationHistory } from '@goatim/client';
 import { Icon } from '../../general';
 import { GoatimCoins } from '../../market';
