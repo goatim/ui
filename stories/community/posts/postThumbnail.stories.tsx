@@ -209,7 +209,7 @@ const posts = {
   match_summary: matchSummaryPost,
 };
 
-function Template({ type }: Props) {
+function Template({ type = 'orders' }: Props) {
   return <PostThumbnail post={posts[type]} />;
 }
 
