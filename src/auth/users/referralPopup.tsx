@@ -21,9 +21,6 @@ export function ReferralPopup({ referralCode, onInviteFriends }: ReferralPopupPr
         {referralCode ? (
           <span className="referral-code">{formatReferralCode(referralCode)}</span>
         ) : null}
-        <p className="event">
-          Cette semaine celui qui parraine le plus de potes on lui offre une action de Mbappé !
-        </p>
       </div>
 
       {onInviteFriends ? (
