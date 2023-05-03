@@ -28,7 +28,7 @@ const wallet: Wallet = {
   amount: 420000,
   portfolios_quotation: 785200,
   portfolios_session_variation: 45,
-  floor_withdrawal: 150000,
+  withdrawable_amount: 150000,
 };
 
 function Template({ size }: Props) {

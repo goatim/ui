@@ -16,23 +16,26 @@ export function WalletAmountDetail({
   return (
     <div className={`goatim-ui-wallet-amount-detail ${size}`}>
       <div className="section">
-        <span className="label">Pack Starter</span>
-        <GoatimCoins amount={wallet.floor_withdrawal} size="small" />
-        <span className="instruction">Reçu lors de l&apos;inscription.</span>
-      </div>
-
-      <div className={`section${size !== 'narrow' ? ' center' : ''}`}>
-        <span className="label">Solde Goatim coins</span>
+        <span className="label">Sur ton compte</span>
         <GoatimCoins amount={wallet.amount} size="small" />
       </div>
 
+      <div className={`section${size !== 'narrow' ? ' center' : ''}`}>
+        <span className="label">Tu peux retirer</span>
+        <GoatimCoins
+          amount={
+            (wallet.withdrawable_amount || 0) < (wallet.amount || 0)
+              ? wallet.withdrawable_amount || 0
+              : wallet.amount || 0
+          }
+          size="small"
+        />
+      </div>
+
       <div className={`section${size !== 'narrow' ? ' right' : ''}`}>
-        <span className="label">Plafond de retrait</span>
-        <GoatimCoins amount={(wallet.amount || 0) - (wallet.floor_withdrawal || 0)} size="small" />
-        <span className="instruction">
-          Solde GTC
-          <br />- solde intial
-        </span>
+        <span className="label">Max retirable</span>
+        <GoatimCoins amount={wallet.withdrawable_amount} size="small" />
+        <span className="instruction">Dividendes et plus-values</span>
       </div>
     </div>
   );
