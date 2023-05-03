@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { ReactElement, useMemo } from 'react';
 import { WrapperProps } from '@cezembre/fronts';
 import { formatEurosAmount, PackFactory } from '@goatim/client';
 import { Button, Wallpaper } from '../../general';
@@ -17,6 +17,16 @@ export function PackFactoryThumbnail({
   href,
   target,
 }: PackFactoryThumbnailProps): ReactElement {
+  const highestOdd = useMemo<number>(() => {
+    if (!packFactory.odds) {
+      return 0;
+    }
+    return Object.entries(packFactory.odds).reduce<number>(
+      (high, [val]) => (high < Number(val) ? Number(val) : high),
+      0,
+    );
+  }, [packFactory.odds]);
+
   return (
     <div className="goatim-ui-pack-factory-thumbnail">
       <div className="header">
@@ -24,16 +34,10 @@ export function PackFactoryThumbnail({
       </div>
 
       <div className="body">
-        {packFactory.odds ? (
-          <div className="odds">
-            {Object.entries(packFactory.odds).map(([value]) => (
-              <div key={value} className="odd">
-                <span className="label">Valeur</span>
-                <GoatimCoins amount={Number(value)} size="medium" />
-              </div>
-            ))}
-          </div>
-        ) : null}
+        <div className="odd">
+          <span className="label">Jusqu&apos;à</span>
+          <GoatimCoins amount={highestOdd} size="medium" />
+        </div>
         <span className="name">{packFactory.name}</span>
         {packFactory.price ? (
           <span className="price">{formatEurosAmount(packFactory.price)}</span>

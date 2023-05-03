@@ -12,7 +12,7 @@ const packFactory: PackFactory = {
   name: 'Silver',
   description: 'De pur produit du centre de formation de Goatim.',
   price: 399,
-  odds: { '100000': 1 },
+  odds: { '100000': 0.5, '500000': 0.5, '300000': 0.5 },
 };
 
 function Template() {

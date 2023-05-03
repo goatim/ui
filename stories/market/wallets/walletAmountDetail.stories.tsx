@@ -25,10 +25,10 @@ const wallet: Wallet = {
     thumbnail_url: 'https://picsum.photos/200',
   },
   name: 'Smart Monkey',
-  amount: 420000,
+  amount: 88000,
   portfolios_quotation: 785200,
   portfolios_session_variation: 45,
-  withdrawable_amount: 150000,
+  withdrawable_amount: 100000,
 };
 
 function Template({ size }: Props) {
