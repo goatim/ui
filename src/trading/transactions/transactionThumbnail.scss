@@ -37,11 +37,7 @@
       font-weight: 700;
       font-size: .8em;
       text-transform: uppercase;
-      margin-left: 5px;
-
-      &:first-of-type {
-        margin: 0;
-      }
+      margin-right: 5px;
     }
 
     > .label {
@@ -68,15 +64,14 @@
         font-weight: 700;
         font-size: .8em;
         text-transform: uppercase;
-        margin-left: 5px;
-
-        &:first-of-type {
-          margin: 0;
-        }
       }
 
       > .label {
         color: colors.$blue-50;
+      }
+
+      > div {
+        margin-left: 5px;
       }
     }
 
