@@ -78,7 +78,7 @@ export function MatchBoard({
     }
   }, [compositions, getCompositions]);
 
-  const { ref: rankingContainer, distance } = useElementInfiniteScroll<HTMLDivElement>({
+  const { ref: rankingContainer } = useElementInfiniteScroll<HTMLDivElement>({
     loadNextPage: loadNextCompositionsPage,
   });
 
@@ -106,7 +106,7 @@ export function MatchBoard({
       {size === 'big' || tab === 'ranking' ? (
         <div className="ranking" ref={rankingContainer}>
           <div className="header">
-            <span className="title">Classement {distance}</span>
+            <span className="title">Classement</span>
           </div>
 
           {compositions.length ? (
