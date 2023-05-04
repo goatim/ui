@@ -2,12 +2,12 @@ import { ReactElement, useCallback, useState } from 'react';
 import { Field, Form, FormContext, FormFields, FormState } from '@cezembre/forms';
 import { FormProps } from '@cezembre/forms/dist/form';
 import { CreditCardInput, CreditCardValue } from './creditCardInput';
-import { Button, Checkbox } from '../general';
+import { Button } from '../general';
 
 export interface CreditCardFields extends FormFields {
   type: 'card';
   card?: CreditCardValue;
-  save_card?: boolean;
+  // save_card?: boolean;
 }
 
 export interface CreditCardFormProps extends FormProps<CreditCardFields> {
@@ -36,13 +36,13 @@ export function CreditCardForm({ onSubmit, onCancel }: CreditCardFormProps): Rea
         />
       </div>
 
-      <div className="field">
-        <Field label="Enregistrer la carte" name="save_card" component={Checkbox} initialValue />
-      </div>
+      {/* <div className="field"> */}
+      {/*  <Field label="Enregistrer la carte" name="save_card" component={Checkbox} initialValue /> */}
+      {/* </div> */}
 
       <div className="actions">
         {onCancel ? (
-          <Button type="button" onClick={onCancel}>
+          <Button type="button" onClick={onCancel} theme="transparent-dark">
             Annuler
           </Button>
         ) : null}
@@ -53,7 +53,7 @@ export function CreditCardForm({ onSubmit, onCancel }: CreditCardFormProps): Rea
           success={formState?.submitSucceeded}
           disabled={!formState?.isValid}
           errored={formState?.submitFailed}>
-          Ajouter cette carte
+          Valider cette carte
         </Button>
       </div>
 
