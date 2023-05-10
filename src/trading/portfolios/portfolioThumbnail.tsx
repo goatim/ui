@@ -72,7 +72,7 @@ export function PortfolioThumbnail({
       <div className="header">
         <div className="buy-price">
           <span className="label">Prix d&apos;achat</span>
-          <GoatimCoins amount={portfolio.buy_price} size="small" />
+          <GoatimCoinsAmount amount={portfolio.buy_price} size="small" />
         </div>
         <div className="nb-shares">
           <span className="label">Quantité</span>
@@ -97,7 +97,7 @@ export function PortfolioThumbnail({
         <div className="metrics">
           <div className="dividends">
             <span className="label">Dividendes</span>
-            <GoatimCoins amount={portfolio.dividends_gains} size="medium" />
+            <GoatimCoinsAmount amount={portfolio.dividends_gains} size="medium" />
           </div>
 
           <div className="gains">

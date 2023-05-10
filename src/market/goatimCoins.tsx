@@ -14,7 +14,7 @@ export interface GoatimCoinsProps {
   theme?: GoatimCoinsTheme;
 }
 
-export function GoatimCoins({
+export function GoatimCoinsAmount({
   children,
   amount,
   decimalDigits = 2,

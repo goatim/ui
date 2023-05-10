@@ -1,14 +1,13 @@
 import { ReactElement } from 'react';
 import { Wrapper } from '@cezembre/fronts';
 import { GoatimCoinsGains } from '../goatimCoinsGains';
-import { GoatimCoins } from '../goatimCoins';
 import { Score } from '../../general';
 import { WalletThumbnail, WalletThumbnailProps } from './walletThumbnail';
 
 export interface WalletRankProps extends WalletThumbnailProps {
   position?: number;
   score?: number;
-  amount?: number;
+  coins?: number;
   gains?: number;
 }
 
@@ -18,13 +17,13 @@ export function WalletRank({
   theme = 'dark',
   showPicture,
   showName,
-  showAmount,
+  showCoins,
   onClick,
   href,
   target,
   position,
   score,
-  amount,
+  coins,
   gains,
 }: WalletRankProps): ReactElement {
   return (
@@ -42,15 +41,15 @@ export function WalletRank({
             theme={theme}
             showPicture={showPicture}
             showName={showName}
-            showAmount={showAmount}
+            showCoins={showCoins}
           />
         </div>
       </div>
 
       <div className="metrics">
         {typeof score === 'number' ? <Score score={score} theme={theme} /> : null}
-        {typeof amount === 'number' ? (
-          <GoatimCoins amount={amount} theme={theme} size={size} />
+        {typeof coins === 'number' ? (
+          <GoatimCoinsAmount amount={coins} theme={theme} size={size} />
         ) : null}
         {typeof gains === 'number' ? <GoatimCoinsGains gains={gains} size={size} /> : null}
       </div>

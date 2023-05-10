@@ -1,32 +1,32 @@
 import { ReactElement } from 'react';
 import { Wallet } from '@goatim/client';
-import { GoatimCoins } from '../goatimCoins';
+import { GoatimCoinsAmount } from '../goatimCoins';
 
-export type WalletAmountDetailSize = 'narrow' | 'normal';
+export type WalletCoinsDetailSize = 'narrow' | 'normal';
 
-export interface WalletAmountDetailProps {
+export interface WalletCoinsDetailProps {
   wallet: Wallet;
-  size?: WalletAmountDetailSize;
+  size?: WalletCoinsDetailSize;
 }
 
-export function WalletAmountDetail({
+export function WalletCoinsDetail({
   wallet,
   size = 'normal',
-}: WalletAmountDetailProps): ReactElement {
+}: WalletCoinsDetailProps): ReactElement {
   return (
-    <div className={`goatim-ui-wallet-amount-detail ${size}`}>
+    <div className={`goatim-ui-wallet-coins-detail ${size}`}>
       <div className="section">
         <span className="label">Sur ton compte</span>
-        <GoatimCoins amount={wallet.amount} size="small" />
+        <GoatimCoinsAmount amount={wallet.coins} size="small" />
       </div>
 
       <div className={`section${size !== 'narrow' ? ' center' : ''}`}>
         <span className="label">Tu peux retirer</span>
-        <GoatimCoins
+        <GoatimCoinsAmount
           amount={
-            (wallet.withdrawable_amount || 0) < (wallet.amount || 0)
-              ? wallet.withdrawable_amount || 0
-              : wallet.amount || 0
+            (wallet.withdrawable_coins || 0) < (wallet.coins || 0)
+              ? wallet.withdrawable_coins || 0
+              : wallet.coins || 0
           }
           size="small"
         />
@@ -34,7 +34,7 @@ export function WalletAmountDetail({
 
       <div className={`section${size !== 'narrow' ? ' right' : ''}`}>
         <span className="label">Max retirable</span>
-        <GoatimCoins amount={wallet.withdrawable_amount} size="small" />
+        <GoatimCoinsAmount amount={wallet.withdrawable_coins} size="small" />
         <span className="instruction">Dividendes et plus-values</span>
       </div>
     </div>

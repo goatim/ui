@@ -37,7 +37,7 @@ const wallet: Wallet = {
     thumbnail_url: 'https://picsum.photos/200',
   },
   name: 'Smart Monkey',
-  amount: 420000,
+  coins: 420000,
   portfolios_quotation: 785200,
   portfolios_session_variation: 45,
 };

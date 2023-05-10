@@ -3,7 +3,7 @@ import { JSXElementConstructor } from 'react';
 import { GoatimCoins, GoatimCoinsSize, GoatimCoinsTheme } from '../../src';
 
 interface Props {
-  amount?: number;
+  coins?: number;
   size?: GoatimCoinsSize;
   theme?: GoatimCoinsTheme;
   decimalDigits?: number;
@@ -13,7 +13,7 @@ export default {
   title: 'Market/GoatimCoins',
   component: GoatimCoins,
   argTypes: {
-    amount: {
+    coins: {
       control: {
         type: 'number',
         step: 100,
@@ -41,18 +41,16 @@ export default {
 };
 
 const Template: StoryFn<JSXElementConstructor<Props>> = ({
-  amount,
+  coins,
   decimalDigits,
   size,
   theme,
-}: Props) => (
-  <GoatimCoins amount={amount} decimalDigits={decimalDigits} size={size} theme={theme} />
-);
+}: Props) => <GoatimCoins coins={coins} decimalDigits={decimalDigits} size={size} theme={theme} />;
 
 export const Default = Template.bind({});
 
 Default.args = {
-  amount: 50,
+  coins: 50,
   size: 'small',
   theme: 'dark',
 };

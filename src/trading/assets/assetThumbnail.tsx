@@ -143,7 +143,11 @@ export const AssetThumbnail = forwardRef<
               />
             </div>
             <div className="quotation">
-              <GoatimCoins amount={asset.quotation} size={quotationSize} theme={quotationTheme} />
+              <GoatimCoinsAmount
+                amount={asset.quotation}
+                size={quotationSize}
+                theme={quotationTheme}
+              />
             </div>
           </div>
         ) : null}

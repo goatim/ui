@@ -39,7 +39,7 @@ export default {
         type: 'select',
       },
     },
-    showAmount: {
+    showCoins: {
       control: {
         type: 'boolean',
         defaultValue: false,
@@ -79,7 +79,7 @@ const wallet: Wallet = {
     thumbnail_url: 'https://picsum.photos/200',
   },
   name: 'Smart Monkey',
-  amount: 40000000,
+  coins: 40000000,
 };
 
 const Template: StoryFn<JSXElementConstructor<WalletThumbnailProps>> = ({
@@ -89,7 +89,7 @@ const Template: StoryFn<JSXElementConstructor<WalletThumbnailProps>> = ({
   showPicture,
   pictureOutline,
   showName,
-  showAmount,
+  showCoins,
 }: WalletThumbnailProps) => (
   <WalletThumbnail
     wallet={wallet}
@@ -99,7 +99,7 @@ const Template: StoryFn<JSXElementConstructor<WalletThumbnailProps>> = ({
     showPicture={showPicture}
     pictureOutline={pictureOutline}
     showName={showName}
-    showAmount={showAmount}
+    showCoins={showCoins}
   />
 );
 

@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 import { Pack } from '@goatim/client';
 import { ShareBulkList } from '../shareBulks';
-import { GoatimCoins } from '../../market';
+import { GoatimCoinsAmount } from '../../market';
 import { Wallpaper } from '../../general';
 
 export type PackThumbnailSize = 'narrow' | 'normal';
@@ -31,7 +31,7 @@ export function PackThumbnail({ pack, size = 'normal' }: PackThumbnailProps): Re
         </div>
         <div className="valuation">
           <span className="label">Valorisation</span>
-          <GoatimCoins amount={pack.valuation} />
+          <GoatimCoinsAmount amount={pack.valuation} />
         </div>
       </div>
       <div className="wallpaper">

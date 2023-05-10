@@ -20,7 +20,7 @@ export function MatchHeader({ match, theme = 'dark' }: MatchHeaderProps): ReactE
       <div className="rewards">
         <div className="reward">
           <span className="label">Gain 1er:</span>
-          <span className="amount">+0.003 ETH</span>
+          <span className="coins">+0.003 ETH</span>
         </div>
         <div className="reward">
           <span className="label">Gain 2ème:</span>

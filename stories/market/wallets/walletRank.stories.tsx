@@ -8,7 +8,7 @@ interface Props {
   theme?: WalletThumbnailTheme;
   showPicture?: boolean;
   showName?: boolean;
-  showAmount?: boolean;
+  showCoins?: boolean;
   is_defined?: boolean;
 }
 
@@ -32,7 +32,7 @@ export default {
         type: 'boolean',
       },
     },
-    showAmount: {
+    showCoins: {
       control: {
         type: 'boolean',
       },
@@ -70,7 +70,7 @@ const wallet: Wallet = {
     thumbnail_url: 'https://picsum.photos/200',
   },
   name: 'Smart Monkey',
-  amount: 40000000,
+  coins: 40000000,
 };
 
 const Template: StoryFn<JSXElementConstructor<Props>> = ({
@@ -78,7 +78,7 @@ const Template: StoryFn<JSXElementConstructor<Props>> = ({
   theme,
   showPicture,
   showName,
-  showAmount,
+  showCoins,
   is_defined,
 }: Props) => (
   <WalletRank
@@ -87,9 +87,9 @@ const Template: StoryFn<JSXElementConstructor<Props>> = ({
     theme={theme}
     showPicture={showPicture}
     showName={showName}
-    showAmount={showAmount}
+    showCoins={showCoins}
     position={4}
-    amount={4000}
+    coins={4000}
   />
 );
 
@@ -99,6 +99,6 @@ Default.args = {
   size: 'small',
   showPicture: true,
   showName: true,
-  showAmount: false,
+  showCoins: false,
   theme: 'dark',
 };

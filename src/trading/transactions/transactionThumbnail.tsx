@@ -55,7 +55,7 @@ export function TransactionThumbnail({
       <div className="resume">
         <span>{transaction.nb_shares || 0}</span>
         <span className="label">actions pour</span>
-        <GoatimCoins amount={transaction.price} />
+        <GoatimCoinsAmount amount={transaction.price} />
       </div>
 
       {transaction.asset && typeof transaction.asset === 'object' ? (
@@ -68,7 +68,7 @@ export function TransactionThumbnail({
         <div className="quotation">
           <span className="label">Cours</span>
           <div>
-            <GoatimCoins amount={transaction.price} />
+            <GoatimCoinsAmount amount={transaction.price} />
           </div>
           <div>
             <PercentageVariation variation={transaction.asset_quotation_variation} />

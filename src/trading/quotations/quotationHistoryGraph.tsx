@@ -10,7 +10,7 @@ import {
 } from 'chart.js';
 import { QuotationHistory } from '@goatim/client';
 import { Icon } from '../../general';
-import { GoatimCoins } from '../../market';
+import { GoatimCoinsAmount } from '../../market';
 import 'chartjs-adapter-luxon';
 
 Chart.register(LineController, LinearScale, TimeScale, PointElement, LineElement, Filler);
@@ -148,7 +148,7 @@ export function QuotationHistoryGraph({
       {quotationHistory?.data.length === 1 ? (
         <div className="placeholder">
           <Icon name="git-commit" size={20} />
-          <GoatimCoins amount={quotationHistory.data[0].a} />
+          <GoatimCoinsAmount amount={quotationHistory.data[0].a} />
         </div>
       ) : (
         <div className="placeholder">

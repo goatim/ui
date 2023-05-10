@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import { OrderBook } from '@goatim/client';
-import { GoatimCoins } from '../../market';
+import { GoatimCoinsAmount } from '../../market';
 
 export type OrderBookThumbnailSize = 'narrow' | 'small' | 'medium' | 'big';
 
@@ -44,7 +44,7 @@ export function OrderBookThumbnail({
                       <span className="data">{order.total_shares}</span>
                     </td>
                     <td>
-                      <GoatimCoins amount={order.price_limit} size="small" />
+                      <GoatimCoinsAmount amount={order.price_limit} size="small" />
                     </td>
                   </tr>
                 ))}
@@ -72,7 +72,7 @@ export function OrderBookThumbnail({
                   <tr key={order.price_limit}>
                     <td>
                       {size !== 'narrow' ? (
-                        <GoatimCoins amount={order.price_limit} size="small" />
+                        <GoatimCoinsAmount amount={order.price_limit} size="small" />
                       ) : (
                         <span className="data">{order.nb_orders}</span>
                       )}
@@ -84,7 +84,7 @@ export function OrderBookThumbnail({
                       {size !== 'narrow' ? (
                         <span className="data">{order.nb_orders}</span>
                       ) : (
-                        <GoatimCoins amount={order.price_limit} size="small" />
+                        <GoatimCoinsAmount amount={order.price_limit} size="small" />
                       )}
                     </td>
                   </tr>

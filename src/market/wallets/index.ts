@@ -1,4 +1,4 @@
-export * from './walletAmountDetail';
+export * from './walletCoinsDetail';
 export * from './walletEditor';
 export * from './walletList';
 export * from './walletMetrics';

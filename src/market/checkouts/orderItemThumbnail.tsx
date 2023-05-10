@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 import { formatEurosAmount, OrderItem } from '@goatim/client';
 import { AssetThumbnail, BoosterIcon } from '../../trading';
-import { GoatimCoins } from '../goatimCoins';
+import { GoatimCoinsAmount } from '../goatimCoins';
 import { Icon } from '../../general';
 
 export type OrderItemThumbnailSize = 'narrow' | 'normal';
@@ -45,9 +45,9 @@ export function OrderItemThumbnail({
           <span>Limite</span>
           <div className="content">
             <div>
-              <GoatimCoins amount={orderItem.price_limit} size="medium" />
+              <GoatimCoinsAmount amount={orderItem.price_limit} size="medium" />
               <br />
-              <GoatimCoins
+              <GoatimCoinsAmount
                 amount={(orderItem.price_limit || 0) * (orderItem.nb_shares || 1)}
                 size="medium"
                 theme="darker"

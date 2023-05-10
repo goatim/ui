@@ -21,7 +21,7 @@ export function TradingBanner({ goatimCoinsRate, wallet }: TradingBannerProps): 
           <WalletThumbnail
             wallet={wallet}
             theme="light"
-            showAmount
+            showCoins
             showPicture={false}
             align="right"
           />

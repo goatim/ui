@@ -36,8 +36,8 @@ export function DividendThumbnail({
           />
         </div>
       ) : null}
-      <div className="amount">
-        <GoatimCoinsGains gains={dividend.amount} />
+      <div className="coins">
+        <GoatimCoinsGains gains={dividend.coins} />
       </div>
     </div>
   );

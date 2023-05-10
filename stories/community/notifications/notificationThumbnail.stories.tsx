@@ -107,7 +107,7 @@ const composition: Composition = {
       thumbnail_url: 'https://picsum.photos/200?a=a',
     },
     name: 'Leo',
-    amount: 40000000,
+    coins: 40000000,
   },
   position: 1,
   variation: 1.23,

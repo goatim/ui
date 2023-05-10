@@ -1,8 +1,8 @@
 import { ForwardedRef, forwardRef, ReactElement, useMemo } from 'react';
 import { Wallet } from '@goatim/client';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
-import { GoatimCoins } from '../goatimCoins';
 import { WalletPicture, WalletPictureOutline } from './walletPicture';
+import { GoatimCoinsAmount } from '../goatimCoins';
 
 export type WalletThumbnailSize = 'small' | 'medium' | 'big' | 'large';
 
@@ -18,7 +18,7 @@ export interface WalletThumbnailProps extends WrapperProps {
   showPicture?: boolean;
   pictureOutline?: WalletPictureOutline;
   showName?: boolean;
-  showAmount?: boolean;
+  showCoins?: boolean;
   align?: AlignSetting;
 }
 
@@ -32,7 +32,7 @@ export const WalletThumbnail = forwardRef<
     showPicture = true,
     pictureOutline,
     showName = true,
-    showAmount = false,
+    showCoins = false,
     align = 'left',
     theme = 'dark',
     shape = 'inline',
@@ -54,12 +54,12 @@ export const WalletThumbnail = forwardRef<
       classNames.push('show-name');
     }
 
-    if (showAmount) {
-      classNames.push('show-amount');
+    if (showCoins) {
+      classNames.push('show-coins');
     }
 
     return classNames.join(' ');
-  }, [align, showAmount, showName, showPicture, size, theme, shape]);
+  }, [align, showCoins, showName, showPicture, size, theme, shape]);
 
   return (
     <Wrapper
@@ -72,10 +72,10 @@ export const WalletThumbnail = forwardRef<
       {showPicture ? (
         <WalletPicture wallet={wallet} size={size} theme={theme} outline={pictureOutline} />
       ) : null}
-      {showName || showAmount ? (
+      {showName || showCoins ? (
         <div className="body">
           {showName ? <span className="name">{wallet.name || wallet.slug}</span> : null}
-          {showAmount ? <GoatimCoins amount={wallet.amount} theme={theme} /> : null}
+          {showCoins ? <GoatimCoinsAmount amount={wallet.coins} theme={theme} /> : null}
         </div>
       ) : null}
     </Wrapper>

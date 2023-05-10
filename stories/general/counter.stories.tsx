@@ -1,5 +1,5 @@
 import { Field, Form } from '@cezembre/forms';
-import { adaptGoatimCoinsAmount, resolveGoatimCoinsAmount } from '@goatim/client';
+import { adaptGoatimCoinsCoins, resolveGoatimCoinsCoins } from '@goatim/client';
 import { Counter } from '../../src';
 
 interface Props {
@@ -25,8 +25,8 @@ function Template({ label }: Props) {
         name="counter"
         component={Counter}
         label={label || 'Montant (GTC)'}
-        resolver={resolveGoatimCoinsAmount}
-        adapter={adaptGoatimCoinsAmount}
+        resolver={resolveGoatimCoinsCoins}
+        adapter={adaptGoatimCoinsCoins}
         increment={100}
         initialValue={42000}
         conversion="0.002 ETH"

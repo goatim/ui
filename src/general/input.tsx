@@ -52,7 +52,7 @@ export type AutoComplete =
   | 'cc-csc'
   | 'cc-type'
   | 'pack-currency'
-  | 'pack-amount'
+  | 'pack-coins'
   | 'language'
   | 'bday'
   | 'bday-day'

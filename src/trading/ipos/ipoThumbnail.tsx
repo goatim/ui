@@ -1,7 +1,7 @@
 import { ReactElement, useMemo } from 'react';
 import { Ipo } from '@goatim/client';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
-import { GoatimCoins, GoatimCoinsSize } from '../../market';
+import { GoatimCoinsAmount, GoatimCoinsSize } from '../../market';
 import { AssetThumbnail, AssetThumbnailSize } from '../assets';
 import { DateTimeThumbnail } from '../../general/dateTimeThumbnail';
 
@@ -65,7 +65,7 @@ export function IpoThumbnail({
             />
           </div>
           <div className="quotation">
-            <GoatimCoins amount={ipo.asset.quotation} size={quotationSize} />
+            <GoatimCoinsAmount amount={ipo.asset.quotation} size={quotationSize} />
           </div>
         </div>
       ) : null}

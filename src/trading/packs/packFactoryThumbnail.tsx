@@ -2,7 +2,7 @@ import { ReactElement, useMemo } from 'react';
 import { WrapperProps } from '@cezembre/fronts';
 import { formatEurosAmount, PackFactory } from '@goatim/client';
 import { Button, Wallpaper } from '../../general';
-import { GoatimCoins } from '../../market';
+import { GoatimCoinsAmount } from '../../market';
 import randomShareBulks from './assets/random-share-bulks.png';
 
 export interface PackFactoryThumbnailProps extends WrapperProps {
@@ -36,7 +36,7 @@ export function PackFactoryThumbnail({
       <div className="body">
         <div className="odd">
           <span className="label">Jusqu&apos;à</span>
-          <GoatimCoins amount={highestOdd} size="medium" />
+          <GoatimCoinsAmount amount={highestOdd} size="medium" />
         </div>
         <span className="name">{packFactory.name}</span>
         {packFactory.price ? (

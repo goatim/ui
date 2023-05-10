@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 import { Order } from '@goatim/client';
 import { AssetThumbnail } from '../assets';
-import { GoatimCoins } from '../../market';
+import { GoatimCoinsAmount } from '../../market';
 import { Icon } from '../../general';
 import { BoosterIcon } from '../boosters';
 
@@ -41,10 +41,10 @@ export function OrderThumbnail({
           <span>Limite</span>
           <div className="content">
             <div>
-              <GoatimCoins amount={order.price_limit} size="medium" />
+              <GoatimCoinsAmount amount={order.price_limit} size="medium" />
               <br />
               <GoatimCoins
-                amount={(order.price_limit || 0) * (order.nb_shares || 1)}
+                coins={(order.price_limit || 0) * (order.nb_shares || 1)}
                 size="medium"
                 theme="darker"
               />

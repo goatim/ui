@@ -26,7 +26,7 @@ const wallet: Wallet = {
     thumbnail_url: 'https://picsum.photos/200',
   },
   name: 'Smart Monkey',
-  amount: 40000000,
+  coins: 40000000,
 };
 
 const tournamentParticipant1: TournamentParticipant = {

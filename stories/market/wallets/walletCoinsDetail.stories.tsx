@@ -1,13 +1,13 @@
 import { Wallet } from '@goatim/client';
-import { WalletAmountDetail, WalletAmountDetailSize } from '../../../src';
+import { WalletCoinsDetail, WalletCoinsDetailSize } from '../../../src';
 
 interface Props {
-  size?: WalletAmountDetailSize;
+  size?: WalletCoinsDetailSize;
 }
 
 export default {
-  title: 'Market/WalletAmountDetail',
-  component: WalletAmountDetail,
+  title: 'Market/WalletCoinsDetail',
+  component: WalletCoinsDetail,
   argTypes: {
     size: {
       control: {
@@ -25,14 +25,14 @@ const wallet: Wallet = {
     thumbnail_url: 'https://picsum.photos/200',
   },
   name: 'Smart Monkey',
-  amount: 88000,
+  coins: 88000,
   portfolios_quotation: 785200,
   portfolios_session_variation: 45,
-  withdrawable_amount: 100000,
+  withdrawable_coins: 100000,
 };
 
 function Template({ size }: Props) {
-  return <WalletAmountDetail wallet={wallet} size={size} />;
+  return <WalletCoinsDetail wallet={wallet} size={size} />;
 }
 
 export const Default = Template.bind({});

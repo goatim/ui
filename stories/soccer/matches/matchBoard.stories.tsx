@@ -148,14 +148,14 @@ const dividends: Dividend[] = [
     id: 'di_qedqd54qd5',
     asset,
     percentage: 376,
-    amount: 3200,
+    coins: 3200,
     nb_distributed: 75,
   },
   {
     id: 'di_qeqzd54qd5',
     asset,
     percentage: 458,
-    amount: 6500,
+    coins: 6500,
     nb_distributed: 88,
   },
 ];

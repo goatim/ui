@@ -11,7 +11,7 @@ import {
 import { FormSubmitFunction } from '@cezembre/forms/dist/state';
 import { Button, Counter } from '../../general';
 import { OrderBookThumbnail, OrderBookThumbnailSize } from '../../trading';
-import { GoatimCoins } from '../goatimCoins';
+import { GoatimCoinsAmount } from '../goatimCoins';
 
 export interface OrderItemEditorFields extends FormFields {
   asset?: Asset | string;
@@ -170,7 +170,7 @@ export function OrderItemEditor({
           />
           <div className="total">
             <span className="label">Total</span>
-            <GoatimCoins
+            <GoatimCoinsAmount
               amount={(formState?.values?.nb_shares || 0) * (formState?.values?.price_limit || 0)}
               size="medium"
               theme="darker"
@@ -214,7 +214,7 @@ export function OrderItemEditor({
         <div className="bank-proposal">
           <span className="caption">Sinon Goatim t&apos;en propose</span>
           <div className="quotation">
-            <GoatimCoins
+            <GoatimCoinsAmount
               amount={formState.values.nb_shares * bankProposalQuotation}
               theme="gold"
               size="medium"
