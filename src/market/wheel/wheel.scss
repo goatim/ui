@@ -1,0 +1,221 @@
+@use '../../styles/colors';
+
+.goatim-ui-wheel {
+  max-width: 100%;
+  transition: background linear 100ms;
+  background: linear-gradient(-30deg, #96813C, colors.$gold);
+  position: relative;
+  overflow: hidden;
+
+  &.small {
+    width: 200px;
+    height: 200px;
+    border-radius: 5px;
+  }
+
+  &.medium {
+    width: 300px;
+    height: 300px;
+    border-radius: 10px;
+  }
+
+  &.big {
+    width: 400px;
+    height: 400px;
+    border-radius: 20px;
+  }
+
+  > .header {
+    padding: 50px 20px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    opacity: 1;
+    z-index: 1;
+    position: relative;
+
+    > h1 {
+      color: white;
+      text-align: center;
+      font-size: 1em;
+      margin: 0;
+      padding: 0;
+    }
+
+    > p {
+      color: white;
+      text-align: center;
+      font-size: .9em;
+      font-weight: 500;
+    }
+
+    > .action {
+      margin-top: 20px;
+    }
+  }
+
+  > .wheel-cover {
+    width: 100%;
+    height: 50%;
+    object-fit: cover;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 0;
+  }
+
+  &.no-ticket {
+    > .wheel-cover {
+      opacity: .5;
+    }
+  }
+
+  &.spinning {
+    &:before {
+      content: "";
+      display: block;
+      position: absolute;
+      background: colors.$fushia;
+      width: 3px;
+      height: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      top: 10px;
+      z-index: 1;
+      opacity: 1;
+    }
+
+    @keyframes spin-to-loss-1 {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(1462.5deg);
+      }
+    }
+
+    @keyframes spin-to-win-1 {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(1507.5deg);
+      }
+    }
+
+    @keyframes spin-to-loss-2 {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(1552.5deg);
+      }
+    }
+
+    @keyframes spin-to-win-2 {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(1597.5deg);
+      }
+    }
+
+    @keyframes spin-to-loss-3 {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(1642.5deg);
+      }
+    }
+
+    @keyframes spin-to-win-3 {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(1687.5deg);
+      }
+    }
+
+    @keyframes spin-to-chance {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(1732.5deg);
+      }
+    }
+
+    @keyframes spin-to-win-4 {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(1777.5deg);
+      }
+    }
+
+    > .wheel {
+      width: 100%;
+      height: 100%;
+      padding: 20px;
+      object-fit: contain;
+      z-index: 0;
+      opacity: 1;
+      position: relative;
+      animation: 3s ease-out forwards;
+    }
+
+    &.pack {
+      > .wheel {
+        animation-name: spin-to-win-1;
+      }
+    }
+
+    &.loss {
+      > .wheel {
+        animation-name: spin-to-loss-1;
+      }
+    }
+
+    &.ticket {
+      > .wheel {
+        animation-name: spin-to-chance;
+      }
+    }
+  }
+
+  &.show-result {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: white;
+
+    > .icon {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+    }
+
+    > h1 {
+      color: colors.$gold;
+      text-align: center;
+      font-size: 1em;
+      padding: 0;
+      margin: 20px 0 0;
+    }
+
+    > p {
+      text-align: center;
+      font-size: 1em;
+      font-style: italic;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  }
+}
