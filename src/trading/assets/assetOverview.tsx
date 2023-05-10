@@ -4,7 +4,7 @@ import { QuotationHistory } from '@goatim/client/dist/trading/quotations/model';
 import { UrlObject } from 'url';
 import { QuotationHistoryGraph } from '../quotations';
 import {
-  GoatimCoins,
+  GoatimCoinsAmount,
   GoatimCoinsSize,
   ItemEditor,
   ItemEditorFields,

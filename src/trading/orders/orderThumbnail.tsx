@@ -43,8 +43,8 @@ export function OrderThumbnail({
             <div>
               <GoatimCoinsAmount amount={order.price_limit} size="medium" />
               <br />
-              <GoatimCoins
-                coins={(order.price_limit || 0) * (order.nb_shares || 1)}
+              <GoatimCoinsAmount
+                amount={(order.price_limit || 0) * (order.nb_shares || 1)}
                 size="medium"
                 theme="darker"
               />

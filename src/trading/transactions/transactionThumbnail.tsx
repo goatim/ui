@@ -1,7 +1,7 @@
 import { ReactElement, useMemo } from 'react';
 import { Transaction } from '@goatim/client';
 import { DateTime } from 'luxon';
-import { GoatimCoins, PercentageVariation, WalletThumbnail } from '../../market';
+import { GoatimCoinsAmount, PercentageVariation, WalletThumbnail } from '../../market';
 import { AssetThumbnail, AssetThumbnailSize } from '../assets';
 import { Icon } from '../../general';
 

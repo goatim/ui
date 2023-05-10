@@ -3,6 +3,7 @@ import { Wrapper } from '@cezembre/fronts';
 import { GoatimCoinsGains } from '../goatimCoinsGains';
 import { Score } from '../../general';
 import { WalletThumbnail, WalletThumbnailProps } from './walletThumbnail';
+import {GoatimCoinsAmount} from "../goatimCoins";
 
 export interface WalletRankProps extends WalletThumbnailProps {
   position?: number;

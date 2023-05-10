@@ -3,7 +3,7 @@ import { Asset, Booster, Portfolio } from '@goatim/client';
 import { Wrapper } from '@cezembre/fronts';
 import { UrlObject } from 'url';
 import { AssetThumbnail, AssetThumbnailSize } from '../assets';
-import { GoatimCoins, GoatimCoinsGains, PercentageVariation } from '../../market';
+import { GoatimCoinsAmount, GoatimCoinsGains, PercentageVariation } from '../../market';
 import { Button } from '../../general';
 import { QuotationHistoryGraph } from '../quotations';
 

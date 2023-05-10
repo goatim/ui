@@ -5,7 +5,7 @@ import { QuotationHistory } from '@goatim/client/dist/trading/quotations/model';
 import { UrlObject } from 'url';
 import { PlayerThumbnail, PlayerThumbnailSize, PlayerThumbnailTheme } from '../../soccer';
 import {
-  GoatimCoins,
+  GoatimCoinsAmount,
   GoatimCoinsSize,
   GoatimCoinsTheme,
   PercentageVariation,
