@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { CurrenciesRate, formatCurrencyCoins } from '@goatim/client';
+import { CurrenciesRate, formatCurrencyAmount } from '@goatim/client';
 import { PercentageVariation } from '../percentageVariation';
 
 export type CurrenciesRateThumbnailTheme = 'dark' | 'light';
@@ -20,7 +20,7 @@ export function CurrenciesRateThumbnail({
       <div className="rates">
         {currenciesRate.base_currency && typeof currenciesRate.base_currency === 'object' ? (
           <span className="base-currency">
-            {formatCurrencyCoins(
+            {formatCurrencyAmount(
               1 / Number(currenciesRate.base_currency.smallest_unit),
               currenciesRate.base_currency.iso,
             )}{' '}
@@ -29,7 +29,7 @@ export function CurrenciesRateThumbnail({
         ) : null}
         {currenciesRate.target_currency && typeof currenciesRate.target_currency === 'object' ? (
           <span className="target-currency">
-            {formatCurrencyCoins(
+            {formatCurrencyAmount(
               (currenciesRate.rate || 0) / Number(currenciesRate.target_currency.smallest_unit),
               currenciesRate.target_currency.iso,
             )}

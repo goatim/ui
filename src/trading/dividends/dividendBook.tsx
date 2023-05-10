@@ -47,7 +47,7 @@ export function DividendBook({
                     <PercentageVariation variation={dividend.percentage} />
                   </td>
                   <td className="right">
-                    <GoatimCoinsGains gains={dividend.coins} size="small" />
+                    <GoatimCoinsGains gains={dividend.amount} size="small" />
                   </td>
                 </tr>
               ))}
