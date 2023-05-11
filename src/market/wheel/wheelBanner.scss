@@ -17,6 +17,12 @@
     height: 100%;
   }
 
+  &.small {
+    > img {
+      display: none;
+    }
+  }
+
   > .body {
     display: flex;
     flex-direction: column;
