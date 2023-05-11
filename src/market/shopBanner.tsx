@@ -1,14 +1,41 @@
-import { ReactElement } from 'react';
+import { ReactElement, useMemo } from 'react';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
 import soccerDuel from '../general/assets/soccer-duel.jpg';
+import { Button } from '../general';
 
-export function ShopBanner({ onClick, href, target }: WrapperProps): ReactElement {
+export type ShopBannerSize = 'small' | 'medium' | 'big';
+
+export interface ShopBannerProps extends WrapperProps {
+  size?: ShopBannerSize;
+}
+
+export function ShopBanner({
+  size = 'small',
+  onClick,
+  href,
+  target,
+}: ShopBannerProps): ReactElement {
+  const className = useMemo(() => {
+    const classNames: string[] = ['goatim-ui-shop-banner', size];
+
+    return classNames.join(' ');
+  }, [size]);
+
   return (
-    <Wrapper className="goatim-ui-shop-banner" onClick={onClick} href={href} target={target}>
-      <img src={soccerDuel} alt="Soccer Duel" />
+    <Wrapper className={className} onClick={onClick} href={href} target={target}>
+      <img src={soccerDuel} alt="Wheel cover" />
       <div className="body">
-        <h1>Goatim Store</h1>
-        <h2>Boostes tes performances !</h2>
+        <span className="label">Goatim store</span>
+        <span className="title">Fais le plein !</span>
+        <p>
+          T’as plus assez de GTC pour t’acheter un joueur ou personne ne veut te vendre sa pépite ?
+          Fonce et tente ta chance avec un pack !
+        </p>
+        <div className="action">
+          <Button shape="text" theme="light">
+            Accéder au store
+          </Button>
+        </div>
       </div>
     </Wrapper>
   );
