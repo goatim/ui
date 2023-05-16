@@ -48,7 +48,7 @@ export function PhoneInput({
       <Form className="body" onChange={onChange}>
         <div className="region-code-selector">
           <Field<string | undefined>
-            name="region-code"
+            name="region_code"
             component={Select}
             initialValue={value?.region_code}
             options={[
