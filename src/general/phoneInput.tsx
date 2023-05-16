@@ -61,12 +61,176 @@ export function PhoneInput({
                 element: '🇧🇪 BE',
               },
               {
-                value: 'US',
-                element: '🇺🇸 US',
+                value: 'CH',
+                element: '🇨🇭 CH',
+              },
+              {
+                value: 'MC',
+                element: '🇲🇨 MC',
+              },
+              {
+                value: 'LU',
+                element: '🇱🇺 LU',
+              },
+              {
+                value: 'CA',
+                element: '🇨🇦 CA',
+              },
+              {
+                value: 'NL',
+                element: '🇳🇱 NL',
+              },
+              {
+                value: 'MA',
+                element: '🇲🇦 MA',
+              },
+              {
+                value: 'DZ',
+                element: '🇩🇿',
+              },
+              {
+                value: 'TN',
+                element: '🇹🇳 TN',
               },
               {
                 value: 'GB',
                 element: '🇬🇧 GB',
+              },
+              {
+                value: 'DE',
+                element: '🇩🇪 DE',
+              },
+              {
+                value: 'IT',
+                element: '🇮🇹 IT',
+              },
+              {
+                value: 'ES',
+                element: '🇪🇸 ES',
+              },
+              {
+                value: 'PT',
+                element: '🇵🇹 PT',
+              },
+              {
+                value: 'US',
+                element: '🇺🇸 US',
+              },
+              {
+                value: 'IE',
+                element: '🇮🇪 IE',
+              },
+              {
+                value: 'GP',
+                element: '🇬🇵 GP',
+              },
+              {
+                value: 'BJ',
+                element: '🇧🇯 BJ',
+              },
+              {
+                value: 'BF',
+                element: '🇧🇫 BF',
+              },
+              {
+                value: 'CD',
+                element: '🇨🇩 CD',
+              },
+              {
+                value: 'CG',
+                element: '🇨🇬 CG',
+              },
+              {
+                value: 'CI',
+                element: '🇨🇮 CI',
+              },
+              {
+                value: 'GA',
+                element: '🇬🇦 GA',
+              },
+              {
+                value: 'GN',
+                element: '🇬🇳 GN',
+              },
+              {
+                value: 'ML',
+                element: '🇲🇱 ML',
+              },
+              {
+                value: 'NE',
+                element: '🇳🇪 NE',
+              },
+              {
+                value: 'SN',
+                element: '🇸🇳 SN',
+              },
+              {
+                value: 'TG',
+                element: '🇹🇬 TG',
+              },
+              {
+                value: 'BI',
+                element: '🇧🇮 BI',
+              },
+              {
+                value: 'CM',
+                element: '🇨🇲 CM',
+              },
+              {
+                value: 'CF',
+                element: '🇨🇫 CF',
+              },
+              {
+                value: 'KM',
+                element: '🇰🇲 KM',
+              },
+              {
+                value: 'DJ',
+                element: '🇩🇯 DJ',
+              },
+              {
+                value: 'GQ',
+                element: '🇬🇶 GQ',
+              },
+              {
+                value: 'HT',
+                element: '🇭🇹 HT',
+              },
+              {
+                value: 'MG',
+                element: '🇲🇬 MG',
+              },
+              {
+                value: 'RW',
+                element: '🇷🇼 RW',
+              },
+              {
+                value: 'SC',
+                element: '🇸🇨 SC',
+              },
+              {
+                value: 'TD',
+                element: '🇹🇩 TD',
+              },
+              {
+                value: 'VU',
+                element: '🇻🇺 VU',
+              },
+              {
+                value: 'GG',
+                element: '🇬🇬 GG',
+              },
+              {
+                value: 'LB',
+                element: '🇱🇧 LB',
+              },
+              {
+                value: 'MU',
+                element: '🇲🇺 MU',
+              },
+              {
+                value: 'VA',
+                element: '🇻🇦 VA',
               },
             ]}
           />
