@@ -83,7 +83,7 @@
 
     > .options {
       @include layouts.modal;
-      border-radius: 5px;
+      border-radius: 10px;
       padding: 4px 0;
       max-height: 300px;
       overflow: auto;
@@ -157,6 +157,12 @@
   &.active > .body > .options {
     visibility: visible;
     opacity: 1;
+  }
+
+  &.round {
+    > .body > .selector > button.main {
+      border-radius: 20px;
+    }
   }
 
   &.borderless {

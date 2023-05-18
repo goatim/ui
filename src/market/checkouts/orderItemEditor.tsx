@@ -9,6 +9,7 @@ import {
   resolveGoatimCoinsAmount,
 } from '@goatim/client';
 import { FormSubmitFunction } from '@cezembre/forms/dist/state';
+import isPromise from 'is-promise';
 import { Button, Counter } from '../../general';
 import { OrderBookThumbnail, OrderBookThumbnailSize } from '../../trading';
 import { GoatimCoinsAmount } from '../goatimCoins';
@@ -71,7 +72,7 @@ export function OrderItemEditor({
     if (onAcceptBankProposal) {
       setBankProposalPending(true);
       const res = onAcceptBankProposal(formState?.values?.nb_shares);
-      if (res && typeof res === 'object' && 'then' in res && typeof res.then === 'function') {
+      if (isPromise(res)) {
         try {
           await res;
         } catch (error) {

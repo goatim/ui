@@ -1,19 +1,7 @@
 import { StoryFn } from '@storybook/react';
 import { JSXElementConstructor } from 'react';
 import { Asset, Club, Player, QuotationHistory } from '@goatim/client';
-import {
-  AssetThumbnail,
-  AssetThumbnailShape,
-  AssetThumbnailSize,
-  AssetThumbnailTheme,
-} from '../../../src';
-
-interface Props {
-  shape?: AssetThumbnailShape;
-  size?: AssetThumbnailSize;
-  theme?: AssetThumbnailTheme;
-  showQuotation?: boolean;
-}
+import { AssetThumbnail, AssetThumbnailProps } from '../../../src';
 
 export default {
   title: 'Trading/AssetThumbnail',
@@ -137,28 +125,19 @@ const asset: Asset = {
   quotation_history: quotationHistory,
 };
 
-const Template: StoryFn<JSXElementConstructor<Props>> = ({
+const Template: StoryFn<JSXElementConstructor<AssetThumbnailProps>> = ({
   shape,
   size,
   theme,
   showQuotation,
-}: Props) => (
-  <div
-    style={{
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-    }}>
-    <div>
-      <AssetThumbnail
-        asset={asset}
-        shape={shape}
-        size={size}
-        theme={theme}
-        showQuotation={showQuotation}
-      />
-    </div>
-  </div>
+}: AssetThumbnailProps) => (
+  <AssetThumbnail
+    asset={asset}
+    shape={shape}
+    size={size}
+    theme={theme}
+    showQuotation={showQuotation}
+  />
 );
 
 export const Default = Template.bind({});

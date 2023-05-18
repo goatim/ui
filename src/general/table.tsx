@@ -1,6 +1,14 @@
-import { ReactElement, useCallback, useEffect, useMemo, useState } from 'react';
+import {
+  cloneElement,
+  createElement,
+  ReactElement,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 import { DateTime } from 'luxon';
-import { Model } from '@goatim/client';
+import isPromise from 'is-promise';
 import { Icon } from './icon';
 import { Check } from './check';
 import { Button, ButtonProps } from './button';
@@ -9,6 +17,8 @@ import { Datetime } from './datetime';
 export type TableCellType =
   | 'auto'
   | 'unknown'
+  | 'undefined'
+  | 'null'
   | 'text'
   | 'number'
   | 'date'
@@ -19,14 +29,41 @@ export type TableCellType =
   | 'relative-time'
   | 'boolean';
 
-export interface TableCellProps {
-  value: unknown;
+export interface TableItem {
+  id: string;
+}
+
+export interface TableCellComponentProps<I extends TableItem = TableItem> {
+  column: TableColumn<I>;
+  item: I;
+}
+
+export interface TableColumn<I extends TableItem = TableItem> {
+  key: keyof I | string;
+  label?: string;
   type?: TableCellType;
+  width?: string | number;
+  sorted?: 'asc' | 'desc';
+  onSort?: () => unknown;
+  cellElement?: ReactElement<TableCellComponentProps<I>> | null;
+  cellComponent?: (props: TableCellComponentProps<I>) => ReactElement | null;
+}
+
+export type TableSelection = string | string[] | undefined;
+
+export interface TableItemAction extends ButtonProps {
+  key: string;
+  onlySingle?: boolean;
+}
+
+export interface TableCellProps<I extends TableItem = TableItem> {
+  column: TableColumn<I>;
+  item: I;
 }
 
 /**
- * Cell
- * Handled types :
+ * TableCell
+ * Handled native types :
  * String
  * Number
  * Date
@@ -34,15 +71,31 @@ export interface TableCellProps {
  * Object that contains toString() function
  */
 
-function Cell({ value, type = 'auto' }: TableCellProps): ReactElement | null {
-  let resolvedType: TableCellType = type;
-
-  if (value === null || value === undefined) {
-    return null;
+function TableCell<I extends TableItem = TableItem>({
+  column,
+  item,
+}: TableCellProps<I>): ReactElement | null {
+  if (column.cellElement) {
+    return cloneElement(column.cellElement, { column, item });
   }
 
-  if (type === 'auto') {
+  if (column.cellComponent) {
+    return createElement(column.cellComponent, { column, item });
+  }
+
+  const value = column.key in item ? item[column.key as keyof I] : '-';
+
+  let resolvedType = column.type;
+
+  if (!column.type || column.type === 'auto') {
+    if (value === null) {
+      resolvedType = 'null';
+    }
     switch (typeof value) {
+      case 'undefined':
+        resolvedType = 'undefined';
+        break;
+
       case 'string':
         resolvedType = 'text';
         break;
@@ -69,11 +122,10 @@ function Cell({ value, type = 'auto' }: TableCellProps): ReactElement | null {
     }
   }
 
-  let text: string;
-  let datetime: DateTime;
-
   switch (resolvedType) {
-    case 'text':
+    case 'text': {
+      let text: string;
+
       if (typeof value === 'string') {
         text = value;
       } else if (typeof value === 'object') {
@@ -90,7 +142,9 @@ function Cell({ value, type = 'auto' }: TableCellProps): ReactElement | null {
       } else {
         return null;
       }
+
       return <span className="text">{text}</span>;
+    }
 
     case 'number':
       return <span className="number">{value as number}</span>;
@@ -100,7 +154,9 @@ function Cell({ value, type = 'auto' }: TableCellProps): ReactElement | null {
     case 'time':
     case 'relative-time':
     case 'datetime':
-    case 'relative-datetime':
+    case 'relative-datetime': {
+      let datetime: DateTime | string;
+
       if (DateTime.isDateTime(value)) {
         datetime = value;
       } else if (typeof value === 'string') {
@@ -114,6 +170,7 @@ function Cell({ value, type = 'auto' }: TableCellProps): ReactElement | null {
       } else {
         return null;
       }
+
       return (
         <Datetime
           value={datetime}
@@ -122,6 +179,7 @@ function Cell({ value, type = 'auto' }: TableCellProps): ReactElement | null {
           relative={['relative-date', 'relative-time', 'relative-datetime'].includes(resolvedType)}
         />
       );
+    }
 
     case 'boolean':
       return value ? <Icon name="check" size={15} /> : <Icon name="x" size={15} />;
@@ -131,26 +189,9 @@ function Cell({ value, type = 'auto' }: TableCellProps): ReactElement | null {
   }
 }
 
-export interface TableColumn<M extends Model = Model> {
-  key: string;
-  label?: string;
-  type?: TableCellType;
-  width?: string | number;
-  sorted?: 'asc' | 'desc';
-  onSort?: () => unknown;
-  Cell?: (props: { item: M }) => ReactElement;
-}
-
-export type TableSelection = string | string[] | undefined;
-
-export interface TableItemAction extends ButtonProps {
-  key: string;
-  onlySingle?: boolean;
-}
-
-export interface TableProps<M extends Model = Model> {
-  columns: TableColumn<M>[];
-  data?: M[];
+export interface TableProps<I extends TableItem = TableItem> {
+  columns: TableColumn<I>[];
+  items?: I[];
   EmptyPlaceholder?: ReactElement;
   emptyLabel?: string;
   onSelectItem?: (selection: TableSelection) => unknown;
@@ -159,16 +200,16 @@ export interface TableProps<M extends Model = Model> {
   itemActions?: TableItemAction[];
 }
 
-export function Table<M extends Model = Model>({
+export function Table<I extends TableItem = TableItem>({
   columns,
-  data = [],
+  items,
   EmptyPlaceholder,
   emptyLabel,
   onSelectItem,
   selectionMode,
   defaultSelection,
   itemActions,
-}: TableProps<M>): ReactElement {
+}: TableProps<I>): ReactElement {
   const className = useMemo<string>(() => {
     const classNames = ['goatim-ui-table'];
     if (onSelectItem || selectionMode) {
@@ -217,13 +258,7 @@ export function Table<M extends Model = Model>({
           callback = onSelectItem(nextSelection);
         }
 
-        if (
-          callback &&
-          typeof callback === 'object' &&
-          'then' in callback &&
-          (callback as Promise<unknown>).then &&
-          typeof (callback as Promise<unknown>).then === 'function'
-        ) {
+        if (isPromise(callback)) {
           await callback;
         }
       })();
@@ -232,43 +267,38 @@ export function Table<M extends Model = Model>({
   );
 
   useEffect(() => {
-    if (!data || !data.length || !selection || !selection.length) {
+    if (!items?.length || !selection?.length) {
       setAllSelected(false);
     } else {
       let diff = false;
-      data.forEach(({ id }) => {
+      items.forEach(({ id }) => {
         if (!selection.includes(id)) {
           diff = true;
         }
       });
       setAllSelected(!diff);
     }
-  }, [data, selection]);
+  }, [items, selection]);
 
   const selectAll = useCallback(
     (active: boolean) => {
       (async () => {
-        const nextSelection = active && data && data.length ? data.map(({ id }) => id) : undefined;
+        const nextSelection =
+          active && items && items.length ? items.map(({ id }) => id) : undefined;
         let callback: unknown | undefined;
         setSelection(nextSelection);
         if (onSelectItem) {
           callback = onSelectItem(nextSelection);
         }
-        if (
-          callback &&
-          typeof callback === 'object' &&
-          'then' in callback &&
-          (callback as Promise<unknown>).then &&
-          typeof (callback as Promise<unknown>).then === 'function'
-        ) {
+        if (isPromise(callback)) {
           await callback;
         }
       })();
     },
-    [data, onSelectItem],
+    [items, onSelectItem],
   );
 
-  if (!data?.length) {
+  if (!items?.length) {
     return (
       EmptyPlaceholder || (
         <div className="goatim-ui-data-empty-table">
@@ -282,8 +312,6 @@ export function Table<M extends Model = Model>({
   return (
     <div className={className}>
       <div className="header">
-        {/* <div className="search"></div> */}
-
         <div className="menu">
           {itemActions && selection?.length ? (
             <div className="item-actions">
@@ -329,17 +357,16 @@ export function Table<M extends Model = Model>({
                 ) : null}
               </th>
             ) : null}
-            {columns.map((column: TableColumn<M>) => (
+            {columns.map((column: TableColumn<I>) => (
               <th key={column.key as string} style={{ width: column.width }}>
                 {column.label}
               </th>
             ))}
-            {/* {actions?.length ? <th style={{ width: 40 }} /> : null} */}
           </tr>
         </thead>
 
         <tbody>
-          {data?.map((item: M) => (
+          {items?.map((item: I) => (
             <tr
               key={item.id}
               className={
@@ -353,29 +380,11 @@ export function Table<M extends Model = Model>({
                   </div>
                 </td>
               ) : null}
-              {columns.map((column: TableColumn<M>) => (
+              {columns.map((column: TableColumn<I>) => (
                 <td key={column.key as string} width={column.width}>
-                  {column.Cell ? (
-                    <column.Cell item={item} />
-                  ) : (
-                    <Cell
-                      value={
-                        column.key in item
-                          ? (item as unknown as { [key: string]: unknown })[column.key]
-                          : '-'
-                      }
-                      type={column.type}
-                    />
-                  )}
+                  <TableCell column={column} item={item} />
                 </td>
               ))}
-              {/* {actions?.length ? ( */}
-              {/*  <td width={40}> */}
-              {/*    <div className="actions"> */}
-              {/*      <Icon name="more-vertical" /> */}
-              {/*    </div> */}
-              {/*  </td> */}
-              {/* ) : null} */}
             </tr>
           ))}
         </tbody>

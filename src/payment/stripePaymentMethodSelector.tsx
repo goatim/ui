@@ -1,6 +1,7 @@
 import { ReactElement, useCallback, useEffect, useState } from 'react';
 import { PaymentMethod } from '@goatim/client';
 import { PaymentMethod as StripePaymentMethod } from '@stripe/stripe-js';
+import isPromise from 'is-promise';
 import { NewStripeCard, StripeCreditCardForm } from './stripeCreditCardForm';
 import { Button } from '../general';
 import { StripePaymentMethodList } from './stripePaymentMethodList';
@@ -36,7 +37,7 @@ export function StripePaymentMethodSelector({
         try {
           let paymentMethod = onAddCreditCard(newStripeCard);
 
-          if ('then' in paymentMethod && typeof paymentMethod.then === 'function') {
+          if (isPromise(paymentMethod)) {
             paymentMethod = await paymentMethod;
           }
 

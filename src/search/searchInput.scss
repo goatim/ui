@@ -6,7 +6,7 @@
 .goatim-ui-search-input {
   position: relative;
 
-  > .container {
+  > .input {
     @include forms.input;
     height: 40px;
     border-radius: 20px;
@@ -101,7 +101,7 @@
   }
 
   &.lighter {
-    > .container {
+    > .input {
       background: rgba(white, .2);
       border-color: rgba(white, .2);
 
@@ -112,7 +112,7 @@
   }
 
   &.active {
-    > .container {
+    > .input {
       background: white;
 
       > .icon > svg {

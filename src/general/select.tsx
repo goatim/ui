@@ -12,18 +12,18 @@ import { useClickOutside } from '@cezembre/fronts';
 import _ from 'lodash';
 import { Icon } from './icon';
 
-export interface SelectOption<V = unknown> {
+export interface SelectOption<V = string> {
   value: V;
   element?: ReactElement | string | number;
 }
 
-export interface SelectOptionProps<V = unknown> {
+export interface SelectOptionProps<V = string> {
   option?: SelectOption<V>;
   DefaultComponent?: JSXElementConstructor<{ value: V }>;
   placeholder?: string;
 }
 
-function SelectOptionComponent<V>({
+function SelectOptionComponent<V = string>({
   option,
   DefaultComponent,
   placeholder,
@@ -46,24 +46,24 @@ function SelectOptionComponent<V>({
   return <span className="placeholder">{placeholder || 'Selectioner une option'}</span>;
 }
 
-export type SelectTheme = 'default' | 'borderless';
+export type SelectShape = 'square' | 'round' | 'borderless';
 
 export type SelectType = 'dropdown' | 'flat';
 
-export interface SelectProps<V = unknown> extends FieldComponentProps<V | undefined> {
+export interface SelectProps<V = string> extends FieldComponentProps<V | undefined> {
   label?: string;
   options?: SelectOption<V>[];
   DefaultComponent?: JSXElementConstructor<{ value: V }>;
   canReset?: boolean;
-  theme?: SelectTheme;
+  shape?: SelectShape;
   type?: SelectType;
   instructions?: ReactElement | string;
   fullWidth?: boolean;
-
-  onSearch?(search?: string): unknown;
+  placeholder?: string;
+  onSearch?: (search?: string) => unknown;
 }
 
-export function Select<V = unknown>({
+export function Select<V = string>({
   value,
   error,
   warning,
@@ -77,13 +77,14 @@ export function Select<V = unknown>({
   DefaultComponent,
   canReset,
   instructions,
-  theme = 'default',
+  shape = 'square',
   type = 'dropdown',
   fullWidth,
+  placeholder,
   onSearch,
 }: SelectProps<V>): ReactElement {
   const className = useMemo<string>(() => {
-    const classNames: string[] = ['goatim-ui-select', theme, type];
+    const classNames: string[] = ['goatim-ui-select', shape, type];
 
     if (isActive) {
       classNames.push('active');
@@ -102,7 +103,7 @@ export function Select<V = unknown>({
     }
 
     return classNames.join(' ');
-  }, [error, fullWidth, isActive, theme, type, warning]);
+  }, [error, fullWidth, isActive, shape, type, warning]);
 
   const toggleFocus = useCallback(() => {
     if (!isActive) {
@@ -174,6 +175,7 @@ export function Select<V = unknown>({
             <button ref={selectButtonRef} onClick={toggleFocus} type="button" className="main">
               <SelectOptionComponent<V>
                 option={selectedOption}
+                placeholder={placeholder}
                 DefaultComponent={DefaultComponent}
               />
               {type === 'dropdown' ? <Icon name="chevron-down" /> : null}

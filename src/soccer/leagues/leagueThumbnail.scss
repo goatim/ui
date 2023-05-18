@@ -10,6 +10,7 @@
     @include fonts.Inter(.8em, colors.$blue, bold);
     margin: 0 0 0 10px;
     padding: 0;
+    white-space: nowrap;
   }
 
   &.medium > .name {

@@ -1,6 +1,7 @@
 import { MouseEvent, ReactElement, useEffect, useState } from 'react';
 import { Club } from '@goatim/client';
 import { UrlObject } from 'url';
+import isPromise from 'is-promise';
 import { ClubList } from './clubList';
 import { ClubThumbnailShape, ClubThumbnailSize } from './clubThumbnail';
 
@@ -31,7 +32,7 @@ export function ClubCarousel({
       setError(null);
       const res = getClubs(page);
 
-      if ('then' in res && res.then && typeof res.then === 'function') {
+      if (isPromise(res)) {
         (async () => {
           setPending(true);
           try {

@@ -7,6 +7,7 @@ import {
   PlayerPosition,
 } from '@goatim/client';
 import { Field, Form, FormContext, FormFields, FormProps, FormState } from '@cezembre/forms';
+import isPromise from 'is-promise';
 import { Button, Radio, Select } from '../../general';
 import { PlayerThumbnail } from '../players';
 import { BoosterFactoryThumbnail } from '../../trading';
@@ -67,13 +68,7 @@ export function CompositionPositionEditor({
     (async () => {
       if (getPositionPlayers) {
         let res = getPositionPlayers(compositionSettingPosition?.only);
-        if (
-          res &&
-          typeof res === 'object' &&
-          'then' in res &&
-          res.then &&
-          typeof res.then === 'function'
-        ) {
+        if (isPromise(res)) {
           res = await res;
         }
         setPlayers(res as Player[]);

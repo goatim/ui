@@ -143,7 +143,7 @@ const notifications = {
   closed_match: closedMatch,
 };
 
-function Template({ event }: Props) {
+function Template({ event = 'order_match' }: Props) {
   return <NotificationThumbnail notification={notifications[event]} />;
 }
 

@@ -1,29 +1,11 @@
 import { Field, Form } from '@cezembre/forms';
 import { useCallback, useEffect, useState } from 'react';
 import { Club, Player } from '@goatim/client';
-import { PlayerThumbnail, Select, SelectOption, SelectType } from '../../src';
-
-interface Props {
-  label?: string;
-  selectType?: SelectType;
-}
+import { PlayerThumbnail, Select, SelectOption, SelectProps } from '../../src';
 
 export default {
   title: 'General/Select',
   component: Select,
-  argTypes: {
-    label: {
-      control: {
-        type: 'text',
-      },
-    },
-    selectType: {
-      options: ['dark', 'flat'],
-      control: {
-        type: 'select',
-      },
-    },
-  },
 };
 
 const club: Club = {
@@ -127,7 +109,7 @@ const filteredPlayers: Player[] = [
   },
 ];
 
-function Template({ label, selectType }: Props) {
+function Template({ label, type, shape }: SelectProps) {
   const [options, setOptions] = useState<SelectOption<string>[]>([]);
 
   useEffect(() => {
@@ -160,10 +142,11 @@ function Template({ label, selectType }: Props) {
   return (
     <Form>
       <Field
-        name="test"
+        name="select"
         component={Select}
-        type={selectType}
+        type={type}
         label={label}
+        shape={shape}
         canCancel
         options={options}
         onSearch={onSearch}

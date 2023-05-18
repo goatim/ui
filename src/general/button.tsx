@@ -9,6 +9,7 @@ import {
   useState,
 } from 'react';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
+import isPromise from 'is-promise';
 import { Loader } from './loader';
 import { Icon, IconName } from './icon';
 
@@ -115,13 +116,7 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
         if (onClick) {
           const response = onClick(event);
 
-          if (
-            response &&
-            typeof response === 'object' &&
-            'then' in response &&
-            (response as Promise<unknown>).then &&
-            typeof (response as Promise<unknown>).then === 'function'
-          ) {
+          if (isPromise(response)) {
             setAutoPending(true);
             try {
               await response;

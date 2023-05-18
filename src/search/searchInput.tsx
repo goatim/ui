@@ -3,12 +3,13 @@ import { SearchResult } from '@goatim/client';
 import _ from 'lodash';
 import { Wrapper } from '@cezembre/fronts';
 import { UrlObject } from 'url';
+import { FieldComponentProps } from '@cezembre/forms';
 import { Icon } from '../general';
 import { AssetThumbnail } from '../trading';
 
 export type SearchInputTheme = 'light' | 'lighter';
 
-export interface SearchInputProps {
+export interface SearchInputProps extends FieldComponentProps<string> {
   onSearch?: (query: string) => unknown;
   results?: SearchResult[];
   onClickResult?: (result: SearchResult) => unknown;
@@ -78,7 +79,7 @@ export function SearchInput({
 
   return (
     <div className={className}>
-      <div className={`container${active ? ' active' : ''}`}>
+      <div className={`input${active ? ' active' : ''}`}>
         <div className="icon">
           <Icon name="search" />
         </div>

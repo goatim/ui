@@ -1,0 +1,26 @@
+@use '../styles/colors';
+
+.goatim-ui-assets-search {
+  > .filters {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    > .filter {
+      margin-left: 10px;
+
+      &:first-of-type {
+        margin: 0;
+      }
+    }
+  }
+
+  > .results {
+    background: white;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 20px;
+    border: solid colors.$blue-10 1px;
+  }
+}

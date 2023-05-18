@@ -8,6 +8,7 @@ import {
 } from '@goatim/client';
 import { useElementInfiniteScroll } from '@cezembre/fronts';
 import { UrlObject } from 'url';
+import isPromise from 'is-promise';
 import { MatchFeed } from './matchFeed';
 import { Button } from '../../general';
 import { CompositionRanking } from '../compositions';
@@ -55,13 +56,7 @@ export function MatchBoard({
       const { next_page: nextPage } = compositions[compositions.length - 1];
       if (nextPage) {
         const res = getCompositions({ page: nextPage });
-        if (
-          res &&
-          typeof res === 'object' &&
-          'then' in res &&
-          res.then &&
-          typeof res.then === 'function'
-        ) {
+        if (isPromise(res)) {
           try {
             setLoadingCompositions(true);
             const nextCompositions = await res;
