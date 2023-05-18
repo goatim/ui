@@ -165,7 +165,11 @@ function getAssets(query?: GetAssetsQuery): Promise<AssetList> {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve({
-        assets: [asset, asset, asset],
+        assets: [
+          asset,
+          asset,
+          { ...asset, player: { ...player, last_name: query?.search || 'Nope' } },
+        ],
         total: 3,
       });
     }, 200);

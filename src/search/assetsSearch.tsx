@@ -13,8 +13,7 @@ import {
 } from '@goatim/client';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import isPromise from 'is-promise';
-import { SearchInput } from './searchInput';
-import { Select, SelectOption, Table, TableColumn } from '../general';
+import { Input, Select, SelectOption, Table, TableColumn } from '../general';
 import { ClubThumbnail, LeagueThumbnail } from '../soccer';
 import { AssetThumbnail } from '../trading';
 
@@ -152,7 +151,7 @@ export function AssetsSearch({ getLeagues, getClubs, getAssets }: AssetsSearchPr
   return (
     <Form<AssetsSearchFields> ref={formRef} className="goatim-ui-assets-search">
       <div className="search">
-        <Field name="search" component={SearchInput} />
+        <Field name="search" component={Input} shape="rounded" leftIcon="search" />
       </div>
       <div className="filters">
         <div className="filter">

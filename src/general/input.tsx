@@ -69,7 +69,7 @@ export type AutoComplete =
   | 'url'
   | 'photo';
 
-export type InputShape = 'square' | 'round';
+export type InputShape = 'square' | 'rounded';
 
 export type InputTheme = 'light' | 'darker' | 'lighter' | 'dark';
 
@@ -126,8 +126,10 @@ export interface InputProps<V = string, S extends InputSuggestion<V> = InputSugg
   suggestionsHeader?: ReactNode;
   suggestionsFooter?: ReactNode;
   onSelectSuggestion?: (suggestion: S) => void;
-  leftComponent?: ReactNode | IconName;
-  rightComponent?: ReactNode | IconName;
+  leftIcon?: IconName;
+  rightIcon?: IconName;
+  leftComponent?: ReactNode;
+  rightComponent?: ReactNode;
   autoCorrect?: boolean;
   autoCapitalize?: string;
 }
@@ -161,6 +163,8 @@ export function Input<V = string, S extends InputSuggestion<V> = InputSuggestion
   suggestionsHeader,
   suggestionsFooter,
   onSelectSuggestion,
+  leftIcon,
+  rightIcon,
   leftComponent,
   rightComponent,
   autoCorrect = true,
@@ -337,6 +341,11 @@ export function Input<V = string, S extends InputSuggestion<V> = InputSuggestion
       {label ? <label htmlFor={name}>{label}</label> : null}
 
       <div className={`body ${isActive ? ' active' : ''}`}>
+        {leftIcon ? (
+          <div className="left-icon">
+            <Icon name={leftIcon} />
+          </div>
+        ) : null}
         {leftComponent ? <div className="left-component">{leftComponent}</div> : null}
 
         <input
@@ -355,6 +364,11 @@ export function Input<V = string, S extends InputSuggestion<V> = InputSuggestion
           autoCapitalize={autoCapitalize}
         />
 
+        {rightIcon ? (
+          <div className="right-icon">
+            <Icon name={rightIcon} />
+          </div>
+        ) : null}
         {rightComponent ? <div className="right-component">{rightComponent}</div> : null}
 
         <div className="suggestions">

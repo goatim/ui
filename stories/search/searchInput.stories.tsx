@@ -1,9 +1,9 @@
 import { Asset, Club, Player, SearchResult } from '@goatim/client';
-import { SearchInput, SearchInputProps } from '../../src';
+import { SearchBar, SearchInputProps } from '../../src';
 
 export default {
-  title: 'Search/SearchInput',
-  component: SearchInput,
+  title: 'Search/SearchBar',
+  component: SearchBar,
   argTypes: {
     theme: {
       options: ['light', 'lighter'],
@@ -73,7 +73,7 @@ const results: SearchResult[] = [
 
 function Template({ theme, flat = false }: SearchInputProps) {
   return (
-    <SearchInput
+    <SearchBar
       flat={flat}
       results={results}
       onClickResult={(result) => console.log(result.id)}

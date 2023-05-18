@@ -19,7 +19,7 @@ export interface SearchInputProps extends FieldComponentProps<string> {
   flat?: boolean;
 }
 
-export function SearchInput({
+export function SearchBar({
   onSearch,
   results,
   onClickResult,
@@ -64,7 +64,7 @@ export function SearchInput({
   }, []);
 
   const className = useMemo<string>(() => {
-    const nextClassNames: string[] = ['goatim-ui-search-input', theme];
+    const nextClassNames: string[] = ['goatim-ui-search-bar', theme];
 
     if (flat) {
       nextClassNames.push('flat');

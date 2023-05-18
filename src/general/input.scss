@@ -15,6 +15,20 @@
     justify-content: space-between;
     position: relative;
 
+    > .left-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      > svg[stroke] {
+        stroke: colors.$blue;
+      }
+
+      > svg:not([stroke]) {
+        fill: colors.$blue;
+      }
+    }
+
     > .left-component {
       display: flex;
       align-items: center;
@@ -182,8 +196,12 @@
     }
   }
 
-  &.round > .body {
+  &.rounded > .body {
     border-radius: 20px;
+
+    > .left-icon, > .left-component {
+      padding-left: 15px;
+    }
   }
 
   &.suggestions-active > .body > .suggestions {
