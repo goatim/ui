@@ -194,6 +194,7 @@ export interface TableProps<I extends TableItem = TableItem> {
   items?: I[];
   EmptyPlaceholder?: ReactElement;
   emptyLabel?: string;
+  onClickItem?: (item: I) => unknown;
   onSelectItem?: (selection: TableSelection) => unknown;
   selectionMode?: 'single' | 'multiple';
   defaultSelection?: TableSelection;
@@ -205,6 +206,7 @@ export function Table<I extends TableItem = TableItem>({
   items,
   EmptyPlaceholder,
   emptyLabel,
+  onClickItem,
   onSelectItem,
   selectionMode,
   defaultSelection,
@@ -264,6 +266,16 @@ export function Table<I extends TableItem = TableItem>({
       })();
     },
     [onSelectItem, selection, selectionMode],
+  );
+
+  const clickItem = useCallback(
+    (item: I) => {
+      if (onClickItem) {
+        onClickItem(item);
+      }
+      selectItem(item.id);
+    },
+    [onClickItem, selectItem],
   );
 
   useEffect(() => {
@@ -372,7 +384,7 @@ export function Table<I extends TableItem = TableItem>({
               className={
                 selection?.includes(item.id) || selection === item.id ? 'selected' : undefined
               }
-              onClick={() => selectItem(item.id)}>
+              onClick={() => clickItem(item)}>
               {selectionMode ? (
                 <td width={40}>
                   <div className="selection">

@@ -40,9 +40,10 @@ export interface AssetsSearchProps extends FormProps<AssetsSearchFields> {
   getLeagues?: (query?: GetLeaguesQuery) => LeagueList | Promise<LeagueList>;
   getClubs?: (query?: GetClubsQuery) => ClubList | Promise<ClubList>;
   getAssets?: (query?: GetAssetsQuery) => AssetList | Promise<AssetList>;
+  onClickAsset?: (asset: Asset) => unknown;
 }
 
-export function AssetsSearch({ getLeagues, getClubs, getAssets }: AssetsSearchProps) {
+export function AssetsSearch({ getLeagues, getClubs, getAssets, onClickAsset }: AssetsSearchProps) {
   const [formState, setFormState] = useState<FormState<AssetsSearchFields> | undefined>();
 
   const formRef = useCallback((formContext: FormContext<AssetsSearchFields> | null) => {
@@ -185,7 +186,11 @@ export function AssetsSearch({ getLeagues, getClubs, getAssets }: AssetsSearchPr
       </div>
 
       <div className="results">
-        <Table<Asset> columns={columns} items={assets} />
+        <Table<Asset>
+          columns={columns}
+          items={assets}
+          onClickItem={onClickAsset ? (item) => onClickAsset(item) : undefined}
+        />
       </div>
     </Form>
   );
