@@ -124,6 +124,7 @@ export function AssetsSearch({ getLeagues, getClubs, getAssets }: AssetsSearchPr
 
   const getAssetsQuery = useMemo<GetAssetsQuery>(() => {
     return {
+      type: 'player',
       search: formState?.values?.search,
       league: formState?.values?.league?.id,
       club: formState?.values?.club?.id,
