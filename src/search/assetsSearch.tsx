@@ -31,9 +31,9 @@ const columns: TableColumn<Asset>[] = [
     cellComponent: ({ item }) =>
       item ? <AssetThumbnail asset={item} shape="text" showQuotation={false} /> : null,
   },
-  { key: 'nb_shares', label: 'Act' },
-  { key: 'quotation', label: 'Val' },
-  { key: 'dividend', label: 'Div' },
+  // { key: 'nb_shares', label: 'Act' },
+  // { key: 'quotation', label: 'Val' },
+  // { key: 'dividend', label: 'Div' },
 ];
 
 export interface AssetsSearchProps extends FormProps<AssetsSearchFields> {
