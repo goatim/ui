@@ -166,7 +166,7 @@ export function AssetsSearch({ getLeagues, getClubs, getAssets, onClickAsset }: 
     const orders: string[] = [];
 
     if (assetColumnSorted) {
-      orders.push(`player.name:${assetColumnSorted}`);
+      orders.push(`player.last_name:${assetColumnSorted}`);
     }
 
     if (nbSharesColumnSorted) {
