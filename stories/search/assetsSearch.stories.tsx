@@ -137,6 +137,7 @@ const asset: Asset = {
   quotation: 2750,
   day_variation: 0.256,
   player,
+  average_dividends_amount: 4000,
 };
 
 function getLeagues(query?: GetLeaguesQuery): Promise<LeagueList> {

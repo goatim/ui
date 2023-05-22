@@ -9,7 +9,8 @@ import {
 } from 'react';
 import { DateTime } from 'luxon';
 import isPromise from 'is-promise';
-import { Icon } from './icon';
+import { Property } from 'csstype';
+import { Icon, IconName } from './icon';
 import { Check } from './check';
 import { Button, ButtonProps } from './button';
 import { Datetime } from './datetime';
@@ -38,15 +39,20 @@ export interface TableCellComponentProps<I extends TableItem = TableItem> {
   item: I;
 }
 
+export type TableColumnSort = 'asc' | 'desc';
+
 export interface TableColumn<I extends TableItem = TableItem> {
   key: keyof I | string;
   label?: string;
+  align?: Property.TextAlign;
   type?: TableCellType;
   width?: string | number;
-  sorted?: 'asc' | 'desc';
-  onSort?: () => unknown;
+  sortable?: boolean;
+  sorted?: TableColumnSort;
+  onSort?: (sorted?: TableColumnSort) => unknown;
   cellElement?: ReactElement<TableCellComponentProps<I>> | null;
   cellComponent?: (props: TableCellComponentProps<I>) => ReactElement | null;
+  hidden?: boolean;
 }
 
 export type TableSelection = string | string[] | undefined;
@@ -56,7 +62,49 @@ export interface TableItemAction extends ButtonProps {
   onlySingle?: boolean;
 }
 
-export interface TableCellProps<I extends TableItem = TableItem> {
+interface TableColumnHeadProps<I extends TableItem = TableItem> {
+  column: TableColumn<I>;
+}
+
+function TableColumnHead<I extends TableItem = TableItem>({ column }: TableColumnHeadProps<I>) {
+  const rightIcon = useMemo<IconName | undefined>(() => {
+    switch (column.sorted) {
+      case 'asc':
+        return 'chevron-up';
+      case 'desc':
+        return 'chevron-down';
+      default:
+        return column.sortable ? 'sort' : undefined;
+    }
+  }, [column.sortable, column.sorted]);
+
+  const onSort = useCallback(() => {
+    if (!column.sortable) {
+      return;
+    }
+    if (column.onSort) {
+      switch (column.sorted) {
+        case 'asc':
+          column.onSort(undefined);
+          break;
+        case 'desc':
+          column.onSort('asc');
+          break;
+        default:
+          column.onSort('desc');
+          break;
+      }
+    }
+  }, [column]);
+
+  return (
+    <Button shape="text" theme="transparent-dark" rightIcon={rightIcon} onClick={onSort}>
+      {column.label}
+    </Button>
+  );
+}
+
+interface TableCellProps<I extends TableItem = TableItem> {
   column: TableColumn<I>;
   item: I;
 }
@@ -326,7 +374,7 @@ export function Table<I extends TableItem = TableItem>({
       <div className="header">
         <div className="menu">
           {itemActions && selection?.length ? (
-            <div className="item-actions">
+            <div className="actions">
               {itemActions
                 .filter((action) =>
                   Array.isArray(selection) && selection.length > 1 ? !action.onlySingle : true,
@@ -370,8 +418,14 @@ export function Table<I extends TableItem = TableItem>({
               </th>
             ) : null}
             {columns.map((column: TableColumn<I>) => (
-              <th key={column.key as string} style={{ width: column.width }}>
-                {column.label}
+              <th
+                key={column.key as string}
+                style={{
+                  width: column.width,
+                  textAlign: column.align || 'left',
+                  display: column.hidden ? 'none' : undefined,
+                }}>
+                <TableColumnHead<I> column={column} />
               </th>
             ))}
           </tr>
@@ -393,8 +447,11 @@ export function Table<I extends TableItem = TableItem>({
                 </td>
               ) : null}
               {columns.map((column: TableColumn<I>) => (
-                <td key={column.key as string} width={column.width}>
-                  <TableCell column={column} item={item} />
+                <td
+                  key={column.key as string}
+                  width={column.width}
+                  style={{ display: column.hidden ? 'none' : undefined }}>
+                  <TableCell<I> column={column} item={item} />
                 </td>
               ))}
             </tr>

@@ -17,6 +17,7 @@ import {
   SoccerBall,
   SoccerField,
   SoccerGoal,
+  Sort,
   SvgIconProps,
   Tiktok,
   Trading,
@@ -329,7 +330,8 @@ export type IconName =
   | 'soccer-goal'
   | 'goatim-coin'
   | 'trading'
-  | 'discord';
+  | 'discord'
+  | 'sort';
 
 export interface IconProps extends SvgIconProps {
   color?: string;
@@ -953,6 +955,8 @@ export function Icon({
       return <GoatimCoin size={size} />;
     case 'discord':
       return <Discord size={size} />;
+    case 'sort':
+      return <Sort size={size} />;
     default:
       return <Slash size={size} />;
   }

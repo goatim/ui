@@ -31,9 +31,9 @@ const columns: TableColumn<TestItem>[] = [
     cellComponent: ({ item }) =>
       item.asset ? <AssetThumbnail asset={item.asset} shape="text" showQuotation={false} /> : null,
   },
-  { key: 'nb_shares', label: 'Act' },
-  { key: 'quotation', label: 'Val' },
-  { key: 'dividend', label: 'Div' },
+  { key: 'nb_shares', label: 'Act', hidden: true },
+  { key: 'quotation', label: 'Val', sorted: 'asc' },
+  { key: 'dividend', label: 'Div', sortable: true },
 ];
 
 const club: Club = {

@@ -13,9 +13,10 @@ import {
 } from '@goatim/client';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import isPromise from 'is-promise';
-import { Input, Select, SelectOption, Table, TableColumn } from '../general';
+import { Input, Select, SelectOption, Table, TableColumn, TableColumnSort } from '../general';
 import { ClubThumbnail, LeagueThumbnail } from '../soccer';
 import { AssetThumbnail } from '../trading';
+import { GoatimCoinsAmount, GoatimCoinsGains } from '../market';
 
 export interface AssetsSearchFields extends FormFields {
   search?: string;
@@ -23,18 +24,6 @@ export interface AssetsSearchFields extends FormFields {
   club?: Club;
   player_position?: PlayerPosition;
 }
-
-const columns: TableColumn<Asset>[] = [
-  {
-    key: 'asset',
-    label: 'Joueur',
-    cellComponent: ({ item }) =>
-      item ? <AssetThumbnail asset={item} shape="text" showQuotation={false} /> : null,
-  },
-  // { key: 'nb_shares', label: 'Act' },
-  // { key: 'quotation', label: 'Val' },
-  // { key: 'dividend', label: 'Div' },
-];
 
 export interface AssetsSearchProps extends FormProps<AssetsSearchFields> {
   getLeagues?: (query?: GetLeaguesQuery) => LeagueList | Promise<LeagueList>;
@@ -121,20 +110,93 @@ export function AssetsSearch({ getLeagues, getClubs, getAssets, onClickAsset }: 
     ];
   }, []);
 
+  const [assetColumnSorted, setAssetColumnSorted] = useState<TableColumnSort | undefined>();
+  const [nbSharesColumnSorted, setNbSharesColumnSorted] = useState<TableColumnSort | undefined>();
+  const [quotationColumnSorted, setQuotationColumnSorted] = useState<TableColumnSort | undefined>();
+  const [averageDividendsAmountColumnSorted, setAverageDividendsAmountColumnSorted] = useState<
+    TableColumnSort | undefined
+  >();
+
+  const columns = useMemo<TableColumn<Asset>[]>(() => {
+    return [
+      {
+        key: 'asset',
+        label: 'Joueur',
+        cellComponent: ({ item }) => (
+          <AssetThumbnail asset={item} shape="text" showQuotation={false} />
+        ),
+        sortable: true,
+        sorted: assetColumnSorted,
+        onSort: setAssetColumnSorted,
+      },
+      {
+        key: 'nb_shares',
+        label: 'Act',
+        sortable: true,
+        sorted: nbSharesColumnSorted,
+        onSort: setNbSharesColumnSorted,
+      },
+      {
+        key: 'quotation',
+        label: 'Val',
+        sortable: true,
+        sorted: quotationColumnSorted,
+        onSort: setQuotationColumnSorted,
+        cellComponent: ({ item }) => <GoatimCoinsAmount amount={item.quotation} />,
+      },
+      {
+        key: 'average_dividends_amount',
+        label: 'Div',
+        sortable: true,
+        sorted: averageDividendsAmountColumnSorted,
+        onSort: setAverageDividendsAmountColumnSorted,
+        cellComponent: ({ item }) => <GoatimCoinsGains gains={item.average_dividends_amount} />,
+      },
+    ];
+  }, [
+    assetColumnSorted,
+    averageDividendsAmountColumnSorted,
+    nbSharesColumnSorted,
+    quotationColumnSorted,
+  ]);
+
   const [assets, setAssets] = useState<Asset[] | undefined>();
 
   const getAssetsQuery = useMemo<GetAssetsQuery>(() => {
+    const orders: string[] = [];
+
+    if (assetColumnSorted) {
+      orders.push(`player:${assetColumnSorted}`);
+    }
+
+    if (nbSharesColumnSorted) {
+      orders.push(`nb_shares:${nbSharesColumnSorted}`);
+    }
+
+    if (quotationColumnSorted) {
+      orders.push(`quotation:${quotationColumnSorted}`);
+    }
+
+    if (averageDividendsAmountColumnSorted) {
+      orders.push(`average_dividends_amount:${averageDividendsAmountColumnSorted}`);
+    }
+
     return {
       type: 'player',
       search: formState?.values?.search,
       league: formState?.values?.league?.id,
       club: formState?.values?.club?.id,
       player_position: formState?.values?.player_position,
+      order: orders.join(','),
     };
   }, [
+    assetColumnSorted,
+    nbSharesColumnSorted,
+    quotationColumnSorted,
+    averageDividendsAmountColumnSorted,
     formState?.values?.search,
-    formState?.values?.club?.id,
     formState?.values?.league?.id,
+    formState?.values?.club?.id,
     formState?.values?.player_position,
   ]);
 
