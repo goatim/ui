@@ -25,14 +25,29 @@ export interface AssetsSearchFields extends FormFields {
   player_position?: PlayerPosition;
 }
 
+export type AssetSearchSize = 'small' | 'medium' | 'large';
+
 export interface AssetsSearchProps extends FormProps<AssetsSearchFields> {
   getLeagues?: (query?: GetLeaguesQuery) => LeagueList | Promise<LeagueList>;
   getClubs?: (query?: GetClubsQuery) => ClubList | Promise<ClubList>;
   getAssets?: (query?: GetAssetsQuery) => AssetList | Promise<AssetList>;
   onClickAsset?: (asset: Asset) => unknown;
+  size?: AssetSearchSize;
 }
 
-export function AssetsSearch({ getLeagues, getClubs, getAssets, onClickAsset }: AssetsSearchProps) {
+export function AssetsSearch({
+  getLeagues,
+  getClubs,
+  getAssets,
+  onClickAsset,
+  size = 'small',
+}: AssetsSearchProps) {
+  const className = useMemo<string>(() => {
+    const classNames = ['goatim-ui-assets-search', size];
+
+    return classNames.join(' ');
+  }, [size]);
+
   const [formState, setFormState] = useState<FormState<AssetsSearchFields> | undefined>();
 
   const formRef = useCallback((formContext: FormContext<AssetsSearchFields> | null) => {
@@ -135,6 +150,7 @@ export function AssetsSearch({ getLeagues, getClubs, getAssets, onClickAsset }: 
         sortable: true,
         sorted: nbSharesColumnSorted,
         onSort: setNbSharesColumnSorted,
+        hidden: true,
       },
       {
         key: 'quotation',
@@ -143,6 +159,7 @@ export function AssetsSearch({ getLeagues, getClubs, getAssets, onClickAsset }: 
         sorted: quotationColumnSorted,
         onSort: setQuotationColumnSorted,
         cellComponent: ({ item }) => <GoatimCoinsAmount amount={item.quotation} />,
+        hidden: size !== 'large',
       },
       {
         key: 'average_dividends_amount',
@@ -154,6 +171,7 @@ export function AssetsSearch({ getLeagues, getClubs, getAssets, onClickAsset }: 
       },
     ];
   }, [
+    size,
     assetColumnSorted,
     averageDividendsAmountColumnSorted,
     nbSharesColumnSorted,
@@ -213,7 +231,7 @@ export function AssetsSearch({ getLeagues, getClubs, getAssets, onClickAsset }: 
   }, [getAssets, getAssetsQuery, getClubsQuery]);
 
   return (
-    <Form<AssetsSearchFields> ref={formRef} className="goatim-ui-assets-search">
+    <Form<AssetsSearchFields> ref={formRef} className={className}>
       <div className="search">
         <Field name="search" component={Input} shape="rounded" leftIcon="search" />
       </div>
