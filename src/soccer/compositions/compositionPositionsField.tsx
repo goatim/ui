@@ -88,10 +88,12 @@ export function CompositionPositionsField({
             compositionSettingPosition={compositionSettingPosition}
             compositionSetting={compositionSetting}
             boosterFactories={boosterFactories}
-            onSubmit={(position) => {
-              changePosition(position);
-              dismissModal();
+            onChange={(position, updates) => {
+              if (updates) {
+                changePosition(position);
+              }
             }}
+            onSubmit={dismissModal}
           />
         ),
       });
