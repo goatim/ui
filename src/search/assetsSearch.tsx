@@ -13,16 +13,24 @@ import {
 } from '@goatim/client';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import isPromise from 'is-promise';
-import { Input, Select, SelectOption, Table, TableColumn, TableColumnSort } from '../general';
+import {
+  Input,
+  Select,
+  SelectOption,
+  SelectProps,
+  Table,
+  TableColumn,
+  TableColumnSort,
+} from '../general';
 import { ClubThumbnail, LeagueThumbnail } from '../soccer';
 import { AssetThumbnail } from '../trading';
 import { GoatimCoinsAmount, GoatimCoinsGains } from '../market';
 
 export interface AssetsSearchFields extends FormFields {
   search?: string;
-  league?: League;
-  club?: Club;
-  player_position?: PlayerPosition;
+  league?: League[];
+  club?: Club[];
+  player_position?: PlayerPosition[];
 }
 
 export type AssetSearchSize = 'small' | 'medium' | 'large';
@@ -81,9 +89,9 @@ export function AssetsSearch({
 
   const getClubsQuery = useMemo<GetClubsQuery>(() => {
     return {
-      league: formState?.values?.league?.id,
+      league: formState?.values?.league?.map((l) => l.id),
     };
-  }, [formState?.values?.league?.id]);
+  }, [formState?.values?.league]);
 
   useEffect(() => {
     (async () => {
@@ -104,23 +112,23 @@ export function AssetsSearch({
     }));
   }, [clubs]);
 
-  const playerPositionsOptions = useMemo<SelectOption<PlayerPosition>[] | undefined>(() => {
+  const playerPositionsOptions = useMemo<SelectOption<PlayerPosition>[]>(() => {
     return [
       {
         value: 'forward',
-        element: 'Attaquant',
+        label: 'Attaquant',
       },
       {
         value: 'midfielder',
-        element: 'Milieu',
+        label: 'Milieu',
       },
       {
         value: 'defender',
-        element: 'Défenseur',
+        label: 'Défenseur',
       },
       {
         value: 'goalkeeper',
-        element: 'Gardien',
+        label: 'Gardien',
       },
     ];
   }, []);
@@ -159,7 +167,7 @@ export function AssetsSearch({
         sorted: quotationColumnSorted,
         onSort: setQuotationColumnSorted,
         cellComponent: ({ item }) => <GoatimCoinsAmount amount={item.quotation} />,
-        hidden: size !== 'large',
+        align: 'right',
       },
       {
         key: 'average_dividends_amount',
@@ -168,6 +176,8 @@ export function AssetsSearch({
         sorted: averageDividendsAmountColumnSorted,
         onSort: setAverageDividendsAmountColumnSorted,
         cellComponent: ({ item }) => <GoatimCoinsGains gains={item.average_dividends_amount} />,
+        hidden: size === 'small',
+        align: 'right',
       },
     ];
   }, [
@@ -202,8 +212,8 @@ export function AssetsSearch({
     return {
       type: 'player',
       search: formState?.values?.search,
-      league: formState?.values?.league?.id,
-      club: formState?.values?.club?.id,
+      league: formState?.values?.league?.map((l) => l.id),
+      club: formState?.values?.club?.map((c) => c.id),
       player_position: formState?.values?.player_position,
       order: orders.join(','),
     };
@@ -213,8 +223,8 @@ export function AssetsSearch({
     quotationColumnSorted,
     averageDividendsAmountColumnSorted,
     formState?.values?.search,
-    formState?.values?.league?.id,
-    formState?.values?.club?.id,
+    formState?.values?.league,
+    formState?.values?.club,
     formState?.values?.player_position,
   ]);
 
@@ -237,30 +247,42 @@ export function AssetsSearch({
       </div>
       <div className="filters">
         <div className="filter">
-          <Field<League | undefined>
+          <Field<League[], SelectProps<League, League[]>>
             name="league"
-            component={Select<League | undefined>}
+            component={Select<League, League[]>}
             shape="round"
             placeholder="Ligue"
             options={leaguesOptions}
+            canReset
+            theme="electric-blue"
+            multiple
+            optionsPlural="ligues"
           />
         </div>
         <div className="filter">
-          <Field<Club | undefined>
+          <Field<Club[], SelectProps<Club, Club[]>>
             name="club"
-            component={Select<Club | undefined>}
+            component={Select<Club, Club[]>}
             shape="round"
             placeholder="Club"
             options={clubsOptions}
+            canReset
+            theme="electric-blue"
+            multiple
+            optionsPlural="clubs"
           />
         </div>
         <div className="filter">
-          <Field<PlayerPosition | undefined>
+          <Field<PlayerPosition[], SelectProps<PlayerPosition, PlayerPosition[]>>
             name="player_position"
-            component={Select<PlayerPosition | undefined>}
+            component={Select<PlayerPosition, PlayerPosition[]>}
             shape="round"
             placeholder="Poste"
             options={playerPositionsOptions}
+            canReset
+            theme="electric-blue"
+            multiple
+            optionsPlural="postes"
           />
         </div>
       </div>

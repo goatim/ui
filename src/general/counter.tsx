@@ -11,11 +11,12 @@ import { FieldComponentProps } from '@cezembre/forms';
 import { Icon } from './icon';
 
 export type CounterTransformationFunction = (value: number) => number;
+export type CounterFormatFunction = (value: number) => string;
 
-export interface CounterProps extends FieldComponentProps<number | undefined> {
+export interface CounterProps extends FieldComponentProps<number> {
   adapter?: CounterTransformationFunction;
   resolver?: CounterTransformationFunction;
-  format?: CounterTransformationFunction;
+  format?: CounterFormatFunction;
   label?: string;
   placeholder?: string;
   instructions?: string;
@@ -106,7 +107,7 @@ export function Counter({
 
   useEffect(() => {
     if (value !== undefined) {
-      let nextValue: number | undefined = value;
+      let nextValue: number | string | undefined = value;
       if (!isActive && format) {
         setInputType('text');
         nextValue = format(nextValue);

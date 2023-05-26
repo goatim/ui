@@ -10,7 +10,7 @@ import {
 } from '@goatim/client';
 import { FormSubmitFunction } from '@cezembre/forms/dist/state';
 import isPromise from 'is-promise';
-import { Button, Counter } from '../../general';
+import { Button, Counter, CounterProps } from '../../general';
 import { OrderBookThumbnail, OrderBookThumbnailSize } from '../../trading';
 import { GoatimCoinsAmount } from '../goatimCoins';
 
@@ -148,21 +148,19 @@ export function OrderItemEditor({
 
       <div className="counters">
         <div className="counter">
-          <Field<number | undefined>
+          <Field<number, CounterProps>
             name="nb_shares"
             label="Actions"
             component={Counter}
-            theme="black"
             initialValue={initialOrderItem?.nb_shares}
           />
         </div>
 
         <div className="counter">
-          <Field<number | undefined>
+          <Field<number, CounterProps>
             name="price_limit"
             label="Limite"
             component={Counter}
-            theme="black"
             initialValue={initialOrderItem?.price_limit}
             resolver={resolveGoatimCoinsAmount}
             adapter={adaptGoatimCoinsAmount}

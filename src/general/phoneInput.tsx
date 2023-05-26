@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 import { Field, FieldComponentProps, Form } from '@cezembre/forms';
 import { Icon } from './icon';
-import { Select } from './select';
+import { Select, SelectProps } from './select';
 import { Input } from './input';
 
 export interface PhoneInputValue {
@@ -47,190 +47,190 @@ export function PhoneInput({
 
       <Form className="body" onChange={onChange}>
         <div className="region-code-selector">
-          <Field<string | undefined>
+          <Field<string, SelectProps<string>>
             name="region_code"
-            component={Select}
+            component={Select<string>}
             initialValue={value?.region_code}
             options={[
               {
                 value: 'FR',
-                element: '🇫🇷 FR',
+                label: '🇫🇷 FR',
               },
               {
                 value: 'BE',
-                element: '🇧🇪 BE',
+                label: '🇧🇪 BE',
               },
               {
                 value: 'CH',
-                element: '🇨🇭 CH',
+                label: '🇨🇭 CH',
               },
               {
                 value: 'MC',
-                element: '🇲🇨 MC',
+                label: '🇲🇨 MC',
               },
               {
                 value: 'LU',
-                element: '🇱🇺 LU',
+                label: '🇱🇺 LU',
               },
               {
                 value: 'CA',
-                element: '🇨🇦 CA',
+                label: '🇨🇦 CA',
               },
               {
                 value: 'NL',
-                element: '🇳🇱 NL',
+                label: '🇳🇱 NL',
               },
               {
                 value: 'MA',
-                element: '🇲🇦 MA',
+                label: '🇲🇦 MA',
               },
               {
                 value: 'DZ',
-                element: '🇩🇿',
+                label: '🇩🇿',
               },
               {
                 value: 'TN',
-                element: '🇹🇳 TN',
+                label: '🇹🇳 TN',
               },
               {
                 value: 'GB',
-                element: '🇬🇧 GB',
+                label: '🇬🇧 GB',
               },
               {
                 value: 'DE',
-                element: '🇩🇪 DE',
+                label: '🇩🇪 DE',
               },
               {
                 value: 'IT',
-                element: '🇮🇹 IT',
+                label: '🇮🇹 IT',
               },
               {
                 value: 'ES',
-                element: '🇪🇸 ES',
+                label: '🇪🇸 ES',
               },
               {
                 value: 'PT',
-                element: '🇵🇹 PT',
+                label: '🇵🇹 PT',
               },
               {
                 value: 'US',
-                element: '🇺🇸 US',
+                label: '🇺🇸 US',
               },
               {
                 value: 'IE',
-                element: '🇮🇪 IE',
+                label: '🇮🇪 IE',
               },
               {
                 value: 'GP',
-                element: '🇬🇵 GP',
+                label: '🇬🇵 GP',
               },
               {
                 value: 'BJ',
-                element: '🇧🇯 BJ',
+                label: '🇧🇯 BJ',
               },
               {
                 value: 'BF',
-                element: '🇧🇫 BF',
+                label: '🇧🇫 BF',
               },
               {
                 value: 'CD',
-                element: '🇨🇩 CD',
+                label: '🇨🇩 CD',
               },
               {
                 value: 'CG',
-                element: '🇨🇬 CG',
+                label: '🇨🇬 CG',
               },
               {
                 value: 'CI',
-                element: '🇨🇮 CI',
+                label: '🇨🇮 CI',
               },
               {
                 value: 'GA',
-                element: '🇬🇦 GA',
+                label: '🇬🇦 GA',
               },
               {
                 value: 'GN',
-                element: '🇬🇳 GN',
+                label: '🇬🇳 GN',
               },
               {
                 value: 'ML',
-                element: '🇲🇱 ML',
+                label: '🇲🇱 ML',
               },
               {
                 value: 'NE',
-                element: '🇳🇪 NE',
+                label: '🇳🇪 NE',
               },
               {
                 value: 'SN',
-                element: '🇸🇳 SN',
+                label: '🇸🇳 SN',
               },
               {
                 value: 'TG',
-                element: '🇹🇬 TG',
+                label: '🇹🇬 TG',
               },
               {
                 value: 'BI',
-                element: '🇧🇮 BI',
+                label: '🇧🇮 BI',
               },
               {
                 value: 'CM',
-                element: '🇨🇲 CM',
+                label: '🇨🇲 CM',
               },
               {
                 value: 'CF',
-                element: '🇨🇫 CF',
+                label: '🇨🇫 CF',
               },
               {
                 value: 'KM',
-                element: '🇰🇲 KM',
+                label: '🇰🇲 KM',
               },
               {
                 value: 'DJ',
-                element: '🇩🇯 DJ',
+                label: '🇩🇯 DJ',
               },
               {
                 value: 'GQ',
-                element: '🇬🇶 GQ',
+                label: '🇬🇶 GQ',
               },
               {
                 value: 'HT',
-                element: '🇭🇹 HT',
+                label: '🇭🇹 HT',
               },
               {
                 value: 'MG',
-                element: '🇲🇬 MG',
+                label: '🇲🇬 MG',
               },
               {
                 value: 'RW',
-                element: '🇷🇼 RW',
+                label: '🇷🇼 RW',
               },
               {
                 value: 'SC',
-                element: '🇸🇨 SC',
+                label: '🇸🇨 SC',
               },
               {
                 value: 'TD',
-                element: '🇹🇩 TD',
+                label: '🇹🇩 TD',
               },
               {
                 value: 'VU',
-                element: '🇻🇺 VU',
+                label: '🇻🇺 VU',
               },
               {
                 value: 'GG',
-                element: '🇬🇬 GG',
+                label: '🇬🇬 GG',
               },
               {
                 value: 'LB',
-                element: '🇱🇧 LB',
+                label: '🇱🇧 LB',
               },
               {
                 value: 'MU',
-                element: '🇲🇺 MU',
+                label: '🇲🇺 MU',
               },
               {
                 value: 'VA',
-                element: '🇻🇦 VA',
+                label: '🇻🇦 VA',
               },
             ]}
           />

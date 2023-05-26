@@ -1,6 +1,7 @@
 import {
   ChangeEventHandler,
-  JSXElementConstructor,
+  cloneElement,
+  createElement,
   ReactElement,
   useCallback,
   useMemo,
@@ -11,59 +12,137 @@ import { FieldComponentProps } from '@cezembre/forms';
 import { useClickOutside } from '@cezembre/fronts';
 import _ from 'lodash';
 import { Icon } from './icon';
+import { Check } from './check';
 
-export interface SelectOption<V = string> {
+export interface SelectOptionComponentProps<V = unknown> {
+  value?: V;
+  active?: boolean;
+}
+
+export interface SelectOption<V = unknown> {
   value: V;
-  element?: ReactElement | string | number;
+  label?: string | number | boolean;
+  element?: ReactElement<SelectOptionComponentProps<V>> | null;
+  component?: (props: SelectOptionComponentProps<V>) => ReactElement | null;
 }
 
-export interface SelectOptionProps<V = string> {
-  option?: SelectOption<V>;
-  DefaultComponent?: JSXElementConstructor<{ value: V }>;
-  placeholder?: string;
+interface OptionProps<V> {
+  option: SelectOption<V>;
+  defaultComponent?: (props: SelectOptionComponentProps<V>) => ReactElement | null;
+  active?: boolean;
 }
 
-function SelectOptionComponent<V = string>({
+function Option<V>({ option, defaultComponent, active }: OptionProps<V>): ReactElement {
+  if (option.element) {
+    return cloneElement<SelectOptionComponentProps<V>>(option.element, {
+      value: option.value,
+      active,
+    });
+  }
+
+  if (option.component) {
+    return createElement<SelectOptionComponentProps<V>>(option.component, {
+      value: option.value,
+      active,
+    });
+  }
+
+  if (option.label) {
+    return <span className="value label">{option.label}</span>;
+  }
+
+  if (defaultComponent) {
+    return createElement(defaultComponent, { value: option.value, active });
+  }
+
+  if (typeof option.value === 'string' || typeof option.value === 'number') {
+    return <span className="value">{option.value}</span>;
+  }
+
+  if (typeof option.value === 'boolean') {
+    return <span className="value boolean">{option.value ? 'true' : 'false'}</span>;
+  }
+
+  return <span>-</span>;
+}
+
+interface OptionButtonProps<V, FV extends V | V[] = V> {
+  onClick?: () => void;
+  option: SelectOption<V>;
+  value?: FV;
+  defaultComponent?: (props: SelectOptionComponentProps<V>) => ReactElement | null;
+  multiple?: boolean;
+}
+
+function OptionButton<V, FV extends V | V[] = V>({
+  onClick,
   option,
-  DefaultComponent,
-  placeholder,
-}: SelectOptionProps<V>): ReactElement | null {
-  if (option?.element && option?.value) {
-    if (typeof option.element === 'string' || typeof option.element === 'number') {
-      return <span>{option.element}</span>;
+  value,
+  defaultComponent,
+  multiple,
+}: OptionButtonProps<V, FV>) {
+  const active = useMemo(() => {
+    if (value === undefined) {
+      return false;
     }
-    return option.element;
-  }
+    if (multiple) {
+      if (Array.isArray(value)) {
+        return value.findIndex((v) => _.isEqual(option.value, v)) !== -1;
+      }
+      return false;
+    }
+    return _.isEqual(option.value, value);
+  }, [multiple, option.value, value]);
 
-  if (DefaultComponent && option?.value) {
-    return <DefaultComponent value={option.value} />;
-  }
+  const className = useMemo<string>(() => {
+    const classNames = ['option'];
 
-  if (option?.value && typeof option.value === 'string' && option.value.length) {
-    return <span>{option.value}</span>;
-  }
+    if (active) {
+      classNames.push('active');
+    }
 
-  return <span className="placeholder">{placeholder || 'Selectioner une option'}</span>;
+    if (multiple) {
+      classNames.push('multiple');
+    }
+
+    return classNames.join(' ');
+  }, [active, multiple]);
+
+  return (
+    <button type="button" onClick={onClick} className={className}>
+      {multiple ? (
+        <div className="check">
+          <Check active={active} />
+        </div>
+      ) : null}
+      <Option<V> option={option} defaultComponent={defaultComponent} active={active} />
+    </button>
+  );
 }
 
 export type SelectShape = 'square' | 'round' | 'borderless';
 
 export type SelectType = 'dropdown' | 'flat';
 
-export interface SelectProps<V = string> extends FieldComponentProps<V | undefined> {
+export type SelectTheme = 'default' | 'electric-blue';
+
+export interface SelectProps<V = unknown, FV extends V | V[] = V> extends FieldComponentProps<FV> {
   label?: string;
   options?: SelectOption<V>[];
-  DefaultComponent?: JSXElementConstructor<{ value: V }>;
+  defaultComponent?: (props: SelectOptionComponentProps<V>) => ReactElement | null;
   canReset?: boolean;
   shape?: SelectShape;
   type?: SelectType;
+  theme?: SelectTheme;
   instructions?: ReactElement | string;
   fullWidth?: boolean;
   placeholder?: string;
   onSearch?: (search?: string) => unknown;
+  multiple?: boolean;
+  optionsPlural?: string;
 }
 
-export function Select<V = string>({
+export function Select<V = unknown, FV extends V | V[] = V>({
   value,
   error,
   warning,
@@ -74,17 +153,20 @@ export function Select<V = string>({
   onChange,
   label,
   options = [],
-  DefaultComponent,
+  defaultComponent,
   canReset,
   instructions,
   shape = 'square',
   type = 'dropdown',
   fullWidth,
-  placeholder,
+  placeholder = 'Sélectionner',
   onSearch,
-}: SelectProps<V>): ReactElement {
+  multiple,
+  optionsPlural = 'options',
+  theme = 'default',
+}: SelectProps<V, FV>): ReactElement {
   const className = useMemo<string>(() => {
-    const classNames: string[] = ['goatim-ui-select', shape, type];
+    const classNames: string[] = ['goatim-ui-select', shape, type, theme];
 
     if (isActive) {
       classNames.push('active');
@@ -102,8 +184,12 @@ export function Select<V = string>({
       classNames.push('full-width');
     }
 
+    if (value !== undefined) {
+      classNames.push('has-value');
+    }
+
     return classNames.join(' ');
-  }, [error, fullWidth, isActive, shape, type, warning]);
+  }, [shape, type, theme, isActive, error, warning, fullWidth, value]);
 
   const toggleFocus = useCallback(() => {
     if (!isActive) {
@@ -115,13 +201,36 @@ export function Select<V = string>({
 
   const selectOption = useCallback(
     (_value: V) => {
-      onChange(_value);
-      onBlur();
+      if (!multiple) {
+        onChange(_value as FV);
+        onBlur();
+      } else {
+        onChange((oldValue) => {
+          if (!oldValue) {
+            return [_value] as FV;
+          }
+          if (!Array.isArray(oldValue)) {
+            return [oldValue, _value] as FV;
+          }
+          const index = oldValue.findIndex((v) => _.isEqual(v, _value));
+
+          if (index !== -1) {
+            if (oldValue.length <= 1) {
+              return undefined;
+            }
+
+            const nextValue = [...oldValue];
+            nextValue.splice(index, 1);
+            return nextValue as FV;
+          }
+          return [...oldValue, _value] as FV;
+        });
+      }
     },
-    [onBlur, onChange],
+    [multiple, onBlur, onChange],
   );
 
-  const selectButtonRef = useRef<HTMLButtonElement>(null);
+  const selectorButtonRef = useRef<HTMLButtonElement>(null);
 
   const optionsRef = useRef<HTMLDivElement>(null);
 
@@ -131,14 +240,7 @@ export function Select<V = string>({
     }
   }, [isActive, onBlur]);
 
-  useClickOutside([selectButtonRef, optionsRef], clickOutside);
-
-  const selectedOption = useMemo<SelectOption<V> | undefined>(() => {
-    if (value) {
-      return options?.find((option) => _.isEqual(option.value, value)) || { value };
-    }
-    return undefined;
-  }, [options, value]);
+  useClickOutside([selectorButtonRef, optionsRef], clickOutside);
 
   const [searchActive, setSearchActive] = useState<boolean>(false);
 
@@ -165,26 +267,76 @@ export function Select<V = string>({
     }, 5);
   }, [onChange]);
 
+  const selectedOption = useMemo<SelectOption<V> | undefined>(() => {
+    if (value === undefined) {
+      return undefined;
+    }
+
+    if (multiple && Array.isArray(value)) {
+      if (!value.length) {
+        return undefined;
+      }
+      return options.find((option) => _.isEqual(option.value, value[0]));
+    }
+    return options.find((option) => _.isEqual(option.value, value));
+  }, [multiple, options, value]);
+
+  const nbSelectedOptions = useMemo<number>(() => {
+    if (!multiple) {
+      return value !== undefined ? 1 : 0;
+    }
+    if (Array.isArray(value)) {
+      return value.length;
+    }
+    return 0;
+  }, [multiple, value]);
+
+  const valueElement = useMemo(() => {
+    if (value === undefined) {
+      return <span className="placeholder">{placeholder}</span>;
+    }
+
+    if (nbSelectedOptions > 1) {
+      return (
+        <span className="multiple-values">
+          {nbSelectedOptions} {optionsPlural}
+        </span>
+      );
+    }
+
+    if (selectedOption) {
+      return <Option<V> option={selectedOption} defaultComponent={defaultComponent} active />;
+    }
+
+    return null;
+  }, [defaultComponent, nbSelectedOptions, optionsPlural, placeholder, selectedOption, value]);
+
   return (
     <div className={className}>
       {label && <label htmlFor={name}>{label}</label>}
 
       <div className="body">
-        {selectedOption || type === 'dropdown' ? (
+        {value || type === 'dropdown' ? (
           <div className="selector">
-            <button ref={selectButtonRef} onClick={toggleFocus} type="button" className="main">
-              <SelectOptionComponent<V>
-                option={selectedOption}
-                placeholder={placeholder}
-                DefaultComponent={DefaultComponent}
-              />
-              {type === 'dropdown' ? <Icon name="chevron-down" /> : null}
-            </button>
-            {selectedOption && canReset ? (
-              <button type="button" className="reset" onClick={reset}>
-                <Icon name="x" />
+            <div className="container">
+              <button
+                ref={selectorButtonRef}
+                onClick={toggleFocus}
+                type="button"
+                className="value-button">
+                {valueElement}
+                {type === 'dropdown' && (!canReset || value === undefined) ? (
+                  <div className="dropdown-icon">
+                    <Icon name="chevron-down" />
+                  </div>
+                ) : null}
               </button>
-            ) : null}
+              {value !== undefined && canReset ? (
+                <button type="button" className="reset" onClick={reset}>
+                  <Icon name="x" />
+                </button>
+              ) : null}
+            </div>
           </div>
         ) : null}
 
@@ -204,17 +356,18 @@ export function Select<V = string>({
             </div>
           ) : null}
           {options?.map((option, index) => (
-            <button
-              type="button"
+            <OptionButton<V, FV>
               key={
                 typeof option.value === 'string' || typeof option.value === 'number'
                   ? option.value
                   : index
               }
               onClick={() => selectOption(option.value)}
-              className={`option${_.isEqual(option.value, value) ? ' active' : ''}`}>
-              <SelectOptionComponent<V> option={option} DefaultComponent={DefaultComponent} />
-            </button>
+              option={option}
+              value={value}
+              defaultComponent={defaultComponent}
+              multiple={multiple}
+            />
           ))}
         </div>
       </div>

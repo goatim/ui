@@ -177,8 +177,10 @@ function getAssets(query?: GetAssetsQuery): Promise<AssetList> {
   });
 }
 
-function Template({}: AssetsSearchProps) {
-  return <AssetsSearch getLeagues={getLeagues} getClubs={getClubs} getAssets={getAssets} />;
+function Template({ size }: AssetsSearchProps) {
+  return (
+    <AssetsSearch getLeagues={getLeagues} getClubs={getClubs} getAssets={getAssets} size={size} />
+  );
 }
 
 export const Default = Template.bind({});

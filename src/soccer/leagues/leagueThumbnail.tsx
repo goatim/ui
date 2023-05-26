@@ -15,6 +15,7 @@ export interface LeagueThumbnailProps extends WrapperProps {
   size?: LeagueThumbnailSize;
   shape?: LeagueThumbnailShape;
   theme?: LeagueThumbnailTheme;
+  active?: boolean;
 }
 
 export function LeagueThumbnail({
@@ -26,11 +27,17 @@ export function LeagueThumbnail({
   onClick,
   href,
   target,
+  active,
 }: LeagueThumbnailProps): ReactElement {
   const className = useMemo<string>(() => {
     const classNames = ['goatim-ui-league-thumbnail', size, shape, theme];
+
+    if (active) {
+      classNames.push('active');
+    }
+
     return classNames.join(' ');
-  }, [size, theme, shape]);
+  }, [size, theme, shape, active]);
 
   return (
     <Wrapper className={className} onClick={onClick} href={href} target={target}>

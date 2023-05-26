@@ -449,8 +449,11 @@ export function Table<I extends TableItem = TableItem>({
               {columns.map((column: TableColumn<I>) => (
                 <td
                   key={column.key as string}
-                  width={column.width}
-                  style={{ display: column.hidden ? 'none' : undefined }}>
+                  style={{
+                    width: column.width,
+                    textAlign: column.align || 'left',
+                    display: column.hidden ? 'none' : undefined,
+                  }}>
                   <TableCell<I> column={column} item={item} />
                 </td>
               ))}

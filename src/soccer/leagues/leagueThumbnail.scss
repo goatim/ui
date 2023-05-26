@@ -7,7 +7,8 @@
   justify-content: flex-start;
 
   > .name {
-    @include fonts.Inter(.8em, colors.$blue, bold);
+    font-size: .8em;
+    font-weight: bold;
     margin: 0 0 0 10px;
     padding: 0;
     white-space: nowrap;
@@ -41,5 +42,11 @@
 
   &.light > .name {
     color: white;
+  }
+
+  &.active {
+    > .name {
+      color: colors.$electric-blue;
+    }
   }
 }

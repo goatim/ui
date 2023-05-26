@@ -109,7 +109,7 @@ const filteredPlayers: Player[] = [
   },
 ];
 
-function Template({ label, type, shape }: SelectProps) {
+function Template({ label, type, shape, multiple, canReset, fullWidth, theme }: SelectProps) {
   const [options, setOptions] = useState<SelectOption<string>[]>([]);
 
   useEffect(() => {
@@ -147,9 +147,12 @@ function Template({ label, type, shape }: SelectProps) {
         type={type}
         label={label}
         shape={shape}
-        canCancel
+        canReset={canReset}
         options={options}
         onSearch={onSearch}
+        multiple={multiple}
+        fullWidth={fullWidth}
+        theme={theme}
       />
     </Form>
   );

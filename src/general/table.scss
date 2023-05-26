@@ -100,16 +100,7 @@
           border: none;
           outline: none;
           padding: 10px;
-
-          &:first-child {
-            border-bottom-left-radius: 5px;
-            border-top-left-radius: 5px;
-          }
-
-          &:last-child {
-            border-bottom-right-radius: 5px;
-            border-top-right-radius: 5px;
-          }
+          border-top: solid colors.$blue-10 1px;
 
           > .selection {
             transition: visibility linear 100ms, opacity linear 100ms;

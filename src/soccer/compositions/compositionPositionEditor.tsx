@@ -8,7 +8,7 @@ import {
 } from '@goatim/client';
 import { Field, Form, FormContext, FormFields, FormProps, FormState } from '@cezembre/forms';
 import isPromise from 'is-promise';
-import { Button, Radio, Select } from '../../general';
+import { Button, Radio, RadioProps, Select, SelectProps } from '../../general';
 import { PlayerThumbnail } from '../players';
 import { BoosterFactoryThumbnail } from '../../trading';
 
@@ -107,13 +107,13 @@ export function CompositionPositionEditor({
       <Field name="id" initialValue={initialValues?.id} type="hidden" />
 
       <div className="player">
-        <Field<Player | undefined>
+        <Field<Player, SelectProps<Player>>
           name="player"
           initialValue={initialValues?.player}
           options={players?.map((player: Player) => ({
             value: player,
           }))}
-          DefaultComponent={PlayerSelectorOption}
+          defaultComponent={PlayerSelectorOption}
           component={Select}
           canReset
           fullWidth
@@ -127,9 +127,9 @@ export function CompositionPositionEditor({
           <span>Multiplie tes gains de GTCoins.</span>
 
           <div className="select-booster">
-            <Field<BoosterFactory | undefined>
+            <Field<BoosterFactory, RadioProps<BoosterFactory>>
               name="booster_factory"
-              component={Radio<BoosterFactory | undefined>}
+              component={Radio<BoosterFactory>}
               options={boosterFactories.map((boosterFactory) => ({
                 value: boosterFactory,
                 element: <BoosterFactoryThumbnail boosterFactory={boosterFactory} />,

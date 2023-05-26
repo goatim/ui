@@ -19,11 +19,12 @@ export interface ClubThumbnailProps extends WrapperProps {
   shape?: ClubThumbnailShape;
   title?: boolean;
   showLeague?: boolean;
+  active?: boolean;
 }
 
 export function ClubThumbnail({
   club,
-  size = 'medium',
+  size = 'small',
   theme = 'dark',
   onClick,
   href,
@@ -32,12 +33,17 @@ export function ClubThumbnail({
   shape = 'text',
   title = false,
   showLeague = false,
+  active,
 }: ClubThumbnailProps): ReactElement {
   const className = useMemo<string>(() => {
     const classNames = ['goatim-ui-club-thumbnail', size, theme, shape];
 
+    if (active) {
+      classNames.push('active');
+    }
+
     return classNames.join(' ');
-  }, [shape, size, theme]);
+  }, [active, shape, size, theme]);
 
   return (
     <Wrapper className={className} onClick={onClick} href={href} target={target}>
