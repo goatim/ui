@@ -21,7 +21,7 @@ export interface CompositionPositionValue extends CompositionPositionEditorField
 
 export type CompositionPositionsFieldType = 'map' | 'list';
 
-export interface CompositionPositionMapFieldProps
+export interface CompositionPositionsFieldProps
   extends FieldComponentProps<CompositionPositionValue[]> {
   type?: CompositionPositionsFieldType;
   compositionSetting?: CompositionSetting;
@@ -40,7 +40,7 @@ export function CompositionPositionsField({
   value,
   theme,
   readonly = false,
-}: CompositionPositionMapFieldProps): ReactElement {
+}: CompositionPositionsFieldProps): ReactElement {
   const { pushModal } = useModals();
 
   const changePosition = useCallback(

@@ -23,7 +23,7 @@ const externals = [...Object.keys(dependencies), ...Object.keys(peerDependencies
 const src = path.resolve(__dirname, 'src');
 const input = path.resolve(src, 'index.ts');
 const assets = path.resolve(src, 'assets');
-const dest = path.resolve(__dirname, 'dist');
+const dist = path.resolve(__dirname, 'dist');
 
 export default [
   {
@@ -46,11 +46,12 @@ export default [
             basePath: assets,
           }),
         ],
+        extract: path.resolve(dist, 'style.css')
       }),
       copy({
         targets: [
-          {src: 'src/**/_*.scss.d.ts', dest},
-          {src: 'src/**/_*.scss', dest},
+          {src: 'src/**/_*.scss.d.ts', dest: dist},
+          {src: 'src/**/_*.scss', dest: dist},
         ],
       }),
     ],
