@@ -6,7 +6,7 @@ import {
   Player,
   PlayerPosition,
 } from '@goatim/client';
-import { Field, Form, FormContext, FormFields, FormProps, FormState } from '@cezembre/forms';
+import { Field, Form, FormContext, FormProps, FormState } from '@cezembre/forms';
 import isPromise from 'is-promise';
 import { Button, Radio, RadioProps, Select, SelectProps } from '../../general';
 import { PlayerThumbnail } from '../players';
@@ -23,7 +23,7 @@ function PlayerSelectorOption({ value }: PlayerSelectorOptionProps): ReactElemen
   return <PlayerThumbnail player={value} size="medium" />;
 }
 
-export interface CompositionPositionEditorFields extends FormFields {
+export interface CompositionPositionEditorFields {
   id: string;
   player?: Player;
   booster_factory?: BoosterFactory;

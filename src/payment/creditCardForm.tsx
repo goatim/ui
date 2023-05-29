@@ -1,10 +1,10 @@
 import { ReactElement, useCallback, useState } from 'react';
-import { Field, Form, FormContext, FormFields, FormState } from '@cezembre/forms';
+import { Field, Form, FormContext, FormState } from '@cezembre/forms';
 import { FormProps } from '@cezembre/forms/dist/form';
 import { CreditCardInput, CreditCardValue } from './creditCardInput';
 import { Button } from '../general';
 
-export interface CreditCardFields extends FormFields {
+export interface CreditCardFields {
   type: 'card';
   card?: CreditCardValue;
   // save_card?: boolean;

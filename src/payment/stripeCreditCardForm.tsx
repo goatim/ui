@@ -1,12 +1,5 @@
 import { ReactElement, useCallback, useState } from 'react';
-import {
-  Field,
-  Form,
-  FormContext,
-  FormFields,
-  FormState,
-  getDefaultFormState,
-} from '@cezembre/forms';
+import { Field, Form, FormContext, FormState, getDefaultFormState } from '@cezembre/forms';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import {
   PaymentMethod as StripePaymentMethod,
@@ -16,7 +9,7 @@ import {
 import { StripeCreditCardInput } from './stripeCreditCardInput';
 import { Button } from '../general';
 
-export interface Fields extends FormFields {
+export interface Fields {
   card: StripeCardElement | StripeCardNumberElement | { token: string };
 }
 

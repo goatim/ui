@@ -1,8 +1,8 @@
 import { ReactElement } from 'react';
-import { Field, Form, FormFields, FormSubmitFunction } from '@cezembre/forms';
+import { Field, Form, FormSubmitFunction } from '@cezembre/forms';
 import { Button, Input } from '../../general';
 
-export interface UserEditorFields extends FormFields {
+export interface UserEditorFields {
   first_name?: string;
   last_name?: string;
 }

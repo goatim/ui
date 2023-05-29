@@ -1,4 +1,4 @@
-import { Field, Form, FormContext, FormFields, FormProps, FormState } from '@cezembre/forms';
+import { Field, Form, FormContext, FormProps, FormState } from '@cezembre/forms';
 import {
   Asset,
   AssetList,
@@ -26,7 +26,7 @@ import { ClubThumbnail, LeagueThumbnail } from '../soccer';
 import { AssetThumbnail } from '../trading';
 import { GoatimCoinsAmount, GoatimCoinsGains } from '../market';
 
-export interface AssetsSearchFields extends FormFields {
+export interface AssetsSearchFields {
   search?: string;
   league?: League[];
   club?: Club[];

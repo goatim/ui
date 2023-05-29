@@ -1,5 +1,5 @@
 import { ReactElement, useCallback, useMemo, useState } from 'react';
-import { Field, Form, FormContext, FormErrors, FormFields, FormState } from '@cezembre/forms';
+import { Field, Form, FormContext, FormErrors, FormState } from '@cezembre/forms';
 import {
   adaptGoatimCoinsAmount,
   formatGoatimCoinsAmount,
@@ -14,7 +14,7 @@ import { Button, Counter, CounterProps } from '../../general';
 import { OrderBookThumbnail, OrderBookThumbnailSize } from '../index';
 import { GoatimCoinsAmount } from '../../market';
 
-export interface OrderEditorFields extends FormFields {
+export interface OrderEditorFields {
   order_type?: OrderType;
   price_limit?: number;
   nb_shares?: number;
@@ -133,12 +133,16 @@ export function OrderEditor({
         </p>
       )}
 
-      <Field name="order_type" type="hidden" initialValue={initialOrder?.order_type} />
+      <Field<OrderType, unknown, OrderEditorFields>
+        name="order_type"
+        type="hidden"
+        initialValue={initialOrder?.order_type}
+      />
 
       {isConnected ? (
         <div className="counters">
           <div className="counter">
-            <Field<number, CounterProps>
+            <Field<number, CounterProps, OrderEditorFields>
               name="nb_shares"
               label="Actions"
               component={Counter}
@@ -147,7 +151,7 @@ export function OrderEditor({
           </div>
 
           <div className="counter">
-            <Field<number, CounterProps>
+            <Field<number, CounterProps, OrderEditorFields>
               name="price_limit"
               label="Limite"
               component={Counter}
