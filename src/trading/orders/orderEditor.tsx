@@ -2,7 +2,6 @@ import { ReactElement, useCallback, useMemo, useState } from 'react';
 import { Field, Form, FormContext, FormErrors, FormFields, FormState } from '@cezembre/forms';
 import {
   adaptGoatimCoinsAmount,
-  Asset,
   formatGoatimCoinsAmount,
   OrderBook,
   OrderType,
@@ -10,32 +9,34 @@ import {
 } from '@goatim/client';
 import { FormSubmitFunction } from '@cezembre/forms/dist/state';
 import isPromise from 'is-promise';
+import { UrlObject } from 'url';
 import { Button, Counter, CounterProps } from '../../general';
-import { OrderBookThumbnail, OrderBookThumbnailSize } from '../../trading';
-import { GoatimCoinsAmount } from '../goatimCoins';
+import { OrderBookThumbnail, OrderBookThumbnailSize } from '../index';
+import { GoatimCoinsAmount } from '../../market';
 
-export interface OrderItemEditorFields extends FormFields {
-  asset?: Asset | string;
+export interface OrderEditorFields extends FormFields {
   order_type?: OrderType;
   price_limit?: number;
   nb_shares?: number;
 }
 
-export type OrderItemEditorSize = 'narrow' | 'big';
+export type OrderEditorSize = 'narrow' | 'big';
 
-export interface OrderItemEditorProps {
-  initialOrderItem?: OrderItemEditorFields;
+export interface OrderEditorProps {
+  initialOrder?: OrderEditorFields;
   orderBook?: OrderBook;
-  onSubmit?: FormSubmitFunction<OrderItemEditorFields>;
+  onSubmit?: FormSubmitFunction<OrderEditorFields>;
   onCancel?: () => unknown;
+  connectButtonHref?: string | UrlObject;
   label?: string;
-  size?: OrderItemEditorSize;
+  size?: OrderEditorSize;
   bankProposalQuotation?: number;
   onAcceptBankProposal?: (nbShares?: number) => unknown;
+  isConnected?: boolean;
 }
 
-export function OrderItemEditor({
-  initialOrderItem,
+export function OrderEditor({
+  initialOrder,
   orderBook,
   onSubmit,
   onCancel,
@@ -43,10 +44,12 @@ export function OrderItemEditor({
   size = 'big',
   bankProposalQuotation,
   onAcceptBankProposal,
-}: OrderItemEditorProps): ReactElement | null {
-  const [formState, setFormState] = useState<FormState<OrderItemEditorFields> | undefined>();
+  isConnected = false,
+  connectButtonHref,
+}: OrderEditorProps): ReactElement | null {
+  const [formState, setFormState] = useState<FormState<OrderEditorFields> | undefined>();
 
-  const form = useCallback((formContext: FormContext<OrderItemEditorFields> | null) => {
+  const form = useCallback((formContext: FormContext<OrderEditorFields> | null) => {
     if (formContext) {
       setTimeout(() => {
         setFormState(formContext.formState);
@@ -54,8 +57,8 @@ export function OrderItemEditor({
     }
   }, []);
 
-  const validate = useCallback((fields: OrderItemEditorFields) => {
-    const errors: FormErrors<OrderItemEditorFields> = {};
+  const validate = useCallback((fields: OrderEditorFields) => {
+    const errors: FormErrors<OrderEditorFields> = {};
 
     if (!fields.order_type) {
       errors.order_type = "Veuillez préciser le type d'ordre";
@@ -96,7 +99,7 @@ export function OrderItemEditor({
   }, [size]);
 
   const className = useMemo<string>(() => {
-    const classNames = ['goatim-ui-order-item-editor', size];
+    const classNames = ['goatim-ui-order-editor', size];
 
     if (formState?.values?.order_type) {
       classNames.push(formState.values.order_type);
@@ -106,7 +109,7 @@ export function OrderItemEditor({
   }, [formState?.values?.order_type, size]);
 
   return (
-    <Form<OrderItemEditorFields>
+    <Form<OrderEditorFields>
       ref={form}
       className={className}
       onSubmit={onSubmit}
@@ -130,53 +133,41 @@ export function OrderItemEditor({
         </p>
       )}
 
-      {initialOrderItem ? (
-        <Field
-          name="asset"
-          type="hidden"
-          initialValue={
-            typeof initialOrderItem.asset === 'object'
-              ? initialOrderItem.asset.id
-              : initialOrderItem.asset
-          }
-        />
-      ) : null}
+      <Field name="order_type" type="hidden" initialValue={initialOrder?.order_type} />
 
-      {initialOrderItem ? (
-        <Field name="order_type" type="hidden" initialValue={initialOrderItem.order_type} />
-      ) : null}
-
-      <div className="counters">
-        <div className="counter">
-          <Field<number, CounterProps>
-            name="nb_shares"
-            label="Actions"
-            component={Counter}
-            initialValue={initialOrderItem?.nb_shares}
-          />
-        </div>
-
-        <div className="counter">
-          <Field<number, CounterProps>
-            name="price_limit"
-            label="Limite"
-            component={Counter}
-            initialValue={initialOrderItem?.price_limit}
-            resolver={resolveGoatimCoinsAmount}
-            adapter={adaptGoatimCoinsAmount}
-            format={formatGoatimCoinsAmount}
-            increment={100}
-          />
-          <div className="total">
-            <span className="label">Total</span>
-            <GoatimCoinsAmount
-              amount={(formState?.values?.nb_shares || 0) * (formState?.values?.price_limit || 0)}
-              size="medium"
-              theme="darker"
+      {isConnected ? (
+        <div className="counters">
+          <div className="counter">
+            <Field<number, CounterProps>
+              name="nb_shares"
+              label="Actions"
+              component={Counter}
+              initialValue={initialOrder?.nb_shares}
             />
           </div>
+
+          <div className="counter">
+            <Field<number, CounterProps>
+              name="price_limit"
+              label="Limite"
+              component={Counter}
+              initialValue={initialOrder?.price_limit}
+              resolver={resolveGoatimCoinsAmount}
+              adapter={adaptGoatimCoinsAmount}
+              format={formatGoatimCoinsAmount}
+              increment={100}
+            />
+            <div className="total">
+              <span className="label">Total</span>
+              <GoatimCoinsAmount
+                amount={(formState?.values?.nb_shares || 0) * (formState?.values?.price_limit || 0)}
+                size="medium"
+                theme="darker"
+              />
+            </div>
+          </div>
         </div>
-      </div>
+      ) : null}
 
       <div className="order-book">
         <OrderBookThumbnail
@@ -197,11 +188,17 @@ export function OrderItemEditor({
             Annuler
           </Button>
         </div>
-        <div className="action">
-          <Button type="submit" theme={formState?.values?.order_type}>
-            {label}
-          </Button>
-        </div>
+        {isConnected ? (
+          <div className="action">
+            <Button type="submit" theme={formState?.values?.order_type}>
+              {label}
+            </Button>
+          </div>
+        ) : (
+          <div className="action">
+            <Button href={connectButtonHref}>Me connecter</Button>
+          </div>
+        )}
       </div>
 
       {formState?.error ? <p className="error">{formState.error}</p> : null}

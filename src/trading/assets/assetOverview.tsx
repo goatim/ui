@@ -6,14 +6,12 @@ import { QuotationHistoryGraph } from '../quotations';
 import {
   GoatimCoinsAmount,
   GoatimCoinsSize,
-  ItemEditor,
-  ItemEditorFields,
-  ItemEditorSize,
   PercentageVariation,
   PercentageVariationSize,
 } from '../../market';
 import { AssetThumbnail, AssetThumbnailSize } from './assetThumbnail';
 import { IpoThumbnail, IpoThumbnailSize } from '../ipos';
+import { OrderEditor, OrderEditorFields, OrderEditorSize } from '../orders';
 
 export type AssetOverviewSize = 'small' | 'medium' | 'full';
 
@@ -22,12 +20,14 @@ export interface AssetOverviewProps {
   quotationHistory?: QuotationHistory;
   size?: AssetOverviewSize;
   orderBook?: OrderBook;
-  onSubmitItem?: (itemFields: ItemEditorFields) => unknown;
+  onSubmitOrder?: (orderFields: OrderEditorFields) => unknown;
   ipo?: Ipo;
   secondaryHref?: string | UrlObject;
   bankProposalQuotation?: number;
   onAcceptBankProposal?: (nbShares?: number) => unknown;
   defaultOrderType?: OrderType;
+  isConnected?: boolean;
+  connectButtonHref?: string | UrlObject;
 }
 
 export function AssetOverview({
@@ -36,11 +36,13 @@ export function AssetOverview({
   size = 'full',
   secondaryHref,
   orderBook,
-  onSubmitItem,
+  onSubmitOrder,
   ipo,
   bankProposalQuotation,
   onAcceptBankProposal,
   defaultOrderType,
+  isConnected = false,
+  connectButtonHref,
 }: AssetOverviewProps): ReactElement {
   const [orderType, setOrderType] = useState<OrderType | undefined>(defaultOrderType);
 
@@ -77,12 +79,10 @@ export function AssetOverview({
     }
   }, [size]);
 
-  const itemEditorSize = useMemo<ItemEditorSize>(() => {
+  const orderEditorSize = useMemo<OrderEditorSize>(() => {
     switch (size) {
       case 'small':
         return 'narrow';
-      case 'medium':
-        return 'medium';
       default:
         return 'big';
     }
@@ -149,22 +149,21 @@ export function AssetOverview({
       </div>
 
       <div className={`item-editor${orderType ? ' active' : ''}`}>
-        <ItemEditor
-          initialItem={{
-            type: 'order',
-            order: {
-              asset,
-              order_type: orderType,
-              price_limit: asset.quotation,
-              nb_shares: 1,
-            },
+        <OrderEditor
+          initialOrder={{
+            asset,
+            order_type: orderType,
+            price_limit: asset.quotation,
+            nb_shares: 1,
           }}
           orderBook={orderBook}
-          onSubmit={onSubmitItem}
+          onSubmit={onSubmitOrder}
           onCancel={() => setOrderType(undefined)}
-          size={itemEditorSize}
+          size={orderEditorSize}
           bankProposalQuotation={bankProposalQuotation}
           onAcceptBankProposal={onAcceptBankProposal}
+          isConnected={isConnected}
+          connectButtonHref={connectButtonHref}
         />
       </div>
     </div>

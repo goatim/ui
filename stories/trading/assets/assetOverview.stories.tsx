@@ -1,9 +1,5 @@
 import { Asset, Club, Ipo, Player, QuotationHistory } from '@goatim/client';
-import { AssetOverview, AssetOverviewSize } from '../../../src';
-
-interface Props {
-  size: AssetOverviewSize;
-}
+import { AssetOverview, AssetOverviewProps } from '../../../src';
 
 export default {
   title: 'Trading/AssetOverview',
@@ -116,7 +112,7 @@ const ipo: Ipo = {
   asset,
 };
 
-function Template({ size }: Props) {
+function Template({ size, isConnected }: AssetOverviewProps) {
   return (
     <AssetOverview
       asset={asset}
@@ -124,6 +120,7 @@ function Template({ size }: Props) {
       ipo={ipo}
       bankProposalQuotation={5000}
       onAcceptBankProposal={() => {}}
+      isConnected={isConnected}
     />
   );
 }
