@@ -151,7 +151,6 @@ export function AssetOverview({
       <div className={`item-editor${orderType ? ' active' : ''}`}>
         <OrderEditor
           initialOrder={{
-            asset,
             order_type: orderType,
             price_limit: asset.quotation,
             nb_shares: 1,
