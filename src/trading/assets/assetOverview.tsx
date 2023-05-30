@@ -46,6 +46,24 @@ export function AssetOverview({
 }: AssetOverviewProps): ReactElement {
   const [orderType, setOrderType] = useState<OrderType | undefined>(defaultOrderType);
 
+  const initialPriceLimit = useMemo<number | undefined>(() => {
+    if (
+      orderType === 'buy' &&
+      orderBook?.selling?.length &&
+      orderBook.selling[0].price_limit !== undefined
+    ) {
+      return orderBook.selling[0].price_limit;
+    }
+    if (
+      orderType === 'sell' &&
+      orderBook?.buying?.length &&
+      orderBook.buying[0].price_limit !== undefined
+    ) {
+      return orderBook.buying[0].price_limit;
+    }
+    return asset.quotation;
+  }, [asset.quotation, orderBook?.buying, orderBook?.selling, orderType]);
+
   const assetThumbnailSize = useMemo<AssetThumbnailSize>(() => {
     switch (size) {
       case 'full':
@@ -152,7 +170,7 @@ export function AssetOverview({
         <OrderEditor
           initialOrder={{
             order_type: orderType,
-            price_limit: asset.quotation,
+            price_limit: initialPriceLimit,
             nb_shares: 1,
           }}
           orderBook={orderBook}
