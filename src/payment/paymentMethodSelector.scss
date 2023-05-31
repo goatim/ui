@@ -1,15 +1,13 @@
 @use '../styles/colors';
 
 .goatim-ui-payment-method-selector {
-
-  > .new {
-    margin-top: 20px;
+  > .payment-methods {
+    margin-bottom: 20px;
   }
 
   > .new-button {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 25px;
   }
 }
