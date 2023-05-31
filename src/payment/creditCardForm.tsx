@@ -1,4 +1,4 @@
-import { ReactElement, useCallback, useState } from 'react';
+import { ReactElement, useCallback, useMemo, useState } from 'react';
 import { Field, Form, FormContext, FormState } from '@cezembre/forms';
 import { FormProps } from '@cezembre/forms/dist/form';
 import { CreditCardInput, CreditCardInputProps, CreditCardValue } from './creditCardInput';
@@ -30,8 +30,14 @@ export function CreditCardForm({
     }
   }, []);
 
+  const className = useMemo<string>(() => {
+    const classNames = ['goatim-ui-credit-card-form', size];
+
+    return classNames.join(' ');
+  }, [size]);
+
   return (
-    <Form<CreditCardFields> className="goatim-ui-credit-card-form" ref={form} onSubmit={onSubmit}>
+    <Form<CreditCardFields> className={className} ref={form} onSubmit={onSubmit}>
       <Field name="type" initialValue="card" type="hidden" />
 
       <div className="field">
@@ -50,9 +56,11 @@ export function CreditCardForm({
 
       <div className="actions">
         {onCancel ? (
-          <Button type="button" onClick={onCancel} theme="transparent-dark">
-            Annuler
-          </Button>
+          <div className="cancel">
+            <Button type="button" onClick={onCancel} theme="transparent-dark" shape="text">
+              Annuler
+            </Button>
+          </div>
         ) : null}
 
         <Button

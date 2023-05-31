@@ -9,4 +9,14 @@
     align-items: center;
     justify-content: space-between;
   }
+
+  &.small {
+    > .actions {
+      flex-direction: column-reverse;
+
+      > .cancel {
+        margin-top: 15px;
+      }
+    }
+  }
 }
