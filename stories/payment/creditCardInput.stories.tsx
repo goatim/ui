@@ -1,9 +1,5 @@
 import { Field, Form } from '@cezembre/forms';
-import { CreditCardInput } from '../../src';
-
-interface Props {
-  label?: string;
-}
+import { CreditCardInput, CreditCardInputProps } from '../../src';
 
 export default {
   title: 'Payment/CreditCardInput',
@@ -17,10 +13,10 @@ export default {
   },
 };
 
-function Template({ label }: Props) {
+function Template({ label, size }: CreditCardInputProps) {
   return (
     <Form>
-      <Field name="credit-card" component={CreditCardInput} label={label} />
+      <Field name="credit-card" component={CreditCardInput} label={label} size={size} />
     </Form>
   );
 }

@@ -12,7 +12,7 @@
 
   > .container {
     @include forms.input;
-    padding: 10px 15px;
+    padding: 10px;
     background: white;
     border: solid rgba(colors.$blue, .1) 1px;
     border-radius: 5px;
@@ -25,43 +25,57 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding-right: 10px;
 
       > svg {
         stroke: colors.$blue;
       }
     }
 
-    > input {
-      @include fonts.Inter(.85em, colors.$blue, 500);
-      background: none;
-      border: none;
-      outline: none;
-      text-decoration: none;
-      border-radius: 0;
-      margin: 0;
-      -moz-appearance: textfield;
+    > .parts {
+      display: flex;
+      align-items: stretch;
+      justify-content: flex-start;
+      margin-left: 5px;
 
-      &::-webkit-outer-spin-button,
-      &::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-      }
+      > .part {
+        display: flex;
+        align-items: stretch;
+        justify-content: flex-start;
 
-      &.number {
-        width: 170px;
-      }
+        > input {
+          font-size: .85em;
+          color: colors.$blue;
+          font-weight: 500;
+          background: none;
+          border: none;
+          outline: none;
+          text-decoration: none;
+          border-radius: 0;
+          margin: 0;
+          -moz-appearance: textfield;
 
-      &.exp {
-        width: 70px;
-      }
+          &::-webkit-outer-spin-button,
+          &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+          }
 
-      &.csc {
-        width: 50px;
-      }
+          &.number {
+            max-width: 170px;
+          }
 
-      &::placeholder {
-        color: rgba(colors.$blue, .5);
+          &.exp {
+            width: 65px;
+          }
+
+          &.csc {
+            width: 50px;
+          }
+
+          &::placeholder {
+            color: rgba(colors.$blue, .5);
+          }
+        }
       }
     }
   }
@@ -73,6 +87,34 @@
 
   &.active > .card {
     border: solid rgba(colors.$blue, .3) 1px;
+  }
+
+  &.small {
+    > .container {
+
+      > .parts {
+        flex-direction: column;
+        margin-left: 10px;
+
+        > .part {
+          margin-top: 5px;
+
+          &:first-of-type {
+            margin: 0;
+          }
+        }
+      }
+    }
+  }
+
+  &.large {
+    > .container {
+      padding: 10px 15px;
+
+      > .parts {
+        margin-left: 12px;
+      }
+    }
   }
 
   > .instructions {

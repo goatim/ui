@@ -24,9 +24,12 @@ export interface CreditCardValue {
   isValid: boolean;
 }
 
+export type CreditCardInputSize = 'small' | 'medium' | 'large';
+
 export interface CreditCardInputProps extends FieldComponentProps<CreditCardValue> {
   label?: string | null;
   instructions?: string | null;
+  size?: CreditCardInputSize;
 }
 
 export function CreditCardInput({
@@ -41,9 +44,10 @@ export function CreditCardInput({
   onChange,
   label = null,
   instructions = null,
+  size = 'small',
 }: CreditCardInputProps): ReactElement {
   const className = useMemo<string>(() => {
-    const classNames = ['goatim-ui-credit-card-input'];
+    const classNames = ['goatim-ui-credit-card-input', size];
     if (visited) {
       classNames.push('visited');
     }
@@ -57,7 +61,7 @@ export function CreditCardInput({
       classNames.push('warning');
     }
     return classNames.join(' ');
-  }, [error, isActive, submitted, visited, warning]);
+  }, [error, isActive, submitted, visited, warning, size]);
 
   const numberRef = useRef<HTMLInputElement>(null);
   const expRef = useRef<HTMLInputElement>(null);
@@ -78,10 +82,8 @@ export function CreditCardInput({
   const numberChange = useCallback<ChangeEventHandler<HTMLInputElement>>(
     (event: ChangeEvent<HTMLInputElement>) => {
       const { value } = event.target;
-      const digits = value.replace(/[^0-9]+/g, '');
-      const formattedDigits = digits
-        .replace(/([0-9]{4})/g, '$1 ')
-        .replace(/([0-9\s]{19})(.+)$/g, '$1');
+      const digits: string = value.replace(/[^0-9]+/g, '');
+      const formattedDigits = digits.replace(/([0-9]{4})/g, '$1 ').trim();
       setNumberValue(formattedDigits);
       if (formattedDigits.length >= 19) {
         setNumberComplete(true);
@@ -96,8 +98,12 @@ export function CreditCardInput({
   const expKeyDown = useCallback<KeyboardEventHandler<HTMLInputElement>>(
     (event: KeyboardEvent<HTMLInputElement>) => {
       if (event.key === 'Backspace') {
-        const digitToRemove = expValue.length === 6 ? 4 : 1;
-        setExpValue((n) => (n.length ? n.slice(0, -digitToRemove) : ''));
+        if (expValue.length) {
+          const digitToRemove = expValue.length === 6 ? 4 : 1;
+          setExpValue((n) => (n.length ? n.slice(0, -digitToRemove) : ''));
+        } else {
+          numberRef.current?.focus();
+        }
       } else if (event.key.match(/[0-9]/)) {
         if (expValue.length < 7) {
           if (!expValue.length) {
@@ -107,7 +113,7 @@ export function CreditCardInput({
               setExpValue(event.key);
             }
           } else if (expValue.length === 1) {
-            if (event.key.match(/[0-2]/)) {
+            if (expValue[0] === '0' || event.key.match(/[0-2]/)) {
               setExpValue((n) => `${n + event.key} / `);
             }
           } else if (expValue.length === 2) {
@@ -120,13 +126,8 @@ export function CreditCardInput({
         }
       }
     },
-    [expValue.length],
+    [expValue],
   );
-
-  // const expChange = useCallback<ChangeEventHandler<HTMLInputElement>>(
-  //   (event: ChangeEvent<HTMLInputElement>) => {},
-  //   [expValue.length],
-  // );
 
   const cscChange = useCallback<ChangeEventHandler<HTMLInputElement>>(
     (event: ChangeEvent<HTMLInputElement>) => {
@@ -136,6 +137,15 @@ export function CreditCardInput({
       }
     },
     [],
+  );
+
+  const cscKeyDown = useCallback<KeyboardEventHandler<HTMLInputElement>>(
+    (event: KeyboardEvent<HTMLInputElement>) => {
+      if (event.key === 'Backspace' && !cscValue.length) {
+        expRef.current?.focus();
+      }
+    },
+    [cscValue.length],
   );
 
   useEffect(() => {
@@ -185,52 +195,58 @@ export function CreditCardInput({
         <div className="icon">
           <Icon name="credit-card" />
         </div>
-        <input
-          ref={numberRef}
-          value={numberValue}
-          // onKeyDown={numberKeyDown}
-          onChange={numberChange}
-          onFocus={() => setNumberFocus(true)}
-          onBlur={() => setNumberFocus(false)}
-          name="cardnumber"
-          className="number"
-          type="text"
-          autoComplete="cc-number"
-          placeholder="Numéro de carte"
-          autoCorrect="false"
-          spellCheck="false"
-          inputMode="numeric"
-        />
-        <input
-          ref={expRef}
-          value={expValue}
-          onKeyDown={expKeyDown}
-          onFocus={() => setExpFocus(true)}
-          onBlur={() => setExpFocus(false)}
-          name="cardexp"
-          className="exp"
-          type="text"
-          autoComplete="cc-exp"
-          placeholder="MM / AA"
-          autoCorrect="false"
-          spellCheck="false"
-          inputMode="numeric"
-        />
-        <input
-          ref={cscRef}
-          value={cscValue}
-          onChange={cscChange}
-          onFocus={() => setCscFocus(true)}
-          onBlur={() => setCscFocus(false)}
-          name="cardcsc"
-          className="csc"
-          type="number"
-          placeholder="CVC"
-          autoComplete="cc-csc"
-          autoCorrect="false"
-          spellCheck="false"
-          inputMode="numeric"
-        />
+        <div className="parts">
+          <div className="part">
+            <input
+              ref={numberRef}
+              value={numberValue}
+              onChange={numberChange}
+              onFocus={() => setNumberFocus(true)}
+              onBlur={() => setNumberFocus(false)}
+              name="cardnumber"
+              className="number"
+              type="text"
+              autoComplete="cc-number"
+              placeholder="Numéro de carte"
+              autoCorrect="false"
+              spellCheck="false"
+              inputMode="numeric"
+            />
+          </div>
+          <div className="part">
+            <input
+              ref={expRef}
+              value={expValue}
+              onKeyDown={expKeyDown}
+              onFocus={() => setExpFocus(true)}
+              onBlur={() => setExpFocus(false)}
+              name="cardexp"
+              className="exp"
+              type="text"
+              autoComplete="cc-exp"
+              placeholder="MM / AA"
+              autoCorrect="false"
+              spellCheck="false"
+              inputMode="numeric"
+            />
+            <input
+              ref={cscRef}
+              value={cscValue}
+              onChange={cscChange}
+              onKeyDown={cscKeyDown}
+              onFocus={() => setCscFocus(true)}
+              onBlur={() => setCscFocus(false)}
+              name="cardcsc"
+              className="csc"
+              type="number"
+              placeholder="CVC"
+              autoComplete="cc-csc"
+              autoCorrect="false"
+              spellCheck="false"
+              inputMode="numeric"
+            />
+          </div>
+        </div>
       </div>
 
       {instructions ? <p className="instructions">{instructions}</p> : null}

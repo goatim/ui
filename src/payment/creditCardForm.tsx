@@ -1,7 +1,7 @@
 import { ReactElement, useCallback, useState } from 'react';
 import { Field, Form, FormContext, FormState } from '@cezembre/forms';
 import { FormProps } from '@cezembre/forms/dist/form';
-import { CreditCardInput, CreditCardValue } from './creditCardInput';
+import { CreditCardInput, CreditCardInputProps, CreditCardValue } from './creditCardInput';
 import { Button } from '../general';
 
 export interface CreditCardFields {
@@ -10,11 +10,18 @@ export interface CreditCardFields {
   // save_card?: boolean;
 }
 
+export type CreditCardFormSize = 'small' | 'medium' | 'large';
+
 export interface CreditCardFormProps extends FormProps<CreditCardFields> {
   onCancel?: () => unknown;
+  size?: CreditCardFormSize;
 }
 
-export function CreditCardForm({ onSubmit, onCancel }: CreditCardFormProps): ReactElement {
+export function CreditCardForm({
+  onSubmit,
+  onCancel,
+  size = 'small',
+}: CreditCardFormProps): ReactElement {
   const [formState, setFormState] = useState<FormState<CreditCardFields>>();
 
   const form = useCallback((formContext: FormContext<CreditCardFields>) => {
@@ -28,11 +35,12 @@ export function CreditCardForm({ onSubmit, onCancel }: CreditCardFormProps): Rea
       <Field name="type" initialValue="card" type="hidden" />
 
       <div className="field">
-        <Field
+        <Field<CreditCardValue, CreditCardInputProps>
           label="Carte de crédit"
           name="card"
           instructions="Sécurisé par EasyTransac"
           component={CreditCardInput}
+          size={size}
         />
       </div>
 
