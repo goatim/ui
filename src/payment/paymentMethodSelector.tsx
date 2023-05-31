@@ -4,16 +4,20 @@ import { CreditCardFields, CreditCardForm } from './creditCardForm';
 import { Button } from '../general';
 import { PaymentMethodList } from './paymentMethodList';
 
+export type PaymentMethodSelectorSize = 'small' | 'medium' | 'large';
+
 export interface PaymentMethodSelectorProps {
   paymentMethods?: (PaymentMethod | CreditCardFields)[];
   onSelectPaymentMethod?: (paymentMethod: PaymentMethod | CreditCardFields | null) => unknown;
   selectedPaymentMethod?: PaymentMethod | CreditCardFields | string | null;
+  size?: PaymentMethodSelectorSize;
 }
 
 export function PaymentMethodSelector({
   paymentMethods,
   onSelectPaymentMethod,
   selectedPaymentMethod,
+  size = 'small',
 }: PaymentMethodSelectorProps): ReactElement {
   const [isAdding, setIsAdding] = useState<boolean>(false);
   const [addedPaymentMethods, setAddedPaymentMethods] = useState<CreditCardFields[]>([]);
@@ -60,7 +64,11 @@ export function PaymentMethodSelector({
 
       {isAdding ? (
         <div className="new">
-          <CreditCardForm onSubmit={addCreditCard} onCancel={() => setIsAdding(false)} />
+          <CreditCardForm
+            onSubmit={addCreditCard}
+            onCancel={() => setIsAdding(false)}
+            size={size}
+          />
         </div>
       ) : (
         <div className="new-button">
