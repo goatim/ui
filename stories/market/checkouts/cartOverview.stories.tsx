@@ -75,16 +75,16 @@ const boosterFactory: BoosterFactory = {
 const item: Item = {
   id: 'or_frsf54s56f',
   type: 'order',
+  unit_price: 200,
+  unit_vat: 50,
+  total_price: 200,
+  total_vat: 50,
   order: {
     asset,
     order_type: 'buy',
     nb_shares: 2,
     price_limit: 75000,
     booster_factory: boosterFactory,
-    unit_price: 200,
-    unit_vat: 50,
-    total_price: 200,
-    total_vat: 50,
   },
 };
 
