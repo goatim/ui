@@ -147,6 +147,7 @@ export function OrderEditor({
               label="Actions"
               component={Counter}
               initialValue={initialOrder?.nb_shares}
+              size="large"
             />
           </div>
 
@@ -160,6 +161,7 @@ export function OrderEditor({
               adapter={adaptGoatimCoinsAmount}
               format={formatGoatimCoinsAmount}
               increment={100}
+              size="large"
             />
             <div className="total">
               <span className="label">Total</span>
