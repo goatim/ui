@@ -28,6 +28,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 5px;
+      margin: 0;
 
       &.plus {
         padding-left: 10px;
@@ -78,6 +80,7 @@
 
   &.small {
     width: 110px;
+    min-width: 110px;
 
     > .container {
       > button {
@@ -99,6 +102,7 @@
 
   &.medium {
     width: 150px;
+    min-width: 150px;
 
     > .container {
       > input {
@@ -110,6 +114,7 @@
 
   &.large {
     width: 220px;
+    min-width: 220px;
   }
 
   &.full-width {
