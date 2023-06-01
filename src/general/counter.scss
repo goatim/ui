@@ -1,5 +1,6 @@
 @use '~@cezembre/fronts/dist/screens';
 @use '~@cezembre/fronts/dist/layouts';
+@use '../styles/fonts';
 @use '../styles/colors';
 @use '../styles/forms';
 
@@ -42,6 +43,7 @@
     }
 
     > input {
+      font-family: fonts.$Inter;
       font-weight: bold;
       text-align: center;
       height: 40px;
