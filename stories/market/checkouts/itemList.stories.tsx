@@ -74,16 +74,16 @@ const boosterFactory: BoosterFactory = {
 const orderItem: Item = {
   id: 'or_frsf54s56f',
   type: 'order',
+  unit_price: 200,
+  unit_vat: 50,
+  total_price: 200,
+  total_vat: 50,
   order: {
     asset,
     order_type: 'buy',
     nb_shares: 2,
     price_limit: 75000,
     booster_factory: boosterFactory,
-    unit_price: 200,
-    unit_vat: 50,
-    total_price: 200,
-    total_vat: 50,
   },
 };
 
@@ -98,31 +98,37 @@ const packFactory: PackFactory = {
 const packItem: Item = {
   id: 'pf_frsf54s56f',
   type: 'pack',
+  quantity: 50,
+  unit_price: 200,
+  unit_vat: 50,
+  total_price: 200,
+  total_vat: 50,
   pack: {
     pack_factory: packFactory,
-    quantity: 50,
-    unit_price: 200,
-    unit_vat: 50,
-    total_price: 200,
-    total_vat: 50,
   },
 };
 
 const boosterItem: Item = {
   id: 'pf_frsf54s56f',
   type: 'booster',
+  quantity: 50,
+  unit_price: 200,
+  unit_vat: 50,
+  total_price: 200,
+  total_vat: 50,
   booster: {
     booster_factory: boosterFactory,
-    quantity: 50,
-    unit_price: 200,
-    unit_vat: 50,
-    total_price: 200,
-    total_vat: 50,
   },
 };
 
 function Template({ size }: Props) {
-  return <ItemList items={[orderItem, packItem, boosterItem]} size={size} />;
+  return (
+    <ItemList
+      items={[orderItem, packItem, boosterItem]}
+      size={size}
+      onDeleteItem={() => undefined}
+    />
+  );
 }
 
 export const Default = Template.bind({});

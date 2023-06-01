@@ -8,7 +8,9 @@
 }
 
 @mixin input {
-  @include fonts.Inter(1em, colors.$blue, 500);
+  font-size: 1em;
+  color: colors.$blue;
+  font-weight: 500;
   transition: color linear 100ms, border linear 100ms, background linear 100ms, box-shadow linear 100ms;
   background: colors.$light-blue;
   box-shadow: 0 0 5px rgba(colors.$blue, 0);

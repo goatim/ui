@@ -3,82 +3,50 @@
 
 .goatim-ui-order-item-thumbnail {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border: none;
-  font-size: 1em;
+  align-items: stretch;
+  justify-content: flex-start;
 
-  > .container {
+  > .cell {
+    margin-left: 30px;
     display: flex;
+    flex-direction: column;
     align-items: stretch;
     justify-content: flex-start;
 
-    > .cell {
-      margin-left: 30px;
+    &:first-of-type {
+      margin: 0;
+    }
+
+    > span {
+      @include fonts.label;
+    }
+
+    > .content {
+      padding-top: 5px;
+      flex: 1;
       display: flex;
       flex-direction: column;
-      align-items: stretch;
-      justify-content: flex-start;
+      align-items: flex-start;
+      justify-content: center;
 
-      &:first-of-type {
-        margin: 0;
+      &.centered {
+        align-items: center;
       }
 
-      > span {
-        @include fonts.label;
+      > .nb_shares {
+        @include fonts.Inter(.8em, colors.$blue, bold);
       }
-
-      > .content {
-        padding-top: 5px;
-        flex: 1;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: center;
-
-        &.centered {
-          align-items: center;
-        }
-
-        > .nb_shares {
-          @include fonts.Inter(.8em, colors.$blue, bold);
-        }
-
-        > .price {
-          @include fonts.Inter(.8em, colors.$blue, bold);
-        }
-      }
-    }
-  }
-
-  > .delete {
-    border: none;
-    background: none;
-    margin: 0;
-    padding: 10px;
-    opacity: .5;
-    transition: opacity linear 100ms;
-    cursor: pointer;
-
-    &:hover {
-      opacity: 1;
-    }
-
-    > svg {
-      stroke: colors.$blue;
     }
   }
 
   &.narrow {
-    > .container {
-      flex-direction: column;
+    flex-direction: column;
 
-      > .cell {
-        margin: 20px 0 0;
+    > .cell {
+      margin: 20px 0 0;
 
-        &:first-of-type {
-          margin: 0;
-        }
+      &:first-of-type {
+        margin: 0;
       }
     }
   }

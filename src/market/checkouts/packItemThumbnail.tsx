@@ -1,54 +1,37 @@
-import { ReactElement } from 'react';
-import { formatEurosAmount, PackItem } from '@goatim/client';
-import { Icon } from '../../general';
-
-export type PackItemThumbnailSize = 'narrow' | 'normal';
+import { ReactElement, useMemo } from 'react';
+import { PackItem } from '@goatim/client';
+import { GoatimCoinsAmount } from '../goatimCoins';
 
 export interface PackItemThumbnailProps {
   packItem: PackItem;
-  onDelete?: () => unknown;
-  size?: PackItemThumbnailSize;
 }
 
-export function PackItemThumbnail({
-  packItem,
-  onDelete,
-  size = 'normal',
-}: PackItemThumbnailProps): ReactElement {
+export function PackItemThumbnail({ packItem }: PackItemThumbnailProps): ReactElement {
+  const highestOdd = useMemo<number>(() => {
+    if (
+      !packItem.pack_factory ||
+      typeof packItem.pack_factory !== 'object' ||
+      !packItem.pack_factory.odds
+    ) {
+      return 0;
+    }
+    return Object.entries(packItem.pack_factory.odds).reduce<number>(
+      (high, [val]) => (high < Number(val) ? Number(val) : high),
+      0,
+    );
+  }, [packItem.pack_factory]);
+
+  if (!packItem.pack_factory || typeof packItem.pack_factory !== 'object') {
+    return <span>Pack</span>;
+  }
+
   return (
-    <div className={`goatim-ui-pack-item-thumbnail ${size}`}>
-      <div className="container">
-        {packItem.pack_factory && typeof packItem.pack_factory === 'object' ? (
-          <div className="cell">
-            <span>Pack</span>
-            <div className="content">
-              <span className="name">{packItem.pack_factory.name}</span>
-            </div>
-          </div>
-        ) : null}
-
-        <div className="cell">
-          <span>Quantité</span>
-          <div className="content">
-            <span className="quantity">x{packItem.quantity || 0}</span>
-          </div>
-        </div>
-
-        {packItem.total_price ? (
-          <div className="cell">
-            <span>Prix</span>
-            <div className="content">
-              <span className="price">{formatEurosAmount(packItem.total_price)}</span>
-            </div>
-          </div>
-        ) : null}
+    <div className="goatim-ui-pack-item-thumbnail">
+      <span className="name">Pack {packItem.pack_factory.name}</span>
+      <div className="odd">
+        <span className="label">Jusqu&apos;à</span>
+        <GoatimCoinsAmount amount={highestOdd} size="small" />
       </div>
-
-      {onDelete ? (
-        <button className="delete" type="button" onClick={onDelete}>
-          <Icon name="x" size={24} />
-        </button>
-      ) : null}
     </div>
   );
 }

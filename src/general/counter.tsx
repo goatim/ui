@@ -13,6 +13,8 @@ import { Icon } from './icon';
 export type CounterTransformationFunction = (value: number) => number;
 export type CounterFormatFunction = (value: number) => string;
 
+export type CounterSize = 'small' | 'medium' | 'large';
+
 export interface CounterProps extends FieldComponentProps<number> {
   adapter?: CounterTransformationFunction;
   resolver?: CounterTransformationFunction;
@@ -25,6 +27,8 @@ export interface CounterProps extends FieldComponentProps<number> {
   max?: number;
   increment?: number;
   step?: number;
+  size?: CounterSize;
+  fullWidth?: boolean;
 }
 
 export function Counter({
@@ -32,7 +36,6 @@ export function Counter({
   error,
   warning,
   isActive,
-  hasChanged,
   visited,
   submitted,
   onFocus,
@@ -50,9 +53,11 @@ export function Counter({
   max,
   increment = 1,
   step = 1,
+  size = 'small',
+  fullWidth = false,
 }: CounterProps): ReactElement {
   const className = useMemo<string>(() => {
-    const classNames = ['goatim-ui-counter'];
+    const classNames = ['goatim-ui-counter', size];
 
     if (visited) {
       classNames.push('visited');
@@ -70,8 +75,12 @@ export function Counter({
       classNames.push('warning');
     }
 
+    if (fullWidth) {
+      classNames.push('full-width');
+    }
+
     return classNames.join(' ');
-  }, [visited, isActive, submitted, error, warning]);
+  }, [size, visited, isActive, submitted, error, warning, fullWidth]);
 
   const increase = useCallback(() => {
     const nextValue: number = (value || 0) + (increment || 1);
@@ -126,7 +135,7 @@ export function Counter({
     <div className={className}>
       {label ? <label htmlFor={name}>{label}</label> : null}
 
-      <div className="container">
+      <div className={`container${isActive ? ' active' : ''}`}>
         <button onClick={decrease} type="button" className="minus">
           <Icon name="minus" size={20} />
         </button>

@@ -4,7 +4,6 @@
 @use '../styles/forms';
 
 .goatim-ui-counter {
-  width: 220px;
   text-align: center;
 
   > label {
@@ -14,17 +13,20 @@
 
   > .container {
     width: 100%;
+    @include forms.input;
     display: flex;
-    align-items: center;
+    align-items: stretch;
     justify-content: space-between;
+    overflow: hidden;
 
     > button {
       box-sizing: border-box;
       border: none;
       outline: none;
-      padding: 5px;
-      background: none;
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
       &.plus {
         padding-left: 10px;
@@ -40,7 +42,6 @@
     }
 
     > input {
-      @include forms.input;
       font-weight: bold;
       text-align: center;
       height: 40px;
@@ -50,6 +51,13 @@
       white-space: nowrap;
       overflow: hidden;
       -moz-appearance: textfield;
+      font-size: 1em;
+      color: colors.$blue;
+      transition: color linear 100ms, border linear 100ms, background linear 100ms, box-shadow linear 100ms;
+      background: transparent;
+      border-radius: 0;
+      border: none;
+      outline: none;
 
       &::-webkit-outer-spin-button, &::-webkit-inner-spin-button {
         -webkit-appearance: none;
@@ -64,6 +72,46 @@
         background: white;
       }
     }
+  }
+
+  &.small {
+    width: 110px;
+
+    > .container {
+      > button {
+        &.plus {
+          padding-left: 5px;
+        }
+
+        &.minus {
+          padding-right: 5px;
+        }
+      }
+
+      > input {
+        font-size: .8em;
+        height: 35px;
+      }
+    }
+  }
+
+  &.medium {
+    width: 150px;
+
+    > .container {
+      > input {
+        font-size: .9em;
+        height: 35px;
+      }
+    }
+  }
+
+  &.large {
+    width: 220px;
+  }
+
+  &.full-width {
+    width: 100%;
   }
 
   > .conversion {
