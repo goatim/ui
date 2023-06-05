@@ -1,6 +1,7 @@
 import { ReactElement, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { TournamentParticipant } from '@goatim/client';
 import { DateTime } from 'luxon';
+import { UrlObject } from 'url';
 import { TournamentParticipantPodium } from '../tournamentParticipants';
 import { Button } from '../../general';
 import trophy from '../../general/assets/trophy.png';
@@ -9,6 +10,7 @@ export type TournamentBannerSize = 'small' | 'large';
 
 export interface TournamentBannerProps {
   tournamentParticipants?: TournamentParticipant[];
+  matchesHref?: string | UrlObject;
   onMatchesClick?: () => unknown;
   size?: TournamentBannerSize;
   end?: DateTime | string;
@@ -17,6 +19,7 @@ export interface TournamentBannerProps {
 export function TournamentBanner({
   tournamentParticipants,
   onMatchesClick,
+  matchesHref,
   size = 'large',
   end,
 }: TournamentBannerProps): ReactElement {
@@ -30,9 +33,11 @@ export function TournamentBanner({
   const [remainingTime, setRemainingTime] = useState<string | undefined>();
 
   const resolveRemainingTime = useCallback(() => {
-    if (resolvedEnd) {
+    if (resolvedEnd && resolvedEnd.diffNow().seconds > 0) {
       setRemainingTime(`Fin dans ${resolvedEnd.diffNow().toFormat('d:hh:mm:ss')}`);
       timeout.current = setTimeout(resolveRemainingTime, 1000);
+    } else {
+      setRemainingTime('Terminé');
     }
   }, [resolvedEnd]);
 
@@ -58,15 +63,16 @@ export function TournamentBanner({
       <div className="reward">
         {remainingTime ? <span className="timer">{remainingTime}</span> : null}
         <div className="body">
-          <h3 className="date">Le 4 juin</h3>
-          <h2 className="title">1 Ether à gagner !</h2>
+          <h3 className="date">Le 5 juin</h3>
+          <h2 className="title">Nouvelle league !</h2>
           <p className="description">
-            Participe aux matchs et gagne des points pour te hisser en tête du classement
+            Participe aux matchs du 5 juin au 5 août et gagne des points pour te hisser en tête du
+            classement
           </p>
         </div>
         <div className="footer">
-          {onMatchesClick ? (
-            <Button shape="text" onClick={onMatchesClick}>
+          {onMatchesClick || matchesHref ? (
+            <Button shape="text" onClick={onMatchesClick} href={matchesHref}>
               Voir les matchs
             </Button>
           ) : null}
