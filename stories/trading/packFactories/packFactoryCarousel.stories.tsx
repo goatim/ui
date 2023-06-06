@@ -1,9 +1,5 @@
 import { PackFactory } from '@goatim/client';
-import { PackFactoryCarousel, PackFactoryCarouselSize } from '../../../src';
-
-interface Props {
-  size?: PackFactoryCarouselSize;
-}
+import { PackFactoryCarousel, PackFactoryCarouselProps } from '../../../src';
 
 export default {
   title: 'Trading/PackFactoryCarousel',
@@ -26,9 +22,13 @@ const packFactory: PackFactory = {
   odds: { '100000': 1 },
 };
 
-function Template({ size }: Props) {
+function Template({ size, theme }: PackFactoryCarouselProps) {
   return (
-    <PackFactoryCarousel packFactories={[packFactory, packFactory, packFactory]} size={size} />
+    <PackFactoryCarousel
+      packFactories={[packFactory, packFactory, packFactory]}
+      size={size}
+      theme={theme}
+    />
   );
 }
 

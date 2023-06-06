@@ -3,6 +3,7 @@ export * from './boosters';
 export * from './dividends';
 export * from './ipos';
 export * from './orders';
+export * from './packFactories';
 export * from './packs';
 export * from './portfolios';
 export * from './quotations';

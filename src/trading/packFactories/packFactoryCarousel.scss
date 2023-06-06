@@ -7,20 +7,28 @@
   position: relative;
   background: rgba(colors.$gold, .1);
 
-  > .background {
-    width: 100%;
-    height: 100%;
-    position: absolute;
+  > .header {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: flex-end;
-    top: 0;
-    right: 0;
-    opacity: .5;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    padding-top: 30px;
 
-    > svg {
-      height: 110%;
-      opacity: .5;
+    > .label {
+      font-weight: bold;
+      color: colors.$gold;
+      text-transform: uppercase;
+      font-size: .8em;
+    }
+
+    > .title {
+      max-width: 300px;
+      font-weight: 500;
+      color: colors.$gold;
+      font-size: 1.2em;
+      margin-top: 10px;
     }
   }
 
@@ -51,6 +59,16 @@
         &:first-of-type {
           margin: 0;
         }
+      }
+    }
+  }
+
+  &.gold {
+    background: colors.$gold;
+
+    > .header {
+      > span {
+        color: white;
       }
     }
   }

@@ -1,0 +1,39 @@
+@use '../styles/colors';
+
+.goatim-ui-quantity-selector-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  > .quantity {
+    width: 40px;
+    height: 40px;
+    border: solid colors.$blue-10 1px;
+    color: colors.$blue-50;
+    font-size: 0.9em;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+  }
+
+  > .price {
+    font-size: 0.9em;
+    color: colors.$blue-50;
+    margin-top: 5px;
+    font-weight: 500;
+  }
+
+  &.active {
+    > .quantity {
+      border-color: colors.$gold;
+      color: colors.$gold;
+    }
+
+    > .price {
+      color: colors.$blue;
+    }
+  }
+}

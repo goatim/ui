@@ -21,6 +21,16 @@
     }
   }
 
+  &.full-width {
+    > .options {
+      justify-content: space-between;
+
+      > .option {
+        margin: 0;
+      }
+    }
+  }
+
   &.vertical {
     > .options {
       flex-direction: column;

@@ -8,3 +8,4 @@ export * from './goatimCoinsGains';
 export * from './percentageVariation';
 export * from './shopBanner';
 export * from './wheel';
+export * from './quantitySelector';
