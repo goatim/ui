@@ -61,15 +61,22 @@ interface OptionButtonProps<V> {
   option: SelectOption<V>;
   value?: V;
   defaultComponent?: (props: SelectOptionComponentProps<V>) => ReactElement | null;
+  comparisonFn?: (a: V, b: V) => boolean;
 }
 
-function OptionButton<V>({ onClick, option, value, defaultComponent }: OptionButtonProps<V>) {
+function OptionButton<V>({
+  onClick,
+  option,
+  value,
+  defaultComponent,
+  comparisonFn,
+}: OptionButtonProps<V>) {
   const active = useMemo(() => {
     if (value === undefined) {
       return false;
     }
-    return _.isEqual(option.value, value);
-  }, [option.value, value]);
+    return comparisonFn ? comparisonFn(option.value, value) : _.isEqual(option.value, value);
+  }, [comparisonFn, option.value, value]);
 
   const className = useMemo<string>(() => {
     const classNames = ['option'];
@@ -98,6 +105,7 @@ export interface RadioProps<V = unknown> extends FieldComponentProps<V> {
   instructions?: ReactElement | string;
   orientation?: RadioOrientation;
   fullWidth?: boolean;
+  comparisonFn?: (a: V, b: V) => boolean;
 }
 
 export function Radio<V = unknown>({
@@ -114,6 +122,7 @@ export function Radio<V = unknown>({
   instructions,
   orientation = 'horizontal',
   fullWidth,
+  comparisonFn,
 }: RadioProps<V>): ReactElement {
   const className = useMemo<string>(() => {
     const classNames = ['goatim-ui-radio', orientation];
@@ -159,6 +168,7 @@ export function Radio<V = unknown>({
               option={option}
               value={value}
               defaultComponent={defaultComponent}
+              comparisonFn={comparisonFn}
             />
           </div>
         ))}
