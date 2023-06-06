@@ -37,7 +37,6 @@ export function PackFactoryThumbnail({
     <div className="goatim-ui-pack-factory-thumbnail">
       <div className="illustration">
         <img src={gift} alt="gift" className="gift" />
-        <span className="nb-actions">5 actions</span>
       </div>
 
       <div className="header">

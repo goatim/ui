@@ -18,19 +18,9 @@
     justify-content: center;
     background: colors.$light-blue;
     border-radius: 10px;
-    position: relative;
 
     > .gift {
       width: 80px;
-    }
-
-    > .nb-actions {
-      position: absolute;
-      bottom: 10px;
-      right: 10px;
-      font-size: 0.8em;
-      color: colors.$blue-50;
-      font-weight: 500;
     }
   }
 
