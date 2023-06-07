@@ -153,7 +153,7 @@ function TableCell<I extends TableItem = TableItem>({
         break;
 
       case 'object':
-        if (DateTime.isDateTime(value) || value instanceof Date) {
+        if (DateTime.isDateTime(value) || (value as object) instanceof Date) {
           resolvedType = 'date';
         } else {
           resolvedType = 'unknown';
@@ -210,8 +210,8 @@ function TableCell<I extends TableItem = TableItem>({
       } else if (typeof value === 'string') {
         datetime = DateTime.fromISO(value);
       } else if (value && typeof value === 'object') {
-        if (value instanceof Date) {
-          datetime = DateTime.fromJSDate(value);
+        if ((value as object) instanceof Date) {
+          datetime = DateTime.fromJSDate(value as unknown as Date);
         } else {
           datetime = DateTime.fromObject(value);
         }
