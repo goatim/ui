@@ -29,7 +29,7 @@ export interface AssetOverviewProps {
   isConnected?: boolean;
   connectButtonHref?: string | UrlObject;
   portfolio?: Portfolio;
-  onSellPortfolio?: FormSubmitFunction<SellPortfolioToBankFields>;
+  onSellPortfolioToBank?: FormSubmitFunction<SellPortfolioToBankFields>;
 }
 
 export function AssetOverview({
@@ -44,7 +44,7 @@ export function AssetOverview({
   isConnected = false,
   connectButtonHref,
   portfolio,
-  onSellPortfolio,
+  onSellPortfolioToBank,
 }: AssetOverviewProps): ReactElement {
   const [orderType, setOrderType] = useState<OrderType | undefined>(defaultOrderType);
   const [nbShares, setNbShares] = useState<number | undefined>(
@@ -131,7 +131,7 @@ export function AssetOverview({
     [],
   );
 
-  const onChangeSellPortfolio = useCallback(
+  const onChangeSellPortfolioToBank = useCallback(
     (values: SellPortfolioToBankFields, changes?: Partial<SellPortfolioToBankFields>) => {
       if (changes?.nb_shares !== undefined) {
         setNbShares(changes.nb_shares);
@@ -222,8 +222,8 @@ export function AssetOverview({
               initialValues={{
                 nb_shares: nbShares,
               }}
-              onChange={onChangeSellPortfolio}
-              onSubmit={onSellPortfolio}
+              onChange={onChangeSellPortfolioToBank}
+              onSubmit={onSellPortfolioToBank}
               maxShares={maxShares}
             />
           </div>
