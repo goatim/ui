@@ -19,7 +19,7 @@ export function ClubList({
   columns = 3,
   clubOnClick,
   clubHref,
-  size = 'medium',
+  size = 'small',
   shape = 'line',
   showLeagues = false,
 }: ClubListProps): ReactElement {

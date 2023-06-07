@@ -41,6 +41,7 @@ export function LeagueOverview({
         <ClubCarousel
           getClubs={getClubs}
           columns={clubColumns}
+          size="small"
           clubHref={clubHref}
           clubOnClick={clubOnClick}
         />
