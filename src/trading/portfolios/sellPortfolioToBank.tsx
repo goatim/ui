@@ -3,28 +3,28 @@ import { useCallback, useState } from 'react';
 import { GoatimCoinsAmount } from '../../market';
 import { Button, Counter, CounterProps } from '../../general';
 
-export interface SellPortfolioFields {
+export interface SellPortfolioToBankFields {
   nb_shares?: number;
 }
 
-export interface SellPortfolioProps {
-  initialValues?: SellPortfolioFields;
+export interface SellPortfolioToBankProps {
+  initialValues?: SellPortfolioToBankFields;
   maxShares?: number;
   bankProposal: number;
-  onChange?: FormSubmitFunction<SellPortfolioFields>;
-  onSubmit?: FormSubmitFunction<SellPortfolioFields>;
+  onChange?: FormSubmitFunction<SellPortfolioToBankFields>;
+  onSubmit?: FormSubmitFunction<SellPortfolioToBankFields>;
 }
 
-export function SellPortfolio({
+export function SellPortfolioToBank({
   bankProposal,
   onChange,
   onSubmit,
   initialValues,
   maxShares,
-}: SellPortfolioProps) {
-  const [formState, setFormState] = useState<FormState<SellPortfolioFields> | undefined>();
+}: SellPortfolioToBankProps) {
+  const [formState, setFormState] = useState<FormState<SellPortfolioToBankFields> | undefined>();
 
-  const form = useCallback((formContext: FormContext<SellPortfolioFields> | null) => {
+  const form = useCallback((formContext: FormContext<SellPortfolioToBankFields> | null) => {
     if (formContext) {
       setTimeout(() => {
         setFormState(formContext.formState);
@@ -33,8 +33,8 @@ export function SellPortfolio({
   }, []);
 
   return (
-    <Form<SellPortfolioFields>
-      className="goatim-ui-sell-portfolio"
+    <Form<SellPortfolioToBankFields>
+      className="goatim-ui-sell-portfolio-to-bank"
       onSubmit={onSubmit}
       onChange={onChange}
       ref={form}>

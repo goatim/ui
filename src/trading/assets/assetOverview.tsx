@@ -13,7 +13,7 @@ import {
 import { AssetThumbnail, AssetThumbnailSize } from './assetThumbnail';
 import { IpoThumbnail, IpoThumbnailSize } from '../ipos';
 import { OrderEditor, OrderEditorFields, OrderEditorSize } from '../orders';
-import { SellPortfolio, SellPortfolioFields } from '../portfolios';
+import { SellPortfolioToBank, SellPortfolioToBankFields } from '../portfolios';
 
 export type AssetOverviewSize = 'small' | 'medium' | 'full';
 
@@ -29,7 +29,7 @@ export interface AssetOverviewProps {
   isConnected?: boolean;
   connectButtonHref?: string | UrlObject;
   portfolio?: Portfolio;
-  onSellPortfolio?: FormSubmitFunction<SellPortfolioFields>;
+  onSellPortfolio?: FormSubmitFunction<SellPortfolioToBankFields>;
 }
 
 export function AssetOverview({
@@ -132,7 +132,7 @@ export function AssetOverview({
   );
 
   const onChangeSellPortfolio = useCallback(
-    (values: SellPortfolioFields, changes?: Partial<SellPortfolioFields>) => {
+    (values: SellPortfolioToBankFields, changes?: Partial<SellPortfolioToBankFields>) => {
       if (changes?.nb_shares !== undefined) {
         setNbShares(changes.nb_shares);
       }
@@ -217,7 +217,7 @@ export function AssetOverview({
 
         {orderType === 'sell' && portfolio?.bank_proposal !== undefined ? (
           <div className="sell-portfolio">
-            <SellPortfolio
+            <SellPortfolioToBank
               bankProposal={portfolio.bank_proposal}
               initialValues={{
                 nb_shares: nbShares,
