@@ -97,7 +97,7 @@
     }
   }
 
-  > .item-editor {
+  > .actions-body {
     background: white;
     padding: 30px;
     border-radius: 20px;
@@ -106,6 +106,10 @@
 
     &.active {
       display: block;
+    }
+
+    > .sell-portfolio {
+      margin-top: 30px;
     }
   }
 

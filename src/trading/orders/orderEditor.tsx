@@ -8,7 +8,6 @@ import {
   resolveGoatimCoinsAmount,
 } from '@goatim/client';
 import { FormSubmitFunction } from '@cezembre/forms/dist/state';
-import isPromise from 'is-promise';
 import { UrlObject } from 'url';
 import { Button, Counter, CounterProps } from '../../general';
 import { OrderBookThumbnail, OrderBookThumbnailSize } from '../index';
@@ -24,26 +23,26 @@ export type OrderEditorSize = 'narrow' | 'big';
 
 export interface OrderEditorProps {
   initialOrder?: OrderEditorFields;
+  maxShares?: number;
   orderBook?: OrderBook;
   onSubmit?: FormSubmitFunction<OrderEditorFields>;
+  onChange?: FormSubmitFunction<OrderEditorFields>;
   onCancel?: () => unknown;
   connectButtonHref?: string | UrlObject;
   label?: string;
   size?: OrderEditorSize;
-  bankProposalQuotation?: number;
-  onAcceptBankProposal?: (nbShares?: number) => unknown;
   isConnected?: boolean;
 }
 
 export function OrderEditor({
   initialOrder,
+  maxShares,
   orderBook,
   onSubmit,
+  onChange,
   onCancel,
   label = 'Valider',
   size = 'big',
-  bankProposalQuotation,
-  onAcceptBankProposal,
   isConnected = false,
   connectButtonHref,
 }: OrderEditorProps): ReactElement | null {
@@ -66,28 +65,6 @@ export function OrderEditor({
 
     return errors;
   }, []);
-
-  const [bankProposalPending, setBankProposalPending] = useState<boolean>(false);
-  const [bankProposalError, setBankProposalError] = useState<string | undefined | null>();
-
-  const acceptBankProposal = useCallback(async () => {
-    setBankProposalError(null);
-    if (onAcceptBankProposal) {
-      setBankProposalPending(true);
-      const res = onAcceptBankProposal(formState?.values?.nb_shares);
-      if (isPromise(res)) {
-        try {
-          await res;
-        } catch (error) {
-          setBankProposalError((error as Error).message);
-        } finally {
-          setBankProposalPending(false);
-        }
-      } else {
-        setBankProposalPending(false);
-      }
-    }
-  }, [formState?.values?.nb_shares, onAcceptBankProposal]);
 
   const orderBookThumbnailSize = useMemo<OrderBookThumbnailSize>(() => {
     switch (size) {
@@ -112,6 +89,7 @@ export function OrderEditor({
     <Form<OrderEditorFields>
       ref={form}
       className={className}
+      onChange={onChange}
       onSubmit={onSubmit}
       validate={validate}>
       <h1>
@@ -147,6 +125,8 @@ export function OrderEditor({
               label="Actions"
               component={Counter}
               initialValue={initialOrder?.nb_shares}
+              max={maxShares}
+              min={1}
               size="large"
             />
           </div>
@@ -209,35 +189,6 @@ export function OrderEditor({
 
       {formState?.error ? <p className="error">{formState.error}</p> : null}
       {formState?.warning ? <p className="warning">{formState.warning}</p> : null}
-
-      {formState?.values?.order_type === 'sell' &&
-      bankProposalQuotation &&
-      formState?.values?.nb_shares ? (
-        <div className="bank-proposal">
-          <span className="caption">Sinon Goatim t&apos;en propose</span>
-          <div className="quotation">
-            <GoatimCoinsAmount
-              amount={formState.values.nb_shares * bankProposalQuotation}
-              theme="gold"
-              size="medium"
-            />
-            {formState.values.nb_shares > 1 ? (
-              <span className="multiple">Pour tes {formState.values.nb_shares} actions</span>
-            ) : null}
-          </div>
-          {onAcceptBankProposal ? (
-            <div className="action">
-              <Button theme="gold" onClick={acceptBankProposal} pending={bankProposalPending}>
-                Vendre à Goatim
-              </Button>
-            </div>
-          ) : null}
-
-          {bankProposalError ? <p className="error">{bankProposalError}</p> : null}
-
-          <p>Besoin d’une vente rapide et assurée ? Goatim rachète instantanément tes actions.</p>
-        </div>
-      ) : null}
     </Form>
   );
 }

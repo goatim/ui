@@ -1,4 +1,4 @@
-import { Asset, Club, Ipo, Player, QuotationHistory } from '@goatim/client';
+import { Asset, Club, Ipo, Player, Portfolio, QuotationHistory } from '@goatim/client';
 import { AssetOverview, AssetOverviewProps } from '../../../src';
 
 export default {
@@ -112,15 +112,22 @@ const ipo: Ipo = {
   asset,
 };
 
-function Template({ size, isConnected }: AssetOverviewProps) {
+const portfolio: Portfolio = {
+  id: 'pf_sef654qd',
+  asset,
+  bank_proposal: Math.floor((asset.quotation || 0) * 0.4),
+  nb_shares: 4,
+};
+
+function Template({ size, isConnected = true }: AssetOverviewProps) {
   return (
     <AssetOverview
       asset={asset}
       size={size}
       ipo={ipo}
-      bankProposalQuotation={5000}
-      onAcceptBankProposal={() => {}}
+      onSellPortfolio={() => undefined}
       isConnected={isConnected}
+      portfolio={portfolio}
     />
   );
 }

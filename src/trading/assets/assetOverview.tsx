@@ -1,7 +1,8 @@
-import { ReactElement, useMemo, useState } from 'react';
-import { Asset, Ipo, OrderBook, OrderType } from '@goatim/client';
+import { ReactElement, useCallback, useMemo, useState } from 'react';
+import { Asset, Ipo, OrderBook, OrderType, Portfolio } from '@goatim/client';
 import { QuotationHistory } from '@goatim/client/dist/trading/quotations/model';
 import { UrlObject } from 'url';
+import { FormSubmitFunction } from '@cezembre/forms';
 import { QuotationHistoryGraph } from '../quotations';
 import {
   GoatimCoinsAmount,
@@ -12,6 +13,7 @@ import {
 import { AssetThumbnail, AssetThumbnailSize } from './assetThumbnail';
 import { IpoThumbnail, IpoThumbnailSize } from '../ipos';
 import { OrderEditor, OrderEditorFields, OrderEditorSize } from '../orders';
+import { SellPortfolio, SellPortfolioFields } from '../portfolios';
 
 export type AssetOverviewSize = 'small' | 'medium' | 'full';
 
@@ -23,11 +25,11 @@ export interface AssetOverviewProps {
   onSubmitOrder?: (orderFields: OrderEditorFields) => unknown;
   ipo?: Ipo;
   secondaryHref?: string | UrlObject;
-  bankProposalQuotation?: number;
-  onAcceptBankProposal?: (nbShares?: number) => unknown;
   defaultOrderType?: OrderType;
   isConnected?: boolean;
   connectButtonHref?: string | UrlObject;
+  portfolio?: Portfolio;
+  onSellPortfolio?: FormSubmitFunction<SellPortfolioFields>;
 }
 
 export function AssetOverview({
@@ -38,13 +40,16 @@ export function AssetOverview({
   orderBook,
   onSubmitOrder,
   ipo,
-  bankProposalQuotation,
-  onAcceptBankProposal,
   defaultOrderType,
   isConnected = false,
   connectButtonHref,
+  portfolio,
+  onSellPortfolio,
 }: AssetOverviewProps): ReactElement {
   const [orderType, setOrderType] = useState<OrderType | undefined>(defaultOrderType);
+  const [nbShares, setNbShares] = useState<number | undefined>(
+    orderType === 'sell' ? portfolio?.nb_shares || 1 : 1,
+  );
 
   const initialPriceLimit = useMemo<number | undefined>(() => {
     if (
@@ -117,6 +122,31 @@ export function AssetOverview({
     }
   }, [size]);
 
+  const onChangeOrder = useCallback(
+    (values: OrderEditorFields, changes?: Partial<OrderEditorFields>) => {
+      if (changes?.nb_shares !== undefined) {
+        setNbShares(changes.nb_shares);
+      }
+    },
+    [],
+  );
+
+  const onChangeSellPortfolio = useCallback(
+    (values: SellPortfolioFields, changes?: Partial<SellPortfolioFields>) => {
+      if (changes?.nb_shares !== undefined) {
+        setNbShares(changes.nb_shares);
+      }
+    },
+    [],
+  );
+
+  const maxShares = useMemo<number | undefined>(() => {
+    if (orderType === 'buy') {
+      return undefined;
+    }
+    return portfolio?.nb_shares;
+  }, [orderType, portfolio?.nb_shares]);
+
   return (
     <div className={`goatim-ui-asset-overview ${size} ${orderType}`}>
       {ipo ? (
@@ -166,22 +196,38 @@ export function AssetOverview({
         </button>
       </div>
 
-      <div className={`item-editor${orderType ? ' active' : ''}`}>
-        <OrderEditor
-          initialOrder={{
-            order_type: orderType,
-            price_limit: initialPriceLimit,
-            nb_shares: 1,
-          }}
-          orderBook={orderBook}
-          onSubmit={onSubmitOrder}
-          onCancel={() => setOrderType(undefined)}
-          size={orderEditorSize}
-          bankProposalQuotation={bankProposalQuotation}
-          onAcceptBankProposal={onAcceptBankProposal}
-          isConnected={isConnected}
-          connectButtonHref={connectButtonHref}
-        />
+      <div className={`actions-body${orderType ? ' active' : ''}`}>
+        <div className="order-editor">
+          <OrderEditor
+            initialOrder={{
+              order_type: orderType,
+              price_limit: initialPriceLimit,
+              nb_shares: nbShares,
+            }}
+            maxShares={maxShares}
+            orderBook={orderBook}
+            onSubmit={onSubmitOrder}
+            onChange={onChangeOrder}
+            onCancel={() => setOrderType(undefined)}
+            size={orderEditorSize}
+            isConnected={isConnected}
+            connectButtonHref={connectButtonHref}
+          />
+        </div>
+
+        {orderType === 'sell' && portfolio?.bank_proposal !== undefined ? (
+          <div className="sell-portfolio">
+            <SellPortfolio
+              bankProposal={portfolio.bank_proposal}
+              initialValues={{
+                nb_shares: nbShares,
+              }}
+              onChange={onChangeSellPortfolio}
+              onSubmit={onSellPortfolio}
+              maxShares={maxShares}
+            />
+          </div>
+        ) : null}
       </div>
     </div>
   );

@@ -1,0 +1,74 @@
+@use "../../styles/colors";
+
+.goatim-ui-sell-portfolio {
+  background: rgba(colors.$gold, .1);
+  border: solid rgba(colors.$gold, .2) 1px;
+  border-radius: 10px;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  > .caption {
+    font-size: .8em;
+    color: colors.$gold;
+    font-weight: bold;
+    font-style: italic;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:before {
+      content: "";
+      display: block;
+      width: 20px;
+      height: 1px;
+      background: colors.$gold;
+      margin-right: 10px;
+    }
+
+    &:after {
+      content: "";
+      display: block;
+      width: 20px;
+      height: 1px;
+      background: colors.$gold;
+      margin-left: 10px;
+    }
+  }
+
+  > .quotation {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    > .multiple {
+      font-size: .8em;
+      color: colors.$gold;
+      margin-top: 2px;
+    }
+  }
+
+  > .counter {
+    margin-top: 20px;
+  }
+
+  > .action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  > p {
+    font-size: .8em;
+    color: colors.$gold;
+    margin: 20px 0 0;
+    text-align: center;
+    max-width: 350px;
+  }
+}
