@@ -20,11 +20,11 @@ export function ClubList({
   clubOnClick,
   clubHref,
   size = 'medium',
-  shape = 'text',
+  shape = 'line',
   showLeagues = false,
 }: ClubListProps): ReactElement {
   const justifyItems = useMemo<Property.JustifyItems>(() => {
-    if (shape === 'box') {
+    if (shape === 'logo') {
       return 'center';
     }
     return 'normal';

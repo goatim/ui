@@ -5,7 +5,7 @@ import { LeagueIcon } from './leagueIcon';
 
 export type LeagueThumbnailSize = 'small' | 'medium' | 'big';
 
-export type LeagueThumbnailShape = 'text' | 'icon';
+export type LeagueThumbnailShape = 'line' | 'logo';
 
 export type LeagueThumbnailTheme = 'dark' | 'light';
 
@@ -22,7 +22,7 @@ export function LeagueThumbnail({
   league,
   title = false,
   size = 'small',
-  shape = 'text',
+  shape = 'line',
   theme = 'dark',
   onClick,
   href,

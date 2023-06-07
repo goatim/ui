@@ -39,11 +39,14 @@ const league: League = {
     thumbnail_url:
       'https://upload.wikimedia.org/wikipedia/fr/thumb/c/ca/Logo_Ligue_1_Uber_Eats_2020.svg/411px-Logo_Ligue_1_Uber_Eats_2020.svg.png?20200821142847',
   },
-  clubs: new Array(15).fill({ ...club, id: Math.random().toString() }),
 };
 
+function getClubs() {
+  return new Array(6).fill({ ...club, id: Math.random().toString() });
+}
+
 function Template() {
-  return <LeagueOverview league={league} />;
+  return <LeagueOverview league={league} getClubs={getClubs} />;
 }
 
 export const Default = Template.bind({});

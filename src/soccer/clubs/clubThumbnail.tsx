@@ -9,7 +9,7 @@ export type ClubThumbnailSize = 'small' | 'medium' | 'big';
 
 export type ClubThumbnailTheme = 'dark' | 'light';
 
-export type ClubThumbnailShape = 'text' | 'logo' | 'box';
+export type ClubThumbnailShape = 'line' | 'logo';
 
 export interface ClubThumbnailProps extends WrapperProps {
   club: Club;
@@ -30,7 +30,7 @@ export function ClubThumbnail({
   href,
   target,
   leagueHref,
-  shape = 'text',
+  shape = 'line',
   title = false,
   showLeague = false,
   active,

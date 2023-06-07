@@ -1,52 +1,9 @@
 import { Club, League } from '@goatim/client';
-import {
-  ClubThumbnail,
-  ClubThumbnailShape,
-  ClubThumbnailSize,
-  ClubThumbnailTheme,
-} from '../../../src';
-
-interface Props {
-  size?: ClubThumbnailSize;
-  theme?: ClubThumbnailTheme;
-  shape?: ClubThumbnailShape;
-  showLeague?: boolean;
-  leagueHref?: string;
-}
+import { ClubThumbnail, ClubThumbnailProps } from '../../../src';
 
 export default {
   title: 'Soccer/ClubThumbnail',
   component: ClubThumbnail,
-  argTypes: {
-    size: {
-      options: ['small', 'medium', 'big'],
-      control: {
-        type: 'select',
-      },
-    },
-    shape: {
-      options: ['text', 'logo', 'box'],
-      control: {
-        type: 'select',
-      },
-    },
-    showLeague: {
-      control: {
-        type: 'boolean',
-      },
-    },
-    theme: {
-      options: ['dark', 'light'],
-      control: {
-        type: 'radio',
-      },
-    },
-    leagueHref: {
-      control: {
-        type: 'text',
-      },
-    },
-  },
 };
 
 const league: League = {
@@ -84,7 +41,7 @@ const club: Club = {
   },
 };
 
-function Template({ size, theme, shape, showLeague, leagueHref }: Props) {
+function Template({ size, theme, shape, showLeague, leagueHref }: ClubThumbnailProps) {
   return (
     <ClubThumbnail
       club={club}

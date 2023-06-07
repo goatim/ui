@@ -40,7 +40,6 @@ export function LeagueOverview({
       <div className="clubs">
         <ClubCarousel
           getClubs={getClubs}
-          shape="box"
           columns={clubColumns}
           clubHref={clubHref}
           clubOnClick={clubOnClick}
