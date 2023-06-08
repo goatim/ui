@@ -2,44 +2,34 @@
 @use '../../styles/fonts';
 
 .goatim-ui-wallet-coins-detail {
-  display: flex;
-  justify-content: space-between;
-
   > .section {
     display: flex;
-    flex-direction: column;
-    width: 200px;
+    justify-content: space-between;
+    border-top: solid colors.$blue-10 1px;
+    padding: 10px;
 
-    &.center {
-      align-items: center;
-      text-align: center;
+    &:first-of-type {
+      border: none;
     }
 
-    &.right {
-      align-items: flex-end;
-      text-align: right;
-    }
+    > .infos {
+      display: flex;
+      flex-direction: column;
 
-    > .label {
-      @include fonts.label;
-      margin-bottom: 10px;
-    }
-
-    > .instruction {
-      @include fonts.Inter(.8em, rgba(colors.$blue, .5));
-      margin-top: 10px;
-    }
-  }
-
-  &.narrow {
-    flex-direction: column;
-
-    > .section {
-      margin-top: 20px;
-
-      &:first-of-type {
-        margin: 0;
+      > .label {
+        font-size: .9em;
+        font-weight: 500;
       }
+
+      > .description {
+        font-size: .8em;
+        color: rgba(colors.$blue, .5);
+        margin-top: 5px;
+      }
+    }
+
+    > .value {
+      margin-left: 20px;
     }
   }
 }
