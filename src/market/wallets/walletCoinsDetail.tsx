@@ -2,17 +2,11 @@ import { ReactElement, useMemo } from 'react';
 import { Wallet } from '@goatim/client';
 import { GoatimCoinsAmount } from '../goatimCoins';
 
-export type WalletCoinsDetailSize = 'narrow' | 'normal';
-
 export interface WalletCoinsDetailProps {
   wallet: Wallet;
-  size?: WalletCoinsDetailSize;
 }
 
-export function WalletCoinsDetail({
-  wallet,
-  size = 'normal',
-}: WalletCoinsDetailProps): ReactElement {
+export function WalletCoinsDetail({ wallet }: WalletCoinsDetailProps): ReactElement {
   const withdrawableAmount = useMemo<number>(() => {
     if (
       !wallet.coins ||
@@ -27,7 +21,7 @@ export function WalletCoinsDetail({
   }, [wallet.coins, wallet.withdrawable_coins]);
 
   return (
-    <div className={`goatim-ui-wallet-coins-detail ${size}`}>
+    <div className="goatim-ui-wallet-coins-detail">
       <div className="section">
         <div className="infos">
           <span className="label">Sur ton compte</span>
