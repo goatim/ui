@@ -33,18 +33,7 @@ export function WalletCoinsDetail({ wallet }: WalletCoinsDetailProps): ReactElem
 
       <div className="section">
         <div className="infos">
-          <span className="label">Max retirable</span>
-          <span className="description">Dividendes et plus-values</span>
-        </div>
-        <div className="value">
-          <GoatimCoinsAmount amount={wallet.withdrawable_coins} size="small" />
-        </div>
-      </div>
-
-      <div className="section">
-        <div className="infos">
-          <span className="label">Min retirable</span>
-          <span className="description">Pour dépasser les frais Etherum</span>
+          <span className="label">Minimum retirable</span>
         </div>
         <div className="value">
           <GoatimCoinsAmount amount={100000} size="small" />
@@ -53,7 +42,20 @@ export function WalletCoinsDetail({ wallet }: WalletCoinsDetailProps): ReactElem
 
       <div className="section">
         <div className="infos">
+          <span className="label">Droit de retrait</span>
+          <span className="description">Total de tes plus-values et dividendes</span>
+        </div>
+        <div className="value">
+          <GoatimCoinsAmount amount={wallet.withdrawable_coins} size="small" />
+        </div>
+      </div>
+
+      <div className="section">
+        <div className="infos">
           <span className="label">Tu peux donc retirer</span>
+          {!withdrawableAmount ? (
+            <span className="description">Tu ne peux pas retirer de coins pour le moment.</span>
+          ) : null}
         </div>
         <div className="value">
           <GoatimCoinsAmount amount={withdrawableAmount} size="small" />
