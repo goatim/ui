@@ -10,7 +10,7 @@ export function Notation({ children, notation }: NotationProps) {
   const nbStars = useMemo<number>(() => {
     const n: number = children || notation || 0;
 
-    return [0.2, 0.4, 0.6, 0.8, 1].findIndex((x) => n <= x) + 1;
+    return [0.25, 0.5, 0.75, 1].findIndex((x) => n <= x) + 1;
   }, [children, notation]);
 
   return (
@@ -25,9 +25,6 @@ export function Notation({ children, notation }: NotationProps) {
         <Icon name="star" />
       </div>
       <div className={`star${nbStars >= 4 ? ' active' : ''}`}>
-        <Icon name="star" />
-      </div>
-      <div className={`star${nbStars >= 5 ? ' active' : ''}`}>
         <Icon name="star" />
       </div>
     </div>
