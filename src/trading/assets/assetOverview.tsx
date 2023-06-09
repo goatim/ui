@@ -3,7 +3,6 @@ import { Asset, Ipo, OrderBook, OrderType, Portfolio } from '@goatim/client';
 import { QuotationHistory } from '@goatim/client/dist/trading/quotations/model';
 import { UrlObject } from 'url';
 import { FormSubmitFunction } from '@cezembre/forms';
-import { QuotationHistoryGraph } from '../quotations';
 import {
   GoatimCoinsAmount,
   GoatimCoinsSize,
@@ -12,7 +11,13 @@ import {
 } from '../../market';
 import { AssetThumbnail, AssetThumbnailSize } from './assetThumbnail';
 import { IpoThumbnail, IpoThumbnailSize } from '../ipos';
-import { OrderEditor, OrderEditorFields, OrderEditorSize } from '../orders';
+import {
+  OrderBookThumbnail,
+  OrderBookThumbnailSize,
+  OrderEditor,
+  OrderEditorFields,
+  OrderEditorSize,
+} from '../orders';
 import { SellPortfolioToBank, SellPortfolioToBankFields } from '../portfolios';
 import { Notation } from '../../general';
 
@@ -148,6 +153,15 @@ export function AssetOverview({
     return portfolio?.nb_shares;
   }, [orderType, portfolio?.nb_shares]);
 
+  const orderBookThumbnailSize = useMemo<OrderBookThumbnailSize>(() => {
+    switch (size) {
+      case 'small':
+        return 'narrow';
+      default:
+        return 'big';
+    }
+  }, [size]);
+
   return (
     <div className={`goatim-ui-asset-overview ${size} ${orderType}`}>
       {ipo ? (
@@ -177,8 +191,16 @@ export function AssetOverview({
         </div>
       </div>
 
-      <div className="quotation">
-        <QuotationHistoryGraph quotationHistory={quotationHistory} />
+      {/* <div className="quotation"> */}
+      {/*  <QuotationHistoryGraph quotationHistory={quotationHistory} /> */}
+      {/* </div> */}
+
+      <div className="order-book">
+        <OrderBookThumbnail
+          orderBook={orderBook}
+          size={orderBookThumbnailSize}
+          theme="medium-light"
+        />
       </div>
 
       <div className="actions">

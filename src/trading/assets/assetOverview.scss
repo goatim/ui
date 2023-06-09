@@ -24,13 +24,18 @@
     }
   }
 
-  > .quotation {
+  //> .quotation {
+  //  margin-top: 10px;
+  //  width: 100%;
+  //  background: colors.$blue;
+  //  border-radius: 10px;
+  //  height: 120px;
+  //  overflow: hidden;
+  //}
+
+  > .order-book {
     margin-top: 10px;
     width: 100%;
-    background: colors.$blue;
-    border-radius: 10px;
-    height: 120px;
-    overflow: hidden;
   }
 
   > .actions {
