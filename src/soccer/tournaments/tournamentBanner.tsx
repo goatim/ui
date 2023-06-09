@@ -63,11 +63,10 @@ export function TournamentBanner({
       <div className="reward">
         {remainingTime ? <span className="timer">{remainingTime}</span> : null}
         <div className="body">
-          <h3 className="date">Le 5 juin</h3>
-          <h2 className="title">Nouvelle league !</h2>
+          <h3 className="date">Le 5 août</h3>
+          <h2 className="title">1 Ether à gagner !</h2>
           <p className="description">
-            Participe aux matchs du 5 juin au 5 août et gagne des points pour te hisser en tête du
-            classement
+            Participe aux matchs et gagne des points pour te hisser en tête du classement
           </p>
         </div>
         <div className="footer">
