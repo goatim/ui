@@ -196,11 +196,7 @@ export function AssetOverview({
       {/* </div> */}
 
       <div className="order-book">
-        <OrderBookThumbnail
-          orderBook={orderBook}
-          size={orderBookThumbnailSize}
-          theme="medium-light"
-        />
+        <OrderBookThumbnail orderBook={orderBook} size={orderBookThumbnailSize} theme="light" />
       </div>
 
       <div className="actions">
