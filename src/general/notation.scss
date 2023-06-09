@@ -1,0 +1,25 @@
+@use "../styles/colors";
+
+.goatim-ui-notation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  > .star {
+    margin-left: 2px;
+
+    &:first-of-type {
+      margin: 0;
+    }
+
+    > svg {
+      stroke: colors.$gold;
+    }
+
+    &.active {
+      > svg {
+        fill: colors.$gold;
+      }
+    }
+  }
+}

@@ -104,6 +104,7 @@ const asset: Asset = {
   day_variation: 0.123,
   player,
   quotation_history: quotationHistory,
+  notation: 0.76,
 };
 
 const ipo: Ipo = {
@@ -125,7 +126,6 @@ function Template({ size, isConnected = true }: AssetOverviewProps) {
       asset={asset}
       size={size}
       ipo={ipo}
-      onSellPortfolio={() => undefined}
       isConnected={isConnected}
       portfolio={portfolio}
     />

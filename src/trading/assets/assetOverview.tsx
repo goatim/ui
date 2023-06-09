@@ -14,6 +14,7 @@ import { AssetThumbnail, AssetThumbnailSize } from './assetThumbnail';
 import { IpoThumbnail, IpoThumbnailSize } from '../ipos';
 import { OrderEditor, OrderEditorFields, OrderEditorSize } from '../orders';
 import { SellPortfolioToBank, SellPortfolioToBankFields } from '../portfolios';
+import { Notation } from '../../general';
 
 export type AssetOverviewSize = 'small' | 'medium' | 'full';
 
@@ -167,6 +168,7 @@ export function AssetOverview({
         </div>
 
         <div className="metrics">
+          <Notation>{asset.notation}</Notation>
           <span className="total-shares">
             {asset.total_shares || 0} action{asset.total_shares || 0 > 1 ? 's' : null}
           </span>

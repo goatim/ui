@@ -29,3 +29,4 @@ export * from './upload';
 export * from './wallpaper';
 export * from './breadcrumb';
 export * from './phoneInput';
+export * from './notation';
