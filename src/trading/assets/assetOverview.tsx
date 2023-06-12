@@ -1,5 +1,5 @@
 import { ReactElement, useCallback, useMemo, useState } from 'react';
-import { Asset, Ipo, OrderBook, OrderType, Portfolio } from '@goatim/client';
+import { Asset, Dividend, Ipo, OrderBook, OrderType, Portfolio } from '@goatim/client';
 import { QuotationHistory } from '@goatim/client/dist/trading/quotations/model';
 import { UrlObject } from 'url';
 import { FormSubmitFunction } from '@cezembre/forms';
@@ -11,21 +11,17 @@ import {
 } from '../../market';
 import { AssetThumbnail, AssetThumbnailSize } from './assetThumbnail';
 import { IpoThumbnail, IpoThumbnailSize } from '../ipos';
-import {
-  OrderBookThumbnail,
-  OrderBookThumbnailSize,
-  OrderEditor,
-  OrderEditorFields,
-  OrderEditorSize,
-} from '../orders';
+import { OrderEditor, OrderEditorFields, OrderEditorSize } from '../orders';
 import { SellPortfolioToBank, SellPortfolioToBankFields } from '../portfolios';
 import { Notation } from '../../general';
+import { DividendBook } from '../dividends';
 
 export type AssetOverviewSize = 'small' | 'medium' | 'full';
 
 export interface AssetOverviewProps {
   asset: Asset;
   quotationHistory?: QuotationHistory;
+  dividends?: Dividend[];
   size?: AssetOverviewSize;
   orderBook?: OrderBook;
   onSubmitOrder?: (orderFields: OrderEditorFields) => unknown;
@@ -41,6 +37,7 @@ export interface AssetOverviewProps {
 export function AssetOverview({
   asset,
   quotationHistory,
+  dividends,
   size = 'full',
   secondaryHref,
   orderBook,
@@ -153,15 +150,6 @@ export function AssetOverview({
     return portfolio?.nb_shares;
   }, [orderType, portfolio?.nb_shares]);
 
-  const orderBookThumbnailSize = useMemo<OrderBookThumbnailSize>(() => {
-    switch (size) {
-      case 'small':
-        return 'narrow';
-      default:
-        return 'big';
-    }
-  }, [size]);
-
   return (
     <div className={`goatim-ui-asset-overview ${size} ${orderType}`}>
       {ipo ? (
@@ -195,8 +183,12 @@ export function AssetOverview({
       {/*  <QuotationHistoryGraph quotationHistory={quotationHistory} /> */}
       {/* </div> */}
 
-      <div className="order-book">
-        <OrderBookThumbnail orderBook={orderBook} size={orderBookThumbnailSize} theme="light" />
+      <div className="dividend-book">
+        <DividendBook
+          dividends={dividends}
+          averagePercentage={asset.average_dividends_percentage}
+          averageGains={asset.average_dividends_amount}
+        />
       </div>
 
       <div className="actions">
