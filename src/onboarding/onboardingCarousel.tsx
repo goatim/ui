@@ -1,5 +1,5 @@
 import { ReactElement, useCallback, useState } from 'react';
-import { Button, ModalComponentProps, StepIndicator } from '../general';
+import { Button } from '../general';
 
 export interface OnboardingCarouselSlideData {
   image?: string;
@@ -15,7 +15,7 @@ export function OnboardingCarouselSlide({ slide }: OnboardingCarouselSlideProps)
   return (
     <div className="goatim-ui-onboarding-carousel-slide">
       {slide.image ? (
-        <div className="header">
+        <div className="illustration">
           <img src={slide.image} alt={`onboarding ${slide.title}`} />
         </div>
       ) : null}
@@ -29,82 +29,65 @@ export function OnboardingCarouselSlide({ slide }: OnboardingCarouselSlideProps)
 
 export type OnboardingCarouselSize = 'narrow' | 'big';
 
-export interface OnboardingCarouselProps extends ModalComponentProps {
+export interface OnboardingCarouselProps {
   slides?: OnboardingCarouselSlideData[];
-  size?: OnboardingCarouselSize;
+  dismissModal?: () => unknown;
+  dismissLabel?: string;
 }
 
 export function OnboardingCarousel({
   slides,
-  size = 'big',
   dismissModal,
+  dismissLabel = "C'est parti !",
 }: OnboardingCarouselProps): ReactElement {
   const [slideIndex, setSlideIndex] = useState<number>(0);
 
-  const previousSlide = useCallback(() => {
-    setTimeout(() => {
-      setSlideIndex((i) => (i > 0 ? i - 1 : i));
-    }, 5);
-  }, []);
-
   const nextSlide = useCallback(() => {
-    if (slides?.length) {
+    if (slides?.length && slideIndex < slides.length - 1) {
       setTimeout(() => {
         setSlideIndex((i) => (i < slides.length - 1 ? i + 1 : i));
       }, 5);
+    } else if (dismissModal) {
+      dismissModal();
     }
-  }, [slides?.length]);
+  }, [dismissModal, slideIndex, slides?.length]);
 
   const [slideHeight, setSlideHeight] = useState<number | undefined>();
 
   const calcHeight = useCallback(
-    (index: number, ref?: HTMLDivElement | null) => {
-      if (ref) {
-        const { height } = ref.getBoundingClientRect();
-        if (index === slideIndex) {
-          setSlideHeight(height);
-        }
+    (index: number, entries: ResizeObserverEntry[]) => {
+      if (entries.length && index === slideIndex) {
+        setSlideHeight(entries[0].contentRect.height);
       }
     },
     [slideIndex],
   );
 
+  const watchHeight = useCallback(
+    (index: number, ref?: HTMLDivElement | null) => {
+      if (ref) {
+        new ResizeObserver((entries) => calcHeight(index, entries)).observe(ref);
+      }
+    },
+    [calcHeight],
+  );
+
   return (
-    <div className={`goatim-ui-onboarding-carousel ${size}`}>
+    <div className="goatim-ui-onboarding-carousel">
       <div
         className="slides"
         style={{ transform: `translateX(-${slideIndex * 100}%)`, height: slideHeight }}>
         {slides?.map((slide, index) => (
-          <div key={slide.title} className="slide" ref={(ref) => calcHeight(index, ref)}>
+          <div key={slide.title} className="slide" ref={(ref) => watchHeight(index, ref)}>
             <OnboardingCarouselSlide slide={slide} />
           </div>
         ))}
       </div>
       <div className="navigation">
-        <div className="previous">
-          {slideIndex > 0 ? (
-            <Button onClick={previousSlide} leftIcon="chevron-left" shape="text" size="large">
-              Précédent
-            </Button>
-          ) : null}
-        </div>
-        <div className="steps">
-          <StepIndicator nbSteps={slides?.length} step={slideIndex} onClickStep={setSlideIndex} />
-        </div>
-        <div className="next">
-          {slides && slideIndex < slides.length - 1 ? (
-            <div className="button">
-              <Button onClick={nextSlide} rightIcon="chevron-right" shape="text" size="large">
-                Suivant
-              </Button>
-            </div>
-          ) : (
-            <div className="button">
-              <Button onClick={dismissModal} shape="text" size="large">
-                Let’s gooooo !
-              </Button>
-            </div>
-          )}
+        <div className="button">
+          <Button onClick={nextSlide} fullWidth theme="light">
+            {slides && slideIndex < slides.length - 1 ? 'Suivant' : dismissLabel}
+          </Button>
         </div>
       </div>
     </div>
