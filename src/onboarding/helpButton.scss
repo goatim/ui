@@ -1,0 +1,29 @@
+@use '../styles/colors';
+
+.goatim-ui-help-button {
+  padding: 0;
+  margin: 0;
+
+  > svg {
+    stroke: colors.$blue;
+    transition: stroke linear 100ms;
+  }
+
+  &.light {
+    > svg {
+      stroke: white;
+    }
+  }
+
+  &.dark-discreet {
+    > svg {
+      stroke: colors.$blue-50;
+    }
+
+    &:hover {
+      > svg {
+        stroke: colors.$blue;
+      }
+    }
+  }
+}
