@@ -30,12 +30,18 @@
 
 .goatim-ui-onboarding-carousel {
   @include containers.small;
+  overflow: hidden;
 
   > .slides {
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
     transition: transform ease-out 300ms, height ease-out 100ms;
+
+    > .slide {
+      width: 100%;
+      min-width: 100%;
+    }
   }
 
   > .navigation {
