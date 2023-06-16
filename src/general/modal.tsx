@@ -20,7 +20,7 @@ export interface ModalComponentProps {
   dismissModal: () => unknown;
 }
 
-export type ModalType = 'pop-up' | 'overlay' | 'banner' | 'message';
+export type ModalType = 'pop-up' | 'overlay' | 'banner' | 'message' | 'screen';
 
 export interface Modal<P extends ModalComponentProps = any> {
   id: string;

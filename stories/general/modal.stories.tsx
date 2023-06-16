@@ -5,8 +5,8 @@ import { ModalsContext, useModals } from '../../src';
 
 function Popup(): ReactElement {
   return (
-    <div style={{ background: 'white' }}>
-      <h1>Ici</h1>
+    <div style={{ background: 'red' }}>
+      <h1 style={{ margin: 0 }}>Ici</h1>
       <p style={{ margin: 0 }}>Lorem ipsum</p>
     </div>
   );
@@ -16,8 +16,9 @@ function App() {
   const { pushModal } = useModals();
   const openModal = useCallback(() => {
     pushModal({
-      type: 'overlay',
+      type: 'screen',
       component: Popup,
+      disableDismiss: true,
     });
   }, [pushModal]);
 
