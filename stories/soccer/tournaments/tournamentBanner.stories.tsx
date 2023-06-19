@@ -79,7 +79,7 @@ function Template({ size }: Props) {
         ]}
         onMatchesClick={() => undefined}
         size={size}
-        end="2023-03-01"
+        end="2023-08-05"
       />
     </div>
   );

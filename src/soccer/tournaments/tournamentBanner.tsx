@@ -33,7 +33,7 @@ export function TournamentBanner({
   const [remainingTime, setRemainingTime] = useState<string | undefined>();
 
   const resolveRemainingTime = useCallback(() => {
-    if (resolvedEnd && resolvedEnd.diffNow().seconds > 0) {
+    if (resolvedEnd && resolvedEnd.diffNow().milliseconds > 0) {
       setRemainingTime(`Fin dans ${resolvedEnd.diffNow().toFormat('d:hh:mm:ss')}`);
       timeout.current = setTimeout(resolveRemainingTime, 1000);
     } else {
@@ -57,7 +57,7 @@ export function TournamentBanner({
             <span className="title">Goatim league</span>
           </>
         ) : (
-          <span className="placeholder">À partir du 20 janvier</span>
+          <span className="placeholder">À partir du 5 juin</span>
         )}
       </div>
       <div className="reward">

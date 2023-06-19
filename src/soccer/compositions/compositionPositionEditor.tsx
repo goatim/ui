@@ -113,7 +113,7 @@ export function CompositionPositionEditor({
           options={players?.map((player: Player) => ({
             value: player,
           }))}
-          defaultComponent={PlayerSelectorOption}
+          optionComponent={PlayerSelectorOption}
           component={Select}
           canReset
           fullWidth

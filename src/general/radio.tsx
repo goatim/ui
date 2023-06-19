@@ -18,11 +18,11 @@ export interface RadioOption<V = unknown> {
 
 interface OptionProps<V> {
   option: SelectOption<V>;
-  defaultComponent?: (props: SelectOptionComponentProps<V>) => ReactElement | null;
+  optionComponent?: (props: SelectOptionComponentProps<V>) => ReactElement | null;
   active?: boolean;
 }
 
-function Option<V>({ option, defaultComponent, active }: OptionProps<V>): ReactElement {
+function Option<V>({ option, optionComponent, active }: OptionProps<V>): ReactElement {
   if (option.element) {
     return cloneElement<SelectOptionComponentProps<V>>(option.element, {
       value: option.value,
@@ -41,8 +41,8 @@ function Option<V>({ option, defaultComponent, active }: OptionProps<V>): ReactE
     return <span className="value label">{option.label}</span>;
   }
 
-  if (defaultComponent) {
-    return createElement(defaultComponent, { value: option.value, active });
+  if (optionComponent) {
+    return createElement(optionComponent, { value: option.value, active });
   }
 
   if (typeof option.value === 'string' || typeof option.value === 'number') {
@@ -60,7 +60,7 @@ interface OptionButtonProps<V> {
   onClick?: () => void;
   option: SelectOption<V>;
   value?: V;
-  defaultComponent?: (props: SelectOptionComponentProps<V>) => ReactElement | null;
+  optionComponent?: (props: SelectOptionComponentProps<V>) => ReactElement | null;
   comparisonFn?: (a: V, b: V) => boolean;
 }
 
@@ -68,7 +68,7 @@ function OptionButton<V>({
   onClick,
   option,
   value,
-  defaultComponent,
+  optionComponent,
   comparisonFn,
 }: OptionButtonProps<V>) {
   const active = useMemo(() => {
@@ -90,7 +90,7 @@ function OptionButton<V>({
 
   return (
     <button type="button" onClick={onClick} className={className}>
-      <Option<V> option={option} defaultComponent={defaultComponent} active={active} />
+      <Option<V> option={option} optionComponent={optionComponent} active={active} />
     </button>
   );
 }
@@ -100,7 +100,7 @@ export type RadioOrientation = 'horizontal' | 'vertical';
 export interface RadioProps<V = unknown> extends FieldComponentProps<V> {
   label?: string;
   options?: RadioOption<V>[];
-  defaultComponent?: (props: RadioOptionComponentProps<V>) => ReactElement | null;
+  optionComponent?: (props: RadioOptionComponentProps<V>) => ReactElement | null;
   canReset?: boolean;
   instructions?: ReactElement | string;
   orientation?: RadioOrientation;
@@ -117,7 +117,7 @@ export function Radio<V = unknown>({
   onChange,
   label,
   options = [],
-  defaultComponent,
+  optionComponent,
   canReset,
   instructions,
   orientation = 'horizontal',
@@ -167,7 +167,7 @@ export function Radio<V = unknown>({
               onClick={() => onChange(option.value)}
               option={option}
               value={value}
-              defaultComponent={defaultComponent}
+              optionComponent={optionComponent}
               comparisonFn={comparisonFn}
             />
           </div>

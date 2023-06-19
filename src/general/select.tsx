@@ -28,11 +28,11 @@ export interface SelectOption<V = unknown> {
 
 interface OptionProps<V> {
   option: SelectOption<V>;
-  defaultComponent?: (props: SelectOptionComponentProps<V>) => ReactElement | null;
+  optionComponent?: (props: SelectOptionComponentProps<V>) => ReactElement | null;
   active?: boolean;
 }
 
-function Option<V>({ option, defaultComponent, active }: OptionProps<V>): ReactElement {
+function Option<V>({ option, optionComponent, active }: OptionProps<V>): ReactElement {
   if (option.element) {
     return cloneElement<SelectOptionComponentProps<V>>(option.element, {
       value: option.value,
@@ -51,8 +51,8 @@ function Option<V>({ option, defaultComponent, active }: OptionProps<V>): ReactE
     return <span className="value label">{option.label}</span>;
   }
 
-  if (defaultComponent) {
-    return createElement(defaultComponent, { value: option.value, active });
+  if (optionComponent) {
+    return createElement(optionComponent, { value: option.value, active });
   }
 
   if (typeof option.value === 'string' || typeof option.value === 'number') {
@@ -70,7 +70,7 @@ interface OptionButtonProps<V, FV extends V | V[] = V> {
   onClick?: () => void;
   option: SelectOption<V>;
   value?: FV;
-  defaultComponent?: (props: SelectOptionComponentProps<V>) => ReactElement | null;
+  optionComponent?: (props: SelectOptionComponentProps<V>) => ReactElement | null;
   multiple?: boolean;
 }
 
@@ -78,7 +78,7 @@ function OptionButton<V, FV extends V | V[] = V>({
   onClick,
   option,
   value,
-  defaultComponent,
+  optionComponent,
   multiple,
 }: OptionButtonProps<V, FV>) {
   const active = useMemo(() => {
@@ -115,7 +115,7 @@ function OptionButton<V, FV extends V | V[] = V>({
           <Check active={active} />
         </div>
       ) : null}
-      <Option<V> option={option} defaultComponent={defaultComponent} active={active} />
+      <Option<V> option={option} optionComponent={optionComponent} active={active} />
     </button>
   );
 }
@@ -129,7 +129,7 @@ export type SelectTheme = 'default' | 'electric-blue';
 export interface SelectProps<V = unknown, FV extends V | V[] = V> extends FieldComponentProps<FV> {
   label?: string;
   options?: SelectOption<V>[];
-  defaultComponent?: (props: SelectOptionComponentProps<V>) => ReactElement | null;
+  optionComponent?: (props: SelectOptionComponentProps<V>) => ReactElement | null;
   canReset?: boolean;
   shape?: SelectShape;
   type?: SelectType;
@@ -153,7 +153,7 @@ export function Select<V = unknown, FV extends V | V[] = V>({
   onChange,
   label,
   options = [],
-  defaultComponent,
+  optionComponent,
   canReset,
   instructions,
   shape = 'square',
@@ -305,11 +305,11 @@ export function Select<V = unknown, FV extends V | V[] = V>({
     }
 
     if (selectedOption) {
-      return <Option<V> option={selectedOption} defaultComponent={defaultComponent} active />;
+      return <Option<V> option={selectedOption} optionComponent={optionComponent} active />;
     }
 
     return null;
-  }, [defaultComponent, nbSelectedOptions, optionsPlural, placeholder, selectedOption, value]);
+  }, [optionComponent, nbSelectedOptions, optionsPlural, placeholder, selectedOption, value]);
 
   return (
     <div className={className}>
@@ -365,7 +365,7 @@ export function Select<V = unknown, FV extends V | V[] = V>({
               onClick={() => selectOption(option.value)}
               option={option}
               value={value}
-              defaultComponent={defaultComponent}
+              optionComponent={optionComponent}
               multiple={multiple}
             />
           ))}
