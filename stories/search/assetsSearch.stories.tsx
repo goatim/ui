@@ -138,6 +138,7 @@ const asset: Asset = {
   day_variation: 0.256,
   player,
   average_dividends_amount: 4000,
+  nb_shares_in_portfolios: 0,
 };
 
 function getLeagues(query?: GetLeaguesQuery): Promise<LeagueList> {

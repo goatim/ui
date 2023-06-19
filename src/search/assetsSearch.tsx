@@ -39,6 +39,7 @@ export interface AssetsSearchProps extends FormProps<AssetsSearchFields> {
   getLeagues?: (query?: GetLeaguesQuery) => LeagueList | Promise<LeagueList>;
   getClubs?: (query?: GetClubsQuery) => ClubList | Promise<ClubList>;
   getAssets?: (query?: GetAssetsQuery) => AssetList | Promise<AssetList>;
+  getAssetsDefaultQuery?: GetAssetsQuery;
   onClickAsset?: (asset: Asset) => unknown;
   size?: AssetSearchSize;
 }
@@ -47,6 +48,7 @@ export function AssetsSearch({
   getLeagues,
   getClubs,
   getAssets,
+  getAssetsDefaultQuery,
   onClickAsset,
   size = 'small',
 }: AssetsSearchProps) {
@@ -134,7 +136,9 @@ export function AssetsSearch({
   }, []);
 
   const [assetColumnSorted, setAssetColumnSorted] = useState<TableColumnSort | undefined>();
-  const [nbSharesColumnSorted, setNbSharesColumnSorted] = useState<TableColumnSort | undefined>();
+  const [nbSharesInPortfoliosColumnSorted, setNbSharesInPortfoliosColumnSorted] = useState<
+    TableColumnSort | undefined
+  >();
   const [quotationColumnSorted, setQuotationColumnSorted] = useState<TableColumnSort | undefined>();
   const [averageDividendsAmountColumnSorted, setAverageDividendsAmountColumnSorted] = useState<
     TableColumnSort | undefined
@@ -151,14 +155,6 @@ export function AssetsSearch({
         sortable: true,
         sorted: assetColumnSorted,
         onSort: setAssetColumnSorted,
-      },
-      {
-        key: 'nb_shares',
-        label: 'Act',
-        sortable: true,
-        sorted: nbSharesColumnSorted,
-        onSort: setNbSharesColumnSorted,
-        hidden: true,
       },
       {
         key: 'quotation',
@@ -179,12 +175,20 @@ export function AssetsSearch({
         hidden: size === 'small',
         align: 'right',
       },
+      {
+        key: 'nb_shares_in_portfolios',
+        label: 'Act',
+        sortable: true,
+        sorted: nbSharesInPortfoliosColumnSorted,
+        onSort: setNbSharesInPortfoliosColumnSorted,
+        align: 'right',
+      },
     ];
   }, [
     size,
     assetColumnSorted,
     averageDividendsAmountColumnSorted,
-    nbSharesColumnSorted,
+    nbSharesInPortfoliosColumnSorted,
     quotationColumnSorted,
   ]);
 
@@ -197,8 +201,8 @@ export function AssetsSearch({
       orders.push(`player.last_name:${assetColumnSorted}`);
     }
 
-    if (nbSharesColumnSorted) {
-      orders.push(`nb_shares:${nbSharesColumnSorted}`);
+    if (nbSharesInPortfoliosColumnSorted) {
+      orders.push(`nb_shares_in_portfolios:${nbSharesInPortfoliosColumnSorted}`);
     }
 
     if (quotationColumnSorted) {
@@ -210,7 +214,7 @@ export function AssetsSearch({
     }
 
     return {
-      type: 'player',
+      ...getAssetsDefaultQuery,
       search: formState?.values?.search,
       league: formState?.values?.league?.map((l) => l.id),
       club: formState?.values?.club?.map((c) => c.id),
@@ -219,9 +223,10 @@ export function AssetsSearch({
     };
   }, [
     assetColumnSorted,
-    nbSharesColumnSorted,
+    nbSharesInPortfoliosColumnSorted,
     quotationColumnSorted,
     averageDividendsAmountColumnSorted,
+    getAssetsDefaultQuery,
     formState?.values?.search,
     formState?.values?.league,
     formState?.values?.club,
