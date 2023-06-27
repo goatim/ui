@@ -42,6 +42,7 @@ export interface AssetsSearchProps extends FormProps<AssetsSearchFields> {
   getAssetsDefaultQuery?: GetAssetsQuery;
   onClickAsset?: (asset: Asset) => unknown;
   size?: AssetSearchSize;
+  connected?: boolean;
 }
 
 export function AssetsSearch({
@@ -51,6 +52,7 @@ export function AssetsSearch({
   getAssetsDefaultQuery,
   onClickAsset,
   size = 'small',
+  connected,
 }: AssetsSearchProps) {
   const className = useMemo<string>(() => {
     const classNames = ['goatim-ui-assets-search', size];
@@ -182,14 +184,16 @@ export function AssetsSearch({
         sorted: nbSharesInPortfoliosColumnSorted,
         onSort: setNbSharesInPortfoliosColumnSorted,
         align: 'right',
+        hidden: !connected,
       },
     ];
   }, [
-    size,
     assetColumnSorted,
-    averageDividendsAmountColumnSorted,
-    nbSharesInPortfoliosColumnSorted,
     quotationColumnSorted,
+    averageDividendsAmountColumnSorted,
+    size,
+    nbSharesInPortfoliosColumnSorted,
+    connected,
   ]);
 
   const [assets, setAssets] = useState<Asset[] | undefined>();
@@ -201,7 +205,7 @@ export function AssetsSearch({
       orders.push(`player.last_name:${assetColumnSorted}`);
     }
 
-    if (nbSharesInPortfoliosColumnSorted) {
+    if (connected && nbSharesInPortfoliosColumnSorted) {
       orders.push(`nb_shares_in_portfolios:${nbSharesInPortfoliosColumnSorted}`);
     }
 
@@ -223,6 +227,7 @@ export function AssetsSearch({
     };
   }, [
     assetColumnSorted,
+    connected,
     nbSharesInPortfoliosColumnSorted,
     quotationColumnSorted,
     averageDividendsAmountColumnSorted,
