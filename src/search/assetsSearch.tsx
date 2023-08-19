@@ -94,6 +94,7 @@ export function AssetsSearch({
   const getClubsQuery = useMemo<GetClubsQuery>(() => {
     return {
       league: formState?.values?.league?.map((l) => l.id),
+      order: "name:asc"
     };
   }, [formState?.values?.league]);
 
