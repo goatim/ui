@@ -1,0 +1,80 @@
+@use '../../styles/colors';
+
+.goatim-ui-game-summary-card-header {
+  > .info {
+    > .bt-open-summary {
+      margin-left: auto;
+      border-radius: 30px;
+      border: 1px solid colors.$blue;
+      padding: 5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      line-height: 10px;
+    }
+
+    > .dates {
+      margin-top: 10px;
+    }
+  }
+
+  &.results {
+    > .name {
+      display: flex;
+      align-items: center;
+
+      .match-slug {
+        margin-right: 0.8rem;
+      }
+    }
+  }
+
+  .match-slug {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #323960; // TODO use global
+  }
+
+  > .title {
+    font-size: 2em;
+    font-weight: bold;
+    display: inline-block;
+    font-style: italic;
+    text-transform: uppercase;
+    margin-top: 10px;
+    max-width: 290px;
+  }
+
+  > .rewards {
+    margin-top: 10px;
+
+    > .reward {
+      margin-top: 5px;
+      display: flex;
+      align-items: center;
+
+      &:first-of-type {
+        margin-top: 0;
+      }
+
+      > .label {
+        font-size: 0.8em;
+        margin-right: 5px;
+        font-weight: bold;
+        color: colors.$blue-50;
+      }
+
+      > .coins {
+        font-size: 0.7em;
+        color: colors.$green;
+        font-weight: bold;
+      }
+    }
+  }
+
+  &.light {
+    > .title {
+      color: white;
+    }
+  }
+}
