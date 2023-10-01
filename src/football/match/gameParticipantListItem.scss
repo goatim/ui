@@ -1,0 +1,37 @@
+.goatim-ui-game-participant-list-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  > .body {
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    > .goatim-ui-wallet-picture {
+    }
+
+    > .name {
+      flex: 0.8;
+      font-weight: 600;
+      margin-left: 1em;
+      text-align: left;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    > .position {
+      font-weight: 600;
+      margin-left: 1em;
+    }
+
+    > .metrics {
+      margin-left: auto;
+
+      .goatim-ui-score {
+        font-size: 1em;
+      }
+    }
+  }
+}
