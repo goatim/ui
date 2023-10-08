@@ -1,4 +1,5 @@
 {
+  "extends": "./tsconfig.paths.json",
   "include": ["./src/**/*", "./stories/**/*"],
   "exclude": ["dist"],
   "compilerOptions": {
