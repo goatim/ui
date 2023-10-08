@@ -1,0 +1,11 @@
+@use '../styles/colors';
+
+.goatim-ui-user-rank-league {
+  &[data-rank='rookie'] {
+    background-color: colors.$gold;
+    color: white;
+  }
+  text-align: center;
+  border-radius: 20px;
+  padding: 2px 10px;
+}

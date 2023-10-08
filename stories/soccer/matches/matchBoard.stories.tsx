@@ -11,7 +11,7 @@ import {
   User,
   Wallet,
 } from '@goatim/client';
-import { MatchBoard, MatchBoardSize, MatchBoardTheme } from '../../../src';
+import { MatchBoard, MatchBoardSize, MatchBoardTheme } from '../../../src/soccer';
 
 interface Props {
   theme?: MatchBoardTheme;

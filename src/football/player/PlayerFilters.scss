@@ -1,0 +1,16 @@
+.goatim-ui-player-filters {
+  > .filters {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    > .filter {
+      margin-left: 10px;
+
+      &:first-of-type {
+        margin: 0;
+      }
+    }
+  }
+}

@@ -43,11 +43,11 @@
   }
 
   > span {
-    font-size: .8em;
+    font-size: .7em;
     text-align: center;
     font-weight: 600;
     white-space: nowrap;
-    margin-top: 8px;
+    margin-top: 0px; // TODO externlize
     overflow: hidden;
     text-overflow: ellipsis;
   }

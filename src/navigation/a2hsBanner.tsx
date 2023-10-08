@@ -15,46 +15,48 @@ export function A2HSBanner({
 }: A2HSBannerProps): ReactElement | null {
   const client = useClient();
 
-  if (
-    client.device &&
-    client.browser === 'safari' &&
-    ['iphone', 'ipad', 'ipod'].includes(client.device)
-  ) {
-    return (
-      <div className="goatim-ui-a2hs-banner">
-        <Wrapper className="banner" onClick={onClick} href={href} target={target}>
-          <div className="icon">
-            <AppIcon />
-          </div>
+  return <div></div>
 
-          <div className="body">
-            <span>Enregistre l&apos;app sur ton IPhone</span>
+  // if (
+  //   client.device &&
+  //   client.browser === 'safari' &&
+  //   ['iphone', 'ipad', 'ipod'].includes(client.device)
+  // ) {
+  //   return (
+  //     <div className="goatim-ui-a2hs-banner">
+  //       <Wrapper className="banner" onClick={onClick} href={href} target={target}>
+  //         <div className="icon">
+  //           <AppIcon />
+  //         </div>
 
-            <div className="steps">
-              <div className="step">
-                <Icon name="share" />
-                <span>Partager</span>
-              </div>
-              <div className="arrow">
-                <Icon name="arrow-right" size={20} />
-              </div>
-              <div className="step">
-                <Icon name="plus-square" />
-                <span>Sur l&apos;écran d&apos;accueil</span>
-              </div>
-            </div>
-          </div>
+  //         <div className="body">
+  //           <span>Enregistre l&apos;app sur ton IPhone</span>
 
-          {onDismiss ? (
-            <button className="dismiss" type="button" onClick={onDismiss}>
-              <Icon name="x" />
-            </button>
-          ) : null}
-        </Wrapper>
-        <div className="placeholder" />
-      </div>
-    );
-  }
+  //           <div className="steps">
+  //             <div className="step">
+  //               <Icon name="share" />
+  //               <span>Partager</span>
+  //             </div>
+  //             <div className="arrow">
+  //               <Icon name="arrow-right" size={20} />
+  //             </div>
+  //             <div className="step">
+  //               <Icon name="plus-square" />
+  //               <span>Sur l&apos;écran d&apos;accueil</span>
+  //             </div>
+  //           </div>
+  //         </div>
 
-  return null;
+  //         {onDismiss ? (
+  //           <button className="dismiss" type="button" onClick={onDismiss}>
+  //             <Icon name="x" />
+  //           </button>
+  //         ) : null}
+  //       </Wrapper>
+  //       <div className="placeholder" />
+  //     </div>
+  //   );
+  // }
+
+  // return null;
 }

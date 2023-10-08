@@ -10,29 +10,34 @@
   background: none;
 
   > .infos {
+    display: flex;
+    align-items: start;
+
     > .position {
-      font-size: .8em;
-      opacity: .5;
+      font-size: 0.8em;
+      opacity: 0.5;
       text-transform: uppercase;
     }
 
     > .name {
-      font-size: .8em;
+      font-size: 0.8em;
       font-weight: bold;
-      white-space: nowrap;
+    }
+
+    > .club-name {
+      opacity: 0.5;
+      font-size: 0.8rem;
     }
   }
 
-  &.small, &.medium, &.big {
+  &.small,
+  &.medium,
+  &.big {
     > .infos {
       display: flex;
+      flex-direction: column;
       justify-content: flex-start;
-      align-items: center;
       margin-left: 10px;
-
-      > .name {
-        margin-left: 5px;
-      }
     }
   }
 
@@ -44,8 +49,8 @@
       margin: 0;
 
       > .number {
-        font-size: .8em;
-        opacity: .5;
+        font-size: 0.8em;
+        opacity: 0.5;
         font-weight: bold;
         margin-right: 5px;
       }
@@ -67,7 +72,7 @@
   &.medium {
     > .infos {
       > span {
-        font-size: .9em;
+        font-size: 0.9em;
       }
     }
 
@@ -94,7 +99,9 @@
     > .infos {
       color: white;
 
-      > .number, > .position, > .name {
+      > .number,
+      > .position,
+      > .name {
         color: white;
       }
     }

@@ -1,0 +1,22 @@
+.number-circle {
+  display: inline-block;
+  border-radius: 50%;
+  border: 3px solid;
+}
+
+.number-circle:before,
+.number-circle:after {
+  content: '\200B';
+  display: inline-block;
+  line-height: 0px;
+  padding-top: 50%;
+  padding-bottom: 50%;
+}
+
+.number-circle:before {
+  padding-left: 8px;
+}
+
+.number-circle:after {
+  padding-right: 8px;
+}

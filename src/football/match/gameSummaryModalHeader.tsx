@@ -28,10 +28,12 @@ export function GameSummaryModalHeaderResults({
 
   return (
     <div className="goatim-ui-game-summary-modal-header results">
-      <div className="name info">
-        <span className="match-title">{match.title}</span>
-        <ParticipantsThumbnail nbParticipants={match.nb_participants as number} />
+      <div className="info">
         <UserRankLeague />
+        <ParticipantsThumbnail nbParticipants={match.nb_participants as number} />
+      </div>
+      <div className="name">
+        <span className="match-title">{match.title}</span>
       </div>
       <div className="dates info">
         <MatchDates

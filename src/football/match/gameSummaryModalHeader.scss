@@ -5,24 +5,25 @@
     display: flex;
     align-items: center;
 
+    .goatim-ui-user-rank-league {
+      padding: 5px;
+    }
+    > .goatim-ui-participants-thumbnail {
+      margin-left: 1rem;
+    }
+  }
+
+  > .name {
+    margin-top: 1rem;
     > .match-title {
-      font-size: 0.75rem;
+      font-size: 1.2rem;
       font-weight: 700;
       color: #323960; // TODO use global
     }
+  }
 
-    > .goatim-ui-user-rank-league {
-      margin-left: auto;
-    }
-
-    > .dates {
-      margin-top: 10px;
-    }
-
-    > .goatim-ui-ranking-rewards {
-      margin-left: auto;
-      padding: 0;
-    }
+  > .dates {
+    margin-top: 1rem;
   }
 
   &.light {

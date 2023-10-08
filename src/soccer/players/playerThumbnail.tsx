@@ -4,18 +4,18 @@ import { Wrapper, WrapperProps } from '@cezembre/fronts';
 import { UrlObject } from 'url';
 import { ClubIcon, ClubIconSize, ClubThumbnail, ClubThumbnailTheme } from '../clubs';
 
-export type PlayerThumbnailSize = 'small' | 'medium' | 'big' | 'full';
+export type SoccerPlayerThumbnailSize = 'small' | 'medium' | 'big' | 'full';
 
-export type PlayerThumbnailTheme = 'dark' | 'light';
+export type SoccerPlayerThumbnailTheme = 'dark' | 'light';
 
 export interface PlayerThumbnailProps extends WrapperProps {
   player: Player;
-  size?: PlayerThumbnailSize;
+  size?: SoccerPlayerThumbnailSize;
   theme?: ClubThumbnailTheme;
   clubHref?: string | UrlObject;
 }
 
-export function PlayerThumbnail({
+export function SoccerPlayerThumbnail({
   player,
   size = 'small',
   theme = 'dark',
@@ -24,6 +24,11 @@ export function PlayerThumbnail({
   target,
   clubHref,
 }: PlayerThumbnailProps): ReactElement {
+  const club = useMemo(
+    () => (player.club && typeof player.club === 'object' ? player.club : null),
+    [player],
+  );
+
   const clubIconSize = useMemo<ClubIconSize>(() => {
     switch (size) {
       case 'medium':
@@ -60,9 +65,9 @@ export function PlayerThumbnail({
         {player.first_name || player.last_name ? (
           <h1 className="name">{formatPlayerName(player.first_name, player.last_name, 'full')}</h1>
         ) : null}
-        {player.club && typeof player.club === 'object' ? (
+        {club !== null ? (
           <div className="club">
-            <ClubThumbnail club={player.club} theme={theme} href={clubHref} size="small" />
+            <ClubThumbnail club={club} theme={theme} href={clubHref} size="small" />
           </div>
         ) : null}
       </Wrapper>
@@ -71,15 +76,9 @@ export function PlayerThumbnail({
 
   return (
     <Wrapper className={className} onClick={onClick} href={href} target={target}>
-      <ClubIcon
-        icon={player.club && typeof player.club === 'object' ? player.club.icon : undefined}
-        size={clubIconSize}
-        theme={theme}
-      />
+      <ClubIcon icon={club?.icon} size={clubIconSize} theme={theme} />
       <div className="infos">
-        {player.resolved_short_position ? (
-          <span className="position">{player.resolved_short_position}</span>
-        ) : null}
+        {club !== null && <span className="club-name">{club.name}</span>}
         {player.first_name || player.last_name ? (
           <span className="name">{formatPlayerName(player.first_name, player.last_name)}</span>
         ) : null}

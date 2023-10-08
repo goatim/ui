@@ -1,21 +1,21 @@
 import { MouseEvent, ReactElement } from 'react';
 import { Player } from '@goatim/client';
 import { UrlObject } from 'url';
-import { PlayerThumbnail, PlayerThumbnailSize } from './playerThumbnail';
+import { SoccerPlayerThumbnail, SoccerPlayerThumbnailSize } from './playerThumbnail';
 
-export interface PlayerListProps {
+export interface SoccerPlayerListProps {
   players?: Player[];
-  size?: PlayerThumbnailSize;
+  size?: SoccerPlayerThumbnailSize;
   playerOnClick?: (player: Player, event: MouseEvent<HTMLButtonElement>) => unknown;
   playerHref?: (player: Player) => string | UrlObject;
 }
 
-export function PlayerList({
+export function SoccerPlayerList({
   players,
   size,
   playerOnClick,
   playerHref,
-}: PlayerListProps): ReactElement {
+}: SoccerPlayerListProps): ReactElement {
   if (!players?.length) {
     return <span>Aucun joueur</span>;
   }
@@ -24,7 +24,7 @@ export function PlayerList({
     <div className="goatim-ui-player-list">
       {players.map((player) => (
         <div className="player" key={player.id}>
-          <PlayerThumbnail
+          <SoccerPlayerThumbnail
             player={player}
             size={size}
             onClick={playerOnClick ? (event) => playerOnClick(player, event) : undefined}

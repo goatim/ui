@@ -1,5 +1,5 @@
 import { Composition, Match, User, Wallet } from '@goatim/client';
-import { MatchSummary } from '../../../src';
+import { MatchSummary } from '../../../src/soccer';
 
 export default {
   title: 'Soccer/MatchSummary',

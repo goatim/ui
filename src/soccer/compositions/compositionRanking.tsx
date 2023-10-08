@@ -1,8 +1,9 @@
 import { MouseEvent, ReactElement } from 'react';
-import { Composition } from '@goatim/client';
+import { Composition, Wallet } from '@goatim/client';
 import { UrlObject } from 'url';
 import { CompositionThumbnail } from './compositionThumbnail';
 import { Icon } from '../../general';
+import { GameParticipantListItem } from '../../football/match/gameParticipantListItem';
 
 export type CompositionRankingTheme = 'dark' | 'light';
 
@@ -35,14 +36,15 @@ export function CompositionRanking({
       <div className="compositions">
         {compositions.map((composition) => (
           <div className="composition" key={composition.id}>
-            <CompositionThumbnail
-              composition={composition}
-              theme={theme}
+            <GameParticipantListItem
+              wallet={composition.wallet as Wallet}
+              position={composition.position}
+              score={composition.score}
               href={compositionHref}
+              theme={theme}
               onClick={
                 onClickComposition ? (event) => onClickComposition(composition, event) : undefined
               }
-              showScore
             />
           </div>
         ))}

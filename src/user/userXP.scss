@@ -1,0 +1,44 @@
+@use '../styles/colors';
+
+.goatim-ui-user-badge-xp {
+  color: colors.$gold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid colors.$gold;
+  border-radius: 30px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  height: 30px;
+  width: 30px;
+}
+
+.goatim-ui-user-progressbar-xp {
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  .goatim-ui-user-badge-xp {
+    z-index: 1;
+    background: white;
+  }
+  .xp-progress-bar {
+    position: relative;
+    margin-left: -5%;
+    border: 2px solid colors.$gold;
+    border-radius: 20px;
+    padding: 0px 5px;
+    flex: 1;
+
+    .xp-value {
+      color: colors.$blue;
+      font-style: italic;
+    }
+
+    .user-xp {
+      background: colors.$gold;
+      position: absolute;
+      left: 0;
+    }
+  }
+}

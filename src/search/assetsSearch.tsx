@@ -9,6 +9,7 @@ import {
   GetLeaguesQuery,
   League,
   LeagueList,
+  Player,
   PlayerPosition,
 } from '@goatim/client';
 import { useCallback, useEffect, useMemo, useState } from 'react';
@@ -25,6 +26,7 @@ import {
 import { ClubThumbnail, LeagueThumbnail } from '../soccer';
 import { AssetThumbnail } from '../trading';
 import { GoatimCoinsAmount, GoatimCoinsGains } from '../market';
+import { UIDefaultSizes } from '..';
 
 export interface AssetsSearchFields {
   search?: string;
@@ -33,15 +35,13 @@ export interface AssetsSearchFields {
   player_position?: PlayerPosition[];
 }
 
-export type AssetSearchSize = 'small' | 'medium' | 'large';
-
 export interface AssetsSearchProps extends FormProps<AssetsSearchFields> {
   getLeagues?: (query?: GetLeaguesQuery) => LeagueList | Promise<LeagueList>;
   getClubs?: (query?: GetClubsQuery) => ClubList | Promise<ClubList>;
   getAssets?: (query?: GetAssetsQuery) => AssetList | Promise<AssetList>;
   getAssetsDefaultQuery?: GetAssetsQuery;
   onClickAsset?: (asset: Asset) => unknown;
-  size?: AssetSearchSize;
+  size?: UIDefaultSizes;
   connected?: boolean;
 }
 
@@ -51,7 +51,7 @@ export function AssetsSearch({
   getAssets,
   getAssetsDefaultQuery,
   onClickAsset,
-  size = 'small',
+  size = UIDefaultSizes.Small,
   connected,
 }: AssetsSearchProps) {
   const className = useMemo<string>(() => {
@@ -94,7 +94,7 @@ export function AssetsSearch({
   const getClubsQuery = useMemo<GetClubsQuery>(() => {
     return {
       league: formState?.values?.league?.map((l) => l.id),
-      order: "name:asc"
+      order: 'name:asc',
     };
   }, [formState?.values?.league]);
 
@@ -158,6 +158,17 @@ export function AssetsSearch({
         sortable: true,
         sorted: assetColumnSorted,
         onSort: setAssetColumnSorted,
+        width: '40%',
+      },
+      {
+        key: 'pos',
+        label: 'Pos',
+        cellComponent: ({ item }) => (
+          <span className="position">{(item?.player as Player)?.resolved_short_position}</span>
+        ),
+        sortable: true,
+        sorted: assetColumnSorted,
+        onSort: setAssetColumnSorted,
       },
       {
         key: 'quotation',
@@ -175,7 +186,7 @@ export function AssetsSearch({
         sorted: averageDividendsAmountColumnSorted,
         onSort: setAverageDividendsAmountColumnSorted,
         cellComponent: ({ item }) => <GoatimCoinsGains gains={item.average_dividends_amount} />,
-        hidden: size === 'small',
+        hidden: size === UIDefaultSizes.Small,
         align: 'right',
       },
       {
@@ -254,7 +265,13 @@ export function AssetsSearch({
   return (
     <Form<AssetsSearchFields> ref={formRef} className={className}>
       <div className="search">
-        <Field name="search" component={Input} shape="rounded" leftIcon="search" />
+        <Field
+          name="search"
+          component={Input}
+          shape="rounded"
+          leftIcon="search"
+          placeholder="Rechercher un joueur"
+        />
       </div>
       <div className="filters">
         <div className="filter">

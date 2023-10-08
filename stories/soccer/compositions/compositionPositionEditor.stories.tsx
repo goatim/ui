@@ -6,7 +6,7 @@ import {
   Player,
   PlayerPosition,
 } from '@goatim/client';
-import { CompositionPositionEditor } from '../../../src';
+import { CompositionPositionEditor } from '../../../src/soccer';
 
 export default {
   title: 'Soccer/CompositionPositionEditor',

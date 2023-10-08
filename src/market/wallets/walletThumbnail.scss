@@ -19,8 +19,8 @@
 
   > .body {
     > .name {
-      @include fonts.Inter(.8em, colors.$blue, bold);
-      max-width: 100px;
+      @include fonts.Inter(0.8em, colors.$blue, bold);
+      // max-width: 100px; // TODO check necessity
       overflow: hidden;
       text-overflow: ellipsis;
       display: -webkit-box;
@@ -34,7 +34,7 @@
 
   &.medium {
     > .body > .name {
-      font-size: .9em;
+      font-size: 0.9em;
       max-width: 120px;
     }
   }
@@ -69,7 +69,8 @@
     text-align: center;
   }
 
-  &.end, &.right {
+  &.end,
+  &.right {
     text-align: right;
   }
 }

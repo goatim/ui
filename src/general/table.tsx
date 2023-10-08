@@ -247,6 +247,7 @@ export interface TableProps<I extends TableItem = TableItem> {
   selectionMode?: 'single' | 'multiple';
   defaultSelection?: TableSelection;
   itemActions?: TableItemAction[];
+  className?: string;
 }
 
 export function Table<I extends TableItem = TableItem>({
@@ -259,9 +260,13 @@ export function Table<I extends TableItem = TableItem>({
   selectionMode,
   defaultSelection,
   itemActions,
+  className,
 }: TableProps<I>): ReactElement {
-  const className = useMemo<string>(() => {
+  const computedClassname = useMemo<string>(() => {
     const classNames = ['goatim-ui-table'];
+    if (className) {
+      classNames.push(className);
+    }
     if (onSelectItem || selectionMode) {
       classNames.push('clickable');
     }
@@ -269,7 +274,7 @@ export function Table<I extends TableItem = TableItem>({
       classNames.push('selectable');
     }
     return classNames.join(' ');
-  }, [onSelectItem, selectionMode]);
+  }, [onSelectItem, selectionMode, className]);
 
   const [selection, setSelection] = useState<TableSelection>(defaultSelection);
   const [allSelected, setAllSelected] = useState<boolean>(false);
@@ -370,7 +375,7 @@ export function Table<I extends TableItem = TableItem>({
   }
 
   return (
-    <div className={className}>
+    <div className={computedClassname}>
       <div className="header">
         <div className="menu">
           {itemActions && selection?.length ? (

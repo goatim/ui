@@ -3,6 +3,7 @@ export enum UIDefaultSizes {
   Small = 1,
   Medium = 2,
   Large = 3,
+  Full = 4,
 }
 
 export const UISizeLabels = {
@@ -10,6 +11,7 @@ export const UISizeLabels = {
   [UIDefaultSizes.Small]: 'small',
   [UIDefaultSizes.Medium]: 'medium',
   [UIDefaultSizes.Large]: 'large',
+  [UIDefaultSizes.Full]: 'full',
 };
 
 export enum UIDefaultThemes {

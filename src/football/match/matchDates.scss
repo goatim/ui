@@ -1,0 +1,32 @@
+@use '../../styles/colors';
+
+.goatim-ui-match-dates {
+  display: flex;
+  align-items: center;
+
+  &.size-large {
+    flex-direction: column;
+    align-items: flex-start;
+    .match-date .date {
+      margin-left: 10px;
+    }
+  }
+
+  > div:not(:last-child) {
+    margin-right: 1rem;
+  }
+
+  > .match-date {
+    display: flex;
+    flex-direction: column;
+    color: colors.$date; // TODO use global
+    font-weight: 700;
+
+    > .label {
+      font-weight: bold;
+    }
+    > .date {
+      font-size: 0.8rem;
+    }
+  }
+}

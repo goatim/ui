@@ -1,20 +1,20 @@
-import { ReactElement, useCallback, useMemo, useState } from 'react';
+import { FormSubmitFunction } from '@cezembre/forms';
 import { Asset, Dividend, Ipo, OrderBook, OrderType, Portfolio } from '@goatim/client';
 import { QuotationHistory } from '@goatim/client/dist/trading/quotations/model';
-import { UrlObject } from 'url';
-import { FormSubmitFunction } from '@cezembre/forms';
+import { Notation } from '@src/general';
 import {
   GoatimCoinsAmount,
   GoatimCoinsSize,
   PercentageVariation,
   PercentageVariationSize,
-} from '../../market';
-import { AssetThumbnail, AssetThumbnailSize } from './assetThumbnail';
-import { IpoThumbnail, IpoThumbnailSize } from '../ipos';
-import { OrderEditor, OrderEditorFields, OrderEditorSize } from '../orders';
-import { SellPortfolioToBank, SellPortfolioToBankFields } from '../portfolios';
-import { Notation } from '../../general';
-import { DividendBook } from '../dividends';
+} from '@src/market';
+import { DividendBook } from '@src/trading';
+import { AssetThumbnail, AssetThumbnailSize } from '@src/trading/assets';
+import { IpoThumbnail, IpoThumbnailSize } from '@src/trading/ipos';
+import { OrderEditor, OrderEditorFields, OrderEditorSize } from '@src/trading/orders';
+import { SellPortfolioToBank, SellPortfolioToBankFields } from '@src/trading/portfolios';
+import { ReactElement, useCallback, useMemo, useState } from 'react';
+import { UrlObject } from 'url';
 
 export type AssetOverviewSize = 'small' | 'medium' | 'full';
 

@@ -1,4 +1,4 @@
-import { SoccerField, SoccerFieldTheme } from '../../../src';
+import { SoccerField, SoccerFieldTheme } from '../../../src/soccer';
 
 interface Props {
   theme?: SoccerFieldTheme;

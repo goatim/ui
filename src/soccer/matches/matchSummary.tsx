@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 import { Composition, Match } from '@goatim/client';
 import { CompositionPodium, CompositionThumbnail } from '../compositions';
-import { MatchStatusThumbnail } from './matchStatusThumbnail';
+// import { MatchStatusThumbnail } from './matchStatusThumbnail';
 
 export interface MatchSummaryProps {
   match: Match;
@@ -16,7 +16,7 @@ export function MatchSummary({ match, podium, self }: MatchSummaryProps): ReactE
         <span className="subtitle">Résultats</span>
         <span className="title">{match.title}</span>
         <div className="status">
-          <MatchStatusThumbnail status={match.status} />
+          {/* <MatchStatusThumbnail status={match.status} /> */}
         </div>
       </div>
       <div className="podium">

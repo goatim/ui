@@ -1,0 +1,98 @@
+@use '../../styles/colors';
+
+.goatim-ui-player-list-item {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-decoration: none;
+  border: none;
+  font-size: 1em;
+  background: none;
+
+  > .infos, > .club {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    > .name {
+      font-size: 1.2em;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+  }
+
+  &.small, &.medium, &.big {
+    > .infos {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin-left: 10px;
+
+      > .name {
+        margin-left: 5px;
+      }
+    }
+  }
+
+  &.full {
+    flex-direction: row;
+
+    > .infos {
+      margin: 0;
+
+      > .number {
+        font-size: .8em;
+        opacity: .5;
+        font-weight: bold;
+        margin-right: 5px;
+      }
+    }
+
+    > .name {
+      font-size: 1.5em;
+      font-weight: 900;
+      margin: 5px 0 0;
+      padding: 0;
+    }
+  }
+
+  &.medium {
+    > .infos {
+      > span {
+        font-size: .9em;
+      }
+    }
+
+    > .name {
+      font-size: 1.2em;
+      margin: 8px 0 0;
+    }
+  }
+
+  &.big {
+    > .infos {
+      > span {
+        font-size: 1em;
+      }
+    }
+
+    > .name {
+      font-size: 1.5em;
+      margin: 10px 0 0;
+    }
+  }
+
+  &.light {
+    > .infos {
+      color: white;
+
+      > .number, > .position, > .name {
+        color: white;
+      }
+    }
+
+    > .name {
+      color: white;
+    }
+  }
+}

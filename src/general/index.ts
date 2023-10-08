@@ -1,5 +1,7 @@
 export * from './appIcon';
+export * from './BackButton';
 export * from './button';
+export * from './card';
 export * from './check';
 export * from './checkbox';
 export * from './counter';
@@ -30,3 +32,4 @@ export * from './wallpaper';
 export * from './breadcrumb';
 export * from './phoneInput';
 export * from './notation';
+export * from './inputs';

@@ -1,0 +1,106 @@
+@use '../../styles/colors';
+
+.goatim-ui-transfer-card {
+  display: flex;
+  flex-direction: column;
+
+  > .container {
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-start;
+    flex-direction: column;
+    margin: 5px 10px;
+
+    > .header {
+      display: flex;
+
+      > .transfer-info {
+        display: flex;
+        flex-direction: column;
+
+        > .transfer-type {
+          display: flex;
+          align-items: center;
+
+          .icon-transfer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 4px;
+            border: 1px solid;
+            border-radius: 30px;
+            margin-left: 0.4rem;
+
+            &.icon-buy {
+              border-color: green;
+            }
+            &.icon-sell {
+              border-color: red;
+            }
+
+            svg {
+              width: 18px;
+              height: 18px;
+            }
+          }
+        }
+
+        > .transfer-date {
+          margin-top: 0.5rem;
+          color: colors.$date;
+        }
+      }
+
+      > .bt-transfer-modal {
+        align-self: flex-start;
+      }
+
+      .goatim-ui-button {
+        margin-left: auto;
+      }
+    }
+
+    > .body {
+      display: flex;
+      background-color: colors.$light-blue;
+      flex-direction: column;
+      padding: 30px;
+      border-radius: 10px;
+      border: 1px solid colors.$default-border;
+      margin-top: 1rem;
+
+      > .summary {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        > .nb_shares {
+          font-weight: 600;
+          margin-right: 0.3rem;
+        }
+
+        > .price {
+          margin-left: 0.3rem;
+          display: flex;
+          align-items: center;
+        }
+      }
+
+      > .transaction {
+        margin-top: 1rem;
+        display: none;
+      }
+
+      > .asset {
+        margin-top: 1rem;
+        background-color: white;
+
+        > .content {
+          .goatim-ui-asset-thumbnail {
+            min-width: fit-content;
+          }
+        }
+      }
+    }
+  }
+}

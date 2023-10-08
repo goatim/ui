@@ -1,0 +1,14 @@
+@use '../styles/colors';
+@use '../styles/size';
+
+
+.goatim-ui-participants-thumbnail {
+    padding: 5px; // TODO use global
+    border-radius: 10px;  // TODO use global
+    background-color: #EDEEFF; // TODO use global
+    color: #4959FF; // TODO use global
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: justify;
+}

@@ -1,5 +1,6 @@
 @use '../styles/colors';
 @use '../styles/fonts';
+@use '../styles/size';
 
 .goatim-ui-table {
   width: 100%;
@@ -27,7 +28,7 @@
         justify-content: flex-start;
 
         > .count-selection {
-          font-size: .8em;
+          font-size: 0.8em;
           color: colors.$blue-50;
         }
 
@@ -47,10 +48,11 @@
     padding: 0;
 
     > thead {
-      border: none;
       outline: none;
       margin: 0;
       padding: 0;
+      border-radius: 0.625rem;
+      background: #fff;
 
       > tr {
         border: none;
@@ -62,6 +64,14 @@
           padding: 10px;
           border: none;
           outline: none;
+
+          &:first-child {
+            border-top-left-radius: size.$default-border-radius;
+          }
+
+          &:last-child {
+            border-top-right-radius: size.$default-border-radius;
+          }
         }
       }
     }
@@ -78,6 +88,14 @@
         margin: 0;
         padding: 0;
         transition: background linear 100ms;
+
+        &:nth-child(even) {
+          background: white;
+        }
+
+        &:nth-child(odd) {
+          background: #f5f8ff;
+        }
 
         &:hover {
           > td > .actions {
@@ -99,7 +117,7 @@
           margin: 0;
           border: none;
           outline: none;
-          padding: 10px;
+          padding: 10px 5px;
           border-top: solid colors.$blue-10 1px;
 
           > .selection {
@@ -109,7 +127,7 @@
           }
 
           > span {
-            font-size: .8em;
+            font-size: 0.8em;
             font-weight: 500;
             text-overflow: ellipsis;
             white-space: nowrap;
@@ -165,7 +183,7 @@
 
   > svg[stroke] {
     stroke: colors.$blue;
-    opacity: .5;
+    opacity: 0.5;
   }
 
   > .label {
