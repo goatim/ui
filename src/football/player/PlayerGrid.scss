@@ -1,0 +1,12 @@
+$grid-gap: 1rem;
+
+.goatim-ui-player-grid {
+  display: flex;
+  flex-direction: row;
+  gap: $grid-gap;
+  flex-wrap: wrap;
+
+  > div {
+    width: calc(50% - $grid-gap); // TODO 100% for small size, 33% for xlarge
+  }
+}

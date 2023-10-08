@@ -3,7 +3,7 @@ import {
   SoccerFieldPosition,
   SoccerFieldPositionSize,
   SoccerFieldPositionTheme,
-} from '../../../src';
+} from '../../../src/soccer';
 
 interface Props {
   size?: SoccerFieldPositionSize;

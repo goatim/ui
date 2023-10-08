@@ -3,7 +3,11 @@ import { Asset } from '@goatim/client';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
 import { QuotationHistory } from '@goatim/client/dist/trading/quotations/model';
 import { UrlObject } from 'url';
-import { PlayerThumbnail, PlayerThumbnailSize, PlayerThumbnailTheme } from '../../soccer';
+import {
+  SoccerPlayerThumbnail,
+  SoccerPlayerThumbnailSize,
+  SoccerPlayerThumbnailTheme,
+} from '../../soccer';
 import {
   GoatimCoinsAmount,
   GoatimCoinsSize,
@@ -48,7 +52,7 @@ export const AssetThumbnail = forwardRef<
   }: AssetThumbnailProps,
   ref: ForwardedRef<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement>,
 ): ReactElement {
-  const playerThumbnailSize = useMemo<PlayerThumbnailSize>(() => {
+  const playerThumbnailSize = useMemo<SoccerPlayerThumbnailSize>(() => {
     switch (size) {
       case 'narrow':
       case 'small':
@@ -64,7 +68,7 @@ export const AssetThumbnail = forwardRef<
     }
   }, [size]);
 
-  const playerThumbnailTheme = useMemo<PlayerThumbnailTheme>(() => {
+  const playerThumbnailTheme = useMemo<SoccerPlayerThumbnailTheme>(() => {
     if (theme === 'default') {
       return 'dark';
     }
@@ -125,7 +129,7 @@ export const AssetThumbnail = forwardRef<
 
       <div className="container">
         {asset.type === 'player' && asset.player && typeof asset.player === 'object' ? (
-          <PlayerThumbnail
+          <SoccerPlayerThumbnail
             player={asset.player}
             size={playerThumbnailSize}
             theme={playerThumbnailTheme}

@@ -1,0 +1,34 @@
+@use '../../styles/colors';
+
+.goatim-ui-game-summary-modal-header {
+  > .info {
+    display: flex;
+    align-items: center;
+
+    .goatim-ui-user-rank-league {
+      padding: 5px;
+    }
+    > .goatim-ui-participants-thumbnail {
+      margin-left: 1rem;
+    }
+  }
+
+  > .name {
+    margin-top: 1rem;
+    > .match-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #323960; // TODO use global
+    }
+  }
+
+  > .dates {
+    margin-top: 1rem;
+  }
+
+  &.light {
+    > .title {
+      color: white;
+    }
+  }
+}

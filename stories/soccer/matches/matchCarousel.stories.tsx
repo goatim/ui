@@ -1,5 +1,5 @@
 import { Match, User, Wallet } from '@goatim/client';
-import { MatchCarousel, MatchCarouselSize } from '../../../src';
+import { MatchCarousel, MatchCarouselSize } from '../../../src/soccer';
 
 interface Props {
   size?: MatchCarouselSize;

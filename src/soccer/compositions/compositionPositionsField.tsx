@@ -6,14 +6,15 @@ import {
   CompositionSettingPosition,
   Player,
 } from '@goatim/client';
-import { CompositionPositionMap, CompositionPositionMapTheme } from './compositionPositionMap';
+import { CompositionPositionMap } from '@src/soccer/compositions/compositionPositionMap';
 import {
   CompositionPositionEditor,
   CompositionPositionEditorFields,
   GetPositionPlayersFunction,
-} from './compositionPositionEditor';
-import { useModals } from '../../general';
-import { CompositionPositionList } from './compositionPositionList';
+} from '@src/soccer/compositions/compositionPositionEditor';
+import { useModals } from '@src/general';
+import { CompositionPositionList } from '@src/soccer/compositions/compositionPositionList';
+import { UIDefaultThemes } from '@src/utils';
 
 export interface CompositionPositionValue extends CompositionPositionEditorFields {
   player: Player;
@@ -27,7 +28,7 @@ export interface CompositionPositionsFieldProps
   compositionSetting?: CompositionSetting;
   getPositionPlayers?: GetPositionPlayersFunction;
   boosterFactories?: BoosterFactory[];
-  theme?: CompositionPositionMapTheme;
+  theme?: UIDefaultThemes;
   readonly?: boolean;
 }
 

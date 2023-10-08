@@ -1,0 +1,37 @@
+@use '../styles/colors';
+@use '../styles/size';
+
+.goatim-ui-ranking-rewards {
+  @include size.padding-size;
+  background: linear-gradient(131deg, colors.$gold 0%, #c39b19 100%);
+  border-radius: 0.625rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  color: white;
+
+  .icon-trophy {
+    svg {
+      height: 50px;
+    }
+  }
+
+  &.light {
+    background: transparent;
+    color: colors.$gold;
+    .icon-trophy {
+      svg {
+        path {
+          fill: colors.$gold;
+        }
+      }
+    }
+  }
+
+  .rewards-list {
+    span.position {
+      font-weight: 800;
+    }
+  }
+}

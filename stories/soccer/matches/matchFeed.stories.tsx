@@ -1,5 +1,5 @@
 import { Asset, Club, Dividend, Match, PhysicalEvent, Player, User, Wallet } from '@goatim/client';
-import { MatchFeed, MatchFeedTheme } from '../../../src';
+import { MatchFeed, MatchFeedTheme } from '../../../src/soccer';
 
 interface Props {
   theme?: MatchFeedTheme;

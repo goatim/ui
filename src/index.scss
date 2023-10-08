@@ -4,6 +4,7 @@
 @use 'general';
 @use 'navigation';
 @use 'auth';
+@use 'football';
 @use 'soccer';
 @use 'market';
 @use 'trading';
@@ -12,3 +13,6 @@
 @use 'onboarding';
 @use 'search';
 @use 'subscriptions';
+@use 'user';
+@use 'ranking';
+

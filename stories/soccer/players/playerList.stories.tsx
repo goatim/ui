@@ -1,5 +1,5 @@
 import { Club, Player } from '@goatim/client';
-import { PlayerList } from '../../../src';
+import { PlayerList } from '../../../src/soccer';
 
 interface Props {
   length?: number;

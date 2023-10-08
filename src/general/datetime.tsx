@@ -8,6 +8,16 @@ export interface DatetimeProps {
   relative?: boolean;
 }
 
+export function formatDateTime(dateTime: string): string {
+  if (dateTime) {
+    const dt = DateTime.fromISO(dateTime);
+    return `${dt.toLocaleString(DateTime.DATE_SHORT)} ${dt.toLocaleString(
+      DateTime.TIME_24_SIMPLE,
+    )}`;
+  }
+  return dateTime;
+}
+
 export function Datetime({
   value,
   date = true,

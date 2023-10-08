@@ -1,22 +1,21 @@
 import { ReactElement, useMemo } from 'react';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
 import { CompositionPosition, formatPlayerName } from '@goatim/client';
-import { Icon } from '../../general';
+import { Icon } from '@src/general';
+import { UIDefaultThemes } from '@src/utils';
 
 export type SoccerFieldPositionSize = 'small' | 'medium' | 'large';
-
-export type SoccerFieldPositionTheme = 'dark' | 'light';
 
 export interface SoccerFieldPositionProps extends WrapperProps {
   position?: CompositionPosition;
   size?: SoccerFieldPositionSize;
-  theme?: SoccerFieldPositionTheme;
+  theme?: UIDefaultThemes;
 }
 
 export function SoccerFieldPosition({
   position,
   size = 'medium',
-  theme = 'dark',
+  theme = UIDefaultThemes.Dark,
   onClick,
   href,
   target,

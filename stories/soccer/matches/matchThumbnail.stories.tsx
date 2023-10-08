@@ -1,5 +1,5 @@
 import { Composition, Match, MatchStatus, User, Wallet } from '@goatim/client';
-import { MatchThumbnail } from '../../../src';
+import { MatchThumbnail } from '../../../src/soccer';
 
 interface Props {
   status?: MatchStatus;

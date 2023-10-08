@@ -1,5 +1,5 @@
 import { Composition } from '@goatim/client';
-import { CompositionPodium } from '../../../src';
+import { CompositionPodium } from '../../../src/soccer';
 
 export default {
   title: 'Soccer/CompositionPodium',

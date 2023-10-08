@@ -1,7 +1,7 @@
 import { MouseEvent, ReactElement, useCallback, useMemo } from 'react';
 import { Wrapper, WrapperProps } from '@cezembre/fronts';
 import { CompositionPosition } from '@goatim/client/dist/soccer/compositions/model';
-import { PlayerThumbnail } from '../players';
+import { SoccerPlayerThumbnail } from '../players';
 import { Icon, Score, Tag, TagTheme } from '../../general';
 import { GoatimCoinsGains } from '../../market';
 
@@ -71,7 +71,7 @@ export function CompositionPositionThumbnail({
     <div className={`goatim-ui-composition-position-thumbnail ${theme}`}>
       <Wrapper className="container" onClick={onClick}>
         {compositionPosition.player && typeof compositionPosition.player === 'object' ? (
-          <PlayerThumbnail player={compositionPosition.player} theme={theme} />
+          <SoccerPlayerThumbnail player={compositionPosition.player} theme={theme} />
         ) : null}
         {boosterLeverage ||
         compositionPosition.score ||

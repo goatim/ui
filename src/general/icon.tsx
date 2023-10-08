@@ -24,6 +24,7 @@ import {
   Trophy,
   Visa,
 } from './icons';
+import { Back } from './icons/back';
 
 export type IconName =
   | 'activity'
@@ -52,6 +53,7 @@ export type IconName =
   | 'arrow-up-right'
   | 'at-sign'
   | 'award'
+  | 'back'
   | 'bar-chart'
   | 'bar-chart-2'
   | 'battery'
@@ -124,6 +126,7 @@ export type IconName =
   | 'edit'
   | 'edit-2'
   | 'edit-3'
+  | 'enter'
   | 'external-link'
   | 'eye'
   | 'eye-off'
@@ -541,6 +544,7 @@ export function Icon({
       return <FeatherIcons.Edit2 size={size} strokeWidth={strokeWidth} color={color} />;
     case 'edit-3':
       return <FeatherIcons.Edit3 size={size} strokeWidth={strokeWidth} color={color} />;
+
     case 'external-link':
       return <FeatherIcons.ExternalLink size={size} strokeWidth={strokeWidth} color={color} />;
     case 'eye':
@@ -928,7 +932,7 @@ export function Icon({
     case 'shirt':
       return <Shirt size={size} />;
     case 'trophy':
-      return <Trophy size={size} />;
+      return <Trophy size={size} color={color} />;
     case 'visa':
       return <Visa size={size} />;
     case 'mastercard':
@@ -957,6 +961,8 @@ export function Icon({
       return <Discord size={size} />;
     case 'sort':
       return <Sort size={size} />;
+    case 'back':
+      return <Back />;
     default:
       return <Slash size={size} />;
   }

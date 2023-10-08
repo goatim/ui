@@ -1,0 +1,11 @@
+.goatim-ui-ranking-evolution {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  > span {
+    width: 50%;
+  }
+  > svg {
+    width: 50%;
+  }
+}

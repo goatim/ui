@@ -1,0 +1,19 @@
+.goatim-ui-game-participants-list {
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  > .header {
+    padding: 10px;
+    > .title {
+      font-weight: 600;
+    }
+  }
+
+  .ranking {
+    height: 100%;
+    overflow: auto;
+    margin-bottom: 10px;
+  }
+}

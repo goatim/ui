@@ -1,5 +1,5 @@
 import { Match, User, Wallet } from '@goatim/client';
-import { MatchStatusThumbnail } from '../../../src';
+import { MatchStatusThumbnail } from '../../../src/soccer';
 
 export default {
   title: 'Soccer/MatchStatusThumbnail',

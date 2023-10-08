@@ -1,0 +1,17 @@
+@mixin goatim-ui-border-bottom {
+  border-bottom: 1px solid rgba(50, 57, 96, 0.1);
+}
+
+@mixin centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.centered {
+  @include centered();
+}
+
+.text-center {
+  text-align: center;
+}

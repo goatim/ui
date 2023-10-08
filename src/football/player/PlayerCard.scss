@@ -1,0 +1,52 @@
+@use '../../styles/colors';
+
+.goatim-ui-player-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  > .club-logo {
+    > .goatim-ui-club-icon {
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  > .player-name {
+    margin-top: 1rem;
+    font-weight: 700;
+  }
+
+  > .club-name,
+  > .player-position {
+    opacity: 0.5;
+  }
+
+  > .player-price {
+    font-weight: 600;
+    margin: 0.5rem 0;
+  }
+
+  > .player-xpg {
+  }
+
+  > .player-evol {
+  }
+
+  > .nb-share {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 30px;
+    background: colors.$gold;
+    color: white;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+  }
+}

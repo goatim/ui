@@ -8,7 +8,7 @@ export interface PlayerSheetProps {
   size?: PlayerSheetSize;
 }
 
-export function PlayerSheet({ player, size = 'big' }: PlayerSheetProps): ReactElement {
+export function SoccerPlayerSheet({ player, size = 'big' }: PlayerSheetProps): ReactElement {
   const backgroundColor = useMemo<string | undefined>(() => {
     if (player?.club && typeof player.club === 'object') {
       return player.club.primary_color;

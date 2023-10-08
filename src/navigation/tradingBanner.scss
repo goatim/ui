@@ -2,28 +2,41 @@
 
 .goatim-ui-trading-banner {
   width: 100%;
-  height: 45px;
-  background: colors.$blue-90;
-  background: linear-gradient(145deg, colors.$blue-90 0%, colors.$fushia 100%);
+  min-height: 100px;
   display: flex;
   align-items: stretch;
   justify-content: space-between;
 
-  > .fdy-rate {
-    padding: 5px 20px;
+  // > .fdy-rate {
+  //   padding: 5px 20px;
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: flex-start;
+  // }
+
+  // > .assets {
+  //   flex: 1;
+  // }
+
+  // > .wallet {
+  //   padding: 5px 20px;
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: flex-end;
+  // }
+
+  > .container-user-card {
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    min-width: 200px;
+    margin-right: 1px;
   }
 
-  > .assets {
-    flex: 1;
-  }
-
-  > .wallet {
-    padding: 5px 20px;
+  > .container-shop-banner {
     display: flex;
     align-items: center;
     justify-content: flex-end;
+    margin-left: 1px;
   }
 }

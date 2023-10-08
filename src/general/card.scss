@@ -1,0 +1,9 @@
+@use '../styles/colors';
+@use '../styles/size';
+
+.card {
+    padding: size.$default-div-padding;
+    border-radius: size.$default-div-radius;
+    border: 1px solid #32396033;
+    background: white;
+}

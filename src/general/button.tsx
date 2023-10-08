@@ -15,7 +15,7 @@ import { Icon, IconName } from './icon';
 
 export type ButtonSize = 'small' | 'medium' | 'large';
 
-export type ButtonShape = 'filled' | 'text';
+export type ButtonShape = 'filled' | 'text' | 'none';
 
 export type ButtonTheme =
   | 'dark'
@@ -65,6 +65,7 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
       leftIcon,
       rightIcon,
       fullWidth,
+      className,
     }: ButtonProps,
     ref: ForwardedRef<HTMLButtonElement | HTMLAnchorElement>,
   ): ReactElement {
@@ -72,8 +73,8 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
     const [autoSuccess, setAutoSuccess] = useState<boolean>(false);
     const [autoErrored, setAutoErrored] = useState<boolean>(false);
 
-    const className = useMemo<string>(() => {
-      const classNames: string[] = ['goatim-ui-button', size, shape, theme];
+    const computedClassname = useMemo<string>(() => {
+      const classNames: string[] = ['goatim-ui-button', size, shape, theme, className as string];
 
       if (active) {
         classNames.push('active');
@@ -109,6 +110,7 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
       size,
       success,
       theme,
+      className,
     ]);
 
     const onButtonClick = useCallback(
@@ -144,7 +146,7 @@ export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPr
         type={type}
         onFocus={onFocus}
         onBlur={onBlur}
-        className={className}>
+        className={computedClassname}>
         <div className="container">
           {leftIcon ? (
             <div className="icon left">

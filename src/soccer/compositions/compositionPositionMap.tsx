@@ -4,14 +4,16 @@ import {
   CompositionSetting,
   CompositionSettingPosition,
 } from '@goatim/client';
-import { SoccerField } from './soccerField';
-import { SoccerFieldPosition, SoccerFieldPositionSize } from './soccerFieldPosition';
-
-export type CompositionPositionMapTheme = 'dark' | 'light';
+import {
+  SoccerFieldPosition,
+  SoccerFieldPositionSize,
+} from '@src/soccer/compositions/soccerFieldPosition';
+import { FootballField } from '@src/football/match/footballField';
+import { UIDefaultThemes } from '@src/utils';
 
 export interface PositionProps {
   id: string;
-  theme?: CompositionPositionMapTheme;
+  theme?: UIDefaultThemes;
   positions?: CompositionPosition[];
   soccerFieldPositionSize?: SoccerFieldPositionSize;
   onPositionClick?: () => void;
@@ -49,7 +51,7 @@ function Position({
 }
 
 export interface CompositionPositionMapProps {
-  theme?: CompositionPositionMapTheme;
+  theme?: UIDefaultThemes;
   compositionSetting?: CompositionSetting;
   positions?: CompositionPosition[];
   soccerFieldPositionSize?: SoccerFieldPositionSize;
@@ -63,11 +65,13 @@ export function CompositionPositionMap({
   soccerFieldPositionSize = 'medium',
   onPositionClick,
 }: CompositionPositionMapProps): ReactElement {
+  const positionTheme =
+    theme === UIDefaultThemes?.Light ? UIDefaultThemes.Dark : UIDefaultThemes.Dark;
   return (
     <div className={`goatim-ui-composition-positions-map ${theme}`}>
       <div className="container">
         <div className="field">
-          <SoccerField theme={theme} />
+          <FootballField theme={theme} />
         </div>
         {compositionSetting?.positions?.map((position: CompositionSettingPosition) => (
           <div
@@ -76,7 +80,7 @@ export function CompositionPositionMap({
             style={{ left: `${(position.x || 0) * 100}%`, top: `${(position.y || 0) * 100}%` }}>
             <Position
               id={position.id}
-              theme={theme}
+              theme={positionTheme}
               positions={positions}
               soccerFieldPositionSize={soccerFieldPositionSize}
               onPositionClick={

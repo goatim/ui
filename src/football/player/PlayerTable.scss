@@ -1,0 +1,11 @@
+.goatim-ui-player-table {
+  .position {
+    font-size: 0.8em;
+    opacity: 0.5;
+    text-transform: uppercase;
+  }
+
+  .goatim-ui-player-thumbnail > .infos > .position {
+    display: none;
+  }
+}

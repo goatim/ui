@@ -1,0 +1,16 @@
+.goatim-ui-player-lineup-list-item {
+  font-size: 0.75em;
+
+  > .position {
+    opacity: 0.5;
+    text-transform: uppercase;
+  }
+
+  > .name {
+    font-weight: bold;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}

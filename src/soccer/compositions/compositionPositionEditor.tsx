@@ -8,9 +8,9 @@ import {
 } from '@goatim/client';
 import { Field, Form, FormContext, FormProps, FormState } from '@cezembre/forms';
 import isPromise from 'is-promise';
-import { Button, Radio, RadioProps, Select, SelectProps } from '../../general';
-import { PlayerThumbnail } from '../players';
-import { BoosterFactoryThumbnail } from '../../trading';
+import { Button, Radio, RadioProps, Select, SelectProps } from '@src/general';
+import { SoccerPlayerThumbnail } from '@src/soccer/players';
+import { BoosterFactoryThumbnail } from '@src/trading';
 
 interface PlayerSelectorOptionProps {
   value?: Player;
@@ -20,7 +20,7 @@ function PlayerSelectorOption({ value }: PlayerSelectorOptionProps): ReactElemen
   if (!value) {
     return null;
   }
-  return <PlayerThumbnail player={value} size="medium" />;
+  return <SoccerPlayerThumbnail player={value} size="medium" />;
 }
 
 export interface CompositionPositionEditorFields {

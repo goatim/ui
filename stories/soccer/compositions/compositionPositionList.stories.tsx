@@ -1,5 +1,5 @@
 import { Club, CompositionPosition, Player } from '@goatim/client';
-import { CompositionPositionList, CompositionPositionListTheme } from '../../../src';
+import { CompositionPositionList, CompositionPositionListTheme } from '../../../src/soccer';
 
 interface Props {
   theme?: CompositionPositionListTheme;

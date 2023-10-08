@@ -4,7 +4,6 @@ import { DateTimeThumbnail } from '../../general/dateTimeThumbnail';
 import { MatchLive } from './matchLive';
 import { MatchParticipants } from './matchParticipants';
 import { MatchAction, MatchActionProps } from './matchAction';
-import { MatchHeader } from './matchHeader';
 
 export interface MatchThumbnailProps extends Omit<MatchActionProps, 'status'> {
   match: Match;
@@ -24,7 +23,7 @@ export function MatchThumbnail({
   return (
     <div className="goatim-ui-match-thumbnail">
       <div className="header">
-        <MatchHeader match={match} />
+        {/* <MatchHeader match={match} /> */}
         <div className="period">
           <DateTimeThumbnail label="Début" dateTime={match.beginning} theme="transparent-dark" />
           <DateTimeThumbnail

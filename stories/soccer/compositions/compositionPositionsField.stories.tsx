@@ -11,8 +11,8 @@ import {
   CompositionPositionsField,
   CompositionPositionsFieldType,
   CompositionPositionValue,
-  ModalsContext,
-} from '../../../src';
+} from '../../../src/soccer';
+import { ModalsContext } from '../../../src';
 
 export interface Props {
   type?: CompositionPositionsFieldType;

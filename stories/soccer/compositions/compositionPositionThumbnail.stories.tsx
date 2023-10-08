@@ -1,5 +1,8 @@
 import { Club, CompositionPosition, Player } from '@goatim/client';
-import { CompositionPositionThumbnail, CompositionPositionThumbnailTheme } from '../../../src';
+import {
+  CompositionPositionThumbnail,
+  CompositionPositionThumbnailTheme,
+} from '../../../src/soccer';
 
 interface Props {
   theme?: CompositionPositionThumbnailTheme;
