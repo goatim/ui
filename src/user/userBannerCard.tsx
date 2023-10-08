@@ -1,8 +1,7 @@
 import { ReactElement } from 'react';
-import { CurrenciesRate, User, Wallet } from '@goatim/client';
-import { CurrenciesRateThumbnail, WalletThumbnail } from '../market';
+import { User } from '@goatim/client';
 import { Card } from '../general/card';
-import { UserProgressBarXP } from './userXP.tsx';
+import { UserProgressBarXP } from './userXP';
 import { UserRankLeague } from './userRankLeague';
 
 export interface UserBannerCardProps {

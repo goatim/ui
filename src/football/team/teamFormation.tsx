@@ -6,7 +6,7 @@ import {
   Match,
 } from '@goatim/client';
 import { FootballField } from '../match/footballField';
-import { UIDefaultThemes } from '../../utils';
+import { UIDefaultSizes, UIDefaultThemes } from '../../utils';
 import { TeamFormationPlayer } from './teamFormationPlayer';
 
 export interface TeamFormationProps {
@@ -22,7 +22,7 @@ export function TeamFormation({
   positions,
   compositionSettings,
   onUserInteraction,
-  theme = 'dark',
+  theme = UIDefaultThemes.Dark,
 }: TeamFormationProps): ReactElement {
   return (
     <div className={`goatim-ui-team-formation ${theme}`}>
@@ -36,7 +36,7 @@ export function TeamFormation({
             positionSettings={positionSettings}
             theme={theme}
             positions={positions}
-            playerFieldPositionSize="small"
+            playerFieldPositionSize={UIDefaultSizes.Small}
             onPositionClick={onUserInteraction}
           />
         ))}

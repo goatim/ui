@@ -12,8 +12,8 @@ export interface PlayerFieldPositionProps extends WrapperProps {
 
 export function PlayerFieldPosition({
   position,
-  size = 'medium',
-  theme = 'dark',
+  size = UIDefaultSizes.Medium,
+  theme = UIDefaultThemes.Dark,
   onClick,
   href,
   target,

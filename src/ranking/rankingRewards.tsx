@@ -7,7 +7,7 @@ interface RankingRewardsProps {
   theme: UIDefaultThemes;
 }
 
-const RankingIconSize = {
+const RankingIconSize: { [key: string]: number } = {
   [UIDefaultSizes.Large]: 72,
   [UIDefaultSizes.Medium]: 64,
   [UIDefaultSizes.Small]: 48,

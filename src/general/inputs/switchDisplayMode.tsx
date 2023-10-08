@@ -1,7 +1,5 @@
-import { useCallback } from 'react';
-import { IconColorType } from './colors';
-import { Icon } from './icon';
-import { Button } from './button';
+import { IconColorType } from '@src/general/colors';
+import { Icon } from '@src/general/icon';
 
 interface SwitchDisplayModeProps {
   currentMode: DisplayMode;
