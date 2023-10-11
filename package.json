@@ -55,7 +55,7 @@
     "@babel/preset-typescript": "^7.22.5",
     "@cezembre/forms": "^1.7.19",
     "@cezembre/fronts": "^0.11.37",
-    "@goatim/client": "^0.19.9",
+    "@goatim/client": "^0.20.4",
     "@release-it/conventional-changelog": "^5.1.1",
     "@rollup/plugin-babel": "^6.0.3",
     "@rollup/plugin-commonjs": "^25.0.2",
