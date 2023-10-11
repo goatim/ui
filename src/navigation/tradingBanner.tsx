@@ -29,12 +29,8 @@ export function TradingBanner({ goatimCoinsRate, wallet, user }: TradingBannerPr
           />
         ) : null}
       </div> */}
-        <div className='container-user-card'>
-          {user && <UserBannerCard user={user} />}
-        </div>
-        <div className='container-shop-banner'>
-          {wallet && <NeoShopBanner />}
-        </div>
+      <div className="container-user-card">{user && <UserBannerCard user={user} />}</div>
+      <div className="container-shop-banner">{wallet && <NeoShopBanner />}</div>
     </div>
   );
 }

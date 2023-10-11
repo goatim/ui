@@ -26,17 +26,11 @@
   // }
 
   > .container-user-card {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    min-width: 200px;
+    min-width: 180px;
     margin-right: 1px;
   }
 
   > .container-shop-banner {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
     margin-left: 1px;
   }
 }
