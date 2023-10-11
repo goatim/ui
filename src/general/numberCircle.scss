@@ -1,7 +1,12 @@
 .number-circle {
-  display: inline-block;
+  display: flex;
+  height: 40px;
+  width: 40px;
   border-radius: 50%;
   border: 3px solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .number-circle:before,
