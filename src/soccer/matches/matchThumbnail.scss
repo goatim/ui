@@ -3,6 +3,7 @@
 
 .goatim-ui-match-thumbnail {
   display: inline-block;
+  width: 100%;
   background: white;
   border-radius: 20px;
   padding: 20px 10px;
@@ -27,7 +28,7 @@
   > .tags {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
     margin-top: 15px;
   }
 
