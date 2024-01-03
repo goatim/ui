@@ -208,6 +208,35 @@
       }
     }
 
+    &.transparent {
+      background: transparent;
+      border: solid transparent 1px;
+
+      > .container {
+        svg[stroke] {
+          stroke: white;
+        }
+
+        svg:not([stroke]) {
+          fill: white;
+        }
+
+        > .label {
+          color: colors.$blue;
+        }
+      }
+
+      &:hover {
+        background: rgba(colors.$electric-blue, .5);
+      }
+      &.active {
+        .label {
+          color: white;
+        }
+        background: colors.$electric-blue;
+      }
+    }
+
     &.transparent-light {
       background: rgba(white, .2);
       border: solid rgba(white, .1) 1px;

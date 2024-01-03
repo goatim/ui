@@ -1,0 +1,11 @@
+@use "../../styles/colors";
+@use "../../styles/size";
+
+.goatim-ui-switch-ranking-league {
+    background-color: white; // TODO exports
+    border-radius: size.$default-div-radius;
+    padding: 5px 25px;
+    > button.goatim-ui-button.filled  {
+        border-radius: size.$default-div-radius;
+    }
+}

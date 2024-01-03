@@ -2,11 +2,13 @@ import { ReactElement } from 'react';
 import { CompositionPosition, CompositionSettingPosition, Player } from '@goatim/client';
 // import { CompositionPositionThumbnail } from '@src/soccer/compositions/compositionPositionThumbnail';
 import { PlayerLineupListItem } from '@src/football/player';
+import { UIDefaultSizes } from '@src/utils';
 
 export type CompositionPositionListTheme = 'dark' | 'light';
 
 export interface CompositionPositionListProps {
   theme?: CompositionPositionListTheme;
+  size?: UIDefaultSizes;
   compositionPositions?: CompositionPosition[];
   onPositionClick?: (position: CompositionSettingPosition) => unknown;
   onPositionDelete?: (position: CompositionSettingPosition) => unknown;
@@ -15,6 +17,7 @@ export interface CompositionPositionListProps {
 export function CompositionPositionList({
   theme,
   compositionPositions,
+  size = UIDefaultSizes.Small,
   onPositionClick,
   onPositionDelete,
 }: CompositionPositionListProps): ReactElement {
@@ -29,7 +32,7 @@ export function CompositionPositionList({
           <div
             className="position"
             key={compositionPosition.id || (compositionPosition.player as string)}>
-            <PlayerLineupListItem compositionPosition={compositionPosition} />
+            <PlayerLineupListItem compositionPosition={compositionPosition} size={size} />
 
             {/* <CompositionPositionThumbnail
               compositionPosition={compositionPosition}

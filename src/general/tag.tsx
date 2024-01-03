@@ -13,6 +13,7 @@ export type TagTheme =
 export interface TagProps {
   label?: string;
   children?: ReactNode;
+  className?: string;
   size?: TagSize;
   theme?: TagTheme;
   leftIcon?: IconName;
@@ -21,6 +22,7 @@ export interface TagProps {
 export function Tag({
   label,
   children,
+  className,
   size = 'small',
   theme = 'light-medium-blue',
   leftIcon,
@@ -38,7 +40,7 @@ export function Tag({
   }, [size]);
 
   return (
-    <div className={`goatim-ui-tag ${size} ${theme}`}>
+    <div className={`goatim-ui-tag ${className} ${size} ${theme}`}>
       <div className="container">
         {leftIcon ? <Icon name={leftIcon} size={iconSize} /> : null}
         {label ? <span className="label">{label}</span> : children}

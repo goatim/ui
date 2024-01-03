@@ -25,30 +25,45 @@ export function GameSummaryCardHeaderResults({
 
   return (
     <div className="goatim-ui-game-summary-card-header  results">
-      <div className="name info">
+      <div className="name-row">
         <span className="match-slug">{match.slug}</span>
-        <ParticipantsThumbnail nbParticipants={match.nb_participants as number} />
         <Button onClick={onClickExpand} theme="light" shape="none" className="bt-open-summary">
           <Icon name="eye" />
         </Button>
       </div>
-      <div className="dates">
+      <div className="dates-row">
         <MatchDates
           startDate={match.beginning as string}
           endDate={match.end as string}
           size={UIDefaultSizes.Small}
         />
+        <ParticipantsThumbnail nbParticipants={match.nb_participants as number} />
       </div>
     </div>
   );
 }
 
-export function GameSummaryCardHeaderIncoming({}: GameSummaryCardHeaderProps) {
-  return <div className="goatim-ui-game-summary-card-header  incoming">TODO</div>;
-}
-
-export function GameSummaryCardHeaderFixture({}: GameSummaryCardHeaderProps) {
-  return <div className="goatim-ui-game-summary-card-header  fixture">TODO</div>;
+export function GameSummaryCardHeaderIncoming({
+  match,
+  onUserInteraction,
+}: GameSummaryCardHeaderProps) {
+  const onClickExpand = useCallback(
+    (event) => onUserInteraction(UIUserInteractions.openMatchModal, match, event),
+    [match, onUserInteraction],
+  );
+  return (
+    <div className="goatim-ui-game-summary-card-header incoming">
+      <div className="name-row">
+        <span className="match-slug">{match.slug}</span>
+        <Button onClick={onClickExpand} theme="light" shape="none" className="bt-open-summary">
+          <Icon name="eye" />
+        </Button>
+      </div>
+      <div className="dates-row">
+        <ParticipantsThumbnail nbParticipants={match.nb_participants as number} />
+      </div>
+    </div>
+  );
 }
 
 export function GameSummaryCardHeader({
@@ -60,7 +75,7 @@ export function GameSummaryCardHeader({
   switch (status) {
     case 'open':
     case 'created':
-      return <GameSummaryCardHeaderFixture match={match} onUserInteraction={onUserInteraction} />;
+      return <GameSummaryCardHeaderIncoming match={match} onUserInteraction={onUserInteraction} />;
     case 'ongoing':
     case 'closing':
       return <GameSummaryCardHeaderLive match={match} onUserInteraction={onUserInteraction} />;
@@ -69,27 +84,4 @@ export function GameSummaryCardHeader({
     default:
       return <GameSummaryCardHeaderResults match={match} onUserInteraction={onUserInteraction} />;
   }
-
-  // return (
-  //   <div className={`goatim-ui-game-summary-card-header  ${theme} ${status}`}>
-  //     <div className="status">
-  //       <MatchStatusThumbnail status={match.status} theme={theme} />
-  //     </div>
-  //     <span className="title">{match.title}</span>
-  //     <div className="rewards">
-  //       <div className="reward">
-  //         <span className="label">Gain 1er:</span>
-  //         <span className="coins">+0.003 ETH</span>
-  //       </div>
-  //       <div className="reward">
-  //         <span className="label">Gain 2ème:</span>
-  //         <GoatimCoinsGains gains={30000} />
-  //       </div>
-  //       <div className="reward">
-  //         <span className="label">Gain 3ème:</span>
-  //         <GoatimCoinsGains gains={10000} />
-  //       </div>
-  //     </div>
-  //   </div>
-  // );
 }

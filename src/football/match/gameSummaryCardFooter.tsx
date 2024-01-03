@@ -1,9 +1,10 @@
-import { ReactElement } from 'react';
+import { ReactElement, useCallback } from 'react';
 import { Match } from '@goatim/client';
+import { Button } from '@src/general';
 
 export interface GameSummaryCardFooterProps {
   match: Match;
-  onUserInteraction: (action: string, data: unknown, event: React.MouseEvent) => void;
+  onUserInteraction: (action: string, data?: unknown, event?: React.MouseEvent) => void;
 }
 
 export function GameSummaryFooterLive({}: GameSummaryCardFooterProps) {
@@ -14,12 +15,25 @@ export function GameSummaryFooterResults({ match }: GameSummaryCardFooterProps) 
   return <div className="goatim-ui-game-summary-Footer results"></div>;
 }
 
-export function GameSummaryFooterIncoming({}: GameSummaryCardFooterProps) {
-  return <div className="goatim-ui-game-summary-Footer incoming">TODO</div>;
-}
-
-export function GameSummaryFooterFixture({}: GameSummaryCardFooterProps) {
-  return <div className="goatim-ui-game-summary-Footer fixture">TODO</div>;
+export function GameSummaryFooterIncoming({
+  match,
+  onUserInteraction,
+}: GameSummaryCardFooterProps) {
+  return (
+    <div className="goatim-ui-game-summary-Footer incoming">
+      {typeof match.userComposition !== 'undefined' ? (
+        <Button
+          href={`/matches/${match.slug}/compositions/${match.userComposition.id}`}
+          shape="filled">
+          Modifier ma composition
+        </Button>
+      ) : (
+        <Button href={`/matches/${match.slug}/compositions/new`} shape="filled">
+          Faire ma composition
+        </Button>
+      )}
+    </div>
+  );
 }
 
 export function GameSummaryCardFooter({
@@ -31,7 +45,7 @@ export function GameSummaryCardFooter({
   switch (status) {
     case 'open':
     case 'created':
-      return <GameSummaryFooterFixture match={match} onUserInteraction={onUserInteraction} />;
+      return <GameSummaryFooterIncoming match={match} onUserInteraction={onUserInteraction} />;
     case 'ongoing':
     case 'closing':
       return <GameSummaryFooterLive match={match} onUserInteraction={onUserInteraction} />;

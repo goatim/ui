@@ -21,6 +21,7 @@ export type ButtonTheme =
   | 'dark'
   | 'light'
   | 'electric-blue'
+  | 'transparent'
   | 'transparent-dark'
   | 'transparent-light'
   | 'buy'
@@ -45,6 +46,7 @@ export interface ButtonProps extends WrapperProps {
 export const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
   function Button(
     {
+      id,
       children,
       href,
       target,

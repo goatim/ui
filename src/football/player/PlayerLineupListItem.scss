@@ -1,16 +1,66 @@
+@use '../../styles/colors';
+
 .goatim-ui-player-lineup-list-item {
   font-size: 0.75em;
 
-  > .position {
-    opacity: 0.5;
-    text-transform: uppercase;
+  > .player-info {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    > .position {
+      opacity: 0.5;
+      text-transform: uppercase;
+      margin-right: 2px;
+    }
+
+    > .name {
+      font-weight: bold;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
   }
 
-  > .name {
-    font-weight: bold;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
+  > .info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: .8rem;
+
+   
+    > .player-note {
+
+    }
+
+    > .nb-shares {
+      width: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #F5F8FF;
+      border-radius: 20px;
+      border: 1px solid colors.$blue;
+    }
+
+   
+    > .score {
+      width: 30px;
+      color: white;
+      font-size: 700;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: colors.$gold;
+      border-radius: 20px;
+    }
+
+    > .xpg {
+      font-size: 700;
+      color: colors.$blue;
+    }
   }
+
+ 
 }
