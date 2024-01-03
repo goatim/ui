@@ -5,7 +5,7 @@ import { UserProgressBarXP } from './userXP';
 import { UserRankLeague } from './userRankLeague';
 
 export interface UserBannerCardProps {
-  user?: User;
+  user: User;
 }
 
 export function UserBannerCard({ user }: UserBannerCardProps): ReactElement {

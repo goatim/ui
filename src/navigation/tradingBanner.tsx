@@ -4,9 +4,9 @@ import { CurrenciesRateThumbnail, NeoShopBanner, WalletThumbnail } from '../mark
 import { UserBannerCard } from '../user';
 
 export interface TradingBannerProps {
+  user: User;
   goatimCoinsRate?: CurrenciesRate;
   wallet?: Wallet;
-  user?: User;
 }
 
 export function TradingBanner({ goatimCoinsRate, wallet, user }: TradingBannerProps): ReactElement {

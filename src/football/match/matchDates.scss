@@ -9,11 +9,12 @@
     align-items: flex-start;
     .match-date .date {
       margin-left: 10px;
+      margin-right: 0px;
     }
   }
 
   > div:not(:last-child) {
-    margin-right: 1rem;
+    margin-right: 5px;
   }
 
   > .match-date {
@@ -26,7 +27,7 @@
       font-weight: bold;
     }
     > .date {
-      font-size: 0.8rem;
+      font-size: 0.8em;
     }
   }
 }

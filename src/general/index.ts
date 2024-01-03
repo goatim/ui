@@ -8,6 +8,7 @@ export * from './counter';
 export * from './datePicker';
 export * from './datetime';
 export * from './dateTimePicker';
+export * from './dateTimeThumbnail';
 export * from './gutter';
 export * from './heading';
 export * from './icon';

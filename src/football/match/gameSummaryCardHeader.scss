@@ -1,9 +1,13 @@
 @use '../../styles/colors';
 
 .goatim-ui-game-summary-card-header {
-  > .info {
+  > .name-row {
+    position: relative;
+
     > .bt-open-summary {
-      margin-left: auto;
+      position: absolute;
+      right: 0px;
+      top: -10px;
       border-radius: 30px;
       border: 1px solid colors.$blue;
       padding: 5px;
@@ -12,27 +16,34 @@
       align-items: center;
       line-height: 10px;
     }
+  }
+  > .dates-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5px;
 
-    > .dates {
-      margin-top: 10px;
+    .goatim-ui-match-dates {
+      font-size: 0.8em;
+    }
+    .goatim-ui-participants-thumbnail {
+      font-size: 0.8em;
     }
   }
 
   &.results {
-    > .name {
-      display: flex;
-      align-items: center;
-
+    > .name-row {
       .match-slug {
+        flex: 0.5;
         margin-right: 0.8rem;
+        font-weight: 700;
+        color: #323960; // TODO use global
+      }
+
+      .goatim-ui-participants-thumbnail {
+        font-size: 0.7em;
+
       }
     }
-  }
-
-  .match-slug {
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: #323960; // TODO use global
   }
 
   > .title {
